@@ -1,0 +1,16 @@
+{
+  "name": "vetman-briefing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "해외 수의사 커뮤니티(레딧) 주간 다이제스트 파이프라인",
+  "scripts": {
+    "collect": "node --env-file-if-exists=.env src/run.js --collect-only",
+    "run": "node --env-file-if-exists=.env src/run.js",
+    "build": "node src/build.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.110.0",
+    "fast-xml-parser": "^5.10.1"
+  }
+}

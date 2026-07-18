@@ -1,0 +1,43 @@
+name: Daily briefing
+
+on:
+  schedule:
+    # 매일 09:00 KST (00:00 UTC)
+    - cron: "0 0 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: npm ci
+
+      - name: Run pipeline (collect → select → generate → publish)
+        run: node src/run.js --publish
+        env:
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'MiniMax-M2' }}
+
+      - name: Build site
+        run: npm run build
+
+      - name: Commit and push
+        run: |
+          git config user.name "vetman-briefing-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data site
+          git diff --cached --quiet || git commit -m "daily: $(date -u +%F) briefing"
+          git push
