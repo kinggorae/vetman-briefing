@@ -1,4 +1,4 @@
-import { MIN_RELEVANCE, ITEMS_PER_ISSUE } from "../config.js";
+import { MIN_RELEVANCE, ITEMS_PER_ISSUE, SCORE_BATCH } from "../config.js";
 import { jsonCall } from "./llm.js";
 
 // Reddit 직접 수집분에만 적용하는 규칙 필터:
@@ -39,7 +39,8 @@ const SCORE_SCHEMA = {
   additionalProperties: false,
 };
 
-export async function scoreCandidates(posts) {
+// 후보가 많으면 배치로 나눠 평가 (한 프롬프트에 너무 많으면 평가 품질이 떨어짐)
+async function scoreBatch(posts) {
   const list = posts
     .map((p) => {
       const meta = p.score != null ? ` | ▲${p.score} 💬${p.numComments}` : "";
@@ -60,7 +61,21 @@ export async function scoreCandidates(posts) {
     user: `다음 후보들을 평가해주세요:\n\n${list}`,
     schema: SCORE_SCHEMA,
   });
-  const byId = new Map(scores.map((s) => [s.id, s]));
+  return scores;
+}
+
+export async function scoreCandidates(posts) {
+  const allScores = [];
+  for (let i = 0; i < posts.length; i += SCORE_BATCH) {
+    const batch = posts.slice(i, i + SCORE_BATCH);
+    console.log(`  배치 ${Math.floor(i / SCORE_BATCH) + 1}/${Math.ceil(posts.length / SCORE_BATCH)} (${batch.length}개) 평가 중...`);
+    try {
+      allScores.push(...(await scoreBatch(batch)));
+    } catch (err) {
+      console.error(`  배치 평가 실패, 건너뜀: ${err.message}`);
+    }
+  }
+  const byId = new Map(allScores.map((s) => [s.id, s]));
 
   return posts
     .map((p) => ({ ...p, ...byId.get(p.id) }))

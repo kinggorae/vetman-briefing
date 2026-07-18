@@ -1,9 +1,26 @@
 {
   "urls": [
     "https://www.veterinarypracticenews.com/palliative-approaches-chronic-pain/",
+    "https://todaysveterinarybusiness.com/pet-owners-underestimate-heartworm-risk/",
     "https://drandyroark.com/when-the-chill-protocol-isnt-chilling/",
     "https://vetgirlontherun.com/handling-techniques-for-dogs-with-moderate-to-high-levels-of-fear-anxiety-or-stress-vetgirl-veterinary-continuing-education-blogs/",
     "https://vetgirlontherun.com/whats-new-in-diabetes-management-vetgirl-veterinary-continuing-education-blogs/",
-    "https://www.veterinarypracticenews.com/wildlife-medicine-companion-animal-care-connection-avma-2026/"
+    "https://bvajournals.onlinelibrary.wiley.com/doi/10.1002/vetr.70473?af=R",
+    "https://news.google.com/rss/articles/CBMi-AFBVV95cUxOR3B5UVVFeHFXcVFfWUhLX3VYcnVTQks4Q1ZnZVlnS09yY0I0ZzJiRDJBOVczWEwtVVJmQUNuZ2xORzNQa0FIZ2FlRkpteWJkRmR5dlU5Z1locEFkMjBvOFBvTlgyLXJyalNVYkJMRm8wazVaNGtycmR1dGplVnR2Zi1QTjhJZDZzZ3RBS2ZYczBFbVI3RUtSOEUyaHhIMXlQaWpsei01ZVZPeU9Pcl9tMjl3aWdPd1hPckVFTkdrTGgtbHlhNXJuVVF6dzhRSG8ya1NFOEpiSWRDSVN5QTl0THVERHFSbzlKRmkzdW9wbk5hTFZJYzZFeQ?oc=5",
+    "https://www.veterinarypracticenews.com/overview-veterinary-vaccine-research-regulations-guidelines/",
+    "https://ivcjournal.com/structured-therapeutic-exercise-significantly-improves-joint-mobility-and-muscle-mass-in-dogs/",
+    "https://ivcjournal.com/nutraceutical-protocols-for-canine-cognitive-dysfunction/",
+    "https://ivcjournal.com/gut-microbiome-modulation-in-dogs-to-reduce-antimicrobial-use-and-amr/",
+    "https://ivcjournal.com/integrative-rehabilitation-in-canine-cervical-disc-disease-a-case-report/",
+    "https://www.vetpracticemag.com.au/shorter-front-leg-strides-can-be-an-early-warning-sign-of-dementia-in-senior-dogs/",
+    "https://news.google.com/rss/articles/CBMipwFBVV95cUxPMGZBbDJyckpINHR4WEpfLWt2cTBIMHV3M0F6bDA4N016NnpCX0V2dnBGWWhQS0VYdllMQS1BUnVGaTJWeWNsUE9jVXgtUFNHT3VrbGtHS3B6UzZMaUc3NXJWWHNpUE9STmtuOGo5VUNhd29tek9vaENwUDUxRVdVSHNFMTlWQjRZWVN1a1FRaEtTbzh5RTN5R24xQms3SGRfa3IxNzFjZw?oc=5",
+    "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPVkdja2JVb1FkR2dMaGxPdWhiUjBDVV8wY09mWDNJT3JhNHRsckk3VW1MRkRwTmpFemhYWmtKckpXR1FqMnRtb2dBTE9peVlTeDdLaEdpOFNpX19xck0tOEh3RHVwODF3TW5KVWg3VHI4anRGNjkzUzlzZTlaMUZOYmQ5UldjVEUwTDg4WXNKNGducFJBU2Vyem8ySVp4SmxETTE2YlhSeGk5VmlQVkRnTjd1Q0VEcV9MOEUtT2dVSnJSeFNHbm1xNm9IZ0l3Uk5IT3ozbTd0VklwcXhOdG1EMXVJM3U1bmNsRUE?oc=5",
+    "https://news.google.com/rss/articles/CBMiswFBVV95cUxOZlBMZnZRVWZJdDllSWR2QXlZZUVRc3RKQmN2RW5uNkdqRmRXVjRuS0d3RFladG9UU2h1dm5sWERqa08xUFZCeGRzRlctMF83emtsRDFfVDBGdmt1QjF4cV90bVVIZDgtX29XXzNkd2JHNkxKZUFuMGhidEdPRzBORkVoeWdaNGVOQmNDck9GbHRXa1VtaXZDcFdmYjlvSzl2R2tVcldER1VMWFRUOWJoUDE0MA?oc=5",
+    "https://www.vetpracticemag.com.au/the-importance-of-pet-enrichment/",
+    "https://bvajournals.onlinelibrary.wiley.com/doi/10.1002/vetr.70998?af=R",
+    "https://news.google.com/rss/articles/CBMinwFBVV95cUxPWTV4aUhObzZoanV1Unl3cmhqYjNEY0hOZnpyNGJaeTdfa2NvLWo2WHRWV08wa0pZV2lrRHJtbS1LWmc5cE80aFVRbnFBLXVFUi1QNXVCVDlRNVVNMERKNzgwQy1zT2ZYeGdLV0FWYVJoM3MyRXhnOHRrX1F6N0RmVnBYN3hONVdieExXV2p0Z0xsQkV4ekJrSHV6VnNxQzg?oc=5",
+    "https://news.google.com/rss/articles/CBMihAFBVV95cUxPeTRYUjFwZkhlOXdTV0tlT3dMaWgzd2NDcVR0a1NDZ1NfNFdFVTEyT1RKS0xiTTlzLWgwSUxUS3FVTkVUS3lUNV8xaFVDeV9UbGViM0steE1ZVWlLZGhzQVY5QXRRZFZsN0ZnX2FJb1lyczVWeVNCTWFEZl9iZXYxWWFmVEQ?oc=5",
+    "https://news.google.com/rss/articles/CBMicEFVX3lxTE52N3RLamNWSnJieTBWVnhOSTZJLTZ4UFdVd0FGbk1mU3RBdGZ5Mnd1Wl9reVAxeGlIdUlpLUZjT1NGWEt5YklLanJoOEtkd2tkNUE2U1M3R2VzdjV6WWV5aFptWWwwaGxCcC1tZHdqelU?oc=5",
+    "https://news.google.com/rss/articles/CBMifEFVX3lxTE5MWllFQXA0b0g2ZFNjbWs1UUdMaXNjYlRmVDdtRWJGUlRIaUR1ZV92UVVUN0NlZGNuMENSTDVGYXhBQlk3alpxU0p5MUZ1V0hwUlZ5QW5LWGdEU3ZFdWticVpnM2l0M1BZOEpCREdTZmlGR3F6NjZIUWFocXE?oc=5"
   ]
 }

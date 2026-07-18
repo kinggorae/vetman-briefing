@@ -62,7 +62,7 @@ const GNEWS_TOPICS = [
 const GNEWS_FEEDS = GNEWS_TOPICS.map((q) => ({
   name: "Google News",
   type: "gnews",
-  max: 8,
+  max: 12,
   maxAgeDays: 2,
   url: `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-US&gl=US&ceid=US:en`,
 }));
@@ -82,8 +82,9 @@ export const SUBREDDITS = [
   { name: "veterinaryprofession", minScore: 5 }, // 소규모 보조 소스
 ];
 
-export const CANDIDATES_MAX = 80;   // 스코어링에 넘길 최대 후보 수
-export const ITEMS_PER_ISSUE = 10;  // 일간 이슈당 최종 아이템 수
+export const CANDIDATES_MAX = 150;  // 스코어링에 넘길 최대 후보 수
+export const ITEMS_PER_ISSUE = 40;  // 일간 발행 상한 — 실제 발행 수는 MIN_RELEVANCE 통과분 전부
+export const SCORE_BATCH = 30;      // 스코어링 배치 크기 (한 번에 너무 많이 넣으면 평가 품질 저하)
 export const MIN_RELEVANCE = 6;     // 관련성 점수 하한 (0~10)
 export const TOP_COMMENTS = 8;      // 요약에 참고할 상위 댓글 수
 
