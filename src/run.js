@@ -133,9 +133,18 @@ async function main() {
         console.warn(`  댓글 수집 실패 (${post.id}) — 본문만으로 진행`);
       }
     }
-    const item = await generateItem(post, comments);
-    items.push(item);
-    console.log(`  ✓ ${item.titleKo}`);
+    try {
+      const item = await generateItem(post, comments);
+      items.push(item);
+      console.log(`  ✓ ${item.titleKo}`);
+    } catch (err) {
+      console.error(`  ✗ 아이템 생성 실패, 건너뜀 (${post.title.slice(0, 40)}): ${err.message}`);
+    }
+  }
+
+  if (items.length === 0) {
+    console.error("생성된 아이템이 없습니다. 종료합니다.");
+    process.exit(1);
   }
 
   const label = dateLabel();

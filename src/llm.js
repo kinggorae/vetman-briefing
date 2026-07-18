@@ -47,19 +47,29 @@ export async function jsonCall({ system, user, schema, maxTokens = 16000 }) {
 
   // 호환 모드: 스키마를 프롬프트에 넣고 JSON만 출력하도록 지시
   // temperature를 낮춰 다국어 모델의 언어 혼입 확률을 줄인다
-  const response = await client.messages.create({
-    model: MODEL,
-    max_tokens: maxTokens,
-    temperature: 0.3,
-    system:
-      system +
-      "\n\n출력 형식: 아래 JSON 스키마를 따르는 JSON만 출력하세요. 설명·서문·코드블록 표시 없이 JSON 자체만 출력합니다.\n" +
-      JSON.stringify(schema),
-    messages: [{ role: "user", content: user }],
-  });
-  const text = response.content
-    .filter((b) => b.type === "text")
-    .map((b) => b.text)
-    .join("\n");
-  return extractJson(text);
+  // JSON 없는 응답이 오면 최대 3회까지 재호출
+  let lastErr;
+  for (let i = 1; i <= 3; i++) {
+    const response = await client.messages.create({
+      model: MODEL,
+      max_tokens: maxTokens,
+      temperature: 0.3,
+      system:
+        system +
+        "\n\n출력 형식: 아래 JSON 스키마를 따르는 JSON만 출력하세요. 설명·서문·코드블록 표시 없이 JSON 자체만 출력합니다.\n" +
+        JSON.stringify(schema),
+      messages: [{ role: "user", content: user }],
+    });
+    const text = response.content
+      .filter((b) => b.type === "text")
+      .map((b) => b.text)
+      .join("\n");
+    try {
+      return extractJson(text);
+    } catch (err) {
+      lastErr = err;
+      console.warn(`  ↻ JSON 파싱 실패 (시도 ${i}/3) — 재호출`);
+    }
+  }
+  throw lastErr;
 }
