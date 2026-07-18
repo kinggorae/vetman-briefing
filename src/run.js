@@ -40,19 +40,38 @@ function saveSeen(seen) {
   fs.writeFileSync(SEEN_PATH, JSON.stringify({ urls }, null, 2));
 }
 
+// 구글 뉴스 쿼리들이 후보 상한을 독식하지 않도록 쿼리별로 번갈아 뽑는다
+function roundRobin(groups) {
+  const out = [];
+  const queues = groups.map((g) => [...g]);
+  while (queues.some((q) => q.length)) {
+    for (const q of queues) if (q.length) out.push(q.shift());
+  }
+  return out;
+}
+
 async function collect() {
   const candidates = [];
+  const gnewsGroups = [];
 
-  // 1) Plan C (기본): 수의 미디어 RSS
+  // 1) Plan C (기본): 수의 미디어·저널 RSS + 구글 뉴스 토픽 쿼리
+  let gnewsTotal = 0;
   for (const feed of FEEDS) {
     try {
       const items = await fetchFeed(feed);
-      console.log(`  [RSS] ${feed.name}: ${items.length}개`);
-      candidates.push(...items);
+      if (feed.type === "gnews") {
+        gnewsTotal += items.length;
+        gnewsGroups.push(items);
+      } else {
+        console.log(`  [RSS] ${feed.name}: ${items.length}개`);
+        candidates.push(...items);
+      }
     } catch (err) {
       console.error(`  [RSS] ${feed.name}: 실패 — ${err.message}`);
     }
   }
+  console.log(`  [Google News] 토픽 쿼리 ${gnewsGroups.length}개에서 ${gnewsTotal}개`);
+  candidates.push(...roundRobin(gnewsGroups));
 
   // 2) Reddit API 직접 수집 (키가 있을 때만)
   if (hasRedditCreds) {
@@ -79,12 +98,13 @@ async function collect() {
     }
   }
 
-  // 중복 제거(URL 기준) 후 상한 적용 — RSS/웹검색 우선, 레딧은 업보트순
+  // 중복 제거(URL + 제목 유사 기준) 후 상한 적용 — 같은 뉴스가 여러 쿼리·매체에 잡히는 것 대응
   const seen = new Set();
   const deduped = candidates.filter((c) => {
-    const key = c.url || c.id;
-    if (seen.has(key)) return false;
-    seen.add(key);
+    const titleKey = c.title.toLowerCase().replace(/[^a-z0-9가-힣]/g, "").slice(0, 60);
+    const keys = [c.url || c.id, titleKey];
+    if (keys.some((k) => seen.has(k))) return false;
+    keys.forEach((k) => seen.add(k));
     return true;
   });
   const nonReddit = deduped.filter((c) => c.sourceType !== "reddit");
