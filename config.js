@@ -1,3 +1,11 @@
+// ── 사이트 메타 (SEO/GEO) ──
+export const SITE = {
+  baseUrl: "https://vetman-briefing.pages.dev",
+  name: "VetMan 해외 브리핑",
+  description:
+    "해외 수의 전문 미디어의 주요 소식을 매일 선별·번역해 한국 동물병원 원장과 수의사에게 전하는 데일리 브리핑. 임상 지견, 병원 경영, 보호자 소통, 업계 트렌드를 다룹니다.",
+};
+
 // ── Plan C (기본): 해외 수의 미디어 RSS ──
 // maxAgeDays: 피드별 수집 기간(일), max: 피드별 최대 후보 수
 export const FEEDS = [

@@ -1,78 +1,139 @@
 {
   "date": "2026-07-19",
   "status": "published",
-  "generatedAt": "2026-07-18T20:08:57.065Z",
-  "publishedAt": "2026-07-18T20:08:57.065Z",
+  "generatedAt": "2026-07-18T20:17:36.410Z",
+  "publishedAt": "2026-07-18T20:17:36.410Z",
   "items": [
     {
-      "titleKo": "신세계굴레등에 치료 말용 이버멕틴 긴급사용승인",
-      "summaryKo": "미국 FDA가 신세계굴레등에(Cochliomyia hominivorax) 감염 치료를 목적으로 말용 이버멕틴 액제에 긴급사용승인(EUA)을 부여했다. 신세계굴레등에는 파리를 매개로 하며 가축과 인간에게 심각한 기생충 질환을 유발하는 해충으로, 이번 긴급승인으로 치료 약물 확보가 가능해졌다. 원문 참고",
-      "angleKo": "한국 동물병원에서도 긴급 Penggunaan obat(투약) 프로토콜 마련 시 참고할 수 있는 해외 사례입니다.",
+      "titleKo": "노령 동물 관절염 통증 완화 관리 가이드",
+      "leadKo": "강아지 5마리 중 1마리, 고령묘 90%에서 관절염이 발견되지만 진단율은 여전히 낮습니다. 완화 의료 관점에서 노령 동물의 통증을 관리하는 실용적 방법을 알아봅니다.",
+      "bodyKo": [
+        "관절염은 노령 동물에서 가장 흔한 만성 통증 원인입니다. 강아지의 경우 1세 이상 약 20%에서 관절염이 발생하며 연령이 증가할수록 유병률이 급격히 상승합니다. 10세 이상묘에서는 방사선 검사상 60~90%에서 퇴행성 관절 질환이 발견되지만, 고양이 관절염은 현재도 가장 진단률이 낮은 질환 중 하나입니다. 노령기에 접어든 환자의 경우 관절염이 단독으로 존재하기보다는 만성콩팥병, 간기능 저하, 인지기능 장애, 종양 등 다양한 질환과 동반되는 경우가 대부분입니다.",
+        "완화 의료의 핵심은 완치가 아닌 일상적인 기능 유지와 삶의 질 향상입니다. 단일 약물로 만성 통증을 완전히 해결하기는 어렵습니다. 말초 통증, 중추 과민화, 신경병성 통증, 염증 반응이 모두 관여하기 때문에 다중 약물 요법이 필수적입니다. NSAID를 중심으로 가바펜틴, 아만타딘, 항 NGF 단일클론항체 등을 병용하고, 레이저 치료, 침구 치료, 운동 처방 등을 함께 활용하는 것이 중요합니다. 특히 구조화된 운동은 근육 위축과 관절 통증을 악화시키는 무용 상태를 방지하는 가장 효과적이면서도 가장 간과되는 방법입니다.",
+        "한국 동물병원에서는 보호자와의 사전 기대 설정이 치료 성패를 좌우합니다. Canine Brief Pain Inventory, Liverpool Osteoarthritis in Dogs Scale, Feline Musculoskeletal Pain Index 등 검증된 삶의 질 평가 도구를 이용해 기준선을 수립하고 정기적으로 추적해야 합니다. 노령 동물에서 NSAID 장기 사용의 위험-편익 비율은 시간이 지나면서 변하므로, 정기적인 혈액 검사와 보호자 대화는 필수입니다. 운동 처방은 약물처럼 용량, 빈도, 목표를 명확히 해야 하며, 짧은 산책을 하루 2~3회 정도 하는 것이 일반적입니다."
+      ],
+      "keyPointsKo": [
+        "관절염은 노령 동물에서 가장 흔한 만성 통증 원인이나 고양이 진단률은 여전히 현저히 낮습니다",
+        "다중 약물 요법과 비약물 요법(운동, 레이저, 침구)을 결합한 완화 접근이 가장 효과적입니다",
+        "완화 의료는 완치가 아닌 기능 유지와 삶의 질 향상을 목표로 하며 보호자 기대 관리가 필수적입니다",
+        "노령 동물에서 가장 간과되지만 가장 효과적인 치료는 구조화된 운동 처방입니다"
+      ],
+      "angleKo": "보호자가 '나이가 들어서 그런 건다'라고 생각하기 쉬운 노령 동물의 보행 변화를 사별 기회로 전환하는 블로그 콘텐츠를 작성해 보세요.",
       "sourceType": "rss",
-      "sourceLabel": "Outbreak News Today",
+      "sourceLabel": "Veterinary Practice News",
       "upvotes": null,
       "numComments": null,
       "category": "clinical",
-      "relevance": 8,
-      "sourceUrl": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPeTRYUjFwZkhlOXdTV0tlT3dMaWgzd2NDcVR0a1NDZ1NfNFdFVTEyT1RKS0xiTTlzLWgwSUxUS3FVTkVUS3lUNV8xaFVDeV9UbGViM0steE1ZVWlLZGhzQVY5QXRRZFZsN0ZnX2FJb1lyczVWeVNCTWFEZl9iZXYxWWFmVEQ?oc=5",
-      "sourceTitle": "New World Screwworm: Ivermectin Liquid for Horses gets Emergency Use Authorization",
-      "publishedAt": "2026-07-18T18:15:42.000Z"
+      "relevance": 9,
+      "imageUrl": "https://www.veterinarypracticenews.com/wp-content/uploads/2026/07/palliative-care-pain.jpg",
+      "sourceUrl": "https://www.veterinarypracticenews.com/palliative-approaches-chronic-pain/",
+      "sourceTitle": "Palliative approaches to chronic pain",
+      "publishedAt": "2026-07-10T07:00:24.000Z"
     },
     {
-      "titleKo": "ChatGPT, 애완동물 건강 조언서 위험한 오류 반복",
-      "summaryKo": "Vetster의 Dr. Jo Myers 연구에 따르면 ChatGPT가 애완동물 건강 질문에 대해 과도하게 단순화하거나 오진단하는 경우가 종종 발견되다. 특히 제시되지 않은 품종 정보를 근거 없이 만들어내거나 응급 경고 징후를 놓치는 등 부정확한 정보를 생성하는 것으로 나타났다. 약 4분의 1의 애완동물 주인이 온라인에서 건강 정보를 찾는 현실을 고려할 때, 이 연구 결과는 동물병원 블로그에서 AI 도구 활용의 한계와 전문가 상담의 중요성을 강조하는 콘텐츠 소재가 될 수 있다.",
-      "angleKo": "한국 동물병원에서는 SNS로 건강 문의를 받는 경우가 많으니, AI 활용 시 주의점과 전문가 진단의 필요성을 강조하는 고객 교육 콘텐츠로 활용하면 좋을 것 같다.",
-      "sourceType": "rss",
-      "sourceLabel": "Today's Veterinary Business",
-      "upvotes": null,
-      "numComments": null,
-      "category": "industry",
-      "relevance": 7,
-      "sourceUrl": "https://todaysveterinarybusiness.com/veterinary-news-07142026/",
-      "sourceTitle": "Veterinary Industry News",
-      "publishedAt": "2026-07-14T13:16:07.000Z"
-    },
-    {
-      "titleKo": "사설 자본의 동물병원 장악 비상",
-      "summaryKo": "사설 자본이 미국 동물병원 업계를 빠르게 접수하며 지역 중소 병원들의 생존을 위협하고 있다. 인수 합병을 통한 시장 집중도가 높아지면서 진찰비와 약값 상승이 심각해지고 있으며, 수익성 중심의 운영이 동물 의료의 질에 영향을 미칠 수 있다는 우려가 제기되고 있다.",
-      "angleKo": "한국 동물병원들도 사설 자본의 시장 진입 가능성에 대비해 지역사회 기반 진료의 가치와 차별화를 강조하는 마케팅 전략을 강화할 필요가 있습니다.",
-      "sourceType": "rss",
-      "sourceLabel": "Jacobin",
-      "upvotes": null,
-      "numComments": null,
-      "category": "industry",
-      "relevance": 7,
-      "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE52N3RLamNWSnJieTBWVnhOSTZJLTZ4UFdVd0FGbk1mU3RBdGZ5Mnd1Wl9reVAxeGlIdUlpLUZjT1NGWEt5YklLanJoOEtkd2tkNUE2U1M3R2VzdjV6WWV5aFptWWwwaGxCcC1tZHdqelU?oc=5",
-      "sourceTitle": "Private Equity Is Taking Over Your Veterinarian",
-      "publishedAt": "2026-07-18T15:36:54.000Z"
-    },
-    {
-      "titleKo": "은퇴할 때까지 쉬지 못한 외과 의사의 고백",
-      "summaryKo": "수의사 앤디 로이커크 박사의 아버지는 은퇴한 외과 의사로, 은퇴하기 전에는 완전히relax할 수 없었다고 밝혔다. 환자를 조금이라도 더 잘 치료할 수 있었는지, 환자에게 안심을 줄 말을 다 했는지 끊임없이 자신을 물었다. 이는 의료 전문가들이 커리어 내내 견지하는 자기 회의와 정신적 부담을 보여주는 사례다.",
-      "angleKo": "한국 동물병원 블로그에서 수의사들도 비슷한 심리적 부담을 안고 있다는 점을 공감대로 활용, 종사자의 정신건강 중요성을 강조하는 콘텐츠로 제작할 수 있습니다.",
+      "titleKo": "트라조돈 외의 진정 프로토콜: 진정이 불안정을 감추고 있는 건 아닌가",
+      "leadKo": "동물 진료에서 스트레스받은 동물과 보호자가 점점 많아지면서, 기존 가바펜틴·트라조돈만으로는 부족한 경우가 많습니다. 진정제가 실제로 불안감을 해결하는지, 아니면 단지 감추고 있는 것인지 구분하는 것이 중요합니다.",
+      "bodyKo": [
+        "진행 중인 Podcast에서 Dr. Chris Pachel(동물행동의학 전문의)은 트라조돈과 가바펜틴 외의 방문 전 약물 옵션을 다뤘습니다. 클로니딘, 벤조디아제핀, 덱스메데토미딘 등 다양한 약물이 있으며, 각 약물은 다른 작용 기전과 적응증이 있습니다. 특히 기존 약물의 용량을 높여야 하는 시점과, 진정이 불안의 증상을 감추고 실제로 문제를 해결하지 않고 있다는 신호를 인식하는 것이 중요합니다.",
+        "진정 프로토콜의 한계점도 언급되었습니다. 아세프로메진과 같은 약물이 과용되거나 부적절하게 사용될 경우, 동물에게 불필요한 스트레스를 줄 수 있습니다. Dr. Pachel은 자신의 동물행동클리닉에서 공간 설계를 통해 스트레스를 줄이는 방법을 공유하며, 집에서의 trial run과 안전 계획의 중요성을 강조했습니다. 진정은 문제를 근본적으로 해결하는 것이 아니라 상황적으로 돕는 도구로 사용되어야 합니다.",
+        "한국 동물병원에서도 동일한 문제가 적용됩니다. 보호자들이 애완동물의 행동 문제를 호소하거나 방문 전 스트레스를 악화시키고 싶지 않아 하는 경우가 많습니다. 이 Episode은 단순히 약물만 prescription하는 것이 아니라, 각 동물에 맞는 개별화된 접근이 필요함을 reminds 합니다. 행동을 보이는 근본 원인을 파악하고 약물과 행동 개입을 병행하는 holistic 접근이 효과적입니다."
+      ],
+      "keyPointsKo": [
+        "트라조돈·가바펜틴 외에 클로니딘, 벤조디아제핀, 덱스메데토미딘 등 다양한 방문 전 진정제 옵션이 존재하며, 환자에 따라 선택해야 합니다.",
+        "진정이 불안감을 해결하는 것이 아니라 감추고 있을 수 있으며, 이를 구분하기 위한 관찰과 평가가 필요합니다.",
+        "아세프로메진과 같은 전통적 'chill protocol'은 항상 적절한 것이 아니며, 약물 사용 시 주의가 필요합니다.",
+        "집에서의 trial run과 안전 계획을 통해 약물 효과를 미리 확인하는 것이 권장됩니다."
+      ],
+      "angleKo": "보호자들이 \"진정제를 먹이면 얌전히 있을 텐데\"라고 생각하는 경우가 많은데, 실제로는 불안감이 억압되어 있을 뿐이라는 점을 블로그 글로 다뤄보면 좋겠습니다.",
       "sourceType": "rss",
       "sourceLabel": "Dr. Andy Roark",
       "upvotes": null,
       "numComments": null,
-      "category": "career",
-      "relevance": 6,
-      "sourceUrl": "https://drandyroark.com/why-you-cant-relax/",
-      "sourceTitle": "Why You Can't Let Yourself Relax",
+      "category": "clinical",
+      "relevance": 8,
+      "imageUrl": "https://drandyroark.com/wp-content/uploads/cos-408-blog-pic.jpg",
+      "sourceUrl": "https://drandyroark.com/when-the-chill-protocol-isnt-chilling/",
+      "sourceTitle": "Beyond Trazodone: When the \"Chill Protocol\" Isn’t Chilling",
       "publishedAt": "2026-07-16T04:00:00.000Z"
     },
     {
-      "titleKo": "수용적 병원 문화가 수의사 성장에 도움이 된 이유",
-      "summaryKo": "한 수의사가 자신의 경력 초기에 경험한 수용적이고 지지적인 병원 문화가 임상 실력 성장에 얼마나 큰 역할을 했는지 전했습니다. 이 기사는 긍정적인 병원 문화가 수의사의 자신감과 업무 역량 향상에 미치는 영향을 구체적인 사례를 통해 보여줍니다. 한국 수의계에서도 병원 문화와 전문성 발달의 연관성에 대한 관심을 끌 것으로 보입니다.",
-      "angleKo": "한국 병원 블로그에서는 우리 병원만의 독특한 교육 문화나 선배 수의사의 멘토링 경험을 소개하는 글로 활용할 수 있습니다.",
+      "titleKo": "중고도 공포·불안·스트레스 개 병원 진료 처리법",
+      "leadKo": "개가 진료 중 높은 수준의 공포나 불안을 보일 때, 강제 처치는 오히려 상황을 악화시킬 수 있습니다. Debbie Martin 수의행동 전문가가 제시하는 저스트레스 처리 기법을 알아봅니다.",
+      "bodyKo": [
+        "모든 동물병원 방문은 개에게 오래 지속되는 기억을 남깁니다. 공포나 불안을 보이는 개를 어떻게 다루느냐에 따라 향후 진료 협조도와 행동에 직접적인 영향을 미칩니다. 중고도 공포 상태의 개는 이미 부정적 경험을 하고 있는 상태이므로, 추가 트라우마를 최소화하는 것이 무엇보다 중요합니다.",
+        "진료실 도입 후 5~8분간 적응 시간을 두고, 여전히 중고도 공포를 보이는 개에게는 즉시 처치를 진행하지 않습니다. 이 상태의 개는 '싸움, 도주, 불안, 멍해짐' 모드에 있으며 사료를 피해지고 장난감이나 상호작용을 피합니다. 이 경우 강제로 처리하면 동물과 의료팀원의 안전이 위험해질 수 있으므로, 약물 치료와 환경 통제, 행동 교정을 병용하는 종합적인 접근이 필요합니다.",
+        "응급 환자와 달리 안정적인 질환으로 내원한 경우는 급할 필요가 없습니다. 사전 진정제를 투여하고, 필요하다면 병원 내 추가 진정제를 저스트레스 처리 기법과 병용할 수 있습니다. Chip와 Luna의 사례처럼 반복적인 긍정적 경험이 축적되면 약물 필요량이 감소할 수 있으며, 궁극적으로 개가 진료를 즐겁게 받아들이도록 할 수 있습니다."
+      ],
+      "keyPointsKo": [
+        "도입 후 5~8분 적응 시간에도 공포가 완화되지 않으면 즉시 처치를 강행하지 않는다",
+        "스트레스 상태의 개에게는 강제 억압보다 빠른 작용의 주사 진정제가 더 안전하다",
+        "응급이 아닌 안정적 질환에서는 사전 진정제와 저스트레스 처리를 병용할 수 있다",
+        "반복적인 긍정적 경험이 축적되면 약물 의존도를 낮출 수 있다"
+      ],
+      "angleKo": "한국 동물병원에서 중고도 공포 개 환자를 볼 때, 처치 전 적응 시간과 사전 진정제 활용을 블로그 콘텐츠로 작성하면 보호자들에게 진료 협조도를 높일 수 있습니다",
       "sourceType": "rss",
-      "sourceLabel": "DVM360",
+      "sourceLabel": "VetGirl",
       "upvotes": null,
       "numComments": null,
-      "category": "practice_management",
-      "relevance": 6,
-      "sourceUrl": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQOHF6bzAzcnV6WkIyaGdsaUhIX2x3bnFEeEpRMldka2t3Q3BreE1Jd2RBN0V5Z0lWSnVZSHdEWEZZcEQ5amExUk5WS0dNbmhTNGE5cGEtMHl6QWc3bGp4bjBXaEFNakYyaGkyRDQ4eXRvYlpxcjgwRGhXRk1FX2l3S3h2aVpGUnhORG85ZjNYQWI5ZnU0bm1YR3pwMTlWYjVSVzY0Mk1KY2k?oc=5",
-      "sourceTitle": "How an accepting hospital culture helped one veterinarian grow as a clinician",
-      "publishedAt": "2026-07-17T12:10:04.000Z"
+      "category": "clinical",
+      "relevance": 8,
+      "imageUrl": "https://vetgirlontherun.com/wp-content/uploads/2026/07/Handling-techniques-for-Dogs-with-for-Moderate-to-High-Levels-of-Fear-Anxiety-or-Stress.png",
+      "sourceUrl": "https://vetgirlontherun.com/handling-techniques-for-dogs-with-moderate-to-high-levels-of-fear-anxiety-or-stress-vetgirl-veterinary-continuing-education-blogs/",
+      "sourceTitle": "Handling techniques for Dogs with Moderate to High Levels of Fear, Anxiety, or Stress",
+      "publishedAt": "2026-07-17T10:00:56.000Z"
+    },
+    {
+      "titleKo": "고양이 당뇨병 관리의 최신 치료법 SGLT2 저해제 활용",
+      "leadKo": "지난 20년간 인간 당뇨병 치료 분야에서 혁신을 이끈 SGLT2 저해제가 이제 한국의 동물병원에서도 활용되기 시작했습니다. 특히 인슐린 저항성을 특징으로 하는 고양이 당뇨병에서 80~90%의 높은 효과를 보이는 이 약물의 사용법과 모니터링 전략을 알아봅니다.",
+      "bodyKo": [
+        "개의 당뇨병은 췌장 베타 세포의 인슐린 생산 실패로 인해 발생하며 인간의 1형 당뇨병과 유사하여 인슐린 치료가 필수적입니다. 반면 고양이 당뇨병의 최대 80%는 인슐린 저항성이 원인이며 인간의 2형 당뇨병과 유사하여 스스로 인슐린을 생산합니다. 이러한 차이는 치료 약물 선택에 중요한 기준이 됩니다.",
+        "SGLT2 저해제(베카글리플로진,벨라글리플로진)는 신장에서 포도당 재흡수를 차단하여 혈당 조절을 돕는 약물로, 아직 인슐린을 생산하는 고양이에게 효과적입니다. 그러나 인슐린을 전혀 생산하지 않는 고양이나 심한 동반 질환,케톤증이 있는 고양이는 사용이 적합하지 않습니다. 치료 시작 후 3일, 1주, 2주, 4주, 12주에 혈당 및 케톤 검사를 실시하고 fructosamine 수치를 확인하여 혈당 조절 평가를 진행합니다. 가장 흔한 부작용은 위장관 증상이며, 심각한 경우 정상혈당성 케톤산증이 발생할 수 있어 주의를 요합니다.",
+        "한국 동물병원에서 이 치료법을 도입할 때는 고양이의 인슐린 생산 여부를 정확히 판단하기 어렵다는 점을 고려해야 합니다. 건강한 당뇨병 고양이를 선정하고, Ketosis나 심각한 동반 질환이 없는지 반드시 확인한 후 치료를 시작해야 합니다. 또한 질 감염 및 경미한 고칼슘혈증이 발생할 수 있어 정기적인 검사가 필요합니다.",
+        "향후 연구를 통해 개의 심장 및 신장 보호 효과를 비롯하여 인슐린과 병용 요법의 가능성도 탐색되고 있어, 향후 동물 당뇨병 관리의 새로운 방향이 될 것으로 기대됩니다."
+      ],
+      "keyPointsKo": [
+        "고양이 당뇨병의 80%는 인슐린 저항성이 원인이며 SGLT2 저해제가 효과적이나, 인슐린을 생산하지 않는 고양이는 제외",
+        "SGLT2 저해제는 건강한 당뇨병 고양이에서 80~90%의 효과를 보이며, 베카글리플로진(정제),벨라글리플로진(액체) 형태 approved",
+        "치료 초기 수 주 이내에 정상혈당성 케톤산증이 발생할 수 있어 병세 변화 시 반드시 혈중 케톤 검사 실시",
+        "개의 경우 인슐린 생산이 없어 SGLT2 저해제 단독 요법은 부적합하며 인슐린 치료가 필수"
+      ],
+      "angleKo": "한국 동물병원 블로그에서는 '고양이 당뇨병, 이제 인슐린 주사 없이도 관리할 수 있는 시대'라는 제목으로 SGLT2 저해제의 장점과 주의점을owners를 위한 안내글로 작성하면 효과적입니다.",
+      "sourceType": "rss",
+      "sourceLabel": "VetGirl",
+      "upvotes": null,
+      "numComments": null,
+      "category": "clinical",
+      "relevance": 8,
+      "imageUrl": "https://vetgirlontherun.com/wp-content/uploads/2026/07/CGM.jpg",
+      "sourceUrl": "https://vetgirlontherun.com/whats-new-in-diabetes-management-vetgirl-veterinary-continuing-education-blogs/",
+      "sourceTitle": "What’s New in Diabetes Management",
+      "publishedAt": "2026-07-10T10:00:08.000Z"
+    },
+    {
+      "titleKo": "애완동물 진료에도 적용되는 동물원 의료의 신뢰 구축 원칙",
+      "leadKo": "디즈니 동물원 수의사가 숲과 침팬지 등 야생 동물에서 실천한 신뢰 구축 기법을 companion animal 진료에도 적용할 수 있다고 발표했습니다. 미국 7700만 가구 이상의 애완동물을 보유한 시장에서 동물 행동학의 실무 적용이 주목받고 있습니다.",
+      "bodyKo": [
+        "미국수의사회(AVMA) 컨벤션에서 디즈니 월드 동물·과학·환경 부사장 마크 피닝 박사와 AVMA 회장 마이클 베일리 박사가 동물 행동관리 원칙을 공유했습니다. 디즈니 애니멀 킹덤에서는 호랑이, 코뿔소 등 대형 동물에게도 신뢰 관계를 바탕으로 진정제 없이 특정 의료 시술이 가능하며, 이는 축적된 긍정적 강화와 존중하는 취급의 결과입니다.",
+        "수의 리더들은 이 같은 원칙이 companion animal 진료에도 그대로 적용된다고 강조했습니다. 초기 신뢰 형성을 위한 긍정적 강화, 자연적 행동을 권장하는 음식 퍼즐과 enrichment 활동 적용, 몸짓을 세밀하게 관찰, 그리고 규칙적인 진료 방문을 포함한 일관된 루틴 유지가 핵심 권고사항입니다. 피닝 박사는 존중하는 취급이 인간-동물 관계의 토대라고 강조했고, 베일리 박사는 정신적으로 자극을 받은 애완동물이 진료 시 불안이 낮다고 덧붙였습니다.",
+        "한국 동물병원에서도 진정제 사용을 최소화하고 동물 복지를 높이는 방향으로 진료를 발전시킬 수 있습니다. 강아지·고양이의 진료 적응도를 높이기 위해 미식용 보상으로 긍정적 경험을 누적하고, 음식 퍼즐이나 enrichment 도구를 대기실에 도입하는 것도 하나의 방법이 될 수 있습니다. 무엇보다 일관된 진료 루틴과 세밀한 몸짓 관찰이 동물과 보호자 모두의 진료 경험을 개선하는 데 중요합니다."
+      ],
+      "keyPointsKo": [
+        "디즈니 동물원에서는 신뢰 구축을 통해 호랑이, 코뿔소 등 대형 동물에게도 진정제 없이 특정 의료 시술이 가능",
+        "긍정적 강화와 존중하는 취급이 동물-수의사 간 신뢰의 핵심",
+        "음식 퍼즐, enrichment 활동, 일관된 진료 루틴이 companion animal의 진료 불안 감소에 효과적",
+        "미국에서 7700만 가구 이상이 애완동물을 사육하며 동물 행동학 기반 진료 수요 증가"
+      ],
+      "angleKo": "\"고양이가 진료실에 들어오기 싫어합니다\"라는 보호자의 고민에서 출발하여, 진료 적응 훈련과 enrichment 기법을 소개하는 블로그 글을 쓸 수 있습니다.",
+      "sourceType": "rss",
+      "sourceLabel": "Veterinary Practice News",
+      "upvotes": null,
+      "numComments": null,
+      "category": "clinical",
+      "relevance": 7,
+      "imageUrl": "https://www.veterinarypracticenews.com/wp-content/uploads/2026/07/Drs-Penning-and-Bailey-scaled.jpg",
+      "sourceUrl": "https://www.veterinarypracticenews.com/wildlife-medicine-companion-animal-care-connection-avma-2026/",
+      "sourceTitle": "Wildlife medicine, companion animal care connection discussed at AVMA Convention",
+      "publishedAt": "2026-07-13T17:49:46.000Z"
     }
   ]
 }

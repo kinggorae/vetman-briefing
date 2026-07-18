@@ -4,16 +4,18 @@ const ITEM_SCHEMA = {
   type: "object",
   properties: {
     titleKo: { type: "string" },
-    summaryKo: { type: "string" },
+    leadKo: { type: "string" },
+    bodyKo: { type: "array", items: { type: "string" } },
+    keyPointsKo: { type: "array", items: { type: "string" } },
     angleKo: { type: "string" },
   },
-  required: ["titleKo", "summaryKo", "angleKo"],
+  required: ["titleKo", "leadKo", "bodyKo", "keyPointsKo", "angleKo"],
   additionalProperties: false,
 };
 
 // 한자·가나·키릴 문자 혼입 감지 (MiniMax 등 다국어 모델의 언어 혼입 대응)
 function foreignScriptIn(item) {
-  const text = `${item.titleKo} ${item.summaryKo} ${item.angleKo}`;
+  const text = JSON.stringify([item.titleKo, item.leadKo, item.bodyKo, item.keyPointsKo, item.angleKo]);
   const m = text.match(/[一-鿿぀-ヿЀ-ӿ]+/g);
   return m ? m.join(", ") : null;
 }
@@ -27,7 +29,13 @@ async function fixKorean(item, foreign) {
       "존댓말(~합니다체)을 유지하고, 인명·기관명·의학 약어(NSAID 등)의 영어는 그대로 둡니다.",
     ].join("\n"),
     user: `다음 JSON에서 특히 이 조각들이 문제입니다: "${foreign}"\n\n${JSON.stringify(
-      { titleKo: item.titleKo, summaryKo: item.summaryKo, angleKo: item.angleKo },
+      {
+        titleKo: item.titleKo,
+        leadKo: item.leadKo,
+        bodyKo: item.bodyKo,
+        keyPointsKo: item.keyPointsKo,
+        angleKo: item.angleKo,
+      },
       null,
       2
     )}`,
@@ -42,15 +50,18 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
     : "";
   const meta =
     post.score != null ? ` (▲${post.score}, 댓글 ${post.numComments}개)` : "";
+  const content = post.fullText || post.body;
 
   const item = await jsonCall({
     system: [
-      "당신은 한국 동물병원 원장·수의사를 위한 주간 뉴스레터 '해외 브리핑'의 에디터입니다.",
-      "해외 수의 미디어 기사 또는 커뮤니티 글 하나를 한국 독자용 아이템으로 작성합니다.",
+      "당신은 한국 동물병원 원장·수의사를 위한 데일리 뉴스레터 '해외 브리핑'의 에디터입니다.",
+      "해외 수의 미디어 기사 또는 커뮤니티 글 하나를, 한국 독자를 위한 짧은 기사 형태로 재작성합니다.",
       "",
       "작성 규칙:",
-      "- titleKo: 직역이 아닌 재작성. 낚시성 금지, 내용이 드러나게. 40자 이내.",
-      "- summaryKo: 3~4문장. 핵심 내용을 재서술하고, 커뮤니티 글이면 댓글의 주목할 만한 반응도 담기. 원문 문장을 그대로 옮기지 말 것.",
+      "- titleKo: 직역이 아닌 재작성. 핵심 주제어(질병명·주제)가 제목에 들어가게. 낚시성 금지. 50자 이내.",
+      "- leadKo: 기사 리드 1~2문장 — 무슨 일인지, 왜 중요한지.",
+      "- bodyKo: 문단 3개 배열, 각 문단 3~5문장. 1문단: 배경과 맥락 / 2문단: 핵심 내용 상세 / 3문단: 한국 동물병원 관점의 시사점. 원문의 구체적 수치·사례를 살리되 문장은 재서술. 전체 500~800자.",
+      "- keyPointsKo: 핵심 포인트 3~4개, 각각 완결된 한 문장.",
       "- angleKo: '이걸 한국 병원 블로그 글감으로 쓴다면' 관점의 제안 1문장.",
       "- 약물 용량·구체적 처치법은 그대로 옮기지 말고 '원문 참고' 수준으로만 언급.",
       "- 존댓말(~합니다체) 사용. 가벼운 구어체·반말·이모티콘 금지.",
@@ -61,7 +72,7 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
       `출처: ${post.sourceLabel}${meta} — ${isCommunity ? "커뮤니티 글" : "전문 미디어 기사"}`,
       `제목: ${post.title}`,
       ``,
-      `내용:\n${post.body}${commentsText}`,
+      `내용:\n${content}${commentsText}`,
       prevFeedback
         ? `\n⚠️ 이전 시도에서 외국어("${prevFeedback}")가 섞여 반려되었습니다. 이번에는 반드시 순수 한국어로만 작성하세요.`
         : "",
@@ -96,7 +107,8 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
     numComments: post.numComments ?? null,
     category: post.category,
     relevance: post.relevance,
-    sourceUrl: post.url,
+    imageUrl: post.imageUrl ?? null,
+    sourceUrl: post.finalUrl || post.url,
     sourceTitle: post.title,
     publishedAt: post.publishedAt ?? null,
   };

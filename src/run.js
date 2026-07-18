@@ -6,6 +6,7 @@ import { fetchFeed } from "./rss.js";
 import { fetchWeeklyTop, fetchTopComments } from "./reddit.js";
 import { redditRuleFilter, scoreCandidates } from "./select.js";
 import { generateItem } from "./generate.js";
+import { fetchArticleMeta } from "./article.js";
 import { searchRedditSignals } from "./websearch.js";
 import { IS_COMPAT } from "./llm.js";
 
@@ -122,7 +123,7 @@ async function main() {
   for (const p of selected)
     console.log(`  [${p.relevance}] ${p.sourceLabel} — ${p.title.slice(0, 60)}`);
 
-  console.log("3/4 번역·요약 생성 중...");
+  console.log("3/4 원문 수집 + 기사 생성 중...");
   const items = [];
   for (const post of selected) {
     let comments = [];
@@ -132,6 +133,16 @@ async function main() {
       } catch {
         console.warn(`  댓글 수집 실패 (${post.id}) — 본문만으로 진행`);
       }
+    }
+    // 원문 전문 + 대표 이미지 수집 (실패 시 RSS 요약으로 진행)
+    if (post.sourceType === "rss") {
+      const meta = await fetchArticleMeta(post.url);
+      post.fullText = meta.fullText ?? null;
+      post.imageUrl = meta.imageUrl ?? null;
+      post.finalUrl = meta.finalUrl ?? null;
+      console.log(
+        `  · ${post.title.slice(0, 40)} — 전문 ${post.fullText ? "확보" : "없음(요약으로)"}, 이미지 ${post.imageUrl ? "○" : "×"}`
+      );
     }
     try {
       const item = await generateItem(post, comments);
