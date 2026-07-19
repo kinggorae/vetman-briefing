@@ -312,6 +312,12 @@ function build() {
   fs.writeFileSync(path.join(SITE_DIR, "rss.xml"), buildRss(issues));
   fs.writeFileSync(path.join(SITE_DIR, "llms.txt"), buildLlmsTxt(issues));
 
+  // 디자인 시안 파일을 다운로드 가능하도록 사이트에 포함
+  const mockup = path.join(ROOT, "design", "mockup.html");
+  if (fs.existsSync(mockup)) {
+    fs.copyFileSync(mockup, path.join(SITE_DIR, "design.html"));
+  }
+
   console.log(`빌드 완료: ${issues.length}개 이슈 → site/ (최신: ${labelOf(latest)})`);
 }
 
