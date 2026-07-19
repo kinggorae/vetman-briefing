@@ -81,11 +81,23 @@ function toArticle(item, i, issueDate) {
 
 function buildIssueData(issue) {
   const date = labelOf(issue);
+  const articles = issue.items.map((it, i) => toArticle(it, i, date));
+  const cats = CAT_ORDER.filter((c) => articles.some((a) => a.cat === c)).map((c) => ({ key: c, label: CATEGORY_LABELS[c] }));
+  if (issue.weekly) {
+    return {
+      date,
+      dateLabel: date,
+      dateline: `${date} 주간 요약 · 이번 주 가장 주목한 기사`,
+      editionNo: date.replace("-W", " · W"),
+      count: articles.length,
+      cats,
+      articles,
+      weekly: true,
+    };
+  }
   const d = new Date(date + "T00:00:00");
   const dateline = `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 · ${WEEKDAYS[d.getDay()]}요일`;
   const editionNo = Math.round((d - new Date("2021-01-01T00:00:00")) / 86400000);
-  const articles = issue.items.map((it, i) => toArticle(it, i, date));
-  const cats = CAT_ORDER.filter((c) => articles.some((a) => a.cat === c)).map((c) => ({ key: c, label: CATEGORY_LABELS[c] }));
   return {
     date,
     dateLabel: date.replace(/-/g, "."),
@@ -382,13 +394,21 @@ const APP_JS = String.raw`
   }
   function archiveView(){
     if(S.archive===null){ return '<div style="text-align:center;padding:72px 0;color:var(--color-label-alternative);">지난 브리핑을 불러오는 중…</div>'; }
-    if(!S.archive.length){ return '<div style="text-align:center;padding:72px 0;color:var(--color-label-alternative);">아직 지난 브리핑이 없습니다.</div>'; }
-    return '<div style="padding-top:16px;">'+S.archive.map(function(x){
+    var wk=S.archive.weeklies||[], iss=S.archive.issues||[];
+    if(!iss.length){ return '<div style="text-align:center;padding:72px 0;color:var(--color-label-alternative);">아직 지난 브리핑이 없습니다.</div>'; }
+    var h='<div style="padding-top:16px;">';
+    if(wk.length){
+      h+='<div style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--color-primary-normal);margin:0 0 4px;">📅 주간 요약</div>';
+      h+=wk.map(function(x){ return '<button data-href="'+e(x.href)+'" style="width:100%;text-align:left;display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--color-line-normal);border-top:0;border-left:0;border-right:0;background:transparent;cursor:pointer;font-family:inherit;"><div><div style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--color-label-strong);">'+e(x.week)+' 주간 요약</div><div style="margin-top:4px;font-size:13px;color:var(--color-label-alternative);line-height:1.5;">'+e((x.titles||[]).slice(0,3).join(" · "))+'</div></div><div style="flex:none;font-size:12px;color:var(--color-label-alternative);font-weight:700;white-space:nowrap;">'+x.count+'건 →</div></button>'; }).join('');
+      h+='<div style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--color-label-strong);margin:24px 0 4px;">날짜별</div>';
+    }
+    h+=iss.map(function(x){
       var cur=x.date===DATA.date;
       return '<button data-date="'+x.date+'" style="width:100%;text-align:left;display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--color-line-normal);border-top:0;border-left:0;border-right:0;background:transparent;cursor:pointer;font-family:inherit;">'
       +'<div><div style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--color-label-strong);">'+e(x.dateLabel||x.date)+'</div><div style="margin-top:4px;font-size:13px;color:var(--color-label-alternative);line-height:1.5;">'+e((x.titles||[]).slice(0,3).join(' · '))+'</div></div>'
       +'<div style="flex:none;font-size:12px;color:'+(cur?'var(--color-primary-normal)':'var(--color-label-alternative)')+';font-weight:700;white-space:nowrap;">'+(cur?'현재 · ':'')+x.count+'건</div></button>';
-    }).join('')+'</div>';
+    }).join('');
+    return h+'</div>';
   }
 
   function detail(){
@@ -463,6 +483,7 @@ const APP_JS = String.raw`
     else if(S.view==='ideas'){ stripLabel='글감 보관함'; stripMeta=ideaCount+'개 담김'; }
     else if(S.view==='archive'){ stripLabel='지난 브리핑'; stripMeta='날짜별 아카이브'; }
     else if(searching){ stripLabel='검색 결과'; stripMeta='"'+e(S.query.trim())+'" · '+activeList().length+'건'; }
+    else if(DATA.weekly){ stripLabel='주간 요약'; stripMeta=DATA.date+' · 총 '+DATA.count+'건'; }
     else { stripLabel='오늘의 브리핑'; stripMeta=DATA.dateLabel+' · 총 '+DATA.count+'건'; }
     var showSort = (S.view==='home' && !searching) || searching;
 
@@ -477,7 +498,7 @@ const APP_JS = String.raw`
     h+='<div class="vm-wrap" style="max-width:1180px;margin:0 auto;padding:0 40px 64px;">';
     h+='<div class="vm-dateline" style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:12px;color:var(--color-label-alternative);"><span style="flex:1;text-align:left;">'+e(DATA.dateline)+'</span><span style="flex:1;text-align:center;letter-spacing:.06em;">해외 수의 뉴스 데일리 브리핑</span><span style="flex:1;text-align:right;">원문 출처 표기 · 번역 참고용</span></div>';
     h+='<div style="height:1px;background:var(--color-line-normal);"></div>';
-    h+='<header class="vm-mast" style="text-align:center;padding:26px 0 20px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-primary-normal);font-weight:700;">Daily Edition · No. '+e(DATA.editionNo)+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetMan 해외 브리핑</h1><p style="max-width:560px;margin:16px auto 0;font-size:14px;line-height:1.6;color:var(--color-label-alternative);">해외 수의 전문 미디어의 오늘 소식을 선별·번역해 한국 동물병원 원장에게 전하는 데일리 브리핑. 각 글에는 병원 블로그 글감 제안이 함께 붙습니다.</p></header>';
+    h+='<header class="vm-mast" style="text-align:center;padding:26px 0 20px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-primary-normal);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetMan 해외 브리핑</h1><p style="max-width:560px;margin:16px auto 0;font-size:14px;line-height:1.6;color:var(--color-label-alternative);">해외 수의 전문 미디어의 오늘 소식을 선별·번역해 한국 동물병원 원장에게 전하는 데일리 브리핑. 각 글에는 병원 블로그 글감 제안이 함께 붙습니다.</p></header>';
     h+='<div style="border-top:2px solid var(--color-label-strong);border-bottom:1px solid var(--color-line-normal);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 0;"><div style="display:flex;align-items:baseline;gap:10px;min-width:0;"><span style="font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);white-space:nowrap;">'+stripLabel+'</span><span style="font-size:12.5px;color:var(--color-label-alternative);">'+stripMeta+'</span></div>'
     + (showSort ? '<div style="display:inline-flex;padding:3px;background:var(--color-material-base);border-radius:8px;gap:2px;flex:none;"><button data-act="rel" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='rel')+';color:'+segFg(S.sort==='rel')+';">관련성순</button><button data-act="latest" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='latest')+';color:'+segFg(S.sort==='latest')+';">최신순</button></div>' : '')
     +'</div>';
@@ -581,8 +602,9 @@ const APP_JS = String.raw`
   }
 
   document.addEventListener('click',function(ev){
-    var el=ev.target.closest('[data-save],[data-idea],[data-open],[data-act],[data-nav],[data-cat],[data-date]');
+    var el=ev.target.closest('[data-save],[data-idea],[data-open],[data-act],[data-nav],[data-cat],[data-date],[data-href]');
     if(!el) return;
+    if(el.hasAttribute('data-href')){ ev.stopPropagation(); location.href=el.getAttribute('data-href'); return; }
     if(el.hasAttribute('data-save')){ ev.stopPropagation(); var id=el.getAttribute('data-save'); var a=byId[id]; if(S.saved[id]){ delete S.saved[id]; } else { S.saved[id]= a?snap(a):(S.saved[id]||{id:id}); } persist('saved',S.saved); render(); return; }
     if(el.hasAttribute('data-idea')){ ev.stopPropagation(); toggleIdea(el.getAttribute('data-idea')); return; }
     if(el.hasAttribute('data-nav')){ ev.stopPropagation(); var v=el.getAttribute('data-nav'); S.view=v; S.openId=null; if(v!=='home'&&v!=='archive') S.query=''; if(v==='home') S.query=''; if(v==='archive'&&S.archive===null) loadArchive(); S.searchFocus=false; render(); return; }
@@ -631,9 +653,9 @@ const APP_JS = String.raw`
   render();
 })();`;
 
-function renderPage(issue, allIssues, { isIndex = false } = {}) {
+function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) {
   const data = buildIssueData(issue);
-  const canonicalPath = isIndex ? "/" : `/issues/${labelOf(issue)}.html`;
+  const canonicalPath = isIndex ? "/" : weekly ? `/weekly/${labelOf(issue)}.html` : `/issues/${labelOf(issue)}.html`;
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
   return `<!doctype html>
 <html lang="ko">
@@ -643,6 +665,13 @@ function renderPage(issue, allIssues, { isIndex = false } = {}) {
 ${seoHead(issue, data, canonicalPath)}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0066ff">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VetMan 브리핑">
 <style>${TOKENS_CSS}${STATIC_CSS}</style>
 <script>try{var t=JSON.parse(localStorage.getItem('vm_theme'))||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
@@ -651,9 +680,147 @@ ${seoHead(issue, data, canonicalPath)}
 ${noscriptFallback(data)}
 <script id="vm-issue" type="application/json">${json}</script>
 <script>${APP_JS}</script>
+<script>if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}</script>
 </body>
 </html>`;
 }
+
+const ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#0066ff"/><text x="256" y="366" font-family="'Wanted Sans Variable',system-ui,sans-serif" font-size="300" font-weight="800" fill="#fff" text-anchor="middle">V</text></svg>`;
+
+const MANIFEST = JSON.stringify({
+  name: "VetMan 해외 브리핑",
+  short_name: "VetMan 브리핑",
+  description: SITE.description,
+  start_url: "/",
+  scope: "/",
+  display: "standalone",
+  background_color: "#ffffff",
+  theme_color: "#0066ff",
+  lang: "ko",
+  icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" }],
+});
+
+const SW_JS = `const C='vmcache-v2';
+const SHELL=['/','/latest.json','/archive.json','/icon.svg','/manifest.webmanifest'];
+self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(SHELL);}).then(function(){return self.skipWaiting();}));});
+self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){if(k!==C)return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});
+self.addEventListener('fetch',function(e){
+  var r=e.request; if(r.method!=='GET')return;
+  var u=new URL(r.url); if(u.origin!==location.origin)return;
+  e.respondWith(fetch(r).then(function(res){var cp=res.clone();caches.open(C).then(function(c){c.put(r,cp);});return res;}).catch(function(){return caches.match(r).then(function(m){return m||caches.match('/');});}));
+});`;
+
+// ── 주간 다이제스트: ISO 주차별 상위 기사 모음 ──
+function isoWeek(dateStr) {
+  const d = new Date(dateStr + "T00:00:00Z");
+  const day = (d.getUTCDay() + 6) % 7;
+  d.setUTCDate(d.getUTCDate() - day + 3);
+  const firstThu = new Date(Date.UTC(d.getUTCFullYear(), 0, 4));
+  const week = 1 + Math.round(((d - firstThu) / 86400000 - 3 + ((firstThu.getUTCDay() + 6) % 7)) / 7);
+  return `${d.getUTCFullYear()}-W${String(week).padStart(2, "0")}`;
+}
+
+function buildWeeklies(issues) {
+  // 주차 → 그 주의 모든 아이템(원본 item + 날짜)
+  const weeks = {};
+  for (const issue of issues) {
+    const wk = isoWeek(labelOf(issue));
+    (weeks[wk] = weeks[wk] || []).push(...issue.items.map((it) => ({ ...it, _day: labelOf(issue) })));
+  }
+  return Object.entries(weeks)
+    .map(([wk, items]) => {
+      const top = items
+        .filter((it) => it.category !== "research")
+        .sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0))
+        .slice(0, 12);
+      return { week: wk, count: top.length, items: top };
+    })
+    .filter((w) => w.count >= 3)
+    .sort((a, b) => (a.week < b.week ? 1 : -1));
+}
+
+function renderWeekly(weekly, allWeeklies) {
+  // 주간 이슈를 일반 이슈처럼 렌더 (date 대신 week 라벨)
+  const issue = { date: weekly.week, status: "published", generatedAt: new Date().toISOString(), items: weekly.items, weekly: true };
+  return renderPage(issue, [], { isIndex: false, weekly: true });
+}
+
+// 검수 대시보드 (비공개, 링크 없음). 간단 게이트 + 품질 스캔 + 제외→JSON 복사.
+const ADMIN_HTML = String.raw`<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>검수 · VetMan</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1c1e;--mut:#6b7280;--line:#e2e4e8;--blue:#0066ff;--red:#e52222;--amb:#d47800;--grn:#009632}
+*{box-sizing:border-box}body{margin:0;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:960px;margin:0 auto;padding:24px 18px 80px}
+h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+.bar{position:sticky;top:0;background:var(--bg);padding:12px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);z-index:5}
+select,button,input{font-family:inherit;font-size:14px}
+select{padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+button{border:0;border-radius:8px;padding:9px 15px;font-weight:700;cursor:pointer}
+.primary{background:var(--blue);color:#fff}.ghost{background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.stat{margin-left:auto;font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.item.ex{opacity:.5;border-style:dashed}
+.itop{display:flex;gap:12px;align-items:flex-start}
+.itop input{width:18px;height:18px;margin-top:4px;flex:none}
+.cat{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.04em}
+.ttl{font-size:17px;font-weight:800;margin:3px 0 4px;line-height:1.35}
+.src{font-size:12px;color:var(--mut)}
+.flags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}
+.flag{font-size:11px;font-weight:700;border-radius:6px;padding:2px 8px}
+.f-red{background:#feecec;color:var(--red)}.f-amb{background:#fef4e6;color:var(--amb)}.f-grn{background:#d9ffe6;color:var(--grn)}
+.body{margin-top:10px;font-size:14px;line-height:1.75;color:#333;white-space:pre-wrap;display:none}
+.item.open .body{display:block}
+.toggle{font-size:12px;color:var(--blue);cursor:pointer;font-weight:700;margin-top:8px;display:inline-block}
+.angle{margin-top:10px;padding:10px 12px;background:#f0f5ff;border-radius:8px;font-size:13px}
+.gate{max-width:340px;margin:80px auto;text-align:center}
+.gate input{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;margin:12px 0}
+</style></head><body><div class="wrap" id="app"></div>
+<script>
+var PASS='vetman2026';
+var app=document.getElementById('app');
+var ISSUE=null, EX={};
+function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function foreign(it){var m=JSON.stringify([it.titleKo,it.leadKo,it.bodyKo,it.keyPointsKo,it.angleKo]).match(/[一-鿿぀-ヿЀ-ӿ]+/g);return m?m.join(','):null;}
+function flags(it){
+  var out=[];
+  if(it.needsReview) out.push(['f-red','검수필요']);
+  var fr=foreign(it); if(fr) out.push(['f-red','외국어:'+fr.slice(0,16)]);
+  var blen=(it.bodyKo||[]).join('').length;
+  if(blen<250) out.push(['f-amb','본문짧음 '+blen+'자']);
+  if(!it.imageUrl && it.sourceType!=='paper') out.push(['f-amb','이미지없음']);
+  if(!it.sourceUrl||it.sourceUrl==='#') out.push(['f-red','출처링크없음']);
+  if(!out.length) out.push(['f-grn','이상없음']);
+  return out;
+}
+function gate(){
+  app.innerHTML='<div class="gate"><h1>검수 대시보드</h1><p style="color:#6b7280;font-size:13px">암호를 입력하세요.</p><input id="pw" type="password" placeholder="암호"><button class="primary" style="width:100%" onclick="tryPw()">확인</button><p style="color:#9aa;font-size:11px;margin-top:16px">※ 이 페이지는 검색엔진에 노출되지 않지만 URL을 아는 사람은 접근할 수 있습니다. 강력한 보호가 필요하면 Cloudflare Access를 설정하세요.</p></div>';
+}
+window.tryPw=function(){var v=document.getElementById('pw').value;if(v===PASS){localStorage.setItem('vm_admin',v);boot();}else alert('암호가 틀렸습니다');};
+function load(date){
+  fetch('raw/'+date+'.json').then(function(r){return r.json();}).then(function(d){ISSUE=d;EX={};render();});
+}
+function render(){
+  if(!ISSUE){app.innerHTML='<p>불러오는 중…</p>';return;}
+  var items=ISSUE.items||[];
+  var exCount=Object.keys(EX).filter(function(k){return EX[k];}).length;
+  var h='<h1>검수 · '+e(ISSUE.date)+'</h1><div class="sub">발행 상태: '+e(ISSUE.status||'')+' · 총 '+items.length+'건</div>';
+  h+='<div class="bar"><select id="dsel" onchange="load(this.value)"></select><button class="primary" onclick="copyClean()">제외 반영 JSON 복사</button><button class="ghost" onclick="copyAll()">전체 JSON</button><span class="stat">'+items.length+'건 중 <b>'+exCount+'건 제외</b> → 발행 '+(items.length-exCount)+'건</span></div>';
+  h+=items.map(function(it,i){
+    var fl=flags(it).map(function(f){return '<span class="flag '+f[0]+'">'+e(f[1])+'</span>';}).join('');
+    var ex=EX[i]?' ex':'';
+    return '<div class="item'+ex+'" id="it'+i+'"><div class="itop"><input type="checkbox" '+(EX[i]?'checked':'')+' onchange="toggleEx('+i+')" title="제외"><div style="flex:1;min-width:0"><div class="cat">'+e(it.category||'')+' · '+e(it.sourceLabel||'')+'</div><div class="ttl">'+(i+1)+'. '+e(it.titleKo)+'</div><div class="src">'+e(it.leadKo||'')+'</div><div class="flags">'+fl+'</div><span class="toggle" onclick="tg('+i+')">본문 펼치기 ▾</span><div class="body">'+(it.bodyKo||[]).map(e).join('\n\n')+'</div>'+(it.angleKo?'<div class="angle"><b>글감</b> · '+e(it.angleKo)+'</div>':'')+'<div class="src" style="margin-top:8px">원문: <a href="'+e(it.sourceUrl)+'" target="_blank">'+e(it.sourceTitle||it.sourceUrl)+'</a></div></div></div></div>';
+  }).join('');
+  app.innerHTML=h;
+  // date dropdown
+  fetch('archive.json').then(function(r){return r.json();}).then(function(a){var sel=document.getElementById('dsel');if(!sel)return;sel.innerHTML=(a.issues||[]).map(function(x){return '<option value="'+x.date+'"'+(x.date===ISSUE.date?' selected':'')+'>'+x.date+' ('+x.count+'건)</option>';}).join('');});
+}
+window.toggleEx=function(i){EX[i]=!EX[i];render();};
+window.tg=function(i){document.getElementById('it'+i).classList.toggle('open');event.target.textContent=document.getElementById('it'+i).classList.contains('open')?'본문 접기 ▴':'본문 펼치기 ▾';};
+window.copyClean=function(){var out=Object.assign({},ISSUE);out.items=ISSUE.items.filter(function(it,i){return !EX[i];});navigator.clipboard.writeText(JSON.stringify(out,null,2));alert('제외 반영 JSON을 복사했습니다.\n\ndata/issues/'+ISSUE.date+'.json 에 붙여넣고 재배포하세요.');};
+window.copyAll=function(){navigator.clipboard.writeText(JSON.stringify(ISSUE,null,2));alert('전체 JSON 복사됨');};
+function boot(){fetch('archive.json').then(function(r){return r.json();}).then(function(a){var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';});}
+if(localStorage.getItem('vm_admin')===PASS) boot(); else gate();
+</script></body></html>`;
 
 function buildSitemap(issues) {
   const urls = [`${SITE.baseUrl}/`, ...issues.map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}.html`)];
@@ -725,12 +892,37 @@ function build() {
     archive.push({ date: data.date, dateLabel: data.dateLabel, count: data.count, titles: data.articles.slice(0, 3).map((a) => a.title) });
   }
 
-  fs.writeFileSync(path.join(SITE_DIR, "archive.json"), JSON.stringify(archive));
+  // 주간 다이제스트
+  fs.mkdirSync(path.join(SITE_DIR, "weekly"), { recursive: true });
+  const weeklies = buildWeeklies(issues);
+  for (const wk of weeklies) {
+    const issue = { date: wk.week, status: "published", generatedAt: new Date().toISOString(), items: wk.items, weekly: true };
+    fs.writeFileSync(path.join(SITE_DIR, "weekly", `${wk.week}.html`), renderPage(issue, [], { weekly: true }));
+  }
+  const latestWeekly = weeklies[0] ? `/weekly/${weeklies[0].week}.html` : null;
+  fs.writeFileSync(
+    path.join(SITE_DIR, "archive.json"),
+    JSON.stringify({
+      latestWeekly,
+      weeklies: weeklies.map((w) => ({ week: w.week, count: w.count, href: `/weekly/${w.week}.html`, titles: w.items.slice(0, 3).map((it) => it.titleKo) })),
+      issues: archive,
+    })
+  );
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
   fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues));
   fs.writeFileSync(path.join(SITE_DIR, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.baseUrl}/sitemap.xml\n`);
   fs.writeFileSync(path.join(SITE_DIR, "rss.xml"), buildRss(issues));
   fs.writeFileSync(path.join(SITE_DIR, "llms.txt"), buildLlmsTxt(issues));
+
+  // PWA
+  fs.writeFileSync(path.join(SITE_DIR, "manifest.webmanifest"), MANIFEST);
+  fs.writeFileSync(path.join(SITE_DIR, "icon.svg"), ICON_SVG);
+  fs.writeFileSync(path.join(SITE_DIR, "sw.js"), SW_JS);
+
+  // 검수 대시보드 + raw 이슈(재발행용 원본)
+  fs.mkdirSync(path.join(SITE_DIR, "raw"), { recursive: true });
+  for (const issue of issues) fs.writeFileSync(path.join(SITE_DIR, "raw", `${labelOf(issue)}.json`), JSON.stringify(issue));
+  fs.writeFileSync(path.join(SITE_DIR, "admin.html"), ADMIN_HTML);
 
   const mockup = path.join(ROOT, "design", "mockup.html");
   if (fs.existsSync(mockup)) fs.copyFileSync(mockup, path.join(SITE_DIR, "design.html"));
