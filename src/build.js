@@ -268,13 +268,21 @@ const APP_JS = String.raw`
 
   function tag(today,h,fs){ return today?'<span style="display:inline-flex;align-items:center;height:'+h+'px;padding:0 6px;background:var(--color-atomic-blue-100);color:var(--color-atomic-blue-800);border-radius:4px;font-size:'+fs+'px;font-weight:700;">오늘</span>':''; }
   function plateImg(a){ return a.image ? '<img class="vm-plate-img" src="'+e(a.image)+'" alt="'+e(a.title)+'" loading="lazy" onerror="this.remove()">' : ''; }
-  // 폴백(출처 텍스트)을 이미지 뒤에 깔고, 이미지가 그 위를 덮는다. 깨지면 폴백이 보임.
+  var ICON_DOC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:100%;height:100%;"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M8.5 13h7M8.5 16.5h7M8.5 9.5h2"></path></svg>';
+  var ICON_NEWS='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:100%;height:100%;"><path d="M4 5h13v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"></path><path d="M17 8h2a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2"></path><path d="M7 8h7M7 11.5h7M7 15h4"></path></svg>';
+  // 이미지 없을 때: 결함이 아니라 의도된 "출처 플레이트". 아이콘+출처명+라벨.
   function plate(a,o){
     o=o||{};
-    var just=o.center?'center':'space-between', align=o.center?'center':'stretch', ta=o.center?'text-align:center;':'';
-    var lab=o.label?'<span style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-heavy);">출처 이미지</span>':'';
-    var big='<span style="font-family:var(--font-display);font-size:'+(o.big||15)+'px;font-weight:800;letter-spacing:-.02em;color:var(--color-primary-heavy);line-height:1.12;'+ta+'">'+e(a.plate)+'</span>';
-    var fb='<div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:'+just+';align-items:'+align+';padding:'+(o.pad||12)+'px;">'+lab+big+'</div>';
+    var research=a.cat==='research';
+    var icon=research?ICON_DOC:ICON_NEWS;
+    var isz=Math.max(20, Math.min(56, Math.round((o.big||15)*1.7)));
+    var showLabel=(o.big||15)>=20; // 큰 박스에서만 하단 라벨
+    var name='<div style="font-family:var(--font-display);font-size:'+Math.min(o.big||15,22)+'px;font-weight:800;letter-spacing:-.01em;color:var(--color-primary-heavy);line-height:1.15;text-align:center;max-width:92%;">'+e(a.plate)+'</div>';
+    var label=showLabel?'<div style="font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary-normal);opacity:.75;">'+(research?'PubMed · 최신 연구':'해외 수의 미디어')+'</div>':'';
+    var fb='<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:'+(showLabel?10:6)+'px;padding:'+(o.pad||12)+'px;background:linear-gradient(135deg, rgba(0,102,255,0.05), rgba(0,102,255,0.10));">'
+      +'<div style="width:'+isz+'px;height:'+isz+'px;color:var(--color-primary-normal);opacity:.55;">'+icon+'</div>'
+      + name + label
+      +'</div>';
     return fb + plateImg(a);
   }
   function bookmarkBtn(id,w,box){
