@@ -1,14 +1,18 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { FEEDS, SUBREDDITS, CANDIDATES_MAX, TOP_COMMENTS } from "../config.js";
+import { FEEDS, SUBREDDITS, CANDIDATES_MAX, TOP_COMMENTS, PAPERS_PER_ISSUE } from "../config.js";
 import { fetchFeed } from "./rss.js";
 import { fetchWeeklyTop, fetchTopComments } from "./reddit.js";
-import { redditRuleFilter, scoreCandidates } from "./select.js";
-import { generateItem } from "./generate.js";
+import { redditRuleFilter, scoreCandidates, scoreAll } from "./select.js";
+import { generateItem, generatePaper } from "./generate.js";
 import { fetchArticleMeta } from "./article.js";
+import { fetchPubmed } from "./pubmed.js";
 import { searchRedditSignals } from "./websearch.js";
 import { IS_COMPAT } from "./llm.js";
+
+const noPapers = process.argv.includes("--no-papers");
+const papersOnly = process.argv.includes("--papers-only"); // 오늘 이슈에 논문만 추가 병합
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const collectOnly = process.argv.includes("--collect-only");
@@ -114,7 +118,40 @@ async function collect() {
   return [...nonReddit, ...reddit].slice(0, CANDIDATES_MAX);
 }
 
+async function papersOnlyRun() {
+  const seen = loadSeen();
+  const label = dateLabel();
+  const issuePath = path.join(ROOT, "data", "issues", `${label}.json`);
+  const issue = fs.existsSync(issuePath)
+    ? JSON.parse(fs.readFileSync(issuePath, "utf8"))
+    : { date: label, status: "published", generatedAt: new Date().toISOString(), publishedAt: new Date().toISOString(), items: [] };
+  const existing = new Set(issue.items.map((it) => it.sourceUrl));
+  console.log("최신 연구(PubMed) 수집·생성 중...");
+  const papersRaw = (await fetchPubmed()).filter((p) => !seen.has(p.url) && !existing.has(p.url));
+  console.log(`  논문 후보 ${papersRaw.length}편`);
+  const top = await scoreAll(papersRaw, PAPERS_PER_ISSUE);
+  console.log(`  선별 ${top.length}편`);
+  let added = 0;
+  for (const post of top) {
+    try {
+      const paper = await generatePaper(post);
+      if (paper.needsReview) continue;
+      issue.items.push(paper);
+      seen.add(paper.sourceUrl);
+      added++;
+      console.log(`  ✓ [논문] ${paper.titleKo}`);
+    } catch (err) {
+      console.error(`  ✗ ${err.message}`);
+    }
+  }
+  fs.mkdirSync(path.dirname(issuePath), { recursive: true });
+  fs.writeFileSync(issuePath, JSON.stringify(issue, null, 2));
+  saveSeen(seen);
+  console.log(`논문 ${added}편 병합 → ${issuePath} (총 ${issue.items.length}건)`);
+}
+
 async function main() {
+  if (papersOnly) return papersOnlyRun();
   console.log("1/4 수집 중...");
   console.log(
     `  소스: RSS ${FEEDS.length}개${hasRedditCreds ? " + Reddit API" : ""}${!hasRedditCreds && useWebsearch && !noWebsearch && !collectOnly ? " + 웹 검색(레딧)" : ""}`
@@ -176,6 +213,30 @@ async function main() {
   if (items.length === 0) {
     console.error("생성된 아이템이 없습니다. 종료합니다.");
     process.exit(1);
+  }
+
+  // ── 최신 연구: PubMed 논문 ──
+  if (!noPapers) {
+    try {
+      console.log("+ 최신 연구(PubMed) 수집·생성 중...");
+      const papersRaw = (await fetchPubmed()).filter((p) => !seen.has(p.url));
+      console.log(`  논문 후보 ${papersRaw.length}편`);
+      if (papersRaw.length) {
+        const topPapers = await scoreAll(papersRaw, PAPERS_PER_ISSUE);
+        console.log(`  논문 선별 ${topPapers.length}편`);
+        for (const post of topPapers) {
+          try {
+            const paper = await generatePaper(post);
+            items.push(paper);
+            console.log(`  ✓ [논문] ${paper.titleKo}`);
+          } catch (err) {
+            console.error(`  ✗ 논문 생성 실패: ${err.message}`);
+          }
+        }
+      }
+    } catch (err) {
+      console.error(`  최신 연구 수집 실패, 건너뜀: ${err.message}`);
+    }
   }
 
   const label = dateLabel();

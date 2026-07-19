@@ -8,6 +8,7 @@ const ISSUES_DIR = path.join(ROOT, "data", "issues");
 const SITE_DIR = path.join(ROOT, "site");
 
 const CATEGORY_LABELS = {
+  research: "최신 연구",
   clinical: "임상",
   practice_management: "병원 경영",
   career: "커리어",
@@ -15,7 +16,7 @@ const CATEGORY_LABELS = {
   industry: "업계",
   other: "기타",
 };
-const CAT_ORDER = ["clinical", "practice_management", "client_communication", "career", "industry", "other"];
+const CAT_ORDER = ["research", "clinical", "practice_management", "client_communication", "career", "industry", "other"];
 
 const SOURCE_COUNTRY = {
   "Veterinary Practice News": "미국",
@@ -228,7 +229,7 @@ const APP_JS = String.raw`
     view:'home', openId:null, blogOpen:true, showAll:false,
     saved:load(LS.saved,{}), ideas:load(LS.ideas,{}), read:load(LS.read,{}),
     fs:load(LS.fs,1), toast:null, searchFocus:false, caret:0,
-    archive:null, loadingDate:null
+    archive:null, loadingDate:null, draft:null
   };
   function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function persist(k,v){ localStorage.setItem(LS[k],JSON.stringify(v)); }
@@ -361,7 +362,7 @@ const APP_JS = String.raw`
   function ideasView(){
     var items=Object.keys(S.ideas).map(function(k){return S.ideas[k];});
     if(!items.length) return '<div style="text-align:center;padding:72px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--color-label-neutral);">글감 보관함이 비어 있습니다</div><p style="margin:8px 0 0;font-size:14px;">기사의 <b>글감 담기</b> 버튼을 눌러 블로그 글감을 모아보세요. 모은 글감은 한 번에 초안으로 복사할 수 있습니다.</p></div>';
-    return '<div style="padding-top:16px;"><div style="display:flex;justify-content:flex-end;margin-bottom:12px;"><button data-act="copyall" style="display:inline-flex;align-items:center;gap:8px;background:var(--color-primary-normal);color:#fff;border:0;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:10px;">'+COPY+' 전체를 블로그 초안으로 복사</button></div>'+items.map(ideaCard).join('')+'</div>';
+    return '<div style="padding-top:16px;"><div style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:12px;flex-wrap:wrap;"><button data-act="makedraft" style="display:inline-flex;align-items:center;gap:8px;background:var(--color-primary-normal);color:#fff;border:0;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:10px;">✍️ AI 블로그 초안 만들기</button><button data-act="copyall" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--color-primary-normal);border:1px solid var(--color-primary-normal);cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:10px;">'+COPY+' 전체 복사</button></div>'+items.map(ideaCard).join('')+'</div>';
   }
   function archiveView(){
     if(S.archive===null){ return '<div style="text-align:center;padding:72px 0;color:var(--color-label-alternative);">지난 브리핑을 불러오는 중…</div>'; }
@@ -398,6 +399,7 @@ const APP_JS = String.raw`
     +'<div style="display:flex;align-items:center;gap:6px;">'
     +'<div style="display:inline-flex;border:1px solid var(--color-line-normal);border-radius:8px;overflow:hidden;margin-right:2px;"><button data-act="fs-" title="글자 작게" style="width:30px;height:32px;border:0;border-right:1px solid var(--color-line-normal);background:var(--color-background-normal);cursor:pointer;color:var(--color-label-neutral);font-family:inherit;font-size:12px;font-weight:700;">가−</button><button data-act="fs+" title="글자 크게" style="width:32px;height:32px;border:0;background:var(--color-background-normal);cursor:pointer;color:var(--color-label-neutral);font-family:inherit;font-size:15px;font-weight:700;">가＋</button></div>'
     +'<button data-idea="'+a.id+'" title="글감 담기" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:'+(isIdea(a.id)?'var(--color-primary-normal)':'var(--color-label-neutral)')+';">'+IDEA.replace(/W/g,16)+'</button>'
+    +'<button data-act="share" data-id="'+a.id+'" title="공유" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);">'+SHARE+'</button>'
     +'<button data-act="copylink" data-id="'+a.id+'" title="링크 복사" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);">'+COPY+'</button>'
     +'<button data-save="'+a.id+'" title="저장" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:'+saveColor(a.id)+';">'+BM.replace(/W/g,16)+'</button>'
     +'<button data-act="close" title="닫기" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--color-material-base);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>'
@@ -412,7 +414,7 @@ const APP_JS = String.raw`
     +body
     +'<div style="margin:26px 0 4px;padding:16px 18px;background:var(--color-background-alternative);border-radius:12px;"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">원문 출처</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;"><div style="font-size:14px;color:var(--color-label-neutral);"><b style="color:var(--color-label-strong);font-weight:700;">'+e(a.source)+'</b>'+(a.country?' · '+e(a.country):'')+(a.date?' · '+e(a.date):'')+'</div><a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener nofollow" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">원문 사이트로 이동 '+EXT+'</a></div><p style="margin:10px 0 0;font-size:11.5px;line-height:1.5;color:var(--color-label-alternative);">해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></div>'
     + (a.blog ? '<div style="margin:20px 0 8px;border:1px solid var(--color-primary-normal);border-radius:12px;overflow:hidden;"><button data-act="blog" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border:0;background:rgba(0,102,255,0.06);cursor:pointer;font-family:inherit;text-align:left;"><span style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary-normal);">병원 블로그 글감 제안</span><span style="font-size:14.5px;font-weight:700;color:var(--color-label-strong);">'+e(a.blog)+'</span></span><span style="color:var(--color-primary-normal);transform:'+chev+';display:inline-flex;">'+CHEV+'</span></button>'
-      + (S.blogOpen ? '<div style="padding:16px 18px 18px;">'+(angle?'<div style="font-size:12px;font-weight:700;color:var(--color-label-neutral);margin-bottom:8px;">이렇게 풀어보세요</div><ul style="margin:0 0 14px;padding-left:18px;color:var(--color-label-neutral);font-size:14px;line-height:1.75;">'+angle+'</ul>':'')+'<div style="display:flex;gap:8px;flex-wrap:wrap;"><button data-idea="'+a.id+'" style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-primary-normal);background:'+(isIdea(a.id)?'var(--color-primary-normal)':'transparent')+';color:'+(isIdea(a.id)?'#fff':'var(--color-primary-normal)')+';cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:9px 14px;border-radius:9px;">'+IDEA.replace(/W/g,15)+(isIdea(a.id)?' 글감함에 담김':' 글감함에 담기')+'</button><button data-act="copyblog" data-id="'+a.id+'" style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:9px 14px;border-radius:9px;">'+COPY+' 복사</button></div></div>' : '')
+      + (S.blogOpen ? '<div style="padding:16px 18px 18px;">'+(angle?'<div style="font-size:12px;font-weight:700;color:var(--color-label-neutral);margin-bottom:8px;">이렇게 풀어보세요</div><ul style="margin:0 0 14px;padding-left:18px;color:var(--color-label-neutral);font-size:14px;line-height:1.75;">'+angle+'</ul>':'')+'<div style="display:flex;gap:8px;flex-wrap:wrap;"><button data-idea="'+a.id+'" style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-primary-normal);background:'+(isIdea(a.id)?'var(--color-primary-normal)':'transparent')+';color:'+(isIdea(a.id)?'#fff':'var(--color-primary-normal)')+';cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:9px 14px;border-radius:9px;">'+IDEA.replace(/W/g,15)+(isIdea(a.id)?' 글감함에 담김':' 글감함에 담기')+'</button><button data-act="makedraftone" data-id="'+a.id+'" style="display:inline-flex;align-items:center;gap:6px;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:9px 14px;border-radius:9px;">✍️ 이 글감으로 초안</button><button data-act="copyblog" data-id="'+a.id+'" style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:9px 14px;border-radius:9px;">'+COPY+' 복사</button></div></div>' : '')
       +'</div>' : '')
     // 다음 기사 미리보기
     + (next ? '<div data-open="'+next.id+'" style="margin:26px 0 6px;padding:18px 20px;border:1px solid var(--color-line-normal);border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;"><div style="min-width:0;flex:1;"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary-normal);margin-bottom:5px;">다음 기사 '+(idx+2)+'/'+ctx.length+'</div><div style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--color-label-strong);line-height:1.35;text-wrap:pretty;">'+e(next.title)+'</div></div><span style="flex:none;color:var(--color-primary-normal);">'+ARR+'</span></div>' : '<div style="margin:26px 0 6px;padding:18px;text-align:center;color:var(--color-label-alternative);font-size:13px;">마지막 기사입니다.</div>')
@@ -470,9 +472,13 @@ const APP_JS = String.raw`
     else if(searching){ h+=listView(activeList(),'검색 결과가 없습니다','다른 검색어를 입력해 보세요.'); }
     else { h+=catRow(); h+=homeView(); }
 
-    h+='<footer style="margin-top:40px;border-top:2px solid var(--color-label-strong);padding-top:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;"><p style="margin:0;max-width:640px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.</p></footer>';
+    h+='<footer style="margin-top:40px;border-top:2px solid var(--color-label-strong);padding-top:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">'
+    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.</p>'
+    +'<form id="vm-sub" style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:8px;">뉴스레터로 매일 아침 받기</div><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div></form>'
+    +'</footer>';
     h+='</div>';
     h+=detail();
+    h+=draftModal();
     if(S.toast){ h+='<div style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:60;background:var(--color-label-strong);color:var(--color-background-normal);padding:12px 20px;border-radius:10px;font-size:13px;font-weight:600;box-shadow:var(--elevation-4);animation:vmFade .18s ease-out;">'+e(S.toast)+'</div>'; }
 
     var root=document.getElementById('vm');
@@ -485,6 +491,56 @@ const APP_JS = String.raw`
 
   var toastTimer;
   function toast(msg){ S.toast=msg; render(); clearTimeout(toastTimer); toastTimer=setTimeout(function(){ S.toast=null; render(); },1600); }
+
+  // ── 기능 A: 블로그 초안 생성기 ──
+  function draftModal(){
+    if(!S.draft) return '';
+    var d=S.draft, inner;
+    if(d.loading){ inner='<div style="padding:56px 20px;text-align:center;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--color-label-neutral);">블로그 초안을 작성하고 있어요…</div><p style="margin:8px 0 0;font-size:13px;">담아둔 글감 '+d.n+'개로 초안을 만드는 중입니다. 10~20초 걸립니다.</p></div>'; }
+    else if(d.error){ inner='<div style="padding:48px 20px;text-align:center;color:var(--color-status-negative,#ff4242);"><div style="font-weight:700;">초안 생성에 실패했어요</div><p style="margin:8px 0 0;font-size:13px;color:var(--color-label-alternative);">'+e(d.error)+'</p></div>'; }
+    else if(d.result){
+      var r=d.result;
+      var titles=(r.titles||[]).map(function(t,i){return '<button data-act="copytitle" data-t="'+encodeURIComponent(t)+'" style="display:block;width:100%;text-align:left;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:9px;padding:11px 14px;margin-bottom:8px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:700;color:var(--color-label-strong);">'+(i+1)+'. '+e(t)+'</button>';}).join('');
+      var tags=(r.hashtags||[]).map(function(t){return '<span style="display:inline-block;font-size:12.5px;color:var(--color-primary-normal);background:rgba(0,102,255,.08);border-radius:99px;padding:3px 10px;margin:0 6px 6px 0;">'+e(t)+'</span>';}).join('');
+      inner='<div style="padding:22px 24px 26px;">'
+        +'<div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary-normal);margin-bottom:8px;">제목 후보 (클릭하면 복사)</div>'+titles
+        +'<div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary-normal);margin:18px 0 8px;">본문</div>'
+        +'<div style="white-space:pre-wrap;font-size:15px;line-height:1.85;color:var(--color-label-neutral);background:var(--color-background-alternative);border-radius:10px;padding:16px 18px;">'+e(r.body||'')+'</div>'
+        +'<div style="margin:16px 0 8px;">'+tags+'</div>'
+        +'<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;"><button data-act="copydraft" style="display:inline-flex;align-items:center;gap:6px;background:var(--color-primary-normal);color:#fff;border:0;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;padding:11px 18px;border-radius:10px;">'+COPY+' 제목+본문+태그 전체 복사</button><button data-act="draftclose" style="border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;padding:11px 16px;border-radius:10px;">닫기</button></div>'
+        +'<p style="margin:14px 0 0;font-size:11px;color:var(--color-label-alternative);line-height:1.5;">AI가 생성한 초안입니다. 발행 전 사실관계·의료광고 규정을 확인하고 병원 톤에 맞게 다듬어 사용하세요.</p>'
+        +'</div>';
+    }
+    return '<div data-act="draftclose" style="position:fixed;inset:0;background:var(--color-material-dimmer);z-index:70;animation:vmFade .18s ease-out;"></div>'
+      +'<div data-theme="'+S.theme+'" style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:640px;max-width:calc(100vw - 32px);max-height:calc(100vh - 48px);overflow:auto;background:var(--color-background-normal);color:var(--color-label-normal);border-radius:16px;z-index:71;box-shadow:var(--elevation-5);animation:vmFade .2s ease-out;font-family:var(--font-sans);">'
+      +'<div style="position:sticky;top:0;background:var(--color-background-normal);display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--color-line-normal);"><div style="font-family:var(--font-display);font-size:16px;font-weight:800;color:var(--color-label-strong);">✍️ 블로그 초안</div><button data-act="draftclose" style="width:32px;height:32px;border:0;background:var(--color-material-base);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);display:inline-flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>'
+      +inner+'</div>';
+  }
+  function makeDraft(ideas){
+    if(!ideas.length){ toast('먼저 글감을 담아주세요'); return; }
+    S.draft={loading:true,n:ideas.length}; render();
+    fetch('api/draft',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({ideas:ideas})})
+      .then(function(r){return r.json();})
+      .then(function(res){ if(res.error){ S.draft={error:res.error}; } else { S.draft={result:res}; } render(); })
+      .catch(function(err){ S.draft={error:'네트워크 오류 ('+err.message+')'}; render(); });
+  }
+  function draftFullText(r){ return (r.titles&&r.titles[0]?r.titles[0]+'\n\n':'')+(r.body||'')+'\n\n'+((r.hashtags||[]).join(' ')); }
+
+  // ── 기능 C: 공유 ──
+  function shareArticle(a){
+    var url=location.origin+location.pathname+'#'+a.id;
+    if(navigator.share){ navigator.share({title:a.title,text:a.dek,url:url}).catch(function(){}); }
+    else { copy(url,'링크를 복사했습니다'); }
+  }
+  var SHARE='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:block"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"></path></svg>';
+
+  // ── 기능 B: 구독 ──
+  function subscribe(email){
+    fetch('api/subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:email})})
+      .then(function(r){return r.json();})
+      .then(function(res){ toast(res.ok?'구독 신청 완료! 매일 아침 받아보세요':(res.error||'실패')); })
+      .catch(function(){ toast('네트워크 오류'); });
+  }
   function markRead(id){ if(!S.read[id]){ S.read[id]=1; persist('read',S.read); } }
   function openArticle(id){
     if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
@@ -533,14 +589,21 @@ const APP_JS = String.raw`
       else if(act==='copyblog'){ copy(blogText(byId[el.getAttribute('data-id')]),'글감을 복사했습니다'); return; }
       else if(act==='copyone'){ var a=S.ideas[el.getAttribute('data-id')]; if(a) copy(blogText(a),'글감을 복사했습니다'); return; }
       else if(act==='copyall'){ var items=Object.keys(S.ideas).map(function(k){return S.ideas[k];}); var t='# VetMan 해외 브리핑 — 블로그 글감 모음\n\n'+items.map(function(a,i){return (i+1)+'. '+blogText(a);}).join('\n\n———\n\n'); copy(t,items.length+'개 글감을 초안으로 복사했습니다'); return; }
+      else if(act==='makedraft'){ makeDraft(Object.keys(S.ideas).map(function(k){return S.ideas[k];})); return; }
+      else if(act==='makedraftone'){ var a=byId[el.getAttribute('data-id')]; if(a) makeDraft([snap(a)]); return; }
+      else if(act==='draftclose'){ S.draft=null; render(); return; }
+      else if(act==='copytitle'){ copy(decodeURIComponent(el.getAttribute('data-t')),'제목을 복사했습니다'); return; }
+      else if(act==='copydraft'){ if(S.draft&&S.draft.result) copy(draftFullText(S.draft.result),'초안을 복사했습니다'); return; }
+      else if(act==='share'){ var a=byId[el.getAttribute('data-id')]; if(a) shareArticle(a); return; }
       S.searchFocus=false; render(); return;
     }
     if(el.hasAttribute('data-open')){ openArticle(el.getAttribute('data-open')); }
   });
   document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; } render(); } });
+  document.addEventListener('submit',function(ev){ if(ev.target.id==='vm-sub'){ ev.preventDefault(); var em=document.getElementById('vm-email'); if(em&&em.value) subscribe(em.value.trim()); } });
   document.addEventListener('keydown',function(ev){
     var t=ev.target, typing = t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA');
-    if(ev.key==='Escape'){ if(S.openId){ S.openId=null; render(); } return; }
+    if(ev.key==='Escape'){ if(S.draft){ S.draft=null; render(); } else if(S.openId){ S.openId=null; render(); } return; }
     if(typing) return;
     if(S.openId && (ev.key==='ArrowRight'||ev.key==='j')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i+1]) openArticle(ctx[i+1].id); }
     else if(S.openId && (ev.key==='ArrowLeft'||ev.key==='k')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i-1]) openArticle(ctx[i-1].id); }
@@ -655,6 +718,7 @@ function build() {
 
   const mockup = path.join(ROOT, "design", "mockup.html");
   if (fs.existsSync(mockup)) fs.copyFileSync(mockup, path.join(SITE_DIR, "design.html"));
+  // 서버리스 엔드포인트는 리포 루트 functions/ 에 두면 배포 시 자동 컴파일됨(사이트에 복사 불필요)
 
   console.log(`빌드 완료: ${issues.length}개 이슈 → site/ (최신: ${labelOf(latest)})`);
 }

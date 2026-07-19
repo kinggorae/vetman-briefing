@@ -73,6 +73,15 @@ export const FEED_MAX_AGE_DAYS = 10; // maxAgeDays 미지정 피드의 기본 �
 // ── Plan B (보조): Claude 웹 검색으로 레딧 커뮤니티 시그널 수집 ──
 export const WEBSEARCH_SUBREDDITS = ["Veterinary", "VetTech", "AskVet"];
 
+// ── 최신 연구: PubMed 논문 (반려동물 임상 관련) ──
+export const PUBMED = {
+  // 개·고양이 MeSH + 초록에 veterinary. 축산·실험동물 노이즈를 줄이기 위해 임상 위주.
+  term: '("dogs"[MeSH Terms] OR "cats"[MeSH Terms]) AND veterinary[Title/Abstract]',
+  recentDays: 30, // 최근 N일
+  max: 40, // 후보 최대(스코어링 전)
+};
+export const PAPERS_PER_ISSUE = 5; // 이슈당 논문 최종 수
+
 // ── Reddit API 직접 수집 (키가 생기면 자동 활성화) ──
 export const SUBREDDITS = [
   // minScore: 주간 top에서 후보로 올리는 최소 업보트 수

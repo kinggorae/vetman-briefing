@@ -64,7 +64,8 @@ async function scoreBatch(posts) {
   return scores;
 }
 
-export async function scoreCandidates(posts) {
+// 관련성 통과분 전체를 점수순으로 반환 (상한 없음). limit 지정 시 슬라이스.
+export async function scoreAll(posts, limit = Infinity) {
   const allScores = [];
   for (let i = 0; i < posts.length; i += SCORE_BATCH) {
     const batch = posts.slice(i, i + SCORE_BATCH);
@@ -76,10 +77,13 @@ export async function scoreCandidates(posts) {
     }
   }
   const byId = new Map(allScores.map((s) => [s.id, s]));
-
   return posts
     .map((p) => ({ ...p, ...byId.get(p.id) }))
     .filter((p) => (p.relevance ?? 0) >= MIN_RELEVANCE)
     .sort((a, b) => b.relevance - a.relevance)
-    .slice(0, ITEMS_PER_ISSUE);
+    .slice(0, limit);
+}
+
+export async function scoreCandidates(posts) {
+  return scoreAll(posts, ITEMS_PER_ISSUE);
 }
