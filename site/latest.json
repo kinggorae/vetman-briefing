@@ -665,6 +665,286 @@
       "sourceUrl": "https://doi.org/10.3390/ijms27135812",
       "sourceTitle": "Bacteriocins in Veterinary Medicine: From Antibiotic Limitations to Targeted Solutions.",
       "publishedAt": null
+    },
+    {
+      "titleKo": "개의 폐활성 담낭염 35례: 임상 양상과 치료 결과",
+      "leadKo": "개의 희귀하고 심각한 담낭염인 폐활성 담낭염의 임상 양상과 예후를 후향적으로 분석하여 치료 전략 수립에 필요한 근거를 제시했습니다.",
+      "bodyKo": [
+        "연구 배경 및 방법: 4개 대학병원에서 2000년부터 2024년 사이에 폐활성 담낭염으로 진단된 가정 소유 개 35마리를 대상으로 의무기록을 후향적으로 검토했습니다. 초음파 또는 전산단층촬영으로 진단된 증례를 분석했습니다.",
+        "주요 결과: 가장 흔한 임상 증상은 구토(66%), 기력저하(66%), 식욕부진(43%)이었습니다. 실험실 검사상 염증성 백혈구 증가(68%)와 간효소 상승(85%), 고빌리루빈혈증(일부)이 관찰되었습니다. 배양된 세균은 대장균(13균주)과 클로스트리듐(12균주)이 가장 흔했습니다. 담낭절제술을 받은 14마리 중 4마리(29%)가 수술 후 사망했으며, 약물치료만 받은 11마리는 모두 퇴원했습니다. 6개월 이상 추적 관찰된 6마리 중 5마리가 생존했습니다.",
+        "임상 시사점: 개의 폐활성 담낭염은 구토와 기력저하로 나타나며, 염증성 백혈구 증가와 간효소 상승을 동반합니다. 담낭절제술은 원인균 배양 검체를 확보할 수 있지만 약물치료만으로도 생존이 가능할 수 있습니다. 단, 본 연구는 후향적 연구로 표본이 적고 다기관 연구이지만, 희귀 질환에 대한 유용한 임상 데이터를 제공합니다."
+      ],
+      "keyPointsKo": [
+        "35마리 증례 분석 결과, 구토(66%)와 기력저하(66%)가 가장 흔한 임상 증상이었습니다.",
+        "염증성 백혈구 증가(68%)와 간효소 상승(85%)이 주요 실험실 이상 소견이었습니다.",
+        "대장균(13균주)과 클로스트리듐(12균주)이 가장 흔한 원인균이었습니다.",
+        "담낭절제술 후 사망률은 29%(4/14)이었으며, 약물치료만 받은 11마리는 모두 생존했습니다."
+      ],
+      "angleKo": "애완견이 갑자기 구토와 기력저하를 보인다면 간담도 질환 가능성을 고려하고, 특히 간효소 상승이 동반되면 신속한 영상의학적 검사가 필요합니다.",
+      "sourceType": "paper",
+      "sourceLabel": "Journal of veterinary internal medicine",
+      "journal": "Journal of veterinary internal medicine",
+      "doi": "10.1093/jvimsj/aalag113",
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 9,
+      "imageUrl": null,
+      "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag113",
+      "sourceTitle": "Clinical features, diagnostic findings, and outcomes of emphysematous cholecystitis in 35 dogs: a retrospective case series.",
+      "publishedAt": null
+    },
+    {
+      "titleKo": "개 에틸렌글리콜 중독에서 Lactate Gap의 진단·치료 종결 지표 활용",
+      "leadKo": "개 에틸렌글리콜 중독 의심 환자에서 서로 다른 분석기 간 lactate 측정값의 불일치(lactate gap)를 진단 도구와 간헐적 혈액투석 종료 시점 결정에 활용할 수 있음을 보고합니다.",
+      "bodyKo": [
+        "18개월령 개가 응급실로 내원하여 두 종류의 분석기에서 측정한 lactate 값에 현저한 불일치(lactate gap)가 관찰되고, 상승된 anion gap과 신성 azotemia가 동반되어 에틸렌글리콜 중독이 의심되었다.",
+        "간헐적 혈액투석을 실시하여 lactate gap이 정상화될 때까지 치료를 지속하였으며, 이를 통해 lactate gap이 치료 반응과 투석 종료 시점을 결정하는 지표로 활용될 수 있음이 확인되었다.",
+        "본 보고서는 단일 증례이며 추가 연구가 필요하지만, 한국 동물병원 응급 진료에서 lactate gap 측정으로 에틸렌글리콜 중독을 신속히 감별하고 적절한 투석 치료 기간을 결정하는 데 참고가 될 수 있다. 단, lactate gap은 특정 분석기 조합에서만 관찰될 수 있으므로 적용 시 분석기 특성을 고려해야 한다."
+      ],
+      "keyPointsKo": [
+        "18개월령 개에서 두 분석기 간 lactate 측정값 차이가 5 mmol/L 이상 나는 lactate gap이 관찰되었다.",
+        "상승된 anion gap과 신성 azotemia가 함께 나타나 에틸렌글리콜 중독이 강력히 의심되었다.",
+        "간헐적혈액투석을 실시하여 lactate gap이 정상화될 때까지 치료하였고, 이를 투석 종결 지표로 활용하였다.",
+        "단일 증례 보고서이므로 추가 연구가 필요하다."
+      ],
+      "angleKo": "강아지가 갑자기 쓰러졌는데 응급실 lactate 검사 결과가 이상하다? 그 차이가 에틸렌글리콜 중독 신호일 수 있습니다.",
+      "sourceType": "paper",
+      "sourceLabel": "The Canadian veterinary journal = La revue veterinaire canadienne",
+      "journal": "The Canadian veterinary journal = La revue veterinaire canadienne",
+      "doi": null,
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 9,
+      "imageUrl": null,
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42368698/",
+      "sourceTitle": "Ethylene glycol intoxication: Use of the lactate gap for diagnosis and to determine length of intermittent hemodialysis treatment.",
+      "publishedAt": null
+    },
+    {
+      "titleKo": "개와 고양이 스마트폰 안저 영상 시스템 비교: OQVet 화질 최고",
+      "leadKo": "스마트폰 기반 안저 영상 시스템 4종의 실현 가능성과 화질을 비교한 결과, OQVet이 가장 높은 화질 점수와 평가자 선호도를 기록하며 참고 카메라 대비 일부 검사에서 우위를 보였습니다.",
+      "bodyKo": [
+        "배경: 본 연구는 개의와 고양이에서 스마트폰 기반 안저 영상 시스템 4종(iExaminer Panoptic, NUN WFE-02S, OQVet, VistaView)의 실현 가능성과 화질을 handheld 적외선 안저 카메라(Aurora)와 비교하기 위해 수행되었습니다. 10마리의 개와 10마리의 고양이 총 40안을 대상으로 mydriatic 20안과 non-mydriatic 20안에서 영상을 획득했습니다.",
+        "결과: 모든 장비와 조건에서 영상 획득 성공률이 100%를 기록했습니다. 화질은 장비 간 유의미한 차이가 있었으며, SBFI 시스템 중 OQVet이 중앙값 7점(IQR 6-8)으로 최고 점수를 받았고, VistaView 6점(IQR 5-8), NUN 5점(IQR 4-7), iExaminer 4점(IQR 3-5) 순이었습니다. OQVet은 평가자 선호도 표의 약 50%를 획득했습니다. 참고 카메라 Aurora는 77.5% 검사에서 최고 화질을 보였으나, OQVet(15%)과 VistaView(7.5%)가 일부 검사에서 앞서기도 했습니다. 동공확장은 화질과 영상 획득 시간에 유의미한 영향을 주지 않았습니다.",
+        "시사점: 스마트폰 기반 안저 영상은 개와 고양이에서 신뢰할 수 있는 망막 영상을 가능 하며, 임상에서 망막 문서화와 선별검사에 접근 가능한 도구로 활용될 수 있습니다. 다만 본 연구는 단일기관에서 20마리 동물만 수행되어 표본이 작으며, 후향적 평가의 한계가 있습니다."
+      ],
+      "keyPointsKo": [
+        "스마트폰 기반 4종 안저 영상 시스템 모두 100% 영상 획득 성공률을 달성했습니다",
+        "OQVet이 SBFI 시스템 중 최고 화질 중앙값 7점(IQR 6-8)을 기록하고 평가자 선호도 약 50%를 획득했습니다",
+        "참고 카메라 Aurora는 77.5% 검사에서 최고 화질을 보였으나, OQVet과 VistaView가 일부 검사에서 앞서기도 했습니다",
+        "동공확장은 화질과 영상 획득 시간에 유의미한 영향을 주지 않아 비확장 상태 영상도 유효합니다"
+      ],
+      "angleKo": "반려동물 안과 검사 받고 싶어하시는 보호자분들께, 스마트폰 어댑터를 활용한 안저 검사가 신뢰할 만한 결과를 제공할 수 있다는 점을 안내할 수 있습니다.",
+      "sourceType": "paper",
+      "sourceLabel": "Veterinary ophthalmology",
+      "journal": "Veterinary ophthalmology",
+      "doi": "10.1111/vop.70210",
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 9,
+      "imageUrl": null,
+      "sourceUrl": "https://doi.org/10.1111/vop.70210",
+      "sourceTitle": "Comparative Evaluation of Smartphone-Based Fundus Imaging Systems in Dogs and Cats.",
+      "publishedAt": null
+    },
+    {
+      "titleKo": "개의 만성 장염, 주인의 돌봄 부담감과 삶의 질에 미치는 영향",
+      "leadKo": "개의 만성 장염 환양이 건강한 개를 키우는 환양보다 상당한 심리적 부담과 낮은 삶의 질을 경험하며, 특히 개 건강에 대한 우려가 가장 큰 부담원이라는 사실을 확인했습니다.",
+      "bodyKo": [
+        "연구 배경 및 방법: 개의 만성 장염은 평생 관리 필요로 하며 주인의 돌봄 부담을 유발할 수 있습니다. 이 단면 연구는 자기보고 설문지를 통해 만성 장염 환양 223명과 건강한 개 환양 447명의 정서적·사회적·재무적 부담과 개-주인 관계를 Zarit Burden Interview와 Monash Dog Owner Relationship Scale을 기반으로 평가했습니다.",
+        "주요 결과: 만성 장염 환양은 대조군에 비해 상당한 심리적 부담과 낮은 삶의 질을 보고했습니다. 심각한 임상 증상의 빈번한 발현이 부담감 증가와 삶의 질 저하와 유의하게 관련되었습니다. 그러나 대부분의 주인이 개에 대한 정서적 유대감과 애착을 유지하여 개-주인 관계는 대체로 온전하게 남아있었습니다. 부담감 기여 요인으로는 동물병원 방문 빈도, 개의 시간 소모적 인식, 재정적 부담이 확인되었으나, 개의 고통·증상 재발·죽음에 대한 우려가 가장 중요한 부담원으로 꼽혔습니다.",
+        "임상 시사점: 만성 장염 환양의 돌봄 부담은 상당하며 주인의 삶의 질에 부정적 영향을 미칩니다. 다만 개에 대한 정서적 유대는 유지되므로, 수의사는 치료 과정에서 보호자의 심리적 안녕도 함께 고려해야 합니다. 이 연구는 단면 설계와 자기보고 방식의 한계가 있으며, 추후 전향적 연구가 필요합니다."
+      ],
+      "keyPointsKo": [
+        "만성 장염 개를 키우는 주인은 건강한 개 환양보다 유의하게 높은 심리적 부담과 낮은 삶의 질을 보고했습니다",
+        "심각한 임상 증상의 발현 빈도가 높을수록 주인의 돌봄 부담감이 증가하고 삶의 질이 저하되었습니다",
+        "동물병원 방문, 시간 소모적 인식, 재정적 부담이 부담감 요인으로 확인되었으나, 개 건강에 대한 우려가 가장 큰 부담원이었습니다",
+        "대부분의 주인이 개에 대한 정서적 유대와 애착을 유지하여 개-주인 관계가 대체로 온전하게 남아있었습니다"
+      ],
+      "angleKo": "반려견이 만성 장염 진단을 받으면 치료만큼이나 보호자 자신의 정서적·재정적 부담도 함께 관리해야 한다는 점을 함께 다루는 것이 좋습니다.",
+      "sourceType": "paper",
+      "sourceLabel": "Journal of veterinary internal medicine",
+      "journal": "Journal of veterinary internal medicine",
+      "doi": "10.1093/jvimsj/aalag128",
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 8,
+      "imageUrl": null,
+      "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag128",
+      "sourceTitle": "Caregiver burden in owners of dogs with chronic enteropathies-a survey-based assessment.",
+      "publishedAt": null
+    },
+    {
+      "titleKo": "보더테리어의 식이 반응성 전신 호산구증가 1례",
+      "leadKo": "재발성 복통과 현저한 호산구증가를 보이는 보더테리어에서 글루텐 무함유 가수분해 식이만으로 치료에 성공한 사례를 보고합니다.",
+      "bodyKo": [
+        "15개월령 수컷 보더테리어가 6개월간의 재발성 급성 복통, 떨림, 구토, 연변을 주소로 동물병원에 내원하였다. 전혈검사에서 지속적인 현저한 호산구증가가 확인되었고, CT에서 복부 임파선 비대가 관찰되었다. 세침흡인 세포학적 검사상 호산구성 및 호중구성 화농성 육아종성 임파선염이 확인되었고, 개복술 중 공장 및 장골 임파선, 간, 공장 조직 생검을 시행하였다.",
+        "조직학적 검사상 현저한 호산구 침윤이 관찰되었으나 특정 원인균은 동정되지 않았다. 기존 보고에서는 prednisolone과 hydroxyurea 병합 요법이 필요하였으나, 본 증례에서는 글루텐 무함유 가수분해 식이(Purina Pro Plan Veterinary Diets HA)만으로 임상증상과 호산구증가가 호전되었다.",
+        "본 증례는 단일 사례보고로 일반화에 한계가 있으나, 식이 알레르기가 호산구성 다기관 침윤의 원인일 수 있음을 시사한다. 한국 동물병원에서 호산구증가와 위장관 증상을 보이는 동물에서 표준 검사 후에도 원인이 불명확할 경우 식이 교체를 진단적 치료 옵션으로 고려할 수 있다."
+      ],
+      "keyPointsKo": [
+        "15개월령 보더테리어에서 6개월간 지속된 재발성 복통, 떨림, 구토, 연변과 현저한 전신 호산구증가가 관찰되었다",
+        "CT에서 복부 임파선 비대가, 조직 생검에서 원인 불명의 현저한 호산구 침윤이 확인되었다",
+        "글루텐 무함유 가수분해 식이 단독 투여로 임상증상과 호산구증가가 호전되었다",
+        "본 방법은 prednisolone과 hydroxyurea 병합 요법이 필요했던 기존 보고와 다른 치료 접근을 제시한다"
+      ],
+      "angleKo": "반려견이 갑작스러운 복통과 설사를 반복할 때, 단순 위장관염이 아니라 식이 알레르기가 원인일 수 있으며 식이 교체가 호전의 열쇠가 될 수 있습니다",
+      "sourceType": "paper",
+      "sourceLabel": "Journal of veterinary internal medicine",
+      "journal": "Journal of veterinary internal medicine",
+      "doi": "10.1093/jvimsj/aalag133",
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 8,
+      "imageUrl": null,
+      "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag133",
+      "sourceTitle": "Dietary-responsive disseminated eosinophilia in a border terrier.",
+      "publishedAt": null
+    },
+    {
+      "titleKo": "개 췌장 초음파 검사, 관찰자 간 결과 차이 커",
+      "leadKo": "104명의 수의학 전문의가 개 췌장 초음파 영상을 분석한 결과, 관찰자 간 일치도가 낮아 초음파 판독의 주관성이 문제임이 확인되었습니다.",
+      "bodyKo": [
+        "연구 배경 및 방법: 복부 초음파는 개에서 췌장 질환 진단에 중요하지만, 해석이 검사자마다 달라질 수 있다는 문제점이 있었습니다. 15장의 개 췌장 초음파 영상을 수의학 전문의 104명이 독립적으로 검토했으며, 이 중 24명은 약 2.5개월 후 다시 검토하여 관찰자 내 일치도도 평가했습니다. 상대적 에코ogenicity, 에코 texture, 윤곽, 임상 해석을 분석했습니다.",
+        "주요 결과: 관찰자 간 평균 일치도는 낮았고(Kα=0.34), 관찰자 내 일치도는 중간 수준이었습니다(PABAK=0.49). 전체 췌장 에코ogenicity(0.58)과 장간막 지방 대비 에코ogenicity(0.53)에서 일치도가 가장 높았으며, 준객관적 척도의 에코 texture도 비교적 높은 일치도를 보였습니다(0.50). 그러나 임상적 중요성(0.35)과 원인 우선순위(0.14)에 대한 관찰자 간 일치도는 매우 낮았습니다. 경력 10년 미만의 초기 경력 수의학 전문의가 전체 에코ogenicity에서 중간 수준 일치도(0.71)를 보이며 가장 높은 관찰자 간 일치도를 나타냈습니다.",
+        "임상 시사점: 이 연구는 개 췌장 초음파 판독에서 검사자 간 상당한 차이가 있음을 보여줍니다. 특히 임상적 판단과 원인 진단에서 일치도가 현저히 낮아, 초음파만으로 확실한 진단을 내리기 어려움을 시사합니다. 평가 기준의 표준화가 필요하며, 이는 단일 기관·후향적 연구의 한계를 감안해야 합니다."
+      ],
+      "keyPointsKo": [
+        "104명의 수의학 전문의 분석 결과, 관찰자 간 평균 일치도는 낮은 수준이었습니다(Kα=0.34).",
+        "전체 췌장 에코ogenicity와 장간막 지방 대비 에코ogenicity가 가장 높은 일치도를 보였습니다(각각 0.58, 0.53).",
+        "임상적 중요성과 원인 우선순위 판독의 일치도는 매우 낮았습니다(각각 0.35, 0.14).",
+        "경력 10년 미만의 초기 경력 전문의가 전체 에코ogenicity에서 중간 수준 일치도(0.71)를 보였습니다."
+      ],
+      "angleKo": "보호자들에게는 초음파 검사 결과가 검사자의 주관적 판단에 영향을 받을 수 있음을 설명하고, 필요하다면 추가 검사나 다른 전문가의 소견을 참고할 것을 권유할 수 있습니다.",
+      "sourceType": "paper",
+      "sourceLabel": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
+      "journal": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
+      "doi": "10.1111/vru.70202",
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 8,
+      "imageUrl": null,
+      "sourceUrl": "https://doi.org/10.1111/vru.70202",
+      "sourceTitle": "Survey on Inter- and Intra-Observer Variations of the Ultrasound Assessment of Dog Pancreases.",
+      "publishedAt": null
+    },
+    {
+      "titleKo": "강아지·고양이 기생충, 진화하는 위협을 대비하라",
+      "leadKo": "기후변화와 글로벌 이동 증가로 강아지·고양이 기생충의 분포와 특성이 급변하고 있으며, 새로운 병원체 출현과 내성 획득이 가속화되고 있음을 보고합니다. 이 변화에 대응하려면 수의학과 보건학의 긴밀한 협력과 진단 역량 강화가 필수적입니다.",
+      "bodyKo": [
+        "본 연구는 강아지·고양이 기생충의 변화를 다양한 학문적 관점에서 분석한 종합 보고서입니다. 기후변화와 글로벌 여행·무역 증가가 기생충의 분포를 재구성하고 있으며, 일부 종은 새로운 지역에 출현하거나 중간 숙주를 바꾸는 등 병원성 발현 양상이 변하고 있습니다.",
+        "연구 결과, 유전자 재조합과 잡종 형성이 병원성과 전파 패턴을 변화시킨 새로운 변이주를 만들어내고 있으며, 진단 역량의 한계로 인해 오랫동안 간과되어 온 기생충들도 확인되었습니다. 이러한 변화는 동반 동물 기생충학이 더욱 역동적이고 예측 불가능해질 것임을 시사합니다.",
+        "한국 동물병원 임상 관점에서 보면, 최근 해외 여행 후 애완동물의 기생충 감염 사례가 증가하고 있어 여행력을 철저히 확인해야 합니다. 표본 크기나 특정 지역 데이터가 제시되지 않은 종합 보고서이므로, 한국 내 실태 연구가 추가로 필요하며, 예방접종과 구충제 사용의 중요성을 보호자에게 지속적으로 안내하는 것이 중요합니다."
+      ],
+      "keyPointsKo": [
+        "기후변화와 글로벌 이동 증가로 기생충의 지리적 분포와 출현 패턴이 크게 달라지고 있습니다",
+        "일부 기생충은 새로운 숙주로 전이하거나 약제 내성을 획득하고 있습니다",
+        "유전자 재조합으로 병원성과 전파력이 변한 새로운 변이주가 출현하고 있습니다",
+        "진단 역량 부족으로 인해 오랫동안 간과되어 온 기생충이 발견되고 있습니다"
+      ],
+      "angleKo": "반려동물을 키우는 보호자들은 해외 여행 시 기생충 감염 위험을 반드시 인식하고, 예방적 구충제를 정기적으로 사용해야 합니다",
+      "sourceType": "paper",
+      "sourceLabel": "Trends in parasitology",
+      "journal": "Trends in parasitology",
+      "doi": "10.1016/j.pt.2026.05.007",
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 8,
+      "imageUrl": null,
+      "sourceUrl": "https://doi.org/10.1016/j.pt.2026.05.007",
+      "sourceTitle": "Emergent, re-emerging, or just ignored: the many lives of cat and dog parasites.",
+      "publishedAt": null
+    },
+    {
+      "titleKo": "저장용 MRI, 개 뇌 영상에서 기존 1.5T와 유사한 해부학적 시각화 가능",
+      "leadKo": "0.05T 저장용 MRI가 개의 뇌 영상에서 측방 뇌실 등 주요 해부학적 구조를 기존 1.5T MRI와 유사하게 시각화할 수 있음을 확인했습니다. 저장된 환경에서도 접근 가능한 뇌영상 검사로 자원 제한 지역 수의임상에 활용될 수 있는 가능성을 제시한 최초의 수의학 연구입니다.",
+      "bodyKo": [
+        "이 연구는 자원 제한 지역에서 고자장 MRI의 높은 비용으로 인한 의료 접근성 문제를 해결하기 위해 개발된 0.05T 저장용 MRI를 수의임상에 처음 적용한 파일럿 연구입니다. 개의 사체 뇌 프로토콜을 임상 환자로 전환하여 21마리 다른 개 환자에서 획득한 0.05T 이미지를 기존 1.5T 이미지와 비교했습니다. 15개 해부학적 구조의 가시성을 횡단면 T1강조 조영 후영상과 T2강조영상에 대해 1~3점 척도로 평가했습니다.",
+        "주요 결과에서 측방 뇌실은 모든 시퀀스와 시스템 조합에서 89.3%~100%의 비율로 최고 점수(3점)를 받아 가장 잘 시각화되었습니다. T2강조영상의 경우 중뇌수조(56.3%~100%), 제4뇌실(77.1%~100%), 시상(68.8%~100%)에서도 우수한 확인율을 보였습니다. 절대 시각 등급 특성 분석 결과, 이러한 구조들에 대해 0.05T 시스템이 1.5T MRI와 비교 가능한 성능을 보이는 것으로 확인되었습니다.",
+        "한국 동물병원 임상 관점에서, 저장용 MRI는 고자장 MRI 장비가 부족한 중소 동물병원이나 외래 진료 현장에서 뇌영상 검사를 제공할 수 있는 대안이 될 수 있습니다. 다만, 21마리 단일기관 파일럿 연구로 표본수가 작고, 모든 해부학적 구조를 평가한 것이 아니라 제한된 구조만 확인했다는 한계가 있습니다. 향후 더 많은 환자를 대상으로Prospective 연구가 필요합니다."
+      ],
+      "keyPointsKo": [
+        "0.05T MRI에서 측방 뇌실은 89.3%~100%의 비율로 가장 선명하게 시각화되었습니다.",
+        "T2강조영상에서 중뇌수조, 제4뇌실, 시상이 56.3%~100% 범위에서 확인되었습니다.",
+        "0.05T 시스템이 15개 해부학적 구조 중 주요 구조에서 1.5T MRI와 동등한 성능을 보였습니다.",
+        "본 연구는 수의학 임상 환경에서 0.05T MRI를 사용한 최초의 보고입니다."
+      ],
+      "angleKo": "반려견이 뇌질환이 의심될 때 고비용의MRI 대신 더 접근하기 쉬운 저장용 MRI로 검사를 받을 수 있는 시대가 올 수 있습니다.",
+      "sourceType": "paper",
+      "sourceLabel": "The veterinary quarterly",
+      "journal": "The veterinary quarterly",
+      "doi": "10.1080/01652176.2026.2696026",
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 7,
+      "imageUrl": null,
+      "sourceUrl": "https://doi.org/10.1080/01652176.2026.2696026",
+      "sourceTitle": "Canine brain imaging with a new low-field portable (0.05 T) MRI scanner: a pilotcomparison to conventional 1.5 T.",
+      "publishedAt": null
+    },
+    {
+      "titleKo": "개·고양이 흉부 X-ray에서 인공지능으로 폐렴 진단하기",
+      "leadKo": "이 연구는 개와 고양이의 흉부 X-ray에서 딥러닝 모델로 폐렴을 자동 진단하는 파이프라인을 개발했습니다. 정면 및 측면 투사 모두에서 90% 이상의 정확도와 0.94 이상의 AUC를 달성하여 임상 활용 가능성을 보여주었습니다.",
+      "bodyKo": [
+        "배경 및 방법: 현재 수의사 흉부 X-ray 판독은 수동으로 진행되어 판독자 간 차이가 크고 초기 병변 발견 민감도가 낮은 문제가 있습니다. 본 연구는 PaddleSeg 기반 의미론적 분할로 흉부 영역을 추출하고 Mamba 프레임워크로 분류하는 AI 진단 파이프라인을 구축했습니다. Gradient-weighted Class Activation Mapping을 통해 판독 과정을 해석할 수 있게 했으며, 다차원 불확실성과 해석 가능성을 통합한 AI Risk Index(ARI) 모듈도 제안했습니다.",
+        "주요 결과: 의미론적 분할에서 흉부 영역 추출 정확도를 나타내는 mIoU는 0.8999를 달성했습니다. 정면(VD/DV) 투사 분류에서는 정확도 90.35%, macro F1-score 0.9034, AUC 0.9438을 보였습니다. 측면 투사에서도 정확도 89.8%, macro F1-score 0.8965, AUC 0.9361으로 강건한 성능을 유지했습니다.",
+        "임상적 시사점: 이 AI 파이프라인은 동물병원에서 흉부 X-ray 판독 보조 도구로 활용될 수 있으며, 초기 폐렴 발견율을 높이고 판독자 간 차이를 줄일 수 있습니다. 다만, 본 연구는 특정 데이터셋에서 개발·평가된 것으로, 다양한 동물병원 환경에서의 전향적 검증이 필요합니다. ARI 모듈은 AI 판독의 불확실성을 정량화하여 임상의가 최종 판독을 내릴 때 참고할 수 있는 해석 가능한 정보를 제공합니다."
+      ],
+      "keyPointsKo": [
+        "PaddleSeg 의미론적 분할로 흉부 영역 추출 정확도(mIoU) 0.8999 달성",
+        "정면(VD/DV) 투사 분류에서 정확도 90.35%, AUC 0.9438",
+        "측면 투사 분류에서 정확도 89.8%, AUC 0.9361",
+        "불확실성과 해석 가능성을 통합한 AI Risk Index(ARI) 모듈 개발"
+      ],
+      "angleKo": "반려동물의 폐렴이 의심될 때, AI-assisted X-ray 분석이 신속하고 일관된 preliminary screening을 제공하여 치료 시작 시점을 앞당길 수 있습니다.",
+      "sourceType": "paper",
+      "sourceLabel": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
+      "journal": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
+      "doi": "10.1111/vru.70170",
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 7,
+      "imageUrl": null,
+      "sourceUrl": "https://doi.org/10.1111/vru.70170",
+      "sourceTitle": "Pneumonia Detection in Veterinary X-Rays Utilizing PaddleSeg-Based Semantic Segmentation and Mamba-Powered Classification.",
+      "publishedAt": null
+    },
+    {
+      "titleKo": "경미한 심근병증, 소변관 우회술 예후에 영향 없어",
+      "leadKo": "고양이의 경미한 심근병증은 피하 요관 우회술(SUB) 후 예후에 영향을 주지 않으며, 입원 당시 체액 과부하와 높은 혈청 크레아티닌 수치가 생존율을 예측하는 주요 인자로 확인되었습니다.",
+      "bodyKo": [
+        "본 연구는 2010~2022년 몬트리올 대학수의대학병원에서 SUBPlacement를 받은 94마리의 고양이를 대상으로 후향적으로 분석하였다. 64마리(68%)에서 심초음파를 시행하였으며, 그 중 26마리(40%)에서 심근병증이 진단되었다. 심근병증의 85%(22/26)는 비후성 또는 비후성 폐쇄성 심근병증이었고, 대부분(22/26)은 경미한 단계였으며 좌심방 크기(LA:AoSAX)가 정상(<1.6)이었다.",
+        "심근병증이 있는 고양이와 없는 고양이 사이의 입원 기간, 생존 시간, 신장 회복 또는 체액 과부하 발생률에 유의한 차이는 없었다. 체액 과부하는 45%(29/64)에서 발생하였으며, 이는 중앙생존 기간 430일(40~1260일)로 1020일(494~1668일)에 비해 유의하게 짧았다(P=0.005). 입원 시 혈청 크레아티닌은 체액 과부하 그룹에서 평균 11.12±5.93mg/dL로 정상 그룹(6.16±5.44mg/dL)보다 높았고(P<0.001), 나쁜 예후와 연관되었다(P=0.01). 좌심방 크기(LA:AoSAX)는 체액 과부하나 생존율과 연관되지 않았다.",
+        "경미한 심근병증은 흔한 동반 질환이었으나 SUB 시술의 금기 사항으로 고려되어서는 안 된다. 그러나 더 진행된 심장 질환의 영향은 여전히 알려지지 않았다. 임상적으로는 체액 과부하 발생 여부와 입원 시 크레아티닌 수치가 예후 예측에 더 중요한 지표가 되며, 특히 만성 신장 질환이 있는 고양이에서 심초음파 검사와 함께 체액 상태 모니터링이 필요하다. 단일 기관 후향적 연구로 표본 크기에 한계가 있음을 고려해야 한다."
+      ],
+      "keyPointsKo": [
+        "94마리 중 64마리에서 심초음파를 시행한 결과 40%(26/64)에서 심근병증이 확인되었고, 85%는 비후성 심근병증이었다",
+        "심근병증 유무에 따라 입원 기간, 생존 시간, 신장 회복에 유의한 차이 없어 경미한 심근병증은 SUB 시술 금기가 아니다",
+        "체액 과부하 발생 시 중앙생존 기간이 430일로 정상(1020일) 대비 유의하게 짧았다(P=0.005)",
+        "입원 시 혈청 크레아티민 수치가 높을수록(11.12mg/dL vs 6.16mg/dL) 예후가 나쁘며(P=0.01), 좌심방 크기는 예후와 무관하였다"
+      ],
+      "angleKo": "고양이 신장병과 심장병을 함께 않고 있는 보호자들에게, 경미한 심장 질환이 있어도 소변관 우회술이 가능한 경우를 설명하며 체액 관리의 중요성을 안내하는 글이 좋습니다.",
+      "sourceType": "paper",
+      "sourceLabel": "Journal of veterinary internal medicine",
+      "journal": "Journal of veterinary internal medicine",
+      "doi": "10.1093/jvimsj/aalag127",
+      "upvotes": null,
+      "numComments": null,
+      "category": "research",
+      "relevance": 7,
+      "imageUrl": null,
+      "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag127",
+      "sourceTitle": "Characterization and outcomes of cats with cardiomyopathy undergoing subcutaneous ureteral bypass device placement.",
+      "publishedAt": null
     }
   ]
 }
