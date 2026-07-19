@@ -268,6 +268,15 @@ const APP_JS = String.raw`
 
   function tag(today,h,fs){ return today?'<span style="display:inline-flex;align-items:center;height:'+h+'px;padding:0 6px;background:var(--color-atomic-blue-100);color:var(--color-atomic-blue-800);border-radius:4px;font-size:'+fs+'px;font-weight:700;">오늘</span>':''; }
   function plateImg(a){ return a.image ? '<img class="vm-plate-img" src="'+e(a.image)+'" alt="'+e(a.title)+'" loading="lazy" onerror="this.remove()">' : ''; }
+  // 폴백(출처 텍스트)을 이미지 뒤에 깔고, 이미지가 그 위를 덮는다. 깨지면 폴백이 보임.
+  function plate(a,o){
+    o=o||{};
+    var just=o.center?'center':'space-between', align=o.center?'center':'stretch', ta=o.center?'text-align:center;':'';
+    var lab=o.label?'<span style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-heavy);">출처 이미지</span>':'';
+    var big='<span style="font-family:var(--font-display);font-size:'+(o.big||15)+'px;font-weight:800;letter-spacing:-.02em;color:var(--color-primary-heavy);line-height:1.12;'+ta+'">'+e(a.plate)+'</span>';
+    var fb='<div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:'+just+';align-items:'+align+';padding:'+(o.pad||12)+'px;">'+lab+big+'</div>';
+    return fb + plateImg(a);
+  }
   function bookmarkBtn(id,w,box){
     var st = box==='plain' ? 'width:'+(w+11)+'px;height:'+(w+11)+'px;border:0;background:transparent;' : 'width:'+(w+11)+'px;height:'+(w+11)+'px;border:1px solid var(--color-line-normal);background:var(--color-background-elevated);';
     return '<button data-save="'+id+'" title="저장" style="'+st+'display:inline-flex;align-items:center;justify-content:center;border-radius:8px;cursor:pointer;color:'+saveColor(id)+';">'+BM.replace(/W/g,w)+'</button>';
@@ -276,14 +285,13 @@ const APP_JS = String.raw`
 
   function leadCard(a){
     return '<article class="vm-lead'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
-    +'<div style="position:relative;border-radius:4px;overflow:hidden;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);height:320px;display:flex;flex-direction:column;justify-content:space-between;padding:22px;margin-bottom:20px;">'
-    + plateImg(a)
-    +'<span style="position:relative;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-heavy);">출처 이미지</span>'
-    +'<div style="position:relative;display:flex;flex-direction:column;gap:6px;"><span style="font-family:var(--font-display);font-size:34px;font-weight:800;letter-spacing:-.02em;color:var(--color-primary-heavy);line-height:1.05;">'+e(a.plate)+'</span></div>'
-    +'<div style="position:absolute;top:16px;right:16px;">'+bookmarkBtn(a.id,18,'box')+'</div></div>'
+    +'<div style="position:relative;border-radius:4px;overflow:hidden;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);height:320px;margin-bottom:20px;">'
+    + plate(a,{label:true,big:34,pad:22})
+    +'<div style="position:absolute;top:16px;right:16px;z-index:2;">'+bookmarkBtn(a.id,18,'box')+'</div></div>'
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,18,10.5)+(isRead(a.id)?'<span style="font-size:10.5px;color:var(--color-label-alternative);">읽음</span>':'')+'</div>'
     +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:40px;line-height:1.12;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h2>'
-    +'<p style="font-size:17px;line-height:1.7;color:var(--color-label-neutral);margin:0 0 16px;max-width:56ch;">'+e(a.dek)+'</p>'
+    +'<p style="font-size:17px;line-height:1.7;color:var(--color-label-neutral);margin:0 0 14px;max-width:56ch;">'+e(a.dek)+'</p>'
+    + (a.body&&a.body[0]?'<p style="font-size:15px;line-height:1.75;color:var(--color-label-neutral);margin:0 0 16px;max-width:60ch;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.body[0])+'</p>':'')
     +'<div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;color:var(--color-label-alternative);text-transform:uppercase;">'+meta(a)+'</div>'
     +'<div style="margin-top:16px;border-left:2px solid var(--color-primary-normal);padding-left:12px;"><span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--color-primary-normal);">병원 블로그 글감</span><p style="margin:4px 0 0;font-size:13.5px;line-height:1.55;color:var(--color-label-neutral);">'+e(a.blog)+'</p></div>'
     +'</article>';
@@ -301,7 +309,7 @@ const APP_JS = String.raw`
   }
   function bandCard(a){
     return '<article class="vm-card'+readCls(a.id)+'" data-open="'+a.id+'" style="background:var(--color-background-normal);padding:24px 22px 26px;display:flex;flex-direction:column;cursor:pointer;">'
-    +'<div style="height:112px;border-radius:4px;overflow:hidden;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);display:flex;align-items:flex-end;padding:12px;margin-bottom:14px;position:relative;">'+plateImg(a)+'<span style="position:relative;font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--color-primary-heavy);">'+e(a.plate)+'</span><div style="position:absolute;top:8px;right:8px;">'+bookmarkBtn(a.id,15,'box')+'</div></div>'
+    +'<div style="height:112px;border-radius:4px;overflow:hidden;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);margin-bottom:14px;position:relative;">'+plate(a,{big:15,pad:12})+'<div style="position:absolute;top:8px;right:8px;z-index:2;">'+bookmarkBtn(a.id,15,'box')+'</div></div>'
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'
     +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:19px;line-height:1.32;font-weight:700;letter-spacing:-.015em;margin:0 0 10px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
     +'<p style="font-size:13.5px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 10px;">'+e(a.dek)+'</p>'
@@ -311,7 +319,7 @@ const APP_JS = String.raw`
   function rowCard(a){
     var ideaBtn = '<button data-idea="'+a.id+'" title="글감 담기" style="flex:none;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:9px;cursor:pointer;color:'+(isIdea(a.id)?'var(--color-primary-normal)':'var(--color-label-assistive)')+';">'+IDEA.replace(/W/g,16)+'</button>';
     return '<article class="vm-row'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--color-line-normal);cursor:pointer;">'
-    +'<div style="flex:none;width:128px;height:96px;border-radius:4px;overflow:hidden;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);display:flex;align-items:center;justify-content:center;padding:8px;text-align:center;position:relative;">'+plateImg(a)+'<span style="position:relative;font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-primary-heavy);line-height:1.15;">'+e(a.plate)+'</span></div>'
+    +'<div style="flex:none;width:128px;height:96px;border-radius:4px;overflow:hidden;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);position:relative;">'+plate(a,{big:13,pad:8,center:true})+'</div>'
     +'<div style="flex:1;min-width:0;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'
     +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:22px;line-height:1.3;font-weight:700;letter-spacing:-.017em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
     +'<p style="font-size:14.5px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 8px;max-width:70ch;">'+e(a.dek)+'</p>'
@@ -409,7 +417,7 @@ const APP_JS = String.raw`
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,17,10)+'</div>'
     +'<h1 style="font-family:var(--font-display);font-size:calc(34px*var(--fs));line-height:1.2;font-weight:800;letter-spacing:-.028em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h1>'
     +'<div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);padding-bottom:20px;border-bottom:1px solid var(--color-line-normal);">'+meta(a)+'</div>'
-    +'<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);display:flex;flex-direction:column;justify-content:space-between;padding:20px;">'+img+'<span style="position:relative;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-heavy);">출처 이미지</span><span style="position:relative;font-family:var(--font-display);font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--color-primary-heavy);">'+e(a.plate)+'</span></div>'
+    +'<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plate(a,{label:true,big:26,pad:20})+'</div>'
     +'<p style="font-size:calc(17px*var(--fs));line-height:1.75;color:var(--color-label-normal);margin:0 0 18px;font-weight:500;">'+e(a.dek)+'</p>'
     +body
     +'<div style="margin:26px 0 4px;padding:16px 18px;background:var(--color-background-alternative);border-radius:12px;"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">원문 출처</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;"><div style="font-size:14px;color:var(--color-label-neutral);"><b style="color:var(--color-label-strong);font-weight:700;">'+e(a.source)+'</b>'+(a.country?' · '+e(a.country):'')+(a.date?' · '+e(a.date):'')+'</div><a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener nofollow" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">원문 사이트로 이동 '+EXT+'</a></div><p style="margin:10px 0 0;font-size:11.5px;line-height:1.5;color:var(--color-label-alternative);">해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></div>'
