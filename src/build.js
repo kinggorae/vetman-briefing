@@ -14,6 +14,7 @@ const CATEGORY_LABELS = {
   career: "커리어",
   client_communication: "보호자 소통",
   industry: "업계",
+  watercooler: "진료실 밖 이야기",
   other: "기타",
 };
 const CAT_ORDER = ["research", "clinical", "practice_management", "client_communication", "career", "industry", "other"];
@@ -77,12 +78,16 @@ function toArticle(item, i, issueDate) {
     blog: item.angleKo || "",
     blogAngle: item.keyPointsKo?.length ? item.keyPointsKo : [],
     radar: item.radar || null,
+    tag: item.tagKo || "",
   };
 }
 
 function buildIssueData(issue) {
   const date = labelOf(issue);
-  const articles = issue.items.map((it, i) => toArticle(it, i, date));
+  const all = issue.items.map((it, i) => toArticle(it, i, date));
+  // 신뢰 뉴스 그리드와 "진료실 밖 이야기"(가십) 분리
+  const articles = all.filter((a) => a.cat !== "watercooler");
+  const stories = all.filter((a) => a.cat === "watercooler");
   const cats = CAT_ORDER.filter((c) => articles.some((a) => a.cat === c)).map((c) => ({ key: c, label: CATEGORY_LABELS[c] }));
   if (issue.weekly) {
     return {
@@ -93,6 +98,7 @@ function buildIssueData(issue) {
       count: articles.length,
       cats,
       articles,
+      stories,
       weekly: true,
     };
   }
@@ -107,6 +113,7 @@ function buildIssueData(issue) {
     count: articles.length,
     cats,
     articles,
+    stories,
   };
 }
 
@@ -233,7 +240,7 @@ const APP_JS = String.raw`
 (function(){
   var DATA = JSON.parse(document.getElementById('vm-issue').textContent);
   var byId = {};
-  function indexDay(){ byId={}; DATA.articles.forEach(function(a){ byId[a.id]=a; }); }
+  function indexDay(){ byId={}; DATA.articles.concat(DATA.stories||[]).forEach(function(a){ byId[a.id]=a; }); }
   indexDay();
   var LS={saved:'vm_saved',ideas:'vm_ideas',read:'vm_read',theme:'vm_theme',fs:'vm_fs'};
   function load(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }
@@ -277,6 +284,8 @@ const APP_JS = String.raw`
   function contextList(){
     if(S.view==='saved') return Object.keys(S.saved).map(function(k){return S.saved[k];});
     if(S.view==='ideas') return Object.keys(S.ideas).map(function(k){return S.ideas[k];});
+    var cur=byId[S.openId];
+    if(cur&&cur.cat==='watercooler') return (DATA.stories||[]); // 진료실 밖 이야기끼리 연속 읽기
     return activeList();
   }
 
@@ -403,6 +412,23 @@ const APP_JS = String.raw`
     +'<div class="vm-qa-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0 44px;">'+items+'</div></div>';
   }
 
+  // "진료실 밖 이야기" — 네이트판식 화제글 보드(신뢰 뉴스와 분리, 캐주얼)
+  function storyBoard(){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    var list=DATA.stories||[]; if(!list.length) return '';
+    var rows=list.map(function(a,i){
+      return '<div class="vm-story'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:14px;align-items:baseline;padding:14px 2px;border-top:1px solid var(--color-line-normal);cursor:pointer;">'
+      +'<span style="flex:none;width:20px;font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--color-label-assistive);text-align:center;">'+(i+1)+'</span>'
+      +'<div style="min-width:0;flex:1;">'
+      +'<div class="vm-hl" style="font-size:15.5px;font-weight:700;line-height:1.45;color:var(--color-label-strong);text-wrap:pretty;">'+(a.tag?'<span style="color:var(--color-primary-normal);font-weight:800;">['+e(a.tag)+']</span> ':'')+e(a.title)+'</div>'
+      +'<div style="margin-top:4px;font-size:11.5px;color:var(--color-label-alternative);">'+[a.source,a.country].filter(Boolean).map(e).join(' · ')+'</div>'
+      +'</div><span style="flex:none;color:var(--color-label-assistive);align-self:center;">'+ARR+'</span></div>';
+    }).join('');
+    return '<div style="margin-top:32px;padding:22px 24px 24px;background:var(--color-background-alternative);border-radius:16px;">'
+    +'<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:2px;"><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">진료실 밖 이야기</span><span style="font-size:12.5px;color:var(--color-label-alternative);">해외에서 화제가 된 반려동물·병원 썰</span></div>'
+    +'<div>'+rows+'</div></div>';
+  }
+
   function homeView(){
     var arr=activeList();
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
@@ -418,6 +444,7 @@ const APP_JS = String.raw`
       if(more>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+more+'건 더 보기</button></div>'; }
     }
     h+=qaColumn(arr);
+    h+=storyBoard();
     return h+'</div>';
   }
   function listView(items,emptyT,emptyH){
@@ -486,7 +513,7 @@ const APP_JS = String.raw`
     +'</div></div>'
     // body
     +'<div class="vm-detail-body" id="vm-db" style="overflow-y:auto;padding:30px 44px 20px;">'
-    +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,17,10)+'</div>'
+    +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+(a.tag?'<span style="font-size:11px;font-weight:800;color:var(--color-primary-normal);">['+e(a.tag)+']</span>':'')+tag(a.isToday,17,10)+'</div>'
     +'<h1 style="font-family:var(--font-display);font-size:calc(34px*var(--fs));line-height:1.2;font-weight:800;letter-spacing:-.028em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h1>'
     +'<div style="padding-bottom:20px;border-bottom:1px solid var(--color-line-normal);"><div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+meta(a)+'</div>'+evLine(a)+'</div>'
     +'<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plate(a,{label:true,big:26,pad:20})+'</div>'

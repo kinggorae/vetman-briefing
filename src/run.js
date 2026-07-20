@@ -11,6 +11,7 @@ import { fetchPubmed } from "./pubmed.js";
 import { searchRedditSignals } from "./websearch.js";
 import { IS_COMPAT } from "./llm.js";
 import { enrichItems } from "./enrich.js";
+import { addStories } from "./gossip.js";
 
 const noPapers = process.argv.includes("--no-papers");
 const papersOnly = process.argv.includes("--papers-only"); // 오늘 이슈에 논문만 추가 병합
@@ -252,6 +253,14 @@ async function main() {
     await enrichItems(items);
   } catch (err) {
     console.error(`  레이더 생성 실패, 건너뜀: ${err.message}`);
+  }
+
+  // ── 진료실 밖 이야기(가십·화제성 썰) — 신뢰 뉴스와 분리된 별도 섹션 ──
+  try {
+    console.log("+ 진료실 밖 이야기(가십) 수집·생성 중...");
+    await addStories(items, seen);
+  } catch (err) {
+    console.error(`  진료실 밖 이야기 생성 실패, 건너뜀: ${err.message}`);
   }
 
   const label = dateLabel();

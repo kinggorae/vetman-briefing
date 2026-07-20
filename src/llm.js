@@ -32,7 +32,7 @@ export function extractJson(text) {
 }
 
 // schema를 따르는 JSON 객체를 반환하는 단일 호출
-export async function jsonCall({ system, user, schema, maxTokens = 16000 }) {
+export async function jsonCall({ system, user, schema, maxTokens = 16000, temperature = 0.3 }) {
   if (!IS_COMPAT) {
     const response = await client.messages.create({
       model: MODEL,
@@ -53,7 +53,7 @@ export async function jsonCall({ system, user, schema, maxTokens = 16000 }) {
     const response = await client.messages.create({
       model: MODEL,
       max_tokens: maxTokens,
-      temperature: 0.3,
+      temperature,
       system:
         system +
         "\n\n출력 형식: 아래 JSON 스키마를 따르는 JSON만 출력하세요. 설명·서문·코드블록 표시 없이 JSON 자체만 출력합니다.\n" +

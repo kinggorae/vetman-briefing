@@ -163,6 +163,7 @@ export async function radarFor(item, attempt = 1) {
 export async function enrichItems(items, { force = false } = {}) {
   let done = 0;
   for (const it of items) {
+    if (it.category === "watercooler") continue; // 진료실 밖 이야기(가십)는 레이더 없음
     if (it.radar && !force) continue;
     try {
       it.radar = await radarFor(it);
@@ -207,7 +208,7 @@ async function main() {
 
 // 직접 실행 시에만 CLI 동작 (import 시엔 함수만 노출)
 // pathToFileURL로 비교 — 경로에 공백이 있으면 단순 문자열 접합은 인코딩 불일치로 실패한다.
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main().catch((e) => {
     console.error(e);
     process.exit(1);

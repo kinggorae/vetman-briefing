@@ -171,4 +171,109 @@ async function generatePaper(post, attempt = 1, prevFeedback = null) {
   };
 }
 
-export { generatePaper };
+// ── "진료실 밖 이야기" (가십·화제성 썰) 전용 생성 ──
+const STORY_SCHEMA = {
+  type: "object",
+  properties: {
+    titleKo: { type: "string" },
+    leadKo: { type: "string" },
+    bodyKo: { type: "array", items: { type: "string" } },
+    tagKo: { type: "string" },
+  },
+  required: ["titleKo", "leadKo", "bodyKo", "tagKo"],
+  additionalProperties: false,
+};
+
+// 썰 전용 화이트리스트 오염 감지: 한글·영문·숫자·공백·일반 문장부호만 허용.
+// 한자·가나·키릴·벵골·전각기호(、。) 등 그 외 문자는 전부 오염으로 본다(범위 나열보다 견고).
+const STORY_OK = /[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9\s.,!?%&()/\-:;'"’‘“”…·~$@#\n\t]/;
+function storyBadChars(item) {
+  const t = [item.titleKo, item.leadKo, ...(item.bodyKo || [])].join(" ");
+  return [...t].filter((ch) => ch.trim() && !STORY_OK.test(ch));
+}
+function storyContam(item) {
+  const bad = storyBadChars(item);
+  return bad.length ? [...new Set(bad)].join("") : null;
+}
+// 최종 안전망: 허용 외 문자는 공백으로(한글 붙음 방지) → 다중 공백 정리.
+const stripStory = (s) =>
+  [...String(s == null ? "" : s)]
+    .map((ch) => (STORY_OK.test(ch) || !ch.trim() ? ch : " "))
+    .join("")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+([,.?!·~…)])/g, "$1")
+    .trim();
+
+async function generateStory(post, attempt = 1, prevFeedback = null) {
+  const content = post.fullText || post.body || post.title;
+  const item = await jsonCall({
+    temperature: 0.2, // 다국어 모델 언어 혼입 억제
+    system: [
+      "당신은 한국 반려동물·수의 화제글 코너의 에디터입니다.",
+      "해외에서 화제가 된 반려동물·동물병원 이야기(가십·감동·황당·반전) 하나를, 한국 독자가 재미있게 볼 수 있는 짧고 가벼운 글로 각색합니다.",
+      "",
+      "작성 규칙:",
+      "- titleKo: 클릭하고 싶은 제목. 약간의 호기심 자극은 허용하되 거짓·과장 금지. 이모지·해시태그 없이. 45자 이내.",
+      "- leadKo: 한 줄 요약. 가볍게.",
+      "- bodyKo: 문단 2개. 편하고 친근한 존댓말(해요체)로 이야기를 풀되, 사실을 왜곡하지 마세요. 각 3~4문장. 마지막에 '진료실 밖에서 보면 이런 일도 있네요' 같은 가벼운 공감 한 마디.",
+      "- tagKo: 이 글의 결을 한 단어로. 다음 중 하나만: 충격 / 반전 / 훈훈 / 웃김 / 황당 / 논란 / 감동.",
+      "- 의학 정보를 단정적으로 옮기지 말고(참고 수준), 특정인 비방·혐오·선정성은 금지.",
+      "- 【매우 중요】 모든 글자는 반드시 한글. 한자(中文)·일본어 가나·키릴 문자를 단 한 글자도 쓰지 마세요. 영어는 인명·기관명·통화($) 정도만 허용하고 일반 단어는 전부 한글로.",
+    ].join("\n"),
+    user: [
+      `출처: ${post.sourceLabel}`,
+      `원제: ${post.title}`,
+      ``,
+      `내용:\n${content}`,
+      prevFeedback ? `\n⚠️ 이전 시도에서 외국 문자("${prevFeedback}")가 섞여 반려되었습니다. 이번엔 한글만 쓰세요.` : "",
+    ].join("\n"),
+    schema: STORY_SCHEMA,
+  });
+
+  let foreign = storyContam(item);
+  if (foreign && attempt < 4) {
+    console.warn(`  ↻ 외국어 혼입("${foreign.slice(0, 24)}") — 재생성 ${attempt}/3`);
+    return generateStory(post, attempt + 1, foreign);
+  }
+  let needsReview = false;
+  if (foreign) {
+    // 교정 패스 시도
+    try {
+      const fixed = await fixKorean(item, foreign);
+      Object.assign(item, fixed);
+    } catch {}
+    foreign = storyContam(item);
+    if (foreign) {
+      // 품질 게이트: 교정 후에도 오염 문자가 많이 남으면(strip 시 뜻 손상) 드롭.
+      const bad = storyBadChars(item).length;
+      if (bad > 5) {
+        needsReview = true;
+        console.warn(`  ⚠ 품질 게이트 탈락(오염 ${bad}자 잔존: ${foreign.slice(0, 20)}) — 제외`);
+      } else {
+        item.titleKo = stripStory(item.titleKo);
+        item.leadKo = stripStory(item.leadKo);
+        item.bodyKo = (item.bodyKo || []).map(stripStory).filter(Boolean);
+      }
+    }
+  }
+
+  return {
+    ...(needsReview ? { needsReview: true } : {}),
+    ...item,
+    keyPointsKo: [],
+    angleKo: "", // 가십 섹션은 블로그 글감 없음
+    sourceType: "story",
+    sourceLabel: post.sourceLabel,
+    upvotes: null,
+    numComments: null,
+    category: "watercooler",
+    relevance: post.relevance ?? 5,
+    imageUrl: post.imageUrl ?? null,
+    sourceUrl: post.finalUrl || post.url,
+    sourceTitle: post.title,
+    publishedAt: post.publishedAt ?? null,
+    tagKo: item.tagKo || "",
+  };
+}
+
+export { generatePaper, generateStory };

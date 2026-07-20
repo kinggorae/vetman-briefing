@@ -70,6 +70,30 @@ const GNEWS_FEEDS = GNEWS_TOPICS.map((q) => ({
 export const FEEDS = [...DIRECT_FEEDS, ...GNEWS_FEEDS];
 export const FEED_MAX_AGE_DAYS = 10; // maxAgeDays 미지정 피드의 기본 수집 기간
 
+// ── "진료실 밖 이야기" (가십·화제성 썰) ──
+// 레딧이 전 경로에서 차단돼, 레딧·틱톡발 화제글을 기사화하는 매체를 구글 뉴스로 우회 수집한다.
+// 신뢰 있는 뉴스 그리드와 섞지 않고 별도 섹션(네이트판식 캐주얼 톤)으로만 노출한다.
+const GOSSIP_TOPICS = [
+  'veterinarian OR "vet clinic" viral OR shocking OR unbelievable',
+  '"vet tech" OR veterinary funny OR drama OR "gone viral"',
+  "pet owner vet visit surprising OR emotional OR unexpected OR bill",
+  "dog OR cat rescue OR reunion OR miracle veterinary heartwarming",
+  '"vet life" OR "veterinary clinic" behind the scenes OR confession',
+  "cat OR dog viral vet OR clinic story reddit OR tiktok",
+  "unusual OR strange OR rare animal vet case OR treatment",
+  "puppy OR kitten OR pet emergency vet dramatic OR surprising",
+  "pet insurance OR vet bill shocking OR expensive OR viral",
+  "animal shelter OR rescue viral heartwarming OR reunion",
+];
+export const GOSSIP_FEEDS = GOSSIP_TOPICS.map((q) => ({
+  name: "Google News",
+  type: "gnews",
+  max: 12,
+  maxAgeDays: 30, // 화제글은 꼬리가 길다 — 넓게 잡고 seen으로 중복만 방지
+  url: `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-US&gl=US&ceid=US:en`,
+}));
+export const GOSSIP_PER_ISSUE = 5; // 이슈당 "진료실 밖 이야기" 최종 수
+
 // ── Plan B (보조): Claude 웹 검색으로 레딧 커뮤니티 시그널 수집 ──
 export const WEBSEARCH_SUBREDDITS = ["Veterinary", "VetTech", "AskVet"];
 
