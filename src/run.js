@@ -241,14 +241,7 @@ async function main() {
 
   const label = dateLabel();
   // 자동 발행 시 검수 필요 표시가 남은 아이템은 제외
-  const finalItems = autoPublish ? items.filter((it) => !it.needsReview) : items;
-  const issue = {
-    date: label,
-    status: autoPublish ? "published" : "draft",
-    generatedAt: new Date().toISOString(),
-    ...(autoPublish ? { publishedAt: new Date().toISOString() } : {}),
-    items: finalItems,
-  };
+  const newItems = autoPublish ? items.filter((it) => !it.needsReview) : items;
   const out = path.join(
     ROOT,
     "data",
@@ -256,13 +249,35 @@ async function main() {
     autoPublish ? `${label}.json` : `${label}.draft.json`
   );
   fs.mkdirSync(path.dirname(out), { recursive: true });
+
+  // 같은 날짜 이슈가 이미 있으면 덮어쓰지 말고 병합(기존 유지 + 신규 비중복 추가).
+  // 하루에 여러 번 실행되어도 기존 발행분이 사라지지 않도록 방어한다.
+  let issue;
+  if (fs.existsSync(out)) {
+    issue = JSON.parse(fs.readFileSync(out, "utf8"));
+    const existingUrls = new Set((issue.items || []).map((it) => it.sourceUrl));
+    const added = newItems.filter((it) => !existingUrls.has(it.sourceUrl));
+    issue.items = [...(issue.items || []), ...added];
+    issue.generatedAt = new Date().toISOString();
+    if (autoPublish) issue.status = "published";
+    issue.items.sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0));
+    console.log(`  기존 이슈 병합: 기존 ${existingUrls.size}건 + 신규 ${added.length}건 = ${issue.items.length}건`);
+  } else {
+    issue = {
+      date: label,
+      status: autoPublish ? "published" : "draft",
+      generatedAt: new Date().toISOString(),
+      ...(autoPublish ? { publishedAt: new Date().toISOString() } : {}),
+      items: newItems,
+    };
+  }
   fs.writeFileSync(out, JSON.stringify(issue, null, 2));
 
   // 소개한 글을 seen 저장소에 기록 (다음 실행에서 중복 방지)
-  for (const it of finalItems) seen.add(it.sourceUrl);
+  for (const it of newItems) seen.add(it.sourceUrl);
   saveSeen(seen);
 
-  console.log(`4/4 완료 — ${autoPublish ? "발행" : "draft 저장"}: ${out}`);
+  console.log(`4/4 완료 — ${autoPublish ? "발행" : "draft 저장"}: ${out} (총 ${issue.items.length}건)`);
 }
 
 main().catch((err) => {
