@@ -10,6 +10,7 @@ import { fetchArticleMeta } from "./article.js";
 import { fetchPubmed } from "./pubmed.js";
 import { searchRedditSignals } from "./websearch.js";
 import { IS_COMPAT } from "./llm.js";
+import { enrichItems } from "./enrich.js";
 
 const noPapers = process.argv.includes("--no-papers");
 const papersOnly = process.argv.includes("--papers-only"); // 오늘 이슈에 논문만 추가 병합
@@ -144,6 +145,11 @@ async function papersOnlyRun() {
       console.error(`  ✗ ${err.message}`);
     }
   }
+  try {
+    await enrichItems(issue.items); // radar 없는 항목만 채움
+  } catch (err) {
+    console.error(`  레이더 생성 실패, 건너뜀: ${err.message}`);
+  }
   fs.mkdirSync(path.dirname(issuePath), { recursive: true });
   fs.writeFileSync(issuePath, JSON.stringify(issue, null, 2));
   saveSeen(seen);
@@ -237,6 +243,15 @@ async function main() {
     } catch (err) {
       console.error(`  최신 연구 수집 실패, 건너뜀: ${err.message}`);
     }
+  }
+
+  // ── 레이더(조기경보): 보호자·진료 레이더 + 논문 근거등급 ──
+  // 다른 수의 매체가 주지 않는 실행형 인텔리전스. 실패해도 발행은 계속한다.
+  try {
+    console.log("+ 레이더(보호자·진료·근거) 생성 중...");
+    await enrichItems(items);
+  } catch (err) {
+    console.error(`  레이더 생성 실패, 건너뜀: ${err.message}`);
   }
 
   const label = dateLabel();

@@ -28,7 +28,16 @@
       "imageUrl": "https://www.veterinarypracticenews.com/wp-content/uploads/2026/07/palliative-care-pain.jpg",
       "sourceUrl": "https://www.veterinarypracticenews.com/palliative-approaches-chronic-pain/",
       "sourceTitle": "Palliative approaches to chronic pain",
-      "publishedAt": "2026-07-10T07:00:24.000Z"
+      "publishedAt": "2026-07-10T07:00:24.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "노령 강아지 관절염 있는데, 약물 외에 통증 조절에 좋은 방법은 없나요?",
+          "script": "관절염은 노령 동물에서 완치가 어려운 흔한 질환입니다. 약물 치료뿐만 아니라 레이저나 펄스 전자기장 같은 보습 치료, 그리고 짧은 산책이나 수중 트레드밀 같은 적절한 운동도 통증 조절에 도움을 드릴 수 있습니다. 각 동물의 상태에 맞게 조합해서 조절해 보겠습니다."
+        },
+        "clinical": "고령 관절염 환자에게 NSAID 기본 처방 외에 비약물 치료(레이저, 펄스 전자기장, 수중 트레드밀) 옵션 상담 및 처방 고려",
+        "evidence": null
+      }
     },
     {
       "titleKo": "가바펜틴·트라조돈 말고: 진정 프로토콜이 안 먹힐 때",
@@ -54,7 +63,12 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/cos-408-blog-pic.jpg",
       "sourceUrl": "https://drandyroark.com/when-the-chill-protocol-isnt-chilling/",
       "sourceTitle": "Beyond Trazodone: When the \"Chill Protocol\" Isn’t Chilling",
-      "publishedAt": "2026-07-16T04:00:00.000Z"
+      "publishedAt": "2026-07-16T04:00:00.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "불안 동반 환자에서 가바펜틴/트라조돈 효과 없을 때 클로니딘, 벤조디아제핀, 덱스메데토미딘 등 대안적 약물 도입을 고려하되, 진정만 되고 불안이 남아있는지는 반드시 재평가할 것",
+        "evidence": null
+      }
     },
     {
       "titleKo": "중고도 공포·불안 강아지의 수의과 진료실 대처법",
@@ -80,7 +94,16 @@
       "imageUrl": "https://vetgirlontherun.com/wp-content/uploads/2026/07/Handling-techniques-for-Dogs-with-for-Moderate-to-High-Levels-of-Fear-Anxiety-or-Stress.png",
       "sourceUrl": "https://vetgirlontherun.com/handling-techniques-for-dogs-with-moderate-to-high-levels-of-fear-anxiety-or-stress-vetgirl-veterinary-continuing-education-blogs/",
       "sourceTitle": "Handling techniques for Dogs with Moderate to High Levels of Fear, Anxiety, or Stress",
-      "publishedAt": "2026-07-17T10:00:56.000Z"
+      "publishedAt": "2026-07-17T10:00:56.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 수의사 가면 너무 무서워해하는데, 어떻게 해야 스트레스 없는 진료가 가능할까요?",
+          "script": "강아지가 진료실을 무서워하는 것은해요. 단, 스트레스 핸들링 기법과 전처방 약물을 적절히 병행하면 점진적으로 스트레스를 줄일 수 있습니다. 처음에는 간단한 예방접종부터 시작해서 긍정적 경험을 쌓어나가는 것이 중요합니다."
+        },
+        "clinical": "진료실에 도입되는 강아지에 대해 5~8분 적응 시간을 확보하고, 저스트레스 핸들링 프로토콜과 필요시 전처방 약물 사용을 점검한다.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "고양이 당뇨병 관리의 새로운 선택지, SGLT2 억제제",
@@ -106,7 +129,16 @@
       "imageUrl": "https://vetgirlontherun.com/wp-content/uploads/2026/07/CGM.jpg",
       "sourceUrl": "https://vetgirlontherun.com/whats-new-in-diabetes-management-vetgirl-veterinary-continuing-education-blogs/",
       "sourceTitle": "What’s New in Diabetes Management",
-      "publishedAt": "2026-07-10T10:00:08.000Z"
+      "publishedAt": "2026-07-10T10:00:08.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "새로운 당뇨병 약이 있다던데, 우리 고양이도 쓸 수 있어요?",
+          "script": "SGLT2 억제제는 효과가 있지만 모든 고양이에 다 적합하지 않습니다. 고양이가 아직 인슐린을 스스로 만들고 있는지 확인하고, 케톤 수치를 잘 모니터링해야 합니다. 정확한 건 진료에서 혈액 검사와 경과 관찰을 해봐야 알 수 있습니다."
+        },
+        "clinical": "고양이 당뇨병 환자에게 SGLT2 억제제 치료를 고려하기 전, 인슐린 생산 능력 평가와 함께 케톤 모니터링 프로토콜을 수립하고 를 통한 혈당 조절 평가 일정을 계획한다.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개의 관절염, 치료적 운동으로 관절 가동성과 근육량 개선",
@@ -132,7 +164,16 @@
       "imageUrl": "https://ivcjournal.com/wp-content/uploads/Gemini_Generated_Image_fozjorfozjorfozj-1-600x352.png",
       "sourceUrl": "https://ivcjournal.com/structured-therapeutic-exercise-significantly-improves-joint-mobility-and-muscle-mass-in-dogs/",
       "sourceTitle": "Structured Therapeutic Exercise Significantly Improves Joint Mobility and Muscle Mass in Dogs",
-      "publishedAt": "2026-07-17T18:00:56.000Z"
+      "publishedAt": "2026-07-17T18:00:56.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "관절염 진단받았는데, 집에서 어떤 운동을 해야 통증도 줄고 관절도 좋아질 수 있나요?",
+          "script": "최근 연구에서 치료적 운동이 관절염 환 개의 관절 가동성과 근육량 개선에 도움이 될 수 있다는 근거가 나왔습니다. 다만 개마다 증상과 상태가 다르니, 어떤 운동이 적합한지 직접 상담해서 맞는 프로그램을 시작하시는 게 좋습니다."
+        },
+        "clinical": "관절염 환자 개 진료 시 약물 처방뿐 아니라 운동 처방도 함께 고려하고, 필요시 물리치료실과의 협업 가능성을 점검",
+        "evidence": null
+      }
     },
     {
       "titleKo": "애완동물 병원 방문 시 AI가 실제로 하는 일 — AVMA 회장 인터뷰",
@@ -158,7 +199,16 @@
       "imageUrl": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300-rw",
       "sourceUrl": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOTUNMLXpUWE9XbW9KM3NQeS1pSG96cEpjeEpEeVI4bE5GTmRwLWptOHVOT3hnZFhtUW83YWREZnp5YS1nSzlmOW05ekVUMXJJYVE5RjZpRmlHcU84LW9sM1RsWkx3YW9DdF9EM1o1aDFwV1h0SjhaY2dmclM4MkhTNTNUc2oxcWpyN2JFMnZlVkNTRnNIQ3FjQktFNGY2dlNkYTBnMTJpckNJSUhuU0FydzhlcUZkMWthT2lDQkJ4dlo2V1RaNkxFdVhhRVdxV3kyRjhtd0lZWXUtUQ?oc=5",
       "sourceTitle": "What AI is really doing at your pet's next vet visit, according to the AVMA's president",
-      "publishedAt": "2026-07-18T21:14:56.000Z"
+      "publishedAt": "2026-07-18T21:14:56.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "선생님, 우리 강아지 진료할 때 AI도 사용하세요?",
+          "script": "네, 많은 동물병원에서 AI를 도우미 도구로 활용하고 있어요. X-나 혈액 검사 결과를 먼저 선별검사해서 보여주거나, 비정상 소견을 강조해줍니다. 하지만 최종 진단과 치료 계획은 반드시 수의사가 직접 확인하고 결정합니다. AI는 단순히 도우미 역할일 뿐이에요."
+        },
+        "clinical": "자가 진료실 AI 활용 현황 점검, 보호자에게 AI 보조 진단 결과를 설명하는 프로토콜 수립",
+        "evidence": null
+      }
     },
     {
       "titleKo": "수의 진료에서 수술 후 호흡 억제 및 폐합병증: 문헌 고찰",
@@ -184,7 +234,16 @@
       "imageUrl": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300-rw",
       "sourceUrl": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxOR3B5UVVFeHFXcVFfWUhLX3VYcnVTQks4Q1ZnZVlnS09yY0I0ZzJiRDJBOVczWEwtVVJmQUNuZ2xORzNQa0FIZ2FlRkpteWJkRmR5dlU5Z1locEFkMjBvOFBvTlgyLXJyalNVYkJMRm8wazVaNGtycmR1dGplVnR2Zi1QTjhJZDZzZ3RBS2ZYczBFbVI3RUtSOEUyaHhIMXlQaWpsei01ZVZPeU9Pcl9tMjl3aWdPd1hPckVFTkdrTGgtbHlhNXJuVVF6dzhRSG8ya1NFOEpiSWRDSVN5QTl0THVERHFSbzlKRmkzdW9wbk5hTFZJYzZFeQ?oc=5",
       "sourceTitle": "Postoperative Respiratory Depression and Other Postoperative Pulmonary Complications in Veterinary Practice: A Narrative Review",
-      "publishedAt": "2026-07-17T16:58:28.000Z"
+      "publishedAt": "2026-07-17T16:58:28.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 수술하고 나니 숨쉬는 게 좀 느리고 얕은데 괜찮은가요?",
+          "script": "마취 뒤 숨쉬는 게 평소보다 느려 보이실 수 있는데, 이런 호흡 억제는 마취 약물의 영향으로 흔히 생기는 일시적인 현상입니다. 특히 고령이거나 코가 짧은 품종, 비만인 경우 더 주의를 해야 하므로, 회복실에서 몰빵하면서 계속 살펴보고 있어요."
+        },
+        "clinical": "고위험 환자(고령, 비만, 브라케시세팔릭 품종) 마취 전 폐기능 간단 문진 점검하고 회복실 모니터링 프로토콜(산소 포화도, 호흡 수·패턴) 강화 여부 확인",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개에서 쿼럼 센싱 조절제: 세균 신호 차단을 통한 장 건강 관리",
@@ -210,7 +269,16 @@
       "imageUrl": "http://ivcjournal.com/wp-content/uploads/Gemini_Generated_Image_a0enosa0enosa0en-600x366.png",
       "sourceUrl": "https://ivcjournal.com/quorum-sensing-modulators-from-bacterial-signaling-to-gut-health-and-performance/",
       "sourceTitle": "Quorum Sensing Modulators: From Bacterial Signaling to Gut Health and Performance",
-      "publishedAt": "2026-07-16T14:30:09.000Z"
+      "publishedAt": "2026-07-16T14:30:09.000Z",
+      "radar": {
+        "owner": {
+          "soon": false,
+          "q": "이 새로운 장 건강 약이 우리 강아지에게 효과가 있나요?",
+          "script": "현재 이 치료법은 아직 연구 초기 단계여서 개의 임상 적용이 완전히 표준화되지 않았습니다. 아직 충분한 증거가 구축되지 않은 상황이라 신중하게 접근해야 합니다."
+        },
+        "clinical": "개의 장 치료에서 새로운 접근법을 검토할 때 기존 프로바이오틱스, 오메가3 지방산 등 검증된 치료법과 병행 가능성을 평가한다",
+        "evidence": null
+      }
     },
     {
       "titleKo": "노령개 인지기능장애, 영양보충제로 관리한다",
@@ -236,7 +304,16 @@
       "imageUrl": "https://ivcjournal.com/wp-content/uploads/Gemini_Generated_Image_n7kd57n7kd57n7kd-600x327.png",
       "sourceUrl": "https://ivcjournal.com/nutraceutical-protocols-for-canine-cognitive-dysfunction/",
       "sourceTitle": "Nutraceuticals for Canine Cognitive Dysfunction",
-      "publishedAt": "2026-07-15T19:00:47.000Z"
+      "publishedAt": "2026-07-15T19:00:47.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "노령개가 요즘 집 안에서 방향 감각을 잃거나 제 이름을 불러도 그냥 무시하는 것 같아요. 먹이는 뭐가 좋을까요?",
+          "script": "노령개의 인지기능장애는 노화에 따른 뇌 변화가 원인일 수 있습니다. 어류유 보충제와 항산화제가 뇌건강에 도움이 될 수 있다는 연구가 있지만, 효과가 나타나는 속도와 정도는 개마다 다를 수 있습니다. 어느 보충제든 본격적으로 시작하기 전에 반드시 수의사와 상담해서 현재 건강 상태에 맞는 제품을 선택하고 적절한 용량을 확인하는 것이 안전합니다."
+        },
+        "clinical": "노령개 환자 문진 시 인지 기능 저하 징후(방향 감각 상실, 낮/밤 역전, 활동성 저하 등) 체크리스트에 포함시키고, 어류유·항산화제 보충제 권고 가능 여부 점검",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개 microbiome 조절로 항생제 의존도 낮추기",
@@ -263,7 +340,16 @@
       "imageUrl": "https://ivcjournal.com/wp-content/uploads/Gemini_Generated_Image_ndu0lyndu0lyndu0-600x344.png",
       "sourceUrl": "https://ivcjournal.com/gut-microbiome-modulation-in-dogs-to-reduce-antimicrobial-use-and-amr/",
       "sourceTitle": "Gut Microbiome Modulation in Dogs to Reduce Antimicrobial Use and AMR",
-      "publishedAt": "2026-07-10T13:00:59.000Z"
+      "publishedAt": "2026-07-10T13:00:59.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "강아지가 반복 설사를 하는데, 항생제 대신 프로바이오틱스나 식이 요법으로 관리할 수 있나요?",
+          "script": "미생물 균형을 회복하는 식이 관리가 일부 경미한 위장관 문제에 도움이 될 수 있습니다. 다만 항생제가 꼭 필요한 경우도 있고, 각 동물마다 상황이 다르므로 현재 증상과 과거 병력을 자세히 살펴보고 결정해야 합니다. 프로바이오틱스나 식이 요법 도입 전엔 반드시 수의사랑 상담해 주세요."
+        },
+        "clinical": "만성·재발성 위장관 질환 개환자에서 프로바이오틱스·식이 요법 대안 도입 가능성을 진료 시 함께 논의하고, 불필요한 항생제 장기 사용은 점진적으로 줄여나가는 방향 검토",
+        "evidence": null
+      }
     },
     {
       "titleKo": "노령견 전지 보폭 감소, 치매 조기 경고 신호 가능성",
@@ -289,7 +375,16 @@
       "imageUrl": "https://www.vetpracticemag.com.au/wp-content/uploads/2026/07/dog-stride.jpg",
       "sourceUrl": "https://www.vetpracticemag.com.au/shorter-front-leg-strides-can-be-an-early-warning-sign-of-dementia-in-senior-dogs/",
       "sourceTitle": "Shorter front-leg strides can be an early warning sign of dementia in senior dogs",
-      "publishedAt": "2026-07-12T22:43:13.000Z"
+      "publishedAt": "2026-07-12T22:43:13.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지 전지 보폭이 줄어들었는데 이것이 치매 경고 신호일까요?",
+          "script": "전지 보폭 감소가 인지 기능 저하와 연관될 수 있다는 연구 결과가 있습니다. 하지만 보폭 감소가 반드시 치매를 의미하지는 않으며, 노화의 정상적 변화일 수도 있습니다. 정확한 판단을 위해 노령견 전문 검진에서 신경학적 평가와 인지 기능 검사를 받아보시는 것을 권장합니다."
+        },
+        "clinical": "노령견 고객에게 보폭 변화를 문진에 포함시키고, 가능하다면 보행로를 이용한 간단한 보폭 측정 및 기록을 정기 검진에 도입할 것을 검토한다.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "동물 의학에서 DNA 기반 기생충 검사 도입 확대",
@@ -315,7 +410,16 @@
       "imageUrl": null,
       "sourceUrl": "https://bvajournals.onlinelibrary.wiley.com/doi/10.1002/vetr.70997?af=R",
       "sourceTitle": "DNA‐based parasite testing for animals",
-      "publishedAt": "2026-07-17T11:51:27.000Z"
+      "publishedAt": "2026-07-17T11:51:27.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "강아지/고양이 기생충 검사할 때 PCR 검사도 가능한가요?",
+          "script": "PCR 검사는 기존의 현미경 검사보다 미량의 기생충 DNA까지 감지할 수 있어서 더 정확한 진단이 가능합니다. 다만 검사 비용이 더 들고 장비가 필요한 관계서, 병원마다 도입 상황은 다를 수 있어요. 기생충 감염 의심 시 상황에 따라 방법을 결정하시면 됩니다."
+        },
+        "clinical": "기생충 검사 프로토콜에 PCR 도입 가능성 점검 - 기존 현미경 검사에서 발견되지 않았던 미량 감염 확인에 활용 고려",
+        "evidence": null
+      }
     },
     {
       "titleKo": "푸르듀 수의대, 수의사 부족 해결 위한 확장 계획 발표",
@@ -341,7 +445,12 @@
       "imageUrl": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300-rw",
       "sourceUrl": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPMGZBbDJyckpINHR4WEpfLWt2cTBIMHV3M0F6bDA4N016NnpCX0V2dnBGWWhQS0VYdllMQS1BUnVGaTJWeWNsUE9jVXgtUFNHT3VrbGtHS3B6UzZMaUc3NXJWWHNpUE9STmtuOGo5VUNhd29tek9vaENwUDUxRVdVSHNFMTlWQjRZWVN1a1FRaEtTbzh5RTN5R24xQms3SGRfa3IxNzFjZw?oc=5",
       "sourceTitle": "Purdue veterinary college looks at expansion to address vet shortage",
-      "publishedAt": "2026-07-17T18:49:00.000Z"
+      "publishedAt": "2026-07-17T18:49:00.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": null,
+        "evidence": null
+      }
     },
     {
       "titleKo": "반려동물 비만 치료제 개발 진행 중, 하반기 출시 예정",
@@ -367,7 +476,16 @@
       "imageUrl": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300-rw",
       "sourceUrl": "https://news.google.com/rss/articles/CBMifEFVX3lxTFAzS0RWQklHSlFEc1BwTC1Vbm5fOHZzUzlGUzJTcjJGNWNGN1FOWXlxZ243UEZjNGVuQV9EanFfUnRVUXREckVrQUsteEVyY3BiVTJqV3JBQXNQY3hURlV3MDV4Q2l6ZEVtaTc5R1ByWDlrWWx4d25yQWtWTVHSAYIBQVVfeXFMUG80QUhhTmcweGNtRHk1bjZMVlhvVmdpRklMaUljbm8wbXFLWFpWek5BVno2UVc3VDdXQ1MzaFdCcXFCWE92VVpoNXNSbEI3dGh0X1pLcFRiay1JUHd5clN5OVVQMU5qMkFLbHpidUttU3J0OGxIOXJKY0N3bG1EWkZUZw?oc=5",
       "sourceTitle": "Fat cat? Weight-loss drugs may be coming for your overweight pet",
-      "publishedAt": "2026-07-18T05:00:02.000Z"
+      "publishedAt": "2026-07-18T05:00:02.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "비만 약물이 한국에 언제 도입되나요?",
+          "script": "아직 미국에서 개발 중인 약물이라 한국 도입 시기는 아직 정해진 게 없습니다. 국내 도입 전까지는 기존처럼 식이 관리와 운동으로 비만 치료를 진행하게 됩니다. 새 약물 소식이 나오면 그때 다시 알려드릴게요."
+        },
+        "clinical": "비만 문진 시 체중 변화를 그래프로 나타내고, 보호자와 함께 현실적인 체중 감량 목표 설정 여부 점검",
+        "evidence": null
+      }
     },
     {
       "titleKo": "야생동물부터 애완동물까지, 신뢰 기반 의료의 공통 원칙",
@@ -393,7 +511,16 @@
       "imageUrl": "https://www.veterinarypracticenews.com/wp-content/uploads/2026/07/Drs-Penning-and-Bailey-scaled.jpg",
       "sourceUrl": "https://www.veterinarypracticenews.com/wildlife-medicine-companion-animal-care-connection-avma-2026/",
       "sourceTitle": "Wildlife medicine, companion animal care connection discussed at AVMA Convention",
-      "publishedAt": "2026-07-13T17:49:46.000Z"
+      "publishedAt": "2026-07-13T17:49:46.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "강아지를 병원 데려갈 때 너무 불안해하는데, 집에서 미리 준비할 수 있는 방법이 있나요?",
+          "script": "환경 자극 활동이나 음식 퍼즐을 통해 집에서 긍정적으로 노출시켜 보면 도움이 될 수 있습니다. 동물병원에 정기적으로 방문해서 주사나 검사를 무조건 맞추기보다는 먼저 친해지는 시간을 가지는 것도 중요합니다. 보호자가 침착하게 대응하면 동물도 안정을 찾기 쉽습니다."
+        },
+        "clinical": "불안이나 공격성을 보이는 동물에 대한 진찰 시 환경 자극과 긍정적 강화 프로토콜 도입을 점검하고, 보호자와의 협력으로 스트레스 저하 전략을 논의하는 것이 좋습니다.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "반려동물 Enrichment의 모든 것: 5가지 범주로 이해하는 동물 복지",
@@ -419,7 +546,16 @@
       "imageUrl": "https://www.vetpracticemag.com.au/wp-content/uploads/2026/06/pet-enrichment.jpg",
       "sourceUrl": "https://www.vetpracticemag.com.au/the-importance-of-pet-enrichment/",
       "sourceTitle": "The importance of pet enrichment",
-      "publishedAt": "2026-07-12T22:42:38.000Z"
+      "publishedAt": "2026-07-12T22:42:38.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "선생님, 우리 강아지/고양이에게 집에서 어떤 놀이나 환경 자극을 해줄 수 있을까요?",
+          "script": "반려동물의 문제 행동 중 일부는 심리적·환경적 욕구 미충족에서 비롯될 수 있어요. 산책이나 퍼즐 장난감처럼 한두 가지에만 의존하기보다는 사회적, 인지, 신체, 서식지, 감각, 음식까지 다양한 범주의 활동을 골고루 제공하는 것이 좋습니다. 무료 앱에서 종과 에너지 수준에 맞는 맞춤형 아이디어를 얻을 수 있습니다."
+        },
+        "clinical": "진료실 내 입원 동물 환경 조성(고양이 상자 침대, 기니피그 짚 침대 등)과 고양이/강아지 페로몬 확산기 사용 여부를 점검하고, 보호자 상담 시 5가지 환경 자극 범주별 활동 권장 가이드라인을 구축할 것",
+        "evidence": null
+      }
     },
     {
       "titleKo": "수의학 영역 항생제 적정 사용 가이드라인 업데이트",
@@ -445,7 +581,16 @@
       "imageUrl": null,
       "sourceUrl": "https://bvajournals.onlinelibrary.wiley.com/doi/10.1002/vetr.70995?af=R",
       "sourceTitle": "Responsible Antimicrobial Use",
-      "publishedAt": "2026-07-17T11:51:27.000Z"
+      "publishedAt": "2026-07-17T11:51:27.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "선생님, 우리 강아지한테 항생제 그냥 막 쓰시는 건 아닌가요? 성 관련 문제 때문에 불안한데 어떻게 되는 거예요?",
+          "script": "걱정하지 마세요. 요즘에는 항생제 내성을 생각해서 꼭 필요한 경우에만 가장 낮은 효과를 보이는 용량으로 처방하고, 약 효과가 없으면 바로 중단하거나 다른 약으로 바꿉니다. 앞으로는 처방하실 때 더 신중하게 설명해 드릴게요."
+        },
+        "clinical": "병원 내 항생제 처방 프로토콜을 점검하고, 예방적 사용 금지와 MIC 기반 용량 설정 원칙을 반영한 지침을 수립하세요.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개 관절염 약물 다조콕스, 수술 전 진통제로 영국서 신규 허가",
@@ -471,7 +616,16 @@
       "imageUrl": null,
       "sourceUrl": "https://bvajournals.onlinelibrary.wiley.com/doi/10.1002/vetr.70998?af=R",
       "sourceTitle": "New Perioperative Licence for Daxocox",
-      "publishedAt": "2026-07-17T11:51:27.000Z"
+      "publishedAt": "2026-07-17T11:51:27.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 관절염 때문에 다조콕스를 먹고 있는데, 수술할 때 이 약을 계속 사용할 수 있나요?",
+          "script": "다조콕스가 수술 전 진통제로 새로 허가되어서, 관절염이 있는 강아지가 수술받을 때 기존의 약을 이어서 쓸 수 있는 옵션이 생겼습니다. 다만 수술 종류와 동물의 상태를 꼭 확인해야 하므로, 수술 전에 자세히 상담해 보시겠어요?"
+        },
+        "clinical": "관절염 환견의 수술 계획 시 기존 NSAID를 수술 전후로 이어서 사용할 수 있는지 프로토콜을 점검하고, 다조콕스의 수술 전 사용 허가를 하나의 선택지로 검토한다.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "반려동물 보험, 수의사가 말하는 가입 전 필수 체크포인트",
@@ -497,7 +651,16 @@
       "imageUrl": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300-rw",
       "sourceUrl": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPVkdja2JVb1FkR2dMaGxPdWhiUjBDVV8wY09mWDNJT3JhNHRsckk3VW1MRkRwTmpFemhYWmtKckpXR1FqMnRtb2dBTE9peVlTeDdLaEdpOFNpX19xck0tOEh3RHVwODF3TW5KVWg3VHI4anRGNjkzUzlzZTlaMUZOYmQ5UldjVEUwTDg4WXNKNGducFJBU2Vyem8ySVp4SmxETTE2YlhSeGk5VmlQVkRnTjd1Q0VEcV9MOEUtT2dVSnJSeFNHbm1xNm9IZ0l3Uk5IT3ozbTd0VklwcXhOdG1EMXVJM3U1bmNsRUE?oc=5",
       "sourceTitle": "Is pet insurance worth it? A veterinarian explains what every pet owner should know before buying",
-      "publishedAt": "2026-07-17T21:58:20.000Z"
+      "publishedAt": "2026-07-17T21:58:20.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지 보험 들었는데, 이번에 걸린 이 병은 보상 되나요?",
+          "script": "보험마다 보장 범위가 다르고, 특히 종양이나 심장병은 보상 한도가 낮거나 제외된 경우가 많습니다. 정확한 건 가입하신 보험 약관을 확인하시는 게 가장 정확해요."
+        },
+        "clinical": "보험 가입 여부를 묻는 보호자에게 진료 전 보상 가능 여부를 함께 확인하는 상담 프로토콜 점검",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개 벼룩·진드기 예방, 사계절이 중요",
@@ -523,7 +686,16 @@
       "imageUrl": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300-rw",
       "sourceUrl": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNUVlGWDM5X1NMdDgtUnlidUlseHNGWGpHQW1KOWJPZi1WZjJMdndDNXJtMzdLQzIyOEdzekU4b2dUVnhYZG8wOWtYWWxLZjhKVkVTVkJaN094bUpjMmZLUUhIWHdLN2JfX0p4VFB4d18zdEhWUjRCbDRDVTcyUGdIX19lRWpEV2FkVnVxX1J4MEhfS01pQnp5bEhjb295MkdnbEFfOE0xUjE3a2Z1ZkVCVC1VZw?oc=5",
       "sourceTitle": "Veterinarians urge year-round flea and tick prevention for dogs",
-      "publishedAt": "2026-07-18T19:07:18.000Z"
+      "publishedAt": "2026-07-18T19:07:18.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "겨울인데도 우리 강아지한테 벼룩·진드기 예방약을 계속 써야 하는 거예요?",
+          "script": "네, 요즘은 집안이 따뜻해서 겨울에도 벼룩과 진드기가 생존할 수 있어요. 그래서 사계절 내내 예방약을 쓰는 것이 권장되고 있답니다. 어떤 약이 우리 강아지에게 맞는지 수의사와 상의해 보세요."
+        },
+        "clinical": "내외래 방문 시 예방 약 처방과 함께 환경 관리 방법(카페트, 침구 세탁 등)도 함께 안내하는 프로토콜을 점검해 보세요.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "고양이 요로결석의 비수술적 파쇄 치료 가능성",
@@ -551,7 +723,21 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag136",
       "sourceTitle": "Burst wave lithotripsy for the treatment of obstructive ureteroliths in cats.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "고양이 요로결석 수술 없이 치료할 수 있는 방법이 없나요?",
+          "script": "최근 연구에서 초음파로 결석을 파쇄하는 방법이 있긴 한데, 아직 국내에서 널리 도입된 방법은 아니에요. 고양이의 결석 위치와 크기, 전신 상태에 따라 방법이 다르니까, 진찰을 받고 상담해 보시는 게 좋겠습니다."
+        },
+        "clinical": "고양이에서 배변 행동 변화, 배수 감소 등 요로문제 의심 증상이 있으면 신속 내원하도록 보호자에게 안내",
+        "evidence": {
+          "design": "단일군 임상시험",
+          "n": "고양이 11마리 (요관 12개, 결석 17개)",
+          "stars": 2,
+          "note": "대조군이 없고 표본 수가 11마리로 적어 결과의 일반화에 주의가 필요하며, 잔여 결석 파편으로 인한 재치료가 필요한 심각한 이상반응도 발생함"
+        }
+      }
     },
     {
       "titleKo": "수의대병원 개 피부염 다제내성균 유병률 연구",
@@ -579,7 +765,21 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.5326/JAAHA-MS-7554",
       "sourceTitle": "Investigating Multidrug-Resistant Bacteria in Canine Skin Infections at a Veterinary Teaching Hospital.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": {
+          "soon": false,
+          "q": "우리 애가 병원 방문 시 다제내성균에 감염될 위험은 없나요?",
+          "script": "본 연구는 특정 병원 내 다제내성균 유병률을 조사한 것으로, 모든 동물병원에 일반화할 수는 없습니다. 동물병원에서는 항상 감염 관리 프로그램을 운영하고 있으며, 필요한 경우 검사를 통해 적절한 조치를 취합니다."
+        },
+        "clinical": "일차진료과와 신경과에서 다제내성균 검출율이 높으므로, 해당 진료과 환자의 피부 감염 치료 시 배양 검사 시행을 더욱 고려해야 한다.",
+        "evidence": {
+          "design": "단일기관 후향적 분석",
+          "n": "개 416마리, 검체 438건, 균주 647개",
+          "stars": 2,
+          "note": "단일 기관 후향적 분석으로, 표본의 대표성에 한계가 있음을 감안해야 한다."
+        }
+      }
     },
     {
       "titleKo": "고양이 전염성 복막염 치료용 GS-441524 경구현탁액 개발 및 물리화학적 안정성 평가",
@@ -607,7 +807,21 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1002/vms3.71073",
       "sourceTitle": "Development and Physicochemical Stability of an Oral GS-441524 Suspension for Weight-Adjusted Treatment of Feline Infectious Peritonitis.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "GS-441524 경구약을 우리 고양이에게 쓸 수 있어요?",
+          "script": "현재 GS-441524는 한국에서 동물용 의약품으로 승인되지 않았습니다. 해외에서 개인적으로 들여올 경우 품질관리가 어렵고 부작용 발생 시 법적 책임이 불명확합니다. 승인된 치료 대안이 있으시면 그걸 먼저 고려하는 게 좋겠습니다."
+        },
+        "clinical": "국내 승인 FIP 치료제 여부 및 미승인 약물 사용 시 주의사항 점검",
+        "evidence": {
+          "design": "안정성 연구(물리화학적)",
+          "n": "3개 독립 배치",
+          "stars": 2,
+          "note": "물리화학적 안정성만 평가, 약동학 및 임상 성과 미평가, 소규모 표본으로 실제 임상 적용 시 한계 존재"
+        }
+      }
     },
     {
       "titleKo": "안면구조가 짧은 개와 고양이에서 흔한 눈 질환, 종합 분석",
@@ -636,7 +850,21 @@
       "imageUrl": null,
       "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42460135/",
       "sourceTitle": "Ocular disorders in brachycephalic cats and dogs: A clinical study from T&#xfc;rkiye.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "안면이 짧은 강아지/고양이라 정기적으로 눈 검사를 받아야 하나요?",
+          "script": "안면이 짧은 품종은 눈 건강에 문제가 생기기 쉽습니다. 눈물이 많거나 눈이 빨개지는 증상이 있으면 안과 검사를 받으시는 것이 좋습니다."
+        },
+        "clinical": "브라키세팔릭 종 진료 시 STT-1과 형광 염색을 포함한 안과 검사 프로토콜 적용을 점검하고, 고령 동물에서 더 주의 깊게 눈물 분비량을 평가할 것",
+        "evidence": {
+          "design": "단면조사",
+          "n": "개 10마리, 고양이 30마리 (총 40마리)",
+          "stars": 2,
+          "note": "단일 기관 연구로 표본 크기가 작아 결과를 일반화하는 데 주의가 필요함"
+        }
+      }
     },
     {
       "titleKo": "수의학에서 박테리오신의 항생제 대안 가능성 검토",
@@ -664,7 +892,17 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.3390/ijms27135812",
       "sourceTitle": "Bacteriocins in Veterinary Medicine: From Antibiotic Limitations to Targeted Solutions.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": null,
+        "clinical": "다제내성균 감염 환축이 증가하는 상황에서 박테리오신 기반 치료제 개발 동향을 관심을 가지고 추적하되, 현재로는 임상 적용이 제한적이므로 기존 항생제 프로토콜과 감염관리 원칙을 준수하는 것이 중요합니다.",
+        "evidence": {
+          "design": "체계적 문헌고찰",
+          "n": "",
+          "stars": 3,
+          "note": "검토 논문으로 개별 연구의 질과 일관성에 대한 평가가 필요하며, 임상 전 증거가 대부분이므로 실제 동물 임상 효과는 추가 검증이 필요합니다."
+        }
+      }
     },
     {
       "titleKo": "개의 폐활성 담낭염 35례: 임상 양상과 치료 결과",
@@ -692,7 +930,17 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag113",
       "sourceTitle": "Clinical features, diagnostic findings, and outcomes of emphysematous cholecystitis in 35 dogs: a retrospective case series.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": null,
+        "clinical": "개의 담낭 질환 의심 시 간효소 상승 여부와 복부 초음파에서 담낭벽 비후 또는 폐활성 소견 유무 함께 점검",
+        "evidence": {
+          "design": "후향적 다기관 코호트",
+          "n": "개 35마리",
+          "stars": 2,
+          "note": "후향적 연구로 표본 크기가 작고(35마리), 약물치료군과 수술군 간 선택 편향 가능성 있어 결과 해석에 주의 필요"
+        }
+      }
     },
     {
       "titleKo": "개 에틸렌글리콜 중독에서 Lactate Gap의 진단·치료 종결 지표 활용",
@@ -720,7 +968,17 @@
       "imageUrl": null,
       "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42368698/",
       "sourceTitle": "Ethylene glycol intoxication: Use of the lactate gap for diagnosis and to determine length of intermittent hemodialysis treatment.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": null,
+        "clinical": "에틸렌글리콜 중독 의심 시 응급실 보유 분석기에서 측정 가능 여부 점검, 간헐적 혈액투석 치료 시 정상화까지 치료 기간 결정하는 프로토콜 검토",
+        "evidence": {
+          "design": "증례보고",
+          "n": "개 1마리",
+          "stars": 1,
+          "note": "단일 증례 보고로, 분석기 종류에 따라 관찰 여부가 달라질 수 있어 일반화에 주의가 필요합니다."
+        }
+      }
     },
     {
       "titleKo": "개와 고양이 스마트폰 안저 영상 시스템 비교: OQVet 화질 최고",
@@ -748,7 +1006,21 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1111/vop.70210",
       "sourceTitle": "Comparative Evaluation of Smartphone-Based Fundus Imaging Systems in Dogs and Cats.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지 안저 검사할 때 어떤 기기로 해요?",
+          "script": "스마트폰 기반 안저 카메라도 전통적인 전문 안저 카메라 못지 않게 선별검사나 간단한 문서화에 쓸 수 있다는 연구 결과가 있습니다. 구체적인 장비 선택은 검사 목적과 동물의 상태에 따라 수의사가 판단합니다."
+        },
+        "clinical": "자가 진료 환경에서 사용하는 스마트폰 안저 시스템의 화질을 이 연구 결과와 비교하여 점검하고, 필요시 등 고화질 시스템 도입을 검토해 볼 수 있다",
+        "evidence": {
+          "design": "단일기관 전향적 비교 연구",
+          "n": "개 10마리, 고양이 10마리 (총 40안)",
+          "stars": 2,
+          "note": "20마리 소규모 표본이고 후향적 평가로 인한 선택편향 가능, 단일기관 연구여서 일반화에 주의 필요"
+        }
+      }
     },
     {
       "titleKo": "개의 만성 장염, 주인의 돌봄 부담감과 삶의 질에 미치는 영향",
@@ -776,7 +1048,21 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag128",
       "sourceTitle": "Caregiver burden in owners of dogs with chronic enteropathies-a survey-based assessment.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지 장염이 오래되니까 제가 너무 부담되네요, 제가 잘 돌보고 있는 건가요?",
+          "script": "만성 장염을 가진 개를 키우시는 보호자분들은 실제로 상당한 돌봄 부담을 느끼십니다. 치료를 통해 증상이 잘 조절되면 부담도 줄어들 수 있으므로 함께 적극적으로 관리해 보아요."
+        },
+        "clinical": "만성 장염 환양 보호자의 심리적 부담감 문진 항목을 진료 문진에 추가하거나, 진료 과정에서 보호자의 정서적 안녕을 확인하는 시간을 확보하는 것을 검토",
+        "evidence": {
+          "design": "단면조사",
+          "n": "만성 장염 환양 223명, 건강한 개 환양 447명",
+          "stars": 2,
+          "note": "단면 설계와 자기보고 방식이므로 인과관계 파악에 한계가 있으며, 추적 관찰이 필요하다"
+        }
+      }
     },
     {
       "titleKo": "보더테리어의 식이 반응성 전신 호산구증가 1례",
@@ -804,7 +1090,21 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag133",
       "sourceTitle": "Dietary-responsive disseminated eosinophilia in a border terrier.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "강아지가 계속 복통과 설사를 하는데, 식이 알레르기 때문일까요?",
+          "script": "식이 알레르기는 호산구증가와 위장관 증상의 원인 중 하나일 수 있습니다. 표준 검사 후에도 원인이 잘 안 보이면 식이 교체를 진단적 치료 옵션으로 고려해 볼 수 있습니다. 정확한 원인은 추가 검사로 확인해 보아야 합니다."
+        },
+        "clinical": "호산구증가와 위장관 증상을 보이는 개에서 표준 검사 후에도 원인이 불명확할 경우 글루텐 무함유 가수분해 식이 교체를 진단적 치료 옵션으로 고려하고 경과 관찰",
+        "evidence": {
+          "design": "증례보고",
+          "n": "보더테리어 1마리",
+          "stars": 1,
+          "note": "단일 사례보고여서 일반화에 주의가 필요하며, 다른 원인 배제를 위한 표준 검사 누락 여부도 고려해야 함"
+        }
+      }
     },
     {
       "titleKo": "개 췌장 초음파 검사, 관찰자 간 결과 차이 커",
@@ -832,7 +1132,21 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1111/vru.70202",
       "sourceTitle": "Survey on Inter- and Intra-Observer Variations of the Ultrasound Assessment of Dog Pancreases.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "초음파로 우리 강아지 췌장염 제대로 확인할 수 있어요?",
+          "script": "초음파만으로 췌장염을 확실히 판단하기는 어려워요. 검사자마다 영상을 다르게 해석할 수 있어서, 조영 초음파 검사 같은 다른 검사와 함께 종합해서 판단해야 합니다."
+        },
+        "clinical": "췌장 초음파 판독의 주관성을 줄이기 위해 평가 기준을 표준화하고, 필요시 조영 초음파 검사를 보완적으로 활용하는 프로토콜을 점검해야 한다.",
+        "evidence": {
+          "design": "단면조사",
+          "n": "영상 15장, 수의학 전문의 104명",
+          "stars": 2,
+          "note": "단일 기관 후향적 연구로 일반화에 한계가 있으며, 다양한 기관·영상을 포함한 추가 연구가 필요하다."
+        }
+      }
     },
     {
       "titleKo": "강아지·고양이 기생충, 진화하는 위협을 대비하라",
@@ -860,7 +1174,21 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1016/j.pt.2026.05.007",
       "sourceTitle": "Emergent, re-emerging, or just ignored: the many lives of cat and dog parasites.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "최근 해외 여행 다녀왔는데 우리 강아지/고양이 기생충 감염 위험은 없나요?",
+          "script": "해외 여행 후에는 기생충 감염 가능성을 확인하기 위해 변 검사를 해보는 것이 좋습니다. 평소부터 정기적인 구충제 예방도 중요하고, 여행 계획이 있다면 사전에 수의사와 상의해 예방 방법을 상담하세요."
+        },
+        "clinical": "외래 문진 시 여행력 칸을 반드시 확인하고, 해외 여행 후 동물에게서 이상 증상이 있으면 기생충 감별 검사를 포함시키는 진료 프로토콜을 점검하세요.",
+        "evidence": {
+          "design": "체계적 문헌고찰",
+          "n": "",
+          "stars": 1,
+          "note": "표본 수가 제시되지 않은 종합 보고서이며, 근거 수준이 낮아 특정 임상 권고 적용 시 추가 연구 확인이 필요합니다."
+        }
+      }
     },
     {
       "titleKo": "저장용 MRI, 개 뇌 영상에서 기존 1.5T와 유사한 해부학적 시각화 가능",
@@ -888,7 +1216,17 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1080/01652176.2026.2696026",
       "sourceTitle": "Canine brain imaging with a new low-field portable (0.05 T) MRI scanner: a pilotcomparison to conventional 1.5 T.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": null,
+        "clinical": "0.05T MRI의 뇌영상 시각화 성능을 확인했으니, 고자장 MRI 의뢰 기준을 점검하고 자원 제한 환경에서의 영상 검사 대안 가능성을 고려",
+        "evidence": {
+          "design": "단일기관 파일럿 연구",
+          "n": "개 21마리",
+          "stars": 2,
+          "note": "21마리 소규모 표본에 제한된 해부학적 구조만 평가되어 일반화에 주의 필요"
+        }
+      }
     },
     {
       "titleKo": "개·고양이 흉부 X-ray에서 인공지능으로 폐렴 진단하기",
@@ -916,7 +1254,17 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1111/vru.70170",
       "sourceTitle": "Pneumonia Detection in Veterinary X-Rays Utilizing PaddleSeg-Based Semantic Segmentation and Mamba-Powered Classification.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": null,
+        "clinical": "자 동물원에서 흉부 X- 판독 시 AI 보조 도구 활용을 고려하되, 다양한 환경에서의 전향적 검증이 충분치 않은 상태이므로 기존 판독 프로토콜을 유지하고 결과의 이중 확인을 병행할 것",
+        "evidence": {
+          "design": "설계 불명확",
+          "n": "",
+          "stars": 2,
+          "note": "특정 데이터셋에서 개발·평가되어 다양한 동물병원 환경으로의 일반화에 주의 필요"
+        }
+      }
     },
     {
       "titleKo": "경미한 심근병증, 소변관 우회술 예후에 영향 없어",
@@ -944,7 +1292,17 @@
       "imageUrl": null,
       "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag127",
       "sourceTitle": "Characterization and outcomes of cats with cardiomyopathy undergoing subcutaneous ureteral bypass device placement.",
-      "publishedAt": null
+      "publishedAt": null,
+      "radar": {
+        "owner": null,
+        "clinical": "SUB 시술 전 심초음파에서 경미한 심근병증이 발견되더라도 시술 금기로 고려하지 말고, 입원 시 체액 상태와 크레아티닌 수치를 예후 예측의 주요 지표로 모니터링할 것",
+        "evidence": {
+          "design": "단일기관 후향적 연구",
+          "n": "고양이 94마리(심초음파 시행 64마리)",
+          "stars": 2,
+          "note": "단일 기관 후향적 연구로 표본 크기가 제한적이고 선택 편향이 있을 수 있어 일반화에 주의가 필요합니다"
+        }
+      }
     }
   ]
 }
