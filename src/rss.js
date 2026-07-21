@@ -34,7 +34,8 @@ export async function fetchFeed(feed) {
   if (!res.ok) throw new Error(`${feed.name}: HTTP ${res.status}`);
   const xml = parser.parse(await res.text());
 
-  const channel = xml.rss?.channel ?? xml.feed; // RSS 2.0 또는 Atom
+  // RSS 2.0 / Atom / RSS 1.0(RDF). MDPI 등은 RDF라 item이 rdf:RDF 바로 아래에 있다.
+  const channel = xml.rss?.channel ?? xml.feed ?? xml["rdf:RDF"];
   const rawItems = asArray(channel?.item ?? channel?.entry);
   const maxAge = feed.maxAgeDays ?? FEED_MAX_AGE_DAYS;
   const cutoff = Date.now() - maxAge * 86400000;
@@ -43,7 +44,7 @@ export async function fetchFeed(feed) {
   const items = rawItems
     .map((it) => {
       const link = typeof it.link === "string" ? it.link : it.link?.["@_href"] ?? "";
-      const published = it.pubDate ?? it.published ?? it.updated ?? null;
+      const published = it.pubDate ?? it.published ?? it.updated ?? it["dc:date"] ?? null;
       const bodyRaw =
         it["content:encoded"] ?? it.description ?? it.summary ?? it.content?.["#text"] ?? "";
       let title = stripHtml(String(it.title ?? ""));
@@ -52,6 +53,8 @@ export async function fetchFeed(feed) {
         ? String(it.source?.["#text"] ?? it.source ?? "").trim() || feed.name
         : feed.name;
       if (isGnews) title = title.replace(/\s+-\s+[^-]+$/, "");
+      // MDPI 계열은 제목에 권/페이지 접두사가 붙는다: "Animals, Vol. 16, Pages 2247: 실제제목"
+      title = title.replace(/^[A-Za-z ]+,\s*Vol\.\s*\d+,\s*Pages?\s*[\d-]+:\s*/i, "");
       return {
         id: crypto.createHash("md5").update(link || title).digest("hex").slice(0, 10),
         sourceType: "rss",

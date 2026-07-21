@@ -32,6 +32,23 @@ const DIRECT_FEEDS = [
     maxAgeDays: 10,
     url: "https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml",
   },
+  // 동료심사 저널 — RSS에 초록 전문(900~1800자)이 실려 생성 품질이 좋다.
+  // (dvm360·VIN·AAHA·Vet Times 등은 403/404로 막혀 채택 불가)
+  { name: "Veterinary Sciences", url: "https://www.mdpi.com/rss/journal/vetsci", max: 12, maxAgeDays: 14 },
+  {
+    name: "Frontiers in Veterinary Science",
+    url: "https://www.frontiersin.org/journals/veterinary-science/rss",
+    max: 12,
+    maxAgeDays: 14,
+  },
+  {
+    name: "Veterinary Evidence",
+    url: "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2",
+    max: 6,
+    maxAgeDays: 45, // 발행이 뜸한 저널
+  },
+  // 축산까지 포함해 범위가 넓다 — 관련성 스코어링이 반려동물 위주로 걸러낸다
+  { name: "Animals", url: "https://www.mdpi.com/rss/journal/animals", max: 10, maxAgeDays: 7 },
 ];
 
 // 구글 뉴스 토픽 쿼리 — 쿼리 하나가 수천 개 매체를 커버하는 애그리게이터.
@@ -57,6 +74,14 @@ const GNEWS_TOPICS = [
   '"exotic pets" OR avian OR reptile veterinarian',
   '"pet industry" market OR trends',
   '"animal behavior" OR "separation anxiety" veterinary',
+  '"veterinary anesthesia" OR "pain management" pets',
+  '"veterinary surgery" OR orthopedic dog OR cat',
+  '"kidney disease" OR "heart disease" dog OR cat treatment',
+  '"veterinary diagnostics" OR "blood test" OR imaging pets',
+  '"senior pet" OR "geriatric" dog OR cat care',
+  '"puppy" OR "kitten" vaccination OR socialization',
+  '"veterinary staffing" OR "vet nurse" retention OR wages',
+  '"one health" OR "antimicrobial resistance" veterinary',
 ];
 
 const GNEWS_FEEDS = GNEWS_TOPICS.map((q) => ({
@@ -104,7 +129,7 @@ export const PUBMED = {
   recentDays: 30, // 최근 N일
   max: 40, // 후보 최대(스코어링 전)
 };
-export const PAPERS_PER_ISSUE = 5; // 이슈당 논문 최종 수
+export const PAPERS_PER_ISSUE = 8; // 이슈당 논문 최종 수(PubMed는 안정적이라 비중을 높인다)
 
 // ── Reddit API 직접 수집 (키가 생기면 자동 활성화) ──
 export const SUBREDDITS = [
