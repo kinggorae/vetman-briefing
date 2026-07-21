@@ -476,6 +476,9 @@ a:hover{color:var(--color-primary-strong);}
   }
   var balTimer;
   addEventListener('resize',function(){ clearTimeout(balTimer); balTimer=setTimeout(function(){ FP.steps=0; fitFold(); },160); });
+  // 본문 서체는 CDN에서 늦게 온다. 폴백 서체 기준으로 맞춰놓으면 서체가 바뀌는
+  // 순간 글자 높이가 달라져 세 단이 어긋나는데, 다시 맞출 계기가 없다.
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(function(){ FP.steps=0; fitFold(); }); }
 
   function homeView(){
     var arr=activeList();
