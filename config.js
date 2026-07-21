@@ -8,7 +8,8 @@ export const SITE = {
   brandEn: "VetManLab",
   // Google Analytics 4 측정 ID(G-XXXXXXXXXX). 값이 있을 때만 gtag를 로드한다.
   // 애널리틱스 → 관리 → 데이터 스트림 → 웹에서 발급.
-  ga4: process.env.GA4_MEASUREMENT_ID || "",
+  // 환경변수가 아니라 기본값으로 둔다 — 매일 자동발행 CI가 재빌드할 때 값이 비면 추적이 끊긴다
+  ga4: process.env.GA4_MEASUREMENT_ID || "G-BZMETFJ6QE",
   // 뉴스레터: Cloudflare KV(SUBS 바인딩) + 발송 수단이 준비되면 true로.
   // false면 구독 폼 대신 지금 동작하는 수단(RSS)을 노출한다.
   // 저장이 안 되는데 이메일을 받아두면 구독한 줄 알고 기다리게 되므로 폼을 띄우지 않는다.
