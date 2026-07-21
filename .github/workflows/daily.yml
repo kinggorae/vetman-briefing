@@ -24,6 +24,16 @@ jobs:
 
       - run: npm ci
 
+      # 파이프라인이 데이터를 건드리기 전 상태에 복원 지점을 박아둔다.
+      # 발행이 잘못되면 이 태그로 되돌리면 된다(태그는 커밋만 가리키므로 비용 없음).
+      - name: Tag pre-run restore point
+        run: |
+          git config user.name "vetman-briefing-bot"
+          git config user.email "actions@users.noreply.github.com"
+          TAG="pre-run-$(date -u +%Y%m%d)"
+          git tag -f -a "$TAG" -m "자동발행 직전 스냅샷 $(date -u +%FT%TZ)"
+          git push -f origin "$TAG"
+
       - name: Run pipeline (collect → select → generate → publish)
         run: node src/run.js --publish
         env:
@@ -36,6 +46,19 @@ jobs:
 
       - name: Build site
         run: npm run build
+
+      # 발행 결과가 비정상이면 커밋하지 않는다. 빈 이슈를 밀어넣고 배포하면
+      # 사이트가 통째로 비는데, 그 상태가 커밋되면 되돌릴 대상이 늘어난다.
+      - name: Sanity check before commit
+        run: |
+          LATEST=$(ls -1 data/issues/*.json | grep -v draft | sort | tail -1)
+          COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$LATEST','utf8')).items.length)")
+          echo "최신 이슈 $LATEST — $COUNT건"
+          if [ "$COUNT" -lt 5 ]; then
+            echo "::error::기사가 $COUNT건뿐이다. 수집·생성 실패로 보고 발행을 중단한다."
+            exit 1
+          fi
+          test -s site/index.html || { echo "::error::site/index.html이 비었다"; exit 1; }
 
       - name: Commit and push
         run: |
