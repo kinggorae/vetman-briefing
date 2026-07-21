@@ -336,11 +336,45 @@ a:hover{color:var(--color-primary-strong);}
     +'<div>'+rows+'</div></div>';
   }
 
+  // 홈 2단 균형기 — 왼쪽 단 콘텐츠가 오른쪽보다 짧으면 밴드에서 기사를 끌어올린다.
+  var BAL={n:3,busy:false,steps:0};
+  function balanceHome(){
+    if(BAL.busy||S.view!=='home'||S.openId) return;
+    if(innerWidth<=900){ if(BAL.n!==3){ BAL.n=3; render(); } return; }   // 1단이면 균형 불필요
+    var L=document.querySelector('.vm-lead-col'), R=document.querySelector('.vm-rail-col');
+    if(!L||!R||!L.lastElementChild||!R.lastElementChild) return;
+    var top=L.getBoundingClientRect().top;
+    var lh=L.lastElementChild.getBoundingClientRect().bottom-top;
+    var rh=R.lastElementChild.getBoundingClientRect().bottom-top;
+    var d=rh-lh, next=BAL.n;
+    if(d>150) next=BAL.n+1; else if(d<-150&&BAL.n>1) next=BAL.n-1;
+    if(next===BAL.n||BAL.steps>8) return;   // steps 상한 — 경계값에서 진동 방지
+    BAL.n=next; BAL.steps++;
+    BAL.busy=true; render(); BAL.busy=false;
+    setTimeout(balanceHome,16);
+  }
+  var balTimer;
+  addEventListener('resize',function(){ clearTimeout(balTimer); balTimer=setTimeout(function(){ BAL.steps=0; balanceHome(); },160); });
+
   function homeView(){
     var arr=activeList();
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
-    // 왼쪽 단은 리드 + 후속 2건으로 이어진다 — 오른쪽 사이드보다 짧아 생기던 빈 공간을 없앤다
-    var lead=arr[0], follow=arr.slice(1,4), rail=arr.slice(4,8), bandAll=arr.slice(8);
+    // 기사가 적은 필터에서는 2단을 쓰지 않는다. 오른쪽 단(카드 4 + TOP 5)이
+    // 목록 전체보다 길어 어떻게 나눠도 한쪽에 수백 px 빈칸이 남기 때문이다.
+    if(arr.length<14){
+      var h1='<div><div style="padding:28px 0 34px;border-bottom:2px solid var(--color-label-strong);">'
+      +leadCard(arr[0])+arr.slice(1).map(leadFollow).join('')+'</div>'
+      +mostRead(arr.slice(0,5));
+      h1+=qaColumn(arr);
+      h1+=recentSection();
+      h1+=storyBoard();
+      return h1+'</div>';
+    }
+    // 두 단의 실제 렌더 높이는 기사 길이·화면 폭마다 달라진다. 고정 분배로는 맞출 수 없어
+    // 렌더 후 balanceHome()이 BAL.n(왼쪽 후속 기사 수)을 조정하며 수렴시킨다.
+    var maxN=Math.max(1,Math.min(9,arr.length-6));
+    var n=Math.min(BAL.n,maxN);
+    var lead=arr[0], follow=arr.slice(1,1+n), rail=arr.slice(1+n,5+n), bandAll=arr.slice(5+n);
     var band=S.showAll?bandAll:bandAll.slice(0,12);
     var top5=arr.slice(0,5), more=bandAll.length-band.length;
     var h='<div><div class="vm-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:0;border-bottom:2px solid var(--color-label-strong);">'
@@ -522,6 +556,7 @@ a:hover{color:var(--color-primary-strong);}
     root.innerHTML=h;
     if(S.searchFocus){ var q=document.getElementById('vm-q'); if(q){ q.focus(); try{ q.setSelectionRange(S.caret,S.caret); }catch(e){} } }
     document.documentElement.style.overflow = S.openId ? 'hidden' : '';
+    if(!BAL.busy){ BAL.steps=0; setTimeout(balanceHome,16); }
   }
 
   var toastTimer;
