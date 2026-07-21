@@ -1,4 +1,5 @@
 import { jsonCall } from "./llm.js";
+import { koreanizeItem } from "./koreanize.js";
 
 const ITEM_SCHEMA = {
   type: "object",
@@ -98,6 +99,7 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
     }
   }
 
+  koreanizeItem(item); // 남은 영어 잔여물 교정(학명·약물명은 보존)
   return {
     ...(needsReview ? { needsReview: true } : {}),
     ...item,
@@ -153,6 +155,7 @@ async function generatePaper(post, attempt = 1, prevFeedback = null) {
     if (foreignScriptIn(item)) needsReview = true;
   }
 
+  koreanizeItem(item); // 남은 영어 잔여물 교정(학명·약물명은 보존)
   return {
     ...(needsReview ? { needsReview: true } : {}),
     ...item,
@@ -257,6 +260,7 @@ async function generateStory(post, attempt = 1, prevFeedback = null) {
     }
   }
 
+  koreanizeItem(item); // 남은 영어 잔여물 교정(학명·약물명은 보존)
   return {
     ...(needsReview ? { needsReview: true } : {}),
     ...item,
