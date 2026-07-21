@@ -25,6 +25,9 @@ const FIXES = [
   [/_?peer-reviewed\s+literature/, "동료 심사 문헌"],
   [/literature\s+review/, "문헌 고찰"],
   [/종\s+donor의/, "종 공여자의"],
+  [/whole-genome\s+sequencing/, "전장유전체 분석"],
+  [/whole-genome/, "전장유전체"],
+  [/\bversus\b/, "대"],
 ];
 
 // 받침 여부(한글 음절만 판단)
