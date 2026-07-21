@@ -1,0 +1,12 @@
+# Cloudflare Pages 설정.
+# 여기에 바인딩을 적어두면 `wrangler pages deploy`가 배포와 함께 적용한다.
+# 대시보드에서 수동으로 붙이면 CI 배포에서 누락될 수 있어 저장소에 둔다.
+name = "vetman-briefing"
+compatibility_date = "2026-07-21"
+pages_build_output_dir = "site"
+
+# 뉴스레터 구독자 저장소. functions/api/subscribe.js가 env.SUBS로 접근한다.
+[[kv_namespaces]]
+binding = "SUBS"
+id = "f9377eda55b8453ca699d6f8eafeb946"
+preview_id = "f9377eda55b8453ca699d6f8eafeb946"

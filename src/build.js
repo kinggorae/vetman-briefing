@@ -891,7 +891,11 @@ const APP_JS = String.raw`
     h+='<footer style="margin-top:40px;border-top:2px solid var(--color-label-strong);padding-top:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">'
     +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p><div style="width:100%;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;font-weight:600;"><a href="/about" style="color:var(--color-label-neutral);">서비스 소개</a><a href="/privacy" style="color:var(--color-label-neutral);">개인정보처리방침</a><a href="/terms" style="color:var(--color-label-neutral);">이용약관</a><a href="/rss.xml" style="color:var(--color-label-neutral);">RSS</a></div>'
     + (CFG.newsletter
-      ? '<form id="vm-sub" style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:8px;">뉴스레터로 매일 아침 받기</div><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div></form>'
+      ? '<form id="vm-sub" style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:8px;">뉴스레터로 매일 아침 받기</div><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" autocomplete="email" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div>'
+      // 봇 필터 — 사람 눈에는 보이지 않고 스크린리더도 건너뛴다
+      +'<input id="vm-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">'
+      // 정보통신망법상 수신동의는 무엇에 동의하는지 알 수 있어야 한다
+      +'<p style="margin:8px 0 0;font-size:11px;line-height:1.55;color:var(--color-label-alternative);">구독하면 매일 아침 브리핑 메일 수신에 동의하는 것으로 봅니다. 메일 하단 링크로 언제든 해지할 수 있고, 해지 시 저장된 주소도 삭제됩니다. <a href="/privacy" style="color:var(--color-label-neutral);text-decoration:underline;">개인정보처리방침</a></p></form>'
       // 저장소가 준비되기 전까지는 지금 실제로 동작하는 수단만 안내한다
       : '<div style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:6px;">매일 아침 새 브리핑</div><p style="margin:0 0 10px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">이메일 뉴스레터는 준비 중입니다. 그동안 RSS로 구독하시거나 홈 화면에 추가해 두시면 매일 자동으로 갱신됩니다.</p><a href="rss.xml" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">RSS로 구독하기 →</a></div>')
     +'</footer>';
@@ -956,9 +960,9 @@ const APP_JS = String.raw`
 
   // ── 기능 B: 구독 ──
   function subscribe(email){
-    fetch('api/subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:email})})
+    fetch('api/subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:email,website:(document.getElementById('vm-hp')||{}).value||''})})
       .then(function(r){return r.json();})
-      .then(function(res){ toast(res.ok?'구독 신청 완료! 매일 아침 받아보세요':(res.error||'실패')); })
+      .then(function(res){ toast(res.ok?(res.already?'이미 구독 중입니다':'구독 신청 완료! 매일 아침 받아보세요'):(res.error||'잠시 후 다시 시도해 주세요')); })
       .catch(function(){ toast('네트워크 오류'); });
   }
   function markRead(id){ if(!S.read[id]){ S.read[id]=1; persist('read',S.read); } }
