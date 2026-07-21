@@ -43,6 +43,12 @@ const FIXES = [
   [/진료를\s*discuss/, "진료를 논의"],
   [/성격이나\s*appearance/, "성격이나 외모"],
   [/조상은\s*wolves/, "조상은 늑대"],
+  [/\belectromyography\b/, "근전도검사"],
+  [/종양-\s*free\s*변연/, "종양 음성 절제연"],
+  [/집-\s*to\s*집/, "가가호호"],
+  [/냉장\s*보관\s*Vaccine\s*보관/, "백신 냉장 보관"],
+  [/진행\s+성의/, "진행성"],
+  [/연관\s+성의/, "연관"],
 ];
 
 // 받침 여부(한글 음절만 판단)
@@ -77,6 +83,39 @@ function correctParticle(word, particle) {
 
 const COMPILED = FIXES.map(([re, to]) => [new RegExp(re.source + "(" + PARTICLE_ALT + ")?", "g"), to]);
 
+// ── 문체 통일: 하다체 → 합니다체 ──
+// 한 매체에서 기사마다 문체가 달라지면(89건 습니다체 vs 41건 하다체) 신뢰도가 떨어진다.
+// 문장 끝(마침표 앞)에서만 변환하고, 규칙을 모르는 어미는 건드리지 않는다.
+// ('~보다 더' 같은 비교 표현이 오변환되지 않도록 반드시 마침표를 요구한다)
+function politeEnding(stem) {
+  const last = stem[stem.length - 1];
+  const code = last.charCodeAt(0) - 0xac00;
+  if (code < 0 || code > 11171) return null;
+  const jong = code % 28;
+  if (jong === 20) return stem + "습니다"; // ㅆ 받침 = 과거형(했다·났다·었다·았다)
+  if (stem.endsWith("있") || stem.endsWith("없")) return stem + "습니다";
+  if (last === "하") return stem.slice(0, -1) + "합니다";
+  if (last === "이") return stem.slice(0, -1) + "입니다";
+  if (last === "는") return stem.slice(0, -1) + "습니다";
+  if (jong === 4) {
+    // ㄴ 받침 → ㅂ 받침 (한다→합니다, 된다→됩니다, 보여준다→보여줍니다)
+    return stem.slice(0, -1) + String.fromCharCode(0xac00 + code - 4 + 17) + "니다";
+  }
+  if (jong === 8) {
+    // ㄹ 받침 → ㅂ 받침 (드물다→드뭅니다, 만들다→만듭니다)
+    return stem.slice(0, -1) + String.fromCharCode(0xac00 + code - 8 + 17) + "니다";
+  }
+  if (jong !== 0) return stem + "습니다"; // 그 밖의 자음 어간 (낫다→낫습니다, 좋다→좋습니다)
+  return null; // 모음 어간은 오변환 위험이 있어 건드리지 않는다
+}
+
+export function toPolite(s) {
+  return String(s == null ? "" : s).replace(/([가-힣]+)다(?=\.|$)/g, (m, stem) => politeEnding(stem) || m);
+}
+
+// 논문 기사 본문에 프롬프트 구조 라벨이 그대로 노출되던 것 제거
+const RESEARCH_LABEL = /^(연구\s*배경\s*(및|과)\s*방법|연구\s*배경|배경\s*(및|과)\s*방법|주요\s*결과|임상\s*시사점|시사점|배경|방법|결과)\s*[:：]\s*/;
+
 export function koreanizeText(s) {
   let t = String(s == null ? "" : s);
   // 생성 중 끼어든 밑줄이 단어를 붙여버린다("상당수가_peer-reviewed") → 공백으로
@@ -88,14 +127,24 @@ export function koreanizeText(s) {
 }
 
 // 기사 하나의 사람이 읽는 필드에 적용. 바뀐 필드 수를 반환한다.
-export function koreanizeItem(item) {
+export function koreanizeItem(item, { polite = true } = {}) {
   let n = 0;
   const fix = (v) => {
-    const out = koreanizeText(v);
+    let out = koreanizeText(v);
+    // 논문 본문에 프롬프트 구조 라벨이 그대로 노출되던 것 제거
+    out = out.replace(RESEARCH_LABEL, "");
+    if (polite) out = toPolite(out);
     if (out !== v) n++;
     return out;
   };
-  if (item.titleKo) item.titleKo = fix(item.titleKo);
+  // 제목은 문체 통일에서 제외 — 신문 헤드라인은 "…보존한다"가 정상이고
+  // "…보존합니다"로 바꾸면 오히려 어색해진다.
+  if (item.titleKo) {
+    const t0 = item.titleKo;
+    const t1 = koreanizeText(t0).replace(RESEARCH_LABEL, "");
+    if (t1 !== t0) n++;
+    item.titleKo = t1;
+  }
   if (item.leadKo) item.leadKo = fix(item.leadKo);
   if (Array.isArray(item.bodyKo)) item.bodyKo = item.bodyKo.map(fix);
   if (Array.isArray(item.keyPointsKo)) item.keyPointsKo = item.keyPointsKo.map(fix);
