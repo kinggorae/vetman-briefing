@@ -154,8 +154,10 @@ function buildIssueData(issue) {
 
 function seoHead(issue, data, canonicalPath) {
   const label = labelOf(issue);
-  const title = `${label} 수의계 해외 뉴스 브리핑 | ${SITE.name}`;
-  const desc = data.articles[0]?.dek || SITE.description;
+  // 브랜드 검색("베트맨랩") 대응 — 한글 브랜드명을 타이틀·설명에 실제 문자열로 넣는다
+  const brand = `${SITE.brandKo}(${SITE.brandEn})`;
+  const title = `${label} 수의계 해외 뉴스 브리핑 | ${SITE.name} · ${brand}`;
+  const desc = `${brand}이 만드는 해외 수의 브리핑. ${data.articles[0]?.dek || SITE.description}`.slice(0, 300);
   const canonical = `${SITE.baseUrl}${canonicalPath}`;
   const ogImage = data.articles.find((a) => a.image)?.image;
   const jsonLd = {
@@ -174,11 +176,30 @@ function seoHead(issue, data, canonicalPath) {
         url: `${canonical}#${a.id}`,
         ...(a.image ? { image: a.image } : {}),
         ...(a.ts ? { datePublished: new Date(a.ts).toISOString() } : {}),
-        publisher: { "@type": "Organization", name: SITE.name, url: SITE.baseUrl },
+        publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn, url: SITE.baseUrl },
         isBasedOn: a.sourceUrl,
         inLanguage: "ko",
       },
     })),
+  };
+  // 발행 주체를 별도 개체로 선언 — 한글·영문 표기를 같은 브랜드로 묶어준다
+  const orgLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE.brandKo,
+    alternateName: [SITE.brandEn, SITE.name, `${SITE.brandKo} ${SITE.name}`],
+    url: SITE.baseUrl,
+    logo: `${SITE.baseUrl}/icon.svg`,
+    description: SITE.description,
+  };
+  const siteLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: `${SITE.brandKo} ${SITE.name}`,
+    alternateName: [SITE.brandKo, SITE.brandEn, SITE.name],
+    url: SITE.baseUrl,
+    inLanguage: "ko",
+    publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn },
   };
   return `
 <title>${esc(title)}</title>
@@ -205,12 +226,15 @@ function seoHead(issue, data, canonicalPath) {
 ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">` : ""}
 <meta name="twitter:card" content="${ogImage ? "summary_large_image" : "summary"}">
 <meta name="robots" content="index, follow">
-<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+<script type="application/ld+json">${JSON.stringify(orgLd)}</script>
+<script type="application/ld+json">${JSON.stringify(siteLd)}</script>`;
 }
 
 function noscriptFallback(data) {
   return `<noscript><div style="max-width:720px;margin:0 auto;padding:40px 20px;font-family:sans-serif;">
-<h1>${esc(SITE.name)} — ${esc(data.date)}</h1>
+<h1>${esc(SITE.brandKo)} ${esc(SITE.name)} — ${esc(data.date)}</h1>
+<p>${esc(SITE.brandKo)}(${esc(SITE.brandEn)})이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑입니다.</p>
 ${data.articles
     .map(
       (a) => `<article style="margin-bottom:28px;border-bottom:1px solid #ddd;padding-bottom:20px;">
@@ -645,7 +669,7 @@ const APP_JS = String.raw`
     h+='<div class="vm-dateline" style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:12px;color:var(--color-label-alternative);"><span style="flex:1;text-align:left;">'+e(DATA.dateline)+'</span><span style="flex:1;text-align:center;letter-spacing:.06em;">해외 수의 소식을 한국 동물병원의 눈으로</span><span style="flex:1;text-align:right;">원문 출처 표기 · 번역 참고용</span></div>';
     h+='<div style="height:1px;background:var(--color-line-normal);"></div>';
     h+='<header class="vm-mast" style="text-align:center;padding:30px 0 22px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-label-alternative);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetMan 해외 브리핑</h1>'
-    +'<p style="margin:14px auto 0;font-size:13.5px;font-style:italic;color:var(--color-label-alternative);font-family:var(--font-display);">한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑</p>'
+    +'<p style="margin:14px auto 0;font-size:13.5px;font-style:italic;color:var(--color-label-alternative);font-family:var(--font-display);">베트맨랩이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑</p>'
     +'</header>';
     h+='<div style="border-top:2px solid var(--color-label-strong);border-bottom:1px solid var(--color-line-normal);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 0;"><div style="display:flex;align-items:baseline;gap:10px;min-width:0;"><span style="font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);white-space:nowrap;">'+stripLabel+'</span><span style="font-size:12.5px;color:var(--color-label-alternative);">'+stripMeta+'</span></div>'
     + (showSort ? '<div style="display:inline-flex;padding:3px;background:var(--color-material-base);border-radius:8px;gap:2px;flex:none;"><button data-act="rel" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='rel')+';color:'+segFg(S.sort==='rel')+';">관련성순</button><button data-act="latest" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='latest')+';color:'+segFg(S.sort==='latest')+';">최신순</button></div>' : '')
@@ -658,7 +682,7 @@ const APP_JS = String.raw`
     else { h+=catRow(); h+=homeView(); }
 
     h+='<footer style="margin-top:40px;border-top:2px solid var(--color-label-strong);padding-top:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">'
-    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.</p>'
+    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p>'
     +'<form id="vm-sub" style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:8px;">뉴스레터로 매일 아침 받기</div><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div></form>'
     +'</footer>';
     h+='</div>';
@@ -859,8 +883,8 @@ ${noscriptFallback(data)}
 const ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#0066ff"/><text x="256" y="366" font-family="'Wanted Sans Variable',system-ui,sans-serif" font-size="300" font-weight="800" fill="#fff" text-anchor="middle">V</text></svg>`;
 
 const MANIFEST = JSON.stringify({
-  name: "VetMan 해외 브리핑",
-  short_name: "VetMan 브리핑",
+  name: "베트맨랩 VetMan 해외 브리핑",
+  short_name: "베트맨랩 브리핑",
   description: SITE.description,
   start_url: "/",
   scope: "/",
