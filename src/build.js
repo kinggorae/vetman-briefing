@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { SITE, LEGAL, SPONSOR } from "../config.js";
+import { SITE, LEGAL, SPONSOR, TOPICS } from "../config.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -266,7 +266,7 @@ function noscriptFallback(data) {
 <h1>${esc(SITE.brandKo)} ${esc(SITE.name)} — ${esc(data.date)}</h1>
 <p>${esc(SITE.brandKo)}(${esc(SITE.brandEn)})이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑입니다.</p>
 <ul style="list-style:none;padding:0;">${list}</ul>
-<nav><a href="/">오늘의 브리핑</a> · <a href="/about">서비스 소개</a> · <a href="/privacy">개인정보처리방침</a> · <a href="/terms">이용약관</a> · <a href="/rss.xml">RSS</a></nav>
+<nav><a href="/">오늘의 브리핑</a> · <a href="/topic">주제별 보기</a> · <a href="/about">서비스 소개</a> · <a href="/privacy">개인정보처리방침</a> · <a href="/terms">이용약관</a> · <a href="/rss.xml">RSS</a></nav>
 </div></noscript>`;
 }
 
@@ -910,7 +910,7 @@ const APP_JS = String.raw`
     else { h+=catRow(); h+=homeView(); }
 
     h+='<footer style="margin-top:40px;border-top:2px solid var(--color-label-strong);padding-top:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">'
-    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p><div class="vm-foot-nav" style="width:100%;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;font-weight:600;"><a href="/about" style="color:var(--color-label-neutral);">서비스 소개</a><a href="/privacy" style="color:var(--color-label-neutral);">개인정보처리방침</a><a href="/terms" style="color:var(--color-label-neutral);">이용약관</a><a href="/rss.xml" style="color:var(--color-label-neutral);">RSS</a></div>'
+    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p><div class="vm-foot-nav" style="width:100%;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;font-weight:600;"><a href="/topic" style="color:var(--color-label-neutral);">주제별 보기</a><a href="/about" style="color:var(--color-label-neutral);">서비스 소개</a><a href="/privacy" style="color:var(--color-label-neutral);">개인정보처리방침</a><a href="/terms" style="color:var(--color-label-neutral);">이용약관</a><a href="/rss.xml" style="color:var(--color-label-neutral);">RSS</a></div>'
     + (CFG.newsletter
       ? '<form id="vm-sub" style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:8px;">뉴스레터로 매일 아침 받기</div><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" autocomplete="email" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div>'
       // 봇 필터 — 사람 눈에는 보이지 않고 스크린리더도 건너뛴다
@@ -1390,6 +1390,9 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .src a{color:var(--pri);font-weight:700;text-decoration:none}
 .src .dis{margin-top:10px;font-size:11.5px;color:var(--sub)}
 .nav{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+  .tpc{margin:22px 0 0;font-size:13px;color:var(--dim)}
+  .tpc b{font-weight:700;margin-right:8px}
+  .tpc a{display:inline-block;margin-right:8px;color:var(--pri);text-decoration:none;font-weight:600}
 .nav a{flex:1;min-width:200px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
 .nav .l{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pri)}
 .nav .t{font-size:15px;font-weight:700;margin-top:4px;line-height:1.4}
@@ -1417,6 +1420,17 @@ ${
       : ""
   }
 ${a.blog ? `<div class="qa"><div class="lb">블로그 글감</div><p class="q">${esc(a.blog)}</p>${(a.blogAngle || []).length ? `<ul>${a.blogAngle.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}</div>` : ""}
+${
+    (() => {
+      // 기사 → 허브 링크. 허브가 기사로만 링크하면 단방향이라 클러스터가 되지 않는다.
+      const ts = topicsOf(a);
+      return ts.length
+        ? `<div class="tpc"><b>주제</b> ${ts
+            .map((t) => `<a href="${topicPath(t)}">${esc(t.name)}</a>`)
+            .join("")}</div>`
+        : "";
+    })()
+  }
 <div class="src"><b>원문 출처</b> · ${esc(a.source)}${a.country ? ` · ${esc(a.country)}` : ""}<br>
 <a href="${esc(a.sourceUrl)}" target="_blank" rel="noopener nofollow">원문 사이트로 이동 ↗</a>
 <div class="dis">${esc(brand)}이 해외 공개 자료를 요약·번역한 콘텐츠이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</div></div>
@@ -1739,7 +1753,262 @@ const LEGAL_PAGES = [
   },
 ];
 
-function buildSitemap(issues, weeklies = [], extraUrls = []) {
+// ── 주제 허브 ──
+// 날짜 축으로만 쌓인 기사에 주제 축을 하나 더 얹는다. 검색은 "고양이 신장병 식이"로
+// 들어오지 "07-21 브리핑"으로 들어오지 않는다.
+//
+// 허브에 싣는 것은 전부 이미 검증된 자료의 재배열이다 — 진료 포인트·보호자 문답·
+// 근거 등급을 주제별로 모을 뿐, 새 임상 주장을 만들어내지 않는다.
+const topicPath = (t) => `/topic/${t.slug}`;
+
+// 본문 전체를 매칭하면 오탐이 쏟아진다 — 광견병 예방접종 기사가 본문에 '급여'가
+// 한 번 나왔다고 영양 주제로 분류되는 식이다. 제목·리드·진료 포인트를 1차로 쓰고,
+// 거기서 하나도 안 걸린 기사만 본문으로 폴백하되 한 주제만 준다.
+function topicsOf(a) {
+  const meta = [a.title, a.dek, a.radar?.clinical].filter(Boolean).join(" ");
+  const hit = TOPICS.filter((t) => t.match.test(meta));
+  if (hit.length) return hit.slice(0, 3);
+  const body = (a.body || []).join(" ");
+  return TOPICS.filter((t) => t.match.test(body)).slice(0, 1);
+}
+
+// 같은 문장이 여러 기사에 반복되면 목록이 지저분해진다. 앞 24자로 중복을 거른다.
+function dedupeBy(arr, keyFn, limit) {
+  const seen = new Set();
+  const out = [];
+  for (const x of arr) {
+    const k = keyFn(x);
+    if (!k || seen.has(k)) continue;
+    seen.add(k);
+    out.push(x);
+    if (limit && out.length >= limit) break;
+  }
+  return out;
+}
+
+function renderTopicPage(topic, arts) {
+  const canonical = `${SITE.baseUrl}${topicPath(topic)}`;
+  const brand = `${SITE.brandKo}(${SITE.brandEn})`;
+  const title = `${topic.name} — 해외 수의 소식 모음 | ${SITE.name} · ${SITE.brandKo}`;
+  const desc = `${topic.lede} ${brand}이 정리한 ${arts.length}건.`.slice(0, 200);
+
+  const clinical = dedupeBy(
+    arts.filter((a) => a.radar?.clinical),
+    (a) => a.radar.clinical.slice(0, 24),
+    12
+  );
+  const qas = dedupeBy(
+    arts.filter((a) => a.radar?.owner?.q && a.radar?.owner?.script),
+    (a) => a.radar.owner.q.slice(0, 24),
+    8
+  );
+  const papers = arts.filter((a) => a.radar?.evidence);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${topic.name} — 해외 수의 소식 모음`,
+    description: topic.lede,
+    url: canonical,
+    inLanguage: "ko",
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.baseUrl },
+    publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn, url: SITE.baseUrl },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: arts.length,
+      itemListElement: arts.slice(0, 50).map((a, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE.baseUrl}${articlePath(a)}`,
+        name: a.title,
+      })),
+    },
+  };
+  const faqLd = qas.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: qas.map((a) => ({
+          "@type": "Question",
+          name: a.radar.owner.q,
+          acceptedAnswer: { "@type": "Answer", text: a.radar.owner.script },
+        })),
+      }
+    : null;
+
+  const sec = (t, inner) =>
+    inner
+      ? `<h2>${esc(t)}</h2>${inner}`
+      : "";
+
+  return `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${canonical}">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(topic.name)} — 해외 수의 소식 모음">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:url" content="${canonical}">
+<meta property="og:site_name" content="${esc(SITE.name)}">
+<style>
+  :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;--tint:#f5f6f8;color-scheme:light dark}
+  @media (prefers-color-scheme:dark){:root{--bg:#171719;--ink:#f7f7f8;--dim:#a0a0a8;--line:#2e2e33;--tint:#1f1f23}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);padding:0 20px 80px;
+    font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;line-height:1.7}
+  .wrap{max-width:860px;margin:0 auto}
+  header{border-bottom:2px solid var(--ink);padding:24px 0 16px;margin-bottom:30px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  header a.brand{color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.02em}
+  header nav a{color:var(--dim);text-decoration:none;font-size:13px;font-weight:600;margin-left:14px}
+  h1{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.18;margin:0 0 10px}
+  .lede{color:var(--dim);font-size:16px;margin:0 0 6px}
+  .meta{color:var(--dim);font-size:12.5px;letter-spacing:.03em;margin:0 0 34px}
+  h2{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:38px 0 14px;padding-top:18px;border-top:1px solid var(--line)}
+  ul{padding-left:0;list-style:none;margin:0}
+  li{margin-bottom:14px}
+  .pt{background:var(--tint);border-left:3px solid var(--pri);padding:12px 14px;border-radius:0 8px 8px 0;font-size:14.5px}
+  .pt a{color:var(--dim);text-decoration:none;font-size:12px;display:block;margin-top:6px}
+  .qa{border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .qa .q{font-weight:700;font-size:15px;margin:0 0 6px}
+  .qa .a{font-size:14px;color:var(--dim);margin:0}
+  .art a{color:var(--ink);text-decoration:none;font-weight:700;font-size:16px;line-height:1.4}
+  .art a:hover{color:var(--pri)}
+  .art .sub{color:var(--dim);font-size:12.5px;margin-top:3px}
+  .stars{color:var(--pri);font-size:12px;font-weight:700}
+  .topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .topics a{font-size:13px;font-weight:600;color:var(--dim);text-decoration:none;
+    border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--dim)}
+  footer a{color:var(--dim);margin-right:14px}
+</style>
+<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>${
+    faqLd ? `\n<script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""
+  }${gaSnippet()}</head>
+<body><div class="wrap">
+<header><a class="brand" href="/">${esc(SITE.name)}</a>
+<nav><a href="/topic">주제별 보기</a><a href="/about">서비스 소개</a></nav></header>
+<h1>${esc(topic.name)}</h1>
+<p class="lede">${esc(topic.lede)}</p>
+<p class="meta">기사 ${arts.length}건${papers.length ? ` · 근거 있는 연구 ${papers.length}건` : ""}${
+    qas.length ? ` · 보호자 문답 ${qas.length}건` : ""
+  }</p>
+
+${sec(
+  "진료 포인트 모음",
+  clinical.length
+    ? `<ul>${clinical
+        .map(
+          (a) =>
+            `<li class="pt">${esc(a.radar.clinical)}<a href="${esc(articlePath(a))}">→ ${esc(a.title)}</a></li>`
+        )
+        .join("")}</ul>`
+    : ""
+)}
+
+${sec(
+  "보호자가 묻는 것",
+  qas.length
+    ? `<ul>${qas
+        .map(
+          (a) =>
+            `<li class="qa"><p class="q">${esc(a.radar.owner.q)}</p><p class="a">${esc(
+              a.radar.owner.script
+            )}</p></li>`
+        )
+        .join("")}</ul>`
+    : ""
+)}
+
+${sec(
+  "근거 있는 연구",
+  papers.length
+    ? `<ul>${papers
+        .map(
+          (a) =>
+            `<li class="art"><a href="${esc(articlePath(a))}">${esc(a.title)}</a>
+<div class="sub"><span class="stars">${"★".repeat(a.radar.evidence.stars)}${"☆".repeat(
+              4 - a.radar.evidence.stars
+            )}</span> ${esc([a.radar.evidence.design, a.radar.evidence.n].filter(Boolean).join(" · "))} — ${esc(
+              a.source
+            )}</div></li>`
+        )
+        .join("")}</ul>`
+    : ""
+)}
+
+<h2>전체 기사 ${arts.length}건</h2>
+<ul>${arts
+    .map(
+      (a) =>
+        `<li class="art"><a href="${esc(articlePath(a))}">${esc(a.title)}</a>
+<div class="sub">${esc([a.date, a.source, a.country].filter(Boolean).join(" · "))}</div></li>`
+    )
+    .join("")}</ul>
+
+<h2>다른 주제</h2>
+<div class="topics">${TOPICS.filter((t) => t.slug !== topic.slug)
+    .map((t) => `<a href="${topicPath(t)}">${esc(t.name)}</a>`)
+    .join("")}</div>
+
+<footer>
+  <a href="/">오늘의 브리핑</a><a href="/topic">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+  <div style="margin-top:10px">© ${new Date(LEGAL.effectiveDate).getFullYear()} ${esc(SITE.brandKo)}(${esc(
+    SITE.brandEn
+  )})</div>
+</footer>
+</div></body></html>`;
+}
+
+function renderTopicIndex(counts) {
+  const canonical = `${SITE.baseUrl}/topic`;
+  const rows = TOPICS.filter((t) => counts[t.slug])
+    .sort((a, b) => counts[b.slug] - counts[a.slug])
+    .map(
+      (t) =>
+        `<li><a href="${topicPath(t)}"><b>${esc(t.name)}</b> <span>${counts[t.slug]}건</span></a>
+<div>${esc(t.lede)}</div></li>`
+    )
+    .join("");
+  return `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주제별 보기 | ${esc(SITE.name)} · ${esc(SITE.brandKo)}</title>
+<meta name="description" content="${esc(SITE.brandKo)}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.">
+<link rel="canonical" href="${canonical}">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+  :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;color-scheme:light dark}
+  @media (prefers-color-scheme:dark){:root{--bg:#171719;--ink:#f7f7f8;--dim:#a0a0a8;--line:#2e2e33}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);padding:0 20px 80px;
+    font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;line-height:1.7}
+  .wrap{max-width:800px;margin:0 auto}
+  header{border-bottom:2px solid var(--ink);padding:24px 0 16px;margin-bottom:30px}
+  header a{color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.02em}
+  h1{font-size:32px;font-weight:800;letter-spacing:-.03em;margin:0 0 10px}
+  .lede{color:var(--dim);font-size:15px;margin:0 0 34px}
+  ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  li{border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  li a{text-decoration:none;color:var(--ink);font-size:17px}
+  li a span{color:var(--pri);font-size:13px;font-weight:700;margin-left:6px}
+  li div{color:var(--dim);font-size:13.5px;margin-top:6px}
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--dim)}
+  footer a{color:var(--dim);margin-right:14px}
+</style>${gaSnippet()}</head>
+<body><div class="wrap">
+<header><a href="/">${esc(SITE.name)}</a></header>
+<h1>주제별 보기</h1>
+<p class="lede">해외 수의 소식을 임상 주제로 묶었습니다. 각 주제마다 진료 포인트, 보호자가 묻는 것, 근거 있는 연구를 함께 정리했습니다.</p>
+<ul>${rows}</ul>
+<footer><a href="/">오늘의 브리핑</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a></footer>
+</div></body></html>`;
+}
+
+function buildSitemap(issues, weeklies = [], extraUrls = [], extraTopics = []) {
   // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다
   const urls = [
     `${SITE.baseUrl}/`,
@@ -1747,6 +2016,8 @@ function buildSitemap(issues, weeklies = [], extraUrls = []) {
     // 주간 다이제스트가 색인에서 통째로 빠져 있었다
     ...weeklies.map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}`),
     ...LEGAL_PAGES.map((p) => `${SITE.baseUrl}/${p.slug}`),
+    `${SITE.baseUrl}/topic`,
+    ...(extraTopics || []),
     ...extraUrls,
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1811,6 +2082,7 @@ function build() {
 
   const archive = [];
   const articleUrls = [];
+  const topicBuckets = {};
   fs.mkdirSync(path.join(SITE_DIR, "article"), { recursive: true });
   for (const issue of issues) {
     const data = buildIssueData(issue);
@@ -1825,9 +2097,30 @@ function build() {
         path.join(SITE_DIR, "article", `${articleSlug(a)}.html`),
         renderArticlePage(a, data, all[i - 1] || null, all[i + 1] || null)
       );
-      if (isIndexable(a)) articleUrls.push(`${SITE.baseUrl}${articlePath(a)}`);
+      if (isIndexable(a)) {
+        articleUrls.push(`${SITE.baseUrl}${articlePath(a)}`);
+        // 색인 대상 기사만 허브에 싣는다 — 허브가 저품질 페이지로 가는 통로가 되면
+        // 어렵게 뺀 noindex 처리가 무의미해진다
+        for (const t of topicsOf(a)) (topicBuckets[t.slug] ||= []).push(a);
+      }
     });
   }
+
+  // ── 주제 허브 ──
+  fs.mkdirSync(path.join(SITE_DIR, "topic"), { recursive: true });
+  const topicCounts = {};
+  const topicUrls = [];
+  for (const t of TOPICS) {
+    const arts = topicBuckets[t.slug] || [];
+    // 3건 미만이면 페이지를 만들지 않는다. 얇은 허브는 그 자체가 저품질 신호다
+    if (arts.length < 3) continue;
+    arts.sort((a, b) => (b.ts ?? 0) - (a.ts ?? 0));
+    topicCounts[t.slug] = arts.length;
+    fs.writeFileSync(path.join(SITE_DIR, "topic", `${t.slug}.html`), renderTopicPage(t, arts));
+    topicUrls.push(`${SITE.baseUrl}${topicPath(t)}`);
+  }
+  fs.writeFileSync(path.join(SITE_DIR, "topic", "index.html"), renderTopicIndex(topicCounts));
+  console.log(`  주제 허브 ${topicUrls.length}개 생성`);
 
   // 주간 다이제스트
   fs.mkdirSync(path.join(SITE_DIR, "weekly"), { recursive: true });
@@ -1846,7 +2139,7 @@ function build() {
     })
   );
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
-  fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleUrls));
+  fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleUrls, topicUrls));
   fs.writeFileSync(path.join(SITE_DIR, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.baseUrl}/sitemap.xml\n`);
   // 404.html이 없으면 Cloudflare Pages가 없는 경로에도 200을 반환해(soft 404)
   // 검색엔진이 빈 페이지를 색인한다. 실제 404 상태로 응답하도록 페이지를 둔다.
