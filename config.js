@@ -106,6 +106,26 @@ const GNEWS_TOPICS = [
   '"puppy" OR "kitten" vaccination OR socialization',
   '"veterinary staffing" OR "vet nurse" retention OR wages',
   '"one health" OR "antimicrobial resistance" veterinary',
+  // ── 아래는 후보 77개를 실측해 최근 7일 2건 이상 잡힌 것만 채택 ──
+  // (임상 세부 분과는 구글 뉴스에 거의 안 잡혀 제외했고, PUBMED_TOPICS가 담당한다)
+  '"animal shelter" OR "pet adoption trends"',
+  '"pet insurance" OR "pet health insurance claims"',
+  '"point-of-care testing" OR "veterinary diagnostics"',
+  '"veterinary school" OR "veterinary students" OR "veterinary education"',
+  '"avian influenza in cats" OR "rabies outbreak" OR "H5N1 in animals"',
+  '"pet poisoning" OR "veterinary toxicology" OR "toxic to dogs"',
+  '"pet food recall" OR "veterinary drug recall"',
+  '"atopic dermatitis in dogs" OR "veterinary dermatology" OR "otitis externa"',
+  '"canine parvovirus" OR "feline leukemia" OR "veterinary infectious disease"',
+  '"veterinary behavior" OR "separation anxiety in dogs" OR "feline behavior problems"',
+  '"veterinary telemedicine" OR "virtual vet visit"',
+  '"zoonotic disease" OR "one health approach"',
+  '"heat stroke in dogs" OR "climate change animal health"',
+  '"veterinary radiology" OR "veterinary ultrasound" OR "veterinary imaging"',
+  '"veterinary oncology" OR "canine lymphoma" OR "mast cell tumor"',
+  '"neonatal puppy" OR "kitten care" OR "pediatric veterinary"',
+  '"senior pet care" OR "geriatric dogs" OR "aging in cats"',
+  '"veterinary workforce shortage" OR "veterinarian shortage"',
 ];
 
 const GNEWS_FEEDS = GNEWS_TOPICS.map((q) => ({
@@ -153,7 +173,39 @@ export const PUBMED = {
   recentDays: 30, // 최근 N일
   max: 40, // 후보 최대(스코어링 전)
 };
-export const PAPERS_PER_ISSUE = 8; // 이슈당 논문 최종 수(PubMed는 안정적이라 비중을 높인다)
+
+// 임상 분과별 PubMed 쿼리.
+// 구글 뉴스로 임상 세부 분과를 덮으려 77개 쿼리를 실측했으나 대부분 0건이었다
+// ("canine epilepsy" 같은 주제로 매일 뉴스가 나오지 않는다). 임상 깊이는 PubMed에 있고,
+// 아래 22개 분과는 최근 30일 기준 581편이 확인됐다. 분과별로 조금씩 뽑아
+// 특정 분과만 계속 노출되는 편중을 막는다.
+const DC = '("dogs"[MeSH Terms] OR "cats"[MeSH Terms])';
+export const PUBMED_TOPICS = [
+  { name: "임상 일반", term: `${DC} AND veterinary[Title/Abstract]` },
+  { name: "종양", term: `${DC} AND (neoplasm*[Title/Abstract] OR oncolog*[Title/Abstract] OR lymphoma[Title/Abstract])` },
+  { name: "심장", term: `${DC} AND (cardiolog*[Title/Abstract] OR "heart disease"[Title/Abstract] OR cardiomyopath*[Title/Abstract])` },
+  { name: "신경", term: `${DC} AND (neurolog*[Title/Abstract] OR epilep*[Title/Abstract] OR "intervertebral disc"[Title/Abstract])` },
+  { name: "정형·외과", term: `${DC} AND (orthopedic*[Title/Abstract] OR "cruciate ligament"[Title/Abstract] OR arthroplast*[Title/Abstract])` },
+  { name: "피부", term: `${DC} AND (dermatolog*[Title/Abstract] OR "atopic dermatitis"[Title/Abstract] OR pruritus[Title/Abstract])` },
+  { name: "안과", term: `${DC} AND (ophthalm*[Title/Abstract] OR cornea*[Title/Abstract] OR glaucoma[Title/Abstract])` },
+  { name: "치과", term: `${DC} AND (dental[Title/Abstract] OR periodontal[Title/Abstract] OR "tooth resorption"[Title/Abstract])` },
+  { name: "신장·비뇨", term: `${DC} AND ("kidney disease"[Title/Abstract] OR renal[Title/Abstract] OR urolith*[Title/Abstract])` },
+  { name: "내분비", term: `${DC} AND (diabetes[Title/Abstract] OR hyperthyroid*[Title/Abstract] OR hyperadrenocorticism[Title/Abstract])` },
+  { name: "소화기", term: `${DC} AND (gastrointestinal[Title/Abstract] OR enteropath*[Title/Abstract] OR pancreatit*[Title/Abstract])` },
+  { name: "감염·기생충", term: `${DC} AND (infectio*[Title/Abstract] OR parasit*[Title/Abstract] OR "tick-borne"[Title/Abstract])` },
+  { name: "마취·통증", term: `${DC} AND (anesthes*[Title/Abstract] OR analges*[Title/Abstract] OR "pain management"[Title/Abstract])` },
+  { name: "영상", term: `${DC} AND (ultrasonograph*[Title/Abstract] OR "computed tomography"[Title/Abstract] OR radiograph*[Title/Abstract])` },
+  { name: "응급·중환자", term: `${DC} AND (emergency[Title/Abstract] OR "critical care"[Title/Abstract] OR sepsis[Title/Abstract])` },
+  { name: "행동·복지", term: `${DC} AND (behavio*[Title/Abstract] OR anxiety[Title/Abstract] OR welfare[Title/Abstract])` },
+  { name: "영양", term: `${DC} AND (nutrition[Title/Abstract] OR diet[Title/Abstract] OR obesity[Title/Abstract])` },
+  { name: "재활", term: `${DC} AND (rehabilitation[Title/Abstract] OR physiotherap*[Title/Abstract])` },
+  { name: "번식", term: `${DC} AND (reproduct*[Title/Abstract] OR pregnan*[Title/Abstract] OR semen[Title/Abstract])` },
+  { name: "노령", term: `${DC} AND (geriatric[Title/Abstract] OR aging[Title/Abstract] OR "cognitive dysfunction"[Title/Abstract])` },
+  { name: "이그조틱", term: '(rabbits[MeSH Terms] OR ferrets[MeSH Terms] OR birds[MeSH Terms] OR reptiles[MeSH Terms]) AND veterinary[Title/Abstract]' },
+  { name: "말", term: 'horses[MeSH Terms] AND (lameness[Title/Abstract] OR colic[Title/Abstract] OR equine[Title/Abstract])' },
+];
+export const PUBMED_PER_TOPIC = 4; // 분과당 후보 수(스코어링 전)
+export const PAPERS_PER_ISSUE = 12; // 분과 확장으로 후보가 79편까지 늘어 비중을 높인다
 
 // ── Reddit API 직접 수집 (키가 생기면 자동 활성화) ──
 export const SUBREDDITS = [
@@ -164,7 +216,7 @@ export const SUBREDDITS = [
   { name: "veterinaryprofession", minScore: 5 }, // 소규모 보조 소스
 ];
 
-export const CANDIDATES_MAX = 150;  // 스코어링에 넘길 최대 후보 수
+export const CANDIDATES_MAX = 200;  // 소스 확장분이 스코어링 전에 잘리지 않도록
 export const ITEMS_PER_ISSUE = 40;  // 일간 발행 상한 — 실제 발행 수는 MIN_RELEVANCE 통과분 전부
 export const SCORE_BATCH = 30;      // 스코어링 배치 크기 (한 번에 너무 많이 넣으면 평가 품질 저하)
 export const MIN_RELEVANCE = 6;     // 관련성 점수 하한 (0~10)

@@ -2,7 +2,7 @@
 // 저작권: 초록 전문을 재게시하지 않고 요약·번역 + DOI/PubMed 링크만 제공.
 import crypto from "node:crypto";
 import { XMLParser } from "fast-xml-parser";
-import { PUBMED } from "../config.js";
+import { PUBMED, PUBMED_TOPICS, PUBMED_PER_TOPIC } from "../config.js";
 
 const EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils";
 const UA = "vetman-briefing/0.1 (mailto:seovenceo@gmail.com)";
@@ -22,18 +22,39 @@ async function eget(path, params) {
   return res;
 }
 
-export async function fetchPubmed() {
-  // 1) 최근 논문 PMID 검색
-  const search = await eget("esearch.fcgi", {
+// 분과별로 PMID를 조금씩 모은다. 단일 쿼리만 쓰면 논문이 많은 분과(감염·영상)에
+// 편중되어 안과·재활 같은 분과가 계속 밀린다.
+async function searchIds(term, retmax) {
+  const res = await eget("esearch.fcgi", {
     db: "pubmed",
-    term: PUBMED.term,
-    retmax: String(PUBMED.max),
+    term,
+    retmax: String(retmax),
     sort: "date",
     datetype: "pdat",
     reldate: String(PUBMED.recentDays),
     retmode: "json",
   });
-  const ids = (await search.json())?.esearchresult?.idlist ?? [];
+  return (await res.json())?.esearchresult?.idlist ?? [];
+}
+
+export async function fetchPubmed() {
+  // 1) 분과별 최근 논문 PMID 수집 (중복 제거)
+  const topics = PUBMED_TOPICS?.length ? PUBMED_TOPICS : [{ name: "임상 일반", term: PUBMED.term }];
+  const seen = new Set();
+  const ids = [];
+  for (const t of topics) {
+    try {
+      for (const id of await searchIds(t.term, PUBMED_PER_TOPIC)) {
+        if (!seen.has(id)) {
+          seen.add(id);
+          ids.push(id);
+        }
+      }
+    } catch (err) {
+      console.error(`  [PubMed] ${t.name}: ${err.message}`);
+    }
+    await new Promise((r) => setTimeout(r, 350)); // NCBI 요청 간격 예의
+  }
   if (!ids.length) return [];
 
   // 2) 초록·메타 가져오기
