@@ -241,7 +241,7 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
 <meta property="og:url" content="${esc(canonical)}">
 ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">` : ""}
 <meta name="twitter:card" content="${ogImage ? "summary_large_image" : "summary"}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="${isIndex || issueIndexable(data) ? "index, follow" : "noindex, follow"}">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 <script type="application/ld+json">${JSON.stringify(orgLd)}</script>
 <script type="application/ld+json">${JSON.stringify(siteLd)}</script>`;
@@ -1281,6 +1281,14 @@ function articleSlug(a) {
 }
 const articlePath = (a) => `/article/${articleSlug(a)}`;
 
+// 일자 페이지의 색인 가치. 기사 1~2건짜리 '브리핑' 페이지는 아무도 그 주소로 검색하지
+// 않는다. 기사는 개별 페이지와 주제 허브로 이미 색인되므로, 얇은 일자 페이지를 빼도
+// 잃는 게 없고 사이트 전체 품질 평가에서 얇은 페이지 수만 줄어든다.
+const ISSUE_MIN = 4;
+function issueIndexable(data) {
+  return (data.articles || []).filter(isIndexable).length >= ISSUE_MIN;
+}
+
 // 우리가 만든 판단(진료 포인트·보호자 문답·근거 등급)이 하나도 없으면 그 페이지에
 // 남는 건 해외 기사의 한국어 요약뿐이다. 사이트에는 남기되 색인 대상에서는 뺀다 —
 // 이런 페이지가 쌓이면 사이트 전체가 재작성 콘텐츠로 평가된다.
@@ -2012,9 +2020,9 @@ function buildSitemap(issues, weeklies = [], extraUrls = [], extraTopics = []) {
   // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다
   const urls = [
     `${SITE.baseUrl}/`,
-    ...issues.map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}`),
+    ...issues.filter((i) => issueIndexable(buildIssueData(i))).map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}`),
     // 주간 다이제스트가 색인에서 통째로 빠져 있었다
-    ...weeklies.map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}`),
+    ...weeklies.filter((w) => issueIndexable(buildIssueData(w))).map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}`),
     ...LEGAL_PAGES.map((p) => `${SITE.baseUrl}/${p.slug}`),
     `${SITE.baseUrl}/topic/`,
     ...(extraTopics || []),
@@ -2088,7 +2096,8 @@ function build() {
     const data = buildIssueData(issue);
     fs.writeFileSync(path.join(SITE_DIR, "issues", `${labelOf(issue)}.html`), renderPage(issue, issues));
     fs.writeFileSync(path.join(SITE_DIR, "data", `${labelOf(issue)}.json`), JSON.stringify(data));
-    archive.push({ date: data.date, dateLabel: data.dateLabel, count: data.count, titles: data.articles.slice(0, 3).map((a) => a.title) });
+    if (data.count > 0)
+      archive.push({ date: data.date, dateLabel: data.dateLabel, count: data.count, titles: data.articles.slice(0, 3).map((a) => a.title) });
 
     // 기사별 개별 페이지 — 색인 면적을 날짜 단위에서 기사 단위로 넓힌다
     const all = [...data.articles, ...(data.stories || [])];
