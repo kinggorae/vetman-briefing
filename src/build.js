@@ -1294,10 +1294,16 @@ function build() {
   if (SITE.indexNowKey) {
     fs.writeFileSync(path.join(SITE_DIR, `${SITE.indexNowKey}.txt`), SITE.indexNowKey);
   }
-  // 네이버 소유확인 'HTML 파일 업로드' 방식 대응 — 메타태그와 병행 가능하다
+  // 네이버 소유확인 'HTML 파일 업로드' 방식 대응 — 메타태그와 병행 가능하다.
+  // Cloudflare Pages가 /foo.html을 /foo로 308 리다이렉트하는데, 검증 봇이
+  // 리다이렉트를 따라가지 않을 수 있어 _redirects의 200 rewrite로 원본 주소에서
+  // 바로 200이 나오게 한다(확장자 없는 파일에 내용을 두고 rewrite).
   if (SITE.verification?.naver) {
-    const nv = `naver${SITE.verification.naver}.html`;
-    fs.writeFileSync(path.join(SITE_DIR, nv), `naver-site-verification: ${nv}`);
+    const code = SITE.verification.naver;
+    const body = `naver-site-verification: naver${code}.html`;
+    fs.writeFileSync(path.join(SITE_DIR, "_nv.txt"), body);
+    fs.writeFileSync(path.join(SITE_DIR, `naver${code}.html`), body); // 폴백
+    fs.writeFileSync(path.join(SITE_DIR, "_redirects"), `/naver${code}.html /_nv.txt 200\n`);
   }
   fs.writeFileSync(path.join(SITE_DIR, "rss.xml"), buildRss(issues));
   fs.writeFileSync(path.join(SITE_DIR, "llms.txt"), buildLlmsTxt(issues));
