@@ -854,7 +854,9 @@ function recentArticles(current, allIssues, limit = 12) {
 function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) {
   const data = buildIssueData(issue);
   if (isIndex) data.recent = recentArticles(issue, allIssues, 12);
-  const canonicalPath = isIndex ? "/" : weekly ? `/weekly/${labelOf(issue)}.html` : `/issues/${labelOf(issue)}.html`;
+  // Cloudflare Pages는 /foo.html을 /foo로 308 리다이렉트한다.
+  // canonical·사이트맵에 .html을 쓰면 실제 서빙 주소와 어긋나므로 확장자를 뺀다.
+  const canonicalPath = isIndex ? "/" : weekly ? `/weekly/${labelOf(issue)}` : `/issues/${labelOf(issue)}`;
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
   return `<!doctype html>
 <html lang="ko">
@@ -1022,12 +1024,39 @@ function boot(){fetch('archive.json').then(function(r){return r.json();}).then(f
 if(localStorage.getItem('vm_admin')===PASS) boot(); else gate();
 </script></body></html>`;
 
+const NOT_FOUND_HTML = `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<title>페이지를 찾을 수 없습니다 | ${esc(SITE.brandKo)} ${esc(SITE.name)}</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+  :root{color-scheme:light dark}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;
+    background:#fff;color:#171719;padding:24px;}
+  @media (prefers-color-scheme:dark){body{background:#171719;color:#fff}}
+  .box{max-width:520px;text-align:center}
+  .code{font-size:13px;font-weight:700;letter-spacing:.18em;color:#0066ff;text-transform:uppercase}
+  h1{font-size:32px;font-weight:800;letter-spacing:-.02em;margin:14px 0 10px;line-height:1.25}
+  p{margin:0 0 24px;font-size:15px;line-height:1.7;opacity:.7}
+  a{display:inline-block;background:#0066ff;color:#fff;text-decoration:none;font-weight:700;
+    font-size:14px;padding:12px 22px;border-radius:10px}
+</style></head>
+<body><div class="box">
+  <div class="code">404 Not Found</div>
+  <h1>페이지를 찾을 수 없습니다</h1>
+  <p>주소가 바뀌었거나 삭제된 페이지입니다.<br>오늘의 브리핑에서 최신 소식을 확인해 보세요.</p>
+  <a href="/">오늘의 브리핑 보기</a>
+</div></body></html>`;
+
 function buildSitemap(issues, weeklies = []) {
+  // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다
   const urls = [
     `${SITE.baseUrl}/`,
-    ...issues.map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}.html`),
+    ...issues.map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}`),
     // 주간 다이제스트가 색인에서 통째로 빠져 있었다
-    ...weeklies.map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}.html`),
+    ...weeklies.map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}`),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1041,8 +1070,8 @@ function buildRss(issues) {
     .map(
       (i) => `  <item>
     <title>${esc(`${labelOf(i)} 수의계 해외 뉴스 브리핑`)}</title>
-    <link>${SITE.baseUrl}/issues/${labelOf(i)}.html</link>
-    <guid>${SITE.baseUrl}/issues/${labelOf(i)}.html</guid>
+    <link>${SITE.baseUrl}/issues/${labelOf(i)}</link>
+    <guid>${SITE.baseUrl}/issues/${labelOf(i)}</guid>
     ${i.generatedAt ? `<pubDate>${new Date(i.generatedAt).toUTCString()}</pubDate>` : ""}
     <description>${esc(i.items.map((it) => it.titleKo).join(" / "))}</description>
   </item>`
@@ -1116,6 +1145,9 @@ function build() {
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
   fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies));
   fs.writeFileSync(path.join(SITE_DIR, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.baseUrl}/sitemap.xml\n`);
+  // 404.html이 없으면 Cloudflare Pages가 없는 경로에도 200을 반환해(soft 404)
+  // 검색엔진이 빈 페이지를 색인한다. 실제 404 상태로 응답하도록 페이지를 둔다.
+  fs.writeFileSync(path.join(SITE_DIR, "404.html"), NOT_FOUND_HTML);
   // IndexNow 소유 증명 키 파일 — 매 빌드마다 유지되어야 제출이 계속 유효하다
   if (SITE.indexNowKey) {
     fs.writeFileSync(path.join(SITE_DIR, `${SITE.indexNowKey}.txt`), SITE.indexNowKey);
