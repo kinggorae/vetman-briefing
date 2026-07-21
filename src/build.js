@@ -234,14 +234,7 @@ const TOKENS_CSS = `
   --elevation-4:0px 0px 60px 0px rgba(23,23,23,.10); --elevation-5:0px 15px 75px 0px rgba(23,23,23,.16); --elevation-input:0px 1px 2px 0px rgba(0,0,0,.03);
   --font-display:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;
   --font-sans:"Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
-  --brand-slate:#6b82a8; /* VETMANLab 마크·Lab 색 */
 }
-/* ── VETMANLab 로고 락업(오픈 링 마크 + Rubik 800 워드마크) ── */
-.vm-logo{display:inline-flex;align-items:center;gap:.34em;line-height:1;white-space:nowrap;}
-.vm-logo svg{width:1.02em;height:1.02em;flex:none;display:block;}
-.vm-logo-txt{font-family:Rubik,var(--font-sans);font-weight:800;letter-spacing:-.025em;font-size:.92em;}
-.vm-logo-txt b{font-weight:800;color:var(--color-label-strong);}
-.vm-logo-txt i{font-style:normal;font-weight:800;color:var(--brand-slate);}
 :root[data-theme="dark"], .vm-page[data-theme="dark"], .vm-detail[data-theme="dark"]{
   --color-primary-normal:#4f95ff; --color-primary-strong:#69a5ff; --color-primary-heavy:#9ec5ff;
   --color-label-normal:rgba(255,255,255,.96); --color-label-strong:#fff; --color-label-neutral:rgba(255,255,255,.88);
@@ -250,7 +243,6 @@ const TOKENS_CSS = `
   --color-line-normal:rgba(255,255,255,.22); --color-line-strong:rgba(255,255,255,.4);
   --color-material-thin:rgba(255,255,255,.05); --color-material-base:rgba(255,255,255,.08);
   --color-atomic-blue-100:rgba(79,149,255,.16); --color-atomic-blue-800:#9ec5ff;
-  --brand-slate:#93aad2; /* 어두운 배경에선 한 톤 밝게 */
 }`;
 
 const STATIC_CSS = `
@@ -282,9 +274,6 @@ a:hover{color:var(--color-primary-strong);}
   .vm-band-fill{display:none !important;}
   .vm-qa-grid{grid-template-columns:1fr !important;}
   .vm-mast h1{font-size:40px !important;}
-  /* 로고는 인라인 font-size로 크기를 잡으므로 모바일에서 따로 줄인다 */
-  .vm-mast .vm-logo{font-size:29px !important;}
-  .vm-mast-name{font-size:23px !important;}
   .vm-lead-h{font-size:30px !important;}
   .vm-detail{width:100% !important;max-width:100% !important;}
   .vm-search{display:none !important;}
@@ -374,10 +363,6 @@ const APP_JS = String.raw`
     return '<button data-save="'+id+'" title="저장" style="'+st+'display:inline-flex;align-items:center;justify-content:center;border-radius:8px;cursor:pointer;color:'+saveColor(id)+';">'+BM.replace(/W/g,w)+'</button>';
   }
   function readCls(id){ return isRead(id)?' vm-read':''; }
-
-  // ── VETMANLab 로고: 오픈 링 마크 + Rubik 800 워드마크 ──
-  var LOGO_MARK='<svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M70.93 23.21A34 34 0 1 0 70.93 76.79" stroke="var(--brand-slate)" stroke-width="17"/></svg>';
-  function logo(px){ return '<span class="vm-logo" style="font-size:'+px+'px;">'+LOGO_MARK+'<span class="vm-logo-txt"><b>VETMAN</b><i>Lab</i></span></span>'; }
 
   // ── 레이더 → 편집(신문) 지면 렌더. 뱃지·컬러박스·이모지 없이 타이포·괘선으로. ──
   // 논문 근거: 바이라인 아래 조용한 이탤릭 각주 한 줄
@@ -650,7 +635,7 @@ const APP_JS = String.raw`
 
     var h='';
     h+='<div style="position:sticky;top:0;z-index:30;background:var(--color-background-normal);border-bottom:1px solid var(--color-line-normal);"><div class="vm-bar" style="max-width:1180px;margin:0 auto;padding:9px 40px;display:flex;align-items:center;gap:16px;">'
-    +'<button data-nav="home" title="VETMANLab 해외 브리핑" style="flex:none;border:0;background:transparent;cursor:pointer;padding:0;color:var(--color-label-strong);">'+logo(19)+'</button>'
+    +'<button data-nav="home" style="flex:none;border:0;background:transparent;cursor:pointer;font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--color-label-strong);">VetMan 브리핑</button>'
     +'<div class="vm-search" style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:var(--color-material-thin);border-radius:9px;padding:9px 12px;color:var(--color-label-alternative);">'+search+'<input id="vm-q" value="'+e(S.query)+'" placeholder="기사 검색 — 제목·본문·출처" style="border:0;outline:0;background:transparent;font-family:inherit;font-size:13px;color:var(--color-label-normal);width:100%;"></div>'
     +'<div style="flex:none;display:flex;align-items:center;gap:14px;"><span class="vm-bar-label">'+navBtn('ideas','글감함',ideaCount)+'</span><span class="vm-bar-label">'+navBtn('saved','저장',savedCount)+'</span><span class="vm-bar-label">'+navBtn('archive','지난 브리핑')+'</span>'
     +'<button data-act="theme" title="테마 전환" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;border-radius:9px;">'+(S.theme==='dark'?sun:moon)+'</button></div>'
@@ -659,8 +644,7 @@ const APP_JS = String.raw`
     h+='<div class="vm-wrap" style="max-width:1180px;margin:0 auto;padding:0 40px 64px;">';
     h+='<div class="vm-dateline" style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:12px;color:var(--color-label-alternative);"><span style="flex:1;text-align:left;">'+e(DATA.dateline)+'</span><span style="flex:1;text-align:center;letter-spacing:.06em;">해외 수의 소식을 한국 동물병원의 눈으로</span><span style="flex:1;text-align:right;">원문 출처 표기 · 번역 참고용</span></div>';
     h+='<div style="height:1px;background:var(--color-line-normal);"></div>';
-    h+='<header class="vm-mast" style="text-align:center;padding:30px 0 22px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-label-alternative);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="margin:14px 0 0;line-height:1;">'+logo(44)+'</h1>'
-    +'<div class="vm-mast-name" style="font-family:var(--font-display);font-size:34px;font-weight:800;letter-spacing:.02em;line-height:1.1;margin:10px 0 0;color:var(--color-label-strong);">해외 브리핑</div>'
+    h+='<header class="vm-mast" style="text-align:center;padding:30px 0 22px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-label-alternative);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetMan 해외 브리핑</h1>'
     +'<p style="margin:14px auto 0;font-size:13.5px;font-style:italic;color:var(--color-label-alternative);font-family:var(--font-display);">한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑</p>'
     +'</header>';
     h+='<div style="border-top:2px solid var(--color-label-strong);border-bottom:1px solid var(--color-line-normal);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 0;"><div style="display:flex;align-items:baseline;gap:10px;min-width:0;"><span style="font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);white-space:nowrap;">'+stripLabel+'</span><span style="font-size:12.5px;color:var(--color-label-alternative);">'+stripMeta+'</span></div>'
@@ -851,8 +835,6 @@ function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ${seoHead(issue, data, canonicalPath)}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#0066ff">
@@ -874,8 +856,7 @@ ${noscriptFallback(data)}
 </html>`;
 }
 
-// 앱 아이콘: 슬레이트 타일 + 흰 오픈 링 마크. 도형만 써서 폰트 없이도 항상 동일하게 렌더된다.
-const ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#6b82a8"/><path d="M363.2 118.8A174 174 0 1 0 363.2 393.2" fill="none" stroke="#fff" stroke-width="87"/></svg>`;
+const ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#0066ff"/><text x="256" y="366" font-family="'Wanted Sans Variable',system-ui,sans-serif" font-size="300" font-weight="800" fill="#fff" text-anchor="middle">V</text></svg>`;
 
 const MANIFEST = JSON.stringify({
   name: "VetMan 해외 브리핑",
