@@ -32,7 +32,9 @@ export async function fetchArticleMeta(url) {
     const og =
       html.match(/<meta[^>]+property=["']og:image["'][^>]*content=["']([^"']+)["']/i) ??
       html.match(/<meta[^>]+content=["']([^"']+)["'][^>]*property=["']og:image["']/i);
-    const imageUrl = og?.[1]?.startsWith("http") ? og[1] : null;
+    // 구글 뉴스 경유 시 og:image가 generic 구글 로고인 경우가 많다 — 기사 이미지가 아니므로 버린다
+    const rawImage = og?.[1]?.startsWith("http") ? og[1] : null;
+    const imageUrl = rawImage && /googleusercontent\.com|gstatic\.com/.test(rawImage) ? null : rawImage;
 
     // 본문 추출: <p> 태그 중 실문장으로 보이는 것만 수집 (60자 이상)
     const paras = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)]
