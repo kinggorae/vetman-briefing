@@ -161,12 +161,19 @@ function gaSnippet() {
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${esc(id)}');</script>`;
 }
 
-function seoHead(issue, data, canonicalPath) {
+function seoHead(issue, data, canonicalPath, isIndex = false) {
   const label = labelOf(issue);
   // 브랜드 검색("베트맨랩") 대응 — 한글 브랜드명을 타이틀·설명에 실제 문자열로 넣는다
   const brand = `${SITE.brandKo}(${SITE.brandEn})`;
-  const title = `${label} 수의계 해외 뉴스 브리핑 | ${SITE.name} · ${brand}`;
-  const desc = `${brand}이 만드는 해외 수의 브리핑. ${data.articles[0]?.dek || SITE.description}`.slice(0, 300);
+  // 홈과 최신 일자 페이지는 같은 이슈를 보여준다. 제목까지 같으면 두 페이지가
+  // 같은 질의에서 서로 경쟁한다. 홈은 날짜 없는 상설 제목(브랜드 검색용),
+  // 일자 페이지는 날짜가 박힌 아카이브 제목으로 역할을 나눈다.
+  const title = isIndex
+    ? `${SITE.name} — 한국 동물병원을 위한 해외 수의 브리핑 | ${brand}`
+    : `${label} 수의계 해외 뉴스 브리핑 | ${SITE.name} · ${brand}`;
+  const desc = isIndex
+    ? `${brand}이 매일 아침 발행하는 해외 수의 브리핑. ${SITE.description}`.slice(0, 300)
+    : `${brand}이 만드는 ${label} 해외 수의 브리핑. ${data.articles[0]?.dek || SITE.description}`.slice(0, 300);
   const canonical = `${SITE.baseUrl}${canonicalPath}`;
   const ogImage = data.articles.find((a) => a.image)?.image;
   const jsonLd = {
@@ -241,17 +248,25 @@ ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">` : ""}
 }
 
 function noscriptFallback(data) {
+  // 이 블록이 사이트 전체에서 유일하게 서버가 그려주는 링크다. SPA는 기사 카드를
+  // JS로 그리기 때문에, 여기서 링크하지 않으면 기사 페이지 131개가 전부 고아가 된다
+  // (사이트맵에만 있고 들어오는 링크가 없는 페이지는 색인이 잘 되지 않는다).
+  //
+  // 본문 전문을 여기 싣지 않는다 — 기사 페이지와 같은 글이 홈·일자 페이지에도
+  // 중복되면 어느 쪽을 원본으로 볼지 검색엔진이 헷갈린다. 리드까지만 싣고
+  // 본문은 기사 페이지 한 곳에만 둔다.
+  const list = (data.articles || [])
+    .map(
+      (a) => `<li style="margin-bottom:16px;"><a href="${esc(articlePath(a))}"><b>${esc(a.title)}</b></a>
+<div>${esc(a.dek)}</div>
+<small>${[a.kicker, a.source, a.country].filter(Boolean).map(esc).join(" · ")}</small></li>`
+    )
+    .join("");
   return `<noscript><div style="max-width:720px;margin:0 auto;padding:40px 20px;font-family:sans-serif;">
 <h1>${esc(SITE.brandKo)} ${esc(SITE.name)} — ${esc(data.date)}</h1>
 <p>${esc(SITE.brandKo)}(${esc(SITE.brandEn)})이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑입니다.</p>
-${data.articles
-    .map(
-      (a) => `<article style="margin-bottom:28px;border-bottom:1px solid #ddd;padding-bottom:20px;">
-<h2>${esc(a.title)}</h2><p><b>${esc(a.dek)}</b></p>
-${a.body.map((p) => `<p>${esc(p)}</p>`).join("")}
-<p>원문: <a href="${esc(a.sourceUrl)}" rel="nofollow">${esc(a.source)}</a></p></article>`
-    )
-    .join("")}
+<ul style="list-style:none;padding:0;">${list}</ul>
+<nav><a href="/">오늘의 브리핑</a> · <a href="/about">서비스 소개</a> · <a href="/privacy">개인정보처리방침</a> · <a href="/terms">이용약관</a> · <a href="/rss.xml">RSS</a></nav>
 </div></noscript>`;
 }
 
@@ -1081,7 +1096,7 @@ function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) 
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-${seoHead(issue, data, canonicalPath)}
+${seoHead(issue, data, canonicalPath, isIndex)}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
 <link rel="manifest" href="/manifest.webmanifest">
