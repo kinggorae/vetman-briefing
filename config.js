@@ -30,6 +30,42 @@ export const SITE = {
   indexNowKey: "9713ac9a291bbe9c87d85626cd739fe0",
 };
 
+// ── 광고·제휴 슬롯 ──
+// 나중에 끼워 넣으면 1면 판짜기가 깨지므로 자리를 미리 잡아둔다.
+// enabled:false면 아무것도 렌더링하지 않는다(빈칸이 생기지 않는다).
+// 실제 내용 없이 켜지 않는다 — 확인되지 않은 문구를 노출하면 허위광고가 된다.
+//
+//   at    "mid"  폴드와 쿼드 사이 전면 띠 (신문 1면 하단 스트립)
+//         "fold" 폴드 오른쪽 사이드 레일 하단 박스
+//   kind  "sponsor" → "광고" 표기 | "partner" → "제휴" 표기 | "house" → "베트맨랩 안내"
+//         이용약관 7조에 따라 어떤 경우든 표기와 시각적 구분은 생략할 수 없다.
+//
+// 미리보기: 주소에 ?slot=preview 를 붙이면 꺼진 슬롯도 화면에서만 보인다.
+export const SPONSOR = {
+  slots: [
+    {
+      at: "mid",
+      kind: "sponsor",
+      enabled: false,
+      advertiser: "",   // 광고주명 — 표기 의무 항목
+      headline: "",
+      body: "",
+      cta: "자세히 보기",
+      url: "",
+    },
+    {
+      at: "fold",
+      kind: "house",
+      enabled: false,
+      advertiser: "VetMan",
+      headline: "",
+      body: "",
+      cta: "",
+      url: "",
+    },
+  ],
+};
+
 // ── 법적 고지 페이지(/privacy · /terms · /about)에 들어갈 사업자·연락처 정보 ──
 // 빈 값은 페이지에 아예 표기하지 않는다. 확인되지 않은 값을 임의로 채우면
 // 그 자체가 허위표시가 되므로, 실제 등록 정보를 받은 뒤에만 채운다.

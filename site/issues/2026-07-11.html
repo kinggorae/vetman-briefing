@@ -84,6 +84,7 @@ a:hover{color:var(--color-primary-strong);}
   #vm-brief,#vm-side{padding-top:20px !important;border-top:1px solid var(--color-line-normal);}
   .vm-fp-body{column-count:1 !important;}
   .vm-quadzone,.vm-featzone{grid-template-columns:1fr !important;}
+  .vm-slot{padding:16px 18px !important;}
   .vm-quad{padding-left:0 !important;padding-right:0 !important;border-left:0 !important;border-top:1px solid var(--color-line-normal);}
   .vm-featzone > *{padding-left:0 !important;padding-right:0 !important;border-left:0 !important;}
   #vm-feat-r{padding-top:20px !important;border-top:1px solid var(--color-line-normal);}
@@ -121,7 +122,7 @@ a:hover{color:var(--color-primary-strong);}
 
 </div></noscript>
 <script id="vm-issue" type="application/json">{"date":"2026-07-11","dateLabel":"2026.07.11","dateline":"2026년 7월 11일 · 토요일","editionNo":"2,017","count":0,"cats":[],"articles":[],"stories":[]}</script>
-<script id="vm-cfg" type="application/json">{"newsletter":false}</script>
+<script id="vm-cfg" type="application/json">{"newsletter":false,"slots":[{"at":"fold","kind":"house","enabled":false,"advertiser":"VetMan","headline":"","body":"","cta":"","url":""}]}</script>
 <script>
 (function(){
   var DATA = JSON.parse(document.getElementById('vm-issue').textContent);
@@ -257,6 +258,30 @@ a:hover{color:var(--color-primary-strong);}
     + (a.radar&&a.radar.clinical?'<div class="vm-fill" style="display:none;margin:0 0 10px;padding-left:11px;border-left:2px solid var(--color-primary-normal);font-size:13px;line-height:1.6;color:var(--color-label-neutral);max-width:62ch;"><b style="color:var(--color-primary-normal);font-weight:700;">진료 포인트</b> '+e(a.radar.clinical)+'</div>':'')
     +'<div style="font-size:11.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+metaShort(a)+'</div></article>';
   }
+  // ── 광고·제휴 슬롯 ──
+  // 이용약관 7조: 광고임을 명확히 표기하고 편집 기사와 시각적으로 구분한다.
+  // 그래서 제목은 본문 서체(산세리프)를 쓴다 — 기사 제목은 세리프라 한눈에 갈린다.
+  var SLOT_PREVIEW=/[?&]slot=preview/.test(location.search);
+  var SLOT_LABEL={sponsor:'광고',partner:'제휴',house:'베트맨랩 안내'};
+  function slotAt(where){
+    var s=(CFG.slots||[]).filter(function(x){ return x.at===where && (x.enabled||SLOT_PREVIEW); })[0];
+    return s||null;
+  }
+  function sponsorBlock(s,wide){
+    if(!s) return '';
+    var off=!s.enabled;
+    return '<aside class="vm-slot" style="border-top:1px solid var(--color-line-normal);border-bottom:1px solid var(--color-line-normal);background:var(--color-material-base);padding:'+(wide?'20px 24px':'16px 18px')+';margin:'+(wide?'0 0 26px':'18px 0 0')+';">'
+    +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'
+      +'<span style="font-size:9.5px;font-weight:800;letter-spacing:.14em;border:1px solid var(--color-label-alternative);color:var(--color-label-alternative);padding:2px 6px;border-radius:3px;">'+e(SLOT_LABEL[s.kind]||'광고')+'</span>'
+      +(s.advertiser?'<span style="font-size:11px;font-weight:700;color:var(--color-label-alternative);letter-spacing:.02em;">'+e(s.advertiser)+'</span>':'')
+      +(off?'<span style="font-size:10px;font-weight:700;color:var(--color-primary-normal);">미리보기 — 게시되지 않음</span>':'')
+    +'</div>'
+    +(s.headline?'<div style="font-family:var(--font-sans);font-size:'+(wide?'19px':'15px')+';font-weight:700;line-height:1.35;letter-spacing:-.01em;color:var(--color-label-strong);margin-bottom:6px;">'+e(s.headline)+'</div>':'')
+    +(s.body?'<p style="margin:0 0 10px;font-size:'+(wide?'14px':'13px')+';line-height:1.6;color:var(--color-label-neutral);max-width:70ch;">'+e(s.body)+'</p>':'')
+    +(s.url&&s.cta?'<a href="'+e(s.url)+'" target="_blank" rel="noopener sponsored nofollow" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">'+e(s.cta)+' →</a>':'')
+    +'</aside>';
+  }
+
   // ── 1면 전용 렌더러 ──
   // 톱기사: 큰 제목 + 리드 + 본문 2단 조판(드롭캡). 신문 1면의 무게중심이다.
   function fpLead(a){
@@ -476,9 +501,11 @@ a:hover{color:var(--color-primary-strong);}
       +'<div id="vm-brief" style="grid-column:1;grid-row:1;padding:26px 26px 0 0;">'
         +'<div style="font-family:var(--font-display);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--color-label-strong);padding-bottom:10px;border-bottom:2px solid var(--color-label-strong);">한눈에</div>'
         +brief.map(briefRow).join('')+'</div>'
-      +'<div id="vm-side" style="grid-column:3;grid-row:1;padding:26px 0 0 26px;">'+side.map(railCard).join('')+'</div>'
+      +'<div id="vm-side" style="grid-column:3;grid-row:1;padding:26px 0 0 26px;">'+side.map(railCard).join('')+sponsorBlock(slotAt('fold'))+'</div>'
     +'</div>'
-    // ② 쿼드 — 같은 무게 4단
+    // ② 광고/제휴 띠 — 폴드와 쿼드 사이. 슬롯이 비면 아무것도 나오지 않는다
+    +sponsorBlock(slotAt('mid'),true)
+    // ③ 쿼드 — 같은 무게 4단
     // 칸이 다 차지 않으면 빈 셀이 생긴다 → 카드 수에 맞춰 단 수를 줄이고, 2장 미만이면 생략
     +(quad.length>=2?'<div class="vm-quadzone" style="display:grid;grid-template-columns:repeat('+quad.length+',1fr);gap:0;border-bottom:2px solid var(--color-label-strong);">'
       +quad.map(function(a,qi){ return '<div class="vm-quad" style="padding:22px 20px 26px;'+(qi?'border-left:1px solid var(--color-line-normal);':'padding-left:0;')+(qi===quad.length-1?'padding-right:0;':'')+'">'+quadCard(a,qi)+'</div>'; }).join('')
