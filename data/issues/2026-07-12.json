@@ -28,7 +28,16 @@
       "imageUrl": "https://todaysveterinarybusiness.com/wp-content/uploads/sites/2/2026/07/shutterstock_1850832316.jpg",
       "sourceUrl": "https://todaysveterinarybusiness.com/pet-owners-underestimate-heartworm-risk/",
       "sourceTitle": "Pet Owners Underestimate Heartworm Risk",
-      "publishedAt": "2026-07-11T18:11:45.000Z"
+      "publishedAt": "2026-07-11T18:11:45.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지도 심장사상충 예방약을 먹어야 하나요? 북쪽에서도 점점 많아진다고 들었는데.",
+          "script": "심장사상충은 모기를 통해 전파되는 질병으로, 최근 미국 북부 지역에서도 사례가 늘고 있습니다. 아직 국내에서는 보고가 거의 없지만, 예방이 가장 중요한 질병이므로 연중 예방을 권장하고 있습니다. 예방 약은 강아지의 체중과 건강 상태를 고려해 전문가와 상담 후 선택하시면 됩니다."
+        },
+        "clinical": "자영업 진료 시 심장사상충 예방 약 처방 여부를 확인하고, 특히 어린 개에서 예방 중요성을 보호자에게 안내하는 체크리스트를 활용할 것",
+        "evidence": null
+      }
     }
   ]
 }

@@ -28,7 +28,16 @@
       "imageUrl": "https://vetgirlontherun.com/wp-content/uploads/2026/07/Title-Photo-Rabbit-eating-fruit-loops.jpg",
       "sourceUrl": "https://vetgirlontherun.com/the-top-5-husbandry-mistakes-that-land-exotic-pets-in-the-clinic-vetgirl-veterinary-continuing-education-blogs/",
       "sourceTitle": "The Top 5 Husbandry Mistakes That Land Exotic Pets in the Clinic",
-      "publishedAt": "2026-07-03T10:00:25.000Z"
+      "publishedAt": "2026-07-03T10:00:25.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "이글(토끼/조류/파충류) 음식이랑 조명 관리 잘못하면 어떤 병에 걸리나요?",
+          "script": "씨앗만 주거나 건초를 충분히 안 주르면 치과 질환, 비만, 간 질환이 점점 심각해져요. 파충류는 UVB 조명 없으면 칼슘 대사가 안 되해서 뼈 질환이 생깁니다. 처음엔 증상이 안 보여서 늦게 발견되는 경우가 많으니, 지금부터 잘 관리하면 예방할 수 있어요."
+        },
+        "clinical": "초진 시 이글(토끼/조류/파충류)의 식이 구성과 조명·온도 환경 항목을 함께 점검하고, 관리 개선이 필요한 경우 보호자와 함께 계획 세우기",
+        "evidence": null
+      }
     },
     {
       "titleKo": "미국 여름철 반려동물 클레임 증가, 열사병 266%·독사 물림 145% 상승",
@@ -54,7 +63,16 @@
       "imageUrl": "https://www.veterinarypracticenews.com/wp-content/uploads/2026/07/bigstock-Akita-Inu-Dog-On-A-Walk-In-The-380397469.jpg",
       "sourceUrl": "https://www.veterinarypracticenews.com/summer-claims-data-highlight-seasonal-risks-us-pets/",
       "sourceTitle": "Summer claims data highlight seasonal risks for U.S. pets",
-      "publishedAt": "2026-07-02T19:59:00.000Z"
+      "publishedAt": "2026-07-02T19:59:00.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "여름에 날씨가 더울 때 우리 강아지를 데리고 나가 놀아도 되나요? 뭘 조심해야죠?",
+          "script": "더운 날씨에는 아침이나 저녁 시원할 때 산책을 하고, 아스팔트에 발을 대보고 뜨거우면 피하는 것이 좋아요. 물을 충분히 주고, 긴 산책이나 차 안 방치는 위험할 수 있어요."
+        },
+        "clinical": "여름철 열사병·독사 물림·벌레 물림 환자 증가에 대비해 대기실 예방교육 영상 점검 및 구조환자용 수액·냉각 프로토콜 재확인",
+        "evidence": null
+      }
     }
   ]
 }

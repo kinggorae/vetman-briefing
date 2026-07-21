@@ -28,7 +28,12 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/nothing-inherently-wrong-1.52.22-PM.jpg",
       "sourceUrl": "https://drandyroark.com/nothing-inherently-wrong/",
       "sourceTitle": "There’s Nothing Inherently Wrong With Production Pay",
-      "publishedAt": "2026-05-21T17:40:39.000Z"
+      "publishedAt": "2026-05-21T17:40:39.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "생산성 보상 체계 도입 시 의료 품질 기준 설정 및 정기적 관리 감독 체계 구축 필요",
+        "evidence": null
+      }
     }
   ]
 }

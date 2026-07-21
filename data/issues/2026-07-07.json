@@ -28,7 +28,16 @@
       "imageUrl": "http://ivcjournal.com/wp-content/uploads/Gemini_Generated_Image_bj4pu7bj4pu7bj4p-600x365.png",
       "sourceUrl": "https://ivcjournal.com/7-integrative-approaches-to-managing-stress-induced-urinary-issues-in-feline-patients/",
       "sourceTitle": "7 Integrative Approaches to Managing Stress-Induced Urinary Issues in Feline Patients",
-      "publishedAt": "2026-07-07T14:30:07.000Z"
+      "publishedAt": "2026-07-07T14:30:07.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "고양이가 목욕실에 너무 자주 가거나 소변을 힘 주는데, 이것도 스트레스성 방광염일 수 있나요?",
+          "script": "고양이 특발성 방광염은 스트레스와 밀접한 관련이 있어요. 보호자분이 고양이 일상생활에서 스트레스가 될 만한 요인이 있는지 환경을 점검해보는 게 중요합니다. 다만 정확한 진단은 진찰과 검사를 거쳐야 알 수 있어요."
+        },
+        "clinical": "FLUTD 진료 시 환경 스트레스 요인(다중 고양이, 보호자 부재, 사료/급수 위치 등) 문진 항목에 추가 고려",
+        "evidence": null
+      }
     }
   ]
 }

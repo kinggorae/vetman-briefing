@@ -28,7 +28,16 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/cos-401-blog-pic.jpg",
       "sourceUrl": "https://drandyroark.com/super-judgy-things/",
       "sourceTitle": "Three Super-Judgy Things Vets Should Stop Saying (Maybe)",
-      "publishedAt": "2026-06-11T05:00:00.000Z"
+      "publishedAt": "2026-06-11T05:00:00.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "저희가 비용 때문에 진료를 안 해주시나요?",
+          "script": "진료비를 내기 어렵다고 해서 동물을 사랑하는 마음이 없는 게 아닙니다. 동물병원에서는 재정 상황마다 맞춰진 치료 옵션들을 함께 알아보려고 합니다. 가장 중요한 건 동물 복지를 유지하는 것이니까, 부담 없이 상담해 보세요."
+        },
+        "clinical": "자발적 판단적 표현(예: \"돈 없으면 키우지 마\") 사용 여부를 점검하고, 치료 스펙트럼 기반 치료 옵션 설명서를 진료실에 비치 검토",
+        "evidence": null
+      }
     },
     {
       "titleKo": "미국 태평양 북서부에서 폐활성 조충 발견…너구리 37% 감염",
@@ -54,7 +63,16 @@
       "imageUrl": "https://www.sciencedaily.com/images/1920/hydatid-cyst-of-echinococcus-multilocularis.webp",
       "sourceUrl": "https://www.sciencedaily.com/releases/2026/06/260611024610.htm",
       "sourceTitle": "The deadly tapeworm spreading across America has reached the Pacific Northwest",
-      "publishedAt": "2026-06-11T13:31:42.000Z"
+      "publishedAt": "2026-06-11T13:31:42.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 너구리나 설치류 근처에서 놀았는데, 이 기생충 검사나 예방이 필요할까요?",
+          "script": "폐활성 조충은 주로 야생 너구리·여우를 통해 퍼지는 기생충입니다. 현재 미국 서해안에서 발견되기 시작했고, 국내에서는 아직 보고되지 않았지만 예방이 중요합니다. 평소 설치류 사냥을 못하게 관리하고, 정기적인 기생충 검사와 예방 약물을 실시하시면 됩니다."
+        },
+        "clinical": "개·고양이 기생충 예방 프로그램에서 이 조충(E. ) 검사 및 예방 약물 포함 여부 재점검",
+        "evidence": null
+      }
     }
   ]
 }

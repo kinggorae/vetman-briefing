@@ -28,7 +28,16 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/cos-404-blog-pic.jpg",
       "sourceUrl": "https://drandyroark.com/hdytt-the-critical-feline/",
       "sourceTitle": "HDYTT: The Critical Feline Patient",
-      "publishedAt": "2026-06-25T05:00:00.000Z"
+      "publishedAt": "2026-06-25T05:00:00.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "선생님, 고양이가 사고나서 너무 아파하는데 왜 바로 마취를 안 해주시고 불안정하셨어요?",
+          "script": "고양이가 외상을 받았을 때는 먼저 산소를 공급하고 쇼크 상태를 관리한 후 진통제를 투여하는 단계가 필요합니다. 이 안정화 과정을 거쳐야 마취 시 합병증 위험을 낮출 수 있고 오히려 더 안전합니다. 지금부터 천천히 상태를 안정시키면서 진행하겠습니다."
+        },
+        "clinical": "중증 외상 고양이 환자가 도착했을 때 산소 공급→쇼크 관리→진통→마취 순서 프로토콜을 반드시 준수하는지 점검하고, 각 단계에서 활력징후 모니터링을 철저히 할 것",
+        "evidence": null
+      }
     }
   ]
 }

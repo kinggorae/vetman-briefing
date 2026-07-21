@@ -28,7 +28,16 @@
       "imageUrl": "https://vetgirlontherun.com/wp-content/uploads/2026/06/Feline-Elimination-Disorders-A-Practical-Approach-for-Veterinarians.png",
       "sourceUrl": "https://vetgirlontherun.com/feline-elimination-disorders-a-practical-approach-for-veterinarians-vetgirl-veterinary-continuing-education-blog/",
       "sourceTitle": "Feline Elimination Disorders: A Practical Approach for Veterinarians",
-      "publishedAt": "2026-06-26T10:00:55.000Z"
+      "publishedAt": "2026-06-26T10:00:55.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "고양이가 갑자기 변기 밖이나 침대 위에 오줌/똥을 누는데, 뭐가 원인일까요?",
+          "script": "먼저 방광염이나 요로 결석 같은 의료 질환이 있는지 검사를 해야 합니다. 의료 질환이 없다면 환경 스트레스나 행동적 원인을 살펴보게 되는데, 고양이는 환경 변화에 매우 민감해서 모래통 위치나 수, 다른 고양이와의 갈등 등도 문제가 될 수 있습니다. 치료는 의료 치료와 환경 개선, 행동 치료를 같이 해야 하며, 오래된 문제는 오래 걸리니 인내심이 필요합니다."
+        },
+        "clinical": "배설 문제 호소 고양이 환자에 대해 의료 질환 배제를 위한 기본 검사(소변 검사, 영상 검사 등) 프로토콜을 점검하고, 환경 스트레스 평가 항목을 문진에 포함시키세요.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "신입 수의사 주목 영역, 고난도 수술·가정방문·난치 케이스",
@@ -54,7 +63,12 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/three-areas.jpg",
       "sourceUrl": "https://drandyroark.com/three-areas-for-new-vets/",
       "sourceTitle": "Three Areas Every New Vet Should Be Looking At",
-      "publishedAt": "2026-06-26T04:00:00.000Z"
+      "publishedAt": "2026-06-26T04:00:00.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": null,
+        "evidence": null
+      }
     },
     {
       "titleKo": "말 정맥 카테터 삽입 완벽 가이드: 합병증 예방을 위한 실천적 단계",
@@ -80,7 +94,12 @@
       "imageUrl": "https://todaysveterinarynurse.com/wp-content/uploads/sites/3/2026/06/Cripe_EquineIVs_TVN2026Web_MainImage.png",
       "sourceUrl": "https://todaysveterinarynurse.com/equine-medicine/a-step-by-step-guide-to-intravenous-catheter-placement-in-the-equine-patient/",
       "sourceTitle": "A Step-by-Step Guide to Intravenous Catheter Placement in the Equine Patient",
-      "publishedAt": "2026-06-25T19:03:16.000Z"
+      "publishedAt": "2026-06-25T19:03:16.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "정맥 카테터 삽입 시 무균 기술 준수 여부와 카테터 유지 기간, 재료를 확인하고 점검",
+        "evidence": null
+      }
     }
   ]
 }

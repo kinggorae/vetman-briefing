@@ -28,7 +28,12 @@
       "imageUrl": "http://static1.squarespace.com/static/5c2aec4b1137a6d8849debf1/6512489d8040f03c02fce8a0/6a500a9e670ecf656a40a2d8/1783631046672/?format=1500w",
       "sourceUrl": "https://www.myvetcandy.com/news/2026/7/9/small-door-and-bond-vet-just-merged-heres-what-that-actually-means-for-the-profession",
       "sourceTitle": "Small Door and Bond Vet Just Merged. Here's What That Actually Means for the Profession",
-      "publishedAt": "2026-07-09T20:54:53.000Z"
+      "publishedAt": "2026-07-09T20:54:53.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": null,
+        "evidence": null
+      }
     }
   ]
 }

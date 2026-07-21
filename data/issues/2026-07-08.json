@@ -28,7 +28,12 @@
       "imageUrl": "https://todaysveterinarybusiness.com/wp-content/uploads/sites/2/2026/07/Ward_OpeningShots_TVBAugSep26_MainImage.png",
       "sourceUrl": "https://todaysveterinarybusiness.com/veterinary-q-a/",
       "sourceTitle": "Veterinary Q A: AI, Starting Out in Veterinary Medicine, and More",
-      "publishedAt": "2026-07-07T20:54:21.000Z"
+      "publishedAt": "2026-07-07T20:54:21.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "AI 필기 도구 사용 시 반드시 약물 용량·투여 부위·해부학적 세부사항을 수의사가 직접 확인하고 수정하는 프로토콜 수립",
+        "evidence": null
+      }
     },
     {
       "titleKo": "동물병원 채용 실패 루프를 끊는 9가지 HR 도구",
@@ -54,7 +59,12 @@
       "imageUrl": "https://todaysveterinarybusiness.com/wp-content/uploads/sites/2/2026/07/Weinstein_Entrepreneurship_TVBAugSep26_MainImage.png",
       "sourceUrl": "https://todaysveterinarybusiness.com/9-hr-tools-every-veterinary-practice-needs/",
       "sourceTitle": "9 HR Tools Every Veterinary Practice Needs",
-      "publishedAt": "2026-07-07T20:49:17.000Z"
+      "publishedAt": "2026-07-07T20:49:17.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": null,
+        "evidence": null
+      }
     },
     {
       "titleKo": "수의사 영양 상담, 실제로 얼마나 이루어질까",
@@ -80,7 +90,16 @@
       "imageUrl": "https://todaysveterinarypractice.com/wp-content/uploads/sites/4/2026/07/ResearchWrapped_0726_MainImage.png",
       "sourceUrl": "https://todaysveterinarypractice.com/personal-professional-development/breaking-the-barriers-to-positive-in-clinic-nutrition-conversations/",
       "sourceTitle": "Breaking the Barriers to Positive In-Clinic Nutrition Conversations",
-      "publishedAt": "2026-07-07T19:54:45.000Z"
+      "publishedAt": "2026-07-07T19:54:45.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "선생님, 우리 강아지 영양 상담도 받을 수 있어요?",
+          "script": "네, 영양 상담 가능합니다. 상담 때는 먼저 보호자분의 목표를 확인하고 동물의 현재 체상태를 평가한 후 맞춤 권장을 드려요. 영양사가 영양 이력을 먼저 확인하고 제가 최종 권고를 도와드리는 방식입니다."
+        },
+        "clinical": "영양 상담 프로토콜을 점검하고 영양사가 상담을 시작하거나 주도할 수 있도록 팀 교육을 강화하며, 같은 무료 영양 데이터베이스 활용을 검토하세요.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "동물병원 소프트웨어 감사, 90분 안에 자가 점검하는 법",
@@ -106,7 +125,16 @@
       "imageUrl": "https://todaysveterinarybusiness.com/wp-content/uploads/sites/2/2026/07/Wysocki_Innovation_TVBAugSep26_MainImage.png",
       "sourceUrl": "https://todaysveterinarybusiness.com/how-to-perform-a-veterinary-software-audit-in-90-minutes/",
       "sourceTitle": "How to Perform a Veterinary Software Audit in 90 Minutes",
-      "publishedAt": "2026-07-07T20:51:12.000Z"
+      "publishedAt": "2026-07-07T20:51:12.000Z",
+      "radar": {
+        "owner": {
+          "soon": false,
+          "q": "이 병원 소프트웨어 비용이 제가 내는 진료비에 영향을 주나요?",
+          "script": "소프트웨어 비용은 진료비에 포함되지 않도록 관리하고 있습니다. 대신 효율적인 시스템으로 더 나은 진료 서비스를 제공할 수 있도록 노력하고 있답니다."
+        },
+        "clinical": "90분 감사 4단계를 실천하여 병원 소프트웨어 목록 작성, 중복 도구 확인, 수동 입력 틈 파악, 실제 비용 확인 후 최적화할 3~5개 항목 선정 및 갱신 알림 설정",
+        "evidence": null
+      }
     },
     {
       "titleKo": "24시간 동물병원 개축 시 임상 운영 연속성 유지 사례",
@@ -132,7 +160,16 @@
       "imageUrl": "https://www.veterinarypracticenews.com/wp-content/uploads/2026/07/25_12_5488_Edit_1.jpg",
       "sourceUrl": "https://www.veterinarypracticenews.com/maintaining-continuity-during-renovation/",
       "sourceTitle": "Maintaining continuity during renovation",
-      "publishedAt": "2026-07-08T14:52:17.000Z"
+      "publishedAt": "2026-07-08T14:52:17.000Z",
+      "radar": {
+        "owner": {
+          "soon": false,
+          "q": "개축공사 기간에도 병원 진료가 계속되나요?",
+          "script": "개축공사에는 임시 시설을 마련하거나 시공 구역을 세분화해서 진료가 끊기지 않도록 합니다. 구체적인 계획은 각 병원 규모와 상황에 따라 다릅니다."
+        },
+        "clinical": "병원 개축·리노베이션 시 기존 진료 인프라(수술실, 영상 진단실) 연속성 확보 방안을 사전에 수립하고, 단계적 전환 프로토콜을 마련할 것",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개방형 API가 동물 병원 소프트웨어의 미래를 바꾼다",
@@ -158,7 +195,12 @@
       "imageUrl": "https://todaysveterinarybusiness.com/wp-content/uploads/sites/2/2026/07/Viewpoints_TVBAugSep26_MainImage.png",
       "sourceUrl": "https://todaysveterinarybusiness.com/why-veterinary-software-should-embrace-open-apis/",
       "sourceTitle": "Why Veterinary Software Should Embrace Open APIs",
-      "publishedAt": "2026-07-07T20:56:23.000Z"
+      "publishedAt": "2026-07-07T20:56:23.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "현재 사용 중인 PIMS의 API 개방성 및 외부 도구 연동 가능성을 소프트웨어 공급업체에 직접 확인하고, 원격 진료·AI 필기 등 필요한 도구 도입 시 연동 이슈가 없는지 사전 점검할 것",
+        "evidence": null
+      }
     },
     {
       "titleKo": "동물병원 수익성 강화 위한 4가지 핵심 KPI 관리법",
@@ -184,7 +226,12 @@
       "imageUrl": "https://todaysveterinarybusiness.com/wp-content/uploads/sites/2/2026/07/Castner_MoneyMatters_TVBAugSep26_MainImage.png",
       "sourceUrl": "https://todaysveterinarybusiness.com/measure-monitor-and-manage-kpis-to-increase-clinic-revenue/",
       "sourceTitle": "Measure, Monitor, and Manage KPIs to Increase Clinic Revenue",
-      "publishedAt": "2026-07-07T20:48:31.000Z"
+      "publishedAt": "2026-07-07T20:48:31.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "자신의 동물병원에서 월간 신규 고객 수, 의사별 진료 건수, 평균 진료비를 실제로 측정·비교하고 업계 평균과 차이가 크면 경영 개선점을 파악한다",
+        "evidence": null
+      }
     },
     {
       "titleKo": "수의 리더십의 새로운 시대: 기업 동물병원 운영의 핵심",
@@ -210,7 +257,12 @@
       "imageUrl": "https://todaysveterinarybusiness.com/wp-content/uploads/sites/2/2026/06/Lester_CreativeDisruption_TVBAugSep26_MainImage.png",
       "sourceUrl": "https://todaysveterinarybusiness.com/understanding-the-role-of-the-chief-veterinary-officer/",
       "sourceTitle": "Understanding the Role of the Chief Veterinary Officer",
-      "publishedAt": "2026-07-07T20:42:52.000Z"
+      "publishedAt": "2026-07-07T20:42:52.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": null,
+        "evidence": null
+      }
     }
   ]
 }

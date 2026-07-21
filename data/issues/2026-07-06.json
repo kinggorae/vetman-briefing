@@ -28,7 +28,16 @@
       "imageUrl": "https://www.vetpracticemag.com.au/wp-content/uploads/2026/06/hydrotherapy.jpg",
       "sourceUrl": "https://www.vetpracticemag.com.au/treating-dogs-with-hydrotherapy/",
       "sourceTitle": "Treating dogs with hydrotherapy",
-      "publishedAt": "2026-07-05T22:52:43.000Z"
+      "publishedAt": "2026-07-05T22:52:43.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 관절염이 있는데 수중 운동 치료를 받으면 도움이 될까요?",
+          "script": "관절염이 있고 운동하기 어려운 개에게 수중 트레드밀 치료가 좋은 대안이 될 수 있습니다. 물의 부력 때문에 관절에 무리가 가지 않으면서 근육을 강화할 수 있어서 관절염 관리와 체중 관리에 도움이 되죠. 다만 각 동물의 상태에 따라 맞는 치료 방법이 다르므로 내원해 주시면 상태를 확인하고 상담해 드리겠습니다."
+        },
+        "clinical": "관절염이나 비만으로 운동이 어려운 개 환자들에게 수중 치료 도입을 검토하고, 필요시 수중 트레드밀 장비 설비 투자나 동물재활 전문가 협업 가능성을 점검해 보세요.",
+        "evidence": null
+      }
     }
   ]
 }

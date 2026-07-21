@@ -28,7 +28,12 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/cos-402-blog-pic.jpg",
       "sourceUrl": "https://drandyroark.com/new-vets-working-with-seniors/",
       "sourceTitle": "A New Vet Guide to Working with Senior Paraprofessionals",
-      "publishedAt": "2026-06-16T18:13:32.000Z"
+      "publishedAt": "2026-06-16T18:13:32.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "경력 수의기사의 실무 노하우 활용도를 점검하고, 신입 수의사-경력 기사 간 상호 존중 문화를 팀 미팅에서 정기적으로 논의할 것",
+        "evidence": null
+      }
     }
   ]
 }

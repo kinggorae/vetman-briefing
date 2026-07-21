@@ -28,7 +28,12 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/cos-399-blog-pic.jpg",
       "sourceUrl": "https://drandyroark.com/are-pims-still-the-center/",
       "sourceTitle": "Are PIMS Still the Center of Your Practice?",
-      "publishedAt": "2026-05-28T22:51:05.000Z"
+      "publishedAt": "2026-05-28T22:51:05.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": null,
+        "evidence": null
+      }
     }
   ]
 }

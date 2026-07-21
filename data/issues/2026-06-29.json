@@ -28,7 +28,12 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/cos-405-blog-pic.jpg",
       "sourceUrl": "https://drandyroark.com/redefining-the-dvm-career-path/",
       "sourceTitle": "Redefining the DVM Career Path",
-      "publishedAt": "2026-06-29T03:00:00.000Z"
+      "publishedAt": "2026-06-29T03:00:00.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "병원 인력이력 관리와 멘토링 프로그램 설계에 참고할 수 있음",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개·고양이 유방종양, 식물 화학물질 연구 동향",
@@ -54,7 +59,16 @@
       "imageUrl": "https://ivcjournal.com/wp-content/uploads/Gemini_Generated_Image_p4pvh2p4pvh2p4pv-600x372.png",
       "sourceUrl": "https://ivcjournal.com/phytochemicals-and-plant-extracts-in-canine-and-feline-mammary-tumors-emerging-insights-for-veterinary-oncology/",
       "sourceTitle": "Promising Phytochemicals and Plant Extracts in Canine and Feline Mammary Tumors",
-      "publishedAt": "2026-06-29T13:00:19.000Z"
+      "publishedAt": "2026-06-29T13:00:19.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "개 유방종양 수술 후 보조치료제로 식물 추출물 같은 자연 유래 약물이 도움이 될까요?",
+          "script": "현재 여러 식물 화학물질이 연구되고 있지만, 아직 동물병원에서 본격적으로 사용하기에는 이릅니다. 개 모델에서는 일부 데이터가 있으나, 실제 임상 적용까지는 종 특이적 안전성과 약물동태 검증이 더 필요해 보여요. 수술 후 보조치료제 도입 여부는 향후 연구 결과를 보면서 판단하게 될 것 같습니다."
+        },
+        "clinical": "유방종양 수술 후 사례에서 보호자에게 보조치료제 현황을 안내할 때, 현재 연구 단계임을 함께 설명하고 향후 관련 논문을 지속적으로 모니터링하는 것이 좋겠습니다.",
+        "evidence": null
+      }
     }
   ]
 }

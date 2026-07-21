@@ -28,7 +28,16 @@
       "imageUrl": "https://ivcjournal.com/wp-content/uploads/Gemini_Generated_Image_1oxrva1oxrva1oxr-600x355.png",
       "sourceUrl": "https://ivcjournal.com/dietary-potassium-supplementation-in-cats-a-safe-strategy-to-reduce-urinary-stone-risk/",
       "sourceTitle": "Dietary Potassium Supplementation in Cats: A Safe Strategy to Reduce Urinary Stone Risk",
-      "publishedAt": "2026-06-23T13:00:49.000Z"
+      "publishedAt": "2026-06-23T13:00:49.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 고양이한테 칼륨 보충제도 줘도 되나요? 요로결석 예방에 좋대던데",
+          "script": "칼륨 클로라이드 보충이 수분 섭취를 높이고 요로를 희석시키는 연구 결과가 있습니다. 다만 아직 결석 경험이 있는 고양이에서의 장기 연구는 더 필요하고, 무조건 보충제를 주는보다는 수분 섭취를 늘리는 여러 방법을 병행하는 게 좋습니다. 결석이 있었던 고양이라면 영영 먼저 상담해 주세요."
+        },
+        "clinical": "고양이 요로결석 고위험군 문진 시 식이 내용과 수분 섭취량 점검하고, 수분 섭취 촉진 조치를 병행하는 영양 관리 계획 수립 고려",
+        "evidence": null
+      }
     },
     {
       "titleKo": "H5N1, 소 유선에서만 심한 감염 보이는 이유 규명",
@@ -54,7 +63,16 @@
       "imageUrl": "https://www.sciencedaily.com/images/1920/holstein-cow-with-ear-tags-on-pasture-looking.webp",
       "sourceUrl": "https://www.sciencedaily.com/releases/2026/06/260620100315.htm",
       "sourceTitle": "Scientists finally solved how H5N1 bird flu hid in dairy cows",
-      "publishedAt": "2026-06-23T14:31:51.000Z"
+      "publishedAt": "2026-06-23T14:31:51.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "강아지에게 우유를 줘도 괜찮을까요? 조류 인플루엔자가 유행해서 우려됩니다.",
+          "script": "원유를 충분히 끓이거나 살균 처리하면 바이러스는 안전하게 제거됩니다. 다만 조류 인플루엔자가 유행하신다면 원유 대신 강아지 전용 우유나 일반 우유를 끓여서 주시는 것이 좋습니다. 일상적으로는 새 똥이나 야생 조류와의 접촉을 피하게어 주세요."
+        },
+        "clinical": "원유 급여에 대한 보호자 문의 시 살균 처리 중요성을 안내하고, 야생 조류 접촉 차단 권고 문안을 점검·비치한다.",
+        "evidence": null
+      }
     }
   ]
 }

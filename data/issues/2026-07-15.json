@@ -28,7 +28,12 @@
       "imageUrl": "https://www.sciencedaily.com/images/1920/lemon-frost-gecko.webp",
       "sourceUrl": "https://www.sciencedaily.com/releases/2026/07/260714225525.htm",
       "sourceTitle": "This pet gecko could help scientists unlock the secrets of cancer",
-      "publishedAt": "2026-07-15T13:47:30.000Z"
+      "publishedAt": "2026-07-15T13:47:30.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": null,
+        "evidence": null
+      }
     }
   ]
 }

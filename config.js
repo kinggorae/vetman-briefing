@@ -1,6 +1,6 @@
 // ── 사이트 메타 (SEO/GEO) ──
 export const SITE = {
-  baseUrl: "https://vetman-briefing.pages.dev",
+  baseUrl: "https://news.vetmanlab.com",
   name: "VetMan 해외 브리핑",
   description:
     "해외 수의 미디어·논문 수백 곳을 매일 대신 읽고 한국 동물병원이 오늘 알아야 할 것만 골라 전하는 조기경보 레이더. 진료 점검 포인트, 보호자가 곧 물어볼 질문과 설명 대본, 논문 근거등급, 블로그 선점 글감을 함께 제공합니다.",

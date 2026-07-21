@@ -28,7 +28,12 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/cant-relax.jpg",
       "sourceUrl": "https://drandyroark.com/why-you-cant-relax/",
       "sourceTitle": "Why You Can't Let Yourself Relax",
-      "publishedAt": "2026-07-16T04:00:00.000Z"
+      "publishedAt": "2026-07-16T04:00:00.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": null,
+        "evidence": null
+      }
     }
   ]
 }

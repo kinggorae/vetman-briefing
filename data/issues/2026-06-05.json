@@ -28,7 +28,12 @@
       "imageUrl": "https://vetgirlontherun.com/wp-content/uploads/2026/06/5JUN2025_blog_feature-image.png",
       "sourceUrl": "https://vetgirlontherun.com/how-to-inflate-an-endotracheal-tube-cuff-to-minimize-risks-maximize-benefit-vetgirl-veterinary-continuing-education-blogs/",
       "sourceTitle": "How to Inflate an Endotracheal Tube Cuff to Minimize Risks, Maximize Benefit",
-      "publishedAt": "2026-06-05T10:00:26.000Z"
+      "publishedAt": "2026-06-05T10:00:26.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "마취 프로토콜에 기관내관 풍선 팽창 표준 절차를 추가하고, 풍선 압력 측정 장비(압력 측정 주사기 또는 캡노그램) 도입을 점검하라",
+        "evidence": null
+      }
     },
     {
       "titleKo": "수의학에서 일반수의의 역할, 전문의보다 중요하다",
@@ -54,7 +59,12 @@
       "imageUrl": "https://drandyroark.com/wp-content/uploads/specialists.jpg",
       "sourceUrl": "https://drandyroark.com/specialists-are-not-the-future/",
       "sourceTitle": "Specialists Are Not the Future (and That’s a Good Thing)",
-      "publishedAt": "2026-06-04T19:38:26.000Z"
+      "publishedAt": "2026-06-04T19:38:26.000Z",
+      "radar": {
+        "owner": null,
+        "clinical": "일반수의로서 다양한 진료를 지속적으로 수행할 역량을 갖출 필요가 있음을 인식하고, 자기 계발 및 최신 진료를 업데이트하는 기회를 확대하는 것을 권장합니다.",
+        "evidence": null
+      }
     }
   ]
 }

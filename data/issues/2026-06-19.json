@@ -28,7 +28,16 @@
       "imageUrl": "https://todaysveterinarypractice.com/wp-content/uploads/sites/4/2026/06/Jugan_UremicToxinsNutrition_TVPJulAug26_MainImage.png",
       "sourceUrl": "https://todaysveterinarypractice.com/nutrition/nutritional-management-of-uremic-toxin-accumulation-in-cats-with-chronic-kidney-disease/",
       "sourceTitle": "Nutritional Management of Uremic Toxin Accumulation in Cats with Chronic Kidney Disease",
-      "publishedAt": "2026-06-18T18:54:55.000Z"
+      "publishedAt": "2026-06-18T18:54:55.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "고양이 신장병에는 어떤 음식이 좋고 어떤 음식은 피해야 하나요?",
+          "script": "신장병 고양이에게 단백질 관리가 중요합니다. 너무 높은 단백질(100키로칼로리당 8~11g)은 피하고, 적당한 수준(100키로칼로리당 5.3~7g)으로 맞춰주는 것이 좋습니다. 또한 소화율이 좋은 음식을 선택하는 것이 도움이 되는데, 소화되지 않은 단백질이 결장에 도착하면 독소 전구체가 증가하기 때문입니다."
+        },
+        "clinical": "CKD 고양이 식이에서 단백질 함량(100키로칼로리당 g) 및 소화율 점검, IRIS 단계별 맞춤형 영양 관리 프로토콜 적용 여부 재점검",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개의 단백질 손실 장염, 조기 진단이 생사를 가른다",
@@ -54,7 +63,16 @@
       "imageUrl": "https://todaysveterinarypractice.com/wp-content/uploads/sites/4/2026/06/Schmid_CaninePLE_TVPJulAug26_MainImage.png",
       "sourceUrl": "https://todaysveterinarypractice.com/gastroenterology/decoding-canine-protein-losing-enteropathy/",
       "sourceTitle": "Decoding Canine Protein-Losing Enteropathy",
-      "publishedAt": "2026-06-18T18:54:09.000Z"
+      "publishedAt": "2026-06-18T18:54:09.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "강아지가 계속 설사와 구토를 하는데, 단백질이 부족한 병은 아닌지 확인해 주세요.",
+          "script": "단백질 손실 장염은 만성 위장관 염증이나 장의 임파관 문제로 발생할 수 있는 심각한 질환입니다. 현재 증상으로 저단백혈증 여부를 혈액검사로 확인해 보고, 필요하면 더 자세한 검사를 진행하겠습니다."
+        },
+        "clinical": "만성 위장관 징후(구토, 설사, 체중감소)를 보이는 개에서 저알부민혈증 소견 시 PLE 가능성을 반드시 고려하고, 비위장관 원인(신장, 간, 부신피질기능저하증) 배제를 위한 체계적 검진이 필요함",
+        "evidence": null
+      }
     },
     {
       "titleKo": "고양이 배변 문제, 예방은 대화에서 시작된다",
@@ -80,7 +98,16 @@
       "imageUrl": "https://vetgirlontherun.com/wp-content/uploads/2026/06/30-e1765900489776.png",
       "sourceUrl": "https://vetgirlontherun.com/why-the-litterbox-conversation-matters-rethinking-feline-house-soiling-in-veterinary-practice-vetgirl-veterinary-continuing-education-blog/",
       "sourceTitle": "Why the Litterbox Conversation Matters: Rethinking Feline House Soiling in Veterinary Practice",
-      "publishedAt": "2026-06-19T10:00:33.000Z"
+      "publishedAt": "2026-06-19T10:00:33.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "선생님, 우리 고양이가 갑자기 배변 상자를 안 쓰는데 이유가 뭐 때문일까요?",
+          "script": "고양이가 배변 상자를 안 쓰는 이유는 다양해요. 통증, 스트레스, 환경 문제, 건강 문제 등이 있을 수 있어서 정확한 원인은 진찰을 해봐야 합니다. 상자 환경, 위치, 청소 상태, 고양이의 최근 행동 변화 등을 함께 점검해봐야 해요."
+        },
+        "clinical": "고양이 상담 시마다 체계적인 행동력(배변 환경) 점검을 문진에 포함시키는 프로토콜을 구축할 것",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개의당뇨병 관리에서 연속혈당측정기 활용 최신 동향",
@@ -106,7 +133,16 @@
       "imageUrl": "https://todaysveterinarypractice.com/wp-content/uploads/sites/4/2026/06/Patterson_CGMs_TVPJulAug26_Fig2.png",
       "sourceUrl": "https://todaysveterinarypractice.com/endocrinology/continuous-glucose-monitor-use-in-small-animal-medicine/",
       "sourceTitle": "Continuous Glucose Monitor Use in Small Animal Medicine",
-      "publishedAt": "2026-06-18T18:55:30.000Z"
+      "publishedAt": "2026-06-18T18:55:30.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "반려견이 당뇨병인데 연속혈당측정기(CGM)를 사용해도 될까요?",
+          "script": "연속혈당측정기는 혈당 추세를 확인하는 데 유용하지만, 현재 동물 전용 제품이 없어 인체용 기기를 사용하는 것입니다. 저혈당 범위에서는 측정값이 부정확할 수 있으므로, 수치가 낮게 나왔을 때는 반드시 병원 내 전통적인 혈당 측정으로 재확인해야 합니다. 가정에서 매일 붙여서 사용할 수 있고 병원 방문 횟수를 줄일 수 있다는 장점이 있지만, 이 점을 반드시 인지하고 사용하시길 바랍니다."
+        },
+        "clinical": "CGM 사용 시 저혈당 구간에서 반드시 전통적 혈당 측정법으로 재확인하는 프로토콜을 수립하고, 피부 부작용 발생 여부를 점검하는 체크리스트를 진료에 도입한다.",
+        "evidence": null
+      }
     },
     {
       "titleKo": "개 폐충감염의 진단과 치료: 임상에서 반드시 고려해야 할 원인",
@@ -132,7 +168,16 @@
       "imageUrl": "https://todaysveterinarypractice.com/wp-content/uploads/sites/4/2026/06/JesudossChelladurai_Lungworms_TVPJulAug26_MainImage.png",
       "sourceUrl": "https://todaysveterinarypractice.com/parasitology/diagnosis-and-treatment-of-lungworms-in-dogs/",
       "sourceTitle": "Diagnosis and Treatment of Lungworms in Dogs",
-      "publishedAt": "2026-06-18T18:55:19.000Z"
+      "publishedAt": "2026-06-18T18:55:19.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 기침을 오래 하는데, 폐충 검사도 가능한가요?",
+          "script": "폐충은 한국에서는 매우 드문 질환이지만, 만성 기침이 있는 경우에는 감별 진단이 필요할 수 있습니다. 진찰과 함께 분변 검사를 통해 폐충 유무를 확인해볼 수 있으며, 필요하다면 추가적인 검사도 진행하겠습니다."
+        },
+        "clinical": "만성 기침을 보이는 개에서 폐충을 감별 진단 목록에 포함시키고, 특히 해외 여행 이력이 있거나 북미 여행 후 증상이 나타난 환자에서 원심 분변 부유 검사 및 검사를 고려할 것",
+        "evidence": null
+      }
     },
     {
       "titleKo": "통조림 Dressing에서 생명 구하는 해독제로, 정맥 내 지방 유제 치료의 탄생",
@@ -158,7 +203,16 @@
       "imageUrl": "https://todaysveterinarypractice.com/wp-content/uploads/sites/4/2019/04/T1905C01Slider.gif",
       "sourceUrl": "https://todaysveterinarypractice.com/personal-professional-development/from-salad-dressing-to-lifesaving-antidote-the-unexpected-path-of-iles/",
       "sourceTitle": "From Salad Dressing to Lifesaving Antidote: The Unexpected Path of ILEs",
-      "publishedAt": "2026-06-18T18:56:10.000Z"
+      "publishedAt": "2026-06-18T18:56:10.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 약을 많이 먹었는데 해독제 같은 치료가 가능할까요?",
+          "script": "중독의 종류에 따라서는 정맥 내 지방 유제라는 치료가 도움이 될 수 있습니다. 하지만 어떤 약을 얼마나 먹었는지에 따라 치료 방법이 다르므로, 먼저 정확한 진료를 해봐야 알 수 있습니다."
+        },
+        "clinical": "기존 해독제 치료가 효과가 없는 지용성 약물 중독에서 ILE 치료를 보완 옵션으로 검토",
+        "evidence": null
+      }
     },
     {
       "titleKo": "애완동물 환각버섯 중독 증가...수의사 주목 필요",
@@ -184,7 +238,16 @@
       "imageUrl": "https://todaysveterinarypractice.com/wp-content/uploads/sites/4/2026/06/Wismer_BeyondtheClinic_TVPJulAug26_MainImage.png",
       "sourceUrl": "https://todaysveterinarypractice.com/toxicology/hallucinogenic-mushroom-intoxications-are-getting-higher/",
       "sourceTitle": "Hallucinogenic Mushroom Intoxications Are Getting \"Higher\"",
-      "publishedAt": "2026-06-18T18:55:42.000Z"
+      "publishedAt": "2026-06-18T18:55:42.000Z",
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 실수로 환각버섯 초콜릿을 먹었으면 어떻게 해야 하나요?",
+          "script": "환각버섯이 든 제품을 먹으면 구토, 실조, 환각, 경련 등의 증상이 나타날 수 있습니다. 초콜릿 중독이 동시에 있을 수 있으니 바로 동물병원에 가야 합니다. 집에서 구토를 유도하려고 하기보다는 전문가에게 보이는 것이 안전합니다."
+        },
+        "clinical": "환각버섯이 든 제품을 먹인 환자가 내원했을 때 원인 파악을 위해 병력 조사 시 환각버섯 노출 여부를 확인하고,, 등 주요 성분 검사를 고려하세요.",
+        "evidence": null
+      }
     }
   ]
 }
