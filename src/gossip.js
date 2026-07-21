@@ -8,6 +8,7 @@ import { GOSSIP_FEEDS, GOSSIP_PER_ISSUE } from "../config.js";
 import { fetchFeed } from "./rss.js";
 import { fetchArticleMeta } from "./article.js";
 import { generateStory } from "./generate.js";
+import { mapPoolUntil } from "./pool.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -61,25 +62,27 @@ export async function addStories(items, seen, limit = GOSSIP_PER_ISSUE) {
   const existing = new Set(items.map((it) => it.sourceUrl));
   const cands = await collectGossip(new Set([...seen, ...existing]));
   console.log(`  [가십] 후보 ${cands.length}건 → ${need}건 생성 목표`);
-  let made = 0;
-  for (const post of cands) {
-    if (made >= need) break;
-    try {
+  // 목표 건수를 채우면 남은 후보는 시작하지 않는다(품질 게이트 탈락분이 있어
+  // 후보를 넉넉히 넘기되 불필요한 생성은 하지 않기 위함)
+  const stories = await mapPoolUntil(
+    cands,
+    async (post) => {
       const meta = await fetchArticleMeta(post.url);
       post.fullText = meta.fullText ?? null;
       post.imageUrl = meta.imageUrl ?? null;
       post.finalUrl = meta.finalUrl ?? null;
       const story = await generateStory(post);
-      if (story.needsReview) continue;
-      items.push(story);
-      seen.add(story.sourceUrl);
-      made++;
+      if (story.needsReview) return null;
       console.log(`  ✓ [썰·${story.tagKo}] ${story.titleKo}`);
-    } catch (err) {
-      console.error(`  ✗ 썰 스킵: ${err.message}`);
-    }
-  }
-  return made;
+      return story;
+    },
+    need
+  );
+  stories.forEach((s) => {
+    items.push(s);
+    seen.add(s.sourceUrl);
+  });
+  return stories.length;
 }
 
 // ── CLI: node --env-file=.env src/gossip.js [YYYY-MM-DD] ──

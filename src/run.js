@@ -12,6 +12,7 @@ import { searchRedditSignals } from "./websearch.js";
 import { IS_COMPAT } from "./llm.js";
 import { enrichItems } from "./enrich.js";
 import { addStories } from "./gossip.js";
+import { mapPool } from "./pool.js";
 
 const noPapers = process.argv.includes("--no-papers");
 const papersOnly = process.argv.includes("--papers-only"); // 오늘 이슈에 논문만 추가 병합
@@ -133,19 +134,19 @@ async function papersOnlyRun() {
   console.log(`  논문 후보 ${papersRaw.length}편`);
   const top = await scoreAll(papersRaw, PAPERS_PER_ISSUE);
   console.log(`  선별 ${top.length}편`);
-  let added = 0;
-  for (const post of top) {
-    try {
+  const made = (
+    await mapPool(top, async (post) => {
       const paper = await generatePaper(post);
-      if (paper.needsReview) continue;
-      issue.items.push(paper);
-      seen.add(paper.sourceUrl);
-      added++;
+      if (paper.needsReview) return null;
       console.log(`  ✓ [논문] ${paper.titleKo}`);
-    } catch (err) {
-      console.error(`  ✗ ${err.message}`);
-    }
-  }
+      return paper;
+    })
+  ).filter(Boolean);
+  made.forEach((paper) => {
+    issue.items.push(paper);
+    seen.add(paper.sourceUrl);
+  });
+  const added = made.length;
   try {
     await enrichItems(issue.items); // radar 없는 항목만 채움
   } catch (err) {
@@ -188,34 +189,30 @@ async function main() {
     console.log(`  [${p.relevance}] ${p.sourceLabel} — ${p.title.slice(0, 60)}`);
 
   console.log("3/4 원문 수집 + 기사 생성 중...");
-  const items = [];
-  for (const post of selected) {
-    let comments = [];
-    if (post.sourceType === "reddit") {
-      try {
-        comments = await fetchTopComments(post.subreddit, post.id, TOP_COMMENTS);
-      } catch {
-        console.warn(`  댓글 수집 실패 (${post.id}) — 본문만으로 진행`);
+  // 순차 처리하면 일간 실행이 100분을 넘겨 Actions 무료 한도를 잠식한다.
+  // 결과물은 그대로 두고 대기 시간만 줄이려 소수 동시 실행을 쓴다.
+  const items = (
+    await mapPool(selected, async (post) => {
+      let comments = [];
+      if (post.sourceType === "reddit") {
+        try {
+          comments = await fetchTopComments(post.subreddit, post.id, TOP_COMMENTS);
+        } catch {
+          console.warn(`  댓글 수집 실패 (${post.id}) — 본문만으로 진행`);
+        }
       }
-    }
-    // 원문 전문 + 대표 이미지 수집 (실패 시 RSS 요약으로 진행)
-    if (post.sourceType === "rss") {
-      const meta = await fetchArticleMeta(post.url);
-      post.fullText = meta.fullText ?? null;
-      post.imageUrl = meta.imageUrl ?? null;
-      post.finalUrl = meta.finalUrl ?? null;
-      console.log(
-        `  · ${post.title.slice(0, 40)} — 전문 ${post.fullText ? "확보" : "없음(요약으로)"}, 이미지 ${post.imageUrl ? "○" : "×"}`
-      );
-    }
-    try {
+      // 원문 전문 + 대표 이미지 수집 (실패 시 RSS 요약으로 진행)
+      if (post.sourceType === "rss") {
+        const meta = await fetchArticleMeta(post.url);
+        post.fullText = meta.fullText ?? null;
+        post.imageUrl = meta.imageUrl ?? null;
+        post.finalUrl = meta.finalUrl ?? null;
+      }
       const item = await generateItem(post, comments);
-      items.push(item);
       console.log(`  ✓ ${item.titleKo}`);
-    } catch (err) {
-      console.error(`  ✗ 아이템 생성 실패, 건너뜀 (${post.title.slice(0, 40)}): ${err.message}`);
-    }
-  }
+      return item;
+    })
+  ).filter(Boolean);
 
   if (items.length === 0) {
     console.error("생성된 아이템이 없습니다. 종료합니다.");
@@ -231,15 +228,14 @@ async function main() {
       if (papersRaw.length) {
         const topPapers = await scoreAll(papersRaw, PAPERS_PER_ISSUE);
         console.log(`  논문 선별 ${topPapers.length}편`);
-        for (const post of topPapers) {
-          try {
+        const papers = (
+          await mapPool(topPapers, async (post) => {
             const paper = await generatePaper(post);
-            items.push(paper);
             console.log(`  ✓ [논문] ${paper.titleKo}`);
-          } catch (err) {
-            console.error(`  ✗ 논문 생성 실패: ${err.message}`);
-          }
-        }
+            return paper;
+          })
+        ).filter(Boolean);
+        items.push(...papers);
       }
     } catch (err) {
       console.error(`  최신 연구 수집 실패, 건너뜀: ${err.message}`);

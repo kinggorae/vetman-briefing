@@ -12,6 +12,9 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # 비공개 저장소는 Actions 무료 한도가 월 2,000분이다.
+    # 폭주한 실행이 한도를 태우지 않도록 상한을 둔다(정상 실행은 30분 내외).
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
 

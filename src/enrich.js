@@ -8,6 +8,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { jsonCall } from "./llm.js";
+import { mapPool } from "./pool.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -161,23 +162,20 @@ export async function radarFor(item, attempt = 1) {
 
 // items 배열에 radar를 in-place로 채운다(이미 있으면 건너뜀). run.js 파이프라인에서 사용.
 export async function enrichItems(items, { force = false } = {}) {
+  // 대상만 추려 동시 실행한다(순차 호출이 일간 실행 시간의 큰 몫이었다)
+  const todo = items.filter((it) => it.category !== "watercooler" && (force || !it.radar));
   let done = 0;
-  for (const it of items) {
-    if (it.category === "watercooler") continue; // 진료실 밖 이야기(가십)는 레이더 없음
-    if (it.radar && !force) continue;
-    try {
-      it.radar = await radarFor(it);
-      done++;
-      const tags = [
-        it.radar.owner?.soon ? "보호자⚑" : it.radar.owner ? "보호자" : "",
-        it.radar.clinical ? "진료" : "",
-        it.radar.evidence ? "근거" + "★".repeat(it.radar.evidence.stars) : "",
-      ].filter(Boolean).join(" ");
-      console.log(`  ✦ [레이더] ${(it.titleKo || "").slice(0, 34)} — ${tags}`);
-    } catch (err) {
-      console.error(`  ✗ 레이더 생성 실패: ${err.message}`);
-    }
-  }
+  await mapPool(todo, async (it) => {
+    it.radar = await radarFor(it);
+    done++;
+    const tags = [
+      it.radar.owner?.soon ? "보호자⚑" : it.radar.owner ? "보호자" : "",
+      it.radar.clinical ? "진료" : "",
+      it.radar.evidence ? "근거" + "★".repeat(it.radar.evidence.stars) : "",
+    ].filter(Boolean).join(" ");
+    console.log(`  ✦ [레이더] ${(it.titleKo || "").slice(0, 34)} — ${tags}`);
+    return it;
+  });
   return done;
 }
 
