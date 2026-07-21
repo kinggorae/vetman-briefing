@@ -261,7 +261,26 @@ async function main() {
 
   const label = dateLabel();
   // 자동 발행 시 검수 필요 표시가 남은 아이템은 제외
-  const newItems = autoPublish ? items.filter((it) => !it.needsReview) : items;
+  let newItems = autoPublish ? items.filter((it) => !it.needsReview) : items;
+
+  // ── 발행 게이트 ──
+  // 본문이 짧고 레이더 3블록이 모두 비면, 그 페이지에 남는 건 남의 기사 요약뿐이다.
+  // 검색엔진에는 재작성 콘텐츠로, 독자에게는 빈 페이지로 보인다. 발행하지 않는다.
+  if (autoPublish) {
+    const before = newItems.length;
+    newItems = newItems.filter((it) => {
+      if (it.category === "watercooler") return true; // 별도 섹션 — 레이더 대상 아님
+      const r = it.radar || {};
+      const hasValue = r.clinical || r.owner || r.evidence;
+      const len = (it.bodyKo || []).join("").length;
+      if (!hasValue && len < 600) {
+        console.log(`  ✕ [게이트] 부가가치 없음(${len}자) — ${(it.titleKo || "").slice(0, 34)}`);
+        return false;
+      }
+      return true;
+    });
+    if (before !== newItems.length) console.log(`  게이트 통과 ${newItems.length}/${before}건`);
+  }
   const out = path.join(
     ROOT,
     "data",

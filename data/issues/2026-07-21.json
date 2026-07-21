@@ -534,37 +534,6 @@
       }
     },
     {
-      "titleKo": "토네이도 강아지의 응급실 방문기",
-      "leadKo": "미국의 한 동물병원 응급실에 '토네이도'라는 이름의 강아지가 내소하며 화제가 되었습니다. 특수한 이름의 환자 도착이 온라인 커뮤니티에서 어떻게 논의되었는지 살펴봅니다.",
-      "bodyKo": [
-        "동물병원 응급실에서는 다양한 이름의 환자 동물들이 도착하지만, 때로는 이름 자체가 의료진과 보호자들의 관심을 끌기도 합니다. 최근 한 동물병원 응급실에서는 '토네이도'라는 독특한 이름을 가진 강아지가 방문하여 의료진들의 화제가 되었습니다.",
-        "'토네이도'라는 이름은 바람처럼 빠르고 강렬한 이미지를 연상시키며, 강아지의 성격이나 외모와 어울리는 이름일 것으로 추정됩니다. 동물병원 커뮤니티에서는 이러한 특별한 이름의 동물 환자들에 대한 이야기들이 종종 공유되곤 합니다.",
-        "한국 동물병원에서도 이름이 독특한 동물 환자들을 자주 만나하게 됩니다. 응급실 상황에서 이름이 주는 심리적 효과나 보호자와의 관계에도 영향을 미칠 수 있으며, 이는 진료 외적으로도 소통의 좋은 접점이 될 수 있습니다."
-      ],
-      "keyPointsKo": [
-        "미국 동물병원 응급실에 '토네이도'라는 이름의 강아지가 방문하여 화제가 되었습니다",
-        "특이한 이름의 동물 환자들은 의료진과 보호자 간의 소통 포인트가 될 수 있습니다",
-        "동물병원 커뮤니티에서는 이러한 일화들이 자주 공유되고 논의됩니다",
-        "진료 이름은 동물과 보호자의 관계에서 작은 심리적 영향을 줄 수 있습니다"
-      ],
-      "angleKo": "자신의 동물병원에서 경험한 특별하거나 재미있는 동물 이름 이야기를 SNS 커뮤니티에 공유해보면 좋을 것입니다",
-      "sourceType": "rss",
-      "sourceLabel": "DVM360",
-      "upvotes": null,
-      "numComments": null,
-      "category": "clinical",
-      "relevance": 7,
-      "imageUrl": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300-rw",
-      "sourceUrl": "https://news.google.com/rss/articles/CBMijAFBVV95cUxONGYxSmVxaUx1WnozTUppenZ4TjRVY3dvSnFRMFZKMElWM1hBN3FabWl2TDJ6Y2RvOGRySFhacEdjRFdHSi1jNkRJWGJqa2J3T0k4Q3lHX2ZDWktwenJmVHJWbjh1emF3Tl9iZlY2Ny1sRzl2dWFrUFBnVVF2OVJyak05OXFBRktSek9Zbg?oc=5",
-      "sourceTitle": "Tornado (the dog) touches down at the emergency department",
-      "publishedAt": "2026-07-20T21:31:43.000Z",
-      "radar": {
-        "owner": null,
-        "clinical": null,
-        "evidence": null
-      }
-    },
-    {
       "titleKo": "개 췌장 초음파, 연령과 체지방이 영상에 미치는 영향",
       "leadKo": "이 연구는 개 췌장의 초음파 영상에서 연령과 체지방이 주관적·정량적 평가에 어떤 영향을 미치는지 분석하여 췌장 질환 진단의 객관성을 높이려는 목적을 가졌습니다.",
       "bodyKo": [
@@ -1230,7 +1199,7 @@
       "publishedAt": null,
       "radar": {
         "owner": null,
-        "clinical": null,
+        "clinical": "소 농양 환축 진료 시 초기 치료 이력 확인 및 성별에 따른 차별화된 예방 전략 고려",
         "evidence": null
       }
     },
@@ -1297,37 +1266,6 @@
           "script": "도플러와 발진계 모두 침습적 측정보다는 정확도가 낮을 수 있습니다. 다만 발진계가 평균 동맥압 측정에서 좀 더 신뢰할 만한 편입니다. 고혈압이 의심되는 경우 여러 번 측정해서 종합적으로 판단해 보겠습니다."
         },
         "clinical": "고양이 고혈압 의심 시 비침습적 측정값만 신뢰하지 말고, 가능하다면 반복 측정하거나 참고 표준과의 교차 검증을 고려한다.",
-        "evidence": null
-      }
-    },
-    {
-      "titleKo": "NC주립대, 고등학생 위한 수의학 시범 프로그램 운영",
-      "leadKo": "미국 NC주립대가 고등학생을 위한 수의학 시범 프로그램을 통해 미래 수의사 양성에 나섰습니다. 지역 동물병원 인력 부족 해결과 다양성 확보를 위한 장기 전략의 일환입니다.",
-      "bodyKo": [
-        "NC주립대 수의과대학은 최근 VetRISE 시범 프로그램을 통해 지역 고등학생들에게 수의학 분야를 소개했습니다. 이 프로그램은 학생들이 대학 진학 전에 수의학Career에 대한 이해를 높이고, 다양성을 갖춘 미래 수의사 pool을 구축하는 것을 목표로 합니다. 프로그램에는 실습 경험, mento링, 수의사와의 대화 세션 등이 포함되었으며, 참가 학생들은 동물 의료 환경을 직접 체험했습니다.",
-        "이 프로그램은 미국 전역에서 심각해지는 수의 인력 부족 문제에 대한 대응으로 보입니다. 특히 소외 계층 학생들의 수의학 진로를 장려함으로써 업계의 다양성을 확대하려는 노력을 보여줍니다. NC주립대는 성공적인 시범 운영 결과를 바탕으로 프로그램을 확대할 계획입니다.",
-        "한국 동물병원 관점에서 보면, 이 프로그램은 미래 인력 확보와 지역 사회와의 연계라는 측면에서 참고할 만합니다. 한국의 수의과 대학과 동물병원 연합에서도 고등학생 대상 Career 교육 프로그램을 도입한다면 인력난 해소와 업계 이미지 향상에 도움이 될 수 있습니다. 또한 동물병원 مفتوم 운영 등 지역사회 기여 활동의 하나로 발전시킬 수 있을 것입니다."
-      ],
-      "keyPointsKo": [
-        "NC주립대 수의과대학이 고등학생 대상 VetRISE 시범 프로그램 운영",
-        "학생들의 수의학 진로 조기 탐색과 다양성 확보가 프로그램 목표",
-        "미국 전역의 수의사 인력 부족 상황에서 미래 인력 확보 전략의 일환",
-        "한국 동물병원에서도 지역사회 연계 교육 프로그램 도입 가능성 존재"
-      ],
-      "angleKo": "한국 동물병원에서도 지역 고등학생을 대상으로 한 Career Explore 프로그램을 열어 미래 수의사 양성과 지역사회 이미지 향상을 동시에 꾀할 수 있습니다.",
-      "sourceType": "rss",
-      "sourceLabel": "NC State University",
-      "upvotes": null,
-      "numComments": null,
-      "category": "career",
-      "relevance": 6,
-      "imageUrl": null,
-      "sourceUrl": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNdnJUQnRWak5hcjNORENOWm9qTHV3aG5zNzlVczZFbjlxOUdPQWpDdDJUc2ZLQTd1Z0d2QlFpS0E3LXY2THVqbkdTTUVsazBFN08tVUxkdmpZaGJsdWp3TDQyRjVybm8tZm1hcjktMUVfbzZuZTViMDF1eWp6ODBScXJDQ2lmMkZMSGVvOW1MTnFaSE1obWxqSGFOdTVHbEdO?oc=5",
-      "sourceTitle": "Put NC State’s Pilot VetRISE Program for High Schoolers in the Win Column",
-      "publishedAt": "2026-07-20T15:06:13.000Z",
-      "radar": {
-        "owner": null,
-        "clinical": null,
         "evidence": null
       }
     },

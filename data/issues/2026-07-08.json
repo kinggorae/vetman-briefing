@@ -62,7 +62,7 @@
       "publishedAt": "2026-07-07T20:49:17.000Z",
       "radar": {
         "owner": null,
-        "clinical": null,
+        "clinical": "우리 병원 채용 절차와 90일 온보딩, 교육 시스템을 점검하고 체계적으로 개선할 것을 검토한다.",
         "evidence": null
       }
     },
@@ -260,7 +260,7 @@
       "publishedAt": "2026-07-07T20:42:52.000Z",
       "radar": {
         "owner": null,
-        "clinical": null,
+        "clinical": "병원 경영진과 임상진 사이의 소통 채널을 정기적으로 점검하고, 진료 프로토콜을 강제가 아닌 대화의 가이드로 활용하는지 확인한다.",
         "evidence": null
       }
     }

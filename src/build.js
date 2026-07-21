@@ -1260,6 +1260,14 @@ function articleSlug(a) {
 }
 const articlePath = (a) => `/article/${articleSlug(a)}`;
 
+// 우리가 만든 판단(진료 포인트·보호자 문답·근거 등급)이 하나도 없으면 그 페이지에
+// 남는 건 해외 기사의 한국어 요약뿐이다. 사이트에는 남기되 색인 대상에서는 뺀다 —
+// 이런 페이지가 쌓이면 사이트 전체가 재작성 콘텐츠로 평가된다.
+function isIndexable(a) {
+  const r = a.radar || {};
+  return !!(r.clinical || r.owner || r.evidence);
+}
+
 function renderArticlePage(a, data, prev, next) {
   const canonical = `${SITE.baseUrl}${articlePath(a)}`;
   const brand = `${SITE.brandKo}(${SITE.brandEn})`;
@@ -1280,13 +1288,50 @@ function renderArticlePage(a, data, prev, next) {
     articleSection: a.kicker,
     publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn, url: SITE.baseUrl },
     mainEntityOfPage: canonical,
+    // 원문 요약이 아니라 '한국 동물병원 관점의 편집물'임을 구조화 데이터로도 밝힌다.
+    // 번역 요약은 isBasedOn(원문)으로, 우리가 만든 판단은 아래 필드로 구분된다.
+    ...(a.radar?.clinical ? { abstract: a.radar.clinical } : {}),
+    ...(a.radar?.owner?.q
+      ? {
+          // 보호자 문답은 그 자체가 검색 질의와 겹친다 — FAQPage로 별도 노출된다
+          mentions: { "@type": "Question", name: a.radar.owner.q },
+        }
+      : {}),
+    ...(ev
+      ? {
+          // 근거 등급은 우리가 부여한 평가다. Review로 표현해야 성격이 정확하다
+          review: {
+            "@type": "Review",
+            reviewBody: [ev.design, ev.n, ev.note].filter(Boolean).join(" · "),
+            reviewRating: { "@type": "Rating", ratingValue: ev.stars, bestRating: 4, worstRating: 1 },
+            author: { "@type": "Organization", name: SITE.brandKo },
+          },
+        }
+      : {}),
+    ...(a.source ? { citation: { "@type": "CreativeWork", name: a.source, url: a.sourceUrl } } : {}),
   };
+  // 보호자 문답은 검색 질의와 직접 겹치는 자산이다. FAQPage를 따로 내보내면
+  // 리치 결과·AI 개요 인용 대상이 된다(NewsArticle 안에 묻히면 잡히지 않는다).
+  const faqLd =
+    a.radar?.owner?.q && a.radar?.owner?.script
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: a.radar.owner.q,
+              acceptedAnswer: { "@type": "Answer", text: a.radar.owner.script },
+            },
+          ],
+        }
+      : null;
   return `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="${isIndexable(a) ? "index, follow" : "noindex, follow"}">
 <link rel="canonical" href="${esc(canonical)}">${
     SITE.verification?.google ? `\n<meta name="google-site-verification" content="${esc(SITE.verification.google)}">` : ""
   }${SITE.verification?.naver ? `\n<meta name="naver-site-verification" content="${esc(SITE.verification.naver)}">` : ""}
@@ -1329,7 +1374,10 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .nav .t{font-size:15px;font-weight:700;margin-top:4px;line-height:1.4}
 .home{display:inline-block;margin-top:26px;background:var(--pri);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}
 </style>
-<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>${gaSnippet()}
+<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>${
+    faqLd ? `
+<script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""
+  }${gaSnippet()}
 </head><body><div class="wrap">
 <div class="top"><a href="/">${esc(SITE.brandKo)} ${esc(SITE.name)}</a><span style="color:var(--sub)">${esc(data.dateLabel || data.date)}</span></div>
 <div class="kick">${esc(a.kicker)}</div>
@@ -1756,7 +1804,7 @@ function build() {
         path.join(SITE_DIR, "article", `${articleSlug(a)}.html`),
         renderArticlePage(a, data, all[i - 1] || null, all[i + 1] || null)
       );
-      articleUrls.push(`${SITE.baseUrl}${articlePath(a)}`);
+      if (isIndexable(a)) articleUrls.push(`${SITE.baseUrl}${articlePath(a)}`);
     });
   }
 

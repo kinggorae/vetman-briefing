@@ -31,7 +31,7 @@
       "publishedAt": "2026-05-28T22:51:05.000Z",
       "radar": {
         "owner": null,
-        "clinical": null,
+        "clinical": "자신의 병원에서 사용 중인 소프트웨어의 연동성(API)을 점검하고, 행정 업무 자동화 영역(진료 기록, 예약 알림 등)에 AI 솔루션 도입 가능성을 탐색해 보세요.",
         "evidence": null
       }
     }
