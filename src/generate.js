@@ -81,6 +81,11 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
     schema: ITEM_SCHEMA,
   });
 
+  // 생성 실패(빈 JSON)를 그대로 저장하면 제목·본문 없는 빈 카드가 노출된다 — 여기서 차단
+  if (!String(item?.titleKo || "").trim() || !(Array.isArray(item?.bodyKo) && item.bodyKo.length)) {
+    throw new Error("생성 결과가 비어 있음(제목/본문 누락)");
+  }
+
   // 외국 문자가 섞였으면 피드백을 담아 재생성 → 그래도 실패하면 교정 패스
   let foreign = foreignScriptIn(item);
   if (foreign && attempt < 3) {
@@ -142,6 +147,11 @@ async function generatePaper(post, attempt = 1, prevFeedback = null) {
     ].join("\n"),
     schema: ITEM_SCHEMA,
   });
+
+  // 생성 실패(빈 JSON)를 그대로 저장하면 제목·본문 없는 빈 카드가 노출된다 — 여기서 차단
+  if (!String(item?.titleKo || "").trim() || !(Array.isArray(item?.bodyKo) && item.bodyKo.length)) {
+    throw new Error("생성 결과가 비어 있음(제목/본문 누락)");
+  }
 
   let foreign = foreignScriptIn(item);
   if (foreign && attempt < 3) {
@@ -232,6 +242,11 @@ async function generateStory(post, attempt = 1, prevFeedback = null) {
     ].join("\n"),
     schema: STORY_SCHEMA,
   });
+
+  // 생성 실패(빈 JSON)를 그대로 저장하면 제목·본문 없는 빈 카드가 노출된다 — 여기서 차단
+  if (!String(item?.titleKo || "").trim() || !(Array.isArray(item?.bodyKo) && item.bodyKo.length)) {
+    throw new Error("생성 결과가 비어 있음(제목/본문 누락)");
+  }
 
   let foreign = storyContam(item);
   if (foreign && attempt < 4) {

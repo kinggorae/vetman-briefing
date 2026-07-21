@@ -86,9 +86,9 @@ function toArticle(item, i, issueDate) {
   const chars = (item.titleKo || "").length + dek.length + body.join("").length;
   const readMin = Math.max(1, Math.round(chars / 500));
   const pub = item.publishedAt ? new Date(item.publishedAt) : null;
-  const dateStr = pub
-    ? `${String(pub.getMonth() + 1).padStart(2, "0")}.${String(pub.getDate()).padStart(2, "0")}`
-    : "";
+  // 발행일이 없는 기사도 있어 날짜가 통째로 비던 문제 → 이슈 날짜로 대체
+  const shown = pub || new Date(issueDate + "T00:00:00");
+  const dateStr = `${String(shown.getMonth() + 1).padStart(2, "0")}.${String(shown.getDate()).padStart(2, "0")}`;
   const isToday = pub ? pub.toISOString().slice(0, 10) === issueDate : false;
   return {
     id: `${issueDate}_${i + 1}`,
@@ -116,7 +116,10 @@ function toArticle(item, i, issueDate) {
 
 function buildIssueData(issue) {
   const date = labelOf(issue);
-  const all = issue.items.map((it, i) => toArticle(it, i, date));
+  // 생성 실패로 제목·본문이 빈 항목은 절대 지면에 올리지 않는다(빈 카드 방지)
+  const all = issue.items
+    .map((it, i) => toArticle(it, i, date))
+    .filter((a) => a.title.trim() && a.body.length);
   // 신뢰 뉴스 그리드와 "진료실 밖 이야기"(가십) 분리
   const articles = all.filter((a) => a.cat !== "watercooler");
   const stories = all.filter((a) => a.cat === "watercooler");
@@ -303,7 +306,11 @@ const APP_JS = String.raw`
   var ARL='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M15 18l-6-6 6-6"></path></svg>';
   var ARR='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M9 6l6 6-6 6"></path></svg>';
 
-  function sorted(){ var arr=DATA.articles.slice(); if(S.sort==='latest'){ arr.sort(function(x,y){return y.ts-x.ts;}); } return arr; }
+  // 검색 중에는 화면에 있는 전부(오늘+최근+진료실 밖)를 대상으로 — 바로 아래 보이는 글이 안 걸리면 이상하다
+  function sorted(){
+    var base=S.query.trim()?DATA.articles.concat(DATA.recent||[],DATA.stories||[]):DATA.articles;
+    var arr=base.slice(); if(S.sort==='latest'){ arr.sort(function(x,y){return y.ts-x.ts;}); } return arr;
+  }
   function match(a,q){ return (a.title+' '+a.dek+' '+a.source+' '+a.kicker+' '+(a.body||[]).join(' ')).toLowerCase().indexOf(q)>=0; }
   function activeList(){
     var arr=sorted();
@@ -317,6 +324,7 @@ const APP_JS = String.raw`
   function contextList(){
     if(S.view==='saved') return Object.keys(S.saved).map(function(k){return S.saved[k];});
     if(S.view==='ideas') return Object.keys(S.ideas).map(function(k){return S.ideas[k];});
+    if(S.query.trim()) return activeList();                     // 검색 중엔 검색 결과로 연속 읽기
     var cur=byId[S.openId];
     if(cur&&cur.cat==='watercooler') return (DATA.stories||[]); // 진료실 밖 이야기끼리 연속 읽기
     if(cur&&cur.day!==DATA.date) return (DATA.recent||[]);      // 최근 브리핑끼리 연속 읽기
@@ -562,7 +570,8 @@ const APP_JS = String.raw`
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+(a.tag?'<span style="font-size:11px;font-weight:800;color:var(--color-primary-normal);">['+e(a.tag)+']</span>':'')+tag(a.isToday,17,10)+'</div>'
     +'<h1 style="font-family:var(--font-display);font-size:calc(34px*var(--fs));line-height:1.2;font-weight:800;letter-spacing:-.028em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h1>'
     +'<div style="padding-bottom:20px;border-bottom:1px solid var(--color-line-normal);"><div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+meta(a)+'</div>'+evLine(a)+'</div>'
-    +'<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plate(a,{label:true,big:26,pad:20})+'</div>'
+    // 실제 사진이 있을 때만 — 없을 때 띄우던 출처 플레이트는 지면만 잡아먹어 제거
+    + (a.image ? '<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plate(a,{label:true,big:26,pad:20})+'</div>' : '')
     +'<p style="font-size:calc(17px*var(--fs));line-height:1.75;color:var(--color-label-normal);margin:0 0 18px;font-weight:500;">'+e(a.dek)+'</p>'
     +body
     +radarBlock(a)

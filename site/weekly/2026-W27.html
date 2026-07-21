@@ -155,7 +155,11 @@ a:hover{color:var(--color-primary-strong);}
   var ARL='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M15 18l-6-6 6-6"></path></svg>';
   var ARR='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M9 6l6 6-6 6"></path></svg>';
 
-  function sorted(){ var arr=DATA.articles.slice(); if(S.sort==='latest'){ arr.sort(function(x,y){return y.ts-x.ts;}); } return arr; }
+  // 검색 중에는 화면에 있는 전부(오늘+최근+진료실 밖)를 대상으로 — 바로 아래 보이는 글이 안 걸리면 이상하다
+  function sorted(){
+    var base=S.query.trim()?DATA.articles.concat(DATA.recent||[],DATA.stories||[]):DATA.articles;
+    var arr=base.slice(); if(S.sort==='latest'){ arr.sort(function(x,y){return y.ts-x.ts;}); } return arr;
+  }
   function match(a,q){ return (a.title+' '+a.dek+' '+a.source+' '+a.kicker+' '+(a.body||[]).join(' ')).toLowerCase().indexOf(q)>=0; }
   function activeList(){
     var arr=sorted();
@@ -169,6 +173,7 @@ a:hover{color:var(--color-primary-strong);}
   function contextList(){
     if(S.view==='saved') return Object.keys(S.saved).map(function(k){return S.saved[k];});
     if(S.view==='ideas') return Object.keys(S.ideas).map(function(k){return S.ideas[k];});
+    if(S.query.trim()) return activeList();                     // 검색 중엔 검색 결과로 연속 읽기
     var cur=byId[S.openId];
     if(cur&&cur.cat==='watercooler') return (DATA.stories||[]); // 진료실 밖 이야기끼리 연속 읽기
     if(cur&&cur.day!==DATA.date) return (DATA.recent||[]);      // 최근 브리핑끼리 연속 읽기
@@ -414,7 +419,8 @@ a:hover{color:var(--color-primary-strong);}
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+(a.tag?'<span style="font-size:11px;font-weight:800;color:var(--color-primary-normal);">['+e(a.tag)+']</span>':'')+tag(a.isToday,17,10)+'</div>'
     +'<h1 style="font-family:var(--font-display);font-size:calc(34px*var(--fs));line-height:1.2;font-weight:800;letter-spacing:-.028em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h1>'
     +'<div style="padding-bottom:20px;border-bottom:1px solid var(--color-line-normal);"><div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+meta(a)+'</div>'+evLine(a)+'</div>'
-    +'<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plate(a,{label:true,big:26,pad:20})+'</div>'
+    // 실제 사진이 있을 때만 — 없을 때 띄우던 출처 플레이트는 지면만 잡아먹어 제거
+    + (a.image ? '<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plate(a,{label:true,big:26,pad:20})+'</div>' : '')
     +'<p style="font-size:calc(17px*var(--fs));line-height:1.75;color:var(--color-label-normal);margin:0 0 18px;font-weight:500;">'+e(a.dek)+'</p>'
     +body
     +radarBlock(a)
