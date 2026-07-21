@@ -11,6 +11,9 @@ export const SITE = {
     google: process.env.GOOGLE_SITE_VERIFICATION || "",
     naver: process.env.NAVER_SITE_VERIFICATION || "",
   },
+  // IndexNow: 네이버·빙 등이 지원하는 색인 요청 프로토콜(계정 로그인 불필요).
+  // 사이트 루트에 {key}.txt를 두고 소유를 증명한 뒤 URL을 제출한다.
+  indexNowKey: "9713ac9a291bbe9c87d85626cd739fe0",
 };
 
 // ── Plan C (기본): 해외 수의 미디어·저널 RSS ──

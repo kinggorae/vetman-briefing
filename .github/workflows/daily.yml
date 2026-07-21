@@ -52,3 +52,8 @@ jobs:
             exit 0
           fi
           npx wrangler pages deploy site --project-name vetman-briefing --branch main --commit-dirty=true
+
+      # 배포가 끝난 뒤에 알려야 크롤러가 새 글을 실제로 받아간다
+      - name: Notify search engines (IndexNow)
+        continue-on-error: true
+        run: node src/indexnow.js
