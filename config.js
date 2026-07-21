@@ -15,21 +15,21 @@ const DIRECT_FEEDS = [
   { name: "Today's Veterinary Practice", url: "https://todaysveterinarypractice.com/feed/" },
   { name: "Dr. Andy Roark", url: "https://drandyroark.com/feed/" },
   { name: "VetGirl", url: "https://vetgirlontherun.com/feed/" },
-  { name: "Vet Candy", url: "https://www.myvetcandy.com/news?format=rss", max: 10, maxAgeDays: 2 },
+  { name: "Vet Candy", url: "https://www.myvetcandy.com/news?format=rss", max: 10, maxAgeDays: 5 },
   { name: "IVC Journal", url: "https://ivcjournal.com/feed/", max: 6 },
   { name: "Today's Veterinary Nurse", url: "https://todaysveterinarynurse.com/feed/", max: 6 },
-  { name: "Vet Practice Magazine", url: "https://vetpracticemag.com.au/feed/", max: 6, maxAgeDays: 7 },
-  // 학술·연구
+  { name: "Vet Practice Magazine", url: "https://vetpracticemag.com.au/feed/", max: 6, maxAgeDays: 10 },
+  // 학술·연구 — 갱신이 뜸해 수집 기간을 넓게 잡는다(짧으면 매일 0건이 된다)
   {
     name: "Veterinary Record",
     url: "https://bvajournals.onlinelibrary.wiley.com/feed/20427670/most-recent",
     max: 8,
-    maxAgeDays: 3,
+    maxAgeDays: 14,
   },
   {
     name: "ScienceDaily",
     max: 10,
-    maxAgeDays: 3,
+    maxAgeDays: 10,
     url: "https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml",
   },
 ];
@@ -63,7 +63,7 @@ const GNEWS_FEEDS = GNEWS_TOPICS.map((q) => ({
   name: "Google News",
   type: "gnews",
   max: 12,
-  maxAgeDays: 2,
+  maxAgeDays: 3, // 2일은 일간 수확량이 너무 적었다
   url: `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-US&gl=US&ceid=US:en`,
 }));
 

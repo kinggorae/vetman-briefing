@@ -112,7 +112,7 @@ a:hover{color:var(--color-primary-strong);}
 (function(){
   var DATA = JSON.parse(document.getElementById('vm-issue').textContent);
   var byId = {};
-  function indexDay(){ byId={}; DATA.articles.concat(DATA.stories||[]).forEach(function(a){ byId[a.id]=a; }); }
+  function indexDay(){ byId={}; DATA.articles.concat(DATA.stories||[],DATA.recent||[]).forEach(function(a){ byId[a.id]=a; }); }
   indexDay();
   var LS={saved:'vm_saved',ideas:'vm_ideas',read:'vm_read',theme:'vm_theme',fs:'vm_fs'};
   function load(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }
@@ -158,6 +158,7 @@ a:hover{color:var(--color-primary-strong);}
     if(S.view==='ideas') return Object.keys(S.ideas).map(function(k){return S.ideas[k];});
     var cur=byId[S.openId];
     if(cur&&cur.cat==='watercooler') return (DATA.stories||[]); // 진료실 밖 이야기끼리 연속 읽기
+    if(cur&&cur.day!==DATA.date) return (DATA.recent||[]);      // 최근 브리핑끼리 연속 읽기
     return activeList();
   }
 
@@ -284,6 +285,14 @@ a:hover{color:var(--color-primary-strong);}
     +'<div class="vm-qa-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0 44px;">'+items+'</div></div>';
   }
 
+  // "최근 브리핑" — 오늘 발행분이 적은 날에도 1면이 허전하지 않도록 지난 며칠 기사를 함께.
+  function recentSection(){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    var list=DATA.recent||[]; if(!list.length) return '';
+    return '<div style="margin-top:32px;"><div style="border-top:2px solid var(--color-label-strong);padding:16px 0 13px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">최근 브리핑</span><span style="font-size:12.5px;color:var(--color-label-alternative);">지난 며칠 사이 주요 기사</span></div>'
+    +'<div class="vm-band" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-line-normal);">'+list.map(bandCard).join('')+'</div></div>';
+  }
+
   // "진료실 밖 이야기" — 네이트판식 화제글 보드(신뢰 뉴스와 분리, 캐주얼)
   function storyBoard(){
     if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
@@ -305,7 +314,7 @@ a:hover{color:var(--color-primary-strong);}
     var arr=activeList();
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
     var lead=arr[0], rail=arr.slice(1,3), bandAll=arr.slice(3);
-    var band=S.showAll?bandAll:bandAll.slice(0,6);
+    var band=S.showAll?bandAll:bandAll.slice(0,12); // 첫 화면 노출 확대(리드1+사이드2+12=15건)
     var top5=arr.slice(0,5), more=bandAll.length-band.length;
     var h='<div><div class="vm-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:0;border-bottom:2px solid var(--color-label-strong);">'
     +'<div class="vm-lead-col" style="padding:28px 40px 34px 0;">'+leadCard(lead)+'</div>'
@@ -316,6 +325,7 @@ a:hover{color:var(--color-primary-strong);}
       if(more>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+more+'건 더 보기</button></div>'; }
     }
     h+=qaColumn(arr);
+    h+=recentSection();
     h+=storyBoard();
     return h+'</div>';
   }
