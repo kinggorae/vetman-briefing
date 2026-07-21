@@ -78,10 +78,15 @@ a:hover{color:var(--color-primary-strong);}
   .vm-bar{padding-left:20px !important;padding-right:20px !important;gap:10px !important;}
   .vm-bar-label{display:none !important;}
   .vm-grid{grid-template-columns:1fr !important;}
-  /* 1단이 되면 좌우 여백·세로선은 의미가 없다. 셀은 위아래로만 이어진다 */
-  .vm-cell{padding-left:0 !important;padding-right:0 !important;border-left:0 !important;}
-  .vm-lead-col{padding-top:24px !important;}
-  .vm-rail-col{padding-top:22px !important;border-top:1px solid var(--color-line-normal);}
+  /* 1단이 되면 좌우 여백·세로선은 의미가 없다. 칸은 위아래로만 이어진다 */
+  .vm-fold{grid-template-columns:1fr !important;padding-bottom:20px !important;}
+  .vm-fold > *{grid-column:1 !important;grid-row:auto !important;padding-left:0 !important;padding-right:0 !important;border-left:0 !important;border-right:0 !important;}
+  #vm-brief,#vm-side{padding-top:20px !important;border-top:1px solid var(--color-line-normal);}
+  .vm-fp-body{column-count:1 !important;}
+  .vm-quadzone,.vm-featzone{grid-template-columns:1fr !important;}
+  .vm-quad{padding-left:0 !important;padding-right:0 !important;border-left:0 !important;border-top:1px solid var(--color-line-normal);}
+  .vm-featzone > *{padding-left:0 !important;padding-right:0 !important;border-left:0 !important;}
+  #vm-feat-r{padding-top:20px !important;border-top:1px solid var(--color-line-normal);}
   .vm-band{grid-template-columns:1fr !important;}
   .vm-band-fill{display:none !important;}
   .vm-qa-grid{grid-template-columns:1fr !important;}
@@ -276,6 +281,45 @@ a:hover{color:var(--color-primary-strong);}
     + (a.radar&&a.radar.clinical?'<div class="vm-fill" style="display:none;margin:0 0 10px;padding-left:11px;border-left:2px solid var(--color-primary-normal);font-size:13px;line-height:1.6;color:var(--color-label-neutral);max-width:62ch;"><b style="color:var(--color-primary-normal);font-weight:700;">진료 포인트</b> '+e(a.radar.clinical)+'</div>':'')
     +'<div style="font-size:11.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+metaShort(a)+'</div></article>';
   }
+  // ── 1면 전용 렌더러 ──
+  // 톱기사: 큰 제목 + 리드 + 본문 2단 조판(드롭캡). 신문 1면의 무게중심이다.
+  function fpLead(a){
+    var body=(a.body||[]).slice(0,3).map(function(p,i){return '<p style="margin:0 0 13px;'+(i?'':'')+'">'+e(p)+'</p>';}).join('');
+    return '<article class="vm-lead'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
+    +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,18,10.5)+(isRead(a.id)?'<span style="font-size:10.5px;color:var(--color-label-alternative);">읽음</span>':'')+'</div>'+bookmarkBtn(a.id,17,'plain')+'</div>'
+    +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:46px;line-height:1.06;font-weight:800;letter-spacing:-.035em;margin:0 0 14px;color:var(--color-label-strong);text-wrap:balance;">'+e(a.title)+'</h2>'
+    +'<p style="font-size:17.5px;line-height:1.6;font-weight:500;color:var(--color-label-normal);margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid var(--color-line-normal);">'+e(a.dek)+'</p>'
+    +'<div class="vm-fp-body" style="column-count:2;column-gap:30px;column-rule:1px solid var(--color-line-normal);font-size:14.5px;line-height:1.75;color:var(--color-label-neutral);">'+body+'</div>'
+    +'<div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--color-line-normal);display:flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.03em;color:var(--color-label-alternative);text-transform:uppercase;">'+meta(a)+'</div>'
+    +'</article>';
+  }
+  // 브리프: 제목만 촘촘히 쌓는 왼쪽 단. 밀도로 신문 느낌을 만든다.
+  function briefRow(a,i){
+    return '<div class="vm-brief-r'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid var(--color-line-normal);cursor:pointer;">'
+    +'<span style="flex:none;font-family:var(--font-display);font-size:11px;font-weight:800;color:var(--color-primary-normal);padding-top:3px;">'+String(i+1).padStart(2,'0')+'</span>'
+    +'<div style="min-width:0;"><div class="vm-hl" style="font-size:13.5px;font-weight:700;line-height:1.4;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</div>'
+    +'<div style="margin-top:3px;font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--color-label-alternative);">'+e(a.source)+'</div></div></div>';
+  }
+  // 쿼드: 같은 무게 4장. 제목 크기를 통일해 가로 리듬을 만든다.
+  function quadCard(a,i){
+    return '<article class="vm-quad-c'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
+    +'<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:7px;"><span style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+bookmarkBtn(a.id,14,'plain')+'</div>'
+    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:18px;line-height:1.28;font-weight:700;letter-spacing:-.015em;margin:0 0 7px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
+    +'<p style="font-size:13px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
+    +'<div style="font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--color-label-alternative);">'+e(a.source)+'</div></article>';
+  }
+  // 피처: 가로로 넓게 눕힌 해설 기사. 진료 포인트를 항상 노출한다.
+  function featureCard(a){
+    var r=a.radar||{};
+    return '<article class="vm-feat'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
+    +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;"><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-normal);">깊이 보기 · '+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
+    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:30px;line-height:1.2;font-weight:800;letter-spacing:-.025em;margin:0 0 10px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
+    +'<p style="font-size:15px;line-height:1.7;color:var(--color-label-neutral);margin:0 0 12px;max-width:64ch;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
+    // 자리가 남으면 본문 첫 문단까지 펼쳐 '해설' 기사답게 만든다
+    + ((a.body||[])[0]?'<p class="vm-fill" style="display:none;font-size:14.5px;line-height:1.75;color:var(--color-label-neutral);margin:0 0 12px;max-width:64ch;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.body[0])+'</p>':'')
+    + (r.clinical?'<div style="margin:0 0 12px;padding-left:12px;border-left:2px solid var(--color-primary-normal);font-size:13px;line-height:1.6;color:var(--color-label-neutral);max-width:62ch;"><b style="color:var(--color-primary-normal);font-weight:700;">진료 포인트</b> '+e(r.clinical)+'</div>':'')
+    +'<div style="font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--color-label-alternative);">'+metaShort(a)+'</div></article>';
+  }
   function railCard(a){
     return '<article class="vm-rail'+readCls(a.id)+'" data-open="'+a.id+'" style="padding:20px 0;border-top:1px solid var(--color-line-normal);cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
@@ -364,59 +408,60 @@ a:hover{color:var(--color-primary-strong);}
     +'<div>'+rows+'</div></div>';
   }
 
-  // 홈 2단 균형기 — 구분선은 그리드 행이 맞춰주므로, 남은 일은 '첫 행'의 좌우
-  // 높이차를 줄이는 것뿐이다. 리드 카드와 짝을 이룰 오른쪽 카드 수(r0)를 조정한다.
-  var BAL={n:4,r0:2,busy:false,steps:0};
-  // 행 안에 남는 여백은 빈칸으로 두지 않고, 짧은 쪽의 말줄임(line-clamp)을 풀어 글로 채운다.
-  function fillSlack(){
-    if(innerWidth<=900) return;
-    var cells=[].slice.call(document.querySelectorAll('.vm-grid > .vm-cell'));
-    for(var i=0;i<cells.length;i+=2){
-      var L=cells[i], R=cells[i+1];
-      if(!L||!R) break;
-      var rowH=Math.max(L.getBoundingClientRect().height,R.getBoundingClientRect().height);
-      [L,R].forEach(function(C){
-        if(!C.lastElementChild) return;
-        function slack(){ return rowH-28-(C.lastElementChild.getBoundingClientRect().bottom-C.getBoundingClientRect().top); }
-        // ① 숨겨둔 블록(리드 3번째 문단·진료 포인트)을 먼저 편다. 넘치면 되돌린다
-        [].slice.call(C.querySelectorAll('.vm-fill')).forEach(function(el){
-          if(slack()<40) return;
-          el.style.display=el.tagName==='P'?'-webkit-box':'block';
-          if(slack()<0) el.style.display='none';
-        });
-        // ② 그래도 남으면 말줄임을 한 줄씩 푼다
-        var ps=C.querySelectorAll('p[style*="line-clamp"]');
-        if(!ps.length) return;
-        var p=ps[ps.length-1], guard=0;
-        while(guard++<20){
-          if(slack()<26) break;                            // 한 줄 넣을 자리도 없다
-          if(p.scrollHeight<=p.clientHeight+2) break;       // 더 보여줄 문장이 없다
-          p.style.webkitLineClamp=(parseInt(getComputedStyle(p).webkitLineClamp)||3)+1;
-        }
-      });
-    }
-  }
-  function balanceHome(){
-    if(BAL.busy||S.view!=='home'||S.openId||innerWidth<=900) return;
-    var cells=document.querySelectorAll('.vm-grid > .vm-cell');
-    if(cells.length<2) return;
-    var L=cells[0], R=cells[1];
-    if(!L.lastElementChild||!R.firstElementChild) return;
-    // 리드 카드 높이 ÷ 오른쪽 카드 한 장 높이 = 짝지을 카드 수. 한 번에 정답으로 간다
-    // (임계값 방식은 카드 한 장 단위가 커서 118px↔187px로 진동했다)
-    var lh=L.lastElementChild.getBoundingClientRect().bottom-L.getBoundingClientRect().top;
-    var unit=R.firstElementChild.getBoundingClientRect().height;
-    var want=unit>40?Math.max(1,Math.min(4,Math.round(lh/unit))):BAL.r0;
-    if(want!==BAL.r0&&BAL.steps<4){
-      BAL.r0=want; BAL.steps++;
-      BAL.busy=true; render(); BAL.busy=false;
-      setTimeout(balanceHome,16);
+  // 폴드 3단 맞춤기 — 톱기사 높이를 기준선으로 삼아, 왼쪽 브리프 개수와 오른쪽
+  // 카드 수를 조정해 세 단이 같은 지점에서 끝나게 한다. 브리프 행(약 60px)이
+  // 잘게 나뉘어 있어 미세 조정은 왼쪽이 담당한다.
+  var FP={brief:7,side:2,busy:false,steps:0};
+  function fitFold(){
+    if(FP.busy||S.view!=='home'||S.openId||innerWidth<=900) return;
+    var C=document.getElementById('vm-leadcell'), B=document.getElementById('vm-brief'), R=document.getElementById('vm-side');
+    if(!C||!B||!R||!B.lastElementChild||!R.lastElementChild) return;
+    var target=C.getBoundingClientRect().height;
+    function used(el){ return el.lastElementChild.getBoundingClientRect().bottom-el.getBoundingClientRect().top; }
+    var bUnit=B.lastElementChild.getBoundingClientRect().height||60;
+    var rUnit=R.lastElementChild.getBoundingClientRect().height||260;
+    var wantB=Math.max(3,Math.min(14,FP.brief+Math.round((target-used(B))/bUnit)));
+    var wantR=Math.max(1,Math.min(4,FP.side+Math.round((target-used(R))/rUnit)));
+    if((wantB!==FP.brief||wantR!==FP.side)&&FP.steps<5){
+      FP.brief=wantB; FP.side=wantR; FP.steps++;
+      FP.busy=true; render(); FP.busy=false;
+      setTimeout(fitFold,16);
       return;
     }
     fillSlack();
   }
+  // 남는 여백은 빈칸으로 두지 않고, 짧은 단의 말줄임(line-clamp)을 풀어 글로 채운다.
+  function fillSlack(){
+    if(innerWidth<=900) return;
+    var C=document.getElementById('vm-leadcell');
+    if(!C) return;
+    var pairs=[[C.getBoundingClientRect().height,['vm-brief','vm-side']]];
+    var FL=document.getElementById('vm-feat-l'), FR=document.getElementById('vm-feat-r');
+    // 피처 구역도 같은 방식으로 — 짧은 쪽(보통 해설 기사)을 TOP 5 높이까지 늘린다
+    if(FL&&FR) pairs.push([Math.max(FL.getBoundingClientRect().height,FR.getBoundingClientRect().height)-56,['vm-feat-l','vm-feat-r']]);
+    pairs.forEach(function(pr){ var target=pr[0]; pr[1].forEach(function(id){
+      var el=document.getElementById(id);
+      if(!el||!el.lastElementChild) return;
+      function slack(){ return target-(el.lastElementChild.getBoundingClientRect().bottom-el.getBoundingClientRect().top); }
+      // ① 숨겨둔 블록(진료 포인트 등)을 먼저 편다. 넘치면 되돌린다
+      [].slice.call(el.querySelectorAll('.vm-fill')).forEach(function(x){
+        if(slack()<40) return;
+        x.style.display=x.tagName==='P'?'-webkit-box':'block';
+        if(slack()<0) x.style.display='none';
+      });
+      // ② 그래도 남으면 마지막 카드의 말줄임을 한 줄씩 푼다
+      var ps=el.querySelectorAll('p[style*="line-clamp"]');
+      if(!ps.length) return;
+      var p=ps[ps.length-1], guard=0;
+      while(guard++<20){
+        if(slack()<26) break;                            // 한 줄 넣을 자리도 없다
+        if(p.scrollHeight<=p.clientHeight+2) break;       // 더 보여줄 문장이 없다
+        p.style.webkitLineClamp=(parseInt(getComputedStyle(p).webkitLineClamp)||3)+1;
+      }
+    }); });
+  }
   var balTimer;
-  addEventListener('resize',function(){ clearTimeout(balTimer); balTimer=setTimeout(function(){ BAL.steps=0; balanceHome(); },160); });
+  addEventListener('resize',function(){ clearTimeout(balTimer); balTimer=setTimeout(function(){ FP.steps=0; fitFold(); },160); });
 
   function homeView(){
     var arr=activeList();
@@ -432,33 +477,41 @@ a:hover{color:var(--color-primary-strong);}
       h1+=storyBoard();
       return h1+'</div>';
     }
-    // 좌우 구분선을 맞추려면 두 단이 '행'을 공유해야 한다. 한 단씩 쌓으면 카드 높이가
-    // 달라 선이 어긋나므로, 행마다 왼쪽 칸·오른쪽 칸을 짝지어 그리드에 넣는다.
-    // 그리드 행은 더 큰 칸에 맞춰 늘어나므로 다음 행의 윗선은 항상 좌우가 같은 높이다.
-    // 행 안의 여백은 balanceHome()이 BAL.r0(리드와 짝지을 오른쪽 카드 수)로 줄인다.
-    var maxN=Math.max(1,Math.min(9,Math.floor((arr.length-6)/2)));
-    var n=Math.min(BAL.n,maxN), r0=Math.min(BAL.r0,4);
-    var i=1, lead=arr[0], stack=arr.slice(i,i+r0); i+=r0;
-    var rows=[];
-    for(var k=0;k<n;k++){
-      // 마지막 행의 오른쪽은 TOP 5 블록이라 카드 한 장보다 훨씬 길다 → 왼쪽에 두 장
-      var last=(k===n-1);
-      var lc=last?[arr[i++],arr[i++]]:[arr[i++]];
-      rows.push([lc.filter(Boolean), last?null:arr[i++]]);
-    }
+    // ── 1면 구성 ──
+    // 신문 1면은 아래로 갈수록 단 수와 비중이 바뀐다. 같은 2단이 끝까지 반복되면
+    // 리듬이 죽는다. 구역마다 폭을 달리하되, 구역 안에서는 행을 공유해 선을 맞춘다.
+    //   폴드   3단(1 : 2.3 : 1.15) — 브리프 리스트 | 톱기사(본문 2단 조판) | 사이드
+    //   쿼드   4단 — 같은 무게의 카드 4장
+    //   피처   2단(1.7 : 1) 비대칭 — 해설 기사 | TOP 5
+    var i=1, lead=arr[0];
+    var side=arr.slice(i,i+FP.side); i+=FP.side;
+    var brief=arr.slice(i,i+FP.brief); i+=FP.brief;
+    var quad=arr.slice(i,i+4); i+=quad.length>=2?quad.length:0;
+    if(quad.length<2) quad=[];
+    var feat=arr[i++];
     var bandAll=arr.slice(i);
     var band=S.showAll?bandAll:bandAll.slice(0,12);
     var top5=arr.slice(0,5), more=bandAll.length-band.length;
-    var PL='padding:0 40px 28px 0;', PR='padding:0 0 28px 40px;border-left:1px solid var(--color-line-normal);';
-    var RULE='border-top:1px solid var(--color-line-normal);padding-top:22px;';
-    var h='<div><div class="vm-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:0;border-bottom:2px solid var(--color-label-strong);">'
-    +'<div class="vm-cell vm-lead-col" style="'+PL+'padding-top:28px;">'+leadCard(lead)+'</div>'
-    +'<div class="vm-cell vm-rail-col" style="'+PR+'padding-top:28px;">'+stack.map(railCard).join('')+'</div>'
-    + rows.map(function(p,ri){
-        return '<div class="vm-cell" style="'+PL+RULE+'">'+p[0].map(leadFollow).join('')+'</div>'
-        +'<div class="vm-cell" style="'+PR+RULE+'">'+(p[1]?railCard(p[1]):mostRead(top5))+'</div>';
-      }).join('')
-    +'</div>';
+
+    var h='<div>'
+    // ① 폴드 — 3단 비대칭
+    +'<div id="vm-fold" class="vm-fold" style="display:grid;grid-template-columns:1fr 2.3fr 1.15fr;gap:0;border-bottom:3px solid var(--color-label-strong);padding-bottom:30px;">'
+      +'<div id="vm-leadcell" style="grid-column:2;padding:26px 34px 0;border-left:1px solid var(--color-line-normal);border-right:1px solid var(--color-line-normal);">'+fpLead(lead)+'</div>'
+      +'<div id="vm-brief" style="grid-column:1;grid-row:1;padding:26px 26px 0 0;">'
+        +'<div style="font-family:var(--font-display);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--color-label-strong);padding-bottom:10px;border-bottom:2px solid var(--color-label-strong);">한눈에</div>'
+        +brief.map(briefRow).join('')+'</div>'
+      +'<div id="vm-side" style="grid-column:3;grid-row:1;padding:26px 0 0 26px;">'+side.map(railCard).join('')+'</div>'
+    +'</div>'
+    // ② 쿼드 — 같은 무게 4단
+    // 칸이 다 차지 않으면 빈 셀이 생긴다 → 카드 수에 맞춰 단 수를 줄이고, 2장 미만이면 생략
+    +(quad.length>=2?'<div class="vm-quadzone" style="display:grid;grid-template-columns:repeat('+quad.length+',1fr);gap:0;border-bottom:2px solid var(--color-label-strong);">'
+      +quad.map(function(a,qi){ return '<div class="vm-quad" style="padding:22px 20px 26px;'+(qi?'border-left:1px solid var(--color-line-normal);':'padding-left:0;')+(qi===quad.length-1?'padding-right:0;':'')+'">'+quadCard(a,qi)+'</div>'; }).join('')
+    +'</div>':'')
+    // ③ 피처 — 비대칭 2단
+    +(feat?'<div class="vm-featzone" style="display:grid;grid-template-columns:1.7fr 1fr;gap:0;border-bottom:2px solid var(--color-label-strong);">'
+      +'<div id="vm-feat-l" style="padding:26px 40px 30px 0;">'+featureCard(feat)+'</div>'
+      +'<div id="vm-feat-r" style="padding:26px 0 30px 40px;border-left:1px solid var(--color-line-normal);">'+mostRead(top5)+'</div>'
+    +'</div>':'');
     if(bandAll.length){
       h+='<div style="padding:16px 0 13px;border-bottom:1px solid var(--color-line-normal);"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">오늘의 다른 소식</span></div>'
       +bandGrid(band);
@@ -635,7 +688,7 @@ a:hover{color:var(--color-primary-strong);}
     root.innerHTML=h;
     if(S.searchFocus){ var q=document.getElementById('vm-q'); if(q){ q.focus(); try{ q.setSelectionRange(S.caret,S.caret); }catch(e){} } }
     document.documentElement.style.overflow = S.openId ? 'hidden' : '';
-    if(!BAL.busy){ BAL.steps=0; setTimeout(balanceHome,16); }
+    if(!FP.busy){ FP.steps=0; setTimeout(fitFold,16); }
   }
 
   var toastTimer;
