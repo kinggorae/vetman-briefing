@@ -1024,6 +1024,119 @@ function boot(){fetch('archive.json').then(function(r){return r.json();}).then(f
 if(localStorage.getItem('vm_admin')===PASS) boot(); else gate();
 </script></body></html>`;
 
+// ── 기사별 개별 페이지 ──
+// 기존엔 기사가 날짜 페이지 안의 #앵커라 검색엔진이 개별 기사를 색인할 수 없었다.
+// 각 기사에 고유 URL과 서버 렌더 본문을 주어 롱테일 검색 유입을 연다.
+// (SPA 셸을 넣지 않고 가볍게 — 네이버 크롤러는 JS 렌더링이 약하다)
+function articleSlug(a) {
+  const s = String(a.title || "")
+    .replace(/[^가-힣a-zA-Z0-9\s]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .slice(0, 40)
+    .replace(/-+$/, "");
+  return `${a.id}${s ? "-" + s : ""}`;
+}
+const articlePath = (a) => `/article/${articleSlug(a)}`;
+
+function renderArticlePage(a, data, prev, next) {
+  const canonical = `${SITE.baseUrl}${articlePath(a)}`;
+  const brand = `${SITE.brandKo}(${SITE.brandEn})`;
+  const title = `${a.title} | ${SITE.name} · ${SITE.brandKo}`;
+  const desc = `${a.dek}`.slice(0, 200);
+  const ev = a.radar?.evidence;
+  const para = (t) => `<p>${esc(t)}</p>`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: a.title,
+    description: a.dek,
+    url: canonical,
+    inLanguage: "ko",
+    ...(a.image ? { image: a.image } : {}),
+    ...(a.ts ? { datePublished: new Date(a.ts).toISOString() } : {}),
+    isBasedOn: a.sourceUrl,
+    articleSection: a.kicker,
+    publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn, url: SITE.baseUrl },
+    mainEntityOfPage: canonical,
+  };
+  return `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(desc)}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="${esc(canonical)}">${
+    SITE.verification?.google ? `\n<meta name="google-site-verification" content="${esc(SITE.verification.google)}">` : ""
+  }${SITE.verification?.naver ? `\n<meta name="naver-site-verification" content="${esc(SITE.verification.naver)}">` : ""}
+<meta property="og:type" content="article">
+<meta property="og:title" content="${esc(a.title)}">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:url" content="${esc(canonical)}">
+<meta property="og:site_name" content="${esc(SITE.brandKo)} ${esc(SITE.name)}">${
+    a.image ? `\n<meta property="og:image" content="${esc(a.image)}">` : ""
+  }
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<style>
+:root{color-scheme:light dark;--ink:#171719;--sub:#5a5c63;--line:#e3e5e8;--bg:#fff;--pri:#0066ff}
+@media (prefers-color-scheme:dark){:root{--ink:#fff;--sub:rgba(255,255,255,.62);--line:rgba(255,255,255,.2);--bg:#171719;--pri:#4f95ff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;
+ -webkit-font-smoothing:antialiased;line-height:1.7}
+.wrap{max-width:720px;margin:0 auto;padding:22px 20px 64px}
+.top{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--line);font-size:13px}
+.top a{color:var(--ink);text-decoration:none;font-weight:800}
+.kick{margin-top:26px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pri)}
+h1{font-size:33px;line-height:1.25;letter-spacing:-.025em;margin:12px 0 14px;font-weight:800;text-wrap:pretty}
+.by{font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.02em;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.ev{margin-top:8px;font-style:italic;text-transform:none;letter-spacing:0}
+.lead{font-size:17.5px;font-weight:500;margin:20px 0 18px}
+p{margin:0 0 16px;font-size:16px;color:var(--sub)}
+.note{margin:26px 0;padding:2px 0 2px 18px;border-left:2px solid var(--ink)}
+.note .lb,.qa .lb{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-bottom:5px}
+.note .tx{font-size:15px;color:var(--ink)}
+.qa{margin:26px 0;padding-top:18px;border-top:1px solid var(--line)}
+.qa .q{font-size:19px;font-weight:800;margin:0 0 12px;line-height:1.45;text-wrap:pretty}
+.src{margin:26px 0;padding:16px 18px;background:rgba(127,127,127,.08);border-radius:12px;font-size:14px}
+.src a{color:var(--pri);font-weight:700;text-decoration:none}
+.src .dis{margin-top:10px;font-size:11.5px;color:var(--sub)}
+.nav{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.nav a{flex:1;min-width:200px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
+.nav .l{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pri)}
+.nav .t{font-size:15px;font-weight:700;margin-top:4px;line-height:1.4}
+.home{display:inline-block;margin-top:26px;background:var(--pri);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}
+</style>
+<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+</head><body><div class="wrap">
+<div class="top"><a href="/">${esc(SITE.brandKo)} ${esc(SITE.name)}</a><span style="color:var(--sub)">${esc(data.dateLabel || data.date)}</span></div>
+<div class="kick">${esc(a.kicker)}</div>
+<h1>${esc(a.title)}</h1>
+<div class="by">${[a.source, a.country, a.date, a.read].filter(Boolean).map(esc).join(" · ")}${
+    ev ? `<div class="ev">근거 · ${[ev.design, ev.n].filter(Boolean).map(esc).join(" · ")}${ev.note ? ` — ${esc(ev.note)}` : ""}</div>` : ""
+  }</div>
+<div class="lead">${esc(a.dek)}</div>
+${(a.body || []).map(para).join("\n")}
+${a.radar?.clinical ? `<div class="note"><div class="lb">임상 메모</div><div class="tx">${esc(a.radar.clinical)}</div></div>` : ""}
+${
+    a.radar?.owner && (a.radar.owner.q || a.radar.owner.script)
+      ? `<div class="qa"><div class="lb">진료실 문답</div>${a.radar.owner.q ? `<p class="q">${esc(a.radar.owner.q)}</p>` : ""}${
+          a.radar.owner.script ? `<p>${esc(a.radar.owner.script)}</p>` : ""
+        }</div>`
+      : ""
+  }
+${a.blog ? `<div class="qa"><div class="lb">블로그 글감</div><p class="q">${esc(a.blog)}</p>${(a.blogAngle || []).length ? `<ul>${a.blogAngle.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}</div>` : ""}
+<div class="src"><b>원문 출처</b> · ${esc(a.source)}${a.country ? ` · ${esc(a.country)}` : ""}<br>
+<a href="${esc(a.sourceUrl)}" target="_blank" rel="noopener nofollow">원문 사이트로 이동 ↗</a>
+<div class="dis">${esc(brand)}이 해외 공개 자료를 요약·번역한 콘텐츠이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</div></div>
+<div class="nav">${
+    prev ? `<a href="${esc(articlePath(prev))}"><div class="l">이전 기사</div><div class="t">${esc(prev.title)}</div></a>` : ""
+  }${next ? `<a href="${esc(articlePath(next))}"><div class="l">다음 기사</div><div class="t">${esc(next.title)}</div></a>` : ""}</div>
+<a class="home" href="/">${esc(data.dateLabel || data.date)} 브리핑 전체 보기 →</a>
+</div></body></html>`;
+}
+
 const NOT_FOUND_HTML = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1050,13 +1163,14 @@ const NOT_FOUND_HTML = `<!doctype html>
   <a href="/">오늘의 브리핑 보기</a>
 </div></body></html>`;
 
-function buildSitemap(issues, weeklies = []) {
+function buildSitemap(issues, weeklies = [], extraUrls = []) {
   // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다
   const urls = [
     `${SITE.baseUrl}/`,
     ...issues.map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}`),
     // 주간 다이제스트가 색인에서 통째로 빠져 있었다
     ...weeklies.map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}`),
+    ...extraUrls,
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1119,11 +1233,23 @@ function build() {
   fs.writeFileSync(path.join(SITE_DIR, "index.html"), renderPage(latest, issues, { isIndex: true }));
 
   const archive = [];
+  const articleUrls = [];
+  fs.mkdirSync(path.join(SITE_DIR, "article"), { recursive: true });
   for (const issue of issues) {
     const data = buildIssueData(issue);
     fs.writeFileSync(path.join(SITE_DIR, "issues", `${labelOf(issue)}.html`), renderPage(issue, issues));
     fs.writeFileSync(path.join(SITE_DIR, "data", `${labelOf(issue)}.json`), JSON.stringify(data));
     archive.push({ date: data.date, dateLabel: data.dateLabel, count: data.count, titles: data.articles.slice(0, 3).map((a) => a.title) });
+
+    // 기사별 개별 페이지 — 색인 면적을 날짜 단위에서 기사 단위로 넓힌다
+    const all = [...data.articles, ...(data.stories || [])];
+    all.forEach((a, i) => {
+      fs.writeFileSync(
+        path.join(SITE_DIR, "article", `${articleSlug(a)}.html`),
+        renderArticlePage(a, data, all[i - 1] || null, all[i + 1] || null)
+      );
+      articleUrls.push(`${SITE.baseUrl}${articlePath(a)}`);
+    });
   }
 
   // 주간 다이제스트
@@ -1143,7 +1269,7 @@ function build() {
     })
   );
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
-  fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies));
+  fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleUrls));
   fs.writeFileSync(path.join(SITE_DIR, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.baseUrl}/sitemap.xml\n`);
   // 404.html이 없으면 Cloudflare Pages가 없는 경로에도 200을 반환해(soft 404)
   // 검색엔진이 빈 페이지를 색인한다. 실제 404 상태로 응답하도록 페이지를 둔다.

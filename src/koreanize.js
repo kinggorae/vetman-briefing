@@ -28,6 +28,21 @@ const FIXES = [
   [/whole-genome\s+sequencing/, "전장유전체 분석"],
   [/whole-genome/, "전장유전체"],
   [/\bversus\b/, "대"],
+
+  // ── 단어가 중간에 끊긴 것들(한글 + 영어 조각) ──
+  [/피리도스트\s*igmine/, "피리도스티그민"],
+  [/가바펜\s*entin/, "가바펜틴"],
+  [/브라케시세\s*phalic\s*종/, "단두종"],
+  [/브라케시세\s*falic/, "단두"],
+  [/브라케시세\s*phalic/, "단두"],
+  [/사프라\s*enus/, "복재신경"],
+  [/나노\s*carrier/, "나노운반체"],
+  [/모\s*aimer\s+fistulas/, "항문 주위 누공"],
+  [/역\s*compression/, "압축"],
+  [/빠르게\s*hire/, "빠르게 채용"],
+  [/진료를\s*discuss/, "진료를 논의"],
+  [/성격이나\s*appearance/, "성격이나 외모"],
+  [/조상은\s*wolves/, "조상은 늑대"],
 ];
 
 // 받침 여부(한글 음절만 판단)
