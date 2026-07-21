@@ -550,8 +550,15 @@ a:hover{color:var(--color-primary-strong);}
       .catch(function(){ toast('네트워크 오류'); });
   }
   function markRead(id){ if(!S.read[id]){ S.read[id]=1; persist('read',S.read); } }
+  // SPA라 기사를 열어도 페이지 이동이 없어 GA4가 조회를 못 잡는다 — 직접 보낸다
+  function track(a){
+    if(typeof gtag!=='function'||!a) return;
+    try{
+      gtag('event','article_view',{article_id:a.id,article_title:a.title,category:a.cat,source:a.source,issue_date:a.day});
+    }catch(e){}
+  }
   function openArticle(id){
-    if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
+    if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
     else { var d=id.split('_')[0]; location.href = (location.pathname.indexOf('/issues/')>=0?'':'issues/')+d+'.html#'+id; }
   }
   function toggleIdea(id){

@@ -152,6 +152,15 @@ function buildIssueData(issue) {
   };
 }
 
+// GA4 gtag 스니펫. 측정 ID가 없으면 아무것도 내보내지 않아 로딩 비용이 0이다.
+function gaSnippet() {
+  const id = SITE.ga4;
+  if (!id) return "";
+  return `
+<script async src="https://www.googletagmanager.com/gtag/js?id=${esc(id)}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${esc(id)}');</script>`;
+}
+
 function seoHead(issue, data, canonicalPath) {
   const label = labelOf(issue);
   // 브랜드 검색("베트맨랩") 대응 — 한글 브랜드명을 타이틀·설명에 실제 문자열로 넣는다
@@ -755,8 +764,15 @@ const APP_JS = String.raw`
       .catch(function(){ toast('네트워크 오류'); });
   }
   function markRead(id){ if(!S.read[id]){ S.read[id]=1; persist('read',S.read); } }
+  // SPA라 기사를 열어도 페이지 이동이 없어 GA4가 조회를 못 잡는다 — 직접 보낸다
+  function track(a){
+    if(typeof gtag!=='function'||!a) return;
+    try{
+      gtag('event','article_view',{article_id:a.id,article_title:a.title,category:a.cat,source:a.source,issue_date:a.day});
+    }catch(e){}
+  }
   function openArticle(id){
-    if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
+    if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
     else { var d=id.split('_')[0]; location.href = (location.pathname.indexOf('/issues/')>=0?'':'issues/')+d+'.html#'+id; }
   }
   function toggleIdea(id){
@@ -870,7 +886,7 @@ ${seoHead(issue, data, canonicalPath)}
 <meta name="theme-color" content="#0066ff">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/icon.svg">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">${gaSnippet()}
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="VetMan 브리핑">
 <style>${TOKENS_CSS}${STATIC_CSS}</style>
@@ -1108,7 +1124,7 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .nav .t{font-size:15px;font-weight:700;margin-top:4px;line-height:1.4}
 .home{display:inline-block;margin-top:26px;background:var(--pri);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}
 </style>
-<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>${gaSnippet()}
 </head><body><div class="wrap">
 <div class="top"><a href="/">${esc(SITE.brandKo)} ${esc(SITE.name)}</a><span style="color:var(--sub)">${esc(data.dateLabel || data.date)}</span></div>
 <div class="kick">${esc(a.kicker)}</div>
