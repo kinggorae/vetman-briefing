@@ -4,6 +4,13 @@ export const SITE = {
   name: "VetMan 해외 브리핑",
   description:
     "해외 수의 미디어·논문 수백 곳을 매일 대신 읽고 한국 동물병원이 오늘 알아야 할 것만 골라 전하는 조기경보 레이더. 진료 점검 포인트, 보호자가 곧 물어볼 질문과 설명 대본, 논문 근거등급, 블로그 선점 글감을 함께 제공합니다.",
+  // 검색엔진 소유확인 코드(메타태그 방식). 발급받은 content 값만 넣고 빌드하면 된다.
+  // 구글 서치콘솔: 속성 추가 → HTML 태그 → content 값
+  // 네이버 서치어드바이저: 사이트 등록 → HTML 태그 → content 값
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || "",
+    naver: process.env.NAVER_SITE_VERIFICATION || "",
+  },
 };
 
 // ── Plan C (기본): 해외 수의 미디어·저널 RSS ──

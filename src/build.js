@@ -187,7 +187,15 @@ function seoHead(issue, data, canonicalPath) {
     .slice(0, 3)
     .map((a) => esc(a.title.split(",")[0].split("…")[0].trim()))
     .join(", ")}">
-<link rel="canonical" href="${esc(canonical)}">
+<link rel="canonical" href="${esc(canonical)}">${
+    SITE.verification?.google
+      ? `\n<meta name="google-site-verification" content="${esc(SITE.verification.google)}">`
+      : ""
+  }${
+    SITE.verification?.naver
+      ? `\n<meta name="naver-site-verification" content="${esc(SITE.verification.naver)}">`
+      : ""
+  }
 <link rel="alternate" type="application/rss+xml" title="${esc(SITE.name)}" href="${SITE.baseUrl}/rss.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(SITE.name)}">
@@ -1004,8 +1012,13 @@ function boot(){fetch('archive.json').then(function(r){return r.json();}).then(f
 if(localStorage.getItem('vm_admin')===PASS) boot(); else gate();
 </script></body></html>`;
 
-function buildSitemap(issues) {
-  const urls = [`${SITE.baseUrl}/`, ...issues.map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}.html`)];
+function buildSitemap(issues, weeklies = []) {
+  const urls = [
+    `${SITE.baseUrl}/`,
+    ...issues.map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}.html`),
+    // 주간 다이제스트가 색인에서 통째로 빠져 있었다
+    ...weeklies.map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}.html`),
+  ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
@@ -1091,7 +1104,7 @@ function build() {
     })
   );
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
-  fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues));
+  fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies));
   fs.writeFileSync(path.join(SITE_DIR, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.baseUrl}/sitemap.xml\n`);
   fs.writeFileSync(path.join(SITE_DIR, "rss.xml"), buildRss(issues));
   fs.writeFileSync(path.join(SITE_DIR, "llms.txt"), buildLlmsTxt(issues));
