@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { SITE } from "../config.js";
+import { SITE, LEGAL } from "../config.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -862,7 +862,7 @@ const APP_JS = String.raw`
     else { h+=catRow(); h+=homeView(); }
 
     h+='<footer style="margin-top:40px;border-top:2px solid var(--color-label-strong);padding-top:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">'
-    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p>'
+    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p><div style="width:100%;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;font-weight:600;"><a href="/about" style="color:var(--color-label-neutral);">서비스 소개</a><a href="/privacy" style="color:var(--color-label-neutral);">개인정보처리방침</a><a href="/terms" style="color:var(--color-label-neutral);">이용약관</a><a href="/rss.xml" style="color:var(--color-label-neutral);">RSS</a></div>'
     + (CFG.newsletter
       ? '<form id="vm-sub" style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:8px;">뉴스레터로 매일 아침 받기</div><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div></form>'
       // 저장소가 준비되기 전까지는 지금 실제로 동작하는 수단만 안내한다
@@ -1350,6 +1350,292 @@ const NOT_FOUND_HTML = `<!doctype html>
   <a href="/">오늘의 브리핑 보기</a>
 </div></body></html>`;
 
+// ── 정책·안내 페이지 ──
+// 개인정보처리방침·이용약관은 GA4를 돌리는 시점부터 법적으로 필요하고,
+// 광고·제휴 심사에서도 필수 항목이다. 사업자 정보는 LEGAL에 실제 값이
+// 들어온 항목만 표기한다(빈 값을 그럴듯하게 채우면 허위표시가 된다).
+const legalRow = (label, value) =>
+  value ? `<tr><th>${esc(label)}</th><td>${esc(value)}</td></tr>` : "";
+
+function renderLegalPage({ slug, title, lede, body }) {
+  return `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)} | ${esc(SITE.name)} · ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</title>
+<meta name="description" content="${esc(lede)}">
+<link rel="canonical" href="${SITE.baseUrl}/${slug}">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>
+  :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;color-scheme:light dark}
+  @media (prefers-color-scheme:dark){:root{--bg:#171719;--ink:#f7f7f8;--dim:#a0a0a8;--line:#2e2e33}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);padding:0 20px 80px;
+    font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;line-height:1.75;}
+  .wrap{max-width:760px;margin:0 auto}
+  header{border-bottom:2px solid var(--ink);padding:26px 0 18px;margin-bottom:34px}
+  header a{color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.02em}
+  h1{font-size:31px;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin:0 0 12px}
+  .lede{color:var(--dim);font-size:15px;margin:0 0 8px}
+  .date{color:var(--dim);font-size:12.5px;letter-spacing:.03em;margin:0 0 36px}
+  h2{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:38px 0 12px;padding-top:18px;border-top:1px solid var(--line)}
+  h3{font-size:15.5px;font-weight:700;margin:22px 0 8px}
+  p,li{font-size:15px;color:var(--ink)}
+  ul{padding-left:20px;margin:10px 0}
+  li{margin-bottom:6px}
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{width:34%;background:rgba(128,128,128,.07);font-weight:700}
+  a{color:var(--pri)}
+  .note{border-left:3px solid var(--pri);padding:2px 0 2px 14px;margin:16px 0;color:var(--dim);font-size:14.5px}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--dim)}
+  footer a{margin-right:14px}
+</style>${gaSnippet()}</head>
+<body><div class="wrap">
+<header><a href="/">${esc(SITE.name)}</a></header>
+<h1>${esc(title)}</h1>
+<p class="lede">${esc(lede)}</p>
+<p class="date">시행일 ${esc(LEGAL.effectiveDate)}</p>
+${body}
+<footer>
+  <a href="/">오늘의 브리핑</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+  <div style="margin-top:10px">© ${new Date(LEGAL.effectiveDate).getFullYear()} ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</div>
+</footer>
+</div></body></html>`;
+}
+
+const LEGAL_TABLE = `<table>
+${legalRow("상호 / 운영자", LEGAL.operator)}
+${legalRow("대표자", LEGAL.representative)}
+${legalRow("사업자등록번호", LEGAL.bizNumber)}
+${legalRow("주소", LEGAL.address)}
+${legalRow("개인정보 보호책임자", LEGAL.privacyOfficer)}
+${legalRow("문의", LEGAL.email)}
+</table>`;
+
+const PRIVACY_BODY = `
+<p>${esc(SITE.brandKo)}(${esc(SITE.brandEn)})은 «${esc(SITE.name)}»(이하 “서비스”)를 운영하며,
+이용자의 개인정보를 개인정보 보호법 등 관계 법령에 따라 보호합니다. 이 방침은 서비스가 어떤 정보를
+어떤 목적으로 처리하는지 설명합니다.</p>
+
+<div class="note">이 서비스는 회원가입이 없습니다. 이름·연락처·결제정보를 받지 않으며,
+이용자가 직접 입력하는 정보는 (뉴스레터를 신청하는 경우의) 이메일 주소가 유일합니다.</div>
+
+<h2>1. 수집하는 개인정보 항목과 방법</h2>
+<h3>가. 자동으로 수집되는 정보</h3>
+<p>서비스는 방문 통계 분석을 위해 Google Analytics 4를 사용합니다. 이 과정에서 아래 정보가
+쿠키 및 유사 기술을 통해 자동으로 수집됩니다.</p>
+<ul>
+  <li>접속 기기·브라우저·운영체제 정보, 화면 크기</li>
+  <li>접속 국가·지역(도시 단위까지의 대략적 위치)</li>
+  <li>방문 일시, 열람한 페이지와 기사, 체류 시간, 유입 경로(검색어·참조 사이트)</li>
+  <li>IP 주소 — Google Analytics 4는 IP 주소를 저장하지 않고 위치 추정에만 사용한 뒤 폐기합니다.</li>
+</ul>
+<h3>나. 이용자가 직접 제공하는 정보</h3>
+<ul>
+  <li>뉴스레터 신청 시: 이메일 주소 (신청 시점에 별도로 동의를 받습니다)</li>
+  <li>문의 메일 발송 시: 이용자가 메일에 기재한 내용</li>
+</ul>
+<h3>다. 브라우저에만 저장되고 서버로 전송되지 않는 정보</h3>
+<p>읽은 기사 표시, 저장한 기사, 글감함, 다크 모드·글자 크기 설정은 이용자의 브라우저
+로컬 스토리지에만 저장됩니다. 서비스 운영자는 이 값을 수집하거나 열람할 수 없으며,
+브라우저 데이터를 삭제하면 함께 지워집니다.</p>
+
+<h2>2. 개인정보의 처리 목적</h2>
+<ul>
+  <li>서비스 이용 현황 분석 및 콘텐츠 개선</li>
+  <li>오류·장애 원인 파악과 대응</li>
+  <li>뉴스레터 발송 (신청자에 한함)</li>
+  <li>문의에 대한 회신</li>
+</ul>
+<p>수집한 정보는 위 목적 외의 용도로 이용하지 않으며, 목적이 변경되는 경우 별도의 동의를 받습니다.</p>
+
+<h2>3. 보유 및 이용 기간</h2>
+<table>
+<tr><th>항목</th><td>보유 기간</td></tr>
+<tr><th>Google Analytics 4 방문 데이터</th><td>수집일로부터 14개월 (경과 후 자동 삭제)</td></tr>
+<tr><th>뉴스레터 이메일 주소</th><td>구독 해지 요청 시 지체 없이 파기</td></tr>
+<tr><th>문의 메일</th><td>처리 완료 후 1년</td></tr>
+</table>
+
+<h2>4. 개인정보의 제3자 제공</h2>
+<p>서비스는 이용자의 개인정보를 제3자에게 판매하거나 제공하지 않습니다.
+다만 법령에 근거한 수사기관의 적법한 요청이 있는 경우에는 예외로 합니다.</p>
+
+<h2>5. 개인정보 처리의 위탁 및 국외 이전</h2>
+<p>서비스 운영을 위해 아래 사업자의 인프라를 이용하며, 이 과정에서 정보가 국외에 저장·처리됩니다.</p>
+<table>
+<tr><th>수탁자</th><td>위탁 업무 / 이전 항목 / 보관 국가</td></tr>
+<tr><th>Google LLC</th><td>방문 통계 분석(Google Analytics 4) / 쿠키 식별자·기기 정보·이용 기록 / 미국</td></tr>
+<tr><th>Cloudflare, Inc.</th><td>웹사이트 호스팅 및 콘텐츠 전송 / 접속 IP·요청 기록 / 미국 등 글로벌 엣지 노드</td></tr>
+</table>
+<p>이용자는 국외 이전을 거부할 수 있으며, 거부하려면 아래 6항의 방법으로 분석 쿠키 수집을 차단하시면 됩니다.
+다만 이 경우에도 사이트 열람 자체는 정상적으로 가능합니다.</p>
+
+<h2>6. 쿠키의 사용과 거부 방법</h2>
+<p>서비스는 방문 통계를 위한 분석 쿠키를 사용합니다. 광고 목적의 쿠키는 사용하지 않습니다.</p>
+<ul>
+  <li>브라우저 설정에서 쿠키 저장을 거부하거나 삭제할 수 있습니다.
+    (Chrome: 설정 → 개인정보 보호 및 보안 → 서드파티 쿠키)</li>
+  <li>Google이 제공하는
+    <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics 차단 브라우저 부가기능</a>을
+    설치하면 분석 데이터 수집을 차단할 수 있습니다.</li>
+</ul>
+
+<h2>7. 정보주체의 권리와 행사 방법</h2>
+<p>이용자는 언제든지 자신의 개인정보에 대해 열람·정정·삭제·처리정지를 요구할 수 있습니다.
+아래 문의처로 요청하시면 지체 없이 조치하고 결과를 알려드립니다.
+법정대리인이나 위임을 받은 자를 통해서도 요구할 수 있습니다.</p>
+
+<h2>8. 개인정보의 파기</h2>
+<p>보유 기간이 지나거나 처리 목적이 달성된 개인정보는 지체 없이 파기합니다.
+전자적 파일은 복구할 수 없는 방법으로 영구 삭제하고, 출력물은 분쇄하거나 소각합니다.</p>
+
+<h2>9. 안전성 확보 조치</h2>
+<ul>
+  <li>전 구간 HTTPS 암호화 통신</li>
+  <li>개인정보 처리 시스템에 대한 접근 권한 최소화</li>
+  <li>수집 항목 자체를 최소화하는 설계(회원가입·결제 기능 없음)</li>
+</ul>
+
+<h2>10. 개인정보 보호책임자 및 문의처</h2>
+${LEGAL_TABLE}
+<p>개인정보 침해로 인한 신고·상담이 필요하면 아래 기관에 문의할 수 있습니다.</p>
+<ul>
+  <li>개인정보침해신고센터 (privacy.kisa.or.kr / 국번없이 118)</li>
+  <li>개인정보 분쟁조정위원회 (kopico.go.kr / 1833-6972)</li>
+  <li>대검찰청 사이버수사과 (spo.go.kr / 1301)</li>
+  <li>경찰청 사이버수사국 (ecrm.police.go.kr / 국번없이 182)</li>
+</ul>
+
+<h2>11. 방침의 변경</h2>
+<p>법령이나 서비스 내용의 변경에 따라 이 방침이 개정될 수 있습니다.
+변경 시 시행일과 변경 내용을 이 페이지에 게시합니다.</p>`;
+
+const TERMS_BODY = `
+<p>이 약관은 ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})이 제공하는 «${esc(SITE.name)}»(이하 “서비스”)의
+이용 조건을 정합니다.</p>
+
+<h2>1. 서비스의 성격</h2>
+<p>서비스는 해외에 공개된 수의학 관련 뉴스·학술 자료를 수집해 한국어로 요약·정리하고,
+한국 동물병원 관점의 참고 정보를 덧붙여 매일 제공하는 무료 정보 서비스입니다.
+회원가입 없이 누구나 열람할 수 있습니다.</p>
+
+<h2>2. 콘텐츠 생성 방식의 고지</h2>
+<p>서비스의 기사 요약과 번역에는 인공지능 언어모델이 사용되며, 발행 전 자동 검증과
+편집자 검수를 거칩니다. 그럼에도 원문의 의미가 축약·변형되거나 오역이 포함될 수 있으므로,
+<strong>모든 기사에는 원문 출처와 링크를 함께 표기합니다.</strong>
+정확한 내용은 반드시 원문을 확인하시기 바랍니다.</p>
+
+<h2>3. 임상 정보에 관한 면책</h2>
+<div class="note">서비스가 제공하는 내용은 <strong>정보 제공을 목적으로 한 참고 자료이며,
+수의학적 진단·처방·치료 지침이 아닙니다.</strong> 특정 환자에 대한 진료 판단은 담당 수의사의
+책임 아래 이루어져야 하며, 서비스는 그 판단의 근거로 사용될 수 없습니다.</div>
+<p>서비스는 게재된 정보의 정확성·완전성·최신성을 보증하지 않으며,
+이용자가 서비스의 내용을 근거로 내린 판단이나 그로 인해 발생한 결과에 대해 책임을 지지 않습니다.
+약물의 용법·용량, 국내 허가 사항, 관련 법령은 반드시 국내 공식 자료로 확인하시기 바랍니다.</p>
+
+<h2>4. 저작권</h2>
+<h3>가. 원문 저작물</h3>
+<p>각 기사에 표기된 원문의 저작권은 해당 매체·저자에게 있습니다. 서비스는 원문을 전재하지 않고
+요약·인용의 범위에서 다루며, 언제나 출처와 원문 링크를 함께 제공합니다.
+원문 권리자가 게재 중단을 요청하는 경우 확인 후 지체 없이 삭제합니다.</p>
+<h3>나. 서비스가 생산한 저작물</h3>
+<p>기사 요약문, 진료 점검 포인트, 보호자 설명 대본, 근거 등급 평가 등 서비스가 직접 작성한
+편집 저작물의 권리는 ${esc(SITE.brandKo)}에 있습니다. 출처를 밝힌 인용은 허용하나,
+무단 복제·배포·크롤링을 통한 대량 수집 및 상업적 재판매는 금지합니다.</p>
+
+<h2>5. 금지 행위</h2>
+<ul>
+  <li>자동화된 수단으로 서비스에 과도한 부하를 유발하는 행위</li>
+  <li>콘텐츠를 무단으로 대량 복제해 재배포하거나 재판매하는 행위</li>
+  <li>서비스의 내용을 왜곡해 인용하거나, 서비스가 보증한 것처럼 표시하는 행위</li>
+  <li>서비스의 정상적인 운영을 방해하는 일체의 행위</li>
+</ul>
+
+<h2>6. 서비스의 변경 및 중단</h2>
+<p>서비스는 운영상·기술상의 필요에 따라 제공 내용을 변경하거나 중단할 수 있습니다.
+무료로 제공되는 서비스의 변경·중단으로 발생한 손해에 대해서는 책임을 지지 않습니다.</p>
+
+<h2>7. 광고 및 제휴</h2>
+<p>향후 서비스에 광고나 유료 제휴 콘텐츠가 게재될 수 있습니다. 이 경우
+<strong>해당 콘텐츠에는 “광고” 또는 “제휴”임을 명확히 표기</strong>하며,
+편집 기사와 시각적으로 구분합니다. 광고주는 편집 내용에 관여하지 않습니다.</p>
+
+<h2>8. 정정 요청</h2>
+<p>사실관계 오류나 오역을 발견하신 경우 아래 문의처로 알려주시면 확인 후 정정하고,
+정정 사실을 해당 기사에 표기합니다.</p>
+
+<h2>9. 준거법 및 관할</h2>
+<p>이 약관은 대한민국 법령에 따라 해석되며, 서비스 이용과 관련한 분쟁은
+민사소송법에 따른 관할 법원에 제기합니다.</p>
+
+<h2>10. 문의</h2>
+${LEGAL_TABLE}`;
+
+const ABOUT_BODY = `
+<p>«${esc(SITE.name)}»은 ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})이 만드는
+한국 동물병원 대상 해외 수의 정보 브리핑입니다. 매일 아침 발행합니다.</p>
+
+<h2>왜 만들었나</h2>
+<p>해외에서는 새 진단법·치료 프로토콜·보호자 트렌드가 매일 쏟아지지만, 한국 임상의가
+그것을 따라 읽을 시간은 없습니다. 그 사이 보호자는 이미 유튜브와 해외 커뮤니티에서 그 소식을
+접하고 진료실에서 질문합니다. 이 서비스는 <strong>그 시차를 메우는 조기경보 레이더</strong>를
+목표로 합니다.</p>
+
+<h2>어떻게 만드나</h2>
+<h3>1. 수집</h3>
+<p>해외 수의 전문 매체와 동료심사 저널의 공개 피드, 그리고 PubMed의 수의학 분야
+문헌을 매일 자동으로 수집합니다. 현재 수의 전문 미디어·학술지 15곳의 직접 피드,
+주제별 뉴스 검색 46종, PubMed 세부 분과 22종을 훑습니다.</p>
+<h3>2. 선별</h3>
+<p>수집된 후보 중 한국 동물병원의 진료·경영과 관련성이 높은 것만 남깁니다.
+광고성 보도자료, 특정 제품 홍보, 국내 적용 가능성이 없는 지역 뉴스는 제외합니다.</p>
+<h3>3. 정리와 검증</h3>
+<p>선별된 자료를 한국어로 요약하고, 아래 항목을 덧붙입니다. 이 부분이 단순 번역과
+다른 이 서비스의 본체입니다.</p>
+<ul>
+  <li><strong>진료 포인트</strong> — 이 소식을 진료·병원 운영에 어떻게 반영할지 한 줄</li>
+  <li><strong>보호자 레이더</strong> — 곧 진료실에서 나올 질문과, 거기에 답하는 설명 대본</li>
+  <li><strong>근거 등급</strong> — 논문의 연구 설계·표본 수와 임상 적용 시 한계</li>
+</ul>
+<h3>4. 발행</h3>
+<p>모든 기사에 원문 매체·발행일·원문 링크를 표기합니다. 원문을 전재하지 않습니다.</p>
+
+<h2>인공지능 사용에 대하여</h2>
+<p>번역과 요약 과정에 인공지능 언어모델을 사용합니다. 이를 숨기지 않고 밝히는 이유는,
+독자가 정보의 성격을 알고 판단해야 한다고 보기 때문입니다.
+자동 검증(외국어 혼입·문체·용어 검사)과 편집자 검수를 거치지만
+오역이나 축약이 있을 수 있으므로, 임상 판단에 사용하실 내용은 반드시 원문을 확인해 주십시오.</p>
+
+<h2>정정과 삭제 요청</h2>
+<p>사실관계 오류, 오역, 원문 권리자의 게재 중단 요청은 아래 문의처로 접수합니다.
+확인 후 지체 없이 조치하고 그 사실을 기사에 표기합니다.</p>
+
+<h2>운영 정보</h2>
+${LEGAL_TABLE}
+<p><a href="/privacy">개인정보처리방침</a> · <a href="/terms">이용약관</a></p>`;
+
+const LEGAL_PAGES = [
+  {
+    slug: "privacy",
+    title: "개인정보처리방침",
+    lede: `${SITE.name}가 어떤 정보를 어떤 목적으로 처리하고 언제 파기하는지 안내합니다.`,
+    body: PRIVACY_BODY,
+  },
+  {
+    slug: "terms",
+    title: "이용약관",
+    lede: "서비스의 성격, 콘텐츠 생성 방식, 임상 정보 면책, 저작권 원칙을 정합니다.",
+    body: TERMS_BODY,
+  },
+  {
+    slug: "about",
+    title: "서비스 소개",
+    lede: "무엇을 어떻게 수집하고 검증해 발행하는지, 인공지능을 어디에 쓰는지 밝힙니다.",
+    body: ABOUT_BODY,
+  },
+];
+
 function buildSitemap(issues, weeklies = [], extraUrls = []) {
   // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다
   const urls = [
@@ -1357,6 +1643,7 @@ function buildSitemap(issues, weeklies = [], extraUrls = []) {
     ...issues.map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}`),
     // 주간 다이제스트가 색인에서 통째로 빠져 있었다
     ...weeklies.map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}`),
+    ...LEGAL_PAGES.map((p) => `${SITE.baseUrl}/${p.slug}`),
     ...extraUrls,
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -1461,6 +1748,10 @@ function build() {
   // 404.html이 없으면 Cloudflare Pages가 없는 경로에도 200을 반환해(soft 404)
   // 검색엔진이 빈 페이지를 색인한다. 실제 404 상태로 응답하도록 페이지를 둔다.
   fs.writeFileSync(path.join(SITE_DIR, "404.html"), NOT_FOUND_HTML);
+  // 정책·안내 페이지 — GA4를 돌리는 이상 개인정보처리방침은 선택이 아니다
+  for (const pg of LEGAL_PAGES) {
+    fs.writeFileSync(path.join(SITE_DIR, `${pg.slug}.html`), renderLegalPage(pg));
+  }
   // IndexNow 소유 증명 키 파일 — 매 빌드마다 유지되어야 제출이 계속 유효하다
   if (SITE.indexNowKey) {
     fs.writeFileSync(path.join(SITE_DIR, `${SITE.indexNowKey}.txt`), SITE.indexNowKey);

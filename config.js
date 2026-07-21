@@ -30,6 +30,19 @@ export const SITE = {
   indexNowKey: "9713ac9a291bbe9c87d85626cd739fe0",
 };
 
+// ── 법적 고지 페이지(/privacy · /terms · /about)에 들어갈 사업자·연락처 정보 ──
+// 빈 값은 페이지에 아예 표기하지 않는다. 확인되지 않은 값을 임의로 채우면
+// 그 자체가 허위표시가 되므로, 실제 등록 정보를 받은 뒤에만 채운다.
+export const LEGAL = {
+  operator: "",        // 상호 또는 운영자명 (예: "베트맨랩")
+  representative: "",  // 대표자명
+  bizNumber: "",       // 사업자등록번호
+  address: "",         // 사업장 주소
+  email: "seovenceo@gmail.com",  // 공개 문의처 — 별도 주소를 쓰려면 여기서 교체
+  privacyOfficer: "",  // 개인정보 보호책임자 이름/직위
+  effectiveDate: "2026-07-22",   // 시행일
+};
+
 // ── Plan C (기본): 해외 수의 미디어·저널 RSS ──
 // maxAgeDays: 피드별 수집 기간(일), max: 피드별 최대 후보 수
 const DIRECT_FEEDS = [
