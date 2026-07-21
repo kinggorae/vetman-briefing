@@ -266,7 +266,7 @@ function noscriptFallback(data) {
 <h1>${esc(SITE.brandKo)} ${esc(SITE.name)} — ${esc(data.date)}</h1>
 <p>${esc(SITE.brandKo)}(${esc(SITE.brandEn)})이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑입니다.</p>
 <ul style="list-style:none;padding:0;">${list}</ul>
-<nav><a href="/">오늘의 브리핑</a> · <a href="/topic">주제별 보기</a> · <a href="/about">서비스 소개</a> · <a href="/privacy">개인정보처리방침</a> · <a href="/terms">이용약관</a> · <a href="/rss.xml">RSS</a></nav>
+<nav><a href="/">오늘의 브리핑</a> · <a href="/topic/">주제별 보기</a> · <a href="/about">서비스 소개</a> · <a href="/privacy">개인정보처리방침</a> · <a href="/terms">이용약관</a> · <a href="/rss.xml">RSS</a></nav>
 </div></noscript>`;
 }
 
@@ -910,7 +910,7 @@ const APP_JS = String.raw`
     else { h+=catRow(); h+=homeView(); }
 
     h+='<footer style="margin-top:40px;border-top:2px solid var(--color-label-strong);padding-top:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">'
-    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p><div class="vm-foot-nav" style="width:100%;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;font-weight:600;"><a href="/topic" style="color:var(--color-label-neutral);">주제별 보기</a><a href="/about" style="color:var(--color-label-neutral);">서비스 소개</a><a href="/privacy" style="color:var(--color-label-neutral);">개인정보처리방침</a><a href="/terms" style="color:var(--color-label-neutral);">이용약관</a><a href="/rss.xml" style="color:var(--color-label-neutral);">RSS</a></div>'
+    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p><div class="vm-foot-nav" style="width:100%;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;font-weight:600;"><a href="/topic/" style="color:var(--color-label-neutral);">주제별 보기</a><a href="/about" style="color:var(--color-label-neutral);">서비스 소개</a><a href="/privacy" style="color:var(--color-label-neutral);">개인정보처리방침</a><a href="/terms" style="color:var(--color-label-neutral);">이용약관</a><a href="/rss.xml" style="color:var(--color-label-neutral);">RSS</a></div>'
     + (CFG.newsletter
       ? '<form id="vm-sub" style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:8px;">뉴스레터로 매일 아침 받기</div><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" autocomplete="email" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div>'
       // 봇 필터 — 사람 눈에는 보이지 않고 스크린리더도 건너뛴다
@@ -1890,7 +1890,7 @@ function renderTopicPage(topic, arts) {
   }${gaSnippet()}</head>
 <body><div class="wrap">
 <header><a class="brand" href="/">${esc(SITE.name)}</a>
-<nav><a href="/topic">주제별 보기</a><a href="/about">서비스 소개</a></nav></header>
+<nav><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a></nav></header>
 <h1>${esc(topic.name)}</h1>
 <p class="lede">${esc(topic.lede)}</p>
 <p class="meta">기사 ${arts.length}건${papers.length ? ` · 근거 있는 연구 ${papers.length}건` : ""}${
@@ -1955,7 +1955,7 @@ ${sec(
     .join("")}</div>
 
 <footer>
-  <a href="/">오늘의 브리핑</a><a href="/topic">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+  <a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
   <div style="margin-top:10px">© ${new Date(LEGAL.effectiveDate).getFullYear()} ${esc(SITE.brandKo)}(${esc(
     SITE.brandEn
   )})</div>
@@ -1964,7 +1964,7 @@ ${sec(
 }
 
 function renderTopicIndex(counts) {
-  const canonical = `${SITE.baseUrl}/topic`;
+  const canonical = `${SITE.baseUrl}/topic/`;
   const rows = TOPICS.filter((t) => counts[t.slug])
     .sort((a, b) => counts[b.slug] - counts[a.slug])
     .map(
@@ -2016,7 +2016,7 @@ function buildSitemap(issues, weeklies = [], extraUrls = [], extraTopics = []) {
     // 주간 다이제스트가 색인에서 통째로 빠져 있었다
     ...weeklies.map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}`),
     ...LEGAL_PAGES.map((p) => `${SITE.baseUrl}/${p.slug}`),
-    `${SITE.baseUrl}/topic`,
+    `${SITE.baseUrl}/topic/`,
     ...(extraTopics || []),
     ...extraUrls,
   ];
