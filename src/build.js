@@ -287,6 +287,8 @@ a:hover{color:var(--color-primary-strong);}
 .vm-page ::selection{background:rgba(0,102,255,0.16);}
 .vm-lead:hover .vm-hl,.vm-row:hover .vm-hl,.vm-card:hover .vm-hl,.vm-rail:hover .vm-hl,.vm-mr:hover .vm-mrt,.vm-toc-i:hover{color:var(--color-primary-normal);}
 .vm-read{opacity:.55;}
+/* 셀이 이미 윗선과 여백을 그리므로 카드 자신의 윗선은 첫 카드에서만 지운다 */
+.vm-cell > *:first-child{border-top:0 !important;padding-top:0 !important;}
 .vm-chip{border:1px solid var(--color-line-normal);background:transparent;color:var(--color-label-neutral);cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:700;padding:6px 13px;border-radius:999px;white-space:nowrap;}
 .vm-chip[aria-pressed="true"]{background:var(--color-label-strong);color:var(--color-background-normal);border-color:var(--color-label-strong);}
 .vm-detail-body::-webkit-scrollbar{width:10px;}
@@ -301,8 +303,10 @@ a:hover{color:var(--color-primary-strong);}
   .vm-bar{padding-left:20px !important;padding-right:20px !important;gap:10px !important;}
   .vm-bar-label{display:none !important;}
   .vm-grid{grid-template-columns:1fr !important;}
-  .vm-lead-col{padding:24px 0 28px !important;}
-  .vm-rail-col{padding:8px 0 28px !important;border-left:0 !important;border-top:1px solid var(--color-line-normal);}
+  /* 1단이 되면 좌우 여백·세로선은 의미가 없다. 셀은 위아래로만 이어진다 */
+  .vm-cell{padding-left:0 !important;padding-right:0 !important;border-left:0 !important;}
+  .vm-lead-col{padding-top:24px !important;}
+  .vm-rail-col{padding-top:22px !important;border-top:1px solid var(--color-line-normal);}
   .vm-band{grid-template-columns:1fr !important;}
   .vm-band-fill{display:none !important;}
   .vm-qa-grid{grid-template-columns:1fr !important;}
@@ -448,7 +452,8 @@ const APP_JS = String.raw`
     +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:40px;line-height:1.12;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h2>'
     +'<p style="font-size:17px;line-height:1.7;color:var(--color-label-neutral);margin:0 0 14px;max-width:56ch;">'+e(a.dek)+'</p>'
     // 리드는 본문을 넉넉히 실어 왼쪽 칼럼이 비지 않게 한다(신문 1면의 톱기사처럼)
-    + (a.body||[]).slice(0,2).map(function(p){return '<p style="font-size:15px;line-height:1.8;color:var(--color-label-neutral);margin:0 0 14px;max-width:60ch;display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden;">'+e(p)+'</p>';}).join('')
+    // 리드는 본문을 넉넉히 싣되, 3번째 문단은 행에 자리가 남을 때만 fillSlack()이 편다
+    + (a.body||[]).slice(0,3).map(function(p,i){return '<p'+(i===2?' class="vm-fill"':'')+' style="font-size:15px;line-height:1.8;color:var(--color-label-neutral);margin:0 0 14px;max-width:60ch;display:'+(i===2?'none':'-webkit-box')+';-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden;">'+e(p)+'</p>';}).join('')
     +'<div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;color:var(--color-label-alternative);text-transform:uppercase;">'+meta(a)+'</div>'
     +'</article>';
   }
@@ -458,6 +463,8 @@ const APP_JS = String.raw`
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
     +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:23px;line-height:1.3;font-weight:700;letter-spacing:-.018em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
     +'<p style="font-size:14.5px;line-height:1.65;color:var(--color-label-neutral);margin:0 0 8px;max-width:62ch;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
+    // 자리가 남는 행에서만 펼쳐지는 진료 포인트 — 빈칸을 여백 대신 정보로 메운다
+    + (a.radar&&a.radar.clinical?'<div class="vm-fill" style="display:none;margin:0 0 10px;padding-left:11px;border-left:2px solid var(--color-primary-normal);font-size:13px;line-height:1.6;color:var(--color-label-neutral);max-width:62ch;"><b style="color:var(--color-primary-normal);font-weight:700;">진료 포인트</b> '+e(a.radar.clinical)+'</div>':'')
     +'<div style="font-size:11.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+metaShort(a)+'</div></article>';
   }
   function railCard(a){
@@ -548,22 +555,56 @@ const APP_JS = String.raw`
     +'<div>'+rows+'</div></div>';
   }
 
-  // 홈 2단 균형기 — 왼쪽 단 콘텐츠가 오른쪽보다 짧으면 밴드에서 기사를 끌어올린다.
-  var BAL={n:3,busy:false,steps:0};
+  // 홈 2단 균형기 — 구분선은 그리드 행이 맞춰주므로, 남은 일은 '첫 행'의 좌우
+  // 높이차를 줄이는 것뿐이다. 리드 카드와 짝을 이룰 오른쪽 카드 수(r0)를 조정한다.
+  var BAL={n:4,r0:2,busy:false,steps:0};
+  // 행 안에 남는 여백은 빈칸으로 두지 않고, 짧은 쪽의 말줄임(line-clamp)을 풀어 글로 채운다.
+  function fillSlack(){
+    if(innerWidth<=900) return;
+    var cells=[].slice.call(document.querySelectorAll('.vm-grid > .vm-cell'));
+    for(var i=0;i<cells.length;i+=2){
+      var L=cells[i], R=cells[i+1];
+      if(!L||!R) break;
+      var rowH=Math.max(L.getBoundingClientRect().height,R.getBoundingClientRect().height);
+      [L,R].forEach(function(C){
+        if(!C.lastElementChild) return;
+        function slack(){ return rowH-28-(C.lastElementChild.getBoundingClientRect().bottom-C.getBoundingClientRect().top); }
+        // ① 숨겨둔 블록(리드 3번째 문단·진료 포인트)을 먼저 편다. 넘치면 되돌린다
+        [].slice.call(C.querySelectorAll('.vm-fill')).forEach(function(el){
+          if(slack()<40) return;
+          el.style.display=el.tagName==='P'?'-webkit-box':'block';
+          if(slack()<0) el.style.display='none';
+        });
+        // ② 그래도 남으면 말줄임을 한 줄씩 푼다
+        var ps=C.querySelectorAll('p[style*="line-clamp"]');
+        if(!ps.length) return;
+        var p=ps[ps.length-1], guard=0;
+        while(guard++<20){
+          if(slack()<26) break;                            // 한 줄 넣을 자리도 없다
+          if(p.scrollHeight<=p.clientHeight+2) break;       // 더 보여줄 문장이 없다
+          p.style.webkitLineClamp=(parseInt(getComputedStyle(p).webkitLineClamp)||3)+1;
+        }
+      });
+    }
+  }
   function balanceHome(){
-    if(BAL.busy||S.view!=='home'||S.openId) return;
-    if(innerWidth<=900){ if(BAL.n!==3){ BAL.n=3; render(); } return; }   // 1단이면 균형 불필요
-    var L=document.querySelector('.vm-lead-col'), R=document.querySelector('.vm-rail-col');
-    if(!L||!R||!L.lastElementChild||!R.lastElementChild) return;
-    var top=L.getBoundingClientRect().top;
-    var lh=L.lastElementChild.getBoundingClientRect().bottom-top;
-    var rh=R.lastElementChild.getBoundingClientRect().bottom-top;
-    var d=rh-lh, next=BAL.n;
-    if(d>150) next=BAL.n+1; else if(d<-150&&BAL.n>1) next=BAL.n-1;
-    if(next===BAL.n||BAL.steps>8) return;   // steps 상한 — 경계값에서 진동 방지
-    BAL.n=next; BAL.steps++;
-    BAL.busy=true; render(); BAL.busy=false;
-    setTimeout(balanceHome,16);
+    if(BAL.busy||S.view!=='home'||S.openId||innerWidth<=900) return;
+    var cells=document.querySelectorAll('.vm-grid > .vm-cell');
+    if(cells.length<2) return;
+    var L=cells[0], R=cells[1];
+    if(!L.lastElementChild||!R.firstElementChild) return;
+    // 리드 카드 높이 ÷ 오른쪽 카드 한 장 높이 = 짝지을 카드 수. 한 번에 정답으로 간다
+    // (임계값 방식은 카드 한 장 단위가 커서 118px↔187px로 진동했다)
+    var lh=L.lastElementChild.getBoundingClientRect().bottom-L.getBoundingClientRect().top;
+    var unit=R.firstElementChild.getBoundingClientRect().height;
+    var want=unit>40?Math.max(1,Math.min(4,Math.round(lh/unit))):BAL.r0;
+    if(want!==BAL.r0&&BAL.steps<4){
+      BAL.r0=want; BAL.steps++;
+      BAL.busy=true; render(); BAL.busy=false;
+      setTimeout(balanceHome,16);
+      return;
+    }
+    fillSlack();
   }
   var balTimer;
   addEventListener('resize',function(){ clearTimeout(balTimer); balTimer=setTimeout(function(){ BAL.steps=0; balanceHome(); },160); });
@@ -582,16 +623,33 @@ const APP_JS = String.raw`
       h1+=storyBoard();
       return h1+'</div>';
     }
-    // 두 단의 실제 렌더 높이는 기사 길이·화면 폭마다 달라진다. 고정 분배로는 맞출 수 없어
-    // 렌더 후 balanceHome()이 BAL.n(왼쪽 후속 기사 수)을 조정하며 수렴시킨다.
-    var maxN=Math.max(1,Math.min(9,arr.length-6));
-    var n=Math.min(BAL.n,maxN);
-    var lead=arr[0], follow=arr.slice(1,1+n), rail=arr.slice(1+n,5+n), bandAll=arr.slice(5+n);
+    // 좌우 구분선을 맞추려면 두 단이 '행'을 공유해야 한다. 한 단씩 쌓으면 카드 높이가
+    // 달라 선이 어긋나므로, 행마다 왼쪽 칸·오른쪽 칸을 짝지어 그리드에 넣는다.
+    // 그리드 행은 더 큰 칸에 맞춰 늘어나므로 다음 행의 윗선은 항상 좌우가 같은 높이다.
+    // 행 안의 여백은 balanceHome()이 BAL.r0(리드와 짝지을 오른쪽 카드 수)로 줄인다.
+    var maxN=Math.max(1,Math.min(9,Math.floor((arr.length-6)/2)));
+    var n=Math.min(BAL.n,maxN), r0=Math.min(BAL.r0,4);
+    var i=1, lead=arr[0], stack=arr.slice(i,i+r0); i+=r0;
+    var rows=[];
+    for(var k=0;k<n;k++){
+      // 마지막 행의 오른쪽은 TOP 5 블록이라 카드 한 장보다 훨씬 길다 → 왼쪽에 두 장
+      var last=(k===n-1);
+      var lc=last?[arr[i++],arr[i++]]:[arr[i++]];
+      rows.push([lc.filter(Boolean), last?null:arr[i++]]);
+    }
+    var bandAll=arr.slice(i);
     var band=S.showAll?bandAll:bandAll.slice(0,12);
     var top5=arr.slice(0,5), more=bandAll.length-band.length;
+    var PL='padding:0 40px 28px 0;', PR='padding:0 0 28px 40px;border-left:1px solid var(--color-line-normal);';
+    var RULE='border-top:1px solid var(--color-line-normal);padding-top:22px;';
     var h='<div><div class="vm-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:0;border-bottom:2px solid var(--color-label-strong);">'
-    +'<div class="vm-lead-col" style="padding:28px 40px 34px 0;">'+leadCard(lead)+follow.map(leadFollow).join('')+'</div>'
-    +'<div class="vm-rail-col" style="padding:28px 0 34px 40px;border-left:1px solid var(--color-line-normal);">'+rail.map(railCard).join('')+mostRead(top5)+'</div></div>';
+    +'<div class="vm-cell vm-lead-col" style="'+PL+'padding-top:28px;">'+leadCard(lead)+'</div>'
+    +'<div class="vm-cell vm-rail-col" style="'+PR+'padding-top:28px;">'+stack.map(railCard).join('')+'</div>'
+    + rows.map(function(p,ri){
+        return '<div class="vm-cell" style="'+PL+RULE+'">'+p[0].map(leadFollow).join('')+'</div>'
+        +'<div class="vm-cell" style="'+PR+RULE+'">'+(p[1]?railCard(p[1]):mostRead(top5))+'</div>';
+      }).join('')
+    +'</div>';
     if(bandAll.length){
       h+='<div style="padding:16px 0 13px;border-bottom:1px solid var(--color-line-normal);"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">오늘의 다른 소식</span></div>'
       +bandGrid(band);
