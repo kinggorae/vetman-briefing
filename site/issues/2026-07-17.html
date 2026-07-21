@@ -104,6 +104,9 @@ a:hover{color:var(--color-primary-strong);}
   .vm-strip > div{width:100% !important;flex-wrap:wrap !important;}
   .vm-seg{min-height:44px !important;padding:0 16px !important;}
   .vm-tap{min-width:44px !important;min-height:44px !important;}
+  /* 푸터 법적 링크는 서로 붙어 있어 작으면 오탭한다 */
+  .vm-foot-nav{gap:4px 20px !important;}
+  .vm-foot-nav a{display:inline-flex;align-items:center;min-height:44px;font-size:13px !important;}
   /* 상세뷰 안의 액션(글자 크기·공유·복사·목차)도 같은 기준으로 넓힌다.
      inline 링크는 min-height가 먹지 않으므로 inline-flex인 것만 대상이 된다. */
   .vm-detail button,.vm-detail a[href]{min-height:44px !important;min-width:44px !important;}
@@ -690,7 +693,7 @@ a:hover{color:var(--color-primary-strong);}
     else { h+=catRow(); h+=homeView(); }
 
     h+='<footer style="margin-top:40px;border-top:2px solid var(--color-label-strong);padding-top:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">'
-    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p><div style="width:100%;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;font-weight:600;"><a href="/about" style="color:var(--color-label-neutral);">서비스 소개</a><a href="/privacy" style="color:var(--color-label-neutral);">개인정보처리방침</a><a href="/terms" style="color:var(--color-label-neutral);">이용약관</a><a href="/rss.xml" style="color:var(--color-label-neutral);">RSS</a></div>'
+    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p><div class="vm-foot-nav" style="width:100%;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;font-weight:600;"><a href="/about" style="color:var(--color-label-neutral);">서비스 소개</a><a href="/privacy" style="color:var(--color-label-neutral);">개인정보처리방침</a><a href="/terms" style="color:var(--color-label-neutral);">이용약관</a><a href="/rss.xml" style="color:var(--color-label-neutral);">RSS</a></div>'
     + (CFG.newsletter
       ? '<form id="vm-sub" style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:8px;">뉴스레터로 매일 아침 받기</div><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" autocomplete="email" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div>'
       // 봇 필터 — 사람 눈에는 보이지 않고 스크린리더도 건너뛴다
