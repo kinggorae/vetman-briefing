@@ -1294,6 +1294,11 @@ function build() {
   if (SITE.indexNowKey) {
     fs.writeFileSync(path.join(SITE_DIR, `${SITE.indexNowKey}.txt`), SITE.indexNowKey);
   }
+  // 네이버 소유확인 'HTML 파일 업로드' 방식 대응 — 메타태그와 병행 가능하다
+  if (SITE.verification?.naver) {
+    const nv = `naver${SITE.verification.naver}.html`;
+    fs.writeFileSync(path.join(SITE_DIR, nv), `naver-site-verification: ${nv}`);
+  }
   fs.writeFileSync(path.join(SITE_DIR, "rss.xml"), buildRss(issues));
   fs.writeFileSync(path.join(SITE_DIR, "llms.txt"), buildLlmsTxt(issues));
 

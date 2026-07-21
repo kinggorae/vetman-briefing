@@ -22,7 +22,8 @@ export const SITE = {
   verification: {
     google: process.env.GOOGLE_SITE_VERIFICATION || "",
     // 네이버 서치어드바이저 소유확인. CI 재빌드에서도 유지되어야 인증이 풀리지 않는다.
-    naver: process.env.NAVER_SITE_VERIFICATION || "fd6421aa3bfe682dd2be2d0d8d5d5b7016c8791a",
+    // 메타태그 방식과 HTML 파일 방식(naver{코드}.html) 양쪽에 같은 코드를 쓴다.
+    naver: process.env.NAVER_SITE_VERIFICATION || "6199ead62bda2ec9e75dae83b6b5a60d1e2bd435",
   },
   // IndexNow: 네이버·빙 등이 지원하는 색인 요청 프로토콜(계정 로그인 불필요).
   // 사이트 루트에 {key}.txt를 두고 소유를 증명한 뒤 URL을 제출한다.
