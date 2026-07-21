@@ -311,6 +311,21 @@ a:hover{color:var(--color-primary-strong);}
   .vm-detail{width:100% !important;max-width:100% !important;}
   .vm-search{display:none !important;}
   .vm-dateline{display:none !important;}
+  /* 터치 타깃 확대 — 칩 29px·정렬 25px는 손가락으로 정확히 누르기 어렵다.
+     시각적 크기는 유지하고 세로 패딩으로 누를 수 있는 면적만 키운다. */
+  .vm-chip{min-height:44px !important;padding:0 15px !important;font-size:13px !important;}
+  /* 좁은 화면에선 제목·요약이 정렬 버튼에 밀려 3줄로 구겨진다 → 세로로 쌓는다 */
+  .vm-strip{flex-direction:column !important;align-items:flex-start !important;gap:10px !important;}
+  .vm-strip > div{width:100% !important;flex-wrap:wrap !important;}
+  .vm-seg{min-height:44px !important;padding:0 16px !important;}
+  .vm-tap{min-width:44px !important;min-height:44px !important;}
+  /* 상세뷰 안의 액션(글자 크기·공유·복사·목차)도 같은 기준으로 넓힌다.
+     inline 링크는 min-height가 먹지 않으므로 inline-flex인 것만 대상이 된다. */
+  .vm-detail button,.vm-detail a[href]{min-height:44px !important;min-width:44px !important;}
+  .vm-detail .vm-toc-i{align-items:center !important;}
+  /* 상단 툴바에 7개가 다 들어가면 좁은 화면에서 서로 겹친다.
+     하단 바(이전·원문·다음)와 겹치거나 부차적인 것만 숨겨 공유·저장·닫기를 남긴다. */
+  .vm-dt-hide{display:none !important;}
 }`;
 
 const APP_JS = String.raw`
@@ -394,7 +409,7 @@ const APP_JS = String.raw`
   }
   function bookmarkBtn(id,w,box){
     var st = box==='plain' ? 'width:'+(w+11)+'px;height:'+(w+11)+'px;border:0;background:transparent;' : 'width:'+(w+11)+'px;height:'+(w+11)+'px;border:1px solid var(--color-line-normal);background:var(--color-background-elevated);';
-    return '<button data-save="'+id+'" title="저장" style="'+st+'display:inline-flex;align-items:center;justify-content:center;border-radius:8px;cursor:pointer;color:'+saveColor(id)+';">'+BM.replace(/W/g,w)+'</button>';
+    return '<button data-save="'+id+'" class="vm-tap" title="저장" style="'+st+'display:inline-flex;align-items:center;justify-content:center;border-radius:8px;cursor:pointer;color:'+saveColor(id)+';">'+BM.replace(/W/g,w)+'</button>';
   }
   function readCls(id){ return isRead(id)?' vm-read':''; }
 
@@ -432,9 +447,18 @@ const APP_JS = String.raw`
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,18,10.5)+(isRead(a.id)?'<span style="font-size:10.5px;color:var(--color-label-alternative);">읽음</span>':'')+'</div>'+bookmarkBtn(a.id,17,'plain')+'</div>'
     +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:40px;line-height:1.12;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h2>'
     +'<p style="font-size:17px;line-height:1.7;color:var(--color-label-neutral);margin:0 0 14px;max-width:56ch;">'+e(a.dek)+'</p>'
-    + (a.body&&a.body[0]?'<p style="font-size:15px;line-height:1.75;color:var(--color-label-neutral);margin:0 0 16px;max-width:60ch;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.body[0])+'</p>':'')
+    // 리드는 본문을 넉넉히 실어 왼쪽 칼럼이 비지 않게 한다(신문 1면의 톱기사처럼)
+    + (a.body||[]).slice(0,2).map(function(p){return '<p style="font-size:15px;line-height:1.8;color:var(--color-label-neutral);margin:0 0 14px;max-width:60ch;display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden;">'+e(p)+'</p>';}).join('')
     +'<div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;color:var(--color-label-alternative);text-transform:uppercase;">'+meta(a)+'</div>'
     +'</article>';
+  }
+  // 리드 아래로 이어지는 후속 기사(같은 칼럼) — 1면 왼쪽 단이 끊기지 않게
+  function leadFollow(a){
+    return '<article class="vm-follow'+readCls(a.id)+'" data-open="'+a.id+'" style="padding:18px 0;border-top:1px solid var(--color-line-normal);cursor:pointer;">'
+    +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
+    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:23px;line-height:1.3;font-weight:700;letter-spacing:-.018em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
+    +'<p style="font-size:14.5px;line-height:1.65;color:var(--color-label-neutral);margin:0 0 8px;max-width:62ch;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
+    +'<div style="font-size:11.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+metaShort(a)+'</div></article>';
   }
   function railCard(a){
     return '<article class="vm-rail'+readCls(a.id)+'" data-open="'+a.id+'" style="padding:20px 0;border-top:1px solid var(--color-line-normal);cursor:pointer;">'
@@ -527,11 +551,12 @@ const APP_JS = String.raw`
   function homeView(){
     var arr=activeList();
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
-    var lead=arr[0], rail=arr.slice(1,3), bandAll=arr.slice(3);
-    var band=S.showAll?bandAll:bandAll.slice(0,12); // 첫 화면 노출 확대(리드1+사이드2+12=15건)
+    // 왼쪽 단은 리드 + 후속 2건으로 이어진다 — 오른쪽 사이드보다 짧아 생기던 빈 공간을 없앤다
+    var lead=arr[0], follow=arr.slice(1,4), rail=arr.slice(4,8), bandAll=arr.slice(8);
+    var band=S.showAll?bandAll:bandAll.slice(0,12);
     var top5=arr.slice(0,5), more=bandAll.length-band.length;
     var h='<div><div class="vm-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:0;border-bottom:2px solid var(--color-label-strong);">'
-    +'<div class="vm-lead-col" style="padding:28px 40px 34px 0;">'+leadCard(lead)+'</div>'
+    +'<div class="vm-lead-col" style="padding:28px 40px 34px 0;">'+leadCard(lead)+follow.map(leadFollow).join('')+'</div>'
     +'<div class="vm-rail-col" style="padding:28px 0 34px 40px;border-left:1px solid var(--color-line-normal);">'+rail.map(railCard).join('')+mostRead(top5)+'</div></div>';
     if(bandAll.length){
       h+='<div style="padding:16px 0 13px;border-bottom:1px solid var(--color-line-normal);"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">오늘의 다른 소식</span></div>'
@@ -595,15 +620,15 @@ const APP_JS = String.raw`
     // header
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;border-bottom:1px solid var(--color-line-normal);">'
     +'<div style="display:flex;align-items:center;gap:8px;min-width:0;">'
-    +'<button data-act="prev" '+(prev?'':'disabled')+' title="이전 기사" style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:'+(prev?'pointer':'default')+';color:'+(prev?'var(--color-label-neutral)':'var(--color-label-assistive)')+';">'+ARL+'</button>'
-    +'<button data-act="next" '+(next?'':'disabled')+' title="다음 기사" style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:'+(next?'pointer':'default')+';color:'+(next?'var(--color-label-neutral)':'var(--color-label-assistive)')+';">'+ARR+'</button>'
+    +'<button data-act="prev" class="vm-dt-hide" '+(prev?'':'disabled')+' title="이전 기사" style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:'+(prev?'pointer':'default')+';color:'+(prev?'var(--color-label-neutral)':'var(--color-label-assistive)')+';">'+ARL+'</button>'
+    +'<button data-act="next" class="vm-dt-hide" '+(next?'':'disabled')+' title="다음 기사" style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:'+(next?'pointer':'default')+';color:'+(next?'var(--color-label-neutral)':'var(--color-label-assistive)')+';">'+ARR+'</button>'
     +'<span style="font-family:var(--font-display);font-size:12.5px;font-weight:700;color:var(--color-label-alternative);font-variant-numeric:tabular-nums;padding-left:4px;">'+pos+'</span>'
     +'</div>'
     +'<div style="display:flex;align-items:center;gap:6px;">'
-    +'<div style="display:inline-flex;border:1px solid var(--color-line-normal);border-radius:8px;overflow:hidden;margin-right:2px;"><button data-act="fs-" title="글자 작게" style="width:30px;height:32px;border:0;border-right:1px solid var(--color-line-normal);background:var(--color-background-normal);cursor:pointer;color:var(--color-label-neutral);font-family:inherit;font-size:12px;font-weight:700;">가−</button><button data-act="fs+" title="글자 크게" style="width:32px;height:32px;border:0;background:var(--color-background-normal);cursor:pointer;color:var(--color-label-neutral);font-family:inherit;font-size:15px;font-weight:700;">가＋</button></div>'
-    +'<button data-idea="'+a.id+'" title="글감 담기" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:'+(isIdea(a.id)?'var(--color-primary-normal)':'var(--color-label-neutral)')+';">'+IDEA.replace(/W/g,16)+'</button>'
+    +'<div class="vm-dt-hide" style="display:inline-flex;border:1px solid var(--color-line-normal);border-radius:8px;overflow:hidden;margin-right:2px;"><button data-act="fs-" title="글자 작게" style="width:30px;height:32px;border:0;border-right:1px solid var(--color-line-normal);background:var(--color-background-normal);cursor:pointer;color:var(--color-label-neutral);font-family:inherit;font-size:12px;font-weight:700;">가−</button><button data-act="fs+" title="글자 크게" style="width:32px;height:32px;border:0;background:var(--color-background-normal);cursor:pointer;color:var(--color-label-neutral);font-family:inherit;font-size:15px;font-weight:700;">가＋</button></div>'
+    +'<button data-idea="'+a.id+'" class="vm-dt-hide" title="글감 담기" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:'+(isIdea(a.id)?'var(--color-primary-normal)':'var(--color-label-neutral)')+';">'+IDEA.replace(/W/g,16)+'</button>'
     +'<button data-act="share" data-id="'+a.id+'" title="공유" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);">'+SHARE+'</button>'
-    +'<button data-act="copylink" data-id="'+a.id+'" title="링크 복사" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);">'+COPY+'</button>'
+    +'<button data-act="copylink" data-id="'+a.id+'" class="vm-dt-hide" title="링크 복사" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);">'+COPY+'</button>'
     +'<button data-save="'+a.id+'" title="저장" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:'+saveColor(a.id)+';">'+BM.replace(/W/g,16)+'</button>'
     +'<button data-act="close" title="닫기" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--color-material-base);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>'
     +'</div></div>'
@@ -669,10 +694,10 @@ const APP_JS = String.raw`
 
     var h='';
     h+='<div style="position:sticky;top:0;z-index:30;background:var(--color-background-normal);border-bottom:1px solid var(--color-line-normal);"><div class="vm-bar" style="max-width:1180px;margin:0 auto;padding:9px 40px;display:flex;align-items:center;gap:16px;">'
-    +'<button data-nav="home" style="flex:none;border:0;background:transparent;cursor:pointer;font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--color-label-strong);">VetMan 브리핑</button>'
+    +'<button data-nav="home" class="vm-tap" style="flex:none;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--color-label-strong);">VetMan 브리핑</button>'
     +'<div class="vm-search" style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:var(--color-material-thin);border-radius:9px;padding:9px 12px;color:var(--color-label-alternative);">'+search+'<input id="vm-q" value="'+e(S.query)+'" placeholder="기사 검색 — 제목·본문·출처" style="border:0;outline:0;background:transparent;font-family:inherit;font-size:13px;color:var(--color-label-normal);width:100%;"></div>'
     +'<div style="flex:none;display:flex;align-items:center;gap:14px;"><span class="vm-bar-label">'+navBtn('ideas','글감함',ideaCount)+'</span><span class="vm-bar-label">'+navBtn('saved','저장',savedCount)+'</span><span class="vm-bar-label">'+navBtn('archive','지난 브리핑')+'</span>'
-    +'<button data-act="theme" title="테마 전환" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;border-radius:9px;">'+(S.theme==='dark'?sun:moon)+'</button></div>'
+    +'<button data-act="theme" class="vm-tap" title="테마 전환" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;border-radius:9px;">'+(S.theme==='dark'?sun:moon)+'</button></div>'
     +'</div></div>';
 
     h+='<div class="vm-wrap" style="max-width:1180px;margin:0 auto;padding:0 40px 64px;">';
@@ -681,8 +706,8 @@ const APP_JS = String.raw`
     h+='<header class="vm-mast" style="text-align:center;padding:30px 0 22px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-label-alternative);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetMan 해외 브리핑</h1>'
     +'<p style="margin:14px auto 0;font-size:13.5px;font-style:italic;color:var(--color-label-alternative);font-family:var(--font-display);">베트맨랩이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑</p>'
     +'</header>';
-    h+='<div style="border-top:2px solid var(--color-label-strong);border-bottom:1px solid var(--color-line-normal);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 0;"><div style="display:flex;align-items:baseline;gap:10px;min-width:0;"><span style="font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);white-space:nowrap;">'+stripLabel+'</span><span style="font-size:12.5px;color:var(--color-label-alternative);">'+stripMeta+'</span></div>'
-    + (showSort ? '<div style="display:inline-flex;padding:3px;background:var(--color-material-base);border-radius:8px;gap:2px;flex:none;"><button data-act="rel" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='rel')+';color:'+segFg(S.sort==='rel')+';">관련성순</button><button data-act="latest" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='latest')+';color:'+segFg(S.sort==='latest')+';">최신순</button></div>' : '')
+    h+='<div class="vm-strip" style="border-top:2px solid var(--color-label-strong);border-bottom:1px solid var(--color-line-normal);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 0;"><div style="display:flex;align-items:baseline;gap:10px;min-width:0;"><span style="font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);white-space:nowrap;">'+stripLabel+'</span><span style="font-size:12.5px;color:var(--color-label-alternative);">'+stripMeta+'</span></div>'
+    + (showSort ? '<div style="display:inline-flex;padding:3px;background:var(--color-material-base);border-radius:8px;gap:2px;flex:none;"><button data-act="rel" class="vm-seg" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='rel')+';color:'+segFg(S.sort==='rel')+';">관련성순</button><button data-act="latest" class="vm-seg" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='latest')+';color:'+segFg(S.sort==='latest')+';">최신순</button></div>' : '')
     +'</div>';
 
     if(S.view==='saved'){ h+=listView(Object.keys(S.saved).map(function(k){return S.saved[k];}),'저장한 글이 없습니다','기사의 북마크 아이콘을 눌러 저장해 보세요.'); }
