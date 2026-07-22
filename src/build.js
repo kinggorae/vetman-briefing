@@ -175,7 +175,7 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
     ? `${brand}이 매일 아침 발행하는 해외 수의 브리핑. ${SITE.description}`.slice(0, 300)
     : `${brand}이 만드는 ${label} 해외 수의 브리핑. ${data.articles[0]?.dek || SITE.description}`.slice(0, 300);
   const canonical = `${SITE.baseUrl}${canonicalPath}`;
-  const ogImage = data.articles.find((a) => a.image)?.image;
+  const ogImage = data.articles.find((a) => a.image)?.image || `${SITE.baseUrl}/og.png`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -1366,12 +1366,18 @@ function renderArticlePage(a, data, prev, next) {
 <link rel="canonical" href="${esc(canonical)}">${
     SITE.verification?.google ? `\n<meta name="google-site-verification" content="${esc(SITE.verification.google)}">` : ""
   }${SITE.verification?.naver ? `\n<meta name="naver-site-verification" content="${esc(SITE.verification.naver)}">` : ""}
-<meta property="og:type" content="article">
+<meta property="og:type" content="article">${
+    // 뉴스 검색의 신선도 신호. JSON-LD의 datePublished만으로는 잡지 않는 크롤러가 있다
+    a.ts ? `\n<meta property="article:published_time" content="${new Date(a.ts).toISOString()}">` : ""
+  }${a.kicker ? `\n<meta property="article:section" content="${esc(a.kicker)}">` : ""}
 <meta property="og:title" content="${esc(a.title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${esc(canonical)}">
 <meta property="og:site_name" content="${esc(SITE.brandKo)} ${esc(SITE.name)}">${
-    a.image ? `\n<meta property="og:image" content="${esc(a.image)}">` : ""
+    // 이미지 없는 기사가 절반이다. 폴백이 없으면 카톡·페북 공유 시 썸네일 없는
+    // 맨 링크로 나가 클릭률이 떨어진다
+    `\n<meta property="og:image" content="${esc(a.image || `${SITE.baseUrl}/og.png`)}">` +
+    (a.image ? "" : `\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">`)
   }
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -2182,6 +2188,8 @@ function build() {
   // PWA
   fs.writeFileSync(path.join(SITE_DIR, "manifest.webmanifest"), MANIFEST);
   fs.writeFileSync(path.join(SITE_DIR, "icon.svg"), ICON_SVG);
+  // 공유 카드 기본 이미지. 기사 자체 이미지가 없을 때의 폴백이라 항상 존재해야 한다
+  fs.copyFileSync(path.join(ROOT, "assets-og.png"), path.join(SITE_DIR, "og.png"));
   fs.writeFileSync(path.join(SITE_DIR, "sw.js"), SW_JS);
 
   // 검수 대시보드 + raw 이슈(재발행용 원본)
