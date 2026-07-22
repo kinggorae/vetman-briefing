@@ -1146,14 +1146,23 @@ const MANIFEST = JSON.stringify({
   icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" }],
 });
 
-const SW_JS = `const C='vmcache-v2';
+const SW_JS = `const C='vmcache-v3';
 const SHELL=['/','/latest.json','/archive.json','/icon.svg','/manifest.webmanifest'];
+const OFFLINE='<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 없음</title><style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:#fff;color:#171719}@media(prefers-color-scheme:dark){body{background:#171719;color:#f7f7f8}}.b{max-width:420px;text-align:center}h1{font-size:24px;font-weight:800;margin:0 0 10px}p{margin:0 0 22px;font-size:15px;line-height:1.7;opacity:.7}a{display:inline-block;background:#0066ff;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}</style></head><body><div class="b"><h1>연결이 끊겼습니다</h1><p>이 페이지는 아직 받아두지 않았습니다.<br>연결을 확인한 뒤 다시 시도해 주세요.</p><a href="/">오늘의 브리핑 보기</a></div></body></html>';
 self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(SHELL);}).then(function(){return self.skipWaiting();}));});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){if(k!==C)return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});
 self.addEventListener('fetch',function(e){
   var r=e.request; if(r.method!=='GET')return;
   var u=new URL(r.url); if(u.origin!==location.origin)return;
-  e.respondWith(fetch(r).then(function(res){var cp=res.clone();caches.open(C).then(function(c){c.put(r,cp);});return res;}).catch(function(){return caches.match(r).then(function(m){return m||caches.match('/');});}));
+  e.respondWith(fetch(r).then(function(res){var cp=res.clone();caches.open(C).then(function(c){c.put(r,cp);});return res;}).catch(function(){
+    return caches.match(r,{ignoreSearch:true}).then(function(m){
+      if(m)return m;
+      // 요청한 주소가 캐시에 없다고 홈을 내주면 안 된다. 공유 링크로 들어온 사람이
+      // 주소창은 기사인데 화면은 홈인 상태를 보게 된다. 문서 요청에만 안내를 준다.
+      if(r.mode==='navigate')return new Response(OFFLINE,{status:503,headers:{'content-type':'text/html; charset=utf-8'}});
+      return Response.error();
+    });
+  }));
 });`;
 
 // ── 주간 다이제스트: ISO 주차별 상위 기사 모음 ──
@@ -1499,6 +1508,10 @@ function renderLegalPage({ slug, title, lede, body }) {
 <title>${esc(title)} | ${esc(SITE.name)} · ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</title>
 <meta name="description" content="${esc(lede)}">
 <link rel="canonical" href="${SITE.baseUrl}/${slug}">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <style>
   :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;color-scheme:light dark}
@@ -1509,6 +1522,7 @@ function renderLegalPage({ slug, title, lede, body }) {
   .wrap{max-width:760px;margin:0 auto}
   header{border-bottom:2px solid var(--ink);padding:26px 0 18px;margin-bottom:34px}
   header a{color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.02em}
+  h1,h2{font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif}
   h1{font-size:31px;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin:0 0 12px}
   .lede{color:var(--dim);font-size:15px;margin:0 0 8px}
   .date{color:var(--dim);font-size:12.5px;letter-spacing:.03em;margin:0 0 36px}
@@ -1867,6 +1881,10 @@ function renderTopicPage(topic, arts) {
 <link rel="canonical" href="${canonical}">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
 <meta property="og:title" content="${esc(topic.name)} — 해외 수의 소식 모음">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${canonical}">
@@ -1882,6 +1900,7 @@ function renderTopicPage(topic, arts) {
     display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   header a.brand{color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.02em}
   header nav a{color:var(--dim);text-decoration:none;font-size:13px;font-weight:600;margin-left:14px}
+  h1,h2{font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif}
   h1{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.18;margin:0 0 10px}
   .lede{color:var(--dim);font-size:16px;margin:0 0 6px}
   .meta{color:var(--dim);font-size:12.5px;letter-spacing:.03em;margin:0 0 34px}
@@ -2000,6 +2019,10 @@ function renderTopicIndex(counts) {
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <style>
   :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;color-scheme:light dark}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
   @media (prefers-color-scheme:dark){:root{--bg:#171719;--ink:#f7f7f8;--dim:#a0a0a8;--line:#2e2e33}}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);padding:0 20px 80px;
@@ -2007,7 +2030,7 @@ function renderTopicIndex(counts) {
   .wrap{max-width:800px;margin:0 auto}
   header{border-bottom:2px solid var(--ink);padding:24px 0 16px;margin-bottom:30px}
   header a{color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.02em}
-  h1{font-size:32px;font-weight:800;letter-spacing:-.03em;margin:0 0 10px}
+  h1{font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;font-size:32px;font-weight:800;letter-spacing:-.03em;margin:0 0 10px}
   .lede{color:var(--dim);font-size:15px;margin:0 0 34px}
   ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
   li{border:1px solid var(--line);border-radius:12px;padding:16px 18px}
