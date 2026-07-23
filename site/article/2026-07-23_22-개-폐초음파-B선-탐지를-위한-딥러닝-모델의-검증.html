@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개 폐초음파 B-선 탐지를 위한 딥러닝 모델의 검증 | VetMan 해외 브리핑 · 베트맨랩</title>
+<meta name="description" content="인간 폐초음파 이미지로 학습된 딥러닝 모델이 개 폐초음파에서도 87%의 정확도와 93%의 특이도를 달성했습니다. 종 간 일반화가 가능함을 입증하여 수의학 진단 혁신에 기여합니다.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://news.vetmanlab.com/article/2026-07-23_22-개-폐초음파-B선-탐지를-위한-딥러닝-모델의-검증">
+<meta name="naver-site-verification" content="6199ead62bda2ec9e75dae83b6b5a60d1e2bd435">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-07-23T01:53:28.157Z">
+<meta property="article:section" content="최신 연구">
+<meta property="og:title" content="개 폐초음파 B-선 탐지를 위한 딥러닝 모델의 검증">
+<meta property="og:description" content="인간 폐초음파 이미지로 학습된 딥러닝 모델이 개 폐초음파에서도 87%의 정확도와 93%의 특이도를 달성했습니다. 종 간 일반화가 가능함을 입증하여 수의학 진단 혁신에 기여합니다.">
+<meta property="og:url" content="https://news.vetmanlab.com/article/2026-07-23_22-개-폐초음파-B선-탐지를-위한-딥러닝-모델의-검증">
+<meta property="og:site_name" content="베트맨랩 VetMan 해외 브리핑">
+<meta property="og:image" content="https://news.vetmanlab.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"></noscript>
+<style>
+:root{color-scheme:light dark;--ink:#171719;--sub:#5a5c63;--line:#e3e5e8;--bg:#fff;--pri:#0066ff}
+@media (prefers-color-scheme:dark){:root{--ink:#fff;--sub:rgba(255,255,255,.62);--line:rgba(255,255,255,.2);--bg:#171719;--pri:#4f95ff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;
+ -webkit-font-smoothing:antialiased;line-height:1.7}
+.wrap{max-width:720px;margin:0 auto;padding:22px 20px 64px}
+.top{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--line);font-size:13px}
+.top a{color:var(--ink);text-decoration:none;font-weight:800}
+.kick{margin-top:26px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pri)}
+h1{font-size:33px;line-height:1.25;letter-spacing:-.025em;margin:12px 0 14px;font-weight:800;text-wrap:pretty}
+.by{font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.02em;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.ev{margin-top:8px;font-style:italic;text-transform:none;letter-spacing:0}
+.lead{font-size:17.5px;font-weight:500;margin:20px 0 18px}
+p{margin:0 0 16px;font-size:16px;color:var(--sub)}
+.note{margin:26px 0;padding:2px 0 2px 18px;border-left:2px solid var(--ink)}
+.note .lb,.qa .lb{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-bottom:5px}
+.note .tx{font-size:15px;color:var(--ink)}
+.qa{margin:26px 0;padding-top:18px;border-top:1px solid var(--line)}
+.qa .q{font-size:19px;font-weight:800;margin:0 0 12px;line-height:1.45;text-wrap:pretty}
+.src{margin:26px 0;padding:16px 18px;background:rgba(127,127,127,.08);border-radius:12px;font-size:14px}
+.src a{color:var(--pri);font-weight:700;text-decoration:none}
+.src .dis{margin-top:10px;font-size:11.5px;color:var(--sub)}
+.nav{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+  .tpc{margin:22px 0 0;font-size:13px;color:var(--dim)}
+  .tpc b{font-weight:700;margin-right:8px}
+  .tpc a{display:inline-block;margin-right:8px;color:var(--pri);text-decoration:none;font-weight:600}
+.nav a{flex:1;min-width:200px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
+.nav .l{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pri)}
+.nav .t{font-size:15px;font-weight:700;margin-top:4px;line-height:1.4}
+.home{display:inline-block;margin-top:26px;background:var(--pri);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"개 폐초음파 B-선 탐지를 위한 딥러닝 모델의 검증","description":"인간 폐초음파 이미지로 학습된 딥러닝 모델이 개 폐초음파에서도 87%의 정확도와 93%의 특이도를 달성했습니다. 종 간 일반화가 가능함을 입증하여 수의학 진단 혁신에 기여합니다.","url":"https://news.vetmanlab.com/article/2026-07-23_22-개-폐초음파-B선-탐지를-위한-딥러닝-모델의-검증","inLanguage":"ko","datePublished":"2026-07-23T01:53:28.157Z","isBasedOn":"https://doi.org/10.1093/jvimsj/aalag152","articleSection":"최신 연구","publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab","url":"https://news.vetmanlab.com"},"mainEntityOfPage":"https://news.vetmanlab.com/article/2026-07-23_22-개-폐초음파-B선-탐지를-위한-딥러닝-모델의-검증","abstract":"AI 기반 폐초음파 판독 도구 도입 가능성을 지속적으로 주시하되, 현재로는 기존 프로토콜 유지","mentions":{"@type":"Question","name":"선생님, 우리 강아지 폐 초음파 검사할 때 AI 모델도 활용하세요?"},"review":{"@type":"Review","reviewBody":"후향적 검증 연구 · 개 90마리 (검사 201건, 동영상 1,950개) · 90마리라는 제한된 표본에서 수집된 연구이므로, 향후 더 큰 규모의 종단 연구가 필요함","reviewRating":{"@type":"Rating","ratingValue":2,"bestRating":4,"worstRating":1},"author":{"@type":"Organization","name":"베트맨랩"}},"citation":{"@type":"CreativeWork","name":"Journal of veterinary internal medicine","url":"https://doi.org/10.1093/jvimsj/aalag152"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"선생님, 우리 강아지 폐 초음파 검사할 때 AI 모델도 활용하세요?","acceptedAnswer":{"@type":"Answer","text":"현재는 연구 단계입니다. 아직 임상 적용은 안 되지만, 앞으로 도움이 될 수 있을 것 같습니다."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BZMETFJ6QE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BZMETFJ6QE');</script>
+</head><body><div class="wrap">
+<div class="top"><a href="/">베트맨랩 VetMan 해외 브리핑</a><span style="color:var(--sub)">2026.07.23</span></div>
+<div class="kick">최신 연구</div>
+<h1>개 폐초음파 B-선 탐지를 위한 딥러닝 모델의 검증</h1>
+<div class="by">Journal of veterinary internal medicine · 07.23 · 1분 읽기<div class="ev">근거 · 후향적 검증 연구 · 개 90마리 (검사 201건, 동영상 1,950개) — 90마리라는 제한된 표본에서 수집된 연구이므로, 향후 더 큰 규모의 종단 연구가 필요함</div></div>
+<div class="lead">인간 폐초음파 이미지로 학습된 딥러닝 모델이 개 폐초음파에서도 87%의 정확도와 93%의 특이도를 달성했습니다. 종 간 일반화가 가능함을 입증하여 수의학 진단 혁신에 기여합니다.</div>
+<p>본 연구는 인간 폐초음파 이미지로 사전 학습된 딥러닝 모델(B-line 탐지 알고리즘, BLDA)을 개 이미지에 적용하여 성능을 평가했습니다. 총 90마리의 개에서 수행된 201건의 폐초음파 검사로부터 1,950개의 동영상을 수집했으며, 전문가 검토자가 A-선 또는 B-선 프로파일을 레이블링했습니다.</p>
+<p>테스트 세트에서 BLDA는 전체 정확도 87%, 민감도 73%, 특이도 93%를 나타냈습니다. 특히 강한 B-선 프로파일(약한 B-선보다)에서 더 우수한 성능을 보였으며, 원시 모델 예측의 제로샷 성능은 AUC 0.96으로 excellent했습니다. 히트맵 분석은 모델이 폐초음파 판독에 타당한 영역을 활용함을 확인했습니다.</p>
+<p>본 연구는 인간 데이터로 훈련된 모델이 개에서도 유효한 성능을 유지함을 보여줍니다. 다만, 표본이 90마리로 제한적이고 4개 연구에서 수집된 점이 한계로 작용합니다. 향후 더 많은 개 코호트로 검증이 필요하지만, 종 간 일반화를 통해 수의학 진단 도구 개발 시간을 단축할 수 있는 가능성을 확인한 연구입니다.</p>
+<div class="note"><div class="lb">임상 메모</div><div class="tx">AI 기반 폐초음파 판독 도구 도입 가능성을 지속적으로 주시하되, 현재로는 기존 프로토콜 유지</div></div>
+<div class="qa"><div class="lb">진료실 문답</div><p class="q">선생님, 우리 강아지 폐 초음파 검사할 때 AI 모델도 활용하세요?</p><p>현재는 연구 단계입니다. 아직 임상 적용은 안 되지만, 앞으로 도움이 될 수 있을 것 같습니다.</p></div>
+<div class="qa"><div class="lb">블로그 글감</div><p class="q">강아지가 기침을 하거나 호흡이 힘들어 폐초음파를 받아야 할 때, 인공지능이 이를 빠르게 분석하여 수의사의 진단을 도울 수 있다는 최신 연구입니다.</p><ul><li>총 90마리 개 201건의 폐초음파에서 1,950개 동영상을 분석했습니다</li><li>딥러닝 모델은 전체 정확도 87%, 민감도 73%, 특이도 93%를 달성했습니다</li><li>강한 B-선 프로파일에서 더 우수한 성능을 보였으며 제로샷 AUC는 0.96이었습니다</li><li>인간 데이터로 학습된 모델이 종 간 일반화 가능함을 입증했습니다</li></ul></div>
+
+<div class="src"><b>원문 출처</b> · Journal of veterinary internal medicine<br>
+<a href="https://doi.org/10.1093/jvimsj/aalag152" target="_blank" rel="noopener nofollow">원문 사이트로 이동 ↗</a>
+<div class="dis">베트맨랩(VetManLab)이 해외 공개 자료를 요약·번역한 콘텐츠이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</div></div>
+<div class="nav"><a href="/article/2026-07-23_21-개에서-단두증과-수면호흡장애-염증-반응의-연관성-규명"><div class="l">이전 기사</div><div class="t">개에서 단두증과 수면호흡장애, 염증 반응의 연관성 규명</div></a><a href="/article/2026-07-23_23-반려동물-뇌장-건강axis-미생물군-기반-신경행동장애-치료-전략"><div class="l">다음 기사</div><div class="t">반려동물 뇌장 건강.axis: 미생물군 기반 신경·행동장애 치료 전략</div></a></div>
+<a class="home" href="/">2026.07.23 브리핑 전체 보기 →</a>
+</div></body></html>
