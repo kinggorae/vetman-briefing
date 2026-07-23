@@ -72,4 +72,4 @@ window.copyClean=function(){var out=Object.assign({},ISSUE);out.items=ISSUE.item
 window.copyAll=function(){navigator.clipboard.writeText(JSON.stringify(ISSUE,null,2));alert('전체 JSON 복사됨');};
 function boot(){fetch('archive.json').then(function(r){return r.json();}).then(function(a){var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';});}
 if(localStorage.getItem('vm_admin')===PASS) boot(); else gate();
-</script></body></html>
+</script><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>

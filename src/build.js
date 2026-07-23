@@ -1127,6 +1127,7 @@ ${noscriptFallback(data)}
   })}</script>
 <script>${APP_JS}</script>
 <script>if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}</script>
+<script src="https://cardkit.vetmanlab.com/switcher.js" defer></script>
 </body>
 </html>`;
 }
@@ -1275,7 +1276,7 @@ window.copyClean=function(){var out=Object.assign({},ISSUE);out.items=ISSUE.item
 window.copyAll=function(){navigator.clipboard.writeText(JSON.stringify(ISSUE,null,2));alert('전체 JSON 복사됨');};
 function boot(){fetch('archive.json').then(function(r){return r.json();}).then(function(a){var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';});}
 if(localStorage.getItem('vm_admin')===PASS) boot(); else gate();
-</script></body></html>`;
+</script><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 
 // ── 기사별 개별 페이지 ──
 // 기존엔 기사가 날짜 페이지 안의 #앵커라 검색엔진이 개별 기사를 색인할 수 없었다.
@@ -1465,7 +1466,7 @@ ${
     prev ? `<a href="${esc(articlePath(prev))}"><div class="l">이전 기사</div><div class="t">${esc(prev.title)}</div></a>` : ""
   }${next ? `<a href="${esc(articlePath(next))}"><div class="l">다음 기사</div><div class="t">${esc(next.title)}</div></a>` : ""}</div>
 <a class="home" href="/">${esc(data.dateLabel || data.date)} 브리핑 전체 보기 →</a>
-</div></body></html>`;
+</div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 }
 
 const NOT_FOUND_HTML = `<!doctype html>
@@ -1492,7 +1493,7 @@ const NOT_FOUND_HTML = `<!doctype html>
   <h1>페이지를 찾을 수 없습니다</h1>
   <p>주소가 바뀌었거나 삭제된 페이지입니다.<br>오늘의 브리핑에서 최신 소식을 확인해 보세요.</p>
   <a href="/">오늘의 브리핑 보기</a>
-</div></body></html>`;
+</div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 
 // ── 정책·안내 페이지 ──
 // 개인정보처리방침·이용약관은 GA4를 돌리는 시점부터 법적으로 필요하고,
@@ -1549,7 +1550,7 @@ ${body}
   <a href="/">오늘의 브리핑</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
   <div style="margin-top:10px">© ${new Date(LEGAL.effectiveDate).getFullYear()} ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</div>
 </footer>
-</div></body></html>`;
+</div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 }
 
 const LEGAL_TABLE = `<table>
@@ -1997,7 +1998,7 @@ ${sec(
     SITE.brandEn
   )})</div>
 </footer>
-</div></body></html>`;
+</div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 }
 
 function renderTopicIndex(counts) {
@@ -2046,7 +2047,7 @@ function renderTopicIndex(counts) {
 <p class="lede">해외 수의 소식을 임상 주제로 묶었습니다. 각 주제마다 진료 포인트, 보호자가 묻는 것, 근거 있는 연구를 함께 정리했습니다.</p>
 <ul>${rows}</ul>
 <footer><a href="/">오늘의 브리핑</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a></footer>
-</div></body></html>`;
+</div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 }
 
 function buildSitemap(issues, weeklies = [], extraUrls = [], extraTopics = []) {
