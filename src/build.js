@@ -781,7 +781,9 @@ const APP_JS = String.raw`
     if(S.archive===null){ return '<div style="text-align:center;padding:72px 0;color:var(--color-label-alternative);">지난 브리핑을 불러오는 중…</div>'; }
     var wk=S.archive.weeklies||[], iss=S.archive.issues||[];
     if(!iss.length){ return '<div style="text-align:center;padding:72px 0;color:var(--color-label-alternative);">아직 지난 브리핑이 없습니다.</div>'; }
+    var totalAll=iss.reduce(function(s,x){return s+(x.count||0);},0);
     var h='<div style="padding-top:16px;">';
+    h+='<div style="display:flex;align-items:baseline;gap:8px;padding:0 0 14px;border-bottom:1px solid var(--color-line-normal);margin-bottom:8px;"><span style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--color-label-strong);">전체 '+totalAll+'건</span><span style="font-size:13px;color:var(--color-label-alternative);">'+iss.length+'일치 브리핑</span></div>';
     if(wk.length){
       h+='<div style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--color-primary-normal);margin:0 0 4px;">📅 주간 요약</div>';
       h+=wk.map(function(x){ return '<button data-href="'+e(x.href)+'" style="width:100%;text-align:left;display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--color-line-normal);border-top:0;border-left:0;border-right:0;background:transparent;cursor:pointer;font-family:inherit;"><div><div style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--color-label-strong);">'+e(x.week)+' 주간 요약</div><div style="margin-top:4px;font-size:13px;color:var(--color-label-alternative);line-height:1.5;">'+e((x.titles||[]).slice(0,3).join(" · "))+'</div></div><div style="flex:none;font-size:12px;color:var(--color-label-alternative);font-weight:700;white-space:nowrap;">'+x.count+'건 →</div></button>'; }).join('');
@@ -882,6 +884,8 @@ const APP_JS = String.raw`
       var nRec=(DATA.recent||[]).length, nSto=(DATA.stories||[]).length;
       stripLabel='오늘의 브리핑';
       stripMeta=DATA.dateLabel+' · 오늘 '+DATA.count+'건'+(nRec?' · 최근 '+nRec+'건':'')+(nSto?' · 진료실 밖 '+nSto+'건':'');
+      // 지금까지 쌓인 전체 글 수 — 누르면 아카이브로. 신생 서비스의 축적을 보여준다
+      if(DATA.totalArticles) stripMeta+=' · <button data-nav="archive" style="border:0;background:transparent;padding:0;margin:0;font:inherit;color:var(--color-primary-normal);font-weight:700;cursor:pointer;">전체 '+DATA.totalArticles+'건 →</button>';
     }
     var showSort = (S.view==='home' && !searching) || searching;
 
@@ -1092,7 +1096,17 @@ function recentArticles(current, allIssues, limit = 12) {
 
 function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) {
   const data = buildIssueData(issue);
-  if (isIndex) data.recent = recentArticles(issue, allIssues, 12);
+  if (isIndex) {
+    data.recent = recentArticles(issue, allIssues, 12);
+    // 지금까지 발행한 전체 글 수. 홈 데이터라인에 "전체 N건"으로 노출하고,
+    // 누르면 아카이브로 보낸다. 매일 쌓이는 규모를 한눈에 보여준다.
+    let total = 0;
+    for (const iss of allIssues) {
+      if (iss.weekly) continue; // 주간 요약은 재수록이라 이중 계산하지 않는다
+      total += (iss.items || []).filter((it) => it.category !== "watercooler").length;
+    }
+    data.totalArticles = total;
+  }
   // Cloudflare Pages는 /foo.html을 /foo로 308 리다이렉트한다.
   // canonical·사이트맵에 .html을 쓰면 실제 서빙 주소와 어긋나므로 확장자를 뺀다.
   const canonicalPath = isIndex ? "/" : weekly ? `/weekly/${labelOf(issue)}` : `/issues/${labelOf(issue)}`;
