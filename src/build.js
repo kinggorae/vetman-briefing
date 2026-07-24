@@ -781,19 +781,55 @@ const APP_JS = String.raw`
     if(S.archive===null){ return '<div style="text-align:center;padding:72px 0;color:var(--color-label-alternative);">지난 브리핑을 불러오는 중…</div>'; }
     var wk=S.archive.weeklies||[], iss=S.archive.issues||[];
     if(!iss.length){ return '<div style="text-align:center;padding:72px 0;color:var(--color-label-alternative);">아직 지난 브리핑이 없습니다.</div>'; }
+    var WD=['일','월','화','수','목','금','토'];
     var totalAll=iss.reduce(function(s,x){return s+(x.count||0);},0);
-    var h='<div style="padding-top:16px;">';
-    h+='<div style="display:flex;align-items:baseline;gap:8px;padding:0 0 14px;border-bottom:1px solid var(--color-line-normal);margin-bottom:8px;"><span style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--color-label-strong);">전체 '+totalAll+'건</span><span style="font-size:13px;color:var(--color-label-alternative);">'+iss.length+'일치 브리핑</span></div>';
+
+    var h='<div style="padding-top:18px;">';
+    // 헤더 — 누적 규모
+    h+='<div style="display:flex;align-items:baseline;gap:9px;padding:0 0 16px;border-bottom:2px solid var(--color-label-strong);margin-bottom:22px;">'
+      +'<span style="font-family:var(--font-display);font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--color-label-strong);">전체 '+totalAll+'건</span>'
+      +'<span style="font-size:13px;color:var(--color-label-alternative);">'+iss.length+'일 · 주간 요약 '+wk.length+'편</span></div>';
+
+    // ── 주간 요약: 파생 콘텐츠라 칩으로 압축해 위에 얹는다(기존엔 큰 행 8개가 지면을 다 먹었다) ──
     if(wk.length){
-      h+='<div style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--color-primary-normal);margin:0 0 4px;">📅 주간 요약</div>';
-      h+=wk.map(function(x){ return '<button data-href="'+e(x.href)+'" style="width:100%;text-align:left;display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--color-line-normal);border-top:0;border-left:0;border-right:0;background:transparent;cursor:pointer;font-family:inherit;"><div><div style="font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--color-label-strong);">'+e(x.week)+' 주간 요약</div><div style="margin-top:4px;font-size:13px;color:var(--color-label-alternative);line-height:1.5;">'+e((x.titles||[]).slice(0,3).join(" · "))+'</div></div><div style="flex:none;font-size:12px;color:var(--color-label-alternative);font-weight:700;white-space:nowrap;">'+x.count+'건 →</div></button>'; }).join('');
-      h+='<div style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--color-label-strong);margin:24px 0 4px;">날짜별</div>';
+      h+='<div style="font-family:var(--font-display);font-size:13px;font-weight:800;letter-spacing:.02em;color:var(--color-label-neutral);margin:0 0 10px;">주간 요약</div>';
+      h+='<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px;">'
+        +wk.map(function(x){
+          var num=(x.week||'').replace(/^\d{4}-W?/,'W');
+          return '<button data-href="'+e(x.href)+'" title="'+e((x.titles||[]).slice(0,3).join(" · "))+'" style="display:inline-flex;align-items:baseline;gap:7px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:999px;padding:8px 14px;cursor:pointer;font-family:inherit;white-space:nowrap;">'
+          +'<span style="font-family:var(--font-display);font-size:13.5px;font-weight:800;color:var(--color-label-strong);">'+e(num)+'</span>'
+          +'<span style="font-size:12px;color:var(--color-label-alternative);font-weight:600;">'+x.count+'건</span></button>';
+        }).join('')
+      +'</div>';
     }
+
+    // ── 날짜별: 월 단위로 묶어 스캔하기 쉽게. 각 행은 날짜+요일+건수 배지 + 대표 제목 한 줄 ──
+    h+='<div style="font-family:var(--font-display);font-size:13px;font-weight:800;letter-spacing:.02em;color:var(--color-label-neutral);margin:0 0 6px;">날짜별</div>';
+    var curMonth='';
     h+=iss.map(function(x){
       var cur=x.date===DATA.date;
-      return '<button data-date="'+x.date+'" style="width:100%;text-align:left;display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--color-line-normal);border-top:0;border-left:0;border-right:0;background:transparent;cursor:pointer;font-family:inherit;">'
-      +'<div><div style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--color-label-strong);">'+e(x.dateLabel||x.date)+'</div><div style="margin-top:4px;font-size:13px;color:var(--color-label-alternative);line-height:1.5;">'+e((x.titles||[]).slice(0,3).join(' · '))+'</div></div>'
-      +'<div style="flex:none;font-size:12px;color:'+(cur?'var(--color-primary-normal)':'var(--color-label-alternative)')+';font-weight:700;white-space:nowrap;">'+(cur?'현재 · ':'')+x.count+'건</div></button>';
+      var p=(x.date||'').split('-');            // ['2026','07','24']
+      var mKey=p[0]+'-'+p[1];
+      var monthHdr='';
+      if(mKey!==curMonth){ curMonth=mKey;
+        monthHdr='<div style="font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--color-label-alternative);padding:18px 0 7px;margin-top:6px;border-top:1px solid var(--color-line-normal);">'+p[0]+'년 '+parseInt(p[1],10)+'월</div>';
+      }
+      var wd=WD[new Date(x.date+'T00:00:00').getDay()];
+      var lead=(x.titles||[])[0]||'';
+      var more=x.count>1?'<span style="color:var(--color-label-alternative);font-weight:600;">  외 '+(x.count-1)+'건</span>':'';
+      return monthHdr
+      +'<button data-date="'+x.date+'" style="width:100%;text-align:left;display:flex;align-items:center;gap:16px;padding:13px 4px;border:0;border-radius:10px;background:transparent;cursor:pointer;font-family:inherit;'+(cur?'background:var(--color-material-base);':'')+'">'
+        // 날짜 블록
+        +'<div style="flex:none;width:74px;">'
+          +'<div style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:'+(cur?'var(--color-primary-normal)':'var(--color-label-strong)')+';line-height:1.1;">'+parseInt(p[1],10)+'.'+p[2]+'</div>'
+          +'<div style="font-size:11.5px;color:var(--color-label-alternative);margin-top:2px;">'+wd+'요일</div>'
+        +'</div>'
+        // 건수 배지
+        +'<div style="flex:none;min-width:52px;text-align:center;font-family:var(--font-display);font-size:13px;font-weight:800;color:'+(cur?'var(--color-primary-normal)':'var(--color-label-neutral)')+';">'+(cur?'현재 ':'')+x.count+'건</div>'
+        // 대표 제목
+        +'<div style="flex:1;min-width:0;font-size:13.5px;line-height:1.45;color:var(--color-label-neutral);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+e(lead)+more+'</div>'
+        +'<span style="flex:none;color:var(--color-label-alternative);font-size:15px;">›</span>'
+      +'</button>';
     }).join('');
     return h+'</div>';
   }
@@ -1026,7 +1062,10 @@ const APP_JS = String.raw`
     if(el.hasAttribute('data-href')){ ev.stopPropagation(); location.href=el.getAttribute('data-href'); return; }
     if(el.hasAttribute('data-save')){ ev.stopPropagation(); var id=el.getAttribute('data-save'); var a=byId[id]; if(S.saved[id]){ delete S.saved[id]; } else { S.saved[id]= a?snap(a):(S.saved[id]||{id:id}); } persist('saved',S.saved); render(); return; }
     if(el.hasAttribute('data-idea')){ ev.stopPropagation(); toggleIdea(el.getAttribute('data-idea')); return; }
-    if(el.hasAttribute('data-nav')){ ev.stopPropagation(); var v=el.getAttribute('data-nav'); S.view=v; S.openId=null; if(v!=='home'&&v!=='archive') S.query=''; if(v==='home') S.query=''; if(v==='archive'&&S.archive===null) loadArchive(); S.searchFocus=false; render(); return; }
+    if(el.hasAttribute('data-nav')){ ev.stopPropagation(); var v=el.getAttribute('data-nav');
+      // 홈이 아닌 페이지(주간·날짜별)에서 '홈'을 누르면 그 페이지엔 홈 데이터가 없다 → 실제 홈으로 이동
+      if(v==='home'&&!DATA.isHome){ location.href='/'; return; }
+      S.view=v; S.openId=null; if(v!=='home'&&v!=='archive') S.query=''; if(v==='home') S.query=''; if(v==='archive'&&S.archive===null) loadArchive(); S.searchFocus=false; render(); return; }
     if(el.hasAttribute('data-cat')){ ev.stopPropagation(); S.cat=el.getAttribute('data-cat'); S.showAll=false; S.searchFocus=false; render(); return; }
     if(el.hasAttribute('data-date')){ ev.stopPropagation(); loadDate(el.getAttribute('data-date')); return; }
     var act=el.getAttribute('data-act');
@@ -1096,6 +1135,9 @@ function recentArticles(current, allIssues, limit = 12) {
 
 function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) {
   const data = buildIssueData(issue);
+  // 홈(/)에서만 SPA 뷰 전환이 의미가 있다. 주간·날짜별 페이지는 각자 독립된 HTML이라
+  // 그 페이지의 데이터로 '홈 뷰'를 그리면 엉뚱한 내용이 나온다 → 브랜드 버튼을 실제 홈으로.
+  data.isHome = isIndex;
   if (isIndex) {
     data.recent = recentArticles(issue, allIssues, 12);
     // 지금까지 발행한 전체 글 수. 홈 데이터라인에 "전체 N건"으로 노출하고,
