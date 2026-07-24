@@ -57,4 +57,5 @@ Allow: /
 # https://news.vetmanlab.com/llms.txt
 
 Sitemap: https://news.vetmanlab.com/sitemap.xml
+Sitemap: https://news.vetmanlab.com/news-sitemap.xml
 Host: news.vetmanlab.com

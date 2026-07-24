@@ -39,6 +39,20 @@ function esc(s = "") {
 }
 const labelOf = (issue) => issue.date ?? issue.week;
 
+// ── 구조화 데이터 공용 개체 ──
+// Google 리치결과는 Article의 publisher.logo·author·image·dateModified를 권장한다.
+// 빠지면 "심각하지 않은 문제"(경고)로 뜨므로, 발행처·저자를 로고 포함해 한곳에서 만든다.
+const PUBLISHER_LD = {
+  "@type": "Organization",
+  name: SITE.brandKo,
+  alternateName: SITE.brandEn,
+  url: SITE.baseUrl,
+  logo: { "@type": "ImageObject", url: `${SITE.baseUrl}/og.png`, width: 1200, height: 630 },
+};
+const AUTHOR_LD = { "@type": "Organization", name: `${SITE.brandKo} 편집팀`, url: `${SITE.baseUrl}/about` };
+// 이미지 없는 기사도 image를 채워 경고를 없앤다(OG 대표 이미지로 폴백).
+const articleImage = (a) => a.image || `${SITE.baseUrl}/og.png`;
+
 function loadIssues() {
   if (!fs.existsSync(ISSUES_DIR)) return [];
   return fs
@@ -194,9 +208,12 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
         headline: a.title,
         description: a.dek,
         url: `${canonical}#${a.id}`,
-        ...(a.image ? { image: a.image } : {}),
-        ...(a.ts ? { datePublished: new Date(a.ts).toISOString() } : {}),
-        publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn, url: SITE.baseUrl },
+        image: articleImage(a),
+        ...(a.ts
+          ? { datePublished: new Date(a.ts).toISOString(), dateModified: new Date(a.ts).toISOString() }
+          : {}),
+        author: AUTHOR_LD,
+        publisher: PUBLISHER_LD,
         isBasedOn: a.sourceUrl,
         inLanguage: "ko",
       },
@@ -1416,23 +1433,19 @@ function renderArticlePage(a, data, prev, next) {
     url: canonical,
     inLanguage: "ko",
     isAccessibleForFree: true,
-    ...(a.image ? { image: a.image } : {}),
+    image: articleImage(a),
     ...(a.ts ? { datePublished: new Date(a.ts).toISOString() } : {}),
     // 뉴스는 수정 시각 신호가 중요하다. 별도 수정 이력이 없으면 발행 시각과 동일하게 둔다.
     ...(a.ts ? { dateModified: new Date(a.ts).toISOString() } : {}),
     // 저자 명시는 Google E-E-A-T의 핵심. 편집 주체를 개체로 밝힌다(발행처와 별개 필드).
-    author: {
-      "@type": "Organization",
-      name: `${SITE.brandKo} 편집팀`,
-      url: `${SITE.baseUrl}/about`,
-    },
+    author: AUTHOR_LD,
     isBasedOn: a.sourceUrl,
     articleSection: a.kicker,
     // 주제어 — 검색/AI가 이 기사를 어떤 질의에 매칭할지 판단하는 신호
     keywords: [a.tag, a.kicker, ...topicsOf(a).map((t) => t.name)].filter(Boolean).join(", "),
     // 음성비서·AI 개요가 우선 낭독/추출할 핵심 영역을 지정(GEO)
     speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".lead"] },
-    publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn, url: SITE.baseUrl },
+    publisher: PUBLISHER_LD,
     mainEntityOfPage: canonical,
     // 원문 요약이 아니라 '한국 동물병원 관점의 편집물'임을 구조화 데이터로도 밝힌다.
     // 번역 요약은 isBasedOn(원문)으로, 우리가 만든 판단은 아래 필드로 구분된다.
@@ -2239,21 +2252,55 @@ function renderTopicIndex(counts) {
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 }
 
-function buildSitemap(issues, weeklies = [], extraUrls = [], extraTopics = []) {
+function buildSitemap(issues, weeklies = [], extraEntries = [], extraTopics = []) {
   // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다
-  const urls = [
-    `${SITE.baseUrl}/`,
-    ...issues.filter((i) => issueIndexable(buildIssueData(i))).map((i) => `${SITE.baseUrl}/issues/${labelOf(i)}`),
+  const today = issues[0] ? `${labelOf(issues[0])}T00:00:00.000Z` : null;
+  const staticUrls = [
+    { loc: `${SITE.baseUrl}/`, lastmod: today },
+    ...issues.filter((i) => issueIndexable(buildIssueData(i))).map((i) => ({ loc: `${SITE.baseUrl}/issues/${labelOf(i)}`, lastmod: `${labelOf(i)}T00:00:00.000Z` })),
     // 주간 다이제스트가 색인에서 통째로 빠져 있었다
-    ...weeklies.filter((w) => issueIndexable(buildIssueData(w))).map((w) => `${SITE.baseUrl}/weekly/${labelOf(w)}`),
-    ...LEGAL_PAGES.map((p) => `${SITE.baseUrl}/${p.slug}`),
-    `${SITE.baseUrl}/topic/`,
-    ...(extraTopics || []),
-    ...extraUrls,
+    ...weeklies.filter((w) => issueIndexable(buildIssueData(w))).map((w) => ({ loc: `${SITE.baseUrl}/weekly/${labelOf(w)}`, lastmod: null })),
+    ...LEGAL_PAGES.map((p) => ({ loc: `${SITE.baseUrl}/${p.slug}`, lastmod: null })),
+    { loc: `${SITE.baseUrl}/topic/`, lastmod: today },
+    ...(extraTopics || []).map((u) => ({ loc: u, lastmod: today })),
+  ];
+  // 기사 URL은 발행일을 lastmod로 — 크롤러가 신선도를 판단하는 신호가 된다
+  const entries = [
+    ...staticUrls,
+    ...extraEntries.map((e) => ({ loc: e.url, lastmod: e.ts ? new Date(e.ts).toISOString() : null })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n")}
+${entries.map((e) => `  <url><loc>${e.loc}</loc>${e.lastmod ? `<lastmod>${e.lastmod}</lastmod>` : ""}</url>`).join("\n")}
+</urlset>`;
+}
+
+// 구글 뉴스 사이트맵 — 최근 48시간 기사만(뉴스 사이트맵 규격). 뉴스 탭·신선도 발견에 쓰인다.
+// 규격: 2일 이내, 최대 1000건. 제목·발행일·언어를 함께 싣는다.
+function buildNewsSitemap(entries) {
+  const cutoff = Date.now() - 2 * 24 * 60 * 60 * 1000;
+  const recent = entries
+    .filter((e) => e.ts && e.ts >= cutoff)
+    .sort((a, b) => b.ts - a.ts)
+    .slice(0, 1000);
+  const body = recent
+    .map(
+      (e) => `  <url>
+    <loc>${e.loc}</loc>
+    <news:news>
+      <news:publication>
+        <news:name>${esc(SITE.brandKo)} ${esc(SITE.name)}</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>${new Date(e.ts).toISOString()}</news:publication_date>
+      <news:title>${esc(e.title)}</news:title>
+    </news:news>
+  </url>`
+    )
+    .join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+${body}
 </urlset>`;
 }
 
@@ -2331,6 +2378,7 @@ function build() {
 
   const archive = [];
   const articleUrls = [];
+  const articleEntries = []; // {url, ts, title, section} — lastmod·뉴스 사이트맵용
   const topicBuckets = {};
   fs.mkdirSync(path.join(SITE_DIR, "article"), { recursive: true });
   for (const issue of issues) {
@@ -2348,7 +2396,9 @@ function build() {
         renderArticlePage(a, data, all[i - 1] || null, all[i + 1] || null)
       );
       if (isIndexable(a)) {
-        articleUrls.push(`${SITE.baseUrl}${articlePath(a)}`);
+        const u = `${SITE.baseUrl}${articlePath(a)}`;
+        articleUrls.push(u);
+        articleEntries.push({ url: u, ts: a.ts || null, title: a.title, section: a.kicker });
         // 색인 대상 기사만 허브에 싣는다 — 허브가 저품질 페이지로 가는 통로가 되면
         // 어렵게 뺀 noindex 처리가 무의미해진다
         for (const t of topicsOf(a)) (topicBuckets[t.slug] ||= []).push(a);
@@ -2389,7 +2439,8 @@ function build() {
     })
   );
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
-  fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleUrls, topicUrls));
+  fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleEntries, topicUrls));
+  fs.writeFileSync(path.join(SITE_DIR, "news-sitemap.xml"), buildNewsSitemap(articleEntries));
   // robots.txt — 검색 크롤러 + AI 답변엔진(GEO)을 명시적으로 환영한다.
   // 많은 언론사가 GPTBot·ClaudeBot 등을 차단하는데, 우리는 열어 두어 AI 개요·
   // 챗봇 답변의 인용 후보가 되는 것을 전략으로 삼는다(조기경보 레이더 포지셔닝).
@@ -2408,7 +2459,9 @@ function build() {
     aiBots.map((b) => `User-agent: ${b}\nAllow: /`).join("\n\n") +
     `\n\n# AI 에이전트용 사이트 요약(https://llmstxt.org)\n` +
     `# ${SITE.baseUrl}/llms.txt\n\n` +
-    `Sitemap: ${SITE.baseUrl}/sitemap.xml\nHost: ${SITE.baseUrl.replace(/^https?:\/\//, "")}\n`;
+    `Sitemap: ${SITE.baseUrl}/sitemap.xml\n` +
+    `Sitemap: ${SITE.baseUrl}/news-sitemap.xml\n` +
+    `Host: ${SITE.baseUrl.replace(/^https?:\/\//, "")}\n`;
   fs.writeFileSync(path.join(SITE_DIR, "robots.txt"), robots);
   // 404.html이 없으면 Cloudflare Pages가 없는 경로에도 200을 반환해(soft 404)
   // 검색엔진이 빈 페이지를 색인한다. 실제 404 상태로 응답하도록 페이지를 둔다.
