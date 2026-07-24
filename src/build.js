@@ -1540,7 +1540,9 @@ ${
 <nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/rss.xml">RSS</a></nav>
 <div class="biz">${esc(brand)} · 한국 동물병원을 위한 해외 수의 브리핑${
     LEGAL.operator ? `<br>${esc(LEGAL.operator)}${LEGAL.representative ? ` · 대표 ${esc(LEGAL.representative)}` : ""}${LEGAL.bizNumber ? ` · 사업자등록번호 ${esc(LEGAL.bizNumber)}` : ""}` : ""
-  }${LEGAL.email ? `<br>문의 ${esc(LEGAL.email)}` : ""}<br>© ${new Date(LEGAL.effectiveDate).getFullYear()} ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</div>
+  }${LEGAL.email ? `<br>문의 ${esc(LEGAL.email)}` : ""}${
+    LEGAL.partnerEmail ? `<br>업무제휴·광고 문의 ${esc([LEGAL.partnerName, LEGAL.partnerEmail].filter(Boolean).join(" · "))}` : ""
+  }<br>© ${new Date(LEGAL.effectiveDate).getFullYear()} ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</div>
 </footer>
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 }
@@ -1636,6 +1638,7 @@ ${legalRow("사업자등록번호", LEGAL.bizNumber)}
 ${legalRow("주소", LEGAL.address)}
 ${legalRow("개인정보 보호책임자", LEGAL.privacyOfficer)}
 ${legalRow("문의", LEGAL.email)}
+${legalRow("업무제휴·광고 문의", [LEGAL.partnerName, LEGAL.partnerEmail].filter(Boolean).join(" · "))}
 </table>`;
 
 const PRIVACY_BODY = `
@@ -1836,6 +1839,12 @@ const ABOUT_BODY = `
 <h2>정정과 삭제 요청</h2>
 <p>사실관계 오류, 오역, 원문 권리자의 게재 중단 요청은 아래 문의처로 접수합니다.
 확인 후 지체 없이 조치하고 그 사실을 기사에 표기합니다.</p>
+
+<h2>업무제휴·광고 문의</h2>
+<p>동물약품·진단장비·펫보험 등 한국 동물병원을 대상으로 하는 브랜드의 스폰서십과
+업무제휴를 받습니다. 광고는 편집 기사와 명확히 구분해 게재하며, 광고주는 편집 내용에
+관여하지 않습니다(<a href="/terms">이용약관</a> 7조).</p>
+<p><b>${esc(LEGAL.partnerName)}</b> · <a href="mailto:${esc(LEGAL.partnerEmail)}?subject=${encodeURIComponent("[VetManLab 해외 브리핑] 업무제휴·광고 문의")}">${esc(LEGAL.partnerEmail)}</a></p>
 
 <h2>운영 정보</h2>
 ${LEGAL_TABLE}

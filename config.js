@@ -124,6 +124,10 @@ export const LEGAL = {
   // 개인정보 보호책임자를 따로 지정하지 않아 개인정보보호법상 대표가 겸한다.
   // 별도 담당자가 있으면 "이름 (직위)" 형태로 교체.
   privacyOfficer: "이보령 (대표이사)",
+  // 업무제휴·광고 문의 창구. 일반 문의(email)와 목적이 달라 담당자를 따로 둔다.
+  // 스폰서·제휴 제안이 여기로 오도록 소개/푸터에 노출한다.
+  partnerName: "신현규",
+  partnerEmail: "vetmanlab@gmail.com",
   effectiveDate: "2026-07-22",       // 시행일
 };
 
