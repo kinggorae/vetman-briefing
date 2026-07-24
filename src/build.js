@@ -1241,7 +1241,10 @@ ${noscriptFallback(data)}
 </html>`;
 }
 
-const ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#0066ff"/><text x="256" y="366" font-family="'Wanted Sans Variable',system-ui,sans-serif" font-size="300" font-weight="800" fill="#fff" text-anchor="middle">V</text></svg>`;
+// 파비콘 — 블로그(blog.vetmanlab.com)의 2x2 타일 그리드 모티프를 블랙·그레이·흰색으로.
+// 차콜 배경 + 흰 타일(투명도 점증)이 회색→흰색 그라데이션을 이뤄 브랜드 일관성을 유지한다.
+// 타일은 중앙 60%에 있어 maskable 안전영역을 지킨다.
+const ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#17181c"/><rect x="104" y="104" width="136" height="136" rx="36" fill="#fff" opacity=".34"/><rect x="272" y="104" width="136" height="136" rx="36" fill="#fff" opacity=".58"/><rect x="104" y="272" width="136" height="136" rx="36" fill="#fff" opacity=".82"/><rect x="272" y="272" width="136" height="136" rx="36" fill="#fff"/></svg>`;
 
 const MANIFEST = JSON.stringify({
   name: "베트맨랩 VetManLab 해외 브리핑",
