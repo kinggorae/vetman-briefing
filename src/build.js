@@ -1540,6 +1540,10 @@ function renderArticlePage(a, data, prev, next) {
 .wrap{max-width:720px;margin:0 auto;padding:22px 20px 64px}
 .top{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--line);font-size:13px}
 .top a{color:var(--ink);text-decoration:none;font-weight:800}
+.crumb{margin-top:14px;font-size:12.5px;color:var(--sub);line-height:1.6}
+.crumb a{color:var(--sub);text-decoration:none}
+.crumb a:hover{color:var(--pri);text-decoration:underline}
+.crumb .cur{color:var(--ink);font-weight:600;display:inline-block;max-width:min(60vw,340px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
 .kick{margin-top:26px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pri)}
 h1{font-size:33px;line-height:1.25;letter-spacing:-.025em;margin:12px 0 14px;font-weight:800;text-wrap:pretty}
 .by{font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.02em;padding-bottom:18px;border-bottom:1px solid var(--line)}
@@ -1584,6 +1588,11 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <header class="site-h"><div class="in"><a class="b" href="/">${esc(SITE.name)}</a><nav><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a></nav></div></header>
 <div class="wrap">
 <div class="top"><a href="/">${esc(SITE.brandKo)} ${esc(SITE.name)}</a><span style="color:var(--sub)">${esc(data.dateLabel || data.date)}</span></div>
+<nav class="crumb" aria-label="breadcrumb"><a href="/">홈</a> <span aria-hidden="true">›</span> ${
+    crumbTopic
+      ? `<a href="/topic/${crumbTopic.slug}">${esc(crumbTopic.name)}</a>`
+      : `<span>${esc(a.kicker)}</span>`
+  } <span aria-hidden="true">›</span> <span class="cur" aria-current="page">${esc(a.title)}</span></nav>
 <div class="kick">${esc(a.kicker)}</div>
 <h1>${esc(a.title)}</h1>
 <div class="by"><a href="/about" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(SITE.brandKo)} 편집팀</a> 재작성 · ${[a.date, a.read].filter(Boolean).map(esc).join(" · ")}${
@@ -2047,7 +2056,7 @@ function renderTopicPage(topic, arts) {
     url: canonical,
     inLanguage: "ko",
     isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.baseUrl },
-    publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn, url: SITE.baseUrl },
+    publisher: PUBLISHER_LD,
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: arts.length,
@@ -2058,6 +2067,15 @@ function renderTopicPage(topic, arts) {
         name: a.title,
       })),
     },
+  };
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "홈", item: SITE.baseUrl },
+      { "@type": "ListItem", position: 2, name: "주제별 보기", item: `${SITE.baseUrl}/topic/` },
+      { "@type": "ListItem", position: 3, name: topic.name, item: canonical },
+    ],
   };
   const faqLd = qas.length
     ? {
@@ -2105,6 +2123,10 @@ function renderTopicPage(topic, arts) {
   header nav a{color:var(--dim);text-decoration:none;font-size:13px;font-weight:600;margin-left:14px}
   h1,h2{font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif}
   h1{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.18;margin:0 0 10px}
+  .crumb{margin:0 0 18px;font-size:12.5px;color:var(--dim);line-height:1.6}
+  .crumb a{color:var(--dim);text-decoration:none}
+  .crumb a:hover{color:var(--pri);text-decoration:underline}
+  .crumb span[aria-current]{color:var(--ink);font-weight:600}
   .lede{color:var(--dim);font-size:16px;margin:0 0 6px}
   .meta{color:var(--dim);font-size:12.5px;letter-spacing:.03em;margin:0 0 34px}
   h2{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:38px 0 14px;padding-top:18px;border-top:1px solid var(--line)}
@@ -2125,12 +2147,14 @@ function renderTopicPage(topic, arts) {
   footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--dim)}
   footer a{color:var(--dim);margin-right:14px}
 </style>
-<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>${
+<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+<script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>${
     faqLd ? `\n<script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""
   }${gaSnippet()}</head>
 <body><div class="wrap">
 <header><a class="brand" href="/">${esc(SITE.name)}</a>
 <nav><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a></nav></header>
+<nav class="crumb" aria-label="breadcrumb"><a href="/">홈</a> <span aria-hidden="true">›</span> <a href="/topic/">주제별 보기</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(topic.name)}</span></nav>
 <h1>${esc(topic.name)}</h1>
 <p class="lede">${esc(topic.lede)}</p>
 <p class="meta">기사 ${arts.length}건${papers.length ? ` · 근거 있는 연구 ${papers.length}건` : ""}${
