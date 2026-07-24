@@ -125,6 +125,61 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
   };
 }
 
+// ── 브리프(간추린 소식) 전용 생성 ──
+// 심층 기사와 달리 1콜, 짧은 요약만. 레이더·글감·본문문단 없음 → 비용/시간 최소.
+// 개별 페이지를 만들지 않고 색인도 안 하므로(SEO 보호) 짧아도 문제없다.
+const BRIEF_SCHEMA = {
+  type: "object",
+  properties: {
+    titleKo: { type: "string" },
+    summaryKo: { type: "string" },
+  },
+  required: ["titleKo", "summaryKo"],
+  additionalProperties: false,
+};
+
+export async function generateBrief(post, attempt = 1) {
+  const content = (post.fullText || post.body || post.title || "").slice(0, 2000);
+  const item = await jsonCall({
+    system: [
+      "당신은 한국 동물병원 수의사를 위한 '해외 브리핑'의 에디터입니다.",
+      "해외 수의 소식 하나를 '간추린 소식'용으로 아주 짧게 정리합니다.",
+      "- titleKo: 핵심을 담은 재작성 제목(직역 금지, 낚시 금지, 45자 이내).",
+      "- summaryKo: 2~3문장(150자 내외)으로 무슨 일이고 왜 알 만한지. 모든 문장 '~습니다/~입니다'체.",
+      "- 순수 한국어만. 중국어(한자)·일본어·러시아어 금지. 영어는 인명·기관명·약어만.",
+      "- 약물 용량·구체적 처치법은 옮기지 않습니다.",
+    ].join("\n"),
+    user: `출처: ${post.sourceLabel || ""}\n제목: ${post.title}\n\n내용:\n${content}`,
+    schema: BRIEF_SCHEMA,
+    maxTokens: 600,
+  });
+
+  if (!String(item?.titleKo || "").trim() || !String(item?.summaryKo || "").trim()) {
+    throw new Error("브리프 생성 결과가 비어 있음");
+  }
+  // 외국어 혼입은 재생성 1회만(브리프는 저비용 유지). 그래도 남으면 스트립 후 통과
+  let foreign = foreignScriptIn({ titleKo: item.titleKo, leadKo: item.summaryKo, bodyKo: [] });
+  if (foreign && attempt < 2) return generateBrief(post, attempt + 1);
+  if (foreign) {
+    item.titleKo = item.titleKo.replace(/[一-鿿぀-ヿЀ-ӿ]+/g, "").replace(/\s{2,}/g, " ").trim();
+    item.summaryKo = item.summaryKo.replace(/[一-鿿぀-ヿЀ-ӿ]+/g, "").replace(/\s{2,}/g, " ").trim();
+  }
+  return {
+    tier: "brief",
+    category: "brief",
+    titleKo: item.titleKo,
+    leadKo: item.summaryKo,
+    bodyKo: [item.summaryKo],
+    sourceType: post.sourceType,
+    sourceLabel: post.sourceLabel,
+    relevance: post.relevance,
+    imageUrl: null,
+    sourceUrl: post.finalUrl || post.url,
+    sourceTitle: post.title,
+    publishedAt: post.publishedAt ?? null,
+  };
+}
+
 // ── 최신 연구(논문) 전용 생성 ──
 async function generatePaper(post, attempt = 1, prevFeedback = null) {
   const item = await jsonCall({

@@ -4,8 +4,8 @@ import { fileURLToPath } from "node:url";
 import { FEEDS, SUBREDDITS, CANDIDATES_MAX, TOP_COMMENTS, PAPERS_PER_ISSUE } from "../config.js";
 import { fetchFeed } from "./rss.js";
 import { fetchWeeklyTop, fetchTopComments } from "./reddit.js";
-import { redditRuleFilter, scoreCandidates, scoreAll } from "./select.js";
-import { generateItem, generatePaper } from "./generate.js";
+import { redditRuleFilter, scoreCandidates, scoreAll, scoreTiered } from "./select.js";
+import { generateItem, generatePaper, generateBrief } from "./generate.js";
 import { fetchArticleMeta } from "./article.js";
 import { fetchPubmed } from "./pubmed.js";
 import { searchRedditSignals } from "./websearch.js";
@@ -183,8 +183,9 @@ async function main() {
   }
 
   console.log("2/4 관련성 스코어링 중...");
-  const selected = await scoreCandidates(candidates);
-  console.log(`  선별 ${selected.length}개:`);
+  // 한 번 스코어링해 심층/브리프 두 계층으로 나눈다(스코어링 중복 방지).
+  const { deep: selected, brief: briefCandidates } = await scoreTiered(candidates);
+  console.log(`  심층 선별 ${selected.length}개 / 브리프 후보 ${briefCandidates.length}개`);
   for (const p of selected)
     console.log(`  [${p.relevance}] ${p.sourceLabel} — ${p.title.slice(0, 60)}`);
 
@@ -259,6 +260,31 @@ async function main() {
     console.error(`  진료실 밖 이야기 생성 실패, 건너뜀: ${err.message}`);
   }
 
+  // ── 브리프(간추린 소식) — 심층 탈락분을 짧은 소식으로. 개별 페이지 없음, 색인 X ──
+  // 레이더 없이 1콜만 쓰므로 심층 대비 시간·비용이 훨씬 적다(무료 예산 안에서 볼륨 확보).
+  if (briefCandidates.length) {
+    try {
+      console.log(`+ 브리프(간추린 소식) 생성 중... (후보 ${briefCandidates.length}개)`);
+      const briefs = (
+        await mapPool(briefCandidates, async (post) => {
+          if (post.sourceType === "rss") {
+            try {
+              const meta = await fetchArticleMeta(post.url);
+              post.fullText = meta.fullText ?? null;
+            } catch {}
+          }
+          const b = await generateBrief(post);
+          seen.add(b.sourceUrl);
+          return b;
+        })
+      ).filter(Boolean);
+      console.log(`  브리프 ${briefs.length}건 생성`);
+      items.push(...briefs);
+    } catch (err) {
+      console.error(`  브리프 생성 실패, 건너뜀: ${err.message}`);
+    }
+  }
+
   const label = dateLabel();
   // 자동 발행 시 검수 필요 표시가 남은 아이템은 제외
   let newItems = autoPublish ? items.filter((it) => !it.needsReview) : items;
@@ -270,6 +296,7 @@ async function main() {
     const before = newItems.length;
     newItems = newItems.filter((it) => {
       if (it.category === "watercooler") return true; // 별도 섹션 — 레이더 대상 아님
+      if (it.tier === "brief") return true; // 브리프 — 짧은 게 정상, 색인 안 함(게이트 예외)
       const r = it.radar || {};
       const hasValue = r.clinical || r.owner || r.evidence;
       const len = (it.bodyKo || []).join("").length;

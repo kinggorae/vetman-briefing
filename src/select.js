@@ -1,4 +1,10 @@
-import { MIN_RELEVANCE, ITEMS_PER_ISSUE, SCORE_BATCH } from "../config.js";
+import {
+  MIN_RELEVANCE,
+  ITEMS_PER_ISSUE,
+  SCORE_BATCH,
+  BRIEF_MIN_RELEVANCE,
+  BRIEFS_PER_ISSUE,
+} from "../config.js";
 import { jsonCall } from "./llm.js";
 
 // Reddit 직접 수집분에만 적용하는 규칙 필터:
@@ -86,4 +92,35 @@ export async function scoreAll(posts, limit = Infinity) {
 
 export async function scoreCandidates(posts) {
   return scoreAll(posts, ITEMS_PER_ISSUE);
+}
+
+// 한 번의 스코어링으로 두 계층을 나눈다(스코어링이 비싼 공유 단계라 중복하지 않는다).
+//   deep : relevance ≥ MIN_RELEVANCE → 풀treatment(생성+레이더), 개별 페이지·색인
+//   brief: BRIEF_MIN_RELEVANCE ≤ relevance < MIN_RELEVANCE → 짧은 요약, noindex
+export async function scoreTiered(posts) {
+  const allScores = [];
+  for (let i = 0; i < posts.length; i += SCORE_BATCH) {
+    const batch = posts.slice(i, i + SCORE_BATCH);
+    console.log(`  배치 ${Math.floor(i / SCORE_BATCH) + 1}/${Math.ceil(posts.length / SCORE_BATCH)} (${batch.length}개) 평가 중...`);
+    try {
+      allScores.push(...(await scoreBatch(batch)));
+    } catch (err) {
+      console.error(`  배치 평가 실패, 건너뜀: ${err.message}`);
+    }
+  }
+  const byId = new Map(allScores.map((s) => [s.id, s]));
+  const scored = posts
+    .map((p) => ({ ...p, ...byId.get(p.id) }))
+    .sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0));
+  const deep = scored.filter((p) => (p.relevance ?? 0) >= MIN_RELEVANCE).slice(0, ITEMS_PER_ISSUE);
+  const deepUrls = new Set(deep.map((p) => p.url));
+  const brief = scored
+    .filter(
+      (p) =>
+        !deepUrls.has(p.url) &&
+        (p.relevance ?? 0) >= BRIEF_MIN_RELEVANCE &&
+        (p.relevance ?? 0) < MIN_RELEVANCE
+    )
+    .slice(0, BRIEFS_PER_ISSUE);
+  return { deep, brief };
 }

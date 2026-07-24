@@ -43,6 +43,9 @@ jobs:
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'MiniMax-M2' }}
+          # 계층화로 항목 수가 늘었다(심층+브리프+가십). 동시 실행을 높여
+          # 무료 Actions 예산(하루 ~50분) 안에서 끝나게 한다. MiniMax 게이트웨이 한도에 맞춰 조정.
+          LLM_CONCURRENCY: ${{ vars.LLM_CONCURRENCY || '6' }}
 
       - name: Build site
         run: npm run build

@@ -262,7 +262,7 @@ export const GOSSIP_FEEDS = GOSSIP_TOPICS.map((q) => ({
   maxAgeDays: 30, // 화제글은 꼬리가 길다 — 넓게 잡고 seen으로 중복만 방지
   url: `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-US&gl=US&ceid=US:en`,
 }));
-export const GOSSIP_PER_ISSUE = 5; // 이슈당 "진료실 밖 이야기" 최종 수
+export const GOSSIP_PER_ISSUE = 30; // 이슈당 "진료실 밖 이야기" 최종 수(계층화로 상향, noindex)
 
 // ── Plan B (보조): Claude 웹 검색으로 레딧 커뮤니티 시그널 수집 ──
 export const WEBSEARCH_SUBREDDITS = ["Veterinary", "VetTech", "AskVet"];
@@ -317,10 +317,16 @@ export const SUBREDDITS = [
   { name: "veterinaryprofession", minScore: 5 }, // 소규모 보조 소스
 ];
 
-export const CANDIDATES_MAX = 200;  // 소스 확장분이 스코어링 전에 잘리지 않도록
-export const ITEMS_PER_ISSUE = 40;  // 일간 발행 상한 — 실제 발행 수는 MIN_RELEVANCE 통과분 전부
+export const CANDIDATES_MAX = 300;  // 소스 확장분이 스코어링 전에 잘리지 않도록(계층화로 상향)
+export const ITEMS_PER_ISSUE = 30;  // 심층 뉴스 상한 — 풀treatment(생성+레이더), 색인 대상
 export const SCORE_BATCH = 30;      // 스코어링 배치 크기 (한 번에 너무 많이 넣으면 평가 품질 저하)
-export const MIN_RELEVANCE = 6;     // 관련성 점수 하한 (0~10)
+export const MIN_RELEVANCE = 6;     // 심층 하한 (0~10). 이 이상만 개별 기사 페이지·색인
+
+// ── 계층화(볼륨) ──
+// 화면은 100건처럼 풍성하되, 색인은 심층(≥MIN_RELEVANCE)만. 브리프·가십은 noindex.
+// 무료 Actions 예산(월 2,000분≈하루 50분) 안에서 돌도록 브리프는 1콜 짧은 요약만 한다.
+export const BRIEF_MIN_RELEVANCE = 3; // 브리프 하한. 3~5점(심층 탈락분)을 짧은 소식으로 재활용
+export const BRIEFS_PER_ISSUE = 45;   // 브리프 상한(개별 페이지 없음, 색인 X)
 export const TOP_COMMENTS = 8;      // 요약에 참고할 상위 댓글 수
 
 // 스펙 합의대로 sonnet-5 기본. CLAUDE_MODEL 환경변수로 교체 가능 (예: claude-opus-4-8)

@@ -86,7 +86,7 @@ a:hover{color:var(--color-primary-strong);}
   .vm-fold > *{grid-column:1 !important;grid-row:auto !important;padding-left:0 !important;padding-right:0 !important;border-left:0 !important;border-right:0 !important;}
   #vm-brief,#vm-side{padding-top:20px !important;border-top:1px solid var(--color-line-normal);}
   .vm-fp-body{column-count:1 !important;}
-  .vm-quadzone,.vm-featzone{grid-template-columns:1fr !important;}
+  .vm-quadzone,.vm-featzone,.vm-brief-grid{grid-template-columns:1fr !important;}
   .vm-slot{padding:16px 18px !important;}
   .vm-quad{padding-left:0 !important;padding-right:0 !important;border-left:0 !important;border-top:1px solid var(--color-line-normal);}
   .vm-featzone > *{padding-left:0 !important;padding-right:0 !important;border-left:0 !important;}
@@ -128,14 +128,14 @@ a:hover{color:var(--color-primary-strong);}
 <ul style="list-style:none;padding:0;"></ul>
 <nav><a href="/">오늘의 브리핑</a> · <a href="/topic/">주제별 보기</a> · <a href="/about">서비스 소개</a> · <a href="/privacy">개인정보처리방침</a> · <a href="/terms">이용약관</a> · <a href="/rss.xml">RSS</a></nav>
 </div></noscript>
-<script id="vm-issue" type="application/json">{"date":"2026-07-10","dateLabel":"2026.07.10","dateline":"2026년 7월 10일 · 금요일","editionNo":"2,016","count":0,"cats":[],"articles":[],"stories":[],"isHome":false}</script>
+<script id="vm-issue" type="application/json">{"date":"2026-07-10","dateLabel":"2026.07.10","dateline":"2026년 7월 10일 · 금요일","editionNo":"2,016","count":0,"cats":[],"articles":[],"briefs":[],"stories":[],"isHome":false}</script>
 <script id="vm-cfg" type="application/json">{"newsletter":false,"slots":[{"at":"fold","kind":"house","enabled":false,"advertiser":"VetMan","headline":"","body":"","cta":"","url":""}]}</script>
 <script>
 (function(){
   var DATA = JSON.parse(document.getElementById('vm-issue').textContent);
   var CFG = (function(){ try{ return JSON.parse(document.getElementById('vm-cfg').textContent); }catch(e){ return {newsletter:false}; } })();
   var byId = {};
-  function indexDay(){ byId={}; DATA.articles.concat(DATA.stories||[],DATA.recent||[]).forEach(function(a){ byId[a.id]=a; }); }
+  function indexDay(){ byId={}; DATA.articles.concat(DATA.briefs||[],DATA.stories||[],DATA.recent||[]).forEach(function(a){ byId[a.id]=a; }); }
   indexDay();
   var LS={saved:'vm_saved',ideas:'vm_ideas',read:'vm_read',theme:'vm_theme',fs:'vm_fs'};
   function load(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }
@@ -415,6 +415,20 @@ a:hover{color:var(--color-primary-strong);}
     +'<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:2px;"><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">진료실 밖 이야기</span><span style="font-size:12.5px;color:var(--color-label-alternative);">해외에서 화제가 된 반려동물·병원 썰</span></div>'
     +'<div>'+rows+'</div></div>';
   }
+  // 간추린 소식(브리프) — 심층 기사 아래, 2단 촘촘한 목록. 개별 페이지 없이 클릭 시 상세.
+  function briefsBoard(){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    var list=DATA.briefs||[]; if(!list.length) return '';
+    var rows=list.map(function(a){
+      return '<button class="vm-brief-it'+readCls(a.id)+'" data-open="'+a.id+'" style="width:100%;text-align:left;display:flex;gap:10px;align-items:baseline;padding:11px 2px;border:0;border-top:1px solid var(--color-line-normal);background:transparent;cursor:pointer;font-family:inherit;">'
+      +'<span style="flex:none;color:var(--color-primary-normal);font-size:12px;padding-top:3px;">•</span>'
+      +'<div style="min-width:0;"><div class="vm-hl" style="font-size:14px;font-weight:700;line-height:1.4;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</div>'
+      +'<div style="margin-top:2px;font-size:11px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+[a.source,a.country].filter(Boolean).map(e).join(' · ')+'</div></div></button>';
+    }).join('');
+    return '<div style="margin-top:34px;">'
+    +'<div style="padding:16px 0 12px;border-bottom:2px solid var(--color-label-strong);"><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">간추린 소식</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">그 밖에 눈여겨볼 해외 소식 '+list.length+'건</span></div>'
+    +'<div class="vm-brief-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0 32px;">'+rows+'</div></div>';
+  }
 
   // 폴드 3단 맞춤기 — 톱기사 높이를 기준선으로 삼아, 왼쪽 브리프 개수와 오른쪽
   // 카드 수를 조정해 세 단이 같은 지점에서 끝나게 한다. 브리프 행(약 60px)이
@@ -531,6 +545,7 @@ a:hover{color:var(--color-primary-strong);}
       if(more>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+more+'건 더 보기</button></div>'; }
     }
     h+=qaColumn(arr);
+    h+=briefsBoard();
     h+=recentSection();
     h+=storyBoard();
     return h+'</div>';
