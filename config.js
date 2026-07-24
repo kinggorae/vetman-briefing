@@ -9,7 +9,7 @@ export const SITE = {
   // Google Analytics 4 측정 ID(G-XXXXXXXXXX). 값이 있을 때만 gtag를 로드한다.
   // 애널리틱스 → 관리 → 데이터 스트림 → 웹에서 발급.
   // 환경변수가 아니라 기본값으로 둔다 — 매일 자동발행 CI가 재빌드할 때 값이 비면 추적이 끊긴다
-  ga4: process.env.GA4_MEASUREMENT_ID || "G-BZMETFJ6QE",
+  ga4: process.env.GA4_MEASUREMENT_ID || "G-XW6BM1B4SH",
   // 뉴스레터 구독 폼 노출 여부.
   // 저장소(KV SUBS)와 수신거부는 이미 붙어 동작한다. 남은 건 발송 수단뿐이다.
   // 보낼 수단이 없는데 이메일을 받아두면 구독한 줄 알고 기다리게 되므로 폼을 내려둔다.
