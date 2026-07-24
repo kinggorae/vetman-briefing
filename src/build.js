@@ -1539,9 +1539,9 @@ ${
 <footer class="site-f">
 <nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/rss.xml">RSS</a></nav>
 <div class="biz">${esc(brand)} · 한국 동물병원을 위한 해외 수의 브리핑${
-    LEGAL.operator ? `<br>${esc(LEGAL.operator)}${LEGAL.representative ? ` · 대표 ${esc(LEGAL.representative)}` : ""}${LEGAL.bizNumber ? ` · 사업자등록번호 ${esc(LEGAL.bizNumber)}` : ""}` : ""
-  }${LEGAL.email ? `<br>문의 ${esc(LEGAL.email)}` : ""}${
-    LEGAL.partnerEmail ? `<br>업무제휴·광고 문의 ${esc([LEGAL.partnerName, LEGAL.partnerEmail].filter(Boolean).join(" · "))}` : ""
+    // 사업자 상세·문의·제휴는 위 링크(서비스 소개·개인정보처리방침)에 모아 두고,
+    // 기사 하단에는 최소한의 신뢰 정보(상호·등록번호)만 남긴다.
+    LEGAL.operator ? `<br>${esc(LEGAL.operator)}${LEGAL.bizNumber ? ` · 사업자등록번호 ${esc(LEGAL.bizNumber)}` : ""}` : ""
   }<br>© ${new Date(LEGAL.effectiveDate).getFullYear()} ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</div>
 </footer>
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
@@ -1638,7 +1638,6 @@ ${legalRow("사업자등록번호", LEGAL.bizNumber)}
 ${legalRow("주소", LEGAL.address)}
 ${legalRow("개인정보 보호책임자", LEGAL.privacyOfficer)}
 ${legalRow("문의", LEGAL.email)}
-${legalRow("업무제휴·광고 문의", [LEGAL.partnerName, LEGAL.partnerEmail].filter(Boolean).join(" · "))}
 </table>`;
 
 const PRIVACY_BODY = `
