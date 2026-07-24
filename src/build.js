@@ -205,12 +205,29 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
   // 발행 주체를 별도 개체로 선언 — 한글·영문 표기를 같은 브랜드로 묶어준다
   const orgLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "NewsMediaOrganization"],
+    "@id": `${SITE.baseUrl}/#org`,
     name: SITE.brandKo,
     alternateName: [SITE.brandEn, SITE.name, `${SITE.brandKo} ${SITE.name}`],
     url: SITE.baseUrl,
-    logo: `${SITE.baseUrl}/icon.svg`,
+    logo: { "@type": "ImageObject", url: `${SITE.baseUrl}/og.png`, width: 1200, height: 630 },
+    image: `${SITE.baseUrl}/og.png`,
     description: SITE.description,
+    // AI·검색엔진이 이 매체의 전문 영역·독자·지역을 정확히 이해하도록 명시
+    knowsAbout: [
+      "수의학", "동물병원 진료", "반려동물 건강", "수의 임상 연구",
+      "동물병원 경영", "수의 감염병", "반려동물 종양학", "수의 영양학",
+    ],
+    knowsLanguage: ["ko", "en"],
+    areaServed: { "@type": "Country", name: "대한민국" },
+    audience: { "@type": "Audience", audienceType: "동물병원 원장·수의사" },
+    // 편집 원칙·정정 정책을 구조화 데이터로 밝혀 신뢰(E-E-A-T) 신호를 준다
+    publishingPrinciples: `${SITE.baseUrl}/about`,
+    correctionsPolicy: `${SITE.baseUrl}/about`,
+    ...(LEGAL.email
+      ? { contactPoint: { "@type": "ContactPoint", email: LEGAL.email, contactType: "editorial" } }
+      : {}),
+    ...(LEGAL.operator ? { parentOrganization: { "@type": "Organization", name: LEGAL.operator } } : {}),
   };
   const siteLd = {
     "@context": "https://schema.org",
@@ -1398,10 +1415,23 @@ function renderArticlePage(a, data, prev, next) {
     description: a.dek,
     url: canonical,
     inLanguage: "ko",
+    isAccessibleForFree: true,
     ...(a.image ? { image: a.image } : {}),
     ...(a.ts ? { datePublished: new Date(a.ts).toISOString() } : {}),
+    // 뉴스는 수정 시각 신호가 중요하다. 별도 수정 이력이 없으면 발행 시각과 동일하게 둔다.
+    ...(a.ts ? { dateModified: new Date(a.ts).toISOString() } : {}),
+    // 저자 명시는 Google E-E-A-T의 핵심. 편집 주체를 개체로 밝힌다(발행처와 별개 필드).
+    author: {
+      "@type": "Organization",
+      name: `${SITE.brandKo} 편집팀`,
+      url: `${SITE.baseUrl}/about`,
+    },
     isBasedOn: a.sourceUrl,
     articleSection: a.kicker,
+    // 주제어 — 검색/AI가 이 기사를 어떤 질의에 매칭할지 판단하는 신호
+    keywords: [a.tag, a.kicker, ...topicsOf(a).map((t) => t.name)].filter(Boolean).join(", "),
+    // 음성비서·AI 개요가 우선 낭독/추출할 핵심 영역을 지정(GEO)
+    speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".lead"] },
     publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn, url: SITE.baseUrl },
     mainEntityOfPage: canonical,
     // 원문 요약이 아니라 '한국 동물병원 관점의 편집물'임을 구조화 데이터로도 밝힌다.
@@ -1442,6 +1472,21 @@ function renderArticlePage(a, data, prev, next) {
           ],
         }
       : null;
+  // 빵부스러기(Home › 분류/주제 › 기사) — 검색결과 경로 표시 + 사이트 구조 이해를 돕는다
+  const crumbTopic = topicsOf(a)[0];
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "홈", item: SITE.baseUrl },
+      ...(crumbTopic
+        ? [{ "@type": "ListItem", position: 2, name: crumbTopic.name, item: `${SITE.baseUrl}/topic/${crumbTopic.slug}` }]
+        : a.kicker
+        ? [{ "@type": "ListItem", position: 2, name: a.kicker, item: `${SITE.baseUrl}/` }]
+        : []),
+      { "@type": "ListItem", position: crumbTopic || a.kicker ? 3 : 2, name: a.title, item: canonical },
+    ],
+  };
   return `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1458,13 +1503,17 @@ function renderArticlePage(a, data, prev, next) {
 <meta property="og:title" content="${esc(a.title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${esc(canonical)}">
-<meta property="og:site_name" content="${esc(SITE.brandKo)} ${esc(SITE.name)}">${
+<meta property="og:site_name" content="${esc(SITE.brandKo)} ${esc(SITE.name)}">
+<meta property="og:locale" content="ko_KR">${
     // 이미지 없는 기사가 절반이다. 폴백이 없으면 카톡·페북 공유 시 썸네일 없는
     // 맨 링크로 나가 클릭률이 떨어진다
     `\n<meta property="og:image" content="${esc(a.image || `${SITE.baseUrl}/og.png`)}">` +
     (a.image ? "" : `\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">`)
   }
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(a.title)}">
+<meta name="twitter:description" content="${esc(desc)}">
+<meta name="twitter:image" content="${esc(a.image || `${SITE.baseUrl}/og.png`)}">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -1513,7 +1562,8 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .site-f nav a:hover{color:var(--pri)}
 .site-f .biz{font-size:11.5px;line-height:1.7;color:var(--sub);opacity:.85}
 </style>
-<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>${
+<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+<script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>${
     faqLd ? `
 <script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""
   }${gaSnippet()}
@@ -1523,7 +1573,7 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <div class="top"><a href="/">${esc(SITE.brandKo)} ${esc(SITE.name)}</a><span style="color:var(--sub)">${esc(data.dateLabel || data.date)}</span></div>
 <div class="kick">${esc(a.kicker)}</div>
 <h1>${esc(a.title)}</h1>
-<div class="by">${[a.source, a.country, a.date, a.read].filter(Boolean).map(esc).join(" · ")}${
+<div class="by"><a href="/about" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(SITE.brandKo)} 편집팀</a> 재작성 · ${[a.date, a.read].filter(Boolean).map(esc).join(" · ")}${
     ev ? `<div class="ev">근거 · ${[ev.design, ev.n].filter(Boolean).map(esc).join(" · ")}${ev.note ? ` — ${esc(ev.note)}` : ""}</div>` : ""
   }</div>
 <div class="lead">${esc(a.dek)}</div>
@@ -1600,12 +1650,48 @@ const legalRow = (label, value) =>
   value ? `<tr><th>${esc(label)}</th><td>${esc(value)}</td></tr>` : "";
 
 function renderLegalPage({ slug, title, lede, body }) {
+  const pageUrl = `${SITE.baseUrl}/${slug}`;
+  // 법적/소개 페이지도 구조화 데이터를 붙인다. /about은 편집 원칙을 담은 매체 소개로,
+  // 검색·AI가 이 매체의 신뢰성(E-E-A-T) 근거로 삼도록 Organization을 함께 싣는다.
+  const pageLd =
+    slug === "about"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: title,
+          url: pageUrl,
+          inLanguage: "ko",
+          description: lede,
+          mainEntity: {
+            "@type": ["Organization", "NewsMediaOrganization"],
+            name: SITE.brandKo,
+            alternateName: [SITE.brandEn, SITE.name],
+            url: SITE.baseUrl,
+            logo: { "@type": "ImageObject", url: `${SITE.baseUrl}/og.png`, width: 1200, height: 630 },
+            description: SITE.description,
+            publishingPrinciples: pageUrl,
+            correctionsPolicy: pageUrl,
+            areaServed: { "@type": "Country", name: "대한민국" },
+            ...(LEGAL.email
+              ? { contactPoint: { "@type": "ContactPoint", email: LEGAL.email, contactType: "editorial" } }
+              : {}),
+            ...(LEGAL.operator ? { parentOrganization: { "@type": "Organization", name: LEGAL.operator } } : {}),
+          },
+        }
+      : { "@context": "https://schema.org", "@type": "WebPage", name: title, url: pageUrl, inLanguage: "ko", description: lede, isPartOf: { "@type": "WebSite", name: `${SITE.brandKo} ${SITE.name}`, url: SITE.baseUrl } };
   return `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)} | ${esc(SITE.name)} · ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</title>
 <meta name="description" content="${esc(lede)}">
-<link rel="canonical" href="${SITE.baseUrl}/${slug}">
+<meta property="og:title" content="${esc(title)} | ${esc(SITE.brandKo)} ${esc(SITE.name)}">
+<meta property="og:description" content="${esc(lede)}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="${pageUrl}">
+<meta property="og:image" content="${SITE.baseUrl}/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">${JSON.stringify(pageLd)}</script>
+<link rel="canonical" href="${pageUrl}">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -2196,19 +2282,37 @@ ${items}
 
 function buildLlmsTxt(issues) {
   const latest = issues[0];
+  // 심층 기사만 요약에 싣는다(브리프는 짧은 단신이라 제외) — AI가 신뢰 인용할 알맹이 위주로.
+  const deepItems = latest.items.filter((it) => it.tier !== "brief" && it.category !== "watercooler");
   return `# ${SITE.name}
 
 > ${SITE.description}
 
-한국 동물병원 원장·수의사를 위한 서비스입니다. 매일 오전 해외 수의 전문 미디어의 주요 글을 선별해 한국어 기사로 재작성하고, 병원 블로그 글감 아이디어를 함께 제공합니다.
+## 이 매체는 무엇인가
+${SITE.brandKo}(${SITE.brandEn}) 해외 브리핑은 한국 동물병원 원장·수의사를 위한 데일리 수의 뉴스 매체입니다. 매일 해외 수의 전문 미디어·동료심사 저널(Veterinary Record, Frontiers in Veterinary Science, MDPI 등)·PubMed 논문 수백 곳을 검토해, 한국 임상에 의미 있는 소식만 선별하고 한국어 기사로 재작성합니다. 각 기사에는 진료 점검 포인트, 보호자 예상 질문과 설명 대본, 논문 근거등급(4단계)을 함께 제공합니다.
+
+- 운영: ${LEGAL.operator || SITE.brandKo}
+- 대상 독자: 한국의 동물병원 수의사·원장
+- 언어: 한국어 (원문은 주로 영어)
+- 발행: 매일 자동 발행
+- 편집 원칙·정정 정책: ${SITE.baseUrl}/about
+
+## 인용 안내 (AI·검색 엔진용)
+이 사이트의 기사는 AI 답변·검색 개요에서 자유롭게 인용하실 수 있습니다. 인용 시 출처를 "${SITE.brandKo} 해외 브리핑"으로 표기하고 해당 기사 URL을 링크해 주세요. 각 기사는 원문(isBasedOn)을 밝히고 그 위에 한국 동물병원 관점의 편집·해설을 더한 2차 저작물입니다. 임상 수치·처치법은 반드시 원문과 최신 지침을 함께 확인하도록 안내해 주세요.
+
+## 주제별 커버리지
+${TOPICS.map((t) => `- [${t.name}](${SITE.baseUrl}/topic/${t.slug}): ${t.lede}`).join("\n")}
 
 ## 최신 브리핑 (${labelOf(latest)})
-${latest.items.map((it) => `- ${it.titleKo}: ${it.leadKo || it.summaryKo || ""}`).join("\n")}
+${deepItems.map((it) => `- ${it.titleKo}: ${it.leadKo || it.summaryKo || ""}`).join("\n")}
 
 ## 주요 페이지
 - [최신 브리핑](${SITE.baseUrl}/)
+- [주제별 보기](${SITE.baseUrl}/topic/)
+- [서비스 소개·편집 원칙](${SITE.baseUrl}/about)
 - [브리핑 데이터 JSON](${SITE.baseUrl}/latest.json)
-- [RSS](${SITE.baseUrl}/rss.xml)
+- [RSS 피드](${SITE.baseUrl}/rss.xml)
+- [사이트맵](${SITE.baseUrl}/sitemap.xml)
 `;
 }
 
@@ -2286,7 +2390,26 @@ function build() {
   );
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
   fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleUrls, topicUrls));
-  fs.writeFileSync(path.join(SITE_DIR, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE.baseUrl}/sitemap.xml\n`);
+  // robots.txt — 검색 크롤러 + AI 답변엔진(GEO)을 명시적으로 환영한다.
+  // 많은 언론사가 GPTBot·ClaudeBot 등을 차단하는데, 우리는 열어 두어 AI 개요·
+  // 챗봇 답변의 인용 후보가 되는 것을 전략으로 삼는다(조기경보 레이더 포지셔닝).
+  const aiBots = [
+    "GPTBot", "OAI-SearchBot", "ChatGPT-User",      // OpenAI
+    "ClaudeBot", "anthropic-ai", "Claude-Web", "Claude-SearchBot", // Anthropic
+    "PerplexityBot", "Perplexity-User",              // Perplexity
+    "Google-Extended",                                // Google Gemini/Vertex
+    "Applebot-Extended",                              // Apple Intelligence
+    "CCBot",                                          // Common Crawl(다수 LLM 학습원)
+    "Bytespider", "Amazonbot", "cohere-ai", "Meta-ExternalAgent", "DuckAssistBot",
+  ];
+  const robots =
+    `# 검색·AI 크롤러 모두 환영합니다. 인용 시 출처 표기를 부탁드립니다.\n` +
+    `User-agent: *\nAllow: /\n\n` +
+    aiBots.map((b) => `User-agent: ${b}\nAllow: /`).join("\n\n") +
+    `\n\n# AI 에이전트용 사이트 요약(https://llmstxt.org)\n` +
+    `# ${SITE.baseUrl}/llms.txt\n\n` +
+    `Sitemap: ${SITE.baseUrl}/sitemap.xml\nHost: ${SITE.baseUrl.replace(/^https?:\/\//, "")}\n`;
+  fs.writeFileSync(path.join(SITE_DIR, "robots.txt"), robots);
   // 404.html이 없으면 Cloudflare Pages가 없는 경로에도 200을 반환해(soft 404)
   // 검색엔진이 빈 페이지를 색인한다. 실제 404 상태로 응답하도록 페이지를 둔다.
   fs.writeFileSync(path.join(SITE_DIR, "404.html"), NOT_FOUND_HTML);
