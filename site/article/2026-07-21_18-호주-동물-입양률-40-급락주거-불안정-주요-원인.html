@@ -50,12 +50,26 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .nav .l{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pri)}
 .nav .t{font-size:15px;font-weight:700;margin-top:4px;line-height:1.4}
 .home{display:inline-block;margin-top:26px;background:var(--pri);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}
+/* 사이트 헤더/푸터 — 검색으로 기사에 바로 들어온 방문자가 사이트를 둘러볼 통로.
+   모든 기사 페이지에서 주요 페이지로 링크가 나가 내부 링크 구조도 강해진다. */
+.site-h{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin:0 0 26px}
+.site-h .in{max-width:720px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.site-h a.b{font-family:"Wanted Sans Variable","Pretendard Variable",system-ui,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.site-h nav a{font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-left:14px}
+.site-h nav a:hover{color:var(--pri)}
+.site-f{border-top:1px solid var(--line);margin-top:48px;padding:26px 0 8px;font-size:13px;color:var(--sub)}
+.site-f nav{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.site-f nav a{color:var(--sub);text-decoration:none;font-weight:600}
+.site-f nav a:hover{color:var(--pri)}
+.site-f .biz{font-size:11.5px;line-height:1.7;color:var(--sub);opacity:.85}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"호주 동물 입양률 40% 급락…주거 불안정 주요 원인","description":"호주 최대 동물 입양 플랫폼 PetRescue가 입양률이 사상 최저 수준으로 떨어졌다고 발표했습니다. 6개월 동안 90%에서 50% 이하로 급락한 이 현상은 주거비 위기와 결합하며 유기 동물 증가로 이어질 전망입니다.","url":"https://news.vetmanlab.com/article/2026-07-21_18-호주-동물-입양률-40-급락주거-불안정-주요-원인","inLanguage":"ko","image":"https://www.vetpracticemag.com.au/wp-content/uploads/2026/06/pet-rescue.jpg","datePublished":"2026-07-19T23:34:58.000Z","isBasedOn":"https://www.vetpracticemag.com.au/why-pet-adoption-rates-are-in-decline/","articleSection":"병원 경영","publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab","url":"https://news.vetmanlab.com"},"mainEntityOfPage":"https://news.vetmanlab.com/article/2026-07-21_18-호주-동물-입양률-40-급락주거-불안정-주요-원인","abstract":"입양 동물 진료 시 과거 건강 이력(예방접종, 중성화 여부) 확인을 문진에 포함시키고, 보호자에게 구조 동물의 장점을 설명하는 상담 기회로 활용","mentions":{"@type":"Question","name":"구조 동물 입양해도 건강하게 키울 수 있을까요?"},"citation":{"@type":"CreativeWork","name":"Vet Practice Magazine","url":"https://www.vetpracticemag.com.au/why-pet-adoption-rates-are-in-decline/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"구조 동물 입양해도 건강하게 키울 수 있을까요?","acceptedAnswer":{"@type":"Answer","text":"구조 동물도 예방접종과 중성화가 되어 있는 경우가 많아 건강하게 키울 수 있습니다. 하지만 입양 직후에는 기본 건강검진을 받고, 이전의 건강 이력을 확인하는 것이 좋습니다."}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZMETFJ6QE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BZMETFJ6QE');</script>
-</head><body><div class="wrap">
+</head><body>
+<header class="site-h"><div class="in"><a class="b" href="/">VetMan 해외 브리핑</a><nav><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a></nav></div></header>
+<div class="wrap">
 <div class="top"><a href="/">베트맨랩 VetMan 해외 브리핑</a><span style="color:var(--sub)">2026.07.21</span></div>
 <div class="kick">병원 경영</div>
 <h1>호주 동물 입양률 40% 급락…주거 불안정 주요 원인</h1>
@@ -73,4 +87,8 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <div class="dis">베트맨랩(VetManLab)이 해외 공개 자료를 요약·번역한 콘텐츠이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</div></div>
 <div class="nav"><a href="/article/2026-07-21_17-뼈대-학습-재구성-MRI-개-무릎-관절-영상-화질-향상"><div class="l">이전 기사</div><div class="t">뼈대 학습 재구성 MRI, 개 무릎 관절 영상 화질 향상</div></a><a href="/article/2026-07-21_19-개고양이-전용-프로바이오틱스-시대-도래"><div class="l">다음 기사</div><div class="t">개·고양이 전용 프로바이오틱스 시대 도래</div></a></div>
 <a class="home" href="/">2026.07.21 브리핑 전체 보기 →</a>
+<footer class="site-f">
+<nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/rss.xml">RSS</a></nav>
+<div class="biz">베트맨랩(VetManLab) · 한국 동물병원을 위한 해외 수의 브리핑<br>주식회사 비전인피플 · 대표 이보령 · 사업자등록번호 170-81-03853<br>문의 vetmanlab@gmail.com<br>© 2026 베트맨랩(VetManLab)</div>
+</footer>
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>

@@ -50,12 +50,26 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .nav .l{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pri)}
 .nav .t{font-size:15px;font-weight:700;margin-top:4px;line-height:1.4}
 .home{display:inline-block;margin-top:26px;background:var(--pri);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}
+/* 사이트 헤더/푸터 — 검색으로 기사에 바로 들어온 방문자가 사이트를 둘러볼 통로.
+   모든 기사 페이지에서 주요 페이지로 링크가 나가 내부 링크 구조도 강해진다. */
+.site-h{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin:0 0 26px}
+.site-h .in{max-width:720px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.site-h a.b{font-family:"Wanted Sans Variable","Pretendard Variable",system-ui,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.site-h nav a{font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-left:14px}
+.site-h nav a:hover{color:var(--pri)}
+.site-f{border-top:1px solid var(--line);margin-top:48px;padding:26px 0 8px;font-size:13px;color:var(--sub)}
+.site-f nav{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.site-f nav a{color:var(--sub);text-decoration:none;font-weight:600}
+.site-f nav a:hover{color:var(--pri)}
+.site-f .biz{font-size:11.5px;line-height:1.7;color:var(--sub);opacity:.85}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"소동물 종양 조기 발견, 천자흡인검사가 답이다","description":"소동물 임상에서 가장 가치 있는 진단 도구 중 하나인 천자흡인검사(FNA)의 기술적 핵심과 활용법에 대한 전문 가이드를 소개합니다. 크기나 모양만으로는 종양의 양성을 판단할 수 없으며, 1개월 이상 지속되는 종괴나 1cm 이상 큰 종괴는 반드시 검사가 필요합니다.","url":"https://news.vetmanlab.com/article/2026-07-24_1-소동물-종양-조기-발견-천자흡인검사가-답이다","inLanguage":"ko","image":"https://www.veterinarypracticenews.com/wp-content/uploads/2026/07/FNA-aspiration-technique-300.jpg","datePublished":"2026-07-23T11:31:43.000Z","isBasedOn":"https://www.veterinarypracticenews.com/art-of-aspirate-collection-techniques-slide-preparation-common-mistakes/","articleSection":"임상","publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab","url":"https://news.vetmanlab.com"},"mainEntityOfPage":"https://news.vetmanlab.com/article/2026-07-24_1-소동물-종양-조기-발견-천자흡인검사가-답이다","abstract":"1개월 이상 지속되는 종괴나 1 이상 큰 종괴에 대한 천자흡인검사 프로토콜을 진료 체계에 표준화하고, 의심 종괴는 세포병리 전문 검사기관으로 전송하는 체계적 흐름을 마련한다.","mentions":{"@type":"Question","name":"우리 강아지/고양이 몸에 종괴가 있는데, 이것이 종양인지 바로 검사를 받아야 하나요?"},"citation":{"@type":"CreativeWork","name":"Veterinary Practice News","url":"https://www.veterinarypracticenews.com/art-of-aspirate-collection-techniques-slide-preparation-common-mistakes/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"우리 강아지/고양이 몸에 종괴가 있는데, 이것이 종양인지 바로 검사를 받아야 하나요?","acceptedAnswer":{"@type":"Answer","text":"1개월 이상 지속되는 종괴나 1 이상 큰 종괴는 천자흡인검사를 해보는 것이 좋습니다. 빠르고 비용이 적으며 최소침습적인 검사라서 추가 검사나 치료 방향을 결정하는 데 도움이 됩니다."}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZMETFJ6QE"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BZMETFJ6QE');</script>
-</head><body><div class="wrap">
+</head><body>
+<header class="site-h"><div class="in"><a class="b" href="/">VetMan 해외 브리핑</a><nav><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a></nav></div></header>
+<div class="wrap">
 <div class="top"><a href="/">베트맨랩 VetMan 해외 브리핑</a><span style="color:var(--sub)">2026.07.24</span></div>
 <div class="kick">임상</div>
 <h1>소동물 종양 조기 발견, 천자흡인검사가 답이다</h1>
@@ -73,4 +87,8 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <div class="dis">베트맨랩(VetManLab)이 해외 공개 자료를 요약·번역한 콘텐츠이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</div></div>
 <div class="nav"><a href="/article/2026-07-24_2-캔-카운티-애완동물-광견병-예방접종-효과-저하-가능성-발표"><div class="l">다음 기사</div><div class="t">캔 카운티, 애완동물 광견병 예방접종 효과 저하 가능성 발표</div></a></div>
 <a class="home" href="/">2026.07.24 브리핑 전체 보기 →</a>
+<footer class="site-f">
+<nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/rss.xml">RSS</a></nav>
+<div class="biz">베트맨랩(VetManLab) · 한국 동물병원을 위한 해외 수의 브리핑<br>주식회사 비전인피플 · 대표 이보령 · 사업자등록번호 170-81-03853<br>문의 vetmanlab@gmail.com<br>© 2026 베트맨랩(VetManLab)</div>
+</footer>
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>
