@@ -1,7 +1,7 @@
 // ── 사이트 메타 (SEO/GEO) ──
 export const SITE = {
   baseUrl: "https://news.vetmanlab.com",
-  name: "VetMan 해외 브리핑",
+  name: "VetManLab 해외 브리핑",
   // 한글 브랜드명 — 검색엔진은 페이지에 실제로 있는 문자열을 매칭한다.
   // 영문만 있으면 "베트맨랩"으로 검색해도 잡히지 않아 별도로 노출·표기한다.
   brandKo: "베트맨랩",

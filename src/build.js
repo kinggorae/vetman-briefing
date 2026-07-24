@@ -927,7 +927,7 @@ const APP_JS = String.raw`
 
     var h='';
     h+='<div style="position:sticky;top:0;z-index:30;background:var(--color-background-normal);border-bottom:1px solid var(--color-line-normal);"><div class="vm-bar" style="max-width:1180px;margin:0 auto;padding:9px 40px;display:flex;align-items:center;gap:16px;">'
-    +'<button data-nav="home" class="vm-tap" style="flex:none;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--color-label-strong);">VetMan 브리핑</button>'
+    +'<button data-nav="home" class="vm-tap" style="flex:none;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--color-label-strong);">VetManLab 브리핑</button>'
     +'<div class="vm-search" style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:var(--color-material-thin);border-radius:9px;padding:9px 12px;color:var(--color-label-alternative);">'+search+'<input id="vm-q" value="'+e(S.query)+'" placeholder="기사 검색 — 제목·본문·출처" style="border:0;outline:0;background:transparent;font-family:inherit;font-size:13px;color:var(--color-label-normal);width:100%;"></div>'
     +'<div style="flex:none;display:flex;align-items:center;gap:14px;"><span class="vm-bar-label">'+navBtn('ideas','글감함',ideaCount)+'</span><span class="vm-bar-label">'+navBtn('saved','저장',savedCount)+'</span><span class="vm-bar-label">'+navBtn('archive','지난 브리핑')+'</span>'
     +'<button data-act="theme" class="vm-tap" title="테마 전환" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;border-radius:9px;">'+(S.theme==='dark'?sun:moon)+'</button></div>'
@@ -936,7 +936,7 @@ const APP_JS = String.raw`
     h+='<div class="vm-wrap" style="max-width:1180px;margin:0 auto;padding:0 40px 64px;">';
     h+='<div class="vm-dateline" style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:12px;color:var(--color-label-alternative);"><span style="flex:1;text-align:left;">'+e(DATA.dateline)+'</span><span style="flex:1;text-align:center;letter-spacing:.06em;">해외 수의 소식을 한국 동물병원의 눈으로</span><span style="flex:1;text-align:right;">원문 출처 표기 · 번역 참고용</span></div>';
     h+='<div style="height:1px;background:var(--color-line-normal);"></div>';
-    h+='<header class="vm-mast" style="text-align:center;padding:30px 0 22px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-label-alternative);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetMan 해외 브리핑</h1>'
+    h+='<header class="vm-mast" style="text-align:center;padding:30px 0 22px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-label-alternative);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetManLab 해외 브리핑</h1>'
     +'<p style="margin:14px auto 0;font-size:13.5px;font-style:italic;color:var(--color-label-alternative);font-family:var(--font-display);">베트맨랩이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑</p>'
     +'</header>';
     h+='<div class="vm-strip" style="border-top:2px solid var(--color-label-strong);border-bottom:1px solid var(--color-line-normal);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 0;"><div style="display:flex;align-items:baseline;gap:10px;min-width:0;"><span style="font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);white-space:nowrap;">'+stripLabel+'</span><span style="font-size:12.5px;color:var(--color-label-alternative);">'+stripMeta+'</span></div>'
@@ -1085,7 +1085,7 @@ const APP_JS = String.raw`
       else if(act==='copyblog'){ copy(blogText(byId[el.getAttribute('data-id')]),'글감을 복사했습니다'); return; }
       else if(act==='copyscript'){ var a=byId[el.getAttribute('data-id')]; var o=a&&a.radar&&a.radar.owner; if(o){ copy((o.q?'[보호자 예상 질문]\n'+o.q+'\n\n':'')+'[설명]\n'+(o.script||''),'보호자 설명을 복사했습니다'); } return; }
       else if(act==='copyone'){ var a=S.ideas[el.getAttribute('data-id')]; if(a) copy(blogText(a),'글감을 복사했습니다'); return; }
-      else if(act==='copyall'){ var items=Object.keys(S.ideas).map(function(k){return S.ideas[k];}); var t='# VetMan 해외 브리핑 — 블로그 글감 모음\n\n'+items.map(function(a,i){return (i+1)+'. '+blogText(a);}).join('\n\n———\n\n'); copy(t,items.length+'개 글감을 초안으로 복사했습니다'); return; }
+      else if(act==='copyall'){ var items=Object.keys(S.ideas).map(function(k){return S.ideas[k];}); var t='# VetManLab 해외 브리핑 — 블로그 글감 모음\n\n'+items.map(function(a,i){return (i+1)+'. '+blogText(a);}).join('\n\n———\n\n'); copy(t,items.length+'개 글감을 초안으로 복사했습니다'); return; }
       else if(act==='makedraft'){ makeDraft(Object.keys(S.ideas).map(function(k){return S.ideas[k];})); return; }
       else if(act==='makedraftone'){ var a=byId[el.getAttribute('data-id')]; if(a) makeDraft([snap(a)]); return; }
       else if(act==='draftclose'){ S.draft=null; render(); return; }
@@ -1169,7 +1169,7 @@ ${seoHead(issue, data, canonicalPath, isIndex)}
 <link rel="apple-touch-icon" href="/icon.svg">
 <meta name="apple-mobile-web-app-capable" content="yes">${gaSnippet()}
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="VetMan 브리핑">
+<meta name="apple-mobile-web-app-title" content="VetManLab 브리핑">
 <style>${TOKENS_CSS}${STATIC_CSS}</style>
 <script>try{var t=JSON.parse(localStorage.getItem('vm_theme'))||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
@@ -1191,7 +1191,7 @@ ${noscriptFallback(data)}
 const ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#0066ff"/><text x="256" y="366" font-family="'Wanted Sans Variable',system-ui,sans-serif" font-size="300" font-weight="800" fill="#fff" text-anchor="middle">V</text></svg>`;
 
 const MANIFEST = JSON.stringify({
-  name: "베트맨랩 VetMan 해외 브리핑",
+  name: "베트맨랩 VetManLab 해외 브리핑",
   short_name: "베트맨랩 브리핑",
   description: SITE.description,
   start_url: "/",
