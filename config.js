@@ -21,7 +21,10 @@ export const SITE = {
   // 구글 서치콘솔: 속성 추가 → HTML 태그 → content 값
   // 네이버 서치어드바이저: 사이트 등록 → HTML 태그 → content 값
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION || "",
+    // 구글 소유확인은 계정 단위 토큰이라 같은 구글 계정의 모든 속성이 같은 값을 쓴다.
+    // news URL 접두어 속성용(도메인 속성 DNS 인증과 별개로, 사이트별 리포트를 따로 본다).
+    // CI 재빌드에서도 유지되어야 인증이 풀리지 않으므로 기본값으로 둔다.
+    google: process.env.GOOGLE_SITE_VERIFICATION || "xFfA8wuDdok6daUxYf78lKECaDWrZLHdny1hXnod9eI",
     // 네이버 서치어드바이저 소유확인. CI 재빌드에서도 유지되어야 인증이 풀리지 않는다.
     // 메타태그 방식과 HTML 파일 방식(naver{코드}.html) 양쪽에 같은 코드를 쓴다.
     naver: process.env.NAVER_SITE_VERIFICATION || "6199ead62bda2ec9e75dae83b6b5a60d1e2bd435",
