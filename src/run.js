@@ -14,7 +14,7 @@ import { enrichItems } from "./enrich.js";
 import { addStories } from "./gossip.js";
 import { mapPool } from "./pool.js";
 import { addSourceKeys, sourceKeys, stableItemId, titleKey } from "./identity.js";
-import { markQuality } from "./quality.js";
+import { markQuality, publishQualityIssues } from "./quality.js";
 import { removeRepeatedImages } from "./images.js";
 
 const noPapers = process.argv.includes("--no-papers");
@@ -151,7 +151,7 @@ async function papersOnlyRun() {
   const made = (
     await mapPool(top, async (post) => {
       const paper = withIdentity(await generatePaper(post), post, `paper-${post.id || post.url}`);
-      if (paper.needsReview) return null;
+      if (publishQualityIssues(paper).length) return null;
       console.log(`  ✓ [논문] ${paper.titleKo}`);
       return paper;
     })
@@ -301,8 +301,10 @@ async function main() {
   }
 
   const label = dateLabel();
-  // 자동 발행 시 검수 필요 표시가 남은 아이템은 제외
-  let newItems = autoPublish ? items.filter((it) => !it.needsReview) : items;
+  // 자동 발행 시 공개 차단 품질 플래그가 남은 아이템만 제외한다.
+  // paragraphs-too-few 같은 편집 경고까지 needsReview 전체로 막으면
+  // 공급량이 불필요하게 줄어든다. 실제 차단 기준은 quality.js 한 곳을 따른다.
+  let newItems = autoPublish ? items.filter((it) => publishQualityIssues(it).length === 0) : items;
 
   // ── 발행 게이트 ──
   // 본문이 짧고 레이더 3블록이 모두 비면, 그 페이지에 남는 건 남의 기사 요약뿐이다.

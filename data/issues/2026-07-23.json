@@ -138,7 +138,12 @@
         },
         "clinical": "대형 품종(도베르만, 복서, 그레이트 데인 등) 진료 시 확장형 심근병증 위험 평가를 위해 타우린 상태 관련 문진을 일상적으로 포함시키는 것을 검토하세요.",
         "evidence": null
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "duplicate-source"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "수가 진료실 AI 필기 도구, 도입이 필요한 이유",
@@ -439,7 +444,12 @@
         },
         "clinical": "갑상선기능항진증 고양이에서 투약 시 간 기능과 신장 수치 모니터링을 정기적으로 점검할 것",
         "evidence": null
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "body-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "어린 가축 건강 관리의 새로운 추세: 뽕나무잎 플라보노이드, 항생제 대안으로 부상",
@@ -934,7 +944,12 @@
           "stars": 1,
           "note": "단일 증례이므로 일반화에 한계가 있으며, 기저 식도 질환이 있는 특수한 경우임"
         }
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "body-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "고양이 비종양 CT 소견: 악성과 유사한 종양양 성장",
@@ -1018,7 +1033,12 @@
           "stars": 1,
           "note": "단일 증례이고 보존적 진단이므로 인과관계 입증에는 한계가 있으며, 일반적인 개의 식이 관리에 직접 적용하기엔 증거 수준이 낮음"
         }
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "body-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "재발성 요도 폐쇄 수고양이, 초기 발병보다 질소혈증 발생 위험 낮아",
@@ -1165,7 +1185,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPZDdFd3pEa09Xak5uZnFUdjdPaTlKMXlNdXpnU29tNDNPckxMT1dVOHJtM2xVZ1YyZ3g0aWdUZ0lkb19SUFVZdjRhVEtLbXU2eFlCUVlNRVZ3dnhQY2VqVWNLN19rd2tLcHZISTNyc3JQMjVtQkZCZzd5dkdlRGxxaTZSZFdPZ0k0LVBHT1FsX2ZTUnNMWExBWG5uSkU4UnU1Y2JqeURKMk9oMkpmVmlJaw?oc=5",
       "sourceTitle": "Kind strangers rescue injured calf on busy highway, heartwarming video goes viral",
-      "publishedAt": "2026-07-19T04:48:36.000Z"
+      "publishedAt": "2026-07-19T04:48:36.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "story-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     }
   ]
 }

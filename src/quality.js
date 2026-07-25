@@ -4,6 +4,20 @@ const FOREIGN_SCRIPT = /[一-鿿぀-ヿЀ-ӿ]/;
 const SUSPICIOUS_TERMS = /\b(?:Hernia|fleas|corticosteroid|Oligodendroglioma|Taurine|Microbiome|historicas|alongside|efficacy|literature|refractory|site|generic|Responsible|organism|endogenous|exogenous|probiotic|hospital|owner|Trial|Pilot|Veterinarian|Practice|Nutrition|physiological demand|dietary supplementation)\b/i;
 const GARBLED_TERMS = /\b(?:Invol|ractical)\b|말\s*이\s*교육|세번서|폴크\s+County/i;
 
+// 문단 수는 기존 자료의 편집 형식 차이로 경고만 내고, 나머지는 공개 발행을 막는다.
+// 이 목록은 파이프라인·빌드·검증이 같은 기준을 공유하도록 한곳에 둔다.
+const PUBLISH_BLOCKERS = new Set([
+  "title-missing",
+  "body-missing",
+  "foreign-script",
+  "untranslated-term",
+  "garbled-text",
+  "body-too-short",
+  "story-too-short",
+  "brief-title-too-short",
+  "brief-too-short",
+]);
+
 export function qualityIssues(item = {}) {
   const issues = [];
   const title = String(item.titleKo || "").trim();
@@ -26,6 +40,10 @@ export function qualityIssues(item = {}) {
   } else if (body.length < 420) issues.push("body-too-short");
   if (tier !== "brief" && Array.isArray(item.bodyKo) && item.bodyKo.length < 3) issues.push("paragraphs-too-few");
   return issues;
+}
+
+export function publishQualityIssues(item = {}) {
+  return qualityIssues(item).filter((issue) => PUBLISH_BLOCKERS.has(issue));
 }
 
 export function markQuality(item) {

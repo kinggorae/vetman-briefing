@@ -239,7 +239,12 @@
         },
         "clinical": "리콜 사료 섭취 관련 응급 진료 프로토콜을 사전에 준비하고, 리콜 정보 실시간 확인 체계를 구축할 것",
         "evidence": null
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "body-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "개의 음식 중독 위험, 예상치 못한 25가지 식품",
@@ -969,7 +974,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQTld3bmVONE84V0lSVDA0RDFuOWlmNGNaRV9RckxuVkY5TzE4aXE5ZDI0SXQwNjdXeEpDMDZtZFRGNDNSMnlPUWVYZHc3NmxENGtIOXJFLUZYUWlBb3FVakc1TFd2S2J1T2NpRTFlNURWNlJZQVVKRmFPRXV4T0Y2SlhvWjJ2NmszNEpZeWVMTkVqdzFBdU1ocTVodUtDTTA?oc=5",
       "sourceTitle": "Vets, fire crews team up to save kitten with metal through mouth",
-      "publishedAt": "2026-07-24T18:21:00.000Z"
+      "publishedAt": "2026-07-24T18:21:00.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "garbled-text"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "애완동물 응급진료비 3천 달러! 주인의 긴급 결단",
@@ -1006,7 +1016,13 @@
       "imageUrl": null,
       "sourceUrl": "https://www.myvetcandy.com/news/2026/7/23/clelvj2s32lvrnkxd3h6xnyonqfw49",
       "sourceTitle": "You Can Now Study Horse Teeth at 2 a.m. in Your Pajamas, and That Is a Bigger Deal Than It Sounds",
-      "publishedAt": "2026-07-24T01:15:32.000Z"
+      "publishedAt": "2026-07-24T01:15:32.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "garbled-text",
+        "brief-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "tier": "brief",
@@ -1086,7 +1102,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOMF9ET3drc3pieUx1R2hqVTVNQXZDam9GNWg3Q09pWk9WbzZ6MGQ2Vjk3RWpWaWVtTXNYQVNoWnJtdEJQQndBcVNTOS1pUmxVSndDenlBN2ozS0EzNU9VbWgyT0RteHg1TDhiNlViMWpVNGVnM0JKU1dab240SUFpR0F1RHNGNW8wa1JnZ2E1V0ZiUm1NeVVla1VpRQ?oc=5",
       "sourceTitle": "Veterinarian Shortage Challenges Rural America",
-      "publishedAt": "2026-07-23T16:30:35.000Z"
+      "publishedAt": "2026-07-23T16:30:35.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "brief-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "tier": "brief",
@@ -1246,7 +1267,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNdUszWEY5NWV4cnFFOTQ3OU1faXRRT2NwOEtmZW9CaUFDaWZhRGNHVzlsS2tLSnBwRlhNZ1JwTElDU1dCaVVpX0FmLVFGOGlBclp1R0dPUC16QXUzNUxXVjBZdDFPalptWUtCcFRUMkdRQTktc0taWFhaTHBUZDVXa2VXRXBxVWdzejRjU3I3bVRJdFRCWWlldjdBQ0NvQkNOQldzWVpZZ3NDUkhXRDUxb1dpUnBpbmxGNW1palh6dw?oc=5",
       "sourceTitle": "Rabies Alert – Bat Found in Severn Tests Positive for Rabies",
-      "publishedAt": "2026-07-24T22:02:49.000Z"
+      "publishedAt": "2026-07-24T22:02:49.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "garbled-text"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "tier": "brief",
@@ -1278,7 +1304,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPWjNaQUItM0xKWFBua1R3U2p3ODI2eE5uZVFFLVNCOTg2VkFZZi1yNG5BZnE2YnlyY3ZzMlktc1NMOVd3d2lHQVhLZGxrTkdLZjFsZHRxaW5uckVjeXVyMVMzY2lrUGZWWVpJeEpfVHNWRlpIaHVmSmVxbkU1TkpFcnZZeXRjeFBheGFYWkFJWWFiZkhkS2U0MTZ1VHBac0tGR29xSzVPaTI1UXNrRzJaaA?oc=5",
       "sourceTitle": "Free rabies vaccines: Polk animal control, SPCA Florida partner after recent cases",
-      "publishedAt": "2026-07-24T21:28:43.000Z"
+      "publishedAt": "2026-07-24T21:28:43.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "garbled-text"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "tier": "brief",
@@ -1422,7 +1453,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQMjlydkpFSlhiR0J1QWJDSW83d2NKclFEYk8yYVBsQVlEd1VkaTVqbzd6SlNCdVBaYVhQeXRpZjc1YjRuOWpQTXB2Mzc0MTQ4dVVwa2l6bENUVnBJUlpLUlI5ZE0xMFU5NFVSZ0VBNVh3QzRjS0djYzZTbGJZYThBeENKcUxwVkxleFlkMGM0WktmaE9MR1hZNGw1OVRqczY5RmEwTy02cjNNakNCbWQ4dFJ3NktoOWh4UVBGYkViRTNlTDFCd3VSTUhB?oc=5",
       "sourceTitle": "UF veterinary students tackle mock crime scene",
-      "publishedAt": "2026-07-24T20:37:00.000Z"
+      "publishedAt": "2026-07-24T20:37:00.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "brief-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "tier": "brief",
@@ -1502,7 +1538,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQTU1FN0s5UHlLTDduMC1ZOUxzVzFoMXpuV1lBQnY2WUhTMjhfNmp6QU5sa0hjQzZEUG1YQldhQVRZb3YtWG1NWkE2WjN4dU1MYnVNQkJVaVVDN0Q1WmM3T01jMlUxMi0zc2k1eGlWdG9CRFFUOFZRMjFVakhiRDNpdHFVZDJUUzR2dDZLTmI1ZDhaOFFYRzdUeHhwWFBDNWt2ZjhRazBwSGJmN01tRmtLUks3QS0xeTdzS293VElEaVo0QUx2bGQ5TDV4QmZ3WFlNdk4yYXVybzU1T0dqdGplNWtkS0tqaHBhV1diT08tUV95aDBoakpvUmZGcG05dw?oc=5",
       "sourceTitle": "Amazing Washington: Bald eagle chicks given second chance by WSU vets",
-      "publishedAt": "2026-07-23T21:23:37.000Z"
+      "publishedAt": "2026-07-23T21:23:37.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "brief-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "tier": "brief",

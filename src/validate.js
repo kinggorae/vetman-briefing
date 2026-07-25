@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { normalizeSourceUrl } from "./identity.js";
-import { qualityIssues } from "./quality.js";
+import { publishQualityIssues, qualityIssues } from "./quality.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DATA_DIR = path.join(ROOT, "data", "issues");
@@ -34,6 +34,12 @@ for (const issue of issues) {
   const ids = new Set();
   const urls = new Set();
   for (const [index, item] of (issue.items || []).entries()) {
+    if (item.visibility === "suppressed") {
+      if (!Array.isArray(item.suppressedReason) || item.suppressedReason.length === 0) {
+        fail(`${issue.date} #${index + 1}: 억제 사유 없음`);
+      }
+      continue;
+    }
     if (!String(item.titleKo || "").trim()) fail(`${issue.date} #${index + 1}: 제목 없음`);
     if (!Array.isArray(item.bodyKo) || !item.bodyKo.join("").trim()) fail(`${issue.date} #${index + 1}: 본문 없음`);
     if (item.id && ids.has(item.id)) fail(`${issue.date}: 중복 id ${item.id}`);
@@ -44,13 +50,15 @@ for (const issue of issues) {
     }
     const sourceUrl = normalizeSourceUrl(item.sourceUrl);
     if (sourceUrl && urls.has(sourceUrl)) fail(`${issue.date}: 중복 sourceUrl ${sourceUrl}`);
-    if (sourceUrl && allUrls.has(sourceUrl)) console.warn(`경고: 다른 날짜와 중복 sourceUrl ${sourceUrl} (${allUrls.get(sourceUrl)} → ${issue.date})`);
+    if (sourceUrl && allUrls.has(sourceUrl)) fail(`${issue.date}: 다른 날짜와 중복 sourceUrl ${sourceUrl} (${allUrls.get(sourceUrl)} → ${issue.date})`);
     if (sourceUrl) {
       urls.add(sourceUrl);
       allUrls.set(sourceUrl, issue.date);
     }
-    const quality = qualityIssues(item).filter((flag) => flag === "foreign-script" || flag === "untranslated-term");
-    if (quality.length) fail(`${issue.date} #${index + 1}: 품질 플래그 ${quality.join(", ")}`);
+    const blockers = publishQualityIssues(item);
+    if (blockers.length) fail(`${issue.date} #${index + 1}: 공개 차단 품질 플래그 ${blockers.join(", ")}`);
+    const warnings = qualityIssues(item).filter((flag) => !blockers.includes(flag));
+    if (warnings.length) console.warn(`경고: ${issue.date} #${index + 1}: 품질 플래그 ${warnings.join(", ")}`);
   }
 }
 
@@ -65,6 +73,20 @@ if (fs.existsSync(searchFile)) {
   const searchIds = new Set(search.items.map((item) => item.id).filter(Boolean));
   if (searchIds.size !== search.items.length) fail("search.json에 중복 id가 있습니다.");
   if (search.items.some((item) => !item.url || !/^https:\/\//.test(item.url))) fail("search.json에 잘못된 기사 URL이 있습니다.");
+}
+
+const latestFile = path.join(SITE_DIR, "latest.json");
+if (fs.existsSync(latestFile)) {
+  const latestPublic = json(latestFile);
+  const latestUrls = new Set();
+  for (const [index, item] of (latestPublic?.items || []).entries()) {
+    if (item.visibility === "suppressed") fail(`site/latest.json #${index + 1}: 억제 항목이 공개 JSON에 남아 있습니다.`);
+    const blockers = publishQualityIssues(item);
+    if (blockers.length) fail(`site/latest.json #${index + 1}: 공개 차단 품질 플래그 ${blockers.join(", ")}`);
+    const sourceUrl = normalizeSourceUrl(item.sourceUrl);
+    if (sourceUrl && latestUrls.has(sourceUrl)) fail(`site/latest.json 중복 sourceUrl ${sourceUrl}`);
+    if (sourceUrl) latestUrls.add(sourceUrl);
+  }
 }
 
 const manifestFile = path.join(SITE_DIR, "search-manifest.json");

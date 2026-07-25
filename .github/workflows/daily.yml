@@ -64,6 +64,19 @@ jobs:
           # 무료 Actions 예산(하루 ~50분) 안에서 끝나게 한다. MiniMax 게이트웨이 한도에 맞춰 조정.
           LLM_CONCURRENCY: ${{ vars.LLM_CONCURRENCY || '6' }}
 
+      # 기존 데이터와 새 발행분을 함께 검사한다. 삭제하지 않고 억제 표시만 남겨
+      # 문제가 있는 원문·번역 결과를 복구할 수 있게 한다.
+      - name: Repair publication set
+        run: node src/repair-publication.js --apply --report /tmp/publication-repair.json
+
+      - name: Upload publication repair report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-repair-${{ github.run_id }}
+          path: /tmp/publication-repair.json
+          if-no-files-found: ignore
+
       - name: Build site
         run: npm run build
 
@@ -76,6 +89,17 @@ jobs:
         with:
           name: image-health-${{ github.run_id }}
           path: /tmp/image-health.json
+          if-no-files-found: ignore
+
+      - name: Build quality report
+        run: node src/quality-report.js --json /tmp/quality-report.json
+
+      - name: Upload quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-report-${{ github.run_id }}
+          path: /tmp/quality-report.json
           if-no-files-found: ignore
 
       # 발행 결과가 비정상이면 커밋하지 않는다. 빈 이슈를 밀어넣고 배포하면

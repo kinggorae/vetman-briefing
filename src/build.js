@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { SITE, LEGAL, SPONSOR, TOPICS } from "../config.js";
 import { normalizeSourceUrl } from "./identity.js";
 import { cleanImageUrl, removeRepeatedImages } from "./images.js";
-import { qualityIssues } from "./quality.js";
+import { publishQualityIssues } from "./quality.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -135,6 +135,7 @@ function toArticle(item, i, issueDate) {
     radar: item.radar || null,
     tag: item.tagKo || "",
     tier: item.tier || "deep", // "brief" = 간추린 소식(개별 페이지 없음, 색인 X)
+    ...(item.visibility ? { visibility: item.visibility, suppressedReason: item.suppressedReason || [] } : {}),
   };
 }
 
@@ -144,10 +145,9 @@ function buildIssueData(issue) {
   const all = issue.items
     .map((it, i) => ({ it, i }))
     .filter(({ it }) => {
-      // 짧은 브리프·화제글은 원본 JSON에는 보존하되, 품질 게이트를 통과한 것만 지면에 올린다.
-      // 심층 기사와 과거 데이터의 노출은 이 필터의 영향을 받지 않는다.
-      if (it.tier !== "brief" && it.category !== "watercooler") return true;
-      return qualityIssues(it).length === 0;
+      // 원본 JSON에는 보존하되, 명시적으로 억제했거나 공개 발행 차단 플래그가
+      // 남은 항목은 홈·검색·사이트맵·개별 기사에서 모두 제외한다.
+      return it.visibility !== "suppressed" && publishQualityIssues(it).length === 0;
     })
     .map(({ it, i }) => toArticle(it, i, date))
     .filter((a) => a.title.trim() && a.body.length);
@@ -293,7 +293,7 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc.slice(0, 155))}">
 <meta property="og:url" content="${esc(canonical)}">
-${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">` : ""}
+${ogImage ? `<meta property="og:image" content="${esc(ogImage)}"><meta property="og:image:alt" content="${esc(title)}">` : ""}
 <meta name="twitter:card" content="${ogImage ? "summary_large_image" : "summary"}">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc.slice(0, 155))}">
@@ -727,11 +727,11 @@ const APP_JS = String.raw`
     return '<div class="vm-band" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-line-normal);">'+list.map(bandCard).join('')+fill+'</div>';
   }
 
-  // "최근 브리핑" — 오늘 발행분이 적은 날에도 1면이 허전하지 않도록 지난 며칠 기사를 함께.
+  // "이어 읽기" — 오늘 지면과 겹치지 않고, 오늘 다룬 주제와 연결되는 최근 기사만 함께.
   function recentSection(){
     if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
     var list=DATA.recent||[]; if(!list.length) return '';
-    return '<div style="margin-top:32px;"><div style="border-top:2px solid var(--color-label-strong);padding:16px 0 13px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">최근 브리핑</span><span style="font-size:12.5px;color:var(--color-label-alternative);">지난 며칠 사이 주요 기사</span></div>'
+    return '<div style="margin-top:32px;"><div style="border-top:2px solid var(--color-label-strong);padding:16px 0 13px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">이어 읽기</span><span style="font-size:12.5px;color:var(--color-label-alternative);">오늘 기사와 연결되는 최근 소식 · '+list.length+'건</span></div>'
     +bandGrid(list)+'</div>';
   }
 
@@ -765,7 +765,7 @@ const APP_JS = String.raw`
       +'<div class="vm-brief-open">자세히 보기 '+ARR+'</div></button>';
     }).join('');
     return '<div style="margin-top:34px;">'
-    +'<div style="padding:16px 0 12px;border-bottom:2px solid var(--color-label-strong);"><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">간추린 소식</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">짧게 읽는 추가 소식 '+list.length+'건</span></div>'
+    +'<div style="padding:16px 0 12px;border-bottom:2px solid var(--color-label-strong);"><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">한눈에 보는 추가 소식</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">2문장 · 원문 링크 포함 · '+list.length+'건</span></div>'
     +'<div class="vm-brief-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;">'+rows+'</div>'
     +(list.length>visible.length?'<div style="display:flex;justify-content:center;margin-top:16px;"><button data-act="brief-more" style="border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 18px;border-radius:9px;">간추린 소식 '+list.length+'건 전체 보기</button></div>':'')
     +(S.briefAll&&list.length>12?'<div style="display:flex;justify-content:center;margin-top:16px;"><button data-act="brief-less" style="border:0;background:transparent;color:var(--color-label-alternative);cursor:pointer;font-family:inherit;font-size:12px;">간추린 소식 접기</button></div>':'')
@@ -882,7 +882,7 @@ const APP_JS = String.raw`
       +'<div id="vm-feat-r" style="padding:26px 0 30px 40px;border-left:1px solid var(--color-line-normal);">'+mostRead(top5)+'</div>'
     +'</div>':'');
     if(bandAll.length){
-      h+='<div style="padding:16px 0 13px;border-bottom:1px solid var(--color-line-normal);"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">오늘의 추가 브리핑</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">오늘 선별된 기사 중 더 읽을 만한 소식</span></div>'
+      h+='<div style="padding:16px 0 13px;border-bottom:1px solid var(--color-line-normal);"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">오늘의 다른 소식</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">메인 기사와 겹치지 않는 오늘의 후속 소식</span></div>'
       +bandGrid(band);
       if(more>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+more+'건 더 보기</button></div>'; }
     }
@@ -1159,8 +1159,12 @@ const APP_JS = String.raw`
   function track(a){
     if(typeof gtag!=='function'||!a) return;
     try{
-      gtag('event','article_view',{article_id:a.id,article_title:a.title,category:a.cat,source:a.source,issue_date:a.day});
+      gtag('event','article_view',{article_id:a.id,article_title:a.title,category:a.cat,content_tier:a.tier||'deep',source:a.source,issue_date:a.day});
     }catch(e){}
+  }
+  function trackSection(cat){
+    if(typeof gtag!=='function') return;
+    try{ gtag('event','section_view',{section:cat||'all',issue_date:DATA.date}); }catch(e){}
   }
   function openArticle(id){
     if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
@@ -1194,7 +1198,7 @@ const APP_JS = String.raw`
       // 홈이 아닌 페이지(주간·날짜별)에서 '홈'을 누르면 그 페이지엔 홈 데이터가 없다 → 실제 홈으로 이동
       if(v==='home'&&!DATA.isHome){ location.href='/'; return; }
       S.view=v; S.openId=null; if(v!=='home'&&v!=='archive') S.query=''; if(v==='home') S.query=''; if(v==='archive'&&S.archive===null) loadArchive(); S.searchFocus=false; render(); return; }
-    if(el.hasAttribute('data-cat')){ ev.stopPropagation(); S.cat=el.getAttribute('data-cat'); S.showAll=false; S.searchFocus=false; render(); return; }
+    if(el.hasAttribute('data-cat')){ ev.stopPropagation(); S.cat=el.getAttribute('data-cat'); trackSection(S.cat); S.showAll=false; S.searchFocus=false; render(); return; }
     if(el.hasAttribute('data-date')){ ev.stopPropagation(); loadDate(el.getAttribute('data-date')); return; }
     var act=el.getAttribute('data-act');
     if(act){
@@ -1244,23 +1248,36 @@ const APP_JS = String.raw`
 
 // 홈 지면이 비지 않도록 최근 다른 날짜의 기사를 함께 싣는다(오늘 지면과는 분리 표기).
 // 일간 수확량은 날마다 들쭉날쭉하므로, 적게 나온 날에도 1면이 허전해지지 않게 한다.
-function recentArticles(current, allIssues, limit = 12) {
+function recentArticles(current, allIssues, limit = 6) {
   const curLabel = labelOf(current);
-  const out = [];
+  const preferredCats = new Set(
+    (current.items || [])
+      .filter((item) => item.visibility !== "suppressed" && item.category !== "watercooler" && publishQualityIssues(item).length === 0)
+      .map((item) => item.category)
+      .filter(Boolean)
+  );
+  const preferred = [];
+  const fallback = [];
+  const seen = new Set();
   for (const iss of allIssues) {
     const d = labelOf(iss);
     if (d === curLabel || iss.weekly) continue;
-    // 원본 인덱스를 유지해야 날짜별 페이지와 id가 일치한다
-    out.push(
-      ...iss.items
-        .map((it, i) => toArticle(it, i, d))
-        .filter((a) => a.cat !== "watercooler")
-        // 지난 날짜 기사이므로 홈에서 "오늘" 뱃지가 붙으면 안 된다
-        .map((a) => ({ ...a, isToday: false }))
-    );
-    if (out.length >= limit) break;
+    // 원본 인덱스를 유지해야 날짜별 페이지와 id가 일치한다.
+    for (const a of (iss.items || [])
+      .map((it, i) => toArticle(it, i, d))
+      .filter((a) => {
+        const key = normalizeSourceUrl(a.sourceUrl);
+        if (a.tier === "brief" || a.cat === "watercooler" || publishQualityIssues(a).length) return false;
+        if (key && seen.has(key)) return false;
+        if (key) seen.add(key);
+        return true;
+      })
+      // 지난 날짜 기사이므로 홈에서 "오늘" 뱃지가 붙으면 안 된다.
+      .map((a) => ({ ...a, isToday: false }))) {
+      (preferredCats.has(a.cat) ? preferred : fallback).push(a);
+    }
   }
-  return out.slice(0, limit);
+  return [...preferred, ...fallback].slice(0, limit);
 }
 
 function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) {
@@ -1269,13 +1286,17 @@ function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) 
   // 그 페이지의 데이터로 '홈 뷰'를 그리면 엉뚱한 내용이 나온다 → 브랜드 버튼을 실제 홈으로.
   data.isHome = isIndex;
   if (isIndex) {
-    data.recent = recentArticles(issue, allIssues, 12);
+    data.recent = recentArticles(issue, allIssues, 6);
     // 지금까지 발행한 전체 글 수. 홈 데이터라인에 "전체 N건"으로 노출하고,
     // 누르면 아카이브로 보낸다. 매일 쌓이는 규모를 한눈에 보여준다.
     let total = 0;
     for (const iss of allIssues) {
       if (iss.weekly) continue; // 주간 요약은 재수록이라 이중 계산하지 않는다
-      total += (iss.items || []).filter((it) => it.category !== "watercooler").length;
+      total += (iss.items || []).filter((it) =>
+        it.visibility !== "suppressed" &&
+        it.category !== "watercooler" &&
+        publishQualityIssues(it).length === 0
+      ).length;
     }
     data.totalArticles = total;
   }
@@ -1382,7 +1403,13 @@ function buildWeeklies(issues) {
   return Object.entries(weeks)
     .map(([wk, items]) => {
       const top = items
-        .filter((it) => it.category !== "research")
+        .filter((it) =>
+          it.visibility !== "suppressed" &&
+          it.tier !== "brief" &&
+          it.category !== "research" &&
+          it.category !== "watercooler" &&
+          publishQualityIssues(it).length === 0
+        )
         .sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0))
         .slice(0, 12);
       return { week: wk, count: top.length, items: top };
@@ -1514,12 +1541,27 @@ function issueIndexable(data) {
 // 남는 건 해외 기사의 한국어 요약뿐이다. 사이트에는 남기되 색인 대상에서는 뺀다 —
 // 이런 페이지가 쌓이면 사이트 전체가 재작성 콘텐츠로 평가된다.
 function isIndexable(a) {
+  if (a.visibility === "suppressed") return false;
   if (a.duplicateSource) return false;
   const r = a.radar || {};
   return !!(r.clinical || r.owner || r.evidence);
 }
 
+function renderSuppressedArticlePage(a) {
+  const canonical = `${SITE.baseUrl}${articlePath(a)}`;
+  const title = `${a.title} | ${SITE.name}`;
+  return `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="${esc(canonical)}">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<style>body{margin:0;background:#fff;color:#171719;font-family:"Apple SD Gothic Neo",system-ui,sans-serif}.wrap{max-width:680px;margin:0 auto;padding:28px 22px 72px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e8;padding-bottom:16px}header a{color:#171719;text-decoration:none;font-weight:800}main{padding:72px 0 48px}h1{font-size:28px;line-height:1.35;letter-spacing:-.03em;margin:0 0 18px}p{color:#62636a;line-height:1.8;margin:0 0 24px}a.button{display:inline-block;background:#0066ff;color:#fff;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:8px}footer{border-top:1px solid #e5e5e8;padding-top:18px;color:#8a8b91;font-size:12px}footer a{color:#62636a;margin-right:14px}</style>
+${gaSnippet()}</head><body><div class="wrap"><header><a href="/">${esc(SITE.name)}</a><a href="/topic/">주제별 보기</a></header><main><div style="font-size:12px;font-weight:800;letter-spacing:.08em;color:#0066ff;margin-bottom:12px;">편집 검수 안내</div><h1>${esc(a.title)}</h1><p>이 기사는 현재 편집 검수 및 출처 확인 중이라 공개 지면에서 잠시 제외되어 있습니다. 최신 브리핑에서 검수된 기사만 확인해 주세요.</p><a class="button" href="/">최신 브리핑 보기</a></main><footer><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a></footer></div></body></html>`;
+}
+
 function renderArticlePage(a, data, prev, next) {
+  if (a.visibility === "suppressed") return renderSuppressedArticlePage(a);
   const canonical = `${SITE.baseUrl}${articlePath(a)}`;
   const brand = `${SITE.brandKo}(${SITE.brandEn})`;
   const title = `${a.title} | ${SITE.name} · ${SITE.brandKo}`;
@@ -1612,7 +1654,7 @@ function renderArticlePage(a, data, prev, next) {
   }${SITE.verification?.naver ? `\n<meta name="naver-site-verification" content="${esc(SITE.verification.naver)}">` : ""}
 <meta property="og:type" content="article">${
     // 뉴스 검색의 신선도 신호. JSON-LD의 datePublished만으로는 잡지 않는 크롤러가 있다
-    a.ts ? `\n<meta property="article:published_time" content="${new Date(a.ts).toISOString()}">` : ""
+    a.ts ? `\n<meta property="article:published_time" content="${new Date(a.ts).toISOString()}">\n<meta property="article:modified_time" content="${new Date(a.ts).toISOString()}">` : ""
   }${a.kicker ? `\n<meta property="article:section" content="${esc(a.kicker)}">` : ""}
 <meta property="og:title" content="${esc(a.title)}">
 <meta property="og:description" content="${esc(desc)}">
@@ -2465,13 +2507,20 @@ function buildRss(issues) {
   const items = issues
     .slice(0, 20)
     .map(
-      (i) => `  <item>
+      (i) => {
+        const publicItems = (i.items || []).filter((it) =>
+          it.visibility !== "suppressed" &&
+          it.tier !== "brief" &&
+          publishQualityIssues(it).length === 0
+        );
+        return `  <item>
     <title>${esc(`${labelOf(i)} 수의계 해외 뉴스 브리핑`)}</title>
     <link>${SITE.baseUrl}/issues/${labelOf(i)}</link>
     <guid>${SITE.baseUrl}/issues/${labelOf(i)}</guid>
     ${i.generatedAt ? `<pubDate>${new Date(i.generatedAt).toUTCString()}</pubDate>` : ""}
-    <description>${esc(i.items.map((it) => it.titleKo).join(" / "))}</description>
-  </item>`
+    <description>${esc(publicItems.map((it) => it.titleKo).join(" / "))}</description>
+  </item>`;
+      }
     )
     .join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -2487,7 +2536,12 @@ ${items}
 function buildLlmsTxt(issues) {
   const latest = issues[0];
   // 심층 기사만 요약에 싣는다(브리프는 짧은 단신이라 제외) — AI가 신뢰 인용할 알맹이 위주로.
-  const deepItems = latest.items.filter((it) => it.tier !== "brief" && it.category !== "watercooler");
+  const deepItems = (latest.items || []).filter((it) =>
+    it.visibility !== "suppressed" &&
+    it.tier !== "brief" &&
+    it.category !== "watercooler" &&
+    publishQualityIssues(it).length === 0
+  );
   return `# ${SITE.name}
 
 > ${SITE.description}
@@ -2554,7 +2608,12 @@ function build() {
       archive.push({ date: data.date, dateLabel: data.dateLabel, count: data.count, titles: data.articles.slice(0, 3).map((a) => a.title) });
 
     // 기사별 개별 페이지 — 색인 면적을 날짜 단위에서 기사 단위로 넓힌다
-    const all = [...data.articles, ...(data.stories || [])];
+    // 공개 지면에는 넣지 않지만, 이미 색인됐을 수 있는 억제 항목의 URL은
+    // noindex, follow 페이지로 유지해 외부 링크를 404로 만들지 않는다.
+    const suppressed = (issue.items || [])
+      .map((item, index) => toArticle(item, index, labelOf(issue)))
+      .filter((article) => article.visibility === "suppressed");
+    const all = [...data.articles, ...(data.stories || []), ...suppressed];
     all.forEach((a, i) => {
       // 여러 날짜에 같은 원문이 재수록되면 가장 최신본만 색인한다.
       // 이전 페이지는 URL을 보존하되 noindex로 남겨 기존 링크를 깨지 않는다.
@@ -2625,7 +2684,11 @@ function build() {
     searchManifest.chunks.push({ key, href, count: items.length });
   }
   fs.writeFileSync(path.join(SITE_DIR, "search-manifest.json"), JSON.stringify(searchManifest));
-  fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
+  const publicLatest = {
+    ...latest,
+    items: (latest.items || []).filter((item) => item.visibility !== "suppressed" && publishQualityIssues(item).length === 0),
+  };
+  fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(publicLatest, null, 2));
   fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleEntries, topicUrls));
   fs.writeFileSync(path.join(SITE_DIR, "news-sitemap.xml"), buildNewsSitemap(articleEntries));
   // robots.txt — 검색 크롤러 + AI 답변엔진(GEO)을 명시적으로 환영한다.

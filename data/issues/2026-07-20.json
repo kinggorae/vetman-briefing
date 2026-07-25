@@ -979,7 +979,12 @@
           "stars": 1,
           "note": "단일 증례 보고로, 분석기 종류에 따라 관찰 여부가 달라질 수 있어 일반화에 주의가 필요합니다."
         }
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "body-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "개와 고양이 스마트폰 안저 영상 시스템 비교: OQVet 화질 최고",
@@ -1323,7 +1328,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9qdlFjckttbzJfeVlsTjRuU1ZWeXdqT1o2WVN2ckl3aDVjN0xIcC1oX0gxa0hJR2xXT2JnajM5MEZJRTdzY1I4RExnNDBpZEtySzU1MkdyZmdwYV83SERNc3pia29jdktBTm1qWjRxazV5NkdHTEE?oc=5",
       "sourceTitle": "Seattle’s viral ‘Jimothy’ raccoon may have rare spinal condition, veterinarian says",
-      "publishedAt": "2026-07-17T18:27:21.000Z"
+      "publishedAt": "2026-07-17T18:27:21.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "story-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "영국 요크셔수의들, 헤리오트 정신으로 Pop-up 진료소 열어",

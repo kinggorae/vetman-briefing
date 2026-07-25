@@ -29,17 +29,6 @@
         <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
         <news:language>ko</news:language>
       </news:publication>
-      <news:publication_date>2026-07-24T10:00:00.000Z</news:publication_date>
-      <news:title>강아지가 리콜 사료 먹었을 때 수의사가 알려주는 대처법</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
       <news:publication_date>2026-07-24T01:52:35.000Z</news:publication_date>
       <news:title>Vet Candy, 동물 의료 서비스 품질 보장 정책 발표</news:title>
     </news:news>

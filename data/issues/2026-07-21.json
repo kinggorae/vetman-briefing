@@ -285,7 +285,12 @@
         },
         "clinical": "개 귀염증 치료 프로토콜 재점검, 특히 만성·재발성 증례에서 세균배양 및 감수성 검사 시행 빈도 확인",
         "evidence": null
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "duplicate-source"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "개·고양이 자동바늘생검-부위 미봉합시 장누출 위험 평가",
@@ -683,7 +688,12 @@
         },
         "clinical": "자사 처방 사료의 프로바이오틱스 종류와 종 특이성을 확인하고, 보호자에게 처방 시 해당 근거를 설명할 수 있도록 점검",
         "evidence": null
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "duplicate-source"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "개 전십자 인대 파열수술, TPLO와 TTA 관절염 진행은 어떤 것이 더 나은가?",
@@ -1137,7 +1147,12 @@
         "owner": null,
         "clinical": "국내 수의대생 대상 국제 장학금 프로그램 정보 파악 및 우수 인력 확보를 위한 인턴십 연계 가능성 점검",
         "evidence": null
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "body-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "레드팜유와 천연추출물 복합 펫샴푸의 항균·항진균·항염 효과 연구",
@@ -1422,7 +1437,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNRU43TEN0WHJUX19veW81dGNuNVlZaHhCYkxwX3pmUGVOc0d1WjJodW9Wc0s2TFE3aTBfSjdXNXVaM01CbndHeTdOUWV2YUZPM3puWlVMUC1KaV9SRmNmV1FjQ1NQZHFaSzk2VDhDMGlYUS0zRGhFV0p3dzJXV2Vzc0dIcFBuRXo5b09WMV9TcDlBNldRSDdZODl1ZEw?oc=5",
       "sourceTitle": "Wood And Acrylic Office Decor Gift Veterinary Receptionist Gift, Card | Funny Vet Receptionist Week Gift | Vet Receptionist Thank You Appreciation Gift Idea - Greeting Card Desk Decorative Sign Plaque",
-      "publishedAt": "2026-07-20T12:56:47.000Z"
+      "publishedAt": "2026-07-20T12:56:47.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "story-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "반려동물 보험, 과연 필요할까?",

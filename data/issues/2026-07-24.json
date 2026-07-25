@@ -372,7 +372,12 @@
         },
         "clinical": "노령 동물 건강 검진 프로토콜에 관절·치아·신장 기능 검사 항목 확대 적용 검토",
         "evidence": null
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "body-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "수의대 커뮤니티 메디슨, 지역에서 동물과 사람 만나",

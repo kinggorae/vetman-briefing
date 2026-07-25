@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { normalizeSourceUrl, sourceKeys, stableItemId } from "../src/identity.js";
 import { koreanizeText } from "../src/koreanize.js";
-import { qualityIssues } from "../src/quality.js";
+import { publishQualityIssues, qualityIssues } from "../src/quality.js";
 import { cleanImageUrl, removeRepeatedImages } from "../src/images.js";
 
 test("source URLs normalize tracking parameters and fragments", () => {
@@ -37,13 +37,16 @@ test("quality gate keeps thin or garbled briefs out of the compact feed", () => 
   });
   assert.ok(flags.includes("brief-too-short"));
 
-  const garbled = qualityIssues({
+  const garbledItem = {
     tier: "brief",
     titleKo: "온라인 말 이 교육 프로그램 출시",
     leadKo: "수의사 교육 관련 소식으로 자세한 내용과 배경을 함께 전합니다. 현장에 참고할 만한 정보입니다.",
     bodyKo: [],
-  });
+  };
+  const garbled = qualityIssues(garbledItem);
   assert.ok(garbled.includes("garbled-text"));
+  assert.ok(publishQualityIssues(garbledItem).includes("garbled-text"));
+  assert.ok(!publishQualityIssues({ titleKo: "짧은 문단 경고", leadKo: "내용", bodyKo: ["한 문단"] }).includes("paragraphs-too-few"));
 });
 
 test("image cleanup rejects generic assets and removes repeated representatives", () => {

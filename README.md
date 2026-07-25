@@ -24,6 +24,8 @@ src/select.js        규칙 필터 + Claude 관련성 스코어링(0~10) → 상
 src/generate.js      한국어 제목·요약·글감 포인트 생성
 src/identity.js      원문 URL 정규화·추적 파라미터 제거·안정적인 기사 ID 생성
 src/quality.js       외국어 혼입·미번역 용어·본문 길이 품질 게이트
+src/repair-publication.js 중복 원문·공개 차단 품질 항목을 삭제하지 않고 억제
+src/quality-report.js  원본·공개·억제 건수와 품질 플래그 운영 리포트
 src/images.js        원문 대표 이미지 정규화·공통 이미지 제거·중복 방지
 src/repair-images.js 기존 발행 데이터의 대표 이미지 일괄 정리
 src/repair-content.js 기존 발행 데이터의 번역 잔여물 일괄 점검·교정
@@ -45,6 +47,8 @@ node src/run.js --publish        # draft 없이 바로 발행 (검수 필요 표
 # draft 검수 후 수동 발행:
 node src/publish.js 2026-07-19
 npm run build          # site/ 빌드
+npm run repair-publication # 기존 발행 데이터의 중복·품질 불량 항목을 억제(원본 보존)
+npm run quality-report # 공개/억제 건수와 품질 플래그 리포트
 npm run repair-images  # 기존 발행 데이터의 공통·반복 이미지 제거
 ```
 
@@ -65,15 +69,21 @@ npm run repair-images  # 기존 발행 데이터의 공통·반복 이미지 제
 | `ADMIN_PASSWORD` | `/admin` 검수 API 인증용. 저장소나 프런트엔드 코드에 넣지 않고 Pages Secret으로만 등록 |
 | `SITE_ORIGIN` | API CORS 허용 원본. 기본값은 `https://news.vetmanlab.com` |
 | `NEWSLETTER_ENABLED` | `true`로 명시적으로 켠 경우에만 뉴스레터 구독 API 활성화 |
+| `SUBS` | Cloudflare KV 바인딩. `sub:<email>`·`tok:<token>` 키를 저장 |
+| `RESEND_API_KEY` 또는 `SES_*` | 실제 발송 워커를 붙일 때만 설정. 발송 수단 없이 구독 폼을 켜지 않는다 |
 | `TURNSTILE_SECRET_KEY` | 선택. 등록하면 AI 초안 생성 요청에 Cloudflare Turnstile 검증을 요구 |
 
 `ADMIN_PASSWORD`를 설정하지 않으면 관리자 API는 의도적으로 401을 반환합니다. 관리자 화면 주소를 아는 것만으로는 데이터에 접근할 수 없습니다.
 
 초안 생성·뉴스레터 API는 `https://news.vetmanlab.com`에서 온 브라우저 요청만 허용하며, `Origin`이 없는 서버 간 호출은 거부합니다. 초안 생성 요청의 크기도 제한해 LLM 비용이 외부에 노출되지 않도록 합니다.
 
+뉴스레터는 현재 수신거부 API까지 준비되어 있지만, 발송 제공자와 KV 바인딩을 확인하기 전에는 비활성화한다. 활성화할 때는 `SUBS` 바인딩 → 테스트 주소 구독 → 실제 메일 수신 → 수신거부 링크 → 중복 구독 응답을 순서대로 검증한다.
+
 홈 검색은 최신 발행분에만 갇히지 않도록 전체 색인을 필요할 때 불러옵니다. 검색 색인은 날짜별 `site/search/*.json` 청크와 `search-manifest.json`으로 나뉘어, 새 발행 때 최신 청크만 바뀌고 과거 청크의 CDN 캐시가 유지됩니다. 구버전 배포나 청크 장애에서는 `search.json`으로 폴백합니다.
 
 매일 CI는 외부 대표 이미지와 RSS/Google News 소스 응답·항목 수·마지막 발행 시각도 점검합니다. 실패 목록은 GitHub Actions artifact(`image-health-*`, `source-health-*`)와 Step Summary에 남고, 소스군 전체 장애 또는 허용치를 넘는 실패는 발행을 중단합니다.
+
+발행 데이터는 공개 전에 두 번 검사합니다. `repair-publication`은 최신 정상본을 우선 보존하고, 다른 날짜의 중복 원문과 외국어·깨진 문장·최소 본문 길이 미달 항목을 `visibility: suppressed`로 표시합니다. 원본 JSON과 억제 사유는 남아 있어 되돌리거나 다시 검수할 수 있습니다. `quality-report`는 매일 공개 건수·억제 건수·이미지 유무·카테고리별 편중을 Actions artifact로 남깁니다.
 
 이미지는 원문 페이지가 명시한 `og:image`, Twitter 이미지, JSON-LD 이미지 중 실제 대표 이미지 후보만 사용합니다. Google News 공통 로고·사이트 공통 배경·반복 이미지가 감지되면 URL을 비우고, 이미지 없는 기사는 큰 대체 플레이트 없이 제목·출처 중심으로 렌더링합니다. 기존 데이터는 `npm run repair-images`로 일괄 정리할 수 있으며, 빌드 단계에서도 같은 규칙을 한 번 더 적용합니다.
 
@@ -88,6 +98,7 @@ Anthropic 웹 검색 도구가 없어 Plan B(레딧 시그널)는 비활성화�
 - **수동 검수 모드**: 로컬에서 `npm run run` → draft 확인 → `node src/publish.js <날짜>` → `npm run build`.
 - `site/latest.json`은 VetMan 본체에서 embed할 수 있는 공개 endpoint.
 - `npm run validate`는 발행 이슈·중복 원문·사이트맵·관리자 산출물·보안 문자열을 검사한다. CI는 빌드 직후 이 검사를 통과해야 커밋한다.
+- `site/latest.json`, 검색 색인, 주제 허브, 뉴스 사이트맵은 억제 항목을 포함하지 않는다. 브리프는 홈 카드로만 제공하고 개별 색인 페이지를 만들지 않는다.
 - 기존 기사 URL은 legacySlug로 보존하고, 새 기사는 원문 URL 기반 v1_... ID를 사용한다. 제목 교정만으로 이미 색인된 주소가 바뀌지 않게 하는 규칙이다.
 - 같은 원문이 여러 날짜에 재수록되면 최신본만 색인하고 과거 페이지는 noindex, follow로 유지한다.
 - CI는 라이브 latest.json보다 오래된 날짜를 배포하려는 경우 중단한다. 라이브와 저장소의 날짜가 어긋난 상태에서 수동 배포하지 않는다.

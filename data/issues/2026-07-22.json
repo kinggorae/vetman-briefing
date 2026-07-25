@@ -178,7 +178,12 @@
         },
         "clinical": "반려동물 예방접종 기록에서 광견병 예방접종력을 정기적으로 확인하고, 미접종 동물에 대해 보호자에게 안내",
         "evidence": null
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "body-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "나이지리아 광역수도, 광견병 사망자 발생에 전문가들 촉구",
@@ -548,7 +553,12 @@
         },
         "clinical": "개·고양이 광견병 예방접종 기록을 점검하고, 미접종 동물에게는 접종을 권장합니다",
         "evidence": null
-      }
+      },
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "body-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "콜로라도수의사, 약물·음주 위반으로 면허 포기",
@@ -1055,7 +1065,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQNXk4TWRfRzNaRzdXeUhiTmJDcmhJRXFoTXRDLWlLT1M3eHRVTlQ5bnZDX3ZqUVdVSWxpM0h3NmRZbVlaSXNkMnBQdlVybW1idm9QTXhFWDVmV1pacHBUN2ZjTVFYeHRjem1sMkdxWWZMRWRKUU0zQXZNNmk2a19oVmUtQWxPLTdHSzlKWThHUnhOR3ZzZWREank3OTQ4c2I2NkE?oc=5",
       "sourceTitle": "Shocking discovery of 35 abandoned cats behind a vet clinic's closed doors",
-      "publishedAt": "2026-07-21T13:07:00.000Z"
+      "publishedAt": "2026-07-21T13:07:00.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "story-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "반려동물 진료비, 이 정도였어?",
@@ -1076,7 +1091,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBSRHk1S0dOUEFuM2Uyb180X0lGZ29jb3pVVEFpNkZ4WlNDNk82YU8tdTlnN054RXlibDA5R2VRbTI0OERnMnBVc1g4Z19ta0tHYUx4cEVid0JYblpFdmZxcExQV0pWb3gtQkpxVEkyWlVTUmJh?oc=5",
       "sourceTitle": "12 Pet Healthcare Statistics & Facts: 2026 Update",
-      "publishedAt": "2026-06-26T02:16:28.000Z"
+      "publishedAt": "2026-06-26T02:16:28.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "story-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "연기 피해를 입은 비둘기, 소장관에게 도움 요청",
@@ -1118,7 +1138,12 @@
       "imageUrl": null,
       "sourceUrl": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPc3BkNkNoQnRsRktnT251VndqUjBjX05wem5Lb3pjOU81NE85Q2ZJQkY5TWt5ZGtmT1c3MUpQMXNwdlFGa2RjVTBubWRhWXdETDk1SndrRmZKU05lamZ2TlVHTWpCdktLLXBHX1ppR3lSYzVQd2NDTzJ2VGxEX2FESUhRWjFLNVNaemN6MVF0cC0xZ1JWSzl0MmdwM01sY0VaV3dBRlEtU3RybzJvMG1RREhaUXlOU0VfRFNDY29mVzA?oc=5",
       "sourceTitle": "Heartwarming video shows moment firefighters rescue dog from the rubble of Venezuela earthquakes",
-      "publishedAt": "2026-06-27T07:00:00.000Z"
+      "publishedAt": "2026-06-27T07:00:00.000Z",
+      "visibility": "suppressed",
+      "suppressedReason": [
+        "story-too-short"
+      ],
+      "suppressedAt": "2026-07-25T08:16:28.621Z"
     },
     {
       "titleKo": "MLB팀에 물린 라쿤? 시애틀 팬들 \"공식 창립자인데 이상해\"",
