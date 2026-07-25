@@ -21,6 +21,15 @@ function looksLikeFeed(xml, contentType) {
   return /xml|rss|atom/i.test(contentType) || /<(?:rss|feed|rdf:RDF)\b/i.test(xml.slice(0, 5000));
 }
 
+function latestPublishedAt(xml) {
+  const values = [...xml.matchAll(/<(?:pubDate|published|updated|dc:date)[^>]*>([\s\S]*?)<\/(?:pubDate|published|updated|dc:date)>/gi)]
+    .map((match) => match[1].replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]+>/g, "").trim())
+    .map((value) => new Date(value))
+    .filter((date) => !Number.isNaN(date.getTime()));
+  if (!values.length) return null;
+  return new Date(Math.max(...values.map((date) => date.getTime()))).toISOString();
+}
+
 async function check(feed, index) {
   const started = Date.now();
   try {
@@ -34,6 +43,9 @@ async function check(feed, index) {
     const items = itemCount(xml);
     const formatOk = looksLikeFeed(xml, contentType);
     const ok = response.ok && formatOk;
+    const latest = latestPublishedAt(xml);
+    const ageHours = latest ? Number(((Date.now() - new Date(latest).getTime()) / 3600000).toFixed(1)) : null;
+    const allowedAgeHours = ((feed.maxAgeDays ?? 10) + 2) * 24;
     return {
       index,
       name: feed.name,
@@ -44,6 +56,9 @@ async function check(feed, index) {
       ok,
       formatOk,
       items,
+      latestPublishedAt: latest,
+      ageHours,
+      stale: Boolean(ageHours != null && ageHours > allowedAgeHours),
       contentType,
       finalUrl: response.url || feed.url,
       elapsedMs: Date.now() - started,
@@ -60,6 +75,9 @@ async function check(feed, index) {
       ok: false,
       formatOk: false,
       items: 0,
+      latestPublishedAt: null,
+      ageHours: null,
+      stale: false,
       contentType: "",
       finalUrl: feed.url,
       elapsedMs: Date.now() - started,
@@ -93,6 +111,7 @@ const report = {
   failed: failed.length,
   direct: { total: direct.length, ok: direct.filter((result) => result.ok).length, failed: direct.filter((result) => !result.ok).length },
   gnews: { total: gnews.length, ok: gnews.filter((result) => result.ok).length, failed: gnews.filter((result) => !result.ok).length },
+  stale: results.filter((result) => result.stale).length,
   items: results,
 };
 
@@ -101,15 +120,15 @@ if (jsonPath) {
   fs.writeFileSync(path.resolve(jsonPath), JSON.stringify(report, null, 2) + "\n");
 }
 
-const summary = `소스 점검: 전체 ${report.total}개 · 정상 ${report.ok}개 · 실패 ${report.failed}개 (직접 ${report.direct.ok}/${report.direct.total}, Google News ${report.gnews.ok}/${report.gnews.total})`;
+const summary = `소스 점검: 전체 ${report.total}개 · 정상 ${report.ok}개 · 실패 ${report.failed}개 · 지연 ${report.stale}개 (직접 ${report.direct.ok}/${report.direct.total}, Google News ${report.gnews.ok}/${report.gnews.total})`;
 console.log(summary);
 for (const result of failed) console.warn(`  실패 ${result.name} · ${result.host} · ${result.error}`);
 
 if (process.env.GITHUB_STEP_SUMMARY) {
   const rows = results
-    .map((result) => `| ${result.name} | ${result.group} | ${result.ok ? "정상" : "실패"} | ${result.status || "-"} | ${result.items} | ${result.elapsedMs}ms |`)
+    .map((result) => `| ${result.name} | ${result.group} | ${result.ok ? (result.stale ? "지연" : "정상") : "실패"} | ${result.status || "-"} | ${result.items} | ${result.latestPublishedAt || "-"} | ${result.elapsedMs}ms |`)
     .join("\n");
-  fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Source health\n\n${summary}\n\n| 소스 | 그룹 | 상태 | HTTP | 항목 | 시간 |\n|---|---|---|---:|---:|---:|\n${rows}\n`);
+  fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Source health\n\n${summary}\n\n| 소스 | 그룹 | 상태 | HTTP | 항목 | 마지막 발행 | 시간 |\n|---|---|---|---:|---:|---|---:|\n${rows}\n`);
 }
 
 // 개별 소스 하나의 일시 장애는 허용한다. 다만 소스군 전체가 죽었거나
