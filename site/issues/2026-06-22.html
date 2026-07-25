@@ -83,6 +83,23 @@ a:hover{color:var(--color-primary-strong);}
 .vm-detail-body::-webkit-scrollbar-thumb{background:var(--color-line-strong);border-radius:8px;border:3px solid var(--color-background-normal);}
 .vm-plate-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .vm-progress{height:100%;background:var(--color-primary-normal);transition:width .3s ease;}
+.vm-site-footer{margin-top:64px;border-top:2px solid var(--color-label-strong);padding:32px 0 12px;color:var(--color-label-alternative);}
+.vm-footer-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(150px,.7fr) minmax(240px,1fr);gap:34px 52px;align-items:start;}
+.vm-footer-brand{min-width:0;}
+.vm-footer-eyebrow,.vm-footer-heading{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--color-label-alternative);}
+.vm-footer-title{margin-top:10px;font-family:var(--font-display);font-size:22px;font-weight:800;letter-spacing:-.03em;line-height:1.2;color:var(--color-label-strong);}
+.vm-footer-copy{max-width:38rem;margin:12px 0 0;font-size:12px;line-height:1.75;color:var(--color-label-alternative);}
+.vm-footer-note{margin:14px 0 0;font-size:11px;line-height:1.65;color:var(--color-label-alternative);}
+.vm-footer-heading{margin:0 0 12px;color:var(--color-label-neutral);}
+.vm-footer-links{display:grid;gap:9px;margin:0;}
+.vm-footer-links a{font-size:12.5px;font-weight:700;color:var(--color-label-neutral);text-decoration:none;}
+.vm-footer-links a:hover{color:var(--color-primary-normal);}
+.vm-footer-contact{font-size:12px;line-height:1.75;color:var(--color-label-alternative);}
+.vm-footer-contact strong{color:var(--color-label-neutral);font-weight:800;}
+.vm-footer-contact a{color:var(--color-primary-normal);font-weight:700;text-decoration:none;}
+.vm-footer-subscribe{margin-top:16px;}
+.vm-footer-bottom{display:flex;justify-content:space-between;gap:18px;margin-top:32px;padding-top:14px;border-top:1px solid var(--color-line-normal);font-size:10.5px;line-height:1.6;color:var(--color-label-alternative);}
+.vm-footer-bottom span:last-child{text-align:right;}
 @keyframes vmFade{from{opacity:0;}to{opacity:1;}}
 @keyframes vmSlide{from{transform:translateX(36px);opacity:0;}to{transform:translateX(0);opacity:1;}}
 :focus-visible{outline:2px solid var(--color-primary-normal);outline-offset:2px;}
@@ -128,6 +145,15 @@ a:hover{color:var(--color-primary-strong);}
   /* 상단 툴바에 7개가 다 들어가면 좁은 화면에서 서로 겹친다.
      하단 바(이전·원문·다음)와 겹치거나 부차적인 것만 숨겨 공유·저장·닫기를 남긴다. */
   .vm-dt-hide{display:none !important;}
+  .vm-footer-grid{grid-template-columns:1fr 1fr !important;gap:28px 24px !important;}
+  .vm-footer-brand{grid-column:1/-1;}
+  .vm-footer-bottom{display:block !important;}
+  .vm-footer-bottom span{display:block;margin-top:6px;}
+}
+@media (max-width:560px){
+  .vm-footer-grid{grid-template-columns:1fr !important;gap:28px !important;}
+  .vm-footer-brand{grid-column:auto;}
+  .vm-footer-links a{min-height:44px;display:flex;align-items:center;}
 }</style>
 <script>try{var t=JSON.parse(localStorage.getItem('vm_theme'))||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
@@ -142,7 +168,7 @@ a:hover{color:var(--color-primary-strong);}
 <nav><a href="/">오늘의 브리핑</a> · <a href="/topic/">주제별 보기</a> · <a href="/about">서비스 소개</a> · <a href="/privacy">개인정보처리방침</a> · <a href="/terms">이용약관</a> · <a href="/rss.xml">RSS</a></nav>
 </div></noscript>
 <script id="vm-issue" type="application/json">{"date":"2026-06-22","dateLabel":"2026.06.22","dateline":"2026년 6월 22일 · 월요일","editionNo":"1,998","count":1,"cats":[{"key":"clinical","label":"임상"}],"articles":[{"id":"2026-06-22_1","legacySlug":null,"day":"2026-06-22","ts":1782133225000,"publishedAt":"2026-06-22T13:00:25.000Z","cat":"clinical","kicker":"임상","isToday":true,"title":"개와 고양이 소음 민감증, 삼중 접근법으로 관리하기","dek":"반려동물의 소음 과민증은 동물병원에서 흔히 접하는 행동 문제로, 불꽃놀이, 천둥, 교통 소음 등에 과도하게 반응하는 동물들의 스트레스가 심각합니다. 음향 치료, 영양보충제, 체계적 감작 훈련을 결합한 통합 접근법이 효과적인 것으로 보고되고 있습니다.","source":"IVC Journal","country":"미국","date":"06.22","read":"2분 읽기","plate":"IVC Journal","image":"https://ivcjournal.com/wp-content/uploads/Gemini_Generated_Image_f5t5xf5t5xf5t5xf-scaled-e1782118196201-600x322.png","sourceUrl":"https://ivcjournal.com/three-pronged-approach-to-sound-sensitivity-in-dogs-and-cats/","body":["소음에 민감한 반려동물은 단순히 놀라는 것이 아니라 초기 스트레스 반응에서 회복하지 못하는 상태입니다. 구체적 증상으로는 호흡이 급해지거나, 떨림, 숨기, 과도한 울음, 파괴 행동, 심지어 자해까지 포함됩니다. 적절한 관리가 이루어지지 않으면 반복적인 노출이 공포 반응을 악화시키는 감작 과정을 통해 시간이 지날수록 증상이 심해질 수 있으며, 초기 개입이 중요합니다.","음향 치료는 소음을 치료 도구로 활용하는 방법입니다. Through a Dog's Ear 생음향 음악과 같이 임상적으로 검증된 옵션들이 불안 관련 행동을 줄이는 것으로 확인되었습니다. 이러한 녹음물은 느린 템포와 낮은 음향 복잡성을 가진 심리음향적으로 설계된 클래식 음악을 사용하여 더 안정적인 생리적 상태를 유도합니다. 백색 소음 기기 또한 갑작스러운 환경 소음을 차단하여 공포 반응을 유발하는 급격한 음향 대비를 줄일 수 있습니다. 영양보충제는 약물 사용에 우려가 있는 소유자에게 우수한 보조 도구이며, 효과가 나타나기까지 시간이 걸리므로 빠른 구조용 옵션이 아닙니다.","체계적 감작 훈련은 장기적인 행동 변화를 위한 금표준 치료입니다. 기록된 소음을 공포 반응을 유발하는 임계값보다 훨씬 낮은 볼륨에서 점진적으로 노출시키고, 고가의 간식이나 놀이와 쌍으로 연계시킵니다. 가장 효과적인 치료 계획은 세 가지 접근법을 결합합니다. 음향 치료는 더 안정적인 일일 환경을 만들고, 영양보충제는 신경계가 학습에 더 반응적으로 반응하도록 기초 불안을 낮추며, 감작 훈련 프로토콜은 근본적 공포 반응을 직접 해결합니다.","한국 동물병원 관점에서, 소음 민감증을 보이는 환자들을 위한 행동 병력 채득과 개별화된 치료 계획 수립이 필수적입니다. 통합 접근법의 세 가지 요소를 층층히 적용하면 더욱 효과적인 결과를 기대할 수 있으며, 필요시 수의사 감독 하에 약물 지원을 추가할 수 있습니다. 소유교육을 통해 미리 예측되는 트리거 사건 전에 진정 음악을 틀어주고, 영양보충제는 빠른 효과가 아닌 점진적 효능을 고려하도록 안내하는 것이 중요합니다."],"blog":"한국 동물병원 블로그에서 '반려동물의 소음 공포증, 집에서 쉽게 실천할 수 있는 세 가지 관리법'이라는 제목으로 소유자를 위한 실용 가이드로 활용할 수 있습니다","blogAngle":["소음 민감증은 단순한 놀람이 아니라 스트레스 반응에서 회복하지 못하는 상태로, 적절한 치료 없이는 시간이 지날수록 악화될 수 있습니다","음향 치료는 심리음향적으로 설계된 클래식 음악이나 백색 소음을 활용하여 불안 감소에 도움을 주며, 트리거 사건 전에 미리 틀어주는 것이 효과적입니다","영양보충제는 기초 불안을 낮추어 신경계가 학습에 더 반응하도록 하지만, 빠른 효과가 아닌 점진적 효능을 기대해야 합니다","체계적 감작 훈련은 기록된 소음을 낮은 볼륨에서 점진적으로 노출시키고 긍정적 경험과 연계하는 것이 장기적 행동 변화의 금표준입니다","한국 동물병원에서는 세 가지 접근법을 결합한 개별화된 치료 계획을 수립하고, 소유 교육과 함께 장기적인 관리 전략을 제공하는 것이 중요합니다"],"radar":{"owner":{"soon":true,"q":"천둥이나 불꽃놀이 소리에 너무 무서워하는데, 음악 치료나 영양 보충제가 효과가 있을까요?","script":"소음 민감증은 음향 치료, 영양 보충제, 체계적 감작 훈련을 함께 쓰면 더 효과적입니다.집에서 느린 클래식 음악을 틀어두면 불안감을 줄이는 데 도움이 되지만, 보충제는 서서히 효과를 보기 때문에 급격한 개선은 기대하기 어렵습니다.천둥 소리나 불꽃놀이 전에는 미리 음악을 틀어주고 강아지를 익숙하게 만드는 훈련을 시작하는 것이 좋습니다."},"clinical":"소음 민감증 환자를 위해 행동 병력을 체계적으로 채득하고, 음향 치료·영양 보충제·감작 훈련을 조합한 개별화된 치료 계획을 수립하세요.","evidence":null},"tag":"","tier":"deep"}],"briefs":[],"stories":[],"isHome":false}</script>
-<script id="vm-cfg" type="application/json">{"newsletter":false,"slots":[{"at":"fold","kind":"house","enabled":false,"advertiser":"VetMan","headline":"","body":"","cta":"","url":""}]}</script>
+<script id="vm-cfg" type="application/json">{"newsletter":false,"slots":[{"at":"fold","kind":"house","enabled":false,"advertiser":"VetMan","headline":"","body":"","cta":"","url":""}],"footer":{"email":"vetmanlab@gmail.com","partnerName":"신현규","partnerEmail":"vetmanlab@gmail.com","operator":"주식회사 비전인피플","bizNumber":"170-81-03853"}}</script>
 <script>
 (function(){
   var DATA = JSON.parse(document.getElementById('vm-issue').textContent);
@@ -776,17 +802,14 @@ a:hover{color:var(--color-primary-strong);}
     else if(searching){ h+=listView(activeList(),'검색 결과가 없습니다','다른 검색어를 입력해 보세요.'); }
     else { h+=catRow(); h+=homeView(); }
 
-    h+='<footer style="margin-top:40px;border-top:2px solid var(--color-label-strong);padding-top:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">'
-    +'<p style="margin:0;max-width:520px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">본 콘텐츠는 해외 공개 자료의 요약·번역이며, 임상 정보는 참고용입니다. 실제 적용 전 반드시 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처가 표기됩니다.<br>단축키 — ←/→ 이전·다음 기사, S 저장, D 글감 담기, / 검색, Esc 닫기.<br><b style="color:var(--color-label-neutral);font-weight:700;">베트맨랩(VetManLab)</b> · 한국 동물병원을 위한 해외 수의 브리핑</p><div class="vm-foot-nav" style="width:100%;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;font-weight:600;"><a href="/topic/" style="color:var(--color-label-neutral);">주제별 보기</a><a href="/about" style="color:var(--color-label-neutral);">서비스 소개</a><a href="/privacy" style="color:var(--color-label-neutral);">개인정보처리방침</a><a href="/terms" style="color:var(--color-label-neutral);">이용약관</a><a href="/rss.xml" style="color:var(--color-label-neutral);">RSS</a></div>'
-    + (CFG.newsletter
-      ? '<form id="vm-sub" style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:8px;">뉴스레터로 매일 아침 받기</div><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" autocomplete="email" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div>'
-      // 봇 필터 — 사람 눈에는 보이지 않고 스크린리더도 건너뛴다
-      +'<input id="vm-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">'
-      // 정보통신망법상 수신동의는 무엇에 동의하는지 알 수 있어야 한다
-      +'<p style="margin:8px 0 0;font-size:11px;line-height:1.55;color:var(--color-label-alternative);">구독하면 매일 아침 브리핑 메일 수신에 동의하는 것으로 봅니다. 메일 하단 링크로 언제든 해지할 수 있고, 해지 시 저장된 주소도 삭제됩니다. <a href="/privacy" style="color:var(--color-label-neutral);text-decoration:underline;">개인정보처리방침</a></p></form>'
-      // 저장소가 준비되기 전까지는 지금 실제로 동작하는 수단만 안내한다
-      : '<div style="flex:none;max-width:340px;"><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--color-label-strong);margin-bottom:6px;">매일 아침 새 브리핑</div><p style="margin:0 0 10px;font-size:11.5px;line-height:1.6;color:var(--color-label-alternative);">이메일 뉴스레터는 준비 중입니다. 그동안 RSS로 구독하시거나 홈 화면에 추가해 두시면 매일 자동으로 갱신됩니다.</p><a href="rss.xml" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">RSS로 구독하기 →</a></div>')
-    +'</footer>';
+    h+='<footer class="vm-site-footer" aria-label="사이트 정보"><div class="vm-footer-grid">'
+    +'<section class="vm-footer-brand"><div class="vm-footer-eyebrow">VETMANLAB · DAILY BRIEFING</div><div class="vm-footer-title">VetManLab 해외 브리핑</div><p class="vm-footer-copy">해외 수의 임상·연구·병원 운영 소식을 한국 동물병원의 관점으로 정리합니다. 바쁜 원장님과 수의사가 매일 필요한 흐름을 빠르게 읽고, 진료와 콘텐츠에 활용할 수 있도록 만듭니다.</p><p class="vm-footer-note">본 콘텐츠는 해외 공개 자료의 요약·번역입니다. 임상 정보는 참고용이며 실제 적용 전 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처를 표기합니다.</p></section>'
+    +'<section><h2 class="vm-footer-heading">둘러보기</h2><nav class="vm-footer-links" aria-label="주요 메뉴"><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>'
+    +'<section><h2 class="vm-footer-heading">문의·이용 안내</h2><div class="vm-footer-contact"><strong>업무제휴·광고 문의</strong><br><a href="mailto:'+CFG.footer.partnerEmail+'?subject='+encodeURIComponent("[VetManLab 해외 브리핑] 업무제휴·광고 문의")+'">'+CFG.footer.partnerName+' · '+CFG.footer.partnerEmail+'</a><br><br><strong>운영·일반 문의</strong><br><a href="mailto:'+CFG.footer.email+'">'+CFG.footer.email+'</a><br><br>'+CFG.footer.operator+(CFG.footer.bizNumber?' · 사업자등록번호 '+CFG.footer.bizNumber:'')+'</div>'
+    +(CFG.newsletter
+      ? '<form id="vm-sub" class="vm-footer-subscribe"><h2 class="vm-footer-heading">매일 아침 받기</h2><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" autocomplete="email" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div><input id="vm-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"><p style="margin:8px 0 0;font-size:11px;line-height:1.55;color:var(--color-label-alternative);">구독하면 매일 아침 브리핑 메일 수신에 동의하는 것으로 봅니다. <a href="/privacy" style="color:var(--color-label-neutral);text-decoration:underline;">개인정보처리방침</a></p></form>'
+      : '')
+    +'</section></div><div class="vm-footer-bottom"><span>© '+new Date().getFullYear()+' VetManLab · '+CFG.footer.operator+'</span><span>개인정보처리방침 · 이용약관 · 단축키 ←/→ · S 저장 · D 글감 · / 검색</span></div></footer>';
     h+='</div>';
     h+=detail();
     h+=draftModal();

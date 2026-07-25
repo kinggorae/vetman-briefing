@@ -68,11 +68,31 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .site-h a.b{font-family:"Wanted Sans Variable","Pretendard Variable",system-ui,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
 .site-h nav a{font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-left:14px}
 .site-h nav a:hover{color:var(--pri)}
-.site-f{border-top:1px solid var(--line);margin-top:48px;padding:26px 0 8px;font-size:13px;color:var(--sub)}
-.site-f nav{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.site-f{border-top:2px solid var(--ink);margin-top:64px;padding:30px 0 8px;font-size:13px;color:var(--sub)}
+.site-f-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(130px,.7fr) minmax(210px,1fr);gap:28px 38px;align-items:start}
+.site-f .eyebrow,.site-f h2{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sub)}
+.site-f .brand{margin-top:9px;font-size:19px;line-height:1.25;letter-spacing:-.025em;font-weight:800;color:var(--ink)}
+.site-f .desc{margin:11px 0 0;font-size:12px;line-height:1.7;color:var(--sub)}
+.site-f h2{margin:0 0 12px}
+.site-f nav{display:grid;gap:8px;margin:0}
 .site-f nav a{color:var(--sub);text-decoration:none;font-weight:600}
 .site-f nav a:hover{color:var(--pri)}
-.site-f .biz{font-size:11.5px;line-height:1.7;color:var(--sub);opacity:.85}
+.site-f .biz{font-size:11.5px;line-height:1.75;color:var(--sub);}
+.site-f .biz strong{color:var(--ink);font-weight:800}
+.site-f .biz a{color:var(--pri);font-weight:700;text-decoration:none}
+.site-f .bottom{display:flex;justify-content:space-between;gap:16px;margin-top:28px;padding-top:13px;border-top:1px solid var(--line);font-size:10.5px;line-height:1.6;color:var(--sub)}
+.site-f .bottom span:last-child{text-align:right}
+@media (max-width:700px){
+  .site-f-grid{grid-template-columns:1fr 1fr;gap:28px 22px}
+  .site-f-grid>section:first-child{grid-column:1/-1}
+  .site-f .bottom{display:block}
+  .site-f .bottom span{display:block;margin-top:5px}
+  .site-f .bottom span:last-child{text-align:left}
+}
+@media (max-width:480px){
+  .site-f-grid{grid-template-columns:1fr}
+  .site-f-grid>section:first-child{grid-column:auto}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"반려동물 뇌장 건강.axis: 미생물군 기반 신경·행동장애 치료 전략","description":"이 검토 논문은 뇌장.axis의 신경전달 기전과 함께 개·고양이의 종특이적 미생물군 특성을 분석하고, 정신생물제와 변이이식술 등 신규 치료 전략의 임상 적용 가능성을 평가합니다.","url":"https://news.vetmanlab.com/article/2026-07-23_23-반려동물-뇌장-건강axis-미생물군-기반-신경행동장애-치료-전략","inLanguage":"ko","isAccessibleForFree":true,"image":"https://news.vetmanlab.com/og.png","datePublished":"2026-07-22T15:00:00.000Z","dateModified":"2026-07-22T15:00:00.000Z","author":{"@type":"Organization","name":"베트맨랩 편집팀","url":"https://news.vetmanlab.com/about"},"isBasedOn":"https://doi.org/10.1002/vms3.71105","articleSection":"최신 연구","keywords":"최신 연구, 행동·정신 건강, 신경계","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".lead"]},"publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab","url":"https://news.vetmanlab.com","logo":{"@type":"ImageObject","url":"https://news.vetmanlab.com/og.png","width":1200,"height":630}},"mainEntityOfPage":"https://news.vetmanlab.com/article/2026-07-23_23-반려동물-뇌장-건강axis-미생물군-기반-신경행동장애-치료-전략","abstract":"미생물군 기반 보충제 도입 전, 기존 행동치료·약물 요법의 효과 충분히 평가하고 보호자와 기대치 충분히 논의하기","mentions":{"@type":"Question","name":"개·고양이 행동문제에 장 건강 보충제나 프로바이오틱스가 효과가 있는지 물어보고 싶어요."},"review":{"@type":"Review","reviewBody":"체계적 문헌고찰 · 상관관계에 근거한 근거여서 인과관계 입증 전 일반화 주의, 종특이적 표준화된 치료 프로토콜 미확립","reviewRating":{"@type":"Rating","ratingValue":2,"bestRating":4,"worstRating":1},"author":{"@type":"Organization","name":"베트맨랩"}},"citation":{"@type":"CreativeWork","name":"Veterinary medicine and science","url":"https://doi.org/10.1002/vms3.71105"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://news.vetmanlab.com"},{"@type":"ListItem","position":2,"name":"행동·정신 건강","item":"https://news.vetmanlab.com/topic/행동"},{"@type":"ListItem","position":3,"name":"반려동물 뇌장 건강.axis: 미생물군 기반 신경·행동장애 치료 전략","item":"https://news.vetmanlab.com/article/2026-07-23_23-반려동물-뇌장-건강axis-미생물군-기반-신경행동장애-치료-전략"}]}</script>
@@ -101,7 +121,11 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <div class="nav"><a href="/article/2026-07-23_22-개-폐초음파-B선-탐지를-위한-딥러닝-모델의-검증"><div class="l">이전 기사</div><div class="t">개 폐초음파 B-선 탐지를 위한 딥러닝 모델의 검증</div></a><a href="/article/2026-07-23_24-전산기법으로-발견한-고양이-심장병-후보-치료제"><div class="l">다음 기사</div><div class="t">전산기법으로 발견한 고양이 심장병 후보 치료제</div></a></div>
 <a class="home" href="/">2026.07.23 브리핑 전체 보기 →</a>
 <footer class="site-f">
-<nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/rss.xml">RSS</a></nav>
-<div class="biz">베트맨랩(VetManLab) · 한국 동물병원을 위한 해외 수의 브리핑<br>주식회사 비전인피플 · 사업자등록번호 170-81-03853<br>© 2026 베트맨랩(VetManLab)</div>
+<div class="site-f-grid">
+<section><div class="eyebrow">VETMANLAB · DAILY BRIEFING</div><div class="brand">VetManLab 해외 브리핑</div><p class="desc">해외 수의 임상·연구·병원 운영 소식을 한국 동물병원의 관점으로 정리합니다. 원문 출처를 확인할 수 있는 읽기 쉬운 브리핑입니다.</p></section>
+<section><h2>둘러보기</h2><nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>
+<section><h2>문의·이용 안내</h2><div class="biz"><strong>업무제휴·광고 문의</strong><br><a href="mailto:vetmanlab@gmail.com?subject=%5BVetManLab%20%ED%95%B4%EC%99%B8%20%EB%B8%8C%EB%A6%AC%ED%95%91%5D%20%EC%97%85%EB%AC%B4%EC%A0%9C%ED%9C%B4%C2%B7%EA%B4%91%EA%B3%A0%20%EB%AC%B8%EC%9D%98">신현규 · vetmanlab@gmail.com</a><br><br><strong>운영·일반 문의</strong><br><a href="mailto:vetmanlab@gmail.com">vetmanlab@gmail.com</a><br><br>주식회사 비전인피플 · 사업자등록번호 170-81-03853</div></section>
+</div>
+<div class="bottom"><span>© 2026 베트맨랩(VetManLab)</span><span>개인정보처리방침 · 이용약관 · 원문 출처 표기 · 임상 정보 참고용</span></div>
 </footer>
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>

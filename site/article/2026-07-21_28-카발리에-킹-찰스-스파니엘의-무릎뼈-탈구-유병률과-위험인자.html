@@ -68,11 +68,31 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .site-h a.b{font-family:"Wanted Sans Variable","Pretendard Variable",system-ui,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
 .site-h nav a{font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-left:14px}
 .site-h nav a:hover{color:var(--pri)}
-.site-f{border-top:1px solid var(--line);margin-top:48px;padding:26px 0 8px;font-size:13px;color:var(--sub)}
-.site-f nav{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.site-f{border-top:2px solid var(--ink);margin-top:64px;padding:30px 0 8px;font-size:13px;color:var(--sub)}
+.site-f-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(130px,.7fr) minmax(210px,1fr);gap:28px 38px;align-items:start}
+.site-f .eyebrow,.site-f h2{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sub)}
+.site-f .brand{margin-top:9px;font-size:19px;line-height:1.25;letter-spacing:-.025em;font-weight:800;color:var(--ink)}
+.site-f .desc{margin:11px 0 0;font-size:12px;line-height:1.7;color:var(--sub)}
+.site-f h2{margin:0 0 12px}
+.site-f nav{display:grid;gap:8px;margin:0}
 .site-f nav a{color:var(--sub);text-decoration:none;font-weight:600}
 .site-f nav a:hover{color:var(--pri)}
-.site-f .biz{font-size:11.5px;line-height:1.7;color:var(--sub);opacity:.85}
+.site-f .biz{font-size:11.5px;line-height:1.75;color:var(--sub);}
+.site-f .biz strong{color:var(--ink);font-weight:800}
+.site-f .biz a{color:var(--pri);font-weight:700;text-decoration:none}
+.site-f .bottom{display:flex;justify-content:space-between;gap:16px;margin-top:28px;padding-top:13px;border-top:1px solid var(--line);font-size:10.5px;line-height:1.6;color:var(--sub)}
+.site-f .bottom span:last-child{text-align:right}
+@media (max-width:700px){
+  .site-f-grid{grid-template-columns:1fr 1fr;gap:28px 22px}
+  .site-f-grid>section:first-child{grid-column:1/-1}
+  .site-f .bottom{display:block}
+  .site-f .bottom span{display:block;margin-top:5px}
+  .site-f .bottom span:last-child{text-align:left}
+}
+@media (max-width:480px){
+  .site-f-grid{grid-template-columns:1fr}
+  .site-f-grid>section:first-child{grid-column:auto}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"카발리에 킹 찰스 스파니엘의 무릎뼈 탈구 유병률과 위험인자","description":"호주의 1차 수의 진료소를 방문한 카발리에 킹 찰스 스파니엘에서 무릎뼈 탈구의 10년 유병률이 12.5%에 달하며, 중성화된 강아지와 특정 체중군에서 위험이 현저히 높다는 것을 확인했습니다.","url":"https://news.vetmanlab.com/article/2026-07-21_28-카발리에-킹-찰스-스파니엘의-무릎뼈-탈구-유병률과-위험인자","inLanguage":"ko","isAccessibleForFree":true,"image":"https://news.vetmanlab.com/og.png","datePublished":"2026-07-20T15:00:00.000Z","dateModified":"2026-07-20T15:00:00.000Z","author":{"@type":"Organization","name":"베트맨랩 편집팀","url":"https://news.vetmanlab.com/about"},"isBasedOn":"https://doi.org/10.1002/vms3.71026","articleSection":"최신 연구","keywords":"최신 연구, 영양·비만·식이","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".lead"]},"publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab","url":"https://news.vetmanlab.com","logo":{"@type":"ImageObject","url":"https://news.vetmanlab.com/og.png","width":1200,"height":630}},"mainEntityOfPage":"https://news.vetmanlab.com/article/2026-07-21_28-카발리에-킹-찰스-스파니엘의-무릎뼈-탈구-유병률과-위험인자","abstract":"카발리에 킹 찰스 스파니엘 진료 시 무릎뼈 탈구 문진을 기본으로하고, 중성화·체중·털색 등의 위험인자 존재 시 영상의학 검사 고려","mentions":{"@type":"Question","name":"우리 강아지가 무릎뼈 탈구가 될 수도 있나요? 예방할 수 있는 방법은 없나요?"},"review":{"@type":"Review","reviewBody":"후향적 코호트 · 321,517개 환자 기록 · 단일 국가(호주) 후향적 연구로 다른 지역으로의 일반화에 주의가 필요하며, 품종 특이적 결과이므로 타 품종에 직접 적용 불가","reviewRating":{"@type":"Rating","ratingValue":2,"bestRating":4,"worstRating":1},"author":{"@type":"Organization","name":"베트맨랩"}},"citation":{"@type":"CreativeWork","name":"Veterinary medicine and science","url":"https://doi.org/10.1002/vms3.71026"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://news.vetmanlab.com"},{"@type":"ListItem","position":2,"name":"영양·비만·식이","item":"https://news.vetmanlab.com/topic/영양-비만"},{"@type":"ListItem","position":3,"name":"카발리에 킹 찰스 스파니엘의 무릎뼈 탈구 유병률과 위험인자","item":"https://news.vetmanlab.com/article/2026-07-21_28-카발리에-킹-찰스-스파니엘의-무릎뼈-탈구-유병률과-위험인자"}]}</script>
@@ -101,7 +121,11 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <div class="nav"><a href="/article/2026-07-21_27-개-복지-평가-도구-AWAG-임상-의사결정에-유용"><div class="l">이전 기사</div><div class="t">개 복지 평가 도구 AWAG, 임상 의사결정에 유용</div></a><a href="/article/2026-07-21_29-수의사가-강조하는-고양이-건강-관리의-7가지-핵심"><div class="l">다음 기사</div><div class="t">수의사가 강조하는 고양이 건강 관리의 7가지 핵심</div></a></div>
 <a class="home" href="/">2026.07.21 브리핑 전체 보기 →</a>
 <footer class="site-f">
-<nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/rss.xml">RSS</a></nav>
-<div class="biz">베트맨랩(VetManLab) · 한국 동물병원을 위한 해외 수의 브리핑<br>주식회사 비전인피플 · 사업자등록번호 170-81-03853<br>© 2026 베트맨랩(VetManLab)</div>
+<div class="site-f-grid">
+<section><div class="eyebrow">VETMANLAB · DAILY BRIEFING</div><div class="brand">VetManLab 해외 브리핑</div><p class="desc">해외 수의 임상·연구·병원 운영 소식을 한국 동물병원의 관점으로 정리합니다. 원문 출처를 확인할 수 있는 읽기 쉬운 브리핑입니다.</p></section>
+<section><h2>둘러보기</h2><nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>
+<section><h2>문의·이용 안내</h2><div class="biz"><strong>업무제휴·광고 문의</strong><br><a href="mailto:vetmanlab@gmail.com?subject=%5BVetManLab%20%ED%95%B4%EC%99%B8%20%EB%B8%8C%EB%A6%AC%ED%95%91%5D%20%EC%97%85%EB%AC%B4%EC%A0%9C%ED%9C%B4%C2%B7%EA%B4%91%EA%B3%A0%20%EB%AC%B8%EC%9D%98">신현규 · vetmanlab@gmail.com</a><br><br><strong>운영·일반 문의</strong><br><a href="mailto:vetmanlab@gmail.com">vetmanlab@gmail.com</a><br><br>주식회사 비전인피플 · 사업자등록번호 170-81-03853</div></section>
+</div>
+<div class="bottom"><span>© 2026 베트맨랩(VetManLab)</span><span>개인정보처리방침 · 이용약관 · 원문 출처 표기 · 임상 정보 참고용</span></div>
 </footer>
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>

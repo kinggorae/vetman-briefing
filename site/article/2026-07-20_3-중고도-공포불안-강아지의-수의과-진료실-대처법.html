@@ -66,11 +66,31 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .site-h a.b{font-family:"Wanted Sans Variable","Pretendard Variable",system-ui,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
 .site-h nav a{font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-left:14px}
 .site-h nav a:hover{color:var(--pri)}
-.site-f{border-top:1px solid var(--line);margin-top:48px;padding:26px 0 8px;font-size:13px;color:var(--sub)}
-.site-f nav{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.site-f{border-top:2px solid var(--ink);margin-top:64px;padding:30px 0 8px;font-size:13px;color:var(--sub)}
+.site-f-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(130px,.7fr) minmax(210px,1fr);gap:28px 38px;align-items:start}
+.site-f .eyebrow,.site-f h2{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sub)}
+.site-f .brand{margin-top:9px;font-size:19px;line-height:1.25;letter-spacing:-.025em;font-weight:800;color:var(--ink)}
+.site-f .desc{margin:11px 0 0;font-size:12px;line-height:1.7;color:var(--sub)}
+.site-f h2{margin:0 0 12px}
+.site-f nav{display:grid;gap:8px;margin:0}
 .site-f nav a{color:var(--sub);text-decoration:none;font-weight:600}
 .site-f nav a:hover{color:var(--pri)}
-.site-f .biz{font-size:11.5px;line-height:1.7;color:var(--sub);opacity:.85}
+.site-f .biz{font-size:11.5px;line-height:1.75;color:var(--sub);}
+.site-f .biz strong{color:var(--ink);font-weight:800}
+.site-f .biz a{color:var(--pri);font-weight:700;text-decoration:none}
+.site-f .bottom{display:flex;justify-content:space-between;gap:16px;margin-top:28px;padding-top:13px;border-top:1px solid var(--line);font-size:10.5px;line-height:1.6;color:var(--sub)}
+.site-f .bottom span:last-child{text-align:right}
+@media (max-width:700px){
+  .site-f-grid{grid-template-columns:1fr 1fr;gap:28px 22px}
+  .site-f-grid>section:first-child{grid-column:1/-1}
+  .site-f .bottom{display:block}
+  .site-f .bottom span{display:block;margin-top:5px}
+  .site-f .bottom span:last-child{text-align:left}
+}
+@media (max-width:480px){
+  .site-f-grid{grid-template-columns:1fr}
+  .site-f-grid>section:first-child{grid-column:auto}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"중고도 공포·불안 강아지의 수의과 진료실 대처법","description":"수의과 방문 시 중고도 수준의 공포, 불안, 스트레스를 보이는 강아지에 대한 핸들링 기술을 소개합니다. 강제 처치가 트라우마를 악화시킬 수 있어 의료·환경·행동 치료의 조합이 필수적입니다.","url":"https://news.vetmanlab.com/article/2026-07-20_3-중고도-공포불안-강아지의-수의과-진료실-대처법","inLanguage":"ko","isAccessibleForFree":true,"image":"https://vetgirlontherun.com/wp-content/uploads/2026/07/Handling-techniques-for-Dogs-with-for-Moderate-to-High-Levels-of-Fear-Anxiety-or-Stress.png","datePublished":"2026-07-17T10:00:56.000Z","dateModified":"2026-07-17T10:00:56.000Z","author":{"@type":"Organization","name":"베트맨랩 편집팀","url":"https://news.vetmanlab.com/about"},"isBasedOn":"https://vetgirlontherun.com/handling-techniques-for-dogs-with-moderate-to-high-levels-of-fear-anxiety-or-stress-vetgirl-veterinary-continuing-education-blogs/","articleSection":"임상","keywords":"임상, 행동·정신 건강","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".lead"]},"publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab","url":"https://news.vetmanlab.com","logo":{"@type":"ImageObject","url":"https://news.vetmanlab.com/og.png","width":1200,"height":630}},"mainEntityOfPage":"https://news.vetmanlab.com/article/2026-07-20_3-중고도-공포불안-강아지의-수의과-진료실-대처법","abstract":"진료실에 도입되는 강아지에 대해 5~8분 적응 시간을 확보하고, 저스트레스 핸들링 프로토콜과 필요시 전처방 약물 사용을 점검한다.","mentions":{"@type":"Question","name":"우리 강아지가 수의사 가면 너무 무서워해하는데, 어떻게 해야 스트레스 없는 진료가 가능할까요?"},"citation":{"@type":"CreativeWork","name":"VetGirl","url":"https://vetgirlontherun.com/handling-techniques-for-dogs-with-moderate-to-high-levels-of-fear-anxiety-or-stress-vetgirl-veterinary-continuing-education-blogs/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://news.vetmanlab.com"},{"@type":"ListItem","position":2,"name":"행동·정신 건강","item":"https://news.vetmanlab.com/topic/행동"},{"@type":"ListItem","position":3,"name":"중고도 공포·불안 강아지의 수의과 진료실 대처법","item":"https://news.vetmanlab.com/article/2026-07-20_3-중고도-공포불안-강아지의-수의과-진료실-대처법"}]}</script>
@@ -99,7 +119,11 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <div class="nav"><a href="/article/2026-07-20_2-가바펜틴트라조돈-말고-진정-프로토콜이-안-먹힐-때"><div class="l">이전 기사</div><div class="t">가바펜틴·트라조돈 말고: 진정 프로토콜이 안 먹힐 때</div></a><a href="/article/2026-07-20_4-고양이-당뇨병-관리의-새로운-선택지-SGLT2-억제제"><div class="l">다음 기사</div><div class="t">고양이 당뇨병 관리의 새로운 선택지, SGLT2 억제제</div></a></div>
 <a class="home" href="/">2026.07.20 브리핑 전체 보기 →</a>
 <footer class="site-f">
-<nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/rss.xml">RSS</a></nav>
-<div class="biz">베트맨랩(VetManLab) · 한국 동물병원을 위한 해외 수의 브리핑<br>주식회사 비전인피플 · 사업자등록번호 170-81-03853<br>© 2026 베트맨랩(VetManLab)</div>
+<div class="site-f-grid">
+<section><div class="eyebrow">VETMANLAB · DAILY BRIEFING</div><div class="brand">VetManLab 해외 브리핑</div><p class="desc">해외 수의 임상·연구·병원 운영 소식을 한국 동물병원의 관점으로 정리합니다. 원문 출처를 확인할 수 있는 읽기 쉬운 브리핑입니다.</p></section>
+<section><h2>둘러보기</h2><nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>
+<section><h2>문의·이용 안내</h2><div class="biz"><strong>업무제휴·광고 문의</strong><br><a href="mailto:vetmanlab@gmail.com?subject=%5BVetManLab%20%ED%95%B4%EC%99%B8%20%EB%B8%8C%EB%A6%AC%ED%95%91%5D%20%EC%97%85%EB%AC%B4%EC%A0%9C%ED%9C%B4%C2%B7%EA%B4%91%EA%B3%A0%20%EB%AC%B8%EC%9D%98">신현규 · vetmanlab@gmail.com</a><br><br><strong>운영·일반 문의</strong><br><a href="mailto:vetmanlab@gmail.com">vetmanlab@gmail.com</a><br><br>주식회사 비전인피플 · 사업자등록번호 170-81-03853</div></section>
+</div>
+<div class="bottom"><span>© 2026 베트맨랩(VetManLab)</span><span>개인정보처리방침 · 이용약관 · 원문 출처 표기 · 임상 정보 참고용</span></div>
 </footer>
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>

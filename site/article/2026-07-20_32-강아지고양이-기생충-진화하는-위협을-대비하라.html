@@ -68,11 +68,31 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .site-h a.b{font-family:"Wanted Sans Variable","Pretendard Variable",system-ui,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
 .site-h nav a{font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-left:14px}
 .site-h nav a:hover{color:var(--pri)}
-.site-f{border-top:1px solid var(--line);margin-top:48px;padding:26px 0 8px;font-size:13px;color:var(--sub)}
-.site-f nav{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.site-f{border-top:2px solid var(--ink);margin-top:64px;padding:30px 0 8px;font-size:13px;color:var(--sub)}
+.site-f-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(130px,.7fr) minmax(210px,1fr);gap:28px 38px;align-items:start}
+.site-f .eyebrow,.site-f h2{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sub)}
+.site-f .brand{margin-top:9px;font-size:19px;line-height:1.25;letter-spacing:-.025em;font-weight:800;color:var(--ink)}
+.site-f .desc{margin:11px 0 0;font-size:12px;line-height:1.7;color:var(--sub)}
+.site-f h2{margin:0 0 12px}
+.site-f nav{display:grid;gap:8px;margin:0}
 .site-f nav a{color:var(--sub);text-decoration:none;font-weight:600}
 .site-f nav a:hover{color:var(--pri)}
-.site-f .biz{font-size:11.5px;line-height:1.7;color:var(--sub);opacity:.85}
+.site-f .biz{font-size:11.5px;line-height:1.75;color:var(--sub);}
+.site-f .biz strong{color:var(--ink);font-weight:800}
+.site-f .biz a{color:var(--pri);font-weight:700;text-decoration:none}
+.site-f .bottom{display:flex;justify-content:space-between;gap:16px;margin-top:28px;padding-top:13px;border-top:1px solid var(--line);font-size:10.5px;line-height:1.6;color:var(--sub)}
+.site-f .bottom span:last-child{text-align:right}
+@media (max-width:700px){
+  .site-f-grid{grid-template-columns:1fr 1fr;gap:28px 22px}
+  .site-f-grid>section:first-child{grid-column:1/-1}
+  .site-f .bottom{display:block}
+  .site-f .bottom span{display:block;margin-top:5px}
+  .site-f .bottom span:last-child{text-align:left}
+}
+@media (max-width:480px){
+  .site-f-grid{grid-template-columns:1fr}
+  .site-f-grid>section:first-child{grid-column:auto}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"강아지·고양이 기생충, 진화하는 위협을 대비하라","description":"기후변화와 글로벌 이동 증가로 강아지·고양이 기생충의 분포와 특성이 급변하고 있으며, 새로운 병원체 출현과 내성 획득이 가속화되고 있음을 보고합니다. 이 변화에 대응하려면 수의학과 보건학의 긴밀한 협력과 진단 역량 강화가 필수적입니다.","url":"https://news.vetmanlab.com/article/2026-07-20_32-강아지고양이-기생충-진화하는-위협을-대비하라","inLanguage":"ko","isAccessibleForFree":true,"image":"https://news.vetmanlab.com/og.png","datePublished":"2026-07-19T15:00:00.000Z","dateModified":"2026-07-19T15:00:00.000Z","author":{"@type":"Organization","name":"베트맨랩 편집팀","url":"https://news.vetmanlab.com/about"},"isBasedOn":"https://doi.org/10.1016/j.pt.2026.05.007","articleSection":"최신 연구","keywords":"최신 연구, 감염병·백신, 항생제·내성","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".lead"]},"publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab","url":"https://news.vetmanlab.com","logo":{"@type":"ImageObject","url":"https://news.vetmanlab.com/og.png","width":1200,"height":630}},"mainEntityOfPage":"https://news.vetmanlab.com/article/2026-07-20_32-강아지고양이-기생충-진화하는-위협을-대비하라","abstract":"외래 문진 시 여행력 칸을 반드시 확인하고, 해외 여행 후 동물에게서 이상 증상이 있으면 기생충 감별 검사를 포함시키는 진료 프로토콜을 점검하세요.","mentions":{"@type":"Question","name":"최근 해외 여행 다녀왔는데 우리 강아지/고양이 기생충 감염 위험은 없나요?"},"review":{"@type":"Review","reviewBody":"체계적 문헌고찰 · 표본 수가 제시되지 않은 종합 보고서이며, 근거 수준이 낮아 특정 임상 권고 적용 시 추가 연구 확인이 필요합니다.","reviewRating":{"@type":"Rating","ratingValue":1,"bestRating":4,"worstRating":1},"author":{"@type":"Organization","name":"베트맨랩"}},"citation":{"@type":"CreativeWork","name":"Trends in parasitology","url":"https://doi.org/10.1016/j.pt.2026.05.007"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://news.vetmanlab.com"},{"@type":"ListItem","position":2,"name":"감염병·백신","item":"https://news.vetmanlab.com/topic/감염-백신"},{"@type":"ListItem","position":3,"name":"강아지·고양이 기생충, 진화하는 위협을 대비하라","item":"https://news.vetmanlab.com/article/2026-07-20_32-강아지고양이-기생충-진화하는-위협을-대비하라"}]}</script>
@@ -101,7 +121,11 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <div class="nav"><a href="/article/2026-07-20_31-개-췌장-초음파-검사-관찰자-간-결과-차이-커"><div class="l">이전 기사</div><div class="t">개 췌장 초음파 검사, 관찰자 간 결과 차이 커</div></a><a href="/article/2026-07-20_33-저장용-MRI-개-뇌-영상에서-기존-15T와-유사한-해부학적-시각화-가능"><div class="l">다음 기사</div><div class="t">저장용 MRI, 개 뇌 영상에서 기존 1.5T와 유사한 해부학적 시각화 가능</div></a></div>
 <a class="home" href="/">2026.07.20 브리핑 전체 보기 →</a>
 <footer class="site-f">
-<nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/rss.xml">RSS</a></nav>
-<div class="biz">베트맨랩(VetManLab) · 한국 동물병원을 위한 해외 수의 브리핑<br>주식회사 비전인피플 · 사업자등록번호 170-81-03853<br>© 2026 베트맨랩(VetManLab)</div>
+<div class="site-f-grid">
+<section><div class="eyebrow">VETMANLAB · DAILY BRIEFING</div><div class="brand">VetManLab 해외 브리핑</div><p class="desc">해외 수의 임상·연구·병원 운영 소식을 한국 동물병원의 관점으로 정리합니다. 원문 출처를 확인할 수 있는 읽기 쉬운 브리핑입니다.</p></section>
+<section><h2>둘러보기</h2><nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>
+<section><h2>문의·이용 안내</h2><div class="biz"><strong>업무제휴·광고 문의</strong><br><a href="mailto:vetmanlab@gmail.com?subject=%5BVetManLab%20%ED%95%B4%EC%99%B8%20%EB%B8%8C%EB%A6%AC%ED%95%91%5D%20%EC%97%85%EB%AC%B4%EC%A0%9C%ED%9C%B4%C2%B7%EA%B4%91%EA%B3%A0%20%EB%AC%B8%EC%9D%98">신현규 · vetmanlab@gmail.com</a><br><br><strong>운영·일반 문의</strong><br><a href="mailto:vetmanlab@gmail.com">vetmanlab@gmail.com</a><br><br>주식회사 비전인피플 · 사업자등록번호 170-81-03853</div></section>
+</div>
+<div class="bottom"><span>© 2026 베트맨랩(VetManLab)</span><span>개인정보처리방침 · 이용약관 · 원문 출처 표기 · 임상 정보 참고용</span></div>
 </footer>
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>

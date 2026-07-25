@@ -66,11 +66,31 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .site-h a.b{font-family:"Wanted Sans Variable","Pretendard Variable",system-ui,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
 .site-h nav a{font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-left:14px}
 .site-h nav a:hover{color:var(--pri)}
-.site-f{border-top:1px solid var(--line);margin-top:48px;padding:26px 0 8px;font-size:13px;color:var(--sub)}
-.site-f nav{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.site-f{border-top:2px solid var(--ink);margin-top:64px;padding:30px 0 8px;font-size:13px;color:var(--sub)}
+.site-f-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(130px,.7fr) minmax(210px,1fr);gap:28px 38px;align-items:start}
+.site-f .eyebrow,.site-f h2{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sub)}
+.site-f .brand{margin-top:9px;font-size:19px;line-height:1.25;letter-spacing:-.025em;font-weight:800;color:var(--ink)}
+.site-f .desc{margin:11px 0 0;font-size:12px;line-height:1.7;color:var(--sub)}
+.site-f h2{margin:0 0 12px}
+.site-f nav{display:grid;gap:8px;margin:0}
 .site-f nav a{color:var(--sub);text-decoration:none;font-weight:600}
 .site-f nav a:hover{color:var(--pri)}
-.site-f .biz{font-size:11.5px;line-height:1.7;color:var(--sub);opacity:.85}
+.site-f .biz{font-size:11.5px;line-height:1.75;color:var(--sub);}
+.site-f .biz strong{color:var(--ink);font-weight:800}
+.site-f .biz a{color:var(--pri);font-weight:700;text-decoration:none}
+.site-f .bottom{display:flex;justify-content:space-between;gap:16px;margin-top:28px;padding-top:13px;border-top:1px solid var(--line);font-size:10.5px;line-height:1.6;color:var(--sub)}
+.site-f .bottom span:last-child{text-align:right}
+@media (max-width:700px){
+  .site-f-grid{grid-template-columns:1fr 1fr;gap:28px 22px}
+  .site-f-grid>section:first-child{grid-column:1/-1}
+  .site-f .bottom{display:block}
+  .site-f .bottom span{display:block;margin-top:5px}
+  .site-f .bottom span:last-child{text-align:left}
+}
+@media (max-width:480px){
+  .site-f-grid{grid-template-columns:1fr}
+  .site-f-grid>section:first-child{grid-column:auto}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"빈혈 검사, MCHC만으로는 부족하다-CHCM의 임상적 가치","description":"최근 동물병원에서 빠른 CBC(전혈구계산) 검사가 보편화되면서 정확성과 깊이 있는 진단에 대한 기대도 높아지고 있습니다. 특히 MCHC(평균 적혈구혈색소농도)는 빈혈 평가에 흔히 사용되지만, 측정 방식의 한계로 인해 미세한 병변을 놓칠 수 있다는 점을 최근 연구가 지적하고 있습니다.","url":"https://news.vetmanlab.com/article/2026-07-09_4-빈혈-검사-MCHC만으로는-부족하다CHCM의-임상적-가치","inLanguage":"ko","isAccessibleForFree":true,"image":"https://todaysveterinarypractice.com/wp-content/uploads/sites/4/2026/07/Zoetis_CHCMAdvertorial_MainImage.png","datePublished":"2026-07-08T18:23:23.000Z","dateModified":"2026-07-08T18:23:23.000Z","author":{"@type":"Organization","name":"베트맨랩 편집팀","url":"https://news.vetmanlab.com/about"},"isBasedOn":"https://todaysveterinarypractice.com/chcm-vs-mchc-why-measured-hemoglobin-matters/","articleSection":"임상","keywords":"임상","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".lead"]},"publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab","url":"https://news.vetmanlab.com","logo":{"@type":"ImageObject","url":"https://news.vetmanlab.com/og.png","width":1200,"height":630}},"mainEntityOfPage":"https://news.vetmanlab.com/article/2026-07-09_4-빈혈-검사-MCHC만으로는-부족하다CHCM의-임상적-가치","abstract":"CBC 결과에서 MCHC와 임상 증상이 불일치하거나 미묘한 소견이 있을 때 CHCM 검사 가능성을 점검하고, 필요시 등 도입을 고려할 것","mentions":{"@type":"Question","name":"우리 강아지 빈혈 검사에서 MCHC는 정상이라고 나왔는데, 정말 빈혈이 없는 건가요?"},"citation":{"@type":"CreativeWork","name":"Today's Veterinary Practice","url":"https://todaysveterinarypractice.com/chcm-vs-mchc-why-measured-hemoglobin-matters/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://news.vetmanlab.com"},{"@type":"ListItem","position":2,"name":"임상","item":"https://news.vetmanlab.com/"},{"@type":"ListItem","position":3,"name":"빈혈 검사, MCHC만으로는 부족하다-CHCM의 임상적 가치","item":"https://news.vetmanlab.com/article/2026-07-09_4-빈혈-검사-MCHC만으로는-부족하다CHCM의-임상적-가치"}]}</script>
@@ -99,7 +119,11 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <div class="nav"><a href="/article/2026-07-09_3-고양이-삶의-질-평가-도구-FelQoL-개발"><div class="l">이전 기사</div><div class="t">고양이 삶의 질 평가 도구 FelQoL 개발</div></a><a href="/article/2026-07-09_5-수의백신-개발-단계와-근거기반-가이드라인의-현재-동향"><div class="l">다음 기사</div><div class="t">수의백신 개발 단계와 근거기반 가이드라인의 현재 동향</div></a></div>
 <a class="home" href="/">2026.07.09 브리핑 전체 보기 →</a>
 <footer class="site-f">
-<nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a><a href="/rss.xml">RSS</a></nav>
-<div class="biz">베트맨랩(VetManLab) · 한국 동물병원을 위한 해외 수의 브리핑<br>주식회사 비전인피플 · 사업자등록번호 170-81-03853<br>© 2026 베트맨랩(VetManLab)</div>
+<div class="site-f-grid">
+<section><div class="eyebrow">VETMANLAB · DAILY BRIEFING</div><div class="brand">VetManLab 해외 브리핑</div><p class="desc">해외 수의 임상·연구·병원 운영 소식을 한국 동물병원의 관점으로 정리합니다. 원문 출처를 확인할 수 있는 읽기 쉬운 브리핑입니다.</p></section>
+<section><h2>둘러보기</h2><nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>
+<section><h2>문의·이용 안내</h2><div class="biz"><strong>업무제휴·광고 문의</strong><br><a href="mailto:vetmanlab@gmail.com?subject=%5BVetManLab%20%ED%95%B4%EC%99%B8%20%EB%B8%8C%EB%A6%AC%ED%95%91%5D%20%EC%97%85%EB%AC%B4%EC%A0%9C%ED%9C%B4%C2%B7%EA%B4%91%EA%B3%A0%20%EB%AC%B8%EC%9D%98">신현규 · vetmanlab@gmail.com</a><br><br><strong>운영·일반 문의</strong><br><a href="mailto:vetmanlab@gmail.com">vetmanlab@gmail.com</a><br><br>주식회사 비전인피플 · 사업자등록번호 170-81-03853</div></section>
+</div>
+<div class="bottom"><span>© 2026 베트맨랩(VetManLab)</span><span>개인정보처리방침 · 이용약관 · 원문 출처 표기 · 임상 정보 참고용</span></div>
 </footer>
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>
