@@ -54,9 +54,18 @@ for (const issue of issues) {
   }
 }
 
-const required = ["index.html", "latest.json", "archive.json", "sitemap.xml", "news-sitemap.xml", "robots.txt", "404.html", "admin-ui.html"];
+const required = ["index.html", "latest.json", "archive.json", "search.json", "sitemap.xml", "news-sitemap.xml", "robots.txt", "404.html", "admin-ui.html"];
 for (const file of required) if (!fs.existsSync(path.join(SITE_DIR, file))) fail(`site/${file} 없음`);
 if (fs.existsSync(path.join(SITE_DIR, "admin.html"))) fail("공개 admin.html이 남아 있습니다.");
+
+const searchFile = path.join(SITE_DIR, "search.json");
+if (fs.existsSync(searchFile)) {
+  const search = json(searchFile);
+  if (!search || !Array.isArray(search.items) || search.items.length !== Number(search.count)) fail("search.json 형식 또는 건수 이상");
+  const searchIds = new Set(search.items.map((item) => item.id).filter(Boolean));
+  if (searchIds.size !== search.items.length) fail("search.json에 중복 id가 있습니다.");
+  if (search.items.some((item) => !item.url || !/^https:\/\//.test(item.url))) fail("search.json에 잘못된 기사 URL이 있습니다.");
+}
 
 const robots = fs.existsSync(path.join(SITE_DIR, "robots.txt")) ? fs.readFileSync(path.join(SITE_DIR, "robots.txt"), "utf8") : "";
 for (const blocked of ["Disallow: /admin", "Disallow: /raw"]) if (!robots.includes(blocked)) fail(`robots.txt에 ${blocked} 없음`);

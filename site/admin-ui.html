@@ -20,6 +20,9 @@ button{border:0;border-radius:8px;padding:9px 15px;font-weight:700;cursor:pointe
 .flags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}
 .flag{font-size:11px;font-weight:700;border-radius:6px;padding:2px 8px}
 .f-red{background:#feecec;color:var(--red)}.f-amb{background:#fef4e6;color:var(--amb)}.f-grn{background:#d9ffe6;color:var(--grn)}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.metric b{display:block;font-size:20px;line-height:1.1}.metric span{display:block;color:var(--mut);font-size:11px;margin-top:5px}
+@media(max-width:680px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .body{margin-top:10px;font-size:14px;line-height:1.75;color:#333;white-space:pre-wrap;display:none}
 .item.open .body{display:block}
 .toggle{font-size:12px;color:var(--blue);cursor:pointer;font-weight:700;margin-top:8px;display:inline-block}
@@ -56,7 +59,11 @@ function render(){
   if(!ISSUE){app.innerHTML='<p>불러오는 중…</p>';return;}
   var items=ISSUE.items||[];
   var exCount=Object.keys(EX).filter(function(k){return EX[k];}).length;
+  var reviewCount=items.filter(function(it){return it.needsReview||foreign(it);}).length;
+  var imageCount=items.filter(function(it){return !!it.imageUrl;}).length;
+  var sourceCount=items.filter(function(it){return !!it.sourceUrl&&it.sourceUrl!=='#';}).length;
   var h='<h1>검수 · '+e(ISSUE.date)+'</h1><div class="sub">발행 상태: '+e(ISSUE.status||'')+' · 총 '+items.length+'건</div>';
+  h+='<div class="metrics"><div class="metric"><b>'+items.length+'</b><span>전체 항목</span></div><div class="metric"><b>'+reviewCount+'</b><span>검수 필요</span></div><div class="metric"><b>'+imageCount+'/'+items.length+'</b><span>대표 이미지</span></div><div class="metric"><b>'+sourceCount+'/'+items.length+'</b><span>원문 링크</span></div></div>';
   h+='<div class="bar"><select id="dsel" onchange="load(this.value)"></select><button class="primary" onclick="copyClean()">제외 반영 JSON 복사</button><button class="ghost" onclick="copyAll()">전체 JSON</button><span class="stat">'+items.length+'건 중 <b>'+exCount+'건 제외</b> → 발행 '+(items.length-exCount)+'건</span></div>';
   h+=items.map(function(it,i){
     var fl=flags(it).map(function(f){return '<span class="flag '+f[0]+'">'+e(f[1])+'</span>';}).join('');

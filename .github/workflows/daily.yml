@@ -56,6 +56,17 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Check external image health
+        run: node src/check-assets.js --json /tmp/image-health.json --max-broken 40
+
+      - name: Upload image health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-health-${{ github.run_id }}
+          path: /tmp/image-health.json
+          if-no-files-found: ignore
+
       # 발행 결과가 비정상이면 커밋하지 않는다. 빈 이슈를 밀어넣고 배포하면
       # 사이트가 통째로 비는데, 그 상태가 커밋되면 되돌릴 대상이 늘어난다.
       - name: Sanity check before commit
@@ -109,12 +120,12 @@ jobs:
           npx wrangler pages deploy site --project-name vetman-briefing --branch main --commit-dirty=true
 
       - name: Verify production deployment
-        continue-on-error: true
         run: |
           set -euo pipefail
           BASE="https://news.vetmanlab.com"
           curl --fail --silent --show-error --retry 3 --retry-delay 2 "$BASE/latest.json" > /tmp/live-latest.json
           curl --fail --silent --show-error --retry 3 --retry-delay 2 "$BASE/robots.txt" > /tmp/live-robots.txt
+          curl --fail --silent --show-error --retry 3 --retry-delay 2 "$BASE/search.json" > /tmp/live-search.json
           node - <<'NODE'
           const fs = require('node:fs');
           const latest = JSON.parse(fs.readFileSync('/tmp/live-latest.json', 'utf8'));
@@ -123,7 +134,9 @@ jobs:
           }
           const robots = fs.readFileSync('/tmp/live-robots.txt', 'utf8');
           for (const rule of ['Disallow: /admin', 'Disallow: /raw']) if (!robots.includes(rule)) throw new Error(`robots.txt에 ${rule} 없음`);
-          console.log(`프로덕션 확인: ${latest.date} / ${latest.items.length}건`);
+          const search = JSON.parse(fs.readFileSync('/tmp/live-search.json', 'utf8'));
+          if (!Array.isArray(search.items) || search.items.length !== Number(search.count)) throw new Error('search.json 검증 실패');
+          console.log(`프로덕션 확인: ${latest.date} / ${latest.items.length}건 / 검색 ${search.items.length}건`);
           NODE
 
       # 배포가 끝난 뒤에 알려야 크롤러가 새 글을 실제로 받아간다

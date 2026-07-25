@@ -9,6 +9,7 @@
     "run": "node --env-file-if-exists=.env src/run.js",
     "build": "node src/build.js",
     "validate": "node src/validate.js",
+    "check-assets": "node src/check-assets.js",
     "test": "node --test test/*.test.js"
   },
   "dependencies": {

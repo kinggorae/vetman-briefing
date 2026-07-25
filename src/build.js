@@ -421,6 +421,7 @@ const APP_JS = String.raw`
   indexDay();
   var LS={saved:'vm_saved',ideas:'vm_ideas',read:'vm_read',theme:'vm_theme',fs:'vm_fs'};
   function load(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }
+  var SEARCH_INDEX=null, searchLoading=false;
   var S={
     theme: load(LS.theme,(window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'),
     sort:'rel', cat:'all', unreadOnly:false, query:'',
@@ -447,9 +448,19 @@ const APP_JS = String.raw`
   var ARL='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M15 18l-6-6 6-6"></path></svg>';
   var ARR='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M9 6l6 6-6 6"></path></svg>';
 
-  // 검색 중에는 화면에 있는 전부(오늘·브리프·최근·진료실 밖)를 대상으로 한다.
+  function loadSearch(){
+    if(SEARCH_INDEX||searchLoading) return;
+    searchLoading=true; render();
+    fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){
+      SEARCH_INDEX=Array.isArray(data.items)?data.items:[];
+      SEARCH_INDEX.forEach(function(a){ byId[a.id]=a; });
+      searchLoading=false; render();
+    }).catch(function(){ searchLoading=false; toast('전체 검색 색인을 불러오지 못했습니다'); });
+  }
+
+  // 검색 중에는 전체 색인(과거 브리핑 포함)을 대상으로 한다.
   function sorted(){
-    var base=S.query.trim()?DATA.articles.concat(DATA.briefs||[],DATA.recent||[],DATA.stories||[]):DATA.articles;
+    var base=S.query.trim()&&SEARCH_INDEX?SEARCH_INDEX:(S.query.trim()?DATA.articles.concat(DATA.briefs||[],DATA.recent||[],DATA.stories||[]):DATA.articles);
     var arr=base.slice(); if(S.sort==='latest'){ arr.sort(function(x,y){return y.ts-x.ts;}); } return arr;
   }
   function match(a,q){ return (a.title+' '+a.dek+' '+a.source+' '+a.kicker+' '+(a.body||[]).join(' ')).toLowerCase().indexOf(q)>=0; }
@@ -999,7 +1010,7 @@ const APP_JS = String.raw`
     if(S.view==='saved'){ stripLabel='저장한 글'; stripMeta=savedCount+'건 저장됨'; }
     else if(S.view==='ideas'){ stripLabel='글감 보관함'; stripMeta=ideaCount+'개 담김'; }
     else if(S.view==='archive'){ stripLabel='지난 브리핑'; stripMeta='날짜별 아카이브'; }
-    else if(searching){ stripLabel='검색 결과'; stripMeta='"'+e(S.query.trim())+'" · '+activeList().length+'건'; }
+    else if(searching){ stripLabel='검색 결과'; stripMeta=searchLoading&&!SEARCH_INDEX?'전체 검색 색인을 불러오는 중…':'"'+e(S.query.trim())+'" · '+activeList().length+'건'; }
     else if(DATA.weekly){ stripLabel='주간 요약'; stripMeta=DATA.date+' · 총 '+DATA.count+'건'; }
     else {
       // 1면 전체 분량을 보여준다 — "오늘"만 세면 수확 적은 날 과도하게 작아 보인다
@@ -1182,7 +1193,7 @@ const APP_JS = String.raw`
     }
     if(el.hasAttribute('data-open')){ openArticle(el.getAttribute('data-open')); }
   });
-  document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; } render(); } });
+  document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; if(!SEARCH_INDEX&&!searchLoading) loadSearch(); } render(); } });
   document.addEventListener('submit',function(ev){ if(ev.target.id==='vm-sub'){ ev.preventDefault(); var em=document.getElementById('vm-email'); if(em&&em.value) subscribe(em.value.trim()); } });
   document.addEventListener('keydown',function(ev){
     var t=ev.target, typing = t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA');
@@ -1369,6 +1380,9 @@ button{border:0;border-radius:8px;padding:9px 15px;font-weight:700;cursor:pointe
 .flags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}
 .flag{font-size:11px;font-weight:700;border-radius:6px;padding:2px 8px}
 .f-red{background:#feecec;color:var(--red)}.f-amb{background:#fef4e6;color:var(--amb)}.f-grn{background:#d9ffe6;color:var(--grn)}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.metric{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.metric b{display:block;font-size:20px;line-height:1.1}.metric span{display:block;color:var(--mut);font-size:11px;margin-top:5px}
+@media(max-width:680px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .body{margin-top:10px;font-size:14px;line-height:1.75;color:#333;white-space:pre-wrap;display:none}
 .item.open .body{display:block}
 .toggle{font-size:12px;color:var(--blue);cursor:pointer;font-weight:700;margin-top:8px;display:inline-block}
@@ -1405,7 +1419,11 @@ function render(){
   if(!ISSUE){app.innerHTML='<p>불러오는 중…</p>';return;}
   var items=ISSUE.items||[];
   var exCount=Object.keys(EX).filter(function(k){return EX[k];}).length;
+  var reviewCount=items.filter(function(it){return it.needsReview||foreign(it);}).length;
+  var imageCount=items.filter(function(it){return !!it.imageUrl;}).length;
+  var sourceCount=items.filter(function(it){return !!it.sourceUrl&&it.sourceUrl!=='#';}).length;
   var h='<h1>검수 · '+e(ISSUE.date)+'</h1><div class="sub">발행 상태: '+e(ISSUE.status||'')+' · 총 '+items.length+'건</div>';
+  h+='<div class="metrics"><div class="metric"><b>'+items.length+'</b><span>전체 항목</span></div><div class="metric"><b>'+reviewCount+'</b><span>검수 필요</span></div><div class="metric"><b>'+imageCount+'/'+items.length+'</b><span>대표 이미지</span></div><div class="metric"><b>'+sourceCount+'/'+items.length+'</b><span>원문 링크</span></div></div>';
   h+='<div class="bar"><select id="dsel" onchange="load(this.value)"></select><button class="primary" onclick="copyClean()">제외 반영 JSON 복사</button><button class="ghost" onclick="copyAll()">전체 JSON</button><span class="stat">'+items.length+'건 중 <b>'+exCount+'건 제외</b> → 발행 '+(items.length-exCount)+'건</span></div>';
   h+=items.map(function(it,i){
     var fl=flags(it).map(function(f){return '<span class="flag '+f[0]+'">'+e(f[1])+'</span>';}).join('');
@@ -2458,6 +2476,7 @@ function build() {
   const archive = [];
   const articleUrls = [];
   const articleEntries = []; // {url, ts, title, section} — lastmod·뉴스 사이트맵용
+  const searchEntries = [];
   const topicBuckets = {};
   const indexedSources = new Set();
   fs.mkdirSync(path.join(SITE_DIR, "article"), { recursive: true });
@@ -2484,6 +2503,9 @@ function build() {
         const u = `${SITE.baseUrl}${articlePath(a)}`;
         articleUrls.push(u);
         articleEntries.push({ url: u, ts: a.ts || null, publishedAt: a.publishedAt || null, modifiedAt: a.publishedAt || null, title: a.title, section: a.kicker });
+        // 검색은 최신 지면에만 갇히면 과거 기사 유입을 놓친다. 상세 화면에
+        // 필요한 필드까지 포함한 검색 전용 색인을 별도 파일로 제공한다.
+        searchEntries.push({ ...a, url: u });
         // 색인 대상 기사만 허브에 싣는다 — 허브가 저품질 페이지로 가는 통로가 되면
         // 어렵게 뺀 noindex 처리가 무의미해진다
         for (const t of topicsOf(a)) (topicBuckets[t.slug] ||= []).push(a);
@@ -2522,6 +2544,10 @@ function build() {
       weeklies: weeklies.map((w) => ({ week: w.week, count: w.count, href: `/weekly/${w.week}.html`, titles: w.items.slice(0, 3).map((it) => it.titleKo) })),
       issues: archive,
     })
+  );
+  fs.writeFileSync(
+    path.join(SITE_DIR, "search.json"),
+    JSON.stringify({ generatedAt: new Date().toISOString(), count: searchEntries.length, items: searchEntries })
   );
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
   fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleEntries, topicUrls));

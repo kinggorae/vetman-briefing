@@ -197,6 +197,7 @@ a:hover{color:var(--color-primary-strong);}
   indexDay();
   var LS={saved:'vm_saved',ideas:'vm_ideas',read:'vm_read',theme:'vm_theme',fs:'vm_fs'};
   function load(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }
+  var SEARCH_INDEX=null, searchLoading=false;
   var S={
     theme: load(LS.theme,(window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'),
     sort:'rel', cat:'all', unreadOnly:false, query:'',
@@ -223,9 +224,19 @@ a:hover{color:var(--color-primary-strong);}
   var ARL='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M15 18l-6-6 6-6"></path></svg>';
   var ARR='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M9 6l6 6-6 6"></path></svg>';
 
-  // 검색 중에는 화면에 있는 전부(오늘·브리프·최근·진료실 밖)를 대상으로 한다.
+  function loadSearch(){
+    if(SEARCH_INDEX||searchLoading) return;
+    searchLoading=true; render();
+    fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){
+      SEARCH_INDEX=Array.isArray(data.items)?data.items:[];
+      SEARCH_INDEX.forEach(function(a){ byId[a.id]=a; });
+      searchLoading=false; render();
+    }).catch(function(){ searchLoading=false; toast('전체 검색 색인을 불러오지 못했습니다'); });
+  }
+
+  // 검색 중에는 전체 색인(과거 브리핑 포함)을 대상으로 한다.
   function sorted(){
-    var base=S.query.trim()?DATA.articles.concat(DATA.briefs||[],DATA.recent||[],DATA.stories||[]):DATA.articles;
+    var base=S.query.trim()&&SEARCH_INDEX?SEARCH_INDEX:(S.query.trim()?DATA.articles.concat(DATA.briefs||[],DATA.recent||[],DATA.stories||[]):DATA.articles);
     var arr=base.slice(); if(S.sort==='latest'){ arr.sort(function(x,y){return y.ts-x.ts;}); } return arr;
   }
   function match(a,q){ return (a.title+' '+a.dek+' '+a.source+' '+a.kicker+' '+(a.body||[]).join(' ')).toLowerCase().indexOf(q)>=0; }
@@ -775,7 +786,7 @@ a:hover{color:var(--color-primary-strong);}
     if(S.view==='saved'){ stripLabel='저장한 글'; stripMeta=savedCount+'건 저장됨'; }
     else if(S.view==='ideas'){ stripLabel='글감 보관함'; stripMeta=ideaCount+'개 담김'; }
     else if(S.view==='archive'){ stripLabel='지난 브리핑'; stripMeta='날짜별 아카이브'; }
-    else if(searching){ stripLabel='검색 결과'; stripMeta='"'+e(S.query.trim())+'" · '+activeList().length+'건'; }
+    else if(searching){ stripLabel='검색 결과'; stripMeta=searchLoading&&!SEARCH_INDEX?'전체 검색 색인을 불러오는 중…':'"'+e(S.query.trim())+'" · '+activeList().length+'건'; }
     else if(DATA.weekly){ stripLabel='주간 요약'; stripMeta=DATA.date+' · 총 '+DATA.count+'건'; }
     else {
       // 1면 전체 분량을 보여준다 — "오늘"만 세면 수확 적은 날 과도하게 작아 보인다
@@ -958,7 +969,7 @@ a:hover{color:var(--color-primary-strong);}
     }
     if(el.hasAttribute('data-open')){ openArticle(el.getAttribute('data-open')); }
   });
-  document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; } render(); } });
+  document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; if(!SEARCH_INDEX&&!searchLoading) loadSearch(); } render(); } });
   document.addEventListener('submit',function(ev){ if(ev.target.id==='vm-sub'){ ev.preventDefault(); var em=document.getElementById('vm-email'); if(em&&em.value) subscribe(em.value.trim()); } });
   document.addEventListener('keydown',function(ev){
     var t=ev.target, typing = t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA');
