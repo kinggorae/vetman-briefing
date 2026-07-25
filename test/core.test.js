@@ -26,3 +26,21 @@ test("quality gate catches foreign scripts and untranslated terms", () => {
   assert.ok(flags.includes("foreign-script"));
   assert.ok(flags.includes("untranslated-term"));
 });
+
+test("quality gate keeps thin or garbled briefs out of the compact feed", () => {
+  const flags = qualityIssues({
+    tier: "brief",
+    titleKo: "비진정 참여자",
+    leadKo: "한 문장으로 끝나는 단신입니다.",
+    bodyKo: [],
+  });
+  assert.ok(flags.includes("brief-too-short"));
+
+  const garbled = qualityIssues({
+    tier: "brief",
+    titleKo: "온라인 말 이 교육 프로그램 출시",
+    leadKo: "수의사 교육 관련 소식으로 자세한 내용과 배경을 함께 전합니다. 현장에 참고할 만한 정보입니다.",
+    bodyKo: [],
+  });
+  assert.ok(garbled.includes("garbled-text"));
+});

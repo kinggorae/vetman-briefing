@@ -10,6 +10,7 @@ import { fetchArticleMeta } from "./article.js";
 import { generateStory } from "./generate.js";
 import { mapPoolUntil } from "./pool.js";
 import { addSourceKeys, sourceKeys, stableItemId, titleKey } from "./identity.js";
+import { markQuality } from "./quality.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -77,12 +78,15 @@ export async function addStories(items, seen, limit = GOSSIP_PER_ISSUE) {
       post.imageUrl = meta.imageUrl ?? null;
       post.finalUrl = meta.finalUrl ?? null;
       const generated = await generateStory(post);
-      const storyItem = {
+      const storyItem = markQuality({
         ...generated,
         id: generated.id || stableItemId({ ...post, ...generated }, `story-${post.id || post.url}`),
         sourceUrlRaw: generated.sourceUrlRaw || post.url || null,
-      };
-      if (storyItem.needsReview) return null;
+      });
+      if (storyItem.needsReview) {
+        console.warn(`  ⚠ 가십 품질 게이트 탈락 — ${(storyItem.titleKo || "").slice(0, 34)}`);
+        return null;
+      }
       console.log(`  ✓ [썰·${storyItem.tagKo}] ${storyItem.titleKo}`);
       return storyItem;
     },

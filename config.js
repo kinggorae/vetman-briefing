@@ -264,7 +264,7 @@ export const GOSSIP_FEEDS = GOSSIP_TOPICS.map((q) => ({
   maxAgeDays: 30, // 화제글은 꼬리가 길다 — 넓게 잡고 seen으로 중복만 방지
   url: `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-US&gl=US&ceid=US:en`,
 }));
-export const GOSSIP_PER_ISSUE = 30; // 이슈당 "진료실 밖 이야기" 최종 수(계층화로 상향, noindex)
+export const GOSSIP_PER_ISSUE = 5; // 이슈당 화제 이야기 최대 수. 3건 미만이면 홈에는 노출하지 않는다.
 
 // ── Plan B (보조): Claude 웹 검색으로 레딧 커뮤니티 시그널 수집 ──
 export const WEBSEARCH_SUBREDDITS = ["Veterinary", "VetTech", "AskVet"];
