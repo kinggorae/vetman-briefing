@@ -25,6 +25,12 @@ function asArray(x) {
   return Array.isArray(x) ? x : x == null ? [] : [x];
 }
 
+function toIsoDate(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
 export async function fetchFeed(feed) {
   const res = await fetch(feed.url, {
     headers: { "User-Agent": UA, Accept: "application/rss+xml, application/xml, text/xml, */*" },
@@ -45,6 +51,7 @@ export async function fetchFeed(feed) {
     .map((it) => {
       const link = typeof it.link === "string" ? it.link : it.link?.["@_href"] ?? "";
       const published = it.pubDate ?? it.published ?? it.updated ?? it["dc:date"] ?? null;
+      const publishedAt = toIsoDate(published);
       const bodyRaw =
         it["content:encoded"] ?? it.description ?? it.summary ?? it.content?.["#text"] ?? "";
       let title = stripHtml(String(it.title ?? ""));
@@ -62,11 +69,14 @@ export async function fetchFeed(feed) {
         title,
         body: stripHtml(String(bodyRaw)).slice(0, 4000),
         url: link,
-        publishedAt: published ? new Date(published).toISOString() : null,
+        publishedAt,
+        _dateInvalid: Boolean(published) && !publishedAt,
       };
     })
     .filter((it) => it.url && it.title)
+    .filter((it) => !it._dateInvalid)
     .filter((it) => !it.publishedAt || new Date(it.publishedAt).getTime() >= cutoff)
+    .map(({ _dateInvalid, ...it }) => it)
     .filter((it) => !/members only|log in\/register/i.test(it.body));
 
   return feed.max ? items.slice(0, feed.max) : items;

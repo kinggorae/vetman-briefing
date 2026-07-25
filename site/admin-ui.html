@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>검수 · VetMan</title>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>검수 · VetManLab</title>
 <style>
 :root{--bg:#f4f5f7;--card:#fff;--ink:#1b1c1e;--mut:#6b7280;--line:#e2e4e8;--blue:#0066ff;--red:#e52222;--amb:#d47800;--grn:#009632}
 *{box-sizing:border-box}body{margin:0;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
@@ -28,7 +28,7 @@ button{border:0;border-radius:8px;padding:9px 15px;font-weight:700;cursor:pointe
 .gate input{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;margin:12px 0}
 </style></head><body><div class="wrap" id="app"></div>
 <script>
-var PASS='vetman2026';
+var TOKEN=sessionStorage.getItem('vm_admin_token')||'';
 var app=document.getElementById('app');
 var ISSUE=null, EX={};
 function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -45,11 +45,12 @@ function flags(it){
   return out;
 }
 function gate(){
-  app.innerHTML='<div class="gate"><h1>검수 대시보드</h1><p style="color:#6b7280;font-size:13px">암호를 입력하세요.</p><input id="pw" type="password" placeholder="암호"><button class="primary" style="width:100%" onclick="tryPw()">확인</button><p style="color:#9aa;font-size:11px;margin-top:16px">※ 이 페이지는 검색엔진에 노출되지 않지만 URL을 아는 사람은 접근할 수 있습니다. 강력한 보호가 필요하면 Cloudflare Access를 설정하세요.</p></div>';
+  app.innerHTML='<div class="gate"><h1>검수 대시보드</h1><p style="color:#6b7280;font-size:13px">관리자 키를 입력하세요.</p><input id="pw" type="password" placeholder="관리자 키" autocomplete="current-password"><button class="primary" style="width:100%" onclick="tryPw()">확인</button><p style="color:#9aa;font-size:11px;margin-top:16px">관리자 키는 공개 코드에 저장되지 않으며 서버에서만 확인됩니다.</p></div>';
 }
-window.tryPw=function(){var v=document.getElementById('pw').value;if(v===PASS){localStorage.setItem('vm_admin',v);boot();}else alert('암호가 틀렸습니다');};
+function authFetch(url){return fetch(url,{headers:{Authorization:'Bearer '+TOKEN}}).then(function(r){if(r.status===401){TOKEN='';sessionStorage.removeItem('vm_admin_token');gate();throw new Error('unauthorized');}if(!r.ok)throw new Error('request failed');return r;});}
+window.tryPw=function(){var v=document.getElementById('pw').value.trim();if(!v)return;TOKEN=v;sessionStorage.setItem('vm_admin_token',v);boot();};
 function load(date){
-  fetch('raw/'+date+'.json').then(function(r){return r.json();}).then(function(d){ISSUE=d;EX={};render();});
+  authFetch('/api/admin?resource=raw&date='+encodeURIComponent(date)).then(function(r){return r.json();}).then(function(d){ISSUE=d;EX={};render();}).catch(function(){});
 }
 function render(){
   if(!ISSUE){app.innerHTML='<p>불러오는 중…</p>';return;}
@@ -64,12 +65,12 @@ function render(){
   }).join('');
   app.innerHTML=h;
   // date dropdown
-  fetch('archive.json').then(function(r){return r.json();}).then(function(a){var sel=document.getElementById('dsel');if(!sel)return;sel.innerHTML=(a.issues||[]).map(function(x){return '<option value="'+x.date+'"'+(x.date===ISSUE.date?' selected':'')+'>'+x.date+' ('+x.count+'건)</option>';}).join('');});
+  authFetch('/api/admin?resource=archive').then(function(r){return r.json();}).then(function(a){var sel=document.getElementById('dsel');if(!sel)return;sel.innerHTML=(a.issues||[]).map(function(x){return '<option value="'+x.date+'"'+(x.date===ISSUE.date?' selected':'')+'>'+x.date+' ('+x.count+'건)</option>';}).join('');}).catch(function(){});
 }
 window.toggleEx=function(i){EX[i]=!EX[i];render();};
 window.tg=function(i){document.getElementById('it'+i).classList.toggle('open');event.target.textContent=document.getElementById('it'+i).classList.contains('open')?'본문 접기 ▴':'본문 펼치기 ▾';};
 window.copyClean=function(){var out=Object.assign({},ISSUE);out.items=ISSUE.items.filter(function(it,i){return !EX[i];});navigator.clipboard.writeText(JSON.stringify(out,null,2));alert('제외 반영 JSON을 복사했습니다.\n\ndata/issues/'+ISSUE.date+'.json 에 붙여넣고 재배포하세요.');};
 window.copyAll=function(){navigator.clipboard.writeText(JSON.stringify(ISSUE,null,2));alert('전체 JSON 복사됨');};
-function boot(){fetch('archive.json').then(function(r){return r.json();}).then(function(a){var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';});}
-if(localStorage.getItem('vm_admin')===PASS) boot(); else gate();
+function boot(){authFetch('/api/admin?resource=archive').then(function(r){return r.json();}).then(function(a){var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';}).catch(function(){gate();});}
+if(TOKEN) boot(); else gate();
 </script><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>

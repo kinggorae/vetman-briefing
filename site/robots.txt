@@ -1,6 +1,9 @@
 # 검색·AI 크롤러 모두 환영합니다. 인용 시 출처 표기를 부탁드립니다.
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin-ui.html
+Disallow: /raw/
 
 User-agent: GPTBot
 Allow: /

@@ -9,6 +9,7 @@ import { fetchFeed } from "./rss.js";
 import { fetchArticleMeta } from "./article.js";
 import { generateStory } from "./generate.js";
 import { mapPoolUntil } from "./pool.js";
+import { addSourceKeys, sourceKeys, stableItemId, titleKey } from "./identity.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -16,7 +17,9 @@ const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 
 function loadSeen() {
   try {
-    return new Set(JSON.parse(fs.readFileSync(SEEN_PATH, "utf8")).urls);
+    const set = new Set();
+    for (const url of JSON.parse(fs.readFileSync(SEEN_PATH, "utf8")).urls || []) addSourceKeys(set, url);
+    return set;
   } catch {
     return new Set();
   }
@@ -46,9 +49,10 @@ export async function collectGossip(exclude = new Set()) {
   }
   const seenKey = new Set();
   return roundRobin(groups).filter((c) => {
-    const tk = c.title.toLowerCase().replace(/[^a-z0-9가-힣]/g, "").slice(0, 60);
-    if (exclude.has(c.url) || seenKey.has(c.url) || seenKey.has(tk)) return false;
-    seenKey.add(c.url);
+    const tk = titleKey(c.title);
+    const keys = sourceKeys(c);
+    if (keys.some((key) => exclude.has(key)) || keys.some((key) => seenKey.has(key)) || seenKey.has(tk)) return false;
+    keys.forEach((key) => seenKey.add(key));
     seenKey.add(tk);
     return true;
   });
@@ -59,7 +63,8 @@ export async function addStories(items, seen, limit = GOSSIP_PER_ISSUE) {
   const have = items.filter((it) => it.category === "watercooler").length;
   const need = Math.max(0, limit - have);
   if (need === 0) return 0;
-  const existing = new Set(items.map((it) => it.sourceUrl));
+  const existing = new Set();
+  items.forEach((it) => addSourceKeys(existing, it));
   const cands = await collectGossip(new Set([...seen, ...existing]));
   console.log(`  [가십] 후보 ${cands.length}건 → ${need}건 생성 목표`);
   // 목표 건수를 채우면 남은 후보는 시작하지 않는다(품질 게이트 탈락분이 있어
@@ -71,16 +76,21 @@ export async function addStories(items, seen, limit = GOSSIP_PER_ISSUE) {
       post.fullText = meta.fullText ?? null;
       post.imageUrl = meta.imageUrl ?? null;
       post.finalUrl = meta.finalUrl ?? null;
-      const story = await generateStory(post);
-      if (story.needsReview) return null;
-      console.log(`  ✓ [썰·${story.tagKo}] ${story.titleKo}`);
-      return story;
+      const generated = await generateStory(post);
+      const storyItem = {
+        ...generated,
+        id: generated.id || stableItemId({ ...post, ...generated }, `story-${post.id || post.url}`),
+        sourceUrlRaw: generated.sourceUrlRaw || post.url || null,
+      };
+      if (storyItem.needsReview) return null;
+      console.log(`  ✓ [썰·${storyItem.tagKo}] ${storyItem.titleKo}`);
+      return storyItem;
     },
     need
   );
   stories.forEach((s) => {
     items.push(s);
-    seen.add(s.sourceUrl);
+    addSourceKeys(seen, s);
   });
   return stories.length;
 }

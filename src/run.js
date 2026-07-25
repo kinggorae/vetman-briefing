@@ -13,6 +13,8 @@ import { IS_COMPAT } from "./llm.js";
 import { enrichItems } from "./enrich.js";
 import { addStories } from "./gossip.js";
 import { mapPool } from "./pool.js";
+import { addSourceKeys, sourceKeys, stableItemId, titleKey } from "./identity.js";
+import { markQuality } from "./quality.js";
 
 const noPapers = process.argv.includes("--no-papers");
 const papersOnly = process.argv.includes("--papers-only"); // 오늘 이슈에 논문만 추가 병합
@@ -35,7 +37,9 @@ function dateLabel(d = new Date()) {
 // 이미 소개한 글 URL 저장소 — 일간 실행 시 중복 방지
 function loadSeen() {
   try {
-    return new Set(JSON.parse(fs.readFileSync(SEEN_PATH, "utf8")).urls);
+    const set = new Set();
+    for (const url of JSON.parse(fs.readFileSync(SEEN_PATH, "utf8")).urls || []) addSourceKeys(set, url);
+    return set;
   } catch {
     return new Set();
   }
@@ -45,6 +49,15 @@ function saveSeen(seen) {
   const urls = [...seen].slice(-2000); // 최근 2000건만 유지
   fs.mkdirSync(path.dirname(SEEN_PATH), { recursive: true });
   fs.writeFileSync(SEEN_PATH, JSON.stringify({ urls }, null, 2));
+}
+
+function withIdentity(item, post, fallback = "item") {
+  return markQuality({
+    ...item,
+    id: item.id || stableItemId({ ...post, ...item }, fallback),
+    sourceUrl: item.sourceUrl || post.finalUrl || post.url,
+    sourceUrlRaw: item.sourceUrlRaw || post.url || null,
+  });
 }
 
 // 구글 뉴스 쿼리들이 후보 상한을 독식하지 않도록 쿼리별로 번갈아 뽑는다
@@ -108,8 +121,7 @@ async function collect() {
   // 중복 제거(URL + 제목 유사 기준) 후 상한 적용 — 같은 뉴스가 여러 쿼리·매체에 잡히는 것 대응
   const seen = new Set();
   const deduped = candidates.filter((c) => {
-    const titleKey = c.title.toLowerCase().replace(/[^a-z0-9가-힣]/g, "").slice(0, 60);
-    const keys = [c.url || c.id, titleKey];
+    const keys = [...sourceKeys(c), titleKey(c.title)];
     if (keys.some((k) => seen.has(k))) return false;
     keys.forEach((k) => seen.add(k));
     return true;
@@ -128,15 +140,16 @@ async function papersOnlyRun() {
   const issue = fs.existsSync(issuePath)
     ? JSON.parse(fs.readFileSync(issuePath, "utf8"))
     : { date: label, status: "published", generatedAt: new Date().toISOString(), publishedAt: new Date().toISOString(), items: [] };
-  const existing = new Set(issue.items.map((it) => it.sourceUrl));
+  const existing = new Set();
+  issue.items.forEach((it) => addSourceKeys(existing, it));
   console.log("최신 연구(PubMed) 수집·생성 중...");
-  const papersRaw = (await fetchPubmed()).filter((p) => !seen.has(p.url) && !existing.has(p.url));
+  const papersRaw = (await fetchPubmed()).filter((p) => !sourceKeys(p).some((key) => seen.has(key) || existing.has(key)));
   console.log(`  논문 후보 ${papersRaw.length}편`);
   const top = await scoreAll(papersRaw, PAPERS_PER_ISSUE);
   console.log(`  선별 ${top.length}편`);
   const made = (
     await mapPool(top, async (post) => {
-      const paper = await generatePaper(post);
+      const paper = withIdentity(await generatePaper(post), post, `paper-${post.id || post.url}`);
       if (paper.needsReview) return null;
       console.log(`  ✓ [논문] ${paper.titleKo}`);
       return paper;
@@ -144,7 +157,7 @@ async function papersOnlyRun() {
   ).filter(Boolean);
   made.forEach((paper) => {
     issue.items.push(paper);
-    seen.add(paper.sourceUrl);
+    addSourceKeys(seen, paper);
   });
   const added = made.length;
   try {
@@ -166,7 +179,7 @@ async function main() {
   );
   const seen = loadSeen();
   const collected = await collect();
-  const candidates = collected.filter((c) => !seen.has(c.url));
+  const candidates = collected.filter((c) => !sourceKeys(c).some((key) => seen.has(key)));
   console.log(`  후보 총 ${collected.length}개 → 기소개분 제외 후 ${candidates.length}개`);
 
   if (collectOnly) {
@@ -209,7 +222,7 @@ async function main() {
         post.imageUrl = meta.imageUrl ?? null;
         post.finalUrl = meta.finalUrl ?? null;
       }
-      const item = await generateItem(post, comments);
+      const item = withIdentity(await generateItem(post, comments), post, `article-${post.id || post.url}`);
       console.log(`  ✓ ${item.titleKo}`);
       return item;
     })
@@ -224,14 +237,14 @@ async function main() {
   if (!noPapers) {
     try {
       console.log("+ 최신 연구(PubMed) 수집·생성 중...");
-      const papersRaw = (await fetchPubmed()).filter((p) => !seen.has(p.url));
+    const papersRaw = (await fetchPubmed()).filter((p) => !sourceKeys(p).some((key) => seen.has(key)));
       console.log(`  논문 후보 ${papersRaw.length}편`);
       if (papersRaw.length) {
         const topPapers = await scoreAll(papersRaw, PAPERS_PER_ISSUE);
         console.log(`  논문 선별 ${topPapers.length}편`);
         const papers = (
           await mapPool(topPapers, async (post) => {
-            const paper = await generatePaper(post);
+            const paper = withIdentity(await generatePaper(post), post, `paper-${post.id || post.url}`);
             console.log(`  ✓ [논문] ${paper.titleKo}`);
             return paper;
           })
@@ -273,8 +286,8 @@ async function main() {
               post.fullText = meta.fullText ?? null;
             } catch {}
           }
-          const b = await generateBrief(post);
-          seen.add(b.sourceUrl);
+          const b = withIdentity(await generateBrief(post), post, `brief-${post.id || post.url}`);
+          addSourceKeys(seen, b);
           return b;
         })
       ).filter(Boolean);
@@ -321,8 +334,9 @@ async function main() {
   let issue;
   if (fs.existsSync(out)) {
     issue = JSON.parse(fs.readFileSync(out, "utf8"));
-    const existingUrls = new Set((issue.items || []).map((it) => it.sourceUrl));
-    const added = newItems.filter((it) => !existingUrls.has(it.sourceUrl));
+    const existingUrls = new Set();
+    (issue.items || []).forEach((it) => addSourceKeys(existingUrls, it));
+    const added = newItems.filter((it) => !sourceKeys(it).some((key) => existingUrls.has(key)));
     issue.items = [...(issue.items || []), ...added];
     issue.generatedAt = new Date().toISOString();
     if (autoPublish) issue.status = "published";
@@ -340,7 +354,7 @@ async function main() {
   fs.writeFileSync(out, JSON.stringify(issue, null, 2));
 
   // 소개한 글을 seen 저장소에 기록 (다음 실행에서 중복 방지)
-  for (const it of newItems) seen.add(it.sourceUrl);
+  for (const it of newItems) addSourceKeys(seen, it);
   saveSeen(seen);
 
   console.log(`4/4 완료 — ${autoPublish ? "발행" : "draft 저장"}: ${out} (총 ${issue.items.length}건)`);

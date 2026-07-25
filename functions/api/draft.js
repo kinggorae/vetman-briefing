@@ -1,26 +1,58 @@
 // Cloudflare Pages Function — POST /api/draft
 // 담은 글감(들)을 한국 동물병원 블로그용 초안으로 생성한다.
 // 환경변수(Pages): LLM_BASE_URL, LLM_API_KEY, CLAUDE_MODEL
-const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type" };
+const DEFAULT_ORIGIN = "https://news.vetmanlab.com";
 
-export async function onRequestOptions() {
-  return new Response(null, { headers: CORS });
+function originFor(request, env) {
+  const origin = request.headers.get("Origin") || "";
+  const allowed = env.SITE_ORIGIN || DEFAULT_ORIGIN;
+  return origin === allowed ? origin : allowed;
+}
+
+function cors(request, env) {
+  return {
+    "Access-Control-Allow-Origin": originFor(request, env),
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    Vary: "Origin",
+  };
+}
+
+export async function onRequestOptions({ request, env }) {
+  return new Response(null, { headers: cors(request, env) });
 }
 
 export async function onRequestPost({ request, env }) {
+  const origin = request.headers.get("Origin") || "";
+  const allowed = env.SITE_ORIGIN || DEFAULT_ORIGIN;
+  if (origin && origin !== allowed) return json({ error: "허용되지 않은 출처입니다." }, 403, request, env);
+  const length = Number(request.headers.get("content-length") || 0);
+  if (length > 120000) return json({ error: "요청이 너무 큽니다." }, 413, request, env);
   const base = env.LLM_BASE_URL || "https://api.anthropic.com";
   const key = env.LLM_API_KEY;
   const model = env.CLAUDE_MODEL || "MiniMax-M2";
-  if (!key) return json({ error: "서버에 LLM_API_KEY가 설정되지 않았습니다." }, 500);
+  if (!key) return json({ error: "서버에 LLM_API_KEY가 설정되지 않았습니다." }, 500, request, env);
 
   let body;
   try {
     body = await request.json();
   } catch {
-    return json({ error: "잘못된 요청" }, 400);
+    return json({ error: "잘못된 요청" }, 400, request, env);
   }
   const ideas = Array.isArray(body.ideas) ? body.ideas.slice(0, 6) : [];
-  if (!ideas.length) return json({ error: "글감이 없습니다." }, 400);
+  if (!ideas.length) return json({ error: "글감이 없습니다." }, 400, request, env);
+
+  if (env.TURNSTILE_SECRET_KEY) {
+    const token = String(body.turnstileToken || "");
+    if (!token) return json({ error: "보안 확인이 필요합니다." }, 403, request, env);
+    const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ secret: env.TURNSTILE_SECRET_KEY, response: token, remoteip: request.headers.get("CF-Connecting-IP") || undefined }),
+    });
+    const result = await verify.json().catch(() => null);
+    if (!verify.ok || !result?.success) return json({ error: "보안 확인에 실패했습니다." }, 403, request, env);
+  }
 
   const src = ideas
     .map(
@@ -100,12 +132,15 @@ export async function onRequestPost({ request, env }) {
     }
     // 최종 안전망: 그래도 남으면 외국 문자 제거
     if (foreign(parsed)) parsed = stripAll(parsed);
-    return json(parsed);
+    return json(parsed, 200, request, env);
   } catch (err) {
-    return json({ error: "생성 실패: " + err.message }, 500);
+    return json({ error: "생성 실패: " + err.message }, 500, request, env);
   }
 }
 
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), { status, headers: { "content-type": "application/json", ...CORS } });
+function json(obj, status = 200, request, env) {
+  return new Response(JSON.stringify(obj), {
+    status,
+    headers: { "content-type": "application/json", "cache-control": "no-store", ...cors(request, env) },
+  });
 }

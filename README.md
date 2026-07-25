@@ -22,6 +22,10 @@ src/websearch.js     Claude 웹 검색으로 레딧 시그널 수집
 src/reddit.js        Reddit API 수집 (OAuth)
 src/select.js        규칙 필터 + Claude 관련성 스코어링(0~10) → 상위 8개
 src/generate.js      한국어 제목·요약·글감 포인트 생성
+src/identity.js      원문 URL 정규화·추적 파라미터 제거·안정적인 기사 ID 생성
+src/quality.js       외국어 혼입·미번역 용어·본문 길이 품질 게이트
+src/repair-content.js 기존 발행 데이터의 번역 잔여물 일괄 점검·교정
+src/validate.js       데이터·canonical·사이트맵·보안 산출물 검증
 src/run.js           전체 파이프라인 → data/issues/<week>.draft.json
 src/publish.js       검수 완료된 draft를 발행 상태로 전환
 src/build.js         data/issues/*.json → site/ 정적 사이트 + latest.json
@@ -51,6 +55,17 @@ npm run build          # site/ 빌드
 | `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` | 선택 | 있으면 Reddit API 직접 수집 활성화 |
 | `REDDIT_USER_AGENT` | 선택 | `platform:app:version (by /u/유저명)` 형식 |
 
+### Cloudflare Pages 환경변수
+
+| 변수 | 용도 |
+|---|---|
+| `ADMIN_PASSWORD` | `/admin` 검수 API 인증용. 저장소나 프런트엔드 코드에 넣지 않고 Pages Secret으로만 등록 |
+| `SITE_ORIGIN` | API CORS 허용 원본. 기본값은 `https://news.vetmanlab.com` |
+| `NEWSLETTER_ENABLED` | `true`로 명시적으로 켠 경우에만 뉴스레터 구독 API 활성화 |
+| `TURNSTILE_SECRET_KEY` | 선택. 등록하면 AI 초안 생성 요청에 Cloudflare Turnstile 검증을 요구 |
+
+`ADMIN_PASSWORD`를 설정하지 않으면 관리자 API는 의도적으로 401을 반환합니다. 관리자 화면 주소를 아는 것만으로는 데이터에 접근할 수 없습니다.
+
 **MiniMax 호환 모드 제약**: structured outputs 대신 프롬프트 기반 JSON 파싱을 쓰고(자동 전환),
 Anthropic 웹 검색 도구가 없어 Plan B(레딧 시그널)는 비활성화된다. RSS 수집·선별·요약은 전부 동작.
 
@@ -61,6 +76,10 @@ Anthropic 웹 검색 도구가 없어 Plan B(레딧 시그널)는 비활성화�
   외국어 혼입이 끝내 해소되지 않은 아이템(`needsReview`)은 자동 발행에서 제외된다.
 - **수동 검수 모드**: 로컬에서 `npm run run` → draft 확인 → `node src/publish.js <날짜>` → `npm run build`.
 - `site/latest.json`은 VetMan 본체에서 embed할 수 있는 공개 endpoint.
+- `npm run validate`는 발행 이슈·중복 원문·사이트맵·관리자 산출물·보안 문자열을 검사한다. CI는 빌드 직후 이 검사를 통과해야 커밋한다.
+- 기존 기사 URL은 legacySlug로 보존하고, 새 기사는 원문 URL 기반 v1_... ID를 사용한다. 제목 교정만으로 이미 색인된 주소가 바뀌지 않게 하는 규칙이다.
+- 같은 원문이 여러 날짜에 재수록되면 최신본만 색인하고 과거 페이지는 noindex, follow로 유지한다.
+- CI는 라이브 latest.json보다 오래된 날짜를 배포하려는 경우 중단한다. 라이브와 저장소의 날짜가 어긋난 상태에서 수동 배포하지 않는다.
 
 ## 정책 메모
 

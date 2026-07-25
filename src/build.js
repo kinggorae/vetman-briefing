@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { SITE, LEGAL, SPONSOR, TOPICS } from "../config.js";
+import { normalizeSourceUrl } from "./identity.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -99,15 +100,28 @@ function toArticle(item, i, issueDate) {
   const dek = trimDek(item.leadKo || item.summaryKo || body[0] || "");
   const chars = (item.titleKo || "").length + dek.length + body.join("").length;
   const readMin = Math.max(1, Math.round(chars / 500));
-  const pub = item.publishedAt ? new Date(item.publishedAt) : null;
+  const candidatePub = item.publishedAt ? new Date(item.publishedAt) : null;
+  const pub = candidatePub && !Number.isNaN(candidatePub.getTime()) ? candidatePub : null;
   // 발행일이 없는 기사도 있어 날짜가 통째로 비던 문제 → 이슈 날짜로 대체
-  const shown = pub || new Date(issueDate + "T00:00:00");
-  const dateStr = `${String(shown.getMonth() + 1).padStart(2, "0")}.${String(shown.getDate()).padStart(2, "0")}`;
-  const isToday = pub ? pub.toISOString().slice(0, 10) === issueDate : false;
+  const fallbackIssueDate = /^\d{4}-\d{2}-\d{2}$/.test(issueDate)
+    ? issueDate
+    : /^\d{4}-W\d{2}$/.test(issueDate)
+      ? `${issueDate.slice(0, 4)}-01-01`
+      : "1970-01-01";
+  const shown = pub || new Date(`${fallbackIssueDate}T00:00:00+09:00`);
+  const shownParts = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(shown);
+  const shownMap = Object.fromEntries(shownParts.map((p) => [p.type, p.value]));
+  const dateStr = `${shownMap.month}.${shownMap.day}`;
+  const isToday = pub ? new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(pub) === issueDate : false;
+  // 기존 기사에는 legacy ID를 유지해 이미 색인된 URL을 깨지 않는다. 새 파이프라인
+  // 아이템은 run.js가 source URL 기반 id를 저장하므로 재발행해도 주소가 유지된다.
+  const id = item.id || `${issueDate}_${i + 1}`;
   return {
-    id: `${issueDate}_${i + 1}`,
+    id,
+    legacySlug: item.legacySlug || null,
     day: issueDate,
-    ts: pub ? pub.getTime() : Date.now() - i * 1000,
+    ts: pub ? pub.getTime() : shown.getTime(),
+    publishedAt: pub ? pub.toISOString() : null,
     cat: item.category || "other",
     kicker: CATEGORY_LABELS[item.category] || item.category || "브리핑",
     isToday,
@@ -207,7 +221,7 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
         "@type": "NewsArticle",
         headline: a.title,
         description: a.dek,
-        url: `${canonical}#${a.id}`,
+        url: `${SITE.baseUrl}${articlePath(a)}`,
         image: articleImage(a),
         ...(a.ts
           ? { datePublished: new Date(a.ts).toISOString(), dateModified: new Date(a.ts).toISOString() }
@@ -279,6 +293,9 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
 <meta property="og:url" content="${esc(canonical)}">
 ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">` : ""}
 <meta name="twitter:card" content="${ogImage ? "summary_large_image" : "summary"}">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(desc.slice(0, 155))}">
+${ogImage ? `<meta name="twitter:image" content="${esc(ogImage)}">` : ""}
 <meta name="robots" content="${isIndex || issueIndexable(data) ? "index, follow" : "noindex, follow"}">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 <script type="application/ld+json">${JSON.stringify(orgLd)}</script>
@@ -371,6 +388,7 @@ a:hover{color:var(--color-primary-strong);}
   .vm-qa-grid{grid-template-columns:1fr !important;}
   .vm-mast h1{font-size:40px !important;}
   .vm-lead-h{font-size:30px !important;}
+  .vm-row-thumb{width:112px !important;}
   .vm-detail{width:100% !important;max-width:100% !important;}
   .vm-search{display:none !important;}
   .vm-dateline{display:none !important;}
@@ -429,9 +447,9 @@ const APP_JS = String.raw`
   var ARL='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M15 18l-6-6 6-6"></path></svg>';
   var ARR='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M9 6l6 6-6 6"></path></svg>';
 
-  // 검색 중에는 화면에 있는 전부(오늘+최근+진료실 밖)를 대상으로 — 바로 아래 보이는 글이 안 걸리면 이상하다
+  // 검색 중에는 화면에 있는 전부(오늘·브리프·최근·진료실 밖)를 대상으로 한다.
   function sorted(){
-    var base=S.query.trim()?DATA.articles.concat(DATA.recent||[],DATA.stories||[]):DATA.articles;
+    var base=S.query.trim()?DATA.articles.concat(DATA.briefs||[],DATA.recent||[],DATA.stories||[]):DATA.articles;
     var arr=base.slice(); if(S.sort==='latest'){ arr.sort(function(x,y){return y.ts-x.ts;}); } return arr;
   }
   function match(a,q){ return (a.title+' '+a.dek+' '+a.source+' '+a.kicker+' '+(a.body||[]).join(' ')).toLowerCase().indexOf(q)>=0; }
@@ -449,13 +467,18 @@ const APP_JS = String.raw`
     if(S.view==='ideas') return Object.keys(S.ideas).map(function(k){return S.ideas[k];});
     if(S.query.trim()) return activeList();                     // 검색 중엔 검색 결과로 연속 읽기
     var cur=byId[S.openId];
+    if(cur&&cur.tier==='brief') return (DATA.briefs||[]);       // 브리프도 다음/이전으로 읽기
     if(cur&&cur.cat==='watercooler') return (DATA.stories||[]); // 진료실 밖 이야기끼리 연속 읽기
     if(cur&&cur.day!==DATA.date) return (DATA.recent||[]);      // 최근 브리핑끼리 연속 읽기
     return activeList();
   }
 
   function tag(today,h,fs){ return today?'<span style="display:inline-flex;align-items:center;height:'+h+'px;padding:0 6px;background:var(--color-atomic-blue-100);color:var(--color-atomic-blue-800);border-radius:4px;font-size:'+fs+'px;font-weight:700;">오늘</span>':''; }
-  function plateImg(a){ return a.image ? '<img class="vm-plate-img" src="'+e(a.image)+'" alt="'+e(a.title)+'" loading="lazy" onerror="this.remove()">' : ''; }
+  function plateImg(a,o){
+    o=o||{};
+    var eager=o.eager||((o.big||15)>=22);
+    return a.image ? '<img class="vm-plate-img" src="'+e(a.image)+'" alt="'+e(a.title)+' 출처 이미지" loading="'+(eager?'eager':'lazy')+'" '+(eager?'fetchpriority="high" ':'')+'decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">' : '';
+  }
   var ICON_DOC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:100%;height:100%;"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M8.5 13h7M8.5 16.5h7M8.5 9.5h2"></path></svg>';
   var ICON_NEWS='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:100%;height:100%;"><path d="M4 5h13v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"></path><path d="M17 8h2a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2"></path><path d="M7 8h7M7 11.5h7M7 15h4"></path></svg>';
   // 이미지 없을 때: 결함이 아니라 의도된 "출처 플레이트". 아이콘+출처명+라벨.
@@ -471,7 +494,10 @@ const APP_JS = String.raw`
       +'<div style="width:'+isz+'px;height:'+isz+'px;color:var(--color-primary-normal);opacity:.55;">'+icon+'</div>'
       + name + label
       +'</div>';
-    return fb + plateImg(a);
+    return fb + plateImg(a,o);
+  }
+  function cardMedia(a,big,ratio){
+    return '<div class="vm-card-media" style="position:relative;aspect-ratio:'+(ratio||'16/9')+';overflow:hidden;border-radius:10px;background:var(--color-background-alternative);margin:0 0 14px;">'+plate(a,{big:big||16,pad:14,eager:(big||16)>=22})+'</div>';
   }
   function bookmarkBtn(id,w,box){
     var st = box==='plain' ? 'width:'+(w+11)+'px;height:'+(w+11)+'px;border:0;background:transparent;' : 'width:'+(w+11)+'px;height:'+(w+11)+'px;border:1px solid var(--color-line-normal);background:var(--color-background-elevated);';
@@ -511,6 +537,7 @@ const APP_JS = String.raw`
   function leadCard(a){
     return '<article class="vm-lead'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,18,10.5)+(isRead(a.id)?'<span style="font-size:10.5px;color:var(--color-label-alternative);">읽음</span>':'')+'</div>'+bookmarkBtn(a.id,17,'plain')+'</div>'
+    +cardMedia(a,22)
     +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:40px;line-height:1.12;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h2>'
     +'<p style="font-size:17px;line-height:1.7;color:var(--color-label-neutral);margin:0 0 14px;max-width:56ch;">'+e(a.dek)+'</p>'
     // 리드는 본문을 넉넉히 실어 왼쪽 칼럼이 비지 않게 한다(신문 1면의 톱기사처럼)
@@ -559,6 +586,7 @@ const APP_JS = String.raw`
     var body=(a.body||[]).slice(0,3).map(function(p,i){return '<p style="margin:0 0 13px;'+(i?'':'')+'">'+e(p)+'</p>';}).join('');
     return '<article class="vm-lead'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,18,10.5)+(isRead(a.id)?'<span style="font-size:10.5px;color:var(--color-label-alternative);">읽음</span>':'')+'</div>'+bookmarkBtn(a.id,17,'plain')+'</div>'
+    +cardMedia(a,26)
     +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:46px;line-height:1.06;font-weight:800;letter-spacing:-.035em;margin:0 0 14px;color:var(--color-label-strong);text-wrap:balance;">'+e(a.title)+'</h2>'
     +'<p style="font-size:17.5px;line-height:1.6;font-weight:500;color:var(--color-label-normal);margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid var(--color-line-normal);">'+e(a.dek)+'</p>'
     +'<div class="vm-fp-body" style="column-count:2;column-gap:30px;column-rule:1px solid var(--color-line-normal);font-size:14.5px;line-height:1.75;color:var(--color-label-neutral);">'+body+'</div>'
@@ -576,6 +604,7 @@ const APP_JS = String.raw`
   function quadCard(a,i){
     return '<article class="vm-quad-c'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:7px;"><span style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+bookmarkBtn(a.id,14,'plain')+'</div>'
+    +cardMedia(a,14)
     +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:18px;line-height:1.28;font-weight:700;letter-spacing:-.015em;margin:0 0 7px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
     +'<p style="font-size:13px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
     +'<div style="font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--color-label-alternative);">'+e(a.source)+'</div></article>';
@@ -585,6 +614,7 @@ const APP_JS = String.raw`
     var r=a.radar||{};
     return '<article class="vm-feat'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;"><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-normal);">깊이 보기 · '+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
+    +cardMedia(a,20,'2.2/1')
     +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:30px;line-height:1.2;font-weight:800;letter-spacing:-.025em;margin:0 0 10px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
     +'<p style="font-size:15px;line-height:1.7;color:var(--color-label-neutral);margin:0 0 12px;max-width:64ch;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
     // 자리가 남으면 본문 첫 문단까지 펼쳐 '해설' 기사답게 만든다
@@ -595,6 +625,7 @@ const APP_JS = String.raw`
   function railCard(a){
     return '<article class="vm-rail'+readCls(a.id)+'" data-open="'+a.id+'" style="padding:20px 0;border-top:1px solid var(--color-line-normal);cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
+    +cardMedia(a,15)
     +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:21px;line-height:1.28;font-weight:700;letter-spacing:-.017em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
     +'<p style="font-size:14px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
     +'<div style="font-size:11.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+metaShort(a)+'</div></article>';
@@ -606,6 +637,7 @@ const APP_JS = String.raw`
   function bandCard(a){
     return '<article class="vm-card'+readCls(a.id)+'" data-open="'+a.id+'" style="background:var(--color-background-normal);padding:24px 22px 26px;display:flex;flex-direction:column;cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
+    +cardMedia(a,15)
     +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:19px;line-height:1.32;font-weight:700;letter-spacing:-.015em;margin:0 0 10px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
     +'<p style="font-size:13.5px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
     +'<div style="margin-top:auto;font-size:11.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+metaShort(a)+'</div></article>';
@@ -613,6 +645,7 @@ const APP_JS = String.raw`
   function rowCard(a){
     var ideaBtn = '<button data-idea="'+a.id+'" title="글감 담기" style="flex:none;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:9px;cursor:pointer;color:'+(isIdea(a.id)?'var(--color-primary-normal)':'var(--color-label-assistive)')+';">'+IDEA.replace(/W/g,16)+'</button>';
     return '<article class="vm-row'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--color-line-normal);cursor:pointer;">'
+    +'<div class="vm-row-thumb" style="flex:none;width:180px;aspect-ratio:16/10;position:relative;overflow:hidden;border-radius:10px;background:var(--color-background-alternative);">'+plate(a,{big:16,pad:10})+'</div>'
     +'<div style="flex:1;min-width:0;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'
     +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:22px;line-height:1.3;font-weight:700;letter-spacing:-.017em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
     +'<p style="font-size:14.5px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 8px;max-width:70ch;">'+e(a.dek)+'</p>'
@@ -1057,7 +1090,7 @@ const APP_JS = String.raw`
   function makeDraft(ideas){
     if(!ideas.length){ toast('먼저 글감을 담아주세요'); return; }
     S.draft={loading:true,n:ideas.length}; render();
-    fetch('api/draft',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({ideas:ideas})})
+    fetch('/api/draft',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({ideas:ideas})})
       .then(function(r){return r.json();})
       .then(function(res){ if(res.error){ S.draft={error:res.error}; } else { S.draft={result:res}; } render(); })
       .catch(function(err){ S.draft={error:'네트워크 오류 ('+err.message+')'}; render(); });
@@ -1074,7 +1107,7 @@ const APP_JS = String.raw`
 
   // ── 기능 B: 구독 ──
   function subscribe(email){
-    fetch('api/subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:email,website:(document.getElementById('vm-hp')||{}).value||''})})
+    fetch('/api/subscribe',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:email,website:(document.getElementById('vm-hp')||{}).value||''})})
       .then(function(r){return r.json();})
       .then(function(res){ toast(res.ok?(res.already?'이미 구독 중입니다':'구독 신청 완료! 매일 아침 받아보세요'):(res.error||'잠시 후 다시 시도해 주세요')); })
       .catch(function(){ toast('네트워크 오류'); });
@@ -1101,12 +1134,12 @@ const APP_JS = String.raw`
   function copy(t,msg){ if(navigator.clipboard) navigator.clipboard.writeText(t); toast(msg); }
 
   function loadArchive(){
-    fetch('archive.json').then(function(r){return r.json();}).then(function(list){ S.archive=list; render(); }).catch(function(){ S.archive=[]; render(); });
+    fetch('/archive.json').then(function(r){if(!r.ok)throw new Error('archive');return r.json();}).then(function(list){ S.archive=list; render(); }).catch(function(){ S.archive=[]; render(); });
   }
   function loadDate(date){
     if(date===DATA.date){ S.view='home'; render(); return; }
     S.loadingDate=date; render();
-    fetch('data/'+date+'.json').then(function(r){return r.json();}).then(function(d){ DATA=d; indexDay(); S.view='home'; S.openId=null; S.query=''; S.cat='all'; S.showAll=false; S.loadingDate=null; try{history.replaceState(null,'','issues/'+date+'.html');}catch(e){} render(); }).catch(function(){ S.loadingDate=null; toast('불러오지 못했습니다'); render(); });
+    fetch('/data/'+date+'.json').then(function(r){if(!r.ok)throw new Error('issue');return r.json();}).then(function(d){ DATA=d; indexDay(); S.view='home'; S.openId=null; S.query=''; S.cat='all'; S.showAll=false; S.loadingDate=null; try{history.replaceState(null,'','/issues/'+date);}catch(e){} render(); }).catch(function(){ S.loadingDate=null; toast('불러오지 못했습니다'); render(); });
   }
 
   document.addEventListener('click',function(ev){
@@ -1314,7 +1347,7 @@ function renderWeekly(weekly, allWeeklies) {
 }
 
 // 검수 대시보드 (비공개, 링크 없음). 간단 게이트 + 품질 스캔 + 제외→JSON 복사.
-const ADMIN_HTML = String.raw`<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>검수 · VetMan</title>
+const ADMIN_HTML = String.raw`<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>검수 · VetManLab</title>
 <style>
 :root{--bg:#f4f5f7;--card:#fff;--ink:#1b1c1e;--mut:#6b7280;--line:#e2e4e8;--blue:#0066ff;--red:#e52222;--amb:#d47800;--grn:#009632}
 *{box-sizing:border-box}body{margin:0;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
@@ -1344,7 +1377,7 @@ button{border:0;border-radius:8px;padding:9px 15px;font-weight:700;cursor:pointe
 .gate input{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;margin:12px 0}
 </style></head><body><div class="wrap" id="app"></div>
 <script>
-var PASS='vetman2026';
+var TOKEN=sessionStorage.getItem('vm_admin_token')||'';
 var app=document.getElementById('app');
 var ISSUE=null, EX={};
 function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -1361,11 +1394,12 @@ function flags(it){
   return out;
 }
 function gate(){
-  app.innerHTML='<div class="gate"><h1>검수 대시보드</h1><p style="color:#6b7280;font-size:13px">암호를 입력하세요.</p><input id="pw" type="password" placeholder="암호"><button class="primary" style="width:100%" onclick="tryPw()">확인</button><p style="color:#9aa;font-size:11px;margin-top:16px">※ 이 페이지는 검색엔진에 노출되지 않지만 URL을 아는 사람은 접근할 수 있습니다. 강력한 보호가 필요하면 Cloudflare Access를 설정하세요.</p></div>';
+  app.innerHTML='<div class="gate"><h1>검수 대시보드</h1><p style="color:#6b7280;font-size:13px">관리자 키를 입력하세요.</p><input id="pw" type="password" placeholder="관리자 키" autocomplete="current-password"><button class="primary" style="width:100%" onclick="tryPw()">확인</button><p style="color:#9aa;font-size:11px;margin-top:16px">관리자 키는 공개 코드에 저장되지 않으며 서버에서만 확인됩니다.</p></div>';
 }
-window.tryPw=function(){var v=document.getElementById('pw').value;if(v===PASS){localStorage.setItem('vm_admin',v);boot();}else alert('암호가 틀렸습니다');};
+function authFetch(url){return fetch(url,{headers:{Authorization:'Bearer '+TOKEN}}).then(function(r){if(r.status===401){TOKEN='';sessionStorage.removeItem('vm_admin_token');gate();throw new Error('unauthorized');}if(!r.ok)throw new Error('request failed');return r;});}
+window.tryPw=function(){var v=document.getElementById('pw').value.trim();if(!v)return;TOKEN=v;sessionStorage.setItem('vm_admin_token',v);boot();};
 function load(date){
-  fetch('raw/'+date+'.json').then(function(r){return r.json();}).then(function(d){ISSUE=d;EX={};render();});
+  authFetch('/api/admin?resource=raw&date='+encodeURIComponent(date)).then(function(r){return r.json();}).then(function(d){ISSUE=d;EX={};render();}).catch(function(){});
 }
 function render(){
   if(!ISSUE){app.innerHTML='<p>불러오는 중…</p>';return;}
@@ -1380,14 +1414,14 @@ function render(){
   }).join('');
   app.innerHTML=h;
   // date dropdown
-  fetch('archive.json').then(function(r){return r.json();}).then(function(a){var sel=document.getElementById('dsel');if(!sel)return;sel.innerHTML=(a.issues||[]).map(function(x){return '<option value="'+x.date+'"'+(x.date===ISSUE.date?' selected':'')+'>'+x.date+' ('+x.count+'건)</option>';}).join('');});
+  authFetch('/api/admin?resource=archive').then(function(r){return r.json();}).then(function(a){var sel=document.getElementById('dsel');if(!sel)return;sel.innerHTML=(a.issues||[]).map(function(x){return '<option value="'+x.date+'"'+(x.date===ISSUE.date?' selected':'')+'>'+x.date+' ('+x.count+'건)</option>';}).join('');}).catch(function(){});
 }
 window.toggleEx=function(i){EX[i]=!EX[i];render();};
 window.tg=function(i){document.getElementById('it'+i).classList.toggle('open');event.target.textContent=document.getElementById('it'+i).classList.contains('open')?'본문 접기 ▴':'본문 펼치기 ▾';};
 window.copyClean=function(){var out=Object.assign({},ISSUE);out.items=ISSUE.items.filter(function(it,i){return !EX[i];});navigator.clipboard.writeText(JSON.stringify(out,null,2));alert('제외 반영 JSON을 복사했습니다.\n\ndata/issues/'+ISSUE.date+'.json 에 붙여넣고 재배포하세요.');};
 window.copyAll=function(){navigator.clipboard.writeText(JSON.stringify(ISSUE,null,2));alert('전체 JSON 복사됨');};
-function boot(){fetch('archive.json').then(function(r){return r.json();}).then(function(a){var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';});}
-if(localStorage.getItem('vm_admin')===PASS) boot(); else gate();
+function boot(){authFetch('/api/admin?resource=archive').then(function(r){return r.json();}).then(function(a){var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';}).catch(function(){gate();});}
+if(TOKEN) boot(); else gate();
 </script><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 
 // ── 기사별 개별 페이지 ──
@@ -1395,6 +1429,11 @@ if(localStorage.getItem('vm_admin')===PASS) boot(); else gate();
 // 각 기사에 고유 URL과 서버 렌더 본문을 주어 롱테일 검색 유입을 연다.
 // (SPA 셸을 넣지 않고 가볍게 — 네이버 크롤러는 JS 렌더링이 약하다)
 function articleSlug(a) {
+  // 제목 교정으로 기존에 색인된 legacy URL이 바뀌지 않도록 명시적 별칭을 우선한다.
+  if (a.legacySlug) return String(a.legacySlug);
+  // 새 파이프라인은 원문 URL·제목에서 만든 stable id를 사용한다.
+  // 제목이 나중에 교정되어도 canonical URL이 바뀌지 않게 id만 slug로 쓴다.
+  if (/^v1_[a-f0-9]{16}$/.test(String(a.id || ""))) return String(a.id);
   const s = String(a.title || "")
     .replace(/[^가-힣a-zA-Z0-9\s]/g, "")
     .trim()
@@ -1417,6 +1456,7 @@ function issueIndexable(data) {
 // 남는 건 해외 기사의 한국어 요약뿐이다. 사이트에는 남기되 색인 대상에서는 뺀다 —
 // 이런 페이지가 쌓이면 사이트 전체가 재작성 콘텐츠로 평가된다.
 function isIndexable(a) {
+  if (a.duplicateSource) return false;
   const r = a.radar || {};
   return !!(r.clinical || r.owner || r.evidence);
 }
@@ -2247,12 +2287,22 @@ function renderTopicIndex(counts) {
 <meta name="description" content="${esc(SITE.brandKo)}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.">
 <link rel="canonical" href="${canonical}">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
-<style>
-  :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;color-scheme:light dark}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="${esc(SITE.name)}">
+<meta property="og:title" content="주제별 보기 | ${esc(SITE.name)}">
+<meta property="og:description" content="${esc(SITE.brandKo)}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.">
+<meta property="og:url" content="${canonical}">
+<meta property="og:image" content="${SITE.baseUrl}/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="주제별 보기 | ${esc(SITE.name)}">
+<meta name="twitter:description" content="${esc(SITE.brandKo)}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.">
+<meta name="twitter:image" content="${SITE.baseUrl}/og.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
+<style>
+  :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;color-scheme:light dark}
   @media (prefers-color-scheme:dark){:root{--bg:#171719;--ink:#f7f7f8;--dim:#a0a0a8;--line:#2e2e33}}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);padding:0 20px 80px;
@@ -2294,7 +2344,7 @@ function buildSitemap(issues, weeklies = [], extraEntries = [], extraTopics = []
   // 기사 URL은 발행일을 lastmod로 — 크롤러가 신선도를 판단하는 신호가 된다
   const entries = [
     ...staticUrls,
-    ...extraEntries.map((e) => ({ loc: e.url, lastmod: e.ts ? new Date(e.ts).toISOString() : null })),
+    ...extraEntries.map((e) => ({ loc: e.url, lastmod: e.modifiedAt || e.publishedAt || null })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -2307,8 +2357,10 @@ ${entries.map((e) => `  <url><loc>${e.loc}</loc>${e.lastmod ? `<lastmod>${e.last
 function buildNewsSitemap(entries) {
   const cutoff = Date.now() - 2 * 24 * 60 * 60 * 1000;
   const recent = entries
-    .filter((e) => e.ts && e.ts >= cutoff)
-    .sort((a, b) => b.ts - a.ts)
+    // Google News는 실제 원문 최초 발행일을 요구한다. 날짜가 없는 글을
+    // 빌드 시각으로 가장해 넣으면 오래된 글이 새 기사처럼 보이므로 제외한다.
+    .filter((e) => e.publishedAt && new Date(e.publishedAt).getTime() >= cutoff)
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
     .slice(0, 1000);
   const body = recent
     .map(
@@ -2319,7 +2371,7 @@ function buildNewsSitemap(entries) {
         <news:name>${esc(SITE.brandKo)} ${esc(SITE.name)}</news:name>
         <news:language>ko</news:language>
       </news:publication>
-      <news:publication_date>${new Date(e.ts).toISOString()}</news:publication_date>
+      <news:publication_date>${e.publishedAt}</news:publication_date>
       <news:title>${esc(e.title)}</news:title>
     </news:news>
   </url>`
@@ -2407,6 +2459,7 @@ function build() {
   const articleUrls = [];
   const articleEntries = []; // {url, ts, title, section} — lastmod·뉴스 사이트맵용
   const topicBuckets = {};
+  const indexedSources = new Set();
   fs.mkdirSync(path.join(SITE_DIR, "article"), { recursive: true });
   for (const issue of issues) {
     const data = buildIssueData(issue);
@@ -2418,6 +2471,11 @@ function build() {
     // 기사별 개별 페이지 — 색인 면적을 날짜 단위에서 기사 단위로 넓힌다
     const all = [...data.articles, ...(data.stories || [])];
     all.forEach((a, i) => {
+      // 여러 날짜에 같은 원문이 재수록되면 가장 최신본만 색인한다.
+      // 이전 페이지는 URL을 보존하되 noindex로 남겨 기존 링크를 깨지 않는다.
+      const sourceKey = normalizeSourceUrl(a.sourceUrl);
+      a.duplicateSource = Boolean(sourceKey && indexedSources.has(sourceKey));
+      if (sourceKey) indexedSources.add(sourceKey);
       fs.writeFileSync(
         path.join(SITE_DIR, "article", `${articleSlug(a)}.html`),
         renderArticlePage(a, data, all[i - 1] || null, all[i + 1] || null)
@@ -2425,7 +2483,7 @@ function build() {
       if (isIndexable(a)) {
         const u = `${SITE.baseUrl}${articlePath(a)}`;
         articleUrls.push(u);
-        articleEntries.push({ url: u, ts: a.ts || null, title: a.title, section: a.kicker });
+        articleEntries.push({ url: u, ts: a.ts || null, publishedAt: a.publishedAt || null, modifiedAt: a.publishedAt || null, title: a.title, section: a.kicker });
         // 색인 대상 기사만 허브에 싣는다 — 허브가 저품질 페이지로 가는 통로가 되면
         // 어렵게 뺀 noindex 처리가 무의미해진다
         for (const t of topicsOf(a)) (topicBuckets[t.slug] ||= []).push(a);
@@ -2482,7 +2540,7 @@ function build() {
   ];
   const robots =
     `# 검색·AI 크롤러 모두 환영합니다. 인용 시 출처 표기를 부탁드립니다.\n` +
-    `User-agent: *\nAllow: /\n\n` +
+    `User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /admin-ui.html\nDisallow: /raw/\n\n` +
     aiBots.map((b) => `User-agent: ${b}\nAllow: /`).join("\n\n") +
     `\n\n# AI 에이전트용 사이트 요약(https://llmstxt.org)\n` +
     `# ${SITE.baseUrl}/llms.txt\n\n` +
@@ -2522,10 +2580,11 @@ function build() {
   fs.copyFileSync(path.join(ROOT, "assets-og.png"), path.join(SITE_DIR, "og.png"));
   fs.writeFileSync(path.join(SITE_DIR, "sw.js"), SW_JS);
 
-  // 검수 대시보드 + raw 이슈(재발행용 원본)
+  // raw 이슈는 공개 기사에서 파생된 원본 데이터지만, 검색 색인 대상은 아니다.
+  // 관리자 화면 자체에는 암호를 넣지 않고 /api/admin이 환경변수로 인증한다.
   fs.mkdirSync(path.join(SITE_DIR, "raw"), { recursive: true });
   for (const issue of issues) fs.writeFileSync(path.join(SITE_DIR, "raw", `${labelOf(issue)}.json`), JSON.stringify(issue));
-  fs.writeFileSync(path.join(SITE_DIR, "admin.html"), ADMIN_HTML);
+  fs.writeFileSync(path.join(SITE_DIR, "admin-ui.html"), ADMIN_HTML);
 
   const mockup = path.join(ROOT, "design", "mockup.html");
   if (fs.existsSync(mockup)) fs.copyFileSync(mockup, path.join(SITE_DIR, "design.html"));

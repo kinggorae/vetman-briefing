@@ -120,6 +120,7 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
     relevance: post.relevance,
     imageUrl: post.imageUrl ?? null,
     sourceUrl: post.finalUrl || post.url,
+    sourceUrlRaw: post.url || null,
     sourceTitle: post.title,
     publishedAt: post.publishedAt ?? null,
   };
@@ -175,6 +176,7 @@ export async function generateBrief(post, attempt = 1) {
     relevance: post.relevance,
     imageUrl: null,
     sourceUrl: post.finalUrl || post.url,
+    sourceUrlRaw: post.url || null,
     sourceTitle: post.title,
     publishedAt: post.publishedAt ?? null,
   };
@@ -241,6 +243,7 @@ async function generatePaper(post, attempt = 1, prevFeedback = null) {
     relevance: post.relevance,
     imageUrl: null,
     sourceUrl: post.url,
+    sourceUrlRaw: post.url || null,
     sourceTitle: post.title,
     publishedAt: post.publishedAt ?? null,
   };
@@ -351,6 +354,7 @@ async function generateStory(post, attempt = 1, prevFeedback = null) {
     relevance: post.relevance ?? 5,
     imageUrl: post.imageUrl ?? null,
     sourceUrl: post.finalUrl || post.url,
+    sourceUrlRaw: post.url || null,
     sourceTitle: post.title,
     publishedAt: post.publishedAt ?? null,
     tagKo: item.tagKo || "",

@@ -8,6 +8,32 @@
 
 // 치환 대상(조사 제외) → 한국어
 const FIXES = [
+  // ── 번역 결과에 자주 남는 일반 영어 전문용어 ──
+  [/\bHernia\b/gi, "탈장"],
+  [/\bfleas\b/gi, "벼룩"],
+  [/\bcorticosteroid\b/gi, "코르티코스테로이드"],
+  [/\bOligodendroglioma\b/gi, "희소돌기아교종"],
+  [/\bTaurine\b/gi, "타우린"],
+  [/\bMicrobiome\b/gi, "미생물군집"],
+  [/\befficacy\b/gi, "유효성"],
+  [/\brefractory\b/gi, "난치성"],
+  [/\bbacteriocin\b/gi, "박테리오신"],
+  [/\bsite\b/gi, "부위"],
+  [/\bgeneric\b/gi, "제네릭"],
+  [/\bResponsible\b/gi, "책임 있는"],
+  [/\borganism\b/gi, "생물"],
+  [/\bendogenous\b/gi, "내인성"],
+  [/\bexogenous\b/gi, "외인성"],
+  [/\bprobiotic\b/gi, "프로바이오틱"],
+  [/\bhospital\b/gi, "병원"],
+  [/\bowner\b/gi, "보호자"],
+  [/\bTrial\b/gi, "임상시험"],
+  [/\bPilot\b/gi, "파일럿"],
+  [/\bVeterinarian\b/gi, "수의사"],
+  [/\bPractice\b/gi, "진료"],
+  [/\bNutrition\b/gi, "영양"],
+  [/\bphysiological demand\b/gi, "생리적 요구량"],
+  [/\bdietary supplementation\b/gi, "식이 보충"],
   // ── (1) 깨진 조각 — 현재 뜻이 통하지 않는 것 ──
   [/에코\s*ogenicity/, "에코원성"],
   [/클\s*unky한/, "투박한"],
@@ -81,7 +107,7 @@ function correctParticle(word, particle) {
   return particle;
 }
 
-const COMPILED = FIXES.map(([re, to]) => [new RegExp(re.source + "(" + PARTICLE_ALT + ")?", "g"), to]);
+const COMPILED = FIXES.map(([re, to]) => [new RegExp(re.source + "(" + PARTICLE_ALT + ")?", re.flags.includes("i") ? "gi" : "g"), to]);
 
 // ── 문체 통일: 하다체 → 합니다체 ──
 // 한 매체에서 기사마다 문체가 달라지면(89건 습니다체 vs 41건 하다체) 신뢰도가 떨어진다.

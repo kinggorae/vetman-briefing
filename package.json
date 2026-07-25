@@ -7,7 +7,9 @@
   "scripts": {
     "collect": "node --env-file-if-exists=.env src/run.js --collect-only",
     "run": "node --env-file-if-exists=.env src/run.js",
-    "build": "node src/build.js"
+    "build": "node src/build.js",
+    "validate": "node src/validate.js",
+    "test": "node --test test/*.test.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
