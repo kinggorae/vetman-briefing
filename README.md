@@ -66,6 +66,8 @@ npm run build          # site/ 빌드
 
 `ADMIN_PASSWORD`를 설정하지 않으면 관리자 API는 의도적으로 401을 반환합니다. 관리자 화면 주소를 아는 것만으로는 데이터에 접근할 수 없습니다.
 
+초안 생성·뉴스레터 API는 `https://news.vetmanlab.com`에서 온 브라우저 요청만 허용하며, `Origin`이 없는 서버 간 호출은 거부합니다. 초안 생성 요청의 크기도 제한해 LLM 비용이 외부에 노출되지 않도록 합니다.
+
 **MiniMax 호환 모드 제약**: structured outputs 대신 프롬프트 기반 JSON 파싱을 쓰고(자동 전환),
 Anthropic 웹 검색 도구가 없어 Plan B(레딧 시그널)는 비활성화된다. RSS 수집·선별·요약은 전부 동작.
 

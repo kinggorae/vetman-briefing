@@ -28,7 +28,9 @@ export async function onRequestOptions({ request, env }) {
 export async function onRequestPost({ request, env }) {
   const origin = request.headers.get("Origin") || "";
   const allowed = env.SITE_ORIGIN || DEFAULT_ORIGIN;
-  if (origin && origin !== allowed) return json({ error: "허용되지 않은 출처입니다." }, 403, request, env);
+  // 구독 API도 공개 서버 간 호출을 받을 이유가 없다. Origin이 없는
+  // 자동화·스팸 요청은 저장소에 도달하기 전에 차단한다.
+  if (origin !== allowed) return json({ error: "허용되지 않은 출처입니다." }, 403, request, env);
   const length = Number(request.headers.get("content-length") || 0);
   if (length > 12000) return json({ error: "요청이 너무 큽니다." }, 413, request, env);
   if (env.NEWSLETTER_ENABLED !== "true") return json({ error: "뉴스레터 구독은 준비 중입니다." }, 503, request, env);
@@ -41,6 +43,7 @@ export async function onRequestPost({ request, env }) {
   } catch {
     return json({ error: "잘못된 요청입니다." }, 400, request, env);
   }
+  if (JSON.stringify(body).length > 12000) return json({ error: "요청이 너무 큽니다." }, 413, request, env);
 
   // 허니팟 — 사람에게는 보이지 않는 필드다. 채워져 있으면 봇으로 보고 조용히 성공 처리한다
   if (String(body.website || "").trim()) return json({ ok: true }, 200, request, env);

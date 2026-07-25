@@ -25,7 +25,9 @@ export async function onRequestOptions({ request, env }) {
 export async function onRequestPost({ request, env }) {
   const origin = request.headers.get("Origin") || "";
   const allowed = env.SITE_ORIGIN || DEFAULT_ORIGIN;
-  if (origin && origin !== allowed) return json({ error: "허용되지 않은 출처입니다." }, 403, request, env);
+  // 이 엔드포인트는 사이트 UI에서만 호출한다. Origin이 없는 curl·서버 간
+  // 호출까지 허용하면 LLM 비용이 외부에 노출되므로 명시적으로 거부한다.
+  if (origin !== allowed) return json({ error: "허용되지 않은 출처입니다." }, 403, request, env);
   const length = Number(request.headers.get("content-length") || 0);
   if (length > 120000) return json({ error: "요청이 너무 큽니다." }, 413, request, env);
   const base = env.LLM_BASE_URL || "https://api.anthropic.com";
@@ -39,8 +41,12 @@ export async function onRequestPost({ request, env }) {
   } catch {
     return json({ error: "잘못된 요청" }, 400, request, env);
   }
+  if (JSON.stringify(body).length > 120000) return json({ error: "요청이 너무 큽니다." }, 413, request, env);
   const ideas = Array.isArray(body.ideas) ? body.ideas.slice(0, 6) : [];
   if (!ideas.length) return json({ error: "글감이 없습니다." }, 400, request, env);
+  if (ideas.some((idea) => JSON.stringify(idea || {}).length > 18000)) {
+    return json({ error: "글감 하나가 너무 큽니다." }, 413, request, env);
+  }
 
   if (env.TURNSTILE_SECRET_KEY) {
     const token = String(body.turnstileToken || "");
