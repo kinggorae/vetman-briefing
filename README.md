@@ -75,7 +75,7 @@ npm run repair-images  # 기존 발행 데이터의 공통·반복 이미지 제
 
 매일 CI는 외부 대표 이미지와 RSS/Google News 소스 응답·항목 수·마지막 발행 시각도 점검합니다. 실패 목록은 GitHub Actions artifact(`image-health-*`, `source-health-*`)와 Step Summary에 남고, 소스군 전체 장애 또는 허용치를 넘는 실패는 발행을 중단합니다.
 
-이미지는 원문 페이지가 명시한 `og:image`, Twitter 이미지, JSON-LD 이미지 중 실제 대표 이미지 후보만 사용합니다. Google News 공통 로고·사이트 공통 배경·반복 이미지가 감지되면 URL을 비우고, 지면에서는 논문은 `PubMed · 최신 연구` 연구 플레이트, 뉴스는 출처 플레이트로 표시합니다. 기존 데이터는 `npm run repair-images`로 일괄 정리할 수 있으며, 빌드 단계에서도 같은 규칙을 한 번 더 적용합니다.
+이미지는 원문 페이지가 명시한 `og:image`, Twitter 이미지, JSON-LD 이미지 중 실제 대표 이미지 후보만 사용합니다. Google News 공통 로고·사이트 공통 배경·반복 이미지가 감지되면 URL을 비우고, 이미지 없는 기사는 큰 대체 플레이트 없이 제목·출처 중심으로 렌더링합니다. 기존 데이터는 `npm run repair-images`로 일괄 정리할 수 있으며, 빌드 단계에서도 같은 규칙을 한 번 더 적용합니다.
 
 **MiniMax 호환 모드 제약**: structured outputs 대신 프롬프트 기반 JSON 파싱을 쓰고(자동 전환),
 Anthropic 웹 검색 도구가 없어 Plan B(레딧 시그널)는 비활성화된다. RSS 수집·선별·요약은 전부 동작.

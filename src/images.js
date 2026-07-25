@@ -43,7 +43,7 @@ export function cleanImageUrl(url, baseUrl = null) {
 }
 
 // 같은 이미지가 여러 기사에 붙으면 공통 이미지일 가능성이 높다.
-// 실제 대표 이미지가 확실하지 않은 경우 모두 제거하고 출처 플레이트로 대체한다.
+// 실제 대표 이미지가 확실하지 않은 경우 모두 제거하고 지면은 이미지 없이 렌더링한다.
 export function removeRepeatedImages(items = [], { minOccurrences = 2 } = {}) {
   const counts = new Map();
   for (const item of items) {

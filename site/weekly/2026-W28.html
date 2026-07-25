@@ -252,25 +252,9 @@ a:hover{color:var(--color-primary-strong);}
     var eager=o.eager||((o.big||15)>=22);
     return a.image ? '<img class="vm-plate-img" src="'+e(a.image)+'" alt="'+e(a.title)+' 출처 이미지" loading="'+(eager?'eager':'lazy')+'" '+(eager?'fetchpriority="high" ':'')+'decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">' : '';
   }
-  var ICON_DOC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:100%;height:100%;"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M8.5 13h7M8.5 16.5h7M8.5 9.5h2"></path></svg>';
-  var ICON_NEWS='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:100%;height:100%;"><path d="M4 5h13v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"></path><path d="M17 8h2a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2"></path><path d="M7 8h7M7 11.5h7M7 15h4"></path></svg>';
-  // 이미지 없을 때: 결함이 아니라 의도된 "출처 플레이트". 아이콘+출처명+라벨.
-  function plate(a,o){
-    o=o||{};
-    var research=a.cat==='research';
-    var icon=research?ICON_DOC:ICON_NEWS;
-    var isz=Math.max(20, Math.min(56, Math.round((o.big||15)*1.7)));
-    var showLabel=(o.big||15)>=20; // 큰 박스에서만 하단 라벨
-    var name='<div style="font-family:var(--font-display);font-size:'+Math.min(o.big||15,22)+'px;font-weight:800;letter-spacing:-.01em;color:var(--color-primary-heavy);line-height:1.15;text-align:center;max-width:92%;">'+e(a.plate)+'</div>';
-    var label=showLabel?'<div style="font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary-normal);opacity:.75;">'+(research?'PubMed · 최신 연구':'해외 수의 미디어')+'</div>':'';
-    var fb='<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:'+(showLabel?10:6)+'px;padding:'+(o.pad||12)+'px;background:linear-gradient(135deg, rgba(0,102,255,0.05), rgba(0,102,255,0.10));">'
-      +'<div style="width:'+isz+'px;height:'+isz+'px;color:var(--color-primary-normal);opacity:.55;">'+icon+'</div>'
-      + name + label
-      +'</div>';
-    return fb + plateImg(a,o);
-  }
   function cardMedia(a,big,ratio){
-    return '<div class="vm-card-media" style="position:relative;aspect-ratio:'+(ratio||'16/9')+';overflow:hidden;border-radius:10px;background:var(--color-background-alternative);margin:0 0 14px;">'+plate(a,{big:big||16,pad:14,eager:(big||16)>=22})+'</div>';
+    if(!a.image) return '';
+    return '<div class="vm-card-media" style="position:relative;aspect-ratio:'+(ratio||'16/9')+';overflow:hidden;border-radius:10px;background:var(--color-background-alternative);margin:0 0 14px;">'+plateImg(a,{big:big||16,eager:(big||16)>=22})+'</div>';
   }
   function bookmarkBtn(id,w,box){
     var st = box==='plain' ? 'width:'+(w+11)+'px;height:'+(w+11)+'px;border:0;background:transparent;' : 'width:'+(w+11)+'px;height:'+(w+11)+'px;border:1px solid var(--color-line-normal);background:var(--color-background-elevated);';
@@ -418,7 +402,7 @@ a:hover{color:var(--color-primary-strong);}
   function rowCard(a){
     var ideaBtn = '<button data-idea="'+a.id+'" title="글감 담기" style="flex:none;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:9px;cursor:pointer;color:'+(isIdea(a.id)?'var(--color-primary-normal)':'var(--color-label-assistive)')+';">'+IDEA.replace(/W/g,16)+'</button>';
     return '<article class="vm-row'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--color-line-normal);cursor:pointer;">'
-    +'<div class="vm-row-thumb" style="flex:none;width:180px;aspect-ratio:16/10;position:relative;overflow:hidden;border-radius:10px;background:var(--color-background-alternative);">'+plate(a,{big:16,pad:10})+'</div>'
+    +(a.image?'<div class="vm-row-thumb" style="flex:none;width:180px;aspect-ratio:16/10;position:relative;overflow:hidden;border-radius:10px;background:var(--color-background-alternative);">'+plateImg(a,{big:16})+'</div>':'')
     +'<div style="flex:1;min-width:0;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'
     +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:22px;line-height:1.3;font-weight:700;letter-spacing:-.017em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
     +'<p style="font-size:14.5px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 8px;max-width:70ch;">'+e(a.dek)+'</p>'
@@ -733,8 +717,8 @@ a:hover{color:var(--color-primary-strong);}
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+(a.tag?'<span style="font-size:11px;font-weight:800;color:var(--color-primary-normal);">['+e(a.tag)+']</span>':'')+tag(a.isToday,17,10)+'</div>'
     +'<h1 style="font-family:var(--font-display);font-size:calc(34px*var(--fs));line-height:1.2;font-weight:800;letter-spacing:-.028em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h1>'
     +'<div style="padding-bottom:20px;border-bottom:1px solid var(--color-line-normal);"><div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+meta(a)+'</div>'+evLine(a)+'</div>'
-    // 이미지가 있으면 실제 대표 이미지, 없으면 논문/뉴스별 의도적인 출처 플레이트
-    + '<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plate(a,{label:true,big:26,pad:20})+'</div>'
+    // 실제 대표 이미지가 있을 때만 이미지 영역을 보여준다. 이미지가 없으면 바로 본문으로 이어진다.
+    + (a.image ? '<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plateImg(a,{big:26,eager:true})+'</div>' : '')
     +'<p style="font-size:calc(17px*var(--fs));line-height:1.75;color:var(--color-label-normal);margin:0 0 18px;font-weight:500;">'+e(a.dek)+'</p>'
     +body
     +radarBlock(a)
