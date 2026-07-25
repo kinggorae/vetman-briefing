@@ -54,7 +54,7 @@ for (const issue of issues) {
   }
 }
 
-const required = ["index.html", "latest.json", "archive.json", "search.json", "sitemap.xml", "news-sitemap.xml", "robots.txt", "404.html", "admin-ui.html"];
+const required = ["index.html", "latest.json", "archive.json", "search.json", "search-manifest.json", "sitemap.xml", "news-sitemap.xml", "robots.txt", "404.html", "admin-ui.html"];
 for (const file of required) if (!fs.existsSync(path.join(SITE_DIR, file))) fail(`site/${file} 없음`);
 if (fs.existsSync(path.join(SITE_DIR, "admin.html"))) fail("공개 admin.html이 남아 있습니다.");
 
@@ -65,6 +65,21 @@ if (fs.existsSync(searchFile)) {
   const searchIds = new Set(search.items.map((item) => item.id).filter(Boolean));
   if (searchIds.size !== search.items.length) fail("search.json에 중복 id가 있습니다.");
   if (search.items.some((item) => !item.url || !/^https:\/\//.test(item.url))) fail("search.json에 잘못된 기사 URL이 있습니다.");
+}
+
+const manifestFile = path.join(SITE_DIR, "search-manifest.json");
+if (fs.existsSync(manifestFile)) {
+  const manifest = json(manifestFile);
+  if (!manifest || !Array.isArray(manifest.chunks) || manifest.chunks.length === 0) fail("search-manifest.json 형식 이상");
+  const chunkCount = manifest.chunks.reduce((sum, chunk) => {
+    if (!chunk.href || !/^\/search\/.+\.json$/.test(chunk.href)) fail(`잘못된 검색 청크 경로: ${chunk.href || "없음"}`);
+    const file = path.join(SITE_DIR, chunk.href.replace(/^\//, ""));
+    if (!fs.existsSync(file)) { fail(`검색 청크 없음: ${chunk.href}`); return sum; }
+    const data = json(file);
+    if (!data || !Array.isArray(data.items) || data.items.length !== Number(data.count)) fail(`검색 청크 형식 또는 건수 이상: ${chunk.href}`);
+    return sum + data.items.length;
+  }, 0);
+  if (chunkCount !== Number(manifest.count)) fail(`검색 청크 합계 불일치: ${chunkCount} !== ${manifest.count}`);
 }
 
 const robots = fs.existsSync(path.join(SITE_DIR, "robots.txt")) ? fs.readFileSync(path.join(SITE_DIR, "robots.txt"), "utf8") : "";

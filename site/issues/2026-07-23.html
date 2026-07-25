@@ -231,8 +231,17 @@ a:hover{color:var(--color-primary-strong);}
   function loadSearch(){
     if(SEARCH_INDEX||searchLoading) return;
     searchLoading=true; render();
-    fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){
-      SEARCH_INDEX=Array.isArray(data.items)?data.items:[];
+    // 검색 색인은 날짜별 청크로 나눠 둔다. 매일 새 글이 추가되어도 과거 청크의
+    // CDN 캐시를 무효화하지 않고, 장애·구버전 배포에서는 기존 search.json으로 폴백한다.
+    fetch('/search-manifest.json').then(function(r){if(!r.ok)throw new Error('manifest');return r.json();}).then(function(manifest){
+      var chunks=Array.isArray(manifest.chunks)?manifest.chunks:[];
+      if(!chunks.length) throw new Error('empty manifest');
+      return Promise.all(chunks.map(function(chunk){return fetch(chunk.href).then(function(r){if(!r.ok)throw new Error('chunk');return r.json();});})
+        .then(function(parts){ return parts.reduce(function(all,part){ return all.concat(Array.isArray(part.items)?part.items:[]); },[]); });
+    }).catch(function(){
+      return fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){return Array.isArray(data.items)?data.items:[];});
+    }).then(function(items){
+      SEARCH_INDEX=items;
       SEARCH_INDEX.forEach(function(a){ byId[a.id]=a; });
       searchLoading=false; render();
     }).catch(function(){ searchLoading=false; toast('전체 검색 색인을 불러오지 못했습니다'); });

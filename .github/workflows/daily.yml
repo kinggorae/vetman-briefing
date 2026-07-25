@@ -30,6 +30,17 @@ jobs:
       - name: Run unit tests
         run: npm test
 
+      - name: Check source health
+        run: node src/check-sources.js --json /tmp/source-health.json --max-failed 12
+
+      - name: Upload source health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-health-${{ github.run_id }}
+          path: /tmp/source-health.json
+          if-no-files-found: ignore
+
       # 파이프라인이 데이터를 건드리기 전 상태에 복원 지점을 박아둔다.
       # 발행이 잘못되면 이 태그로 되돌리면 된다(태그는 커밋만 가리키므로 비용 없음).
       - name: Tag pre-run restore point

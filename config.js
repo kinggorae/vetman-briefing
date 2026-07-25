@@ -159,7 +159,9 @@ const DIRECT_FEEDS = [
   },
   // 동료심사 저널 — RSS에 초록 전문(900~1800자)이 실려 생성 품질이 좋다.
   // (dvm360·VIN·AAHA·Vet Times 등은 403/404로 막혀 채택 불가)
-  { name: "Veterinary Sciences", url: "https://www.mdpi.com/rss/journal/vetsci", max: 12, maxAgeDays: 14 },
+  // MDPI RSS는 현재 반복적으로 403을 반환한다. 실패를 매일 재시도해
+  // 소스 건강 지표를 오염시키지 않고, 연구 수집은 PubMed·정상 저널 피드로 담당한다.
+  { name: "Veterinary Sciences", url: "https://www.mdpi.com/rss/journal/vetsci", max: 12, maxAgeDays: 14, enabled: false },
   {
     name: "Frontiers in Veterinary Science",
     url: "https://www.frontiersin.org/journals/veterinary-science/rss",
@@ -173,7 +175,7 @@ const DIRECT_FEEDS = [
     maxAgeDays: 45, // 발행이 뜸한 저널
   },
   // 축산까지 포함해 범위가 넓다 — 관련성 스코어링이 반려동물 위주로 걸러낸다
-  { name: "Animals", url: "https://www.mdpi.com/rss/journal/animals", max: 10, maxAgeDays: 7 },
+  { name: "Animals", url: "https://www.mdpi.com/rss/journal/animals", max: 10, maxAgeDays: 7, enabled: false },
 ];
 
 // 구글 뉴스 토픽 쿼리 — 쿼리 하나가 수천 개 매체를 커버하는 애그리게이터.
@@ -237,7 +239,7 @@ const GNEWS_FEEDS = GNEWS_TOPICS.map((q) => ({
   url: `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-US&gl=US&ceid=US:en`,
 }));
 
-export const FEEDS = [...DIRECT_FEEDS, ...GNEWS_FEEDS];
+export const FEEDS = [...DIRECT_FEEDS.filter((feed) => feed.enabled !== false), ...GNEWS_FEEDS];
 export const FEED_MAX_AGE_DAYS = 10; // maxAgeDays 미지정 피드의 기본 수집 기간
 
 // ── "진료실 밖 이야기" (가십·화제성 썰) ──

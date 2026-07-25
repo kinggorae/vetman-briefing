@@ -451,8 +451,17 @@ const APP_JS = String.raw`
   function loadSearch(){
     if(SEARCH_INDEX||searchLoading) return;
     searchLoading=true; render();
-    fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){
-      SEARCH_INDEX=Array.isArray(data.items)?data.items:[];
+    // 검색 색인은 날짜별 청크로 나눠 둔다. 매일 새 글이 추가되어도 과거 청크의
+    // CDN 캐시를 무효화하지 않고, 장애·구버전 배포에서는 기존 search.json으로 폴백한다.
+    fetch('/search-manifest.json').then(function(r){if(!r.ok)throw new Error('manifest');return r.json();}).then(function(manifest){
+      var chunks=Array.isArray(manifest.chunks)?manifest.chunks:[];
+      if(!chunks.length) throw new Error('empty manifest');
+      return Promise.all(chunks.map(function(chunk){return fetch(chunk.href).then(function(r){if(!r.ok)throw new Error('chunk');return r.json();});})
+        .then(function(parts){ return parts.reduce(function(all,part){ return all.concat(Array.isArray(part.items)?part.items:[]); },[]); });
+    }).catch(function(){
+      return fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){return Array.isArray(data.items)?data.items:[];});
+    }).then(function(items){
+      SEARCH_INDEX=items;
       SEARCH_INDEX.forEach(function(a){ byId[a.id]=a; });
       searchLoading=false; render();
     }).catch(function(){ searchLoading=false; toast('전체 검색 색인을 불러오지 못했습니다'); });
@@ -2469,6 +2478,7 @@ function build() {
   fs.rmSync(SITE_DIR, { recursive: true, force: true });
   fs.mkdirSync(path.join(SITE_DIR, "issues"), { recursive: true });
   fs.mkdirSync(path.join(SITE_DIR, "data"), { recursive: true });
+  fs.mkdirSync(path.join(SITE_DIR, "search"), { recursive: true });
 
   const latest = issues[0];
   fs.writeFileSync(path.join(SITE_DIR, "index.html"), renderPage(latest, issues, { isIndex: true }));
@@ -2479,6 +2489,7 @@ function build() {
   const searchEntries = [];
   const topicBuckets = {};
   const indexedSources = new Set();
+  const searchChunks = {};
   fs.mkdirSync(path.join(SITE_DIR, "article"), { recursive: true });
   for (const issue of issues) {
     const data = buildIssueData(issue);
@@ -2505,7 +2516,10 @@ function build() {
         articleEntries.push({ url: u, ts: a.ts || null, publishedAt: a.publishedAt || null, modifiedAt: a.publishedAt || null, title: a.title, section: a.kicker });
         // 검색은 최신 지면에만 갇히면 과거 기사 유입을 놓친다. 상세 화면에
         // 필요한 필드까지 포함한 검색 전용 색인을 별도 파일로 제공한다.
-        searchEntries.push({ ...a, url: u });
+        const searchItem = { ...a, url: u };
+        searchEntries.push(searchItem);
+        const chunkKey = /^\d{4}-\d{2}/.test(a.day || "") ? a.day.slice(0, 7) : "legacy";
+        (searchChunks[chunkKey] ||= []).push(searchItem);
         // 색인 대상 기사만 허브에 싣는다 — 허브가 저품질 페이지로 가는 통로가 되면
         // 어렵게 뺀 noindex 처리가 무의미해진다
         for (const t of topicsOf(a)) (topicBuckets[t.slug] ||= []).push(a);
@@ -2549,6 +2563,13 @@ function build() {
     path.join(SITE_DIR, "search.json"),
     JSON.stringify({ generatedAt: new Date().toISOString(), count: searchEntries.length, items: searchEntries })
   );
+  const searchManifest = { generatedAt: new Date().toISOString(), count: searchEntries.length, chunks: [] };
+  for (const [key, items] of Object.entries(searchChunks).sort(([a], [b]) => a.localeCompare(b))) {
+    const href = `/search/${key}.json`;
+    fs.writeFileSync(path.join(SITE_DIR, "search", `${key}.json`), JSON.stringify({ generatedAt: searchManifest.generatedAt, count: items.length, items }));
+    searchManifest.chunks.push({ key, href, count: items.length });
+  }
+  fs.writeFileSync(path.join(SITE_DIR, "search-manifest.json"), JSON.stringify(searchManifest));
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(latest, null, 2));
   fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleEntries, topicUrls));
   fs.writeFileSync(path.join(SITE_DIR, "news-sitemap.xml"), buildNewsSitemap(articleEntries));

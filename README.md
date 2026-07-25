@@ -68,7 +68,9 @@ npm run build          # site/ 빌드
 
 초안 생성·뉴스레터 API는 `https://news.vetmanlab.com`에서 온 브라우저 요청만 허용하며, `Origin`이 없는 서버 간 호출은 거부합니다. 초안 생성 요청의 크기도 제한해 LLM 비용이 외부에 노출되지 않도록 합니다.
 
-홈 검색은 최신 발행분에만 갇히지 않도록 `site/search.json`의 전체 색인을 필요할 때 불러옵니다. 매일 CI는 외부 대표 이미지 응답도 점검하고, 실패 목록을 GitHub Actions artifact(`image-health-*`)로 보관합니다.
+홈 검색은 최신 발행분에만 갇히지 않도록 전체 색인을 필요할 때 불러옵니다. 검색 색인은 날짜별 `site/search/*.json` 청크와 `search-manifest.json`으로 나뉘어, 새 발행 때 최신 청크만 바뀌고 과거 청크의 CDN 캐시가 유지됩니다. 구버전 배포나 청크 장애에서는 `search.json`으로 폴백합니다.
+
+매일 CI는 외부 대표 이미지와 RSS/Google News 소스 응답도 점검합니다. 실패 목록은 GitHub Actions artifact(`image-health-*`, `source-health-*`)와 Step Summary에 남고, 소스군 전체 장애 또는 허용치를 넘는 실패는 발행을 중단합니다.
 
 **MiniMax 호환 모드 제약**: structured outputs 대신 프롬프트 기반 JSON 파싱을 쓰고(자동 전환),
 Anthropic 웹 검색 도구가 없어 Plan B(레딧 시그널)는 비활성화된다. RSS 수집·선별·요약은 전부 동작.

@@ -10,6 +10,7 @@
     "build": "node src/build.js",
     "validate": "node src/validate.js",
     "check-assets": "node src/check-assets.js",
+    "check-sources": "node src/check-sources.js",
     "test": "node --test test/*.test.js"
   },
   "dependencies": {
