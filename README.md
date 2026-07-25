@@ -24,6 +24,8 @@ src/select.js        규칙 필터 + Claude 관련성 스코어링(0~10) → 상
 src/generate.js      한국어 제목·요약·글감 포인트 생성
 src/identity.js      원문 URL 정규화·추적 파라미터 제거·안정적인 기사 ID 생성
 src/quality.js       외국어 혼입·미번역 용어·본문 길이 품질 게이트
+src/images.js        원문 대표 이미지 정규화·공통 이미지 제거·중복 방지
+src/repair-images.js 기존 발행 데이터의 대표 이미지 일괄 정리
 src/repair-content.js 기존 발행 데이터의 번역 잔여물 일괄 점검·교정
 src/validate.js       데이터·canonical·사이트맵·보안 산출물 검증
 src/run.js           전체 파이프라인 → data/issues/<week>.draft.json
@@ -43,6 +45,7 @@ node src/run.js --publish        # draft 없이 바로 발행 (검수 필요 표
 # draft 검수 후 수동 발행:
 node src/publish.js 2026-07-19
 npm run build          # site/ 빌드
+npm run repair-images  # 기존 발행 데이터의 공통·반복 이미지 제거
 ```
 
 ## 크리덴셜 (.env)
@@ -71,6 +74,8 @@ npm run build          # site/ 빌드
 홈 검색은 최신 발행분에만 갇히지 않도록 전체 색인을 필요할 때 불러옵니다. 검색 색인은 날짜별 `site/search/*.json` 청크와 `search-manifest.json`으로 나뉘어, 새 발행 때 최신 청크만 바뀌고 과거 청크의 CDN 캐시가 유지됩니다. 구버전 배포나 청크 장애에서는 `search.json`으로 폴백합니다.
 
 매일 CI는 외부 대표 이미지와 RSS/Google News 소스 응답·항목 수·마지막 발행 시각도 점검합니다. 실패 목록은 GitHub Actions artifact(`image-health-*`, `source-health-*`)와 Step Summary에 남고, 소스군 전체 장애 또는 허용치를 넘는 실패는 발행을 중단합니다.
+
+이미지는 원문 페이지가 명시한 `og:image`, Twitter 이미지, JSON-LD 이미지 중 실제 대표 이미지 후보만 사용합니다. Google News 공통 로고·사이트 공통 배경·반복 이미지가 감지되면 URL을 비우고, 지면에서는 논문은 `PubMed · 최신 연구` 연구 플레이트, 뉴스는 출처 플레이트로 표시합니다. 기존 데이터는 `npm run repair-images`로 일괄 정리할 수 있으며, 빌드 단계에서도 같은 규칙을 한 번 더 적용합니다.
 
 **MiniMax 호환 모드 제약**: structured outputs 대신 프롬프트 기반 JSON 파싱을 쓰고(자동 전환),
 Anthropic 웹 검색 도구가 없어 Plan B(레딧 시그널)는 비활성화된다. RSS 수집·선별·요약은 전부 동작.

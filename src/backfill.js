@@ -9,6 +9,7 @@ import { fetchFeed } from "./rss.js";
 import { scoreAll } from "./select.js";
 import { generateItem } from "./generate.js";
 import { fetchArticleMeta } from "./article.js";
+import { removeRepeatedImages } from "./images.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -113,6 +114,7 @@ async function main() {
     }
     // 관련성 높은 순
     issue.items.sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0));
+    removeRepeatedImages(issue.items);
     fs.writeFileSync(p, JSON.stringify(issue, null, 2));
     console.log(`  저장 ${date}: 총 ${issue.items.length}건`);
   }

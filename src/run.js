@@ -15,6 +15,7 @@ import { addStories } from "./gossip.js";
 import { mapPool } from "./pool.js";
 import { addSourceKeys, sourceKeys, stableItemId, titleKey } from "./identity.js";
 import { markQuality } from "./quality.js";
+import { removeRepeatedImages } from "./images.js";
 
 const noPapers = process.argv.includes("--no-papers");
 const papersOnly = process.argv.includes("--papers-only"); // 오늘 이슈에 논문만 추가 병합
@@ -165,6 +166,7 @@ async function papersOnlyRun() {
   } catch (err) {
     console.error(`  레이더 생성 실패, 건너뜀: ${err.message}`);
   }
+  removeRepeatedImages(issue.items);
   fs.mkdirSync(path.dirname(issuePath), { recursive: true });
   fs.writeFileSync(issuePath, JSON.stringify(issue, null, 2));
   saveSeen(seen);
@@ -321,6 +323,8 @@ async function main() {
     });
     if (before !== newItems.length) console.log(`  게이트 통과 ${newItems.length}/${before}건`);
   }
+  const removedRepeatedImages = removeRepeatedImages(newItems);
+  if (removedRepeatedImages) console.log(`  이미지 정리 ${removedRepeatedImages}건 — 공통 대표 이미지 제거`);
   const out = path.join(
     ROOT,
     "data",

@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { SITE, LEGAL, SPONSOR, TOPICS } from "../config.js";
 import { normalizeSourceUrl } from "./identity.js";
+import { cleanImageUrl, removeRepeatedImages } from "./images.js";
 import { qualityIssues } from "./quality.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
@@ -85,14 +86,7 @@ function shortSource(s) {
 
 // 구글 뉴스가 주는 generic 로고(lh3.googleusercontent.com 등)는 기사 이미지가 아니다.
 function usableImage(url) {
-  if (!url) return null;
-  try {
-    const h = new URL(url).hostname;
-    if (/(^|\.)googleusercontent\.com$/.test(h) || /(^|\.)gstatic\.com$/.test(h)) return null;
-  } catch {
-    return null;
-  }
-  return url;
+  return cleanImageUrl(url);
 }
 
 function toArticle(item, i, issueDate) {
@@ -995,8 +989,8 @@ const APP_JS = String.raw`
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+(a.tag?'<span style="font-size:11px;font-weight:800;color:var(--color-primary-normal);">['+e(a.tag)+']</span>':'')+tag(a.isToday,17,10)+'</div>'
     +'<h1 style="font-family:var(--font-display);font-size:calc(34px*var(--fs));line-height:1.2;font-weight:800;letter-spacing:-.028em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h1>'
     +'<div style="padding-bottom:20px;border-bottom:1px solid var(--color-line-normal);"><div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+meta(a)+'</div>'+evLine(a)+'</div>'
-    // 실제 사진이 있을 때만 — 없을 때 띄우던 출처 플레이트는 지면만 잡아먹어 제거
-    + (a.image ? '<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plate(a,{label:true,big:26,pad:20})+'</div>' : '')
+    // 이미지가 있으면 실제 대표 이미지, 없으면 논문/뉴스별 의도적인 출처 플레이트
+    + '<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plate(a,{label:true,big:26,pad:20})+'</div>'
     +'<p style="font-size:calc(17px*var(--fs));line-height:1.75;color:var(--color-label-normal);margin:0 0 18px;font-weight:500;">'+e(a.dek)+'</p>'
     +body
     +radarBlock(a)
@@ -2498,6 +2492,10 @@ function build() {
     console.error("data/issues/ 에 이슈 파일이 없습니다.");
     process.exit(1);
   }
+  // 수동 발행·백필 등 다른 경로로 들어온 데이터도 빌드 단계에서 한 번 더 정리한다.
+  // 원본 JSON을 지우지는 않고, 사이트에 노출되는 대표 이미지만 안전하게 제한한다.
+  const repeatedImageCount = removeRepeatedImages(issues.flatMap((issue) => issue.items || []));
+  if (repeatedImageCount) console.log(`  이미지 정리 ${repeatedImageCount}건 — 공통 대표 이미지 제거`);
   fs.rmSync(SITE_DIR, { recursive: true, force: true });
   fs.mkdirSync(path.join(SITE_DIR, "issues"), { recursive: true });
   fs.mkdirSync(path.join(SITE_DIR, "data"), { recursive: true });

@@ -11,6 +11,7 @@ import { generateStory } from "./generate.js";
 import { mapPoolUntil } from "./pool.js";
 import { addSourceKeys, sourceKeys, stableItemId, titleKey } from "./identity.js";
 import { markQuality } from "./quality.js";
+import { removeRepeatedImages } from "./images.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -96,6 +97,7 @@ export async function addStories(items, seen, limit = GOSSIP_PER_ISSUE) {
     items.push(s);
     addSourceKeys(seen, s);
   });
+  removeRepeatedImages(items);
   return stories.length;
 }
 

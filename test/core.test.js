@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { normalizeSourceUrl, sourceKeys, stableItemId } from "../src/identity.js";
 import { koreanizeText } from "../src/koreanize.js";
 import { qualityIssues } from "../src/quality.js";
+import { cleanImageUrl, removeRepeatedImages } from "../src/images.js";
 
 test("source URLs normalize tracking parameters and fragments", () => {
   const clean = "https://example.com/story";
@@ -43,4 +44,19 @@ test("quality gate keeps thin or garbled briefs out of the compact feed", () => 
     bodyKo: [],
   });
   assert.ok(garbled.includes("garbled-text"));
+});
+
+test("image cleanup rejects generic assets and removes repeated representatives", () => {
+  assert.equal(cleanImageUrl("https://lh3.googleusercontent.com/example=s0"), null);
+  assert.equal(cleanImageUrl("https://example.com/main-visual-green-website.webp"), null);
+
+  const items = [
+    { imageUrl: "https://example.com/article-a.jpg" },
+    { imageUrl: "https://example.com/article-a.jpg" },
+    { imageUrl: "https://example.com/article-b.jpg" },
+  ];
+  assert.equal(removeRepeatedImages(items), 2);
+  assert.equal(items[0].imageUrl, null);
+  assert.equal(items[1].imageUrl, null);
+  assert.equal(items[2].imageUrl, "https://example.com/article-b.jpg");
 });
