@@ -40,8 +40,30 @@
         <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
         <news:language>ko</news:language>
       </news:publication>
+      <news:publication_date>2026-07-24T13:05:18.000Z</news:publication_date>
+      <news:title>뉴월드 스크류웜 발생 — 미국 수의사 대응 가이드</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>undefined</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
       <news:publication_date>2026-07-24T11:30:08.000Z</news:publication_date>
       <news:title>개의 아토피 피부염 JAK 억제제 치료 최신 관점</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>undefined</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-24T10:00:30.000Z</news:publication_date>
+      <news:title>퇴원 처방 개선, 그 순간부터 환자 결과가 달라집니다</news:title>
     </news:news>
   </url>
   <url>
