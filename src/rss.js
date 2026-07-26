@@ -66,6 +66,7 @@ export async function fetchFeed(feed) {
         id: crypto.createHash("md5").update(link || title).digest("hex").slice(0, 10),
         sourceType: "rss",
         sourceLabel: publisher,
+        market: feed.market || null,
         title,
         body: stripHtml(String(bodyRaw)).slice(0, 4000),
         url: link,

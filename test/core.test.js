@@ -4,6 +4,13 @@ import { normalizeSourceUrl, sourceKeys, stableItemId } from "../src/identity.js
 import { koreanizeText } from "../src/koreanize.js";
 import { publishQualityIssues, qualityIssues } from "../src/quality.js";
 import { cleanImageUrl, removeRepeatedImages } from "../src/images.js";
+import {
+  FEEDS,
+  CANDIDATES_MAX,
+  ITEMS_PER_ISSUE,
+  BRIEFS_PER_ISSUE,
+  PAPERS_PER_ISSUE,
+} from "../config.js";
 
 test("source URLs normalize tracking parameters and fragments", () => {
   const clean = "https://example.com/story";
@@ -62,4 +69,16 @@ test("image cleanup rejects generic assets and removes repeated representatives"
   assert.equal(items[0].imageUrl, null);
   assert.equal(items[1].imageUrl, null);
   assert.equal(items[2].imageUrl, "https://example.com/article-b.jpg");
+});
+
+test("global collection covers multiple markets without duplicate feed URLs", () => {
+  const gnews = FEEDS.filter((feed) => feed.type === "gnews");
+  const markets = new Set(gnews.map((feed) => feed.market).filter(Boolean));
+  assert.ok(FEEDS.length >= 100);
+  assert.ok(markets.size >= 14);
+  assert.equal(new Set(FEEDS.map((feed) => feed.url)).size, FEEDS.length);
+  assert.ok(CANDIDATES_MAX >= 500);
+  assert.ok(ITEMS_PER_ISSUE >= 40);
+  assert.ok(BRIEFS_PER_ISSUE >= 60);
+  assert.ok(PAPERS_PER_ISSUE >= 16);
 });

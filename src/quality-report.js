@@ -29,6 +29,7 @@ function main() {
   const byDate = {};
   const byCategory = {};
   const byTier = {};
+  const byMarket = {};
   const sourceSeen = new Map();
   const duplicateSources = [];
   let rawItemCount = 0;
@@ -52,6 +53,7 @@ function main() {
       const tier = item.tier || (item.category === "watercooler" ? "watercooler" : "deep");
       increment(byCategory, item.category || "other");
       increment(byTier, tier);
+      increment(byMarket, item.market || "미지정");
       if (item.imageUrl) withImageCount++;
       else withoutImageCount++;
 
@@ -87,6 +89,7 @@ function main() {
     byFlag,
     byCategory,
     byTier,
+    byMarket,
     byDate,
     duplicateSources,
   };

@@ -7,7 +7,10 @@
   "scripts": {
     "collect": "node --env-file-if-exists=.env src/run.js --collect-only",
     "run": "node --env-file-if-exists=.env src/run.js",
+    "publish:today": "node --env-file-if-exists=.env src/run.js --publish",
     "build": "node src/build.js",
+    "dev": "wrangler pages dev site --port 8788",
+    "check": "npm test && npm run build && npm run validate",
     "validate": "node src/validate.js",
     "repair-publication": "node src/repair-publication.js --apply",
     "quality-report": "node src/quality-report.js",

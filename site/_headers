@@ -1,0 +1,48 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Cache-Control: public, max-age=0, must-revalidate
+
+/article/*
+  ! Cache-Control
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/topic/*
+  ! Cache-Control
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/icon.svg
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
+
+/og.png
+  ! Cache-Control
+  Cache-Control: public, max-age=86400
+
+/admin*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/api/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/raw/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/data/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/search/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/latest.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/archive.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/search.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/search-manifest.json
+  X-Robots-Tag: noindex, nofollow, noarchive

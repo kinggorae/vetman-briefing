@@ -47,7 +47,10 @@ function loadSeen() {
 }
 
 function saveSeen(seen) {
-  const urls = [...seen].slice(-2000); // 최근 2000건만 유지
+  // 전세계 권역별 피드가 하루 수백 건을 공급하므로 2,000건만 남기면 며칠 전
+  // 기사가 다른 국가판 Google News를 통해 다시 들어온다. 충분한 기간을 보존해
+  // 후보·LLM 비용과 중복 발행을 함께 줄인다.
+  const urls = [...seen].slice(-20000);
   fs.mkdirSync(path.dirname(SEEN_PATH), { recursive: true });
   fs.writeFileSync(SEEN_PATH, JSON.stringify({ urls }, null, 2));
 }
@@ -55,6 +58,7 @@ function saveSeen(seen) {
 function withIdentity(item, post, fallback = "item") {
   return markQuality({
     ...item,
+    market: item.market || post.market || null,
     id: item.id || stableItemId({ ...post, ...item }, fallback),
     sourceUrl: item.sourceUrl || post.finalUrl || post.url,
     sourceUrlRaw: item.sourceUrlRaw || post.url || null,

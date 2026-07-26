@@ -62,7 +62,22 @@ for (const issue of issues) {
   }
 }
 
-const required = ["index.html", "latest.json", "archive.json", "search.json", "search-manifest.json", "sitemap.xml", "news-sitemap.xml", "robots.txt", "404.html", "admin-ui.html"];
+const required = [
+  "index.html",
+  "latest.json",
+  "archive.json",
+  "archive/index.html",
+  "sources/index.html",
+  "search.json",
+  "search-manifest.json",
+  "sitemap.xml",
+  "news-sitemap.xml",
+  "rss.xml",
+  "robots.txt",
+  "_headers",
+  "404.html",
+  "admin-ui.html",
+];
 for (const file of required) if (!fs.existsSync(path.join(SITE_DIR, file))) fail(`site/${file} 없음`);
 if (fs.existsSync(path.join(SITE_DIR, "admin.html"))) fail("공개 admin.html이 남아 있습니다.");
 
@@ -105,7 +120,11 @@ if (fs.existsSync(manifestFile)) {
 }
 
 const robots = fs.existsSync(path.join(SITE_DIR, "robots.txt")) ? fs.readFileSync(path.join(SITE_DIR, "robots.txt"), "utf8") : "";
-for (const blocked of ["Disallow: /admin", "Disallow: /raw"]) if (!robots.includes(blocked)) fail(`robots.txt에 ${blocked} 없음`);
+for (const blocked of ["Disallow: /admin", "Disallow: /api/", "Disallow: /raw/", "Disallow: /data/", "Disallow: /search/"]) {
+  if (!robots.includes(blocked)) fail(`robots.txt에 ${blocked} 없음`);
+}
+const headers = fs.existsSync(path.join(SITE_DIR, "_headers")) ? fs.readFileSync(path.join(SITE_DIR, "_headers"), "utf8") : "";
+if (!headers.includes("X-Robots-Tag: noindex")) fail("_headers에 내부 경로 noindex 없음");
 
 const sitemap = fs.existsSync(path.join(SITE_DIR, "sitemap.xml")) ? fs.readFileSync(path.join(SITE_DIR, "sitemap.xml"), "utf8") : "";
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
@@ -114,6 +133,20 @@ if (!sitemap.includes("<urlset")) fail("sitemap.xml 형식 이상");
 
 const home = fs.existsSync(path.join(SITE_DIR, "index.html")) ? fs.readFileSync(path.join(SITE_DIR, "index.html"), "utf8") : "";
 if (home.includes("#202") && home.includes('"@type":"NewsArticle"')) fail("홈 JSON-LD에 legacy hash 기사 URL이 남아 있습니다.");
+const firstScript = home.indexOf('<script id="vm-issue"');
+const initialHtml = firstScript >= 0 ? home.slice(0, firstScript) : home;
+if (!initialHtml.includes('id="main-content"') || !/href="\/article\/[^"]+"/.test(initialHtml)) {
+  fail("홈 원본 HTML에 크롤링 가능한 본문·기사 링크가 없습니다.");
+}
+if (/vm-search\{display:none\s*!important/.test(home)) fail("모바일 검색창이 숨겨져 있습니다.");
+
+const rss = fs.existsSync(path.join(SITE_DIR, "rss.xml")) ? fs.readFileSync(path.join(SITE_DIR, "rss.xml"), "utf8") : "";
+if (!/<item>[\s\S]*?<link>https:\/\/news\.vetmanlab\.com\/article\//.test(rss)) {
+  fail("RSS가 개별 기사 URL을 제공하지 않습니다.");
+}
+for (const directoryUrl of ["https://news.vetmanlab.com/archive/", "https://news.vetmanlab.com/sources/"]) {
+  if (!sitemap.includes(`<loc>${directoryUrl}</loc>`)) fail(`sitemap.xml에 ${directoryUrl} 없음`);
+}
 if (home.includes("vetman2026")) fail("관리자 비밀번호가 빌드 결과에 남아 있습니다.");
 
 // 개별 기사 canonical이 중복되면 서로 다른 파일이 검색 결과에서 경쟁한다.

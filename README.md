@@ -11,6 +11,7 @@
 | 확장 | Reddit API 직접 수집 (업보트·댓글 전문 포함) | `REDDIT_CLIENT_ID/SECRET` 있을 때 자동 활성화 |
 
 구글 뉴스 RSS 덕분에 직접 수집이 차단된 매체(dvm360, AVMA 등)의 기사도 우회로 확보된다.
+Google News는 미국판에만 의존하지 않고 영국·캐나다·호주·뉴질랜드·아일랜드·인도·싱가포르·남아프리카·일본·독일·프랑스·스페인·브라질·멕시코 현지판과 현지어 쿼리를 함께 사용한다. 현재 직접 RSS 13개와 Google News 88개, 총 101개 채널을 권역별 round-robin으로 섞어 특정 국가가 후보를 독식하지 않게 한다.
 `data/seen.json`에 이미 소개한 글 URL을 기록해 일간 실행 간 중복을 방지한다.
 
 ## 구조
@@ -43,6 +44,9 @@ cp .env.example .env   # LLM_API_KEY 필수, 나머지는 선택
 
 npm run collect        # 수집만 (키 불필요, data/candidates.json)
 npm run run            # 전체 파이프라인 → 오늘자 draft 생성
+npm run publish:today  # 전체 파이프라인 → 오늘자 발행 데이터 생성·기존 이슈와 병합
+npm run check          # 테스트 → 사이트 빌드 → SEO/데이터 검증
+npm run dev            # 로컬 미리보기 http://localhost:8788
 node src/run.js --publish        # draft 없이 바로 발행 (검수 필요 표시 아이템은 제외)
 # draft 검수 후 수동 발행:
 node src/publish.js 2026-07-19

@@ -34,6 +34,23 @@ const SOURCE_COUNTRY = {
   "Veterinary Record": "영국",
   "Vet Practice Magazine": "호주",
 };
+const MARKET_LABELS = {
+  GLOBAL: "글로벌",
+  GB: "영국",
+  CA: "캐나다",
+  AU: "호주",
+  NZ: "뉴질랜드",
+  IE: "아일랜드",
+  IN: "인도",
+  SG: "싱가포르",
+  ZA: "남아프리카",
+  JP: "일본",
+  DE: "독일",
+  FR: "프랑스",
+  ES: "스페인",
+  BR: "브라질",
+  MX: "멕시코",
+};
 
 const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -111,7 +128,7 @@ function toArticle(item, i, issueDate) {
   // 기존 기사에는 legacy ID를 유지해 이미 색인된 URL을 깨지 않는다. 새 파이프라인
   // 아이템은 run.js가 source URL 기반 id를 저장하므로 재발행해도 주소가 유지된다.
   const id = item.id || `${issueDate}_${i + 1}`;
-  return {
+  const article = {
     id,
     legacySlug: item.legacySlug || null,
     day: issueDate,
@@ -123,7 +140,8 @@ function toArticle(item, i, issueDate) {
     title: item.titleKo || "",
     dek,
     source: shortSource(item.sourceLabel),
-    country: SOURCE_COUNTRY[item.sourceLabel] || "",
+    country: SOURCE_COUNTRY[item.sourceLabel] || MARKET_LABELS[item.market] || "",
+    market: item.market || null,
     date: dateStr,
     read: `${readMin}분 읽기`,
     plate: shortSource(item.sourceLabel) || "출처",
@@ -137,6 +155,8 @@ function toArticle(item, i, issueDate) {
     tier: item.tier || "deep", // "brief" = 간추린 소식(개별 페이지 없음, 색인 X)
     ...(item.visibility ? { visibility: item.visibility, suppressedReason: item.suppressedReason || [] } : {}),
   };
+  article.href = article.tier === "brief" ? `/issues/${issueDate}#${article.id}` : articlePath(article);
+  return article;
 }
 
 function buildIssueData(issue) {
@@ -298,33 +318,57 @@ ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}"><meta property=
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc.slice(0, 155))}">
 ${ogImage ? `<meta name="twitter:image" content="${esc(ogImage)}">` : ""}
-<meta name="robots" content="${isIndex || issueIndexable(data) ? "index, follow" : "noindex, follow"}">
+<meta name="robots" content="${isIndex || issueIndexable(data) ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" : "noindex, follow"}">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 <script type="application/ld+json">${JSON.stringify(orgLd)}</script>
 <script type="application/ld+json">${JSON.stringify(siteLd)}</script>`;
 }
 
-function noscriptFallback(data) {
-  // 이 블록이 사이트 전체에서 유일하게 서버가 그려주는 링크다. SPA는 기사 카드를
-  // JS로 그리기 때문에, 여기서 링크하지 않으면 기사 페이지 131개가 전부 고아가 된다
-  // (사이트맵에만 있고 들어오는 링크가 없는 페이지는 색인이 잘 되지 않는다).
-  //
-  // 본문 전문을 여기 싣지 않는다 — 기사 페이지와 같은 글이 홈·일자 페이지에도
-  // 중복되면 어느 쪽을 원본으로 볼지 검색엔진이 헷갈린다. 리드까지만 싣고
-  // 본문은 기사 페이지 한 곳에만 둔다.
-  const list = (data.articles || [])
+function renderStaticShell(data) {
+  // 브라우저 스크립트가 실행되기 전에도 완성된 HTML과 실제 기사 링크를 제공한다.
+  // Google은 JS를 렌더링하지만 Naver·기타 검색엔진과 링크 분석기는 원본 HTML을
+  // 먼저 읽는다. <noscript> 안에만 넣으면 일반 원본 DOM에서 콘텐츠가 사라지므로,
+  // #vm의 초기 내용으로 직접 렌더하고 클라이언트 앱이 준비되면 같은 자리를 교체한다.
+  const articles = (data.articles || []).slice(0, 24);
+  const lead = articles[0];
+  const cards = articles.slice(1);
+  const topics = (data.cats || [])
+    .map((cat) => `<a href="/topic/">${esc(cat.label)}</a>`)
+    .join("");
+  const cardList = cards
     .map(
-      (a) => `<li style="margin-bottom:16px;"><a href="${esc(articlePath(a))}"><b>${esc(a.title)}</b></a>
-<div>${esc(a.dek)}</div>
-<small>${[a.kicker, a.source, a.country].filter(Boolean).map(esc).join(" · ")}</small></li>`
+      (a) => `<article class="vm-static-card">
+<div class="vm-static-meta">${[a.kicker, a.source, a.country].filter(Boolean).map(esc).join(" · ")}</div>
+<h2><a href="${esc(a.href)}">${esc(a.title)}</a></h2>
+<p>${esc(a.dek)}</p>
+</article>`
     )
     .join("");
-  return `<noscript><div style="max-width:720px;margin:0 auto;padding:40px 20px;font-family:sans-serif;">
-<h1>${esc(SITE.brandKo)} ${esc(SITE.name)} — ${esc(data.date)}</h1>
-<p>${esc(SITE.brandKo)}(${esc(SITE.brandEn)})이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑입니다.</p>
-<ul style="list-style:none;padding:0;">${list}</ul>
-<nav><a href="/">오늘의 브리핑</a> · <a href="/topic/">주제별 보기</a> · <a href="/about">서비스 소개</a> · <a href="/privacy">개인정보처리방침</a> · <a href="/terms">이용약관</a> · <a href="/rss.xml">RSS</a></nav>
-</div></noscript>`;
+  return `<a class="vm-skip" href="#main-content">본문으로 건너뛰기</a>
+<header class="vm-static-top">
+  <a class="vm-static-brand" href="/">${esc(SITE.name)}</a>
+  <nav aria-label="주요 메뉴"><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/about">서비스 소개</a></nav>
+</header>
+<main id="main-content" class="vm-static-main">
+  <section class="vm-static-hero">
+    <div class="vm-static-edition">${esc(data.dateline)} · ${esc(data.count)}건</div>
+    <h1>${esc(SITE.name)}</h1>
+    <p>${esc(SITE.brandKo)}이 전세계 수의 임상·연구·병원 운영 소식을 한국 동물병원의 관점으로 선별해 매일 전합니다.</p>
+    <nav class="vm-static-topics" aria-label="오늘의 분류">${topics}<a href="/topic/">모든 주제 보기</a></nav>
+  </section>
+${lead
+    ? `<section class="vm-static-lead" aria-labelledby="static-lead-title">
+<div class="vm-static-meta">${[lead.kicker, lead.source, lead.country, lead.date].filter(Boolean).map(esc).join(" · ")}</div>
+<h2 id="static-lead-title"><a href="${esc(lead.href)}">${esc(lead.title)}</a></h2>
+<p>${esc(lead.dek)}</p>
+<a class="vm-static-more" href="${esc(lead.href)}">기사 자세히 읽기</a>
+</section>`
+    : ""}
+  <section aria-labelledby="static-list-title"><h2 id="static-list-title" class="vm-static-section-title">오늘의 주요 기사</h2>
+    <div class="vm-static-grid">${cardList}</div>
+  </section>
+</main>
+<footer class="vm-static-footer"><nav><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/rss.xml">RSS</a><a href="/about">편집 원칙</a><a href="/privacy">개인정보처리방침</a></nav><p>해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></footer>`;
 }
 
 const TOKENS_CSS = `
@@ -356,6 +400,35 @@ html,body{margin:0;padding:0;}
 body{font-family:var(--font-sans);color:var(--color-label-normal);background:var(--color-background-normal);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
 a{color:var(--color-primary-normal);text-decoration:none;}
 a:hover{color:var(--color-primary-strong);}
+.vm-skip{position:fixed;left:16px;top:10px;z-index:1000;padding:10px 14px;border-radius:8px;background:var(--color-label-strong);color:var(--color-background-normal);font-weight:800;transform:translateY(-150%);}
+.vm-skip:focus{transform:translateY(0);}
+.vm-title-link{color:inherit;text-decoration:none;}
+.vm-title-link:hover{color:var(--color-primary-normal);}
+/* JS 실행 전에도 완성된 첫 화면을 제공하는 검색엔진·장애 대응 셸 */
+.vm-static-top{max-width:1180px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:22px;border-bottom:1px solid var(--color-line-normal);}
+.vm-static-brand{font-family:var(--font-display);font-size:19px;font-weight:800;color:var(--color-label-strong);}
+.vm-static-top nav,.vm-static-footer nav{display:flex;align-items:center;flex-wrap:wrap;gap:10px 20px;}
+.vm-static-top nav a,.vm-static-footer a{font-size:13px;font-weight:700;color:var(--color-label-neutral);}
+.vm-static-main{max-width:1180px;margin:0 auto;padding:0 40px 72px;}
+.vm-static-hero{padding:58px 0 42px;border-bottom:3px solid var(--color-label-strong);text-align:center;}
+.vm-static-edition,.vm-static-meta{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);}
+.vm-static-hero h1{margin:12px 0 10px;font-family:var(--font-display);font-size:56px;line-height:1.05;letter-spacing:-.04em;color:var(--color-label-strong);}
+.vm-static-hero>p{max-width:740px;margin:0 auto;font-size:16px;line-height:1.75;color:var(--color-label-neutral);}
+.vm-static-topics{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:22px;}
+.vm-static-topics a{border:1px solid var(--color-line-normal);border-radius:999px;padding:7px 13px;font-size:12px;font-weight:700;color:var(--color-label-neutral);}
+.vm-static-lead{padding:38px 0;border-bottom:2px solid var(--color-label-strong);}
+.vm-static-lead h2{max-width:900px;margin:10px 0 14px;font-family:var(--font-display);font-size:42px;line-height:1.14;letter-spacing:-.035em;}
+.vm-static-lead h2 a,.vm-static-card h2 a{color:var(--color-label-strong);}
+.vm-static-lead>p{max-width:780px;margin:0 0 18px;font-size:17px;line-height:1.75;color:var(--color-label-neutral);}
+.vm-static-more{font-size:13px;font-weight:800;}
+.vm-static-section-title{margin:30px 0 16px;font-family:var(--font-display);font-size:21px;color:var(--color-label-strong);}
+.vm-static-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--color-line-normal);}
+.vm-static-card{padding:22px 24px 24px 0;border-bottom:1px solid var(--color-line-normal);}
+.vm-static-card:nth-child(3n+2),.vm-static-card:nth-child(3n+3){padding-left:24px;border-left:1px solid var(--color-line-normal);}
+.vm-static-card h2{margin:8px 0;font-family:var(--font-display);font-size:20px;line-height:1.35;letter-spacing:-.02em;}
+.vm-static-card p{margin:0;font-size:13.5px;line-height:1.65;color:var(--color-label-neutral);}
+.vm-static-footer{max-width:1100px;margin:0 auto 30px;padding:26px 0;border-top:2px solid var(--color-label-strong);font-size:12px;color:var(--color-label-alternative);}
+.vm-static-footer p{margin:16px 0 0;line-height:1.65;}
 .vm-page ::selection{background:rgba(0,102,255,0.16);}
 .vm-lead:hover .vm-hl,.vm-row:hover .vm-hl,.vm-card:hover .vm-hl,.vm-rail:hover .vm-hl,.vm-mr:hover .vm-mrt,.vm-toc-i:hover{color:var(--color-primary-normal);}
 .vm-read{opacity:.55;}
@@ -396,7 +469,7 @@ a:hover{color:var(--color-primary-strong);}
 :focus-visible{outline:2px solid var(--color-primary-normal);outline-offset:2px;}
 @media (max-width:900px){
   .vm-wrap{padding-left:20px !important;padding-right:20px !important;}
-  .vm-bar{padding-left:20px !important;padding-right:20px !important;gap:10px !important;}
+  .vm-bar{padding-left:20px !important;padding-right:20px !important;gap:10px !important;flex-wrap:wrap !important;}
   .vm-bar-label{display:none !important;}
   .vm-grid{grid-template-columns:1fr !important;}
   /* 1단이 되면 좌우 여백·세로선은 의미가 없다. 칸은 위아래로만 이어진다 */
@@ -416,7 +489,7 @@ a:hover{color:var(--color-primary-strong);}
   .vm-lead-h{font-size:30px !important;}
   .vm-row-thumb{width:112px !important;}
   .vm-detail{width:100% !important;max-width:100% !important;}
-  .vm-search{display:none !important;}
+  .vm-search{display:flex !important;order:3;flex:1 0 100% !important;max-width:none !important;}
   .vm-dateline{display:none !important;}
   /* 터치 타깃 확대 — 칩 29px·정렬 25px는 손가락으로 정확히 누르기 어렵다.
      시각적 크기는 유지하고 세로 패딩으로 누를 수 있는 면적만 키운다. */
@@ -440,11 +513,25 @@ a:hover{color:var(--color-primary-strong);}
   .vm-footer-brand{grid-column:1/-1;}
   .vm-footer-bottom{display:block !important;}
   .vm-footer-bottom span{display:block;margin-top:6px;}
+  .vm-static-top{padding:14px 20px;}
+  .vm-static-top nav{display:none;}
+  .vm-static-main{padding:0 20px 56px;}
+  .vm-static-hero{padding:38px 0 30px;text-align:left;}
+  .vm-static-hero h1{font-size:40px;}
+  .vm-static-hero>p{font-size:15px;}
+  .vm-static-topics{justify-content:flex-start;}
+  .vm-static-lead h2{font-size:32px;}
+  .vm-static-grid{grid-template-columns:1fr;}
+  .vm-static-card,.vm-static-card:nth-child(3n+2),.vm-static-card:nth-child(3n+3){padding:18px 0;border-left:0;}
+  .vm-static-footer{margin:0 20px 24px;}
 }
 @media (max-width:560px){
   .vm-footer-grid{grid-template-columns:1fr !important;gap:28px !important;}
   .vm-footer-brand{grid-column:auto;}
   .vm-footer-links a{min-height:44px;display:flex;align-items:center;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto !important;animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
 }`;
 
 const APP_JS = String.raw`
@@ -473,7 +560,8 @@ const APP_JS = String.raw`
   function saveColor(id){ return isSaved(id)?'var(--color-primary-normal)':'var(--color-label-assistive)'; }
   function meta(a){ return [a.source,a.country,a.date,a.read].filter(Boolean).map(e).join(' · '); }
   function metaShort(a){ return [a.source,a.country,a.date].filter(Boolean).map(e).join(' · '); }
-  function snap(a){ return {id:a.id,day:a.day,title:a.title,dek:a.dek,kicker:a.kicker,source:a.source,country:a.country,date:a.date,read:a.read,cat:a.cat,image:a.image,plate:a.plate,blog:a.blog,blogAngle:a.blogAngle,isToday:a.isToday,radar:a.radar}; }
+  function snap(a){ return {id:a.id,href:a.href,day:a.day,title:a.title,dek:a.dek,kicker:a.kicker,source:a.source,country:a.country,date:a.date,read:a.read,cat:a.cat,image:a.image,plate:a.plate,blog:a.blog,blogAngle:a.blogAngle,isToday:a.isToday,radar:a.radar}; }
+  function titleLink(a){ return '<a class="vm-title-link" href="'+e(a.href||'#')+'">'+e(a.title)+'</a>'; }
 
   var BM='<svg width="W" height="W" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(4.1 2.1)"><path d="M 4.065 0 L 11.735 0 C 12.265 0 12.716 0 13.087 0.03 C 13.476 0.062 13.855 0.132 14.217 0.316 C 14.762 0.594 15.206 1.038 15.484 1.583 C 15.668 1.945 15.738 2.324 15.77 2.713 C 15.8 3.084 15.8 3.535 15.8 4.065 L 15.8 18.9 C 15.8 19.225 15.625 19.525 15.341 19.684 C 15.058 19.844 14.711 19.838 14.433 19.669 L 7.9 15.703 L 1.367 19.669 C 1.089 19.838 0.742 19.844 0.459 19.684 C 0.175 19.525 0 19.225 0 18.9 L 0 4.065 C 0 3.535 0 3.084 0.03 2.713 C 0.062 2.324 0.132 1.945 0.316 1.583 C 0.594 1.038 1.038 0.594 1.583 0.316 C 1.945 0.132 2.324 0.062 2.713 0.03 C 3.084 0 3.535 0 4.065 0 Z M 3.7 1.8 C 2.885 1.8 2.692 1.811 2.56 1.854 C 2.225 1.963 1.963 2.225 1.854 2.56 C 1.811 2.692 1.8 2.886 1.8 3.7 L 1.8 17.301 L 7.433 13.881 C 7.72 13.707 8.08 13.707 8.367 13.881 L 14 17.301 L 14 3.7 C 14 2.886 13.989 2.692 13.946 2.56 C 13.837 2.225 13.575 1.963 13.24 1.854 C 13.108 1.811 12.915 1.8 12.1 1.8 L 3.7 1.8 Z" fill-rule="evenodd"></path></g></svg>';
   var EXT='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(2.85 2.85)"><path d="M 11.9 0 C 11.403 0 11 0.403 11 0.9 C 11 1.397 11.403 1.8 11.9 1.8 L 15.227 1.8 L 8.514 8.514 C 8.162 8.865 8.162 9.435 8.514 9.786 C 8.865 10.138 9.435 10.138 9.787 9.786 L 16.5 3.073 L 16.5 6.4 C 16.5 6.897 16.903 7.3 17.4 7.3 C 17.897 7.3 18.3 6.897 18.3 6.4 L 18.3 0.9 C 18.3 0.403 17.897 0 17.4 0 L 11.9 0 Z"></path><path d="M 7.25 0.001 C 7.747 0.001 8.15 0.404 8.15 0.901 C 8.15 1.398 7.747 1.801 7.25 1.801 L 5.7 1.801 C 4.845 1.801 4.258 1.801 3.803 1.838 C 3.358 1.875 3.119 1.941 2.947 2.029 C 2.551 2.231 2.23 2.552 2.029 2.947 C 1.941 3.12 1.874 3.359 1.838 3.803 C 1.801 4.259 1.8 4.846 1.8 5.701 L 1.8 12.601 C 1.8 13.456 1.801 14.043 1.838 14.498 C 1.874 14.942 1.941 15.181 2.029 15.354 C 2.23 15.749 2.551 16.07 2.947 16.272 C 3.119 16.36 3.358 16.426 3.803 16.463 C 4.258 16.5 4.845 16.501 5.7 16.501 L 12.6 16.501 C 13.455 16.501 14.042 16.5 14.497 16.463 C 14.942 16.426 15.18 16.36 15.353 16.272 C 15.748 16.07 16.07 15.749 16.271 15.354 C 16.359 15.181 16.426 14.942 16.462 14.498 C 16.499 14.043 16.5 13.456 16.5 12.601 L 16.5 11.051 C 16.5 10.554 16.903 10.151 17.4 10.151 C 17.897 10.151 18.3 10.554 18.3 11.051 L 18.3 12.638 C 18.3 13.446 18.3 14.107 18.256 14.644 C 18.211 15.2 18.114 15.702 17.875 16.171 C 17.501 16.905 16.904 17.502 16.171 17.876 C 15.702 18.114 15.2 18.211 14.644 18.257 C 14.107 18.301 13.446 18.301 12.638 18.301 L 5.662 18.301 C 4.854 18.301 4.193 18.301 3.656 18.257 C 3.1 18.211 2.598 18.114 2.129 17.876 C 1.396 17.502 0.799 16.905 0.425 16.171 C 0.186 15.702 0.089 15.2 0.044 14.644 C 0 14.107 0 13.446 0 12.638 L 0 5.663 C 0 4.855 0 4.194 0.044 3.657 C 0.089 3.101 0.186 2.599 0.425 2.13 C 0.799 1.396 1.396 0.8 2.129 0.426 C 2.598 0.187 3.1 0.09 3.656 0.044 C 4.193 0.001 4.854 0.001 5.662 0.001 L 7.25 0.001 Z"></path></g></svg>';
@@ -554,7 +642,7 @@ const APP_JS = String.raw`
   // 상세뷰 편집 노트: 임상 메모(사이드바) + 진료실 문답(Q&A 칼럼)
   function radarBlock(a){
     var r=a.radar; if(!r||(!r.clinical&&!r.owner)) return '';
-    var h='';
+    var h='<a class="vm-skip" href="#main-content">본문으로 건너뛰기</a>';
     // 임상 메모 — 채움색 없는 에디터 노트, 왼쪽 가는 선
     if(r.clinical){
       h+='<div style="margin:26px 0;padding:2px 0 2px 18px;border-left:2px solid var(--color-label-strong);">'
@@ -577,7 +665,7 @@ const APP_JS = String.raw`
     return '<article class="vm-lead'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,18,10.5)+(isRead(a.id)?'<span style="font-size:10.5px;color:var(--color-label-alternative);">읽음</span>':'')+'</div>'+bookmarkBtn(a.id,17,'plain')+'</div>'
     +cardMedia(a,22)
-    +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:40px;line-height:1.12;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h2>'
+    +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:40px;line-height:1.12;font-weight:800;letter-spacing:-.03em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(a)+'</h2>'
     +'<p style="font-size:17px;line-height:1.7;color:var(--color-label-neutral);margin:0 0 14px;max-width:56ch;">'+e(a.dek)+'</p>'
     // 리드는 본문을 넉넉히 실어 왼쪽 칼럼이 비지 않게 한다(신문 1면의 톱기사처럼)
     // 리드는 본문을 넉넉히 싣되, 3번째 문단은 행에 자리가 남을 때만 fillSlack()이 편다
@@ -589,7 +677,7 @@ const APP_JS = String.raw`
   function leadFollow(a){
     return '<article class="vm-follow'+readCls(a.id)+'" data-open="'+a.id+'" style="padding:18px 0;border-top:1px solid var(--color-line-normal);cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
-    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:23px;line-height:1.3;font-weight:700;letter-spacing:-.018em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
+    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:23px;line-height:1.3;font-weight:700;letter-spacing:-.018em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(a)+'</h3>'
     +'<p style="font-size:14.5px;line-height:1.65;color:var(--color-label-neutral);margin:0 0 8px;max-width:62ch;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
     // 자리가 남는 행에서만 펼쳐지는 진료 포인트 — 빈칸을 여백 대신 정보로 메운다
     + (a.radar&&a.radar.clinical?'<div class="vm-fill" style="display:none;margin:0 0 10px;padding-left:11px;border-left:2px solid var(--color-primary-normal);font-size:13px;line-height:1.6;color:var(--color-label-neutral);max-width:62ch;"><b style="color:var(--color-primary-normal);font-weight:700;">진료 포인트</b> '+e(a.radar.clinical)+'</div>':'')
@@ -626,7 +714,7 @@ const APP_JS = String.raw`
     return '<article class="vm-lead'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,18,10.5)+(isRead(a.id)?'<span style="font-size:10.5px;color:var(--color-label-alternative);">읽음</span>':'')+'</div>'+bookmarkBtn(a.id,17,'plain')+'</div>'
     +cardMedia(a,26)
-    +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:46px;line-height:1.06;font-weight:800;letter-spacing:-.035em;margin:0 0 14px;color:var(--color-label-strong);text-wrap:balance;">'+e(a.title)+'</h2>'
+    +'<h2 class="vm-hl vm-lead-h" style="font-family:var(--font-display);font-size:46px;line-height:1.06;font-weight:800;letter-spacing:-.035em;margin:0 0 14px;color:var(--color-label-strong);text-wrap:balance;">'+titleLink(a)+'</h2>'
     +'<p style="font-size:17.5px;line-height:1.6;font-weight:500;color:var(--color-label-normal);margin:0 0 16px;padding-bottom:16px;border-bottom:1px solid var(--color-line-normal);">'+e(a.dek)+'</p>'
     +'<div class="vm-fp-body" style="column-count:2;column-gap:30px;column-rule:1px solid var(--color-line-normal);font-size:14.5px;line-height:1.75;color:var(--color-label-neutral);">'+body+'</div>'
     +'<div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--color-line-normal);display:flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.03em;color:var(--color-label-alternative);text-transform:uppercase;">'+meta(a)+'</div>'
@@ -636,7 +724,7 @@ const APP_JS = String.raw`
   function briefRow(a,i){
     return '<div class="vm-brief-r'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid var(--color-line-normal);cursor:pointer;">'
     +'<span style="flex:none;font-family:var(--font-display);font-size:11px;font-weight:800;color:var(--color-primary-normal);padding-top:3px;">'+String(i+1).padStart(2,'0')+'</span>'
-    +'<div style="min-width:0;"><div class="vm-hl" style="font-size:13.5px;font-weight:700;line-height:1.4;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</div>'
+    +'<div style="min-width:0;"><div class="vm-hl" style="font-size:13.5px;font-weight:700;line-height:1.4;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(a)+'</div>'
     +'<div style="margin-top:3px;font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--color-label-alternative);">'+e(a.source)+'</div></div></div>';
   }
   // 쿼드: 같은 무게 4장. 제목 크기를 통일해 가로 리듬을 만든다.
@@ -644,7 +732,7 @@ const APP_JS = String.raw`
     return '<article class="vm-quad-c'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:7px;"><span style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+bookmarkBtn(a.id,14,'plain')+'</div>'
     +cardMedia(a,14)
-    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:18px;line-height:1.28;font-weight:700;letter-spacing:-.015em;margin:0 0 7px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
+    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:18px;line-height:1.28;font-weight:700;letter-spacing:-.015em;margin:0 0 7px;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(a)+'</h3>'
     +'<p style="font-size:13px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
     +'<div style="font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--color-label-alternative);">'+e(a.source)+'</div></article>';
   }
@@ -654,7 +742,7 @@ const APP_JS = String.raw`
     return '<article class="vm-feat'+readCls(a.id)+'" data-open="'+a.id+'" style="cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;"><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary-normal);">깊이 보기 · '+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
     +cardMedia(a,20,'2.2/1')
-    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:30px;line-height:1.2;font-weight:800;letter-spacing:-.025em;margin:0 0 10px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
+    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:30px;line-height:1.2;font-weight:800;letter-spacing:-.025em;margin:0 0 10px;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(a)+'</h3>'
     +'<p style="font-size:15px;line-height:1.7;color:var(--color-label-neutral);margin:0 0 12px;max-width:64ch;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
     // 자리가 남으면 본문 첫 문단까지 펼쳐 '해설' 기사답게 만든다
     + ((a.body||[])[0]?'<p class="vm-fill" style="display:none;font-size:14.5px;line-height:1.75;color:var(--color-label-neutral);margin:0 0 12px;max-width:64ch;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.body[0])+'</p>':'')
@@ -665,19 +753,19 @@ const APP_JS = String.raw`
     return '<article class="vm-rail'+readCls(a.id)+'" data-open="'+a.id+'" style="padding:20px 0;border-top:1px solid var(--color-line-normal);cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
     +cardMedia(a,15)
-    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:21px;line-height:1.28;font-weight:700;letter-spacing:-.017em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
+    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:21px;line-height:1.28;font-weight:700;letter-spacing:-.017em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(a)+'</h3>'
     +'<p style="font-size:14px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
     +'<div style="font-size:11.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+metaShort(a)+'</div></article>';
   }
   function mostRead(list){
     return '<div style="margin-top:14px;border-top:2px solid var(--color-label-strong);padding-top:14px;"><div style="font-family:var(--font-display);font-size:15px;font-weight:800;letter-spacing:.02em;color:var(--color-label-strong);margin-bottom:6px;">주목 브리핑 TOP 5</div>'
-    + list.map(function(a,i){ return '<div class="vm-mr'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:12px;align-items:baseline;padding:11px 0;border-top:1px solid var(--color-line-normal);cursor:pointer;"><span style="flex:none;font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--color-primary-normal);width:20px;line-height:1;">'+(i+1)+'</span><div><div class="vm-mrt" style="font-size:14px;font-weight:700;line-height:1.35;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</div><div style="margin-top:3px;font-size:11px;text-transform:uppercase;letter-spacing:.02em;color:var(--color-label-alternative);">'+[a.source,a.country].filter(Boolean).map(e).join(' · ')+'</div></div></div>'; }).join('')+'</div>';
+    + list.map(function(a,i){ return '<div class="vm-mr'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:12px;align-items:baseline;padding:11px 0;border-top:1px solid var(--color-line-normal);cursor:pointer;"><span style="flex:none;font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--color-primary-normal);width:20px;line-height:1;">'+(i+1)+'</span><div><div class="vm-mrt" style="font-size:14px;font-weight:700;line-height:1.35;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(a)+'</div><div style="margin-top:3px;font-size:11px;text-transform:uppercase;letter-spacing:.02em;color:var(--color-label-alternative);">'+[a.source,a.country].filter(Boolean).map(e).join(' · ')+'</div></div></div>'; }).join('')+'</div>';
   }
   function bandCard(a){
     return '<article class="vm-card'+readCls(a.id)+'" data-open="'+a.id+'" style="background:var(--color-background-normal);padding:24px 22px 26px;display:flex;flex-direction:column;cursor:pointer;">'
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'+bookmarkBtn(a.id,15,'plain')+'</div>'
     +cardMedia(a,15)
-    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:19px;line-height:1.32;font-weight:700;letter-spacing:-.015em;margin:0 0 10px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
+    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:19px;line-height:1.32;font-weight:700;letter-spacing:-.015em;margin:0 0 10px;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(a)+'</h3>'
     +'<p style="font-size:13.5px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">'+e(a.dek)+'</p>'
     +'<div style="margin-top:auto;font-size:11.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+metaShort(a)+'</div></article>';
   }
@@ -686,7 +774,7 @@ const APP_JS = String.raw`
     return '<article class="vm-row'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--color-line-normal);cursor:pointer;">'
     +(a.image?'<div class="vm-row-thumb" style="flex:none;width:180px;aspect-ratio:16/10;position:relative;overflow:hidden;border-radius:10px;background:var(--color-background-alternative);">'+plateImg(a,{big:16})+'</div>':'')
     +'<div style="flex:1;min-width:0;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+tag(a.isToday,16,10)+'</div>'
-    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:22px;line-height:1.3;font-weight:700;letter-spacing:-.017em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h3>'
+    +'<h3 class="vm-hl" style="font-family:var(--font-display);font-size:22px;line-height:1.3;font-weight:700;letter-spacing:-.017em;margin:0 0 8px;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(a)+'</h3>'
     +'<p style="font-size:14.5px;line-height:1.6;color:var(--color-label-neutral);margin:0 0 8px;max-width:70ch;">'+e(a.dek)+'</p>'
     +'<div style="font-size:11.5px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+meta(a)+'</div></div>'
     +'<div style="flex:none;display:flex;flex-direction:column;gap:8px;">'+bookmarkBtn(a.id,17,'box')+ideaBtn+'</div></article>';
@@ -743,7 +831,7 @@ const APP_JS = String.raw`
       return '<div class="vm-story'+readCls(a.id)+'" data-open="'+a.id+'" style="display:flex;gap:14px;align-items:baseline;padding:14px 2px;border-top:1px solid var(--color-line-normal);cursor:pointer;">'
       +'<span style="flex:none;width:20px;font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--color-label-assistive);text-align:center;">'+(i+1)+'</span>'
       +'<div style="min-width:0;flex:1;">'
-      +'<div class="vm-hl" style="font-size:15.5px;font-weight:700;line-height:1.45;color:var(--color-label-strong);text-wrap:pretty;">'+(a.tag?'<span style="color:var(--color-primary-normal);font-weight:800;">['+e(a.tag)+']</span> ':'')+e(a.title)+'</div>'
+      +'<div class="vm-hl" style="font-size:15.5px;font-weight:700;line-height:1.45;color:var(--color-label-strong);text-wrap:pretty;">'+(a.tag?'<span style="color:var(--color-primary-normal);font-weight:800;">['+e(a.tag)+']</span> ':'')+titleLink(a)+'</div>'
       +'<div style="margin-top:4px;font-size:11.5px;color:var(--color-label-alternative);">'+[a.source,a.country].filter(Boolean).map(e).join(' · ')+'</div>'
       +'</div><span style="flex:none;color:var(--color-label-assistive);align-self:center;">'+ARR+'</span></div>';
     }).join('');
@@ -978,7 +1066,7 @@ const APP_JS = String.raw`
     // 목차
     var toc=ctx.map(function(x,i){ var on=x.id===a.id; return '<button class="vm-toc-i" data-open="'+x.id+'" style="width:100%;text-align:left;display:flex;gap:10px;align-items:baseline;padding:9px 0;border:0;border-top:1px solid var(--color-line-normal);background:transparent;cursor:pointer;font-family:inherit;'+(on?'color:var(--color-primary-normal);':'color:var(--color-label-neutral);')+(isRead(x.id)&&!on?'opacity:.5;':'')+'"><span style="flex:none;width:22px;font-family:var(--font-display);font-weight:800;font-size:13px;color:'+(on?'var(--color-primary-normal)':'var(--color-label-alternative)')+';">'+(i+1)+'</span><span style="font-size:13.5px;font-weight:'+(on?'700':'600')+';line-height:1.4;">'+e(x.title)+'</span></button>'; }).join('');
     return '<div data-act="close" style="position:fixed;inset:0;background:var(--color-material-dimmer);z-index:50;animation:vmFade .18s ease-out;"></div>'
-    +'<div class="vm-detail" data-theme="'+S.theme+'" style="--fs:'+S.fs+';position:fixed;top:0;right:0;bottom:0;width:760px;max-width:calc(100vw - 24px);background:var(--color-background-normal);color:var(--color-label-normal);z-index:51;display:flex;flex-direction:column;box-shadow:var(--elevation-5);animation:vmSlide .24s ease-out;font-family:var(--font-sans);">'
+    +'<div class="vm-detail" role="dialog" aria-modal="true" aria-labelledby="vm-detail-title" data-theme="'+S.theme+'" style="--fs:'+S.fs+';position:fixed;top:0;right:0;bottom:0;width:760px;max-width:calc(100vw - 24px);background:var(--color-background-normal);color:var(--color-label-normal);z-index:51;display:flex;flex-direction:column;box-shadow:var(--elevation-5);animation:vmSlide .24s ease-out;font-family:var(--font-sans);">'
     // header
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;border-bottom:1px solid var(--color-line-normal);">'
     +'<div style="display:flex;align-items:center;gap:8px;min-width:0;">'
@@ -997,7 +1085,7 @@ const APP_JS = String.raw`
     // body
     +'<div class="vm-detail-body" id="vm-db" style="overflow-y:auto;padding:30px 44px 20px;">'
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+(a.tag?'<span style="font-size:11px;font-weight:800;color:var(--color-primary-normal);">['+e(a.tag)+']</span>':'')+tag(a.isToday,17,10)+'</div>'
-    +'<h1 style="font-family:var(--font-display);font-size:calc(34px*var(--fs));line-height:1.2;font-weight:800;letter-spacing:-.028em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h1>'
+    +'<h1 id="vm-detail-title" style="font-family:var(--font-display);font-size:calc(34px*var(--fs));line-height:1.2;font-weight:800;letter-spacing:-.028em;margin:0 0 16px;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.title)+'</h1>'
     +'<div style="padding-bottom:20px;border-bottom:1px solid var(--color-line-normal);"><div style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--color-label-alternative);">'+meta(a)+'</div>'+evLine(a)+'</div>'
     // 실제 대표 이미지가 있을 때만 이미지 영역을 보여준다. 이미지가 없으면 바로 본문으로 이어진다.
     + (a.image ? '<div style="position:relative;overflow:hidden;height:240px;margin:22px 0;border-radius:6px;background:rgba(0,102,255,0.07);border:1px solid var(--color-line-normal);">'+plateImg(a,{big:26,eager:true})+'</div>' : '')
@@ -1059,12 +1147,12 @@ const APP_JS = String.raw`
     var h='';
     h+='<div style="position:sticky;top:0;z-index:30;background:var(--color-background-normal);border-bottom:1px solid var(--color-line-normal);"><div class="vm-bar" style="max-width:1180px;margin:0 auto;padding:9px 40px;display:flex;align-items:center;gap:16px;">'
     +'<button data-nav="home" class="vm-tap" style="flex:none;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--color-label-strong);">VetManLab 브리핑</button>'
-    +'<div class="vm-search" style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:var(--color-material-thin);border-radius:9px;padding:9px 12px;color:var(--color-label-alternative);">'+search+'<input id="vm-q" value="'+e(S.query)+'" placeholder="기사 검색 — 제목·본문·출처" style="border:0;outline:0;background:transparent;font-family:inherit;font-size:13px;color:var(--color-label-normal);width:100%;"></div>'
+    +'<div class="vm-search" role="search" style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:var(--color-material-thin);border-radius:9px;padding:9px 12px;color:var(--color-label-alternative);">'+search+'<input id="vm-q" aria-label="전체 기사 검색" value="'+e(S.query)+'" placeholder="기사 검색 — 제목·본문·출처" style="border:0;outline:0;background:transparent;font-family:inherit;font-size:13px;color:var(--color-label-normal);width:100%;"></div>'
     +'<div style="flex:none;display:flex;align-items:center;gap:14px;"><span class="vm-bar-label">'+navBtn('ideas','글감함',ideaCount)+'</span><span class="vm-bar-label">'+navBtn('saved','저장',savedCount)+'</span><span class="vm-bar-label">'+navBtn('archive','지난 브리핑')+'</span>'
     +'<button data-act="theme" class="vm-tap" title="테마 전환" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;border-radius:9px;">'+(S.theme==='dark'?sun:moon)+'</button></div>'
     +'</div></div>';
 
-    h+='<div class="vm-wrap" style="max-width:1180px;margin:0 auto;padding:0 40px 64px;">';
+    h+='<div class="vm-wrap" style="max-width:1180px;margin:0 auto;padding:0 40px 64px;"><main id="main-content">';
     h+='<div class="vm-dateline" style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:12px;color:var(--color-label-alternative);"><span style="flex:1;text-align:left;">'+e(DATA.dateline)+'</span><span style="flex:1;text-align:center;letter-spacing:.06em;">해외 수의 소식을 한국 동물병원의 눈으로</span><span style="flex:1;text-align:right;">원문 출처 표기 · 번역 참고용</span></div>';
     h+='<div style="height:1px;background:var(--color-line-normal);"></div>';
     h+='<header class="vm-mast" style="text-align:center;padding:30px 0 22px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-label-alternative);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetManLab 해외 브리핑</h1>'
@@ -1080,9 +1168,9 @@ const APP_JS = String.raw`
     else if(searching){ h+=listView(activeList(),'검색 결과가 없습니다','다른 검색어를 입력해 보세요.'); }
     else { h+=catRow(); h+=homeView(); }
 
-    h+='<footer class="vm-site-footer" aria-label="사이트 정보"><div class="vm-footer-grid">'
+    h+='</main><footer class="vm-site-footer" aria-label="사이트 정보"><div class="vm-footer-grid">'
     +'<section class="vm-footer-brand"><div class="vm-footer-eyebrow">VETMANLAB · DAILY BRIEFING</div><div class="vm-footer-title">VetManLab 해외 브리핑</div><p class="vm-footer-copy">해외 수의 임상·연구·병원 운영 소식을 한국 동물병원의 관점으로 정리합니다. 바쁜 원장님과 수의사가 매일 필요한 흐름을 빠르게 읽고, 진료와 콘텐츠에 활용할 수 있도록 만듭니다.</p><p class="vm-footer-note">본 콘텐츠는 해외 공개 자료의 요약·번역입니다. 임상 정보는 참고용이며 실제 적용 전 원문과 최신 문헌을 확인하세요. 모든 항목에 원문 출처를 표기합니다.</p></section>'
-    +'<section><h2 class="vm-footer-heading">둘러보기</h2><nav class="vm-footer-links" aria-label="주요 메뉴"><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>'
+    +'<section><h2 class="vm-footer-heading">둘러보기</h2><nav class="vm-footer-links" aria-label="주요 메뉴"><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>'
     +'<section><h2 class="vm-footer-heading">문의·이용 안내</h2><div class="vm-footer-contact"><strong>업무제휴·광고 문의</strong><br><a href="mailto:'+CFG.footer.partnerEmail+'?subject='+encodeURIComponent("[VetManLab 해외 브리핑] 업무제휴·광고 문의")+'">'+CFG.footer.partnerName+' · '+CFG.footer.partnerEmail+'</a><br><br><strong>운영·일반 문의</strong><br><a href="mailto:'+CFG.footer.email+'">'+CFG.footer.email+'</a><br><br>'+CFG.footer.operator+(CFG.footer.bizNumber?' · 사업자등록번호 '+CFG.footer.bizNumber:'')+'</div>'
     +(CFG.newsletter
       ? '<form id="vm-sub" class="vm-footer-subscribe"><h2 class="vm-footer-heading">매일 아침 받기</h2><div style="display:flex;gap:8px;"><input id="vm-email" type="email" required placeholder="이메일 주소" autocomplete="email" style="flex:1;min-width:0;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-normal);border-radius:9px;padding:10px 12px;font-family:inherit;font-size:13px;outline:0;"><button type="submit" style="flex:none;border:0;background:var(--color-primary-normal);color:#fff;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 16px;border-radius:9px;white-space:nowrap;">구독</button></div><input id="vm-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"><p style="margin:8px 0 0;font-size:11px;line-height:1.55;color:var(--color-label-alternative);">구독하면 매일 아침 브리핑 메일 수신에 동의하는 것으로 봅니다. <a href="/privacy" style="color:var(--color-label-neutral);text-decoration:underline;">개인정보처리방침</a></p></form>'
@@ -1141,7 +1229,7 @@ const APP_JS = String.raw`
 
   // ── 기능 C: 공유 ──
   function shareArticle(a){
-    var url=location.origin+location.pathname+'#'+a.id;
+    var url=location.origin+(a.href||location.pathname);
     if(navigator.share){ navigator.share({title:a.title,text:a.dek,url:url}).catch(function(){}); }
     else { copy(url,'링크를 복사했습니다'); }
   }
@@ -1168,7 +1256,12 @@ const APP_JS = String.raw`
   }
   function openArticle(id){
     if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
-    else { var d=id.split('_')[0]; location.href = (location.pathname.indexOf('/issues/')>=0?'':'issues/')+d+'.html#'+id; }
+    else {
+      var stored=S.saved[id]||S.ideas[id];
+      if(stored&&stored.href){ location.href=stored.href; return; }
+      var d=id.split('_')[0];
+      location.href = (location.pathname.indexOf('/issues/')>=0?'':'/issues/')+d+'#'+id;
+    }
   }
   function toggleIdea(id){
     var a=byId[id]; if(!a && S.ideas[id]){ delete S.ideas[id]; persist('ideas',S.ideas); toast('글감함에서 뺐습니다'); render(); return; }
@@ -1215,7 +1308,7 @@ const APP_JS = String.raw`
       else if(act==='prev'||act==='next'){ var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); var t=act==='next'?ctx[i+1]:ctx[i-1]; if(t){ openArticle(t.id); return; } }
       else if(act==='fs+'){ S.fs=Math.min(1.5,Math.round((S.fs+0.1)*10)/10); persist('fs',S.fs); }
       else if(act==='fs-'){ S.fs=Math.max(0.85,Math.round((S.fs-0.1)*10)/10); persist('fs',S.fs); }
-      else if(act==='copylink'){ copy(location.origin+location.pathname+'#'+el.getAttribute('data-id'),'링크를 복사했습니다'); return; }
+      else if(act==='copylink'){ var ca=byId[el.getAttribute('data-id')]; copy(location.origin+((ca&&ca.href)||location.pathname),'링크를 복사했습니다'); return; }
       else if(act==='copyblog'){ copy(blogText(byId[el.getAttribute('data-id')]),'글감을 복사했습니다'); return; }
       else if(act==='copyscript'){ var a=byId[el.getAttribute('data-id')]; var o=a&&a.radar&&a.radar.owner; if(o){ copy((o.q?'[보호자 예상 질문]\n'+o.q+'\n\n':'')+'[설명]\n'+(o.script||''),'보호자 설명을 복사했습니다'); } return; }
       else if(act==='copyone'){ var a=S.ideas[el.getAttribute('data-id')]; if(a) copy(blogText(a),'글감을 복사했습니다'); return; }
@@ -1228,7 +1321,13 @@ const APP_JS = String.raw`
       else if(act==='share'){ var a=byId[el.getAttribute('data-id')]; if(a) shareArticle(a); return; }
       S.searchFocus=false; render(); return;
     }
-    if(el.hasAttribute('data-open')){ openArticle(el.getAttribute('data-open')); }
+    if(el.hasAttribute('data-open')){
+      var link=ev.target.closest('a[href]');
+      // 보통 클릭은 빠른 상세 패널로 열되, 새 탭/새 창 의도는 실제 기사 링크에 맡긴다.
+      if(link&&(ev.metaKey||ev.ctrlKey||ev.shiftKey||ev.altKey||ev.button!==0)) return;
+      if(link) ev.preventDefault();
+      openArticle(el.getAttribute('data-open'));
+    }
   });
   document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; if(!SEARCH_INDEX&&!searchLoading) loadSearch(); } render(); } });
   document.addEventListener('submit',function(ev){ if(ev.target.id==='vm-sub'){ ev.preventDefault(); var em=document.getElementById('vm-email'); if(em&&em.value) subscribe(em.value.trim()); } });
@@ -1325,8 +1424,7 @@ ${seoHead(issue, data, canonicalPath, isIndex)}
 <script>try{var t=JSON.parse(localStorage.getItem('vm_theme'))||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
 <body>
-<div class="vm-page" id="vm" data-theme="light" style="min-height:100vh;background:var(--color-background-normal);color:var(--color-label-normal);font-family:var(--font-sans);"></div>
-${noscriptFallback(data)}
+<div class="vm-page" id="vm" data-theme="light" style="min-height:100vh;background:var(--color-background-normal);color:var(--color-label-normal);font-family:var(--font-sans);">${renderStaticShell(data)}</div>
 <script id="vm-issue" type="application/json">${json}</script>
 <script id="vm-cfg" type="application/json">${JSON.stringify({
     newsletter: !!SITE.newsletterEnabled,
@@ -1648,7 +1746,7 @@ function renderArticlePage(a, data, prev, next) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
-<meta name="robots" content="${isIndexable(a) ? "index, follow" : "noindex, follow"}">
+<meta name="robots" content="${isIndexable(a) ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" : "noindex, follow"}">
 <link rel="canonical" href="${esc(canonical)}">${
     SITE.verification?.google ? `\n<meta name="google-site-verification" content="${esc(SITE.verification.google)}">` : ""
   }${SITE.verification?.naver ? `\n<meta name="naver-site-verification" content="${esc(SITE.verification.naver)}">` : ""}
@@ -1748,7 +1846,7 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 <script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""
   }${gaSnippet()}
 </head><body>
-<header class="site-h"><div class="in"><a class="b" href="/">${esc(SITE.name)}</a><nav><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a></nav></div></header>
+<header class="site-h"><div class="in"><a class="b" href="/">${esc(SITE.name)}</a><nav><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/about">서비스 소개</a></nav></div></header>
 <div class="wrap">
 <div class="top"><a href="/">${esc(SITE.brandKo)} ${esc(SITE.name)}</a><span style="color:var(--sub)">${esc(data.dateLabel || data.date)}</span></div>
 <nav class="crumb" aria-label="breadcrumb"><a href="/">홈</a> <span aria-hidden="true">›</span> ${
@@ -1793,7 +1891,7 @@ ${
 <footer class="site-f">
 <div class="site-f-grid">
 <section><div class="eyebrow">VETMANLAB · DAILY BRIEFING</div><div class="brand">${esc(SITE.name)}</div><p class="desc">해외 수의 임상·연구·병원 운영 소식을 한국 동물병원의 관점으로 정리합니다. 원문 출처를 확인할 수 있는 읽기 쉬운 브리핑입니다.</p></section>
-<section><h2>둘러보기</h2><nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>
+<section><h2>둘러보기</h2><nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/about">서비스 소개</a><a href="/rss.xml">RSS로 구독하기</a></nav></section>
 <section><h2>문의·이용 안내</h2><div class="biz"><strong>업무제휴·광고 문의</strong><br><a href="mailto:${esc(LEGAL.partnerEmail)}?subject=${encodeURIComponent("[VetManLab 해외 브리핑] 업무제휴·광고 문의")}">${esc(LEGAL.partnerName)} · ${esc(LEGAL.partnerEmail)}</a><br><br><strong>운영·일반 문의</strong><br><a href="mailto:${esc(LEGAL.email)}">${esc(LEGAL.email)}</a>${LEGAL.operator ? `<br><br>${esc(LEGAL.operator)}${LEGAL.bizNumber ? ` · 사업자등록번호 ${esc(LEGAL.bizNumber)}` : ""}` : ""}</div></section>
 </div>
 <div class="bottom"><span>© ${new Date(LEGAL.effectiveDate).getFullYear()} ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</span><span>개인정보처리방침 · 이용약관 · 원문 출처 표기 · 임상 정보 참고용</span></div>
@@ -2273,6 +2371,7 @@ function renderTopicPage(topic, arts) {
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:site_name" content="${esc(SITE.name)}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <style>
   :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;--tint:#f5f6f8;color-scheme:light dark}
   @media (prefers-color-scheme:dark){:root{--bg:#171719;--ink:#f7f7f8;--dim:#a0a0a8;--line:#2e2e33;--tint:#1f1f23}}
@@ -2316,7 +2415,7 @@ function renderTopicPage(topic, arts) {
   }${gaSnippet()}</head>
 <body><div class="wrap">
 <header><a class="brand" href="/">${esc(SITE.name)}</a>
-<nav><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a></nav></header>
+<nav><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/about">서비스 소개</a></nav></header>
 <nav class="crumb" aria-label="breadcrumb"><a href="/">홈</a> <span aria-hidden="true">›</span> <a href="/topic/">주제별 보기</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(topic.name)}</span></nav>
 <h1>${esc(topic.name)}</h1>
 <p class="lede">${esc(topic.lede)}</p>
@@ -2382,7 +2481,7 @@ ${sec(
     .join("")}</div>
 
 <footer>
-  <a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
+  <a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a>
   <div style="margin-top:10px">© ${new Date(LEGAL.effectiveDate).getFullYear()} ${esc(SITE.brandKo)}(${esc(
     SITE.brandEn
   )})</div>
@@ -2413,6 +2512,7 @@ function renderTopicIndex(counts) {
 <meta property="og:description" content="${esc(SITE.brandKo)}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${SITE.baseUrl}/og.png">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="주제별 보기 | ${esc(SITE.name)}">
 <meta name="twitter:description" content="${esc(SITE.brandKo)}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.">
@@ -2449,6 +2549,154 @@ function renderTopicIndex(counts) {
 </div><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 }
 
+function renderDirectoryPage({ title, description, canonicalPath, body, itemList = [] }) {
+  const canonical = `${SITE.baseUrl}${canonicalPath}`;
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: title,
+    description,
+    url: canonical,
+    inLanguage: "ko",
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.baseUrl },
+    publisher: PUBLISHER_LD,
+    ...(itemList.length
+      ? {
+          mainEntity: {
+            "@type": "ItemList",
+            numberOfItems: itemList.length,
+            itemListElement: itemList.slice(0, 100).map((item, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: item.name,
+              url: item.url,
+            })),
+          },
+        }
+      : {}),
+  };
+  return `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)} | ${esc(SITE.name)} · ${esc(SITE.brandKo)}</title>
+<meta name="description" content="${esc(description.slice(0, 155))}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="${canonical}">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta property="og:type" content="website"><meta property="og:site_name" content="${esc(SITE.name)}">
+<meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description.slice(0, 155))}">
+<meta property="og:url" content="${canonical}"><meta property="og:image" content="${SITE.baseUrl}/og.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
+<style>
+:root{--bg:#fff;--ink:#171719;--sub:#62636a;--line:#e4e5e9;--pri:#0066ff;--tint:#f7f7f8;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--bg:#171719;--ink:#f7f7f8;--sub:#a7a8ae;--line:#34353a;--tint:#202125;--pri:#69a5ff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;line-height:1.65}
+a{color:var(--ink);text-decoration:none}a:hover{color:var(--pri)}
+.top{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .in{max-width:980px;margin:auto;padding:15px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font-size:17px;font-weight:850;letter-spacing:-.025em}.top nav{display:flex;gap:18px;flex-wrap:wrap}.top nav a{font-size:13px;font-weight:700;color:var(--sub)}
+.wrap{max-width:980px;margin:auto;padding:50px 22px 90px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pri)}
+h1{font-size:42px;line-height:1.12;letter-spacing:-.04em;margin:10px 0 12px}.lede{max-width:760px;margin:0 0 38px;color:var(--sub);font-size:16px}
+h2{margin:38px 0 12px;padding-top:20px;border-top:2px solid var(--ink);font-size:20px;letter-spacing:-.02em}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{display:block;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--bg)}
+.card:hover{border-color:var(--pri)}.card b{display:block;font-size:16px;line-height:1.4}.card span{display:block;margin-top:5px;color:var(--sub);font-size:12.5px}
+.list{list-style:none;padding:0;margin:0}.list li{padding:15px 2px;border-bottom:1px solid var(--line)}.list a{font-weight:750}.list small{display:block;color:var(--sub);margin-top:4px}
+.source-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px}.count{font-size:12px;color:var(--pri);font-weight:800}
+footer{margin-top:58px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}footer nav{display:flex;gap:16px;flex-wrap:wrap}footer a{color:var(--sub);font-weight:700}
+@media(max-width:700px){.top nav{display:none}.wrap{padding-top:34px}.grid{grid-template-columns:1fr}h1{font-size:34px}}
+</style>
+<script type="application/ld+json">${JSON.stringify(ld)}</script>${gaSnippet()}</head>
+<body><header class="top"><div class="in"><a class="brand" href="/">${esc(SITE.name)}</a><nav aria-label="주요 메뉴"><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/about">서비스 소개</a></nav></div></header>
+<main class="wrap"><div class="eyebrow">VETMANLAB · KNOWLEDGE INDEX</div><h1>${esc(title)}</h1><p class="lede">${esc(description)}</p>${body}
+<footer><nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/rss.xml">RSS</a><a href="/about">편집 원칙</a></nav><p>© ${new Date().getFullYear()} ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</p></footer></main></body></html>`;
+}
+
+function renderArchiveIndex(issues, weeklies) {
+  const records = issues
+    .filter((issue) => !issue.weekly)
+    .map((issue) => {
+      const data = buildIssueData(issue);
+      return {
+        date: data.date,
+        count: data.count,
+        lead: data.articles[0]?.title || "",
+        url: `${SITE.baseUrl}/issues/${data.date}`,
+      };
+    })
+    .filter((record) => record.count > 0);
+  const groups = new Map();
+  for (const record of records) {
+    const key = record.date.slice(0, 7);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(record);
+  }
+  const weeklyHtml = weeklies.length
+    ? `<h2>주간 요약</h2><div class="grid">${weeklies
+        .slice(0, 12)
+        .map(
+          (weekly) =>
+            `<a class="card" href="/weekly/${esc(weekly.week)}"><b>${esc(weekly.week)} 주간 브리핑</b><span>${weekly.count}건 요약</span></a>`
+        )
+        .join("")}</div>`
+    : "";
+  const months = [...groups.entries()]
+    .map(([month, rows]) => {
+      const [year, mon] = month.split("-");
+      return `<h2>${year}년 ${Number(mon)}월</h2><ul class="list">${rows
+        .map(
+          (record) =>
+            `<li><a href="/issues/${esc(record.date)}">${esc(record.date)} 브리핑</a><small>${record.count}건 · ${esc(record.lead)}</small></li>`
+        )
+        .join("")}</ul>`;
+    })
+    .join("");
+  return renderDirectoryPage({
+    title: "지난 해외 수의 브리핑",
+    description: `${records.length}일 동안 발행한 해외 수의 임상·연구·동물병원 경영 브리핑을 날짜와 주간 단위로 찾아볼 수 있습니다.`,
+    canonicalPath: "/archive/",
+    body: weeklyHtml + months,
+    itemList: records.map((record) => ({ name: `${record.date} 해외 수의 브리핑`, url: record.url })),
+  });
+}
+
+function renderSourcesIndex(searchEntries) {
+  const buckets = new Map();
+  for (const entry of searchEntries) {
+    const source = String(entry.source || "").trim();
+    if (!source) continue;
+    if (!buckets.has(source)) buckets.set(source, []);
+    buckets.get(source).push(entry);
+  }
+  const sources = [...buckets.entries()]
+    .map(([name, entries]) => ({ name, entries: entries.sort((a, b) => (b.ts || 0) - (a.ts || 0)) }))
+    .sort((a, b) => b.entries.length - a.entries.length || a.name.localeCompare(b.name));
+  const body = `<div class="grid">${sources
+    .map(
+      ({ name, entries }) =>
+        `<section class="card"><div class="source-head"><b>${esc(name)}</b><span class="count">${entries.length}건</span></div><span>${[
+          ...new Set(entries.map((entry) => entry.country).filter(Boolean)),
+        ]
+          .slice(0, 3)
+          .map(esc)
+          .join(" · ") || "해외 수의 전문 소스"}</span>${entries
+          .slice(0, 3)
+          .map((entry) => `<a style="display:block;margin-top:9px;font-size:13px;line-height:1.45" href="${esc(entry.href)}">→ ${esc(entry.title)}</a>`)
+          .join("")}</section>`
+    )
+    .join("")}</div>`;
+  return renderDirectoryPage({
+    title: "해외 수의 뉴스 출처",
+    description: `${sources.length}개 해외 수의 전문 미디어·저널·대학·지역 매체에서 선별한 기사와 최신 출처별 브리핑을 확인할 수 있습니다.`,
+    canonicalPath: "/sources/",
+    body,
+    itemList: searchEntries.slice(0, 100).map((entry) => ({ name: entry.title, url: `${SITE.baseUrl}${entry.href}` })),
+  });
+}
+
 function buildSitemap(issues, weeklies = [], extraEntries = [], extraTopics = []) {
   // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다
   const today = issues[0] ? `${labelOf(issues[0])}T00:00:00.000Z` : null;
@@ -2459,6 +2707,8 @@ function buildSitemap(issues, weeklies = [], extraEntries = [], extraTopics = []
     ...weeklies.filter((w) => issueIndexable(buildIssueData(w))).map((w) => ({ loc: `${SITE.baseUrl}/weekly/${labelOf(w)}`, lastmod: null })),
     ...LEGAL_PAGES.map((p) => ({ loc: `${SITE.baseUrl}/${p.slug}`, lastmod: null })),
     { loc: `${SITE.baseUrl}/topic/`, lastmod: today },
+    { loc: `${SITE.baseUrl}/archive/`, lastmod: today },
+    { loc: `${SITE.baseUrl}/sources/`, lastmod: today },
     ...(extraTopics || []).map((u) => ({ loc: u, lastmod: today })),
   ];
   // 기사 URL은 발행일을 lastmod로 — 크롤러가 신선도를 판단하는 신호가 된다
@@ -2504,31 +2754,43 @@ ${body}
 }
 
 function buildRss(issues) {
-  const items = issues
-    .slice(0, 20)
-    .map(
-      (i) => {
-        const publicItems = (i.items || []).filter((it) =>
-          it.visibility !== "suppressed" &&
-          it.tier !== "brief" &&
-          publishQualityIssues(it).length === 0
-        );
-        return `  <item>
-    <title>${esc(`${labelOf(i)} 수의계 해외 뉴스 브리핑`)}</title>
-    <link>${SITE.baseUrl}/issues/${labelOf(i)}</link>
-    <guid>${SITE.baseUrl}/issues/${labelOf(i)}</guid>
-    ${i.generatedAt ? `<pubDate>${new Date(i.generatedAt).toUTCString()}</pubDate>` : ""}
-    <description>${esc(publicItems.map((it) => it.titleKo).join(" / "))}</description>
+  const seen = new Set();
+  const recent = [];
+  for (const issue of issues) {
+    for (const [index, item] of (issue.items || []).entries()) {
+      if (item.visibility === "suppressed" || item.tier === "brief" || item.category === "watercooler") continue;
+      if (publishQualityIssues(item).length) continue;
+      const article = toArticle(item, index, labelOf(issue));
+      if (!isIndexable(article)) continue;
+      const sourceKey = normalizeSourceUrl(article.sourceUrl);
+      if (sourceKey && seen.has(sourceKey)) continue;
+      if (sourceKey) seen.add(sourceKey);
+      recent.push(article);
+      if (recent.length >= 50) break;
+    }
+    if (recent.length >= 50) break;
+  }
+  const items = recent
+    .map((article) => {
+      const url = `${SITE.baseUrl}${article.href}`;
+      const published = article.publishedAt || `${article.day}T00:00:00+09:00`;
+      return `  <item>
+    <title>${esc(article.title)}</title>
+    <link>${url}</link>
+    <guid isPermaLink="true">${url}</guid>
+    <pubDate>${new Date(published).toUTCString()}</pubDate>
+    <category>${esc(article.kicker)}</category>
+    <description>${esc(article.dek)}</description>
   </item>`;
-      }
-    )
+    })
     .join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
   <title>${esc(SITE.name)}</title>
   <link>${SITE.baseUrl}</link>
   <description>${esc(SITE.description)}</description>
   <language>ko</language>
+  <atom:link href="${SITE.baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
 ${items}
 </channel></rss>`;
 }
@@ -2673,6 +2935,11 @@ function build() {
       issues: archive,
     })
   );
+  // 검색엔진과 사용자가 JS 없이도 과거 발행분·출처를 따라갈 수 있는 정적 허브.
+  fs.mkdirSync(path.join(SITE_DIR, "archive"), { recursive: true });
+  fs.mkdirSync(path.join(SITE_DIR, "sources"), { recursive: true });
+  fs.writeFileSync(path.join(SITE_DIR, "archive", "index.html"), renderArchiveIndex(issues, weeklies));
+  fs.writeFileSync(path.join(SITE_DIR, "sources", "index.html"), renderSourcesIndex(searchEntries));
   fs.writeFileSync(
     path.join(SITE_DIR, "search.json"),
     JSON.stringify({ generatedAt: new Date().toISOString(), count: searchEntries.length, items: searchEntries })
@@ -2703,10 +2970,25 @@ function build() {
     "CCBot",                                          // Common Crawl(다수 LLM 학습원)
     "Bytespider", "Amazonbot", "cohere-ai", "Meta-ExternalAgent", "DuckAssistBot",
   ];
+  const blockedRules = [
+    "Disallow: /admin",
+    "Disallow: /admin-ui.html",
+    "Disallow: /api/",
+    "Disallow: /raw/",
+    "Disallow: /data/",
+    "Disallow: /search/",
+    "Disallow: /search.json",
+    "Disallow: /search-manifest.json",
+    "Disallow: /latest.json",
+    "Disallow: /archive.json",
+    "Disallow: /design.html",
+  ];
+  const botRules = (bot) => `User-agent: ${bot}\nAllow: /\n${blockedRules.join("\n")}`;
   const robots =
     `# 검색·AI 크롤러 모두 환영합니다. 인용 시 출처 표기를 부탁드립니다.\n` +
-    `User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /admin-ui.html\nDisallow: /raw/\n\n` +
-    aiBots.map((b) => `User-agent: ${b}\nAllow: /`).join("\n\n") +
+    botRules("*") +
+    `\n\n` +
+    aiBots.map(botRules).join("\n\n") +
     `\n\n# AI 에이전트용 사이트 요약(https://llmstxt.org)\n` +
     `# ${SITE.baseUrl}/llms.txt\n\n` +
     `Sitemap: ${SITE.baseUrl}/sitemap.xml\n` +
@@ -2735,6 +3017,60 @@ function build() {
     fs.writeFileSync(path.join(SITE_DIR, `naver${code}.html`), body); // 폴백
     fs.writeFileSync(path.join(SITE_DIR, "_redirects"), `/naver${code}.html /_nv.txt 200\n`);
   }
+  // Cloudflare Pages 응답 헤더. HTML은 항상 재검증해 정정·최신 발행이 즉시 반영되고,
+  // 내부 JSON·관리 화면에는 HTTP 레벨 noindex를 한 번 더 적용한다.
+  fs.writeFileSync(
+    path.join(SITE_DIR, "_headers"),
+    `/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Cache-Control: public, max-age=0, must-revalidate
+
+/article/*
+  ! Cache-Control
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/topic/*
+  ! Cache-Control
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/icon.svg
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
+
+/og.png
+  ! Cache-Control
+  Cache-Control: public, max-age=86400
+
+/admin*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/api/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/raw/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/data/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/search/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/latest.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/archive.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/search.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/search-manifest.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+`
+  );
   fs.writeFileSync(path.join(SITE_DIR, "rss.xml"), buildRss(issues));
   fs.writeFileSync(path.join(SITE_DIR, "llms.txt"), buildLlmsTxt(issues));
 

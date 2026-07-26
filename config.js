@@ -230,15 +230,156 @@ const GNEWS_TOPICS = [
   '"veterinary workforce shortage" OR "veterinarian shortage"',
 ];
 
+const gnewsUrl = (q, { hl = "en-US", gl = "US", ceid = "US:en" } = {}) =>
+  `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=${hl}&gl=${gl}&ceid=${ceid}`;
+
 const GNEWS_FEEDS = GNEWS_TOPICS.map((q) => ({
-  name: "Google News",
+  name: "Google News · Global",
   type: "gnews",
+  market: "GLOBAL",
   max: 12,
   maxAgeDays: 3, // 2일은 일간 수확량이 너무 적었다
-  url: `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=en-US&gl=US&ceid=US:en`,
+  url: gnewsUrl(q),
 }));
 
-export const FEEDS = [...DIRECT_FEEDS.filter((feed) => feed.enabled !== false), ...GNEWS_FEEDS];
+// ── 전세계 권역별 뉴스 레이더 ──
+// 기존 Google News 쿼리는 미국판 한 곳만 바라봐 영미권 대형 매체가 후보를 독식했다.
+// 아래 시장별 현지판·현지어 쿼리를 별도 피드로 돌리면 같은 "수의학" 검색이라도
+// 일본·유럽·중남미·아프리카의 지역 학회, 대학, 규제기관, 전문지가 함께 잡힌다.
+//
+// 시장마다 세 쿼리만 사용해 호출량을 제어하고, 피드당 6건만 받아 round-robin으로
+// 섞는다. 따라서 특정 국가가 후보 상한을 독식하지 않으면서도 대륙별 발견 폭은 넓어진다.
+const GLOBAL_NEWS_MARKETS = [
+  {
+    code: "GB", hl: "en-GB", ceid: "GB:en",
+    queries: [
+      '"veterinary medicine" OR "veterinary practice" dogs cats',
+      '"animal hospital" OR veterinarian workforce research',
+      '"animal health" outbreak vaccine pets',
+    ],
+  },
+  {
+    code: "CA", hl: "en-CA", ceid: "CA:en",
+    queries: [
+      '"veterinary medicine" dogs cats Canada',
+      '"veterinary clinic" OR "animal hospital" Canada',
+      '"animal health" research pets Canada',
+    ],
+  },
+  {
+    code: "AU", hl: "en-AU", ceid: "AU:en",
+    queries: [
+      '"veterinary medicine" dogs cats Australia',
+      '"veterinary practice" OR "animal hospital" Australia',
+      '"animal disease" OR "pet health" research Australia',
+    ],
+  },
+  {
+    code: "NZ", hl: "en-NZ", ceid: "NZ:en",
+    queries: [
+      '"veterinary medicine" OR veterinarian New Zealand',
+      '"animal hospital" OR "veterinary practice" New Zealand',
+      '"animal health" research New Zealand pets',
+    ],
+  },
+  {
+    code: "IE", hl: "en-IE", ceid: "IE:en",
+    queries: [
+      '"veterinary medicine" OR veterinarian Ireland',
+      '"veterinary practice" Ireland dogs cats',
+      '"animal health" research Ireland pets',
+    ],
+  },
+  {
+    code: "IN", hl: "en-IN", ceid: "IN:en",
+    queries: [
+      '"veterinary medicine" dogs cats India',
+      '"animal hospital" OR veterinarian India',
+      '"animal health" vaccine outbreak India pets',
+    ],
+  },
+  {
+    code: "SG", hl: "en-SG", ceid: "SG:en",
+    queries: [
+      '"veterinary medicine" OR veterinarian Singapore',
+      '"animal hospital" pets Singapore',
+      '"animal health" research Asia dogs cats',
+    ],
+  },
+  {
+    code: "ZA", hl: "en-ZA", ceid: "ZA:en",
+    queries: [
+      '"veterinary medicine" dogs cats Africa',
+      '"animal hospital" OR veterinarian South Africa',
+      '"animal health" outbreak vaccine Africa pets',
+    ],
+  },
+  {
+    code: "JP", hl: "ja", ceid: "JP:ja",
+    queries: [
+      "獣医学 犬 猫 研究",
+      "動物病院 獣医師 新薬",
+      "ペット 感染症 ワクチン 獣医",
+    ],
+  },
+  {
+    code: "DE", hl: "de", ceid: "DE:de",
+    queries: [
+      "Tiermedizin Hund Katze Studie",
+      "Tierarztpraxis Tierklinik Forschung",
+      "Tierseuche Impfung Haustiere",
+    ],
+  },
+  {
+    code: "FR", hl: "fr", ceid: "FR:fr",
+    queries: [
+      "médecine vétérinaire chien chat étude",
+      "clinique vétérinaire recherche",
+      "maladie animale vaccin animaux compagnie",
+    ],
+  },
+  {
+    code: "ES", hl: "es", ceid: "ES:es",
+    queries: [
+      "medicina veterinaria perros gatos estudio",
+      "clínica veterinaria investigación",
+      "enfermedad animal vacuna mascotas",
+    ],
+  },
+  {
+    code: "BR", hl: "pt-BR", ceid: "BR:pt-419",
+    queries: [
+      "medicina veterinária cães gatos estudo",
+      "clínica veterinária pesquisa",
+      "doença animal vacina animais de estimação",
+    ],
+  },
+  {
+    code: "MX", hl: "es-419", ceid: "MX:es-419",
+    queries: [
+      "medicina veterinaria perros gatos estudio México",
+      "clínica veterinaria investigación México",
+      "enfermedad animal vacuna mascotas México",
+    ],
+  },
+];
+
+const GLOBAL_GNEWS_FEEDS = GLOBAL_NEWS_MARKETS.flatMap((market) =>
+  market.queries.map((q) => ({
+    name: `Google News · ${market.code}`,
+    type: "gnews",
+    market: market.code,
+    max: 6,
+    maxAgeDays: 4,
+    url: gnewsUrl(q, { hl: market.hl, gl: market.code, ceid: market.ceid }),
+  }))
+);
+
+export const FEEDS = [
+  ...DIRECT_FEEDS.filter((feed) => feed.enabled !== false),
+  ...GNEWS_FEEDS,
+  ...GLOBAL_GNEWS_FEEDS,
+];
 export const FEED_MAX_AGE_DAYS = 10; // maxAgeDays 미지정 피드의 기본 수집 기간
 
 // ── "진료실 밖 이야기" (가십·화제성 썰) ──
@@ -307,7 +448,7 @@ export const PUBMED_TOPICS = [
   { name: "말", term: 'horses[MeSH Terms] AND (lameness[Title/Abstract] OR colic[Title/Abstract] OR equine[Title/Abstract])' },
 ];
 export const PUBMED_PER_TOPIC = 4; // 분과당 후보 수(스코어링 전)
-export const PAPERS_PER_ISSUE = 12; // 분과 확장으로 후보가 79편까지 늘어 비중을 높인다
+export const PAPERS_PER_ISSUE = 16; // 전세계 뉴스 확장과 균형을 맞춰 최신 연구도 함께 확대
 
 // ── Reddit API 직접 수집 (키가 생기면 자동 활성화) ──
 export const SUBREDDITS = [
@@ -318,8 +459,8 @@ export const SUBREDDITS = [
   { name: "veterinaryprofession", minScore: 5 }, // 소규모 보조 소스
 ];
 
-export const CANDIDATES_MAX = 300;  // 소스 확장분이 스코어링 전에 잘리지 않도록(계층화로 상향)
-export const ITEMS_PER_ISSUE = 30;  // 심층 뉴스 상한 — 풀treatment(생성+레이더), 색인 대상
+export const CANDIDATES_MAX = 520;  // 권역별 피드가 스코어링 전에 잘리지 않도록 확대
+export const ITEMS_PER_ISSUE = 42;  // 심층 뉴스 상한 — 검색 색인 대상의 일간 폭을 확대
 export const SCORE_BATCH = 30;      // 스코어링 배치 크기 (한 번에 너무 많이 넣으면 평가 품질 저하)
 export const MIN_RELEVANCE = 6;     // 심층 하한 (0~10). 이 이상만 개별 기사 페이지·색인
 
@@ -327,7 +468,7 @@ export const MIN_RELEVANCE = 6;     // 심층 하한 (0~10). 이 이상만 개�
 // 화면은 100건처럼 풍성하되, 색인은 심층(≥MIN_RELEVANCE)만. 브리프·가십은 noindex.
 // 무료 Actions 예산(월 2,000분≈하루 50분) 안에서 돌도록 브리프는 1콜 짧은 요약만 한다.
 export const BRIEF_MIN_RELEVANCE = 3; // 브리프 하한. 3~5점(심층 탈락분)을 짧은 소식으로 재활용
-export const BRIEFS_PER_ISSUE = 45;   // 브리프 상한(개별 페이지 없음, 색인 X)
+export const BRIEFS_PER_ISSUE = 60;   // 전세계 단신은 브리프로도 폭넓게 제공(개별 색인 X)
 export const TOP_COMMENTS = 8;      // 요약에 참고할 상위 댓글 수
 
 // 스펙 합의대로 sonnet-5 기본. CLAUDE_MODEL 환경변수로 교체 가능 (예: claude-opus-4-8)

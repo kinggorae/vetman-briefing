@@ -51,6 +51,7 @@ async function check(feed, index) {
       name: feed.name,
       type: feed.type || "rss",
       group: feed.type === "gnews" ? "gnews" : "direct",
+      market: feed.market || (feed.type === "gnews" ? "GLOBAL" : "DIRECT"),
       host: new URL(feed.url).hostname,
       status: response.status,
       ok,
@@ -70,6 +71,7 @@ async function check(feed, index) {
       name: feed.name,
       type: feed.type || "rss",
       group: feed.type === "gnews" ? "gnews" : "direct",
+      market: feed.market || (feed.type === "gnews" ? "GLOBAL" : "DIRECT"),
       host: (() => { try { return new URL(feed.url).hostname; } catch { return ""; } })(),
       status: 0,
       ok: false,
@@ -104,6 +106,12 @@ const results = await mapPool(FEEDS, check);
 const failed = results.filter((result) => !result.ok);
 const gnews = results.filter((result) => result.group === "gnews");
 const direct = results.filter((result) => result.group === "direct");
+const markets = Object.fromEntries(
+  [...new Set(results.map((result) => result.market))].sort().map((market) => {
+    const rows = results.filter((result) => result.market === market);
+    return [market, { total: rows.length, ok: rows.filter((result) => result.ok).length, items: rows.reduce((sum, result) => sum + result.items, 0) }];
+  })
+);
 const report = {
   checkedAt: new Date().toISOString(),
   total: results.length,
@@ -111,6 +119,7 @@ const report = {
   failed: failed.length,
   direct: { total: direct.length, ok: direct.filter((result) => result.ok).length, failed: direct.filter((result) => !result.ok).length },
   gnews: { total: gnews.length, ok: gnews.filter((result) => result.ok).length, failed: gnews.filter((result) => !result.ok).length },
+  markets,
   stale: results.filter((result) => result.stale).length,
   items: results,
 };
@@ -126,9 +135,9 @@ for (const result of failed) console.warn(`  실패 ${result.name} · ${result.h
 
 if (process.env.GITHUB_STEP_SUMMARY) {
   const rows = results
-    .map((result) => `| ${result.name} | ${result.group} | ${result.ok ? (result.stale ? "지연" : "정상") : "실패"} | ${result.status || "-"} | ${result.items} | ${result.latestPublishedAt || "-"} | ${result.elapsedMs}ms |`)
+    .map((result) => `| ${result.name} | ${result.market} | ${result.ok ? (result.stale ? "지연" : "정상") : "실패"} | ${result.status || "-"} | ${result.items} | ${result.latestPublishedAt || "-"} | ${result.elapsedMs}ms |`)
     .join("\n");
-  fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Source health\n\n${summary}\n\n| 소스 | 그룹 | 상태 | HTTP | 항목 | 마지막 발행 | 시간 |\n|---|---|---|---:|---:|---|---:|\n${rows}\n`);
+  fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Source health\n\n${summary}\n\n| 소스 | 시장 | 상태 | HTTP | 항목 | 마지막 발행 | 시간 |\n|---|---|---|---:|---:|---|---:|\n${rows}\n`);
 }
 
 // 개별 소스 하나의 일시 장애는 허용한다. 다만 소스군 전체가 죽었거나
