@@ -2735,7 +2735,7 @@ function buildNewsSitemap(entries) {
   const body = recent
     .map(
       (e) => `  <url>
-    <loc>${e.loc}</loc>
+    <loc>${e.url}</loc>
     <news:news>
       <news:publication>
         <news:name>${esc(SITE.brandKo)} ${esc(SITE.name)}</news:name>

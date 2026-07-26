@@ -131,6 +131,19 @@ const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 if (new Set(locs).size !== locs.length) fail("sitemap.xml에 중복 URL이 있습니다.");
 if (!sitemap.includes("<urlset")) fail("sitemap.xml 형식 이상");
 
+const newsSitemap = fs.existsSync(path.join(SITE_DIR, "news-sitemap.xml"))
+  ? fs.readFileSync(path.join(SITE_DIR, "news-sitemap.xml"), "utf8")
+  : "";
+const newsLocs = [...newsSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+if (!newsSitemap.includes('xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"')) {
+  fail("news-sitemap.xml 형식 이상");
+}
+if (newsSitemap.includes("<loc>undefined</loc>")) fail("news-sitemap.xml에 undefined 기사 URL이 있습니다.");
+if (newsLocs.some((url) => !url.startsWith("https://news.vetmanlab.com/article/"))) {
+  fail("news-sitemap.xml에 잘못된 기사 URL이 있습니다.");
+}
+if (new Set(newsLocs).size !== newsLocs.length) fail("news-sitemap.xml에 중복 URL이 있습니다.");
+
 const home = fs.existsSync(path.join(SITE_DIR, "index.html")) ? fs.readFileSync(path.join(SITE_DIR, "index.html"), "utf8") : "";
 if (home.includes("#202") && home.includes('"@type":"NewsArticle"')) fail("홈 JSON-LD에 legacy hash 기사 URL이 남아 있습니다.");
 const firstScript = home.indexOf('<script id="vm-issue"');
