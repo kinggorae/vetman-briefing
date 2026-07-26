@@ -7,6 +7,28 @@
         <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
         <news:language>ko</news:language>
       </news:publication>
+      <news:publication_date>2026-07-25T09:49:10.000Z</news:publication_date>
+      <news:title>중국 수의대 입학 경쟁률 의대 역전 현상</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>undefined</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-24T19:42:00.000Z</news:publication_date>
+      <news:title>오하이오 주, 수의사 부족 심화로 동물 의료 공백 우려</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>undefined</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
       <news:publication_date>2026-07-24T15:07:22.000Z</news:publication_date>
       <news:title>개의 음식 중독 위험, 예상치 못한 25가지 식품</news:title>
     </news:news>
@@ -29,107 +51,19 @@
         <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
         <news:language>ko</news:language>
       </news:publication>
+      <news:publication_date>2026-07-24T08:02:47.000Z</news:publication_date>
+      <news:title>나이지리아 수도 지역서 광견병 발생으로 2명 사망</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>undefined</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
       <news:publication_date>2026-07-24T01:52:35.000Z</news:publication_date>
       <news:title>Vet Candy, 동물 의료 서비스 품질 보장 정책 발표</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-23T22:40:11.000Z</news:publication_date>
-      <news:title>치료식 선택 도우미 도구, 2600명 이상 수의사 사용 중</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-23T19:41:00.000Z</news:publication_date>
-      <news:title>캔 카운티, 애완동물 광견병 예방접종 효과 저하 가능성 발표</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-23T19:33:15.000Z</news:publication_date>
-      <news:title>수의대 커뮤니티 메디슨, 지역에서 동물과 사람 만나</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-23T19:19:39.000Z</news:publication_date>
-      <news:title>말 관절경 시술의 탄소 발자국 연구, 운반과 소모품이 주요 배출원</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-23T14:21:02.000Z</news:publication_date>
-      <news:title>미국 Galveston, 벼룩 매개 티푸스 재출현 연구의 중심지로</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-23T13:00:16.000Z</news:publication_date>
-      <news:title>개 열치료, 이 6가지 상황에 효과적</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-23T12:00:00.000Z</news:publication_date>
-      <news:title>반려동물 구강건강 영양학: 근본부터 개선하는 영양제품 개발동향</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-23T11:31:43.000Z</news:publication_date>
-      <news:title>소동물 종양 조기 발견, 천자흡인검사가 답이다</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>undefined</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-23T09:07:42.000Z</news:publication_date>
-      <news:title>동물병원 진료비 상승 이유와 대처법</news:title>
     </news:news>
   </url>
 </urlset>
