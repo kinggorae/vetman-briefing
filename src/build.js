@@ -182,7 +182,7 @@ function buildIssueData(issue) {
       dateLabel: date,
       dateline: `${date} 주간 요약 · 이번 주 가장 주목한 기사`,
       editionNo: date.replace("-W", " · W"),
-      count: articles.length,
+      count: all.length,
       cats,
       articles,
       briefs,
@@ -198,7 +198,7 @@ function buildIssueData(issue) {
     dateLabel: date.replace(/-/g, "."),
     dateline,
     editionNo: editionNo.toLocaleString("en-US"),
-    count: articles.length,
+    count: all.length,
     cats,
     articles,
     briefs,
@@ -329,7 +329,9 @@ function renderStaticShell(data) {
   // Google은 JS를 렌더링하지만 Naver·기타 검색엔진과 링크 분석기는 원본 HTML을
   // 먼저 읽는다. <noscript> 안에만 넣으면 일반 원본 DOM에서 콘텐츠가 사라지므로,
   // #vm의 초기 내용으로 직접 렌더하고 클라이언트 앱이 준비되면 같은 자리를 교체한다.
-  const articles = (data.articles || []).slice(0, 24);
+  // 심층 기사만 세면 간추린 소식이 많은 날에도 원본 HTML이 "2건"처럼
+  // 보인다. JS를 실행하지 않는 크롤러에도 공개된 전체 지면을 보여준다.
+  const articles = [...(data.articles || []), ...(data.briefs || []), ...(data.stories || [])].slice(0, 24);
   const lead = articles[0];
   const cards = articles.slice(1);
   const topics = (data.cats || [])

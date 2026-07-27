@@ -148,8 +148,22 @@ const home = fs.existsSync(path.join(SITE_DIR, "index.html")) ? fs.readFileSync(
 if (home.includes("#202") && home.includes('"@type":"NewsArticle"')) fail("홈 JSON-LD에 legacy hash 기사 URL이 남아 있습니다.");
 const firstScript = home.indexOf('<script id="vm-issue"');
 const initialHtml = firstScript >= 0 ? home.slice(0, firstScript) : home;
-if (!initialHtml.includes('id="main-content"') || !/href="\/article\/[^"]+"/.test(initialHtml)) {
+if (!initialHtml.includes('id="main-content"') || !/href="\/(?:article|issues)\/[^"]+"/.test(initialHtml)) {
   fail("홈 원본 HTML에 크롤링 가능한 본문·기사 링크가 없습니다.");
+}
+if (firstScript >= 0) {
+  const endScript = home.indexOf("</script>", firstScript);
+  try {
+    const issueData = JSON.parse(home.slice(home.indexOf(">", firstScript) + 1, endScript));
+    const visibleCount = [issueData.articles, issueData.briefs, issueData.stories]
+      .reduce((sum, list) => sum + (Array.isArray(list) ? list.length : 0), 0);
+    if (Number(issueData.count) !== visibleCount) fail("홈 기사 수 표기 불일치: " + issueData.count + " !== " + visibleCount);
+    if (visibleCount > 0 && (initialHtml.match(/href="\/(?:article|issues)\//g) || []).length < Math.min(visibleCount, 24)) {
+      fail("홈 원본 HTML 기사 링크 부족: " + visibleCount + "건 중 정적 링크 부족");
+    }
+  } catch (err) {
+    fail("홈 vm-issue JSON 형식 이상: " + err.message);
+  }
 }
 if (/vm-search\{display:none\s*!important/.test(home)) fail("모바일 검색창이 숨겨져 있습니다.");
 
