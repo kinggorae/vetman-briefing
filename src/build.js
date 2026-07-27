@@ -1470,7 +1470,7 @@ const MANIFEST = JSON.stringify({
   icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" }],
 });
 
-const SW_JS = `const C='vmcache-v3';
+const SW_JS = `const C='vmcache-v4';
 const SHELL=['/','/latest.json','/archive.json','/icon.svg','/manifest.webmanifest'];
 const OFFLINE='<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 없음</title><style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:#fff;color:#171719}@media(prefers-color-scheme:dark){body{background:#171719;color:#f7f7f8}}.b{max-width:420px;text-align:center}h1{font-size:24px;font-weight:800;margin:0 0 10px}p{margin:0 0 22px;font-size:15px;line-height:1.7;opacity:.7}a{display:inline-block;background:#0066ff;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}</style></head><body><div class="b"><h1>연결이 끊겼습니다</h1><p>이 페이지는 아직 받아두지 않았습니다.<br>연결을 확인한 뒤 다시 시도해 주세요.</p><a href="/">오늘의 브리핑 보기</a></div></body></html>';
 self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(SHELL);}).then(function(){return self.skipWaiting();}));});
