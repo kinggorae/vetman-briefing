@@ -496,7 +496,8 @@ a:hover{color:var(--color-primary-strong);}
     if(!DATA.cats.length) return '';
     var chips='<button class="vm-chip" data-cat="all" aria-pressed="'+(S.cat==='all')+'">전체</button>';
     chips+=DATA.cats.map(function(c){return '<button class="vm-chip" data-cat="'+c.key+'" aria-pressed="'+(S.cat===c.key)+'">'+e(c.label)+'</button>';}).join('');
-    var total=DATA.articles.length, readCnt=DATA.articles.filter(function(a){return isRead(a.id);}).length;
+    var readingItems=(DATA.articles||[]).concat(DATA.briefs||[],DATA.stories||[]);
+    var total=readingItems.length, readCnt=readingItems.filter(function(a){return isRead(a.id);}).length;
     var pct=total?Math.round(readCnt/total*100):0;
     return '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0 4px;">'
     +'<div style="display:flex;gap:7px;flex-wrap:wrap;flex:1;min-width:0;">'+chips+'</div>'
@@ -631,19 +632,20 @@ a:hover{color:var(--color-primary-strong);}
   if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(function(){ FP.steps=0; fitFold(); }); }
 
   function homeView(){
-    var arr=activeList();
+    var includeIssueBriefs=!S.query.trim()&&S.cat==='all'&&!S.unreadOnly;
+    var arr=includeIssueBriefs
+      ? (DATA.articles||[]).concat(DATA.briefs||[],DATA.stories||[])
+      : activeList();
+    if(S.sort==='latest'&&!S.query.trim()) arr.sort(function(x,y){return y.ts-x.ts;});
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
     // 기사가 적은 필터에서는 2단을 쓰지 않는다. 오른쪽 단(카드 4 + TOP 5)이
     // 목록 전체보다 길어 어떻게 나눠도 한쪽에 수백 px 빈칸이 남기 때문이다.
-    if(arr.length<14){
+    if(arr.length<10){
       var h1='<div><div style="padding:28px 0 34px;border-bottom:2px solid var(--color-label-strong);">'
       +leadCard(arr[0])+arr.slice(1).map(leadFollow).join('')+'</div>'
       +mostRead(arr.slice(0,5));
       h1+=qaColumn(arr);
-      // 발행량이 적은 날에도 간추린 소식을 숨기지 않는다.
-      // 이 분기에서 briefsBoard()가 빠지면 심층 기사만 남아 전체 지면이
-      // 실제 10건보다 2건처럼 보이는 회귀가 발생한다.
-      h1+=briefsBoard();
+      if(!includeIssueBriefs) h1+=briefsBoard();
       h1+=recentSection();
       h1+=storyBoard();
       return h1+'</div>';
