@@ -89,6 +89,15 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
   if (!String(item?.titleKo || "").trim() || !(Array.isArray(item?.bodyKo) && item.bodyKo.length)) {
     throw new Error("생성 결과가 비어 있음(제목/본문 누락)");
   }
+  const bodyChars = item.bodyKo.map(String).join("").length;
+  if (bodyChars < 500 && attempt < 3) {
+    return generateItem(
+      post,
+      comments,
+      attempt + 1,
+      "본문이 " + bodyChars + "자뿐입니다. 심층 기사이므로 반드시 3문단, 전체 500~800자로 확장하세요."
+    );
+  }
 
   // 외국 문자가 섞였으면 피드백을 담아 재생성 → 그래도 실패하면 교정 패스
   let foreign = foreignScriptIn(item);

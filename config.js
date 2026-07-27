@@ -462,7 +462,7 @@ export const SUBREDDITS = [
 export const CANDIDATES_MAX = 520;  // 권역별 피드가 스코어링 전에 잘리지 않도록 확대
 export const ITEMS_PER_ISSUE = 42;  // 심층 뉴스 상한 — 검색 색인 대상의 일간 폭을 확대
 export const SCORE_BATCH = 30;      // 스코어링 배치 크기 (한 번에 너무 많이 넣으면 평가 품질 저하)
-export const MIN_RELEVANCE = 6;     // 심층 하한 (0~10). 이 이상만 개별 기사 페이지·색인
+export const MIN_RELEVANCE = 5;     // 심층 하한 (0~10). 국제 수집 확대에 맞춰 긴 기사 폭을 확보
 
 // ── 계층화(볼륨) ──
 // 화면은 100건처럼 풍성하되, 색인은 심층(≥MIN_RELEVANCE)만. 브리프·가십은 noindex.
