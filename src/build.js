@@ -331,7 +331,12 @@ function renderStaticShell(data) {
   // #vm의 초기 내용으로 직접 렌더하고 클라이언트 앱이 준비되면 같은 자리를 교체한다.
   // 심층 기사만 세면 간추린 소식이 많은 날에도 원본 HTML이 "2건"처럼
   // 보인다. JS를 실행하지 않는 크롤러에도 공개된 전체 지면을 보여준다.
-  const articles = [...(data.articles || []), ...(data.briefs || []), ...(data.stories || [])].slice(0, 24);
+  const articles = [
+    ...(data.articles || []),
+    ...(data.briefs || []),
+    ...(data.stories || []),
+    ...(data.recentPromoted ? (data.recent || []) : []),
+  ].slice(0, 24);
   const lead = articles[0];
   const cards = articles.slice(1);
   const topics = (data.cats || [])
@@ -820,7 +825,7 @@ const APP_JS = String.raw`
 
   // "이어 읽기" — 오늘 지면과 겹치지 않고, 오늘 다룬 주제와 연결되는 최근 기사만 함께.
   function recentSection(){
-    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly||DATA.recentPromoted) return '';
     var list=DATA.recent||[]; if(!list.length) return '';
     return '<div style="margin-top:32px;"><div style="border-top:2px solid var(--color-label-strong);padding:16px 0 13px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">이어 읽기</span><span style="font-size:12.5px;color:var(--color-label-alternative);">오늘 기사와 연결되는 최근 소식 · '+list.length+'건</span></div>'
     +bandGrid(list)+'</div>';
@@ -926,6 +931,7 @@ const APP_JS = String.raw`
     var arr=includeIssueBriefs
       ? (DATA.articles||[]).concat(DATA.briefs||[],DATA.stories||[])
       : activeList();
+    if(includeIssueBriefs&&DATA.recentPromoted) arr=arr.concat(DATA.recent||[]);
     if(S.sort==='latest'&&!S.query.trim()) arr.sort(function(x,y){return y.ts-x.ts;});
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
     // 기사가 적은 필터에서는 2단을 쓰지 않는다. 오른쪽 단(카드 4 + TOP 5)이
@@ -1371,14 +1377,16 @@ function recentArticles(current, allIssues, limit = 6) {
     if (d === curLabel || iss.weekly) continue;
     // 원본 인덱스를 유지해야 날짜별 페이지와 id가 일치한다.
     for (const a of (iss.items || [])
-      .map((it, i) => toArticle(it, i, d))
-      .filter((a) => {
+      .map((it, i) => ({ raw: it, article: toArticle(it, i, d) }))
+      .filter(({ raw, article: a }) => {
         const key = normalizeSourceUrl(a.sourceUrl);
-        if (a.tier === "brief" || a.cat === "watercooler" || publishQualityIssues(a).length) return false;
+        // 품질 게이트는 변환된 표시 객체가 아니라 원본 발행 항목에 적용한다.
+        if (raw.tier === "brief" || raw.category === "watercooler" || publishQualityIssues(raw).length) return false;
         if (key && seen.has(key)) return false;
         if (key) seen.add(key);
         return true;
       })
+      .map(({ article: a }) => a)
       // 지난 날짜 기사이므로 홈에서 "오늘" 뱃지가 붙으면 안 된다.
       .map((a) => ({ ...a, isToday: false }))) {
       (preferredCats.has(a.cat) ? preferred : fallback).push(a);
@@ -1394,6 +1402,9 @@ function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) 
   data.isHome = isIndex;
   if (isIndex) {
     data.recent = recentArticles(issue, allIssues, 6);
+    const currentCount = (data.articles || []).length + (data.briefs || []).length + (data.stories || []).length;
+    // 오늘 지면이 짧은 날에는 최근 글을 1면에 보강해 어제와 같은 밀도를 유지한다.
+    data.recentPromoted = currentCount < 16 && data.recent.length > 0;
     // 지금까지 발행한 전체 글 수. 홈 데이터라인에 "전체 N건"으로 노출하고,
     // 누르면 아카이브로 보낸다. 매일 쌓이는 규모를 한눈에 보여준다.
     let total = 0;
