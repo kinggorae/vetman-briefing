@@ -930,6 +930,10 @@ const APP_JS = String.raw`
       +leadCard(arr[0])+arr.slice(1).map(leadFollow).join('')+'</div>'
       +mostRead(arr.slice(0,5));
       h1+=qaColumn(arr);
+      // 발행량이 적은 날에도 간추린 소식을 숨기지 않는다.
+      // 이 분기에서 briefsBoard()가 빠지면 심층 기사만 남아 전체 지면이
+      // 실제 10건보다 2건처럼 보이는 회귀가 발생한다.
+      h1+=briefsBoard();
       h1+=recentSection();
       h1+=storyBoard();
       return h1+'</div>';
