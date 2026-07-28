@@ -1,14 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://news.vetmanlab.com/article/v1_04dcac6513613a5d</loc>
+    <loc>https://news.vetmanlab.com/article/v1_7b21f73b951c77b0</loc>
     <news:news>
       <news:publication>
         <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
         <news:language>ko</news:language>
       </news:publication>
-      <news:publication_date>2026-07-25T09:49:10.000Z</news:publication_date>
-      <news:title>중국 수의대 입학 경쟁률 의대 역전 현상</news:title>
+      <news:publication_date>2026-07-27T21:56:22.000Z</news:publication_date>
+      <news:title>수의전문가, 조직 리더십 기여하는 방법은</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_4461255a1cb71932</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T20:09:43.000Z</news:publication_date>
+      <news:title>라임병-렙토스피라증 콤백 백신 승인</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_5bbf94b7102ede00</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T20:06:28.000Z</news:publication_date>
+      <news:title>저소득 가정의 동물, 간접흡연 노출 위험 2배 이상</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_5b910126229a3632</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T18:55:10.000Z</news:publication_date>
+      <news:title>ChatGPT에 출시된 반려동물보험 비교 앱 'Fletch'</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_d3bfda3b23b4ffbb</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T16:55:00.000Z</news:publication_date>
+      <news:title>피셔 카운티에서 광견병 1건 확인</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_5e7c4dedbecefc8f</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T15:54:01.000Z</news:publication_date>
+      <news:title>미국 하원, 불법 자일라진 규제 법안 추진 가속화</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_31506b8fe2022df6</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T15:03:25.000Z</news:publication_date>
+      <news:title>PET 리간드로 뇌 유전자 발현 정량 영상화 가능</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_16e467c3205dbffa</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T14:46:00.000Z</news:publication_date>
+      <news:title>애완동물 사료 안전성 확인법…라벨 읽기와 보관 원칙</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_d7058b04312fa69b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T14:23:39.000Z</news:publication_date>
+      <news:title>강아지 사료 리콜 당했나요? 소유주가 즉시 확인해야 할 사항</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_99ac2c6829247bca</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T13:09:47.000Z</news:publication_date>
+      <news:title>뒤영벌 방제 강화로 보호소 동물 이전 지연</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_ac6c719fda72e663</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T12:29:31.000Z</news:publication_date>
+      <news:title>이동식 수의 클리닉, 부족민 커뮤니티 의료 접근성 확대</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_8cb1cced241aa789</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T12:01:58.000Z</news:publication_date>
+      <news:title>미국 동물병원, Cherry 할부 금융 서비스 도입</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_e512900435561c51</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T10:00:23.000Z</news:publication_date>
+      <news:title>미국 주, 미사용 약 기증 법 제정…필요한 동물에 약 지원</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_fb6f7d5f583a1c58</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T09:00:44.000Z</news:publication_date>
+      <news:title>영양 보충제, 개와 고양이의 경미한 위장관 문제 개선에 도움</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_809421549d128e9e</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T09:00:00.000Z</news:publication_date>
+      <news:title>수의학에서 배운 환자관리 교훈, 인간 의료에 적용</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_a4deff1b3d5e111c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-27T01:30:00.000Z</news:publication_date>
+      <news:title>2026년 애완동물 양육비 현실 — 소유주들이 알아야 할 사실</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_8ba43de9ac425b0f</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-07-26T02:20:00.000Z</news:publication_date>
+      <news:title>반려동물 사별,… 동물병원 돌봄 가이드라인 최신 동향</news:title>
     </news:news>
   </url>
 </urlset>
