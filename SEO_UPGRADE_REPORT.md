@@ -204,7 +204,7 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 
 작성 브랜치: `codex/editorial-review-observability`
 기준: `origin/main` 최신 production 반영본
-현재 상태: 로컬 구현·검증 완료, PR/merge/production 배포 전 최종 대기
+현재 상태: PR merge 및 production 배포 확인 완료
 
 ### 핵심 설계
 
@@ -270,3 +270,13 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - 현재 170/293 index 정책과 주요 URL을 비교하고 sitemap에 noindex URL이 없을 것
 - production 배포 후 홈페이지, 대표 index/noindex 기사, 주제, archive, RSS, sitemap, robots, 이미지·관리자 인증 smoke test
 - 서비스워커 캐시 `vmcache-v6` 갱신과 운영 Search Console·네이버 수집 상태를 확인할 것
+
+### 3차 최종 배포 결과
+
+- feature commit: `01345dbb49276b6ce72e2f3869862564159ddaed` (`feat: add editorial review and production observability`)
+- CI 보정 commit: `ed5527aefbd5f11ab6c9c714fe38df337d1a13fb` (`fix: align Playwright browser cache in CI`)
+- PR: [#5](https://github.com/kinggorae/vetman-briefing/pull/5)
+- merge commit: `642b69edaeacd0dc57fac3b14869fa481e716881`
+- Cloudflare Pages: 기존 `vetman-briefing` 프로젝트 `main` 배포 `a9cc129d` 완료. 새 프로젝트는 만들지 않았습니다.
+- PR quality CI: 최초 Playwright 캐시 경로 불일치를 수정한 뒤 npm test/build/validate/seo audit, Playwright 12건, Lighthouse 3 URL×3회 모두 성공.
+- preview 및 production smoke: 홈페이지, index/noindex 기사, 주제, archive, weekly, robots, sitemap, news sitemap, RSS, 대표 편집 카드 모두 HTTP 200.
