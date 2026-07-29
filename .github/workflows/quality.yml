@@ -19,7 +19,9 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      # GitHub-hosted Ubuntu already provides Playwright's system libraries;
+      # install only the pinned browser binary to keep CI deterministic.
+      - run: npx playwright install chromium
       - run: npm test
       - run: npm run build
       - run: npm run validate
