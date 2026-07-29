@@ -2,7 +2,13 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { normalizeSourceUrl, sourceKeys, stableItemId } from "../src/identity.js";
 import { koreanizeText } from "../src/koreanize.js";
-import { publishQualityIssues, qualityIssues } from "../src/quality.js";
+import {
+  bodyCharCount,
+  isProfessionallyIndexable,
+  normalizeContentTier,
+  publishQualityIssues,
+  qualityIssues,
+} from "../src/quality.js";
 import { cleanImageUrl, removeRepeatedImages } from "../src/images.js";
 import {
   FEEDS,
@@ -81,4 +87,47 @@ test("global collection covers multiple markets without duplicate feed URLs", ()
   assert.ok(ITEMS_PER_ISSUE >= 40);
   assert.ok(BRIEFS_PER_ISSUE >= 60);
   assert.ok(PAPERS_PER_ISSUE >= 16);
+});
+
+test("professional index gate requires three paragraphs, 420 chars, radar, and source", () => {
+  const base = {
+    contentTier: "analysis",
+    titleKo: "고양이 만성 신장질환 관리의 임상 포인트",
+    leadKo: "고양이 만성 신장질환 환자에서 진료 계획을 점검할 때 참고할 수 있는 핵심 내용을 정리했습니다.",
+    bodyKo: [
+      "첫 번째 문단은 고양이 만성 신장질환의 배경과 진료 맥락을 설명합니다. 환자의 상태와 검사 결과를 함께 해석해야 합니다. 병력 청취와 신체검사에서 확인한 변화가 진단의 우선순위를 정하는 데 중요한 단서가 되므로 보호자에게 관찰 시점과 경과를 구체적으로 묻는 과정도 필요합니다.",
+      "두 번째 문단은 원문에서 보고된 방법과 결과를 설명합니다. 연구의 한계와 적용 범위를 구분해서 읽어야 합니다. 표본의 특성, 비교군의 유무, 추적 기간과 결과 측정 방법을 확인하고, 통계적으로 유의한 결과가 실제 진료에서 얼마나 의미가 있는지도 별도로 판단해야 합니다.",
+      "세 번째 문단은 한국 동물병원에서 확인할 점을 정리합니다. 개별 환자에게 적용하기 전 최신 지침과 원문을 확인해야 합니다. 국내에서 이용할 수 있는 검사와 치료 선택지가 다를 수 있으므로 환자의 위험도와 보호자의 이해 수준을 함께 고려하고, 설명한 내용과 추적 계획을 진료 기록에 남기는 것이 안전합니다. 불확실한 근거는 별도로 표시하고 환자별 판단이 필요하다는 점도 설명해야 합니다. 진료팀 내부에서도 같은 기준으로 결과를 검토하고 필요한 경우 재평가 일정을 조정해야 합니다.",
+    ],
+    radar: { clinical: "검사 결과와 임상 증상을 함께 검토합니다.", owner: null, evidence: null },
+    sourceUrl: "https://example.com/article",
+  };
+  assert.ok(bodyCharCount(base) >= 420);
+  assert.equal(isProfessionallyIndexable(base), true);
+  assert.ok(!publishQualityIssues(base).includes("paragraphs-too-few"));
+  assert.equal(isProfessionallyIndexable({ ...base, bodyKo: [base.bodyKo[0]] }), false);
+  assert.ok(qualityIssues({ ...base, sourceUrl: "" }).includes("source-missing"));
+});
+
+test("legacy tier inference never upgrades thin content to analysis", () => {
+  assert.equal(normalizeContentTier({ tier: "brief", bodyKo: ["짧은 소식입니다."] }), "brief");
+  assert.equal(normalizeContentTier({ tier: "deep", bodyKo: ["짧은 문단"], radar: { clinical: "메모" } }), "brief");
+  assert.equal(normalizeContentTier({ tier: "deep", bodyKo: ["긴 본문"], doi: "10.1234/example" }), "evidence");
+});
+
+test("index gate keeps dateModified absent unless updatedAt is present", () => {
+  const item = {
+    contentTier: "analysis",
+    titleKo: "개의 만성 기침 진료 점검",
+    leadKo: "개의 만성 기침을 평가할 때 필요한 기본적인 진료 점검 항목을 정리했습니다.",
+    bodyKo: [
+      "첫 문단은 만성 기침의 배경과 감별 진단을 설명합니다. 병력과 신체검사를 함께 확인해야 합니다. 기침의 기간과 빈도, 운동 시 악화 여부, 호흡 곤란 동반 여부를 세심하게 확인하고 응급 징후가 있는 경우 안정화와 추가 평가의 순서를 먼저 정해야 합니다.",
+      "둘째 문단은 검사 결과를 해석할 때 주의할 점을 설명합니다. 단일 검사만으로 결론을 내리지 않습니다. 영상검사와 혈액검사 결과를 환자의 임상 증상 및 노출력과 함께 비교해야 하며, 검사 시점이나 검사 장비의 차이가 결과에 미칠 수 있는 영향도 고려해야 합니다.",
+      "셋째 문단은 한국 동물병원에서 보호자에게 설명할 내용을 정리합니다. 최신 문헌을 확인해 개별 환자에 적용해야 합니다. 치료 반응을 확인할 재진 시점과 즉시 내원해야 하는 경고 증상을 보호자에게 명확히 안내하고, 불확실한 부분은 단정하지 않도록 기록과 설명을 일치시키는 것이 중요합니다. 검사 결과가 달라질 수 있는 조건과 추가 상담이 필요한 상황도 함께 안내해야 합니다. 담당 의료진이 판단 근거와 다음 단계를 같은 언어로 설명하면 보호자의 이해와 추적 관찰에도 도움이 됩니다. 환자의 상태가 변하면 기존 계획을 다시 평가해야 한다는 점도 미리 알려야 합니다.",
+    ],
+    radar: { clinical: "기침 기간과 호흡 상태를 함께 확인합니다." },
+    sourceUrl: "https://example.com/cough",
+  };
+  assert.equal(isProfessionallyIndexable(item), true);
+  assert.equal(isProfessionallyIndexable({ ...item, updatedAt: "2026-07-29T00:00:00Z" }), true);
 });

@@ -39,6 +39,7 @@ export function cleanImageUrl(url, baseUrl = null) {
     return null;
   }
   if (!/^https?:$/.test(resolved.protocol) || isLikelyGenericImage(resolved.href)) return null;
+  if (resolved.protocol === "http:") resolved.protocol = "https:";
   return resolved.href;
 }
 
