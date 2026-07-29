@@ -458,3 +458,40 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - 배포 직후 production 홈페이지가 로컬 `site/index.html`과 158,089 bytes 및 SHA-256으로 일치함을 확인했습니다.
 - PR CI: `quality` workflow 성공. `npm ci`, test/build/validate, SEO audit, source health, ingest dry-run, review/source stats, Playwright, Lighthouse를 모두 통과했습니다.
 - 남은 운영 작업: 기존 unresolved relay 187건과 index high/medium 임상 검수 75/93건은 사람 승인 전까지 자동 변경하지 않습니다. 공식 피드 health의 stale 3·degraded 9·failing 1 상태도 계속 모니터링합니다.
+
+## 14. 6차 고도화: newsroom review·reliable feed operations
+
+작성 브랜치: `codex/newsroom-review-feed-health`
+기준: 5차가 반영된 `origin/main`
+배포 원칙: 기존 170개 index 기사와 canonical을 유지하고, 신규 후보는 모두 draft/preview로만 처리했습니다.
+
+### 구현 내용
+
+- `src/lib/source-first.js`의 피드 fetch에 ETag/If-None-Match, Last-Modified/If-Modified-Since, 304 처리, 응답 크기 제한 2MB, 항목 수 제한, timeout·지수 backoff·재시도, DOCTYPE/ENTITY 차단, 빈 응답 시 기존 캐시 보존, 원자적 캐시 저장을 추가했습니다.
+- `scripts/sources.js`에 `sources:diagnose`, `sources:repair`를 추가했습니다. 공식 도메인의 alternate/sitemap에서만 대체 후보를 찾으며 `data/sources/feed-repairs.json`의 사람 승인 항목이 없으면 레지스트리를 변경하지 않습니다. `healthy/quiet/stale/degraded/failing/retired/disabled` 상태를 기록합니다.
+- `reports/feed-diagnostics.json`과 Markdown 보고서에 HTTP/redirect/MIME/XML, 최신 게시일·평균 간격, 공식 도메인, canonical 확보율, relay 비율, ETag, Last-Modified, 중복 GUID, 연속 실패와 대체 후보를 저장했습니다. 이번 실행은 13개 피드, stale 1·degraded 11·failing 1이었고, 대체 공식 후보는 5개였습니다.
+- `reports/draft-newsroom.json`을 인증 관리자 정적 데이터로 연결했습니다. draft 50건, 통합 큐 218건, update 후보 75건을 위험도·중복 상태·공식 URL·경고·명령과 함께 읽기 전용으로 표시합니다. 공개 기사·sitemap·RSS·탐색 링크에는 draft가 들어가지 않습니다.
+- `scripts/updates.js`에 duplicate/minor-update/substantive-update/correction/separate-story/unresolved 분류와 compare/approve/reject CLI를 추가했습니다. 기본 dry-run이며 등록된 실제 reviewerId와 `--apply` 없이는 기록을 적용하지 않습니다. 현재 75개 update 후보는 duplicate 71·unresolved 4로 분류되었고 기존 JSON은 덮어쓰지 않았습니다.
+- `data/editorial/terminology.json`과 `language:audit`, `terminology:audit`, `claims:audit`를 추가했습니다. 실제 기사에서 확인할 수 있는 수의학 용어만 등록하고, 한글 내부 ASCII·직역 오류·최초/입증/완치 주장·수치·종·사례보고 일반화를 자동 수정하지 않고 검수 큐로 보냅니다. 이번 감사는 언어 경고 20건, 용어 경고 0건, 임상 주장 경고 64건입니다.
+- `publish:package`와 `draft:e2e`를 추가했습니다. 발행 전 패키지는 JSON-LD/RSS/sitemap 포함 여부까지 미리 계산하지만 `previewOnly: true`, `eligibleForPublish: false`로 저장합니다. 조건을 만족한 low-risk 후보 5건을 end-to-end preview까지 수행했고 자동 published는 0건입니다.
+- `docs/EDITOR_DAILY_RUNBOOK.md`, `docs/VET_REVIEW_CHECKLIST.md`, `docs/SOURCE_FEED_OPERATIONS.md`, `docs/UPDATE_AND_CORRECTION_POLICY.md`를 추가하고 quality/daily GitHub Actions에 피드 진단·감사·draft preview 리포트 artifact를 연결했습니다.
+
+### 6차 검증 결과
+
+- `npm test`: 22개 통과(기존 19개 + 신규 3개). XML entity/크기 차단, 언어·주장 감사, update 분류 회귀를 포함합니다.
+- `npm run build`, `npm run validate`, `npm run seo:audit`: 성공. index/noindex 170/293, sitemap 212, SEO 치명 오류 0을 유지했습니다.
+- `npm run sources:diagnose`, `npm run sources:health`: 13개 피드 진단 성공. 실패 피드가 있어도 기존 캐시·레지스트리·기사 데이터는 삭제되지 않았습니다.
+- `npm run ingest:dry`: 677개 수집·569 unique·33 duplicate·75 update 후보·50 draft 후보·자동 published 0을 유지했습니다.
+- `npm run updates:stats`, `npm run language:audit`, `npm run terminology:audit`, `npm run claims:audit`, `npm run review:queue`, `npm run draft:e2e`: 모두 성공했습니다.
+- `npm audit --omit=dev`: production 취약점 0건.
+- 남은 브라우저/ Lighthouse 검증은 5차에서 통과한 Playwright 390/768/1440과 Lighthouse 기준을 유지하며 CI에서 재실행하도록 workflow에 포함했습니다.
+
+### 사람 검수 우선순위
+
+1. index high-risk 75건: 원문·대상 종·수치·약물·연구 유형을 수의사가 확인
+2. 언어 경고 20건과 임상 주장 경고 64건: 원문과 한글 문장 대조
+3. update 후보 75건: duplicate 71건의 대표 원출처와 unresolved 4건의 판단
+4. feed stale/degraded/failing: 공식 피드 변경·robots·이용약관 확인 후 대체 피드 승인 여부 판단
+5. GSC·네이버 실제 CSV를 내려받아 성과 대시보드에 import
+
+6차 브랜치는 이 보고서와 검증 산출물을 포함해 PR 전 상태로 정리하며, 실제 사람 승인 없이 기존 기사나 신규 draft를 published/approved로 변경하지 않습니다.

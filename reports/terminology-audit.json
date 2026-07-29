@@ -1,0 +1,395 @@
+{
+  "generatedAt": "2026-07-29T23:05:42.546Z",
+  "termCount": 12,
+  "articleCount": 463,
+  "matchCount": 46,
+  "warningCount": 0,
+  "matches": [
+    {
+      "title": "고양이 만성질환에서 장유래 독소 관리와 영양 전략",
+      "canonicalKo": "만성 신장질환",
+      "matched": [
+        "CKD"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개구충 위험 북상... 예방 미흡한 반려동물 증가 우려",
+      "canonicalKo": "심장사상충증",
+      "matched": [
+        "심장사상충"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "전자건강기록으로 가축 질병 감시한다…영국 연구의 시사점",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개에서 쿼럼 센싱 조절제: 세균 신호 차단을 통한 장 건강 관리",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개 미생물군집 조절로 항생제 의존도 낮추기",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성",
+        "AMR"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "수의학 영역 항생제 적정 사용 가이드라인 업데이트",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "고양이 전염성 복막염 치료용 GS-441524 경구현탁액 개발 및 물리화학적 안정성 평가",
+      "canonicalKo": "고양이 전염성 복막염",
+      "matched": [
+        "고양이 전염성 복막염",
+        "FIP"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "수의학에서 박테리오신의 항생제 대안 가능성 검토",
+      "canonicalKo": "외이염",
+      "matched": [
+        "외이염"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "수의학에서 박테리오신의 항생제 대안 가능성 검토",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성",
+        "AMR"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개 에틸렌글리콜 중독에서 Lactate Gap의 진단·치료 종결 지표 활용",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "증례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "개 췌장 초음파 검사, 관찰자 간 결과 차이 커",
+      "canonicalKo": "췌장염",
+      "matched": [
+        "췌장염"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개·고양이 난치성 감염각막염에서 Rose Bengal 광동력치료의 임상 성과",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "탄자니아 농촌에서 지역사회 기반 개 광견병 예방접종 실행 평가",
+      "canonicalKo": "무작위 대조시험",
+      "matched": [
+        "RCT"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개 전십자 인대 파열수술, TPLO와 TTA 관절염 진행은 어떤 것이 더 나은가?",
+      "canonicalKo": "코호트 연구",
+      "matched": [
+        "코호트 연구"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "레드팜유와 천연추출물 복합 펫샴푸의 항균·항진균·항염 효과 연구",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "심장사상충 새로운주로 확산… 개·고양이 위험 증가 경고",
+      "canonicalKo": "심장사상충증",
+      "matched": [
+        "심장사상충"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개 장 미생물군집 연구 새 시대 열었다",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개 귀염염 Pseudomonas aeruginosa의 항균제 감수성 및 유전체 저항성 분석",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성",
+        "항균제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "고양이 안와 및 폐 임파종의 제한 확산 소견 첫 보고",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "증례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "고양이 전십자 인대 파열 동반 무릎뼈 탈구의 신규 절골술 치료",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "커큐민, 고양이 만성콩팥병에서 신장 보호 효과 확인",
+      "canonicalKo": "만성 신장질환",
+      "matched": [
+        "만성콩팥병"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개 뇌과립세포종 최초 SRT 치료 사례 – 종양 용적 56.8% 감소",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "수중 트레드밀, 개 추간판 수술 후 보행 회복 단축",
+      "canonicalKo": "코호트 연구",
+      "matched": [
+        "코호트 연구"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "구강 감염에서 유래한 강아지의 경막하 농양 1예",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "증례 보고",
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "개 아토피 피부염에서 γδ T 세포의 피부 침윤과 IL-17 발현",
+      "canonicalKo": "아토피 피부염",
+      "matched": [
+        "아토피 피부염"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "고양이 만성신장질환, 장내 대사물질 변화와 연관 발견",
+      "canonicalKo": "만성 신장질환",
+      "matched": [
+        "CKD"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "식도 이물이 유발한 개 유미흉 1례",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "고양이 요로감염 원인균의 다제내성 실태",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "고양이 의인성 고혈칼슘증 및 급성 신장 손상, 혈액투석으로 성공적 치료",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "개의 아토피 피부염 JAK 억제제 치료 최신 관점",
+      "canonicalKo": "아토피 피부염",
+      "matched": [
+        "아토피 피부염"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "유기축산 우유 소 아 임상적 유방염에 대한 음파펄스와 냉각레이저 요법 비교 평가",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "젖소 발굽뼈 질환의 유병률과 위험요인 분석",
+      "canonicalKo": "코호트 연구",
+      "matched": [
+        "코호트 연구"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "title": "개의 고등급 수막내 희소돌기아교종 2년간 비정상적으로 느린 진행",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "개 두개골 골화성 섬유종의 영상 소견 및 수술·방사선 치료 사례",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "고양이 신장 혈관육종에 인한 내장 동정맥류 1례",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "title": "개 경추 정맥총 이상에 따른 만성 통증, 초음파 유도 코르티코스테로이드 주사로 호전",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "v1_cb5546d9e248b911",
+      "title": "고양이 만성콩팥병 진단에서 신피질 두께 및 파생 비율이 우월한 초음파 지표임",
+      "canonicalKo": "만성 신장질환",
+      "matched": [
+        "CKD",
+        "만성콩팥병"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "v1_cb5546d9e248b911",
+      "title": "고양이 만성콩팥병 진단에서 신피질 두께 및 파생 비율이 우월한 초음파 지표임",
+      "canonicalKo": "무작위 대조시험",
+      "matched": [
+        "RCT"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "v1_9996059839065d8b",
+      "title": "개 정형외과술 후 발생한 비외상성 부신출혈 1례",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "v1_4ddbe75b581f6b93",
+      "title": "무가스 복강경, 강아지 이소성 디옥토포모증 치료 세계 최초 성공",
+      "canonicalKo": "심장사상충증",
+      "matched": [
+        "심장사상충증",
+        "심장사상충"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "v1_4ddbe75b581f6b93",
+      "title": "무가스 복강경, 강아지 이소성 디옥토포모증 치료 세계 최초 성공",
+      "canonicalKo": "증례 보고",
+      "matched": [
+        "사례 보고"
+      ],
+      "reviewRequired": true
+    },
+    {
+      "id": "v1_67badcee51a08493",
+      "title": "유기축산 젖소 유방염, 음파펄스·냉레이저 요법 효과 연구",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "v1_592f1d8e702ec6a0",
+      "title": "양계장 Biosecurity 실패가 내성 대장균 확산을 주도; 은나노입자-과산화수소 복합제가 유망한 결과 보여",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "v1_237a0fa7f626d219",
+      "title": "잠비아 닭에서 사육 방식과 무관한 ESBL 대장균 높은 검출률",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항균제 내성"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "v1_6ce376c377ed20e8",
+      "title": "지난 10년 개·고양이 진료 혁신...수의학 주요 발견 총정리",
+      "canonicalKo": "만성 신장질환",
+      "matched": [
+        "만성콩팥병"
+      ],
+      "reviewRequired": false
+    },
+    {
+      "id": "v1_f1921b33d4439071",
+      "title": "식물 항균제 가금 생산 내성 유전자 확산 방지 효과",
+      "canonicalKo": "항생제 내성",
+      "matched": [
+        "항생제 내성"
+      ],
+      "reviewRequired": false
+    }
+  ],
+  "warnings": []
+}

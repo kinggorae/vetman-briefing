@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-07-29T23:10:25.654Z",
+  "previewOnly": true,
+  "eligibleForPublish": false,
+  "reason": "실제 reviewerId와 사람 승인 기록이 없습니다",
+  "title": "Improving Animal Welfare at Commercial Dog Breeding Kennels",
+  "description": "Dr. Theresa (Tess) House, DVM, MPH, dives into a topic that can spark strong opinions: commercial dog breeding kennels. If you&#8217;ve ever wondered what veterinarians can do to improve animal welfare in these facilities, or what standards, oversight, and welfare programs actually look like behind the scenes, this episode breaks it all down in a... Read More The post Improving Animal Welfare at Commercial Dog Breeding Kennels appeared first on DrAndyRoark.com .",
+  "canonical": "https://drandyroark.com/commercial-dog-breeding-kennels",
+  "contentTier": "brief",
+  "clinicalRisk": "low",
+  "editorialStatus": "editor-review-required",
+  "source": {
+    "label": "Dr. Andy Roark",
+    "title": "Improving Animal Welfare at Commercial Dog Breeding Kennels",
+    "url": "https://drandyroark.com/commercial-dog-breeding-kennels",
+    "rawUrl": "https://drandyroark.com/commercial-dog-breeding-kennels",
+    "publishedAt": "2026-06-18T05:00:00.000Z"
+  },
+  "evidence": null,
+  "image": {
+    "url": null,
+    "ownership": "unknown",
+    "alt": null
+  },
+  "author": null,
+  "reviewer": null,
+  "relatedArticles": [],
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Improving Animal Welfare at Commercial Dog Breeding Kennels",
+    "description": "Dr. Theresa (Tess) House, DVM, MPH, dives into a topic that can spark strong opinions: commercial dog breeding kennels. If you&#8217;ve ever wondered what veterinarians can do to improve animal welfare in these facilities, or what standards, oversight, and welfare programs actually look like behind the scenes, this episode breaks it all down in a... Read More The post Improving Animal Welfare at Commercial Dog Breeding Kennels appeared first on DrAndyRoark.com .",
+    "isBasedOn": {
+      "@type": "CreativeWork",
+      "url": "https://drandyroark.com/commercial-dog-breeding-kennels"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "VetManLab 편집팀"
+    }
+  },
+  "rss": {
+    "title": "Improving Animal Welfare at Commercial Dog Breeding Kennels",
+    "description": "Dr. Theresa (Tess) House, DVM, MPH, dives into a topic that can spark strong opinions: commercial dog breeding kennels. If you&#8217;ve ever wondered what veterinarians can do to improve animal welfare in these facilities, or what standards, oversight, and welfare programs actually look like behind the scenes, this episode breaks it all down in a... Read More The post Improving Animal Welfare at Commercial Dog Breeding Kennels appeared first on DrAndyRoark.com .",
+    "guid": "v1_8977cdecc20db74b",
+    "link": "https://drandyroark.com/commercial-dog-breeding-kennels"
+  },
+  "sitemap": {
+    "included": false,
+    "reason": "preview-only draft"
+  },
+  "quality": {
+    "warnings": [],
+    "passed": true
+  }
+}

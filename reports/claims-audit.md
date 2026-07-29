@@ -1,0 +1,71 @@
+# claims audit
+
+- 실행 시각: 2026-07-29T23:05:42.656Z
+- 대상 기사: 463
+- 경고: 64
+- 차단 후보: 64
+
+- undefined · 기관내관 풍선 적절한 팽창, 왜 중요한가 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 미국 태평양 북서부에서 폐활성 조충 발견…너구리 37% 감염 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 개의 단백질 손실 장염, 조기 진단이 생사를 가른다 · numeric-lead-body-mismatch
+- undefined · 개 폐충감염의 진단과 치료: 임상에서 반드시 고려해야 할 원인 · numeric-keypoints-body-mismatch
+- undefined · 애완동물 환각버섯 중독 증가...수의사 주목 필요 · numeric-keypoints-body-mismatch
+- undefined · 동물병원 PIMS, 제대로 활용하고 계신가요? · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 수중 운동으로 관절염 개 낮추기… 운동 어려웠던 강아지 9kg 감량 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 수의사 영양 상담, 실제로 얼마나 이루어질까 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 24시간 동물병원 개축 시 임상 운영 연속성 유지 사례 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 개구충 위험 북상... 예방 미흡한 반려동물 증가 우려 · numeric-lead-body-mismatch
+- undefined · 고령 동물 관절염 통증, 약물+비약물 복합 관리의 실제 · numeric-lead-body-mismatch
+- undefined · 고양이 당뇨병 관리의 새로운 선택지, SGLT2 억제제 · numeric-keypoints-body-mismatch
+- undefined · 수의대병원 개 피부염 다제내성균 유병률 연구 · numeric-lead-body-mismatch
+- undefined · 개·고양이 흉부 X-ray에서 인공지능으로 폐렴 진단하기 · numeric-lead-body-mismatch
+- undefined · 경미한 심근병증, 소변관 우회술 예후에 영향 없어 · numeric-keypoints-body-mismatch
+- undefined · 개의 가스트린종, 반복 수술과 혈청 가스트린 모니터링으로 장기 생존 사례 · numeric-lead-body-mismatch
+- undefined · 개의 안와 종양 4례 분석: 수술적 치료와 보존적 치료 비교 · numeric-keypoints-body-mismatch
+- undefined · 슬로베니아·체코 고양이 톡소플라즈마·FIV 공동감염율 4.8%, 임상증상 발생률 높아 · numeric-keypoints-body-mismatch
+- undefined · 개 유방암 수술에서 CBD/THC 유지류 유분의 진정 및 마약절감 효과 · numeric-keypoints-body-mismatch
+- undefined · 애완동물에서 발견된 인류기생 Trichophyton tonsurans 22례, 프랑스 2021-2025 · numeric-lead-body-mismatch
+- undefined · 카발리에 킹 찰스 스파니엘의 무릎뼈 탈구 유병률과 위험인자 · numeric-keypoints-body-mismatch
+- undefined · 수의사가 강조하는 고양이 건강 관리의 7가지 핵심 · numeric-keypoints-body-mismatch
+- undefined · 마이크 던 수의사 장학금 2026년 수상자 발표, 7월 29일 신청 시작 · numeric-keypoints-body-mismatch
+- undefined · 미국 보호자 46%, 비용 문제로 수의료 지연 경험 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 개 척수 수막염에서 발견된 진균성 농피전증 1례 · numeric-keypoints-body-mismatch
+- undefined · 반려동물과 가족을 위한 광견병 예방 가이드 · numeric-lead-body-mismatch
+- undefined · 개 장 미생물군집 연구 새 시대 열었다 · numeric-lead-body-mismatch
+- undefined · 인도 일차 진료수의사의 개 특발성 간질 관리 실태 조사 · numeric-keypoints-body-mismatch
+- undefined · 강아지 유방종양 진단 생물표지자로서의 혈청 TP53 자가항체 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 개·소 레프토스피라증 진단용 재조합 단백질 기반 검사법 개발 · numeric-lead-body-mismatch
+- undefined · 수중 트레드밀, 개 추간판 수술 후 보행 회복 단축 · numeric-keypoints-body-mismatch
+- undefined · 반려동물 진료비, 이 정도였어? · numeric-lead-body-mismatch
+- undefined · 수의 수술실 효율화, 입체적 배치 전략 · numeric-keypoints-body-mismatch
+- undefined · 새러소타 군 광견병 발생…공중보건 경보 발령 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 고양이 비대성 심근증에서 심혈관 생체표지자의 임상적 유용성: 10년 간 체계적 고찰 · numeric-lead-body-mismatch
+- undefined · 개의 흉부 종양, 호흡에 따라 3차원 위치 변화 관찰 · numeric-keypoints-body-mismatch
+- undefined · 개 호중구성 염증성 장염 27례 임상 분석 · numeric-keypoints-body-mismatch
+- undefined · 고양이 비종양 CT 소견: 악성과 유사한 종양양 성장 · numeric-keypoints-body-mismatch
+- undefined · 재발성 요도 폐쇄 수고양이, 초기 발병보다 질소혈증 발생 위험 낮아 · numeric-lead-body-mismatch
+- undefined · 미국 콜로라도에 고양이 전용 동물병원 개원... 진료 공백 해소 도전 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 임신 말기 암컷 개에서 아디슨 위기로 오인된 응급 상황 · numeric-keypoints-body-mismatch
+- undefined · 고양이 요로감염 원인균의 다제내성 실태 · numeric-keypoints-body-mismatch
+- undefined · GnRH 차단Vaccine Improvac, 고양이 피임 효과 확인 · numeric-keypoints-body-mismatch
+- undefined · 개 안면신경장애의 안과적 특징—중두개견에서 각막염 더 빈번 · numeric-lead-body-mismatch
+- undefined · 개의 아토피 피부염 JAK 억제제 치료 최신 관점 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 강아지가 리콜 사료 먹었을 때 수의사가 알려주는 대처법 · numeric-keypoints-body-mismatch
+- undefined · 말 관절경 시술의 탄소 발자국 연구, 운반과 소모품이 주요 배출원 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- undefined · 환형고래에서 신규 헬리코박터균 3종 확인 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- v1_a5b554217652df94 · 고양이 대동맥 색전증에서 tPA thrombolysis 효과 — 183마리 다기관 연구 · numeric-lead-body-mismatch
+- v1_6b3c3101574c9e89 · 뉴월드 스크류웜 발생 — 미국 수의사 대응 가이드 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- v1_8d4b6dd70a1c07e5 · 피오글리타존, 개에서 고지방 식이 유발 인슐린 저항성 예방에 효과 · numeric-keypoints-body-mismatch
+- v1_cc752d4547496da4 · 개 반척추절제술에서 로피바카인-립소omal 부피바카인 진통 효과 무차별 · numeric-keypoints-body-mismatch
+- v1_103ba30adfca986c · 외출 고양이의 치명적 외상 양상: 10년간 40례 부검 분석 · numeric-keypoints-body-mismatch
+- v1_9ed50c819180f566 · 영국 양농가의 질 탈출 관리 실태 조사 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- v1_6d2bb92c68fd6eef · 개 질 출혈성 병변의 내시경 유도 전기소작술 치료 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- v1_20a9351a0caea64a · 뉴욕 거리 고양이에서 높은 원인기생충 감염률, 수컷 새끼고양이가 '슈퍼 Shedder'로 확인 · numeric-keypoints-body-mismatch
+- v1_d1fbaef3e76d80d3 · 출산이 노령기 건강성을 높인다? 개 모델 연구 · numeric-keypoints-body-mismatch
+- v1_1521d654a62580a6 · 니아가라 카운티, 박쥐 통한 광견병 발생… 4명 치료받아 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- v1_b99763eee88e8c91 · 탐지견 훈련 성과 예측, 12개월령 행동 평가로 74% 정확도 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- v1_d3bfda3b23b4ffbb · 피셔 카운티에서 광견병 1건 확인 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- v1_a4deff1b3d5e111c · 2026년 애완동물 양육비 현실 — 소유주들이 알아야 할 사실 · numeric-lead-body-mismatch, numeric-keypoints-body-mismatch
+- v1_fdca693310cedee2 · 개모델에서 임플란트 주위염 치료를 위한 복합 소독법과 BMP-2 함유 재재료 효과 평가 · numeric-keypoints-body-mismatch
+- v1_e174695d8cae4128 · 고양이 긁기병으로 인한 비정상적 고열 및 신경정신 증상 1례 보고 · numeric-keypoints-body-mismatch
+- v1_6ce376c377ed20e8 · 지난 10년 개·고양이 진료 혁신...수의학 주요 발견 총정리 · numeric-lead-body-mismatch

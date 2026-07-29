@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-07-29T16:52:59.847Z",
+  "generatedAt": "2026-07-29T23:08:33.853Z",
   "runsPerUrl": 3,
   "urls": [
     {
       "url": "http://127.0.0.1:8788/",
       "runs": 3,
-      "performance": 1,
-      "accessibility": 1,
+      "performance": 0.99,
+      "accessibility": 0.96,
       "bestPractices": 1,
       "seo": 1,
       "cls": 0.0008210881929759308,
-      "lcp": 1827.4145
+      "lcp": 2149.12375
     },
     {
       "url": "http://127.0.0.1:8788/article/v1_e174695d8cae4128",
       "runs": 3,
-      "performance": 1,
+      "performance": 0.99,
       "accessibility": 0.96,
       "bestPractices": 1,
       "seo": 1,
       "cls": 0,
-      "lcp": 1689.3234999999997
+      "lcp": 2046.3615000000002
     },
     {
       "url": "http://127.0.0.1:8788/topic/%EA%B0%90%EC%97%BC-%EB%B0%B1%EC%8B%A0",
@@ -30,7 +30,7 @@
       "bestPractices": 1,
       "seo": 1,
       "cls": 0.02788467347119762,
-      "lcp": 631.34715
+      "lcp": 631.64915
     }
   ],
   "warnings": []
