@@ -132,8 +132,13 @@ Production 배포: Cloudflare Pages `vetman-briefing`, production branch `main`,
 
 작성 브랜치: `codex/seo-authority-media`
 기준: `origin/main`에 1차 SEO 하드닝 커밋을 보존해 병합한 상태
-상태: 로컬 검증 완료, 원격 push·PR·production 배포 전
-커밋: `ab9eafd` (`feat: add editorial authority, media, and SEO auditing`)
+상태: PR merge 및 production 배포 확인 완료
+커밋: `355742e40e34d13e3e1ec6a15b4d1ff4edf2fff1` (`feat: add editorial authority, media, and SEO auditing`)
+PR: [#3](https://github.com/kinggorae/vetman-briefing/pull/3)
+merge: `269552f0e462d85145d2dde18b3c6926a5d290bc`
+Preview: https://codex-seo-authority-media.vetman-briefing.pages.dev
+Production deployment: Cloudflare Pages `vetman-briefing`, `main`, deployment `581ed57e`
+Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap, RSS, robots, media 모두 HTTP 200
 
 ### 변경 파일과 설계
 
