@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://news.vetmanlab.com/</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-29</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/issues/2026-07-28</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/issues/2026-07-27</loc><lastmod>2026-07-27T00:00:00.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/issues/2026-07-26</loc><lastmod>2026-07-26T00:00:00.000Z</lastmod></url>
@@ -24,25 +25,39 @@
   <url><loc>https://news.vetmanlab.com/privacy</loc></url>
   <url><loc>https://news.vetmanlab.com/terms</loc></url>
   <url><loc>https://news.vetmanlab.com/about</loc></url>
-  <url><loc>https://news.vetmanlab.com/topic/</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/archive/</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/sources/</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/영양-비만</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/행동</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/감염-백신</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/마취-통증</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/피부-귀</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/종양</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/신장-비뇨</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/항생제-내성</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/안과</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/정형-관절</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/신경</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/내분비</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/응급-중환자</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/치과</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/심장</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/병원경영</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/archive/</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/sources/</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/영양-비만</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/행동</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/감염-백신</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/마취-통증</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/피부-귀</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/종양</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/신장-비뇨</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/항생제-내성</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/안과</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/정형-관절</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/신경</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/내분비</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/응급-중환자</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/치과</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/심장</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/병원경영</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_5ef792dba5c1c590</loc><lastmod>2026-07-28T15:39:09.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_e174695d8cae4128</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_20469be4391ba0b5</loc><lastmod>2026-07-27T09:54:05.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_714583787982c8de</loc><lastmod>2026-07-28T15:16:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_b57ff7397629a2d4</loc><lastmod>2026-07-27T15:54:07.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_5a9fbdf10a1f09c8</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_6ce376c377ed20e8</loc><lastmod>2026-07-26T07:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_0dd20409706debd4</loc><lastmod>2026-07-28T13:01:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_a501789c4aa37005</loc><lastmod>2026-07-28T14:20:52.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_fcbd7aa64148ba95</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_8a4f25e0108529ad</loc><lastmod>2026-07-27T13:48:38.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_5f4a47374d84fda1</loc><lastmod>2026-07-27T22:04:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_687b4b98c979ad9f</loc><lastmod>2026-07-28T16:58:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_98a932034c9ef0cd</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_21e812160281fc5c</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_fb6f7d5f583a1c58</loc><lastmod>2026-07-27T09:00:44.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_5bbf94b7102ede00</loc><lastmod>2026-07-27T20:06:28.000Z</lastmod></url>
