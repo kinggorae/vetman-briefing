@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-29T14:52:57.924Z",
+  "generatedAt": "2026-07-29T14:56:04.522Z",
   "base": "https://news.vetmanlab.com",
   "endpoints": [
     {
       "pathname": "/",
       "status": 200,
-      "bytes": 158050,
+      "bytes": 157971,
       "ok": true
     },
     {
