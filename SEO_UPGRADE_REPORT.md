@@ -3,9 +3,9 @@
 작성일: 2026-07-29  
 작업 브랜치: `codex/seo-hardening`  
 기준 커밋: `origin/main` 최신본  
-최종 커밋: `00cdf52`  
+구현 커밋: `00cdf52`
 PR: [#2](https://github.com/kinggorae/vetman-briefing/pull/2)  
-Production 배포: Cloudflare Pages `vetman-briefing`, production deployment `e25ec16a`
+Production 배포: Cloudflare Pages `vetman-briefing`, production branch `main`, 검증 deployment `e6b4d086` (source `190470a`)
 
 ## 1. 변경한 파일
 
