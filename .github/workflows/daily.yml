@@ -26,6 +26,8 @@ jobs:
         run: npm test
       - name: Check official source health
         run: npm run sources:health
+      - name: Diagnose official feeds without changing registry
+        run: npm run sources:diagnose
       - name: Collect source-first draft candidates
         run: npm run ingest:all -- --generate --max=30
         env:
@@ -41,8 +43,16 @@ jobs:
           path: |
             reports/source-health.json
             reports/source-health.md
+            reports/feed-diagnostics.json
+            reports/feed-diagnostics.md
             reports/ingest-report.json
             reports/ingest-report.md
+            reports/update-candidates.json
+            reports/draft-newsroom.json
+            reports/language-audit.json
+            reports/terminology-audit.json
+            reports/claims-audit.json
+            reports/end-to-end-drafts.md
             data/drafts
           if-no-files-found: ignore
       - name: Validate unchanged public publication set
@@ -60,7 +70,7 @@ jobs:
         run: |
           git config user.name "vetman-briefing-newsroom"
           git config user.email "actions@users.noreply.github.com"
-          git add data/drafts reports/source-health.json reports/source-health.md reports/ingest-report.json reports/ingest-report.md .source-cache
+          git add data/drafts reports/source-health.json reports/source-health.md reports/feed-diagnostics.json reports/feed-diagnostics.md reports/ingest-report.json reports/ingest-report.md reports/update-candidates.json reports/draft-newsroom.json reports/language-audit.json reports/terminology-audit.json reports/claims-audit.json reports/end-to-end-drafts.md .source-cache
           git diff --cached --quiet || git commit -m "newsroom: source-first draft candidates $(date -u +%F)"
           git push --atomic origin main
       - name: Explicit publication safety assertion

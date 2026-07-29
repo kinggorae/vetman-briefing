@@ -30,8 +30,15 @@ jobs:
       - run: npm run review:packets
       - run: npm run source:stats
       - run: npm run source:registry:audit
+      - run: npm run sources:diagnose
       - run: npm run sources:health
       - run: npm run ingest:dry
+      - run: npm run updates:stats
+      - run: npm run language:audit
+      - run: npm run terminology:audit
+      - run: npm run claims:audit
+      - run: npm run review:queue
+      - run: npm run draft:e2e
       - run: npm run test:browser
       - run: npm run lighthouse
       - name: Upload QA artifacts
@@ -46,7 +53,15 @@ jobs:
             reports/source-stats.json
             reports/source-registry-audit.json
             reports/source-health.json
+            reports/feed-diagnostics.json
+            reports/feed-diagnostics.md
             reports/ingest-report.json
+            reports/update-candidates.json
+            reports/language-audit.json
+            reports/terminology-audit.json
+            reports/claims-audit.json
+            reports/draft-newsroom.json
+            reports/end-to-end-drafts.md
             reports/clinical-review-packets.json
             reports/seo-performance.json
             reports/playwright.json

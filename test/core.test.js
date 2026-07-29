@@ -22,7 +22,9 @@ import {
   BRIEFS_PER_ISSUE,
   PAPERS_PER_ISSUE,
 } from "../config.js";
-import { dedupeFeedEntries, isOfficialUrl, parseFeed, sourceStatusFor } from "../src/lib/source-first.js";
+import { MAX_FEED_BYTES, dedupeFeedEntries, isOfficialUrl, parseFeed, sourceStatusFor } from "../src/lib/source-first.js";
+import { auditClaims, auditLanguage, auditTerminology } from "../scripts/editorial-audits.js";
+import { classifyUpdate } from "../scripts/updates.js";
 
 test("source URLs normalize tracking parameters and fragments", () => {
   const clean = "https://example.com/story";
@@ -213,6 +215,24 @@ test("relay URLs preserved as raw evidence cannot pass the index gate", () => {
   };
   assert.ok(qualityIssues(item).includes("source-relay"));
   assert.equal(isProfessionallyIndexable(item), false);
+});
+
+test("feed parser rejects entity declarations and oversized responses", () => {
+  assert.throws(() => parseFeed("<!DOCTYPE rss [<!ENTITY x SYSTEM 'file:///tmp/x'>]><rss/>", "https://example.com/feed", { id: "src-test", label: "test", officialDomains: ["example.com"] }), /DOCTYPE|ENTITY/);
+  assert.throws(() => parseFeed("x".repeat(MAX_FEED_BYTES + 1), "https://example.com/feed", { id: "src-test", label: "test", officialDomains: ["example.com"] }), /너무 큽니다/);
+});
+
+test("editorial audits expose terminology, language and claim review records", () => {
+  const row = { id: "a1", titleKo: "강아지 주인의 위한 연구", leadKo: "약물 10 mg을 사용했습니다.", bodyKo: ["이 결과로 완치가 입증되었습니다."], sourceUrl: "https://example.com/a", sourceTitle: "A study", species: ["고양이"] };
+  assert.ok(auditLanguage([row]).rows[0].warnings.includes("known-error:강아지 주인의 위한"));
+  assert.equal(auditTerminology([row]).articleCount, 1);
+  assert.ok(auditClaims([row]).rows[0].claim.reviewRequired);
+});
+
+test("update classification keeps minor and substantive decisions separate", () => {
+  const prior = { id: "old", titleKo: "고양이 연구 결과", sourceUrl: "https://example.com/a", bodyKo: ["10 mg 결과"] };
+  assert.equal(classifyUpdate({ title: "고양이 연구 결과", sourceUrl: "https://example.com/a", bodyKo: ["10 mg 결과"] }, prior), "duplicate");
+  assert.equal(classifyUpdate({ title: "고양이 연구 결과", sourceUrl: "https://example.com/a", bodyKo: ["20 mg 결과"] }, prior), "substantive-update");
 });
 
 test("source-first deduplication distinguishes unique, duplicate, and update candidates", () => {

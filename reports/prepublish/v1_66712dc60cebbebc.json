@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-07-29T23:10:25.654Z",
+  "previewOnly": true,
+  "eligibleForPublish": false,
+  "reason": "실제 reviewerId와 사람 승인 기록이 없습니다",
+  "title": "That&#8217;s Bad Advice",
+  "description": "Dr. Sarah Boston, DVM, DVSc, DACVS-SA, joins Dr. Andy Roark for a hilarious and surprisingly thoughtful conversation about the worst advice they&#8217;ve heard in veterinary medicine. From &#8220;if you love what you do, you&#8217;ll never work a day in your life&#8221; to &#8220;just let them simmer&#8221; when clients are upset, they unpack the well-intentioned wisdom... Read More The post That&#8217;s Bad Advice appeared first on DrAndyRoark.com .",
+  "canonical": "https://drandyroark.com/thats-bad-advice",
+  "contentTier": "brief",
+  "clinicalRisk": "low",
+  "editorialStatus": "editor-review-required",
+  "source": {
+    "label": "Dr. Andy Roark",
+    "title": "That&#8217;s Bad Advice",
+    "url": "https://drandyroark.com/thats-bad-advice",
+    "rawUrl": "https://drandyroark.com/thats-bad-advice",
+    "publishedAt": "2026-06-03T22:10:25.000Z"
+  },
+  "evidence": null,
+  "image": {
+    "url": null,
+    "ownership": "unknown",
+    "alt": null
+  },
+  "author": null,
+  "reviewer": null,
+  "relatedArticles": [],
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "That&#8217;s Bad Advice",
+    "description": "Dr. Sarah Boston, DVM, DVSc, DACVS-SA, joins Dr. Andy Roark for a hilarious and surprisingly thoughtful conversation about the worst advice they&#8217;ve heard in veterinary medicine. From &#8220;if you love what you do, you&#8217;ll never work a day in your life&#8221; to &#8220;just let them simmer&#8221; when clients are upset, they unpack the well-intentioned wisdom... Read More The post That&#8217;s Bad Advice appeared first on DrAndyRoark.com .",
+    "isBasedOn": {
+      "@type": "CreativeWork",
+      "url": "https://drandyroark.com/thats-bad-advice"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "VetManLab 편집팀"
+    }
+  },
+  "rss": {
+    "title": "That&#8217;s Bad Advice",
+    "description": "Dr. Sarah Boston, DVM, DVSc, DACVS-SA, joins Dr. Andy Roark for a hilarious and surprisingly thoughtful conversation about the worst advice they&#8217;ve heard in veterinary medicine. From &#8220;if you love what you do, you&#8217;ll never work a day in your life&#8221; to &#8220;just let them simmer&#8221; when clients are upset, they unpack the well-intentioned wisdom... Read More The post That&#8217;s Bad Advice appeared first on DrAndyRoark.com .",
+    "guid": "v1_66712dc60cebbebc",
+    "link": "https://drandyroark.com/thats-bad-advice"
+  },
+  "sitemap": {
+    "included": false,
+    "reason": "preview-only draft"
+  },
+  "quality": {
+    "warnings": [],
+    "passed": true
+  }
+}

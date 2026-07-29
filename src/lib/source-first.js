@@ -10,6 +10,8 @@ export const SOURCE_REGISTRY_PATH = path.join(ROOT, "data", "sources", "registry
 export const SOURCE_CACHE_DIR = path.join(ROOT, ".source-cache", "feeds");
 export const SOURCE_HEALTH_PATH = path.join(ROOT, "reports", "source-health.json");
 export const SOURCE_USER_AGENT = "VetManLab-SourceFirst/5.0 (+https://news.vetmanlab.com/about)";
+export const MAX_FEED_BYTES = 2_000_000;
+export const MAX_FEED_ENTRIES = 1_000;
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "@_", textNodeName: "#text" });
 const RELAY = /^https?:\/\/(?:news\.)?google\.[^/]+\/rss\/articles\//i;
 const robotsCache = new Map();
@@ -119,9 +121,15 @@ function firstLink(value) {
 function dateValue(entry) { return entry?.pubDate || entry?.published || entry?.updated || entry?.["dc:date"] || entry?.date || null; }
 
 export function parseFeed(xml, feedUrl, source) {
+  const bytes = Buffer.byteLength(String(xml || ""), "utf8");
+  if (bytes > MAX_FEED_BYTES) throw new Error(`피드 응답이 너무 큽니다: ${bytes} bytes`);
+  if (/<!\s*(?:DOCTYPE|ENTITY)\b/i.test(String(xml || ""))) throw new Error("DOCTYPE/ENTITY가 포함된 XML은 처리하지 않습니다");
+  if (/\u0000/.test(String(xml || ""))) throw new Error("허용되지 않는 제어 문자가 포함된 XML입니다");
   const root = parser.parse(xml);
   const channel = root?.rss?.channel || root?.feed || root?.["rdf:RDF"] || {};
-  const entries = array(channel.item || channel.entry).map((entry) => {
+  const rawEntries = array(channel.item || channel.entry);
+  if (rawEntries.length > MAX_FEED_ENTRIES) throw new Error(`피드 항목이 너무 많습니다: ${rawEntries.length}`);
+  const entries = rawEntries.map((entry) => {
     const url = normalizeSourceUrl(firstLink(entry.link) || text(entry.guid) || text(entry.id));
     const explicitCanonical = normalizeSourceUrl(text(entry["dc:identifier"]) || text(entry.canonical) || "");
     const publishedRaw = dateValue(entry);
@@ -194,27 +202,45 @@ export async function fetchArticleMetadata(source, url, { useCache = true } = {}
   return { ...result, fromCache: false };
 }
 
-export async function fetchFeed(source, url, { useCache = true, maxCacheAgeMs = 86400000, retries = 1 } = {}) {
+export async function fetchFeed(source, url, { useCache = true, maxCacheAgeMs = 86400000, retries = 2, force = false } = {}) {
   const cached = useCache ? readFeedCache(url) : null;
   const started = Date.now();
   let lastError = null;
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      const response = await fetch(url, { headers: { "User-Agent": SOURCE_USER_AGENT, Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml" }, redirect: "follow", signal: AbortSignal.timeout(source.timeoutMs) });
-      const body = await response.text();
+      const headers = { "User-Agent": SOURCE_USER_AGENT, Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml" };
+      if (!force && cached?.etag) headers["If-None-Match"] = cached.etag;
+      if (!force && cached?.lastModified) headers["If-Modified-Since"] = cached.lastModified;
+      const response = await fetch(url, { headers, redirect: "follow", signal: AbortSignal.timeout(source.timeoutMs) });
       const contentType = response.headers.get("content-type") || "";
+      const etag = response.headers.get("etag") || cached?.etag || null;
+      const lastModified = response.headers.get("last-modified") || cached?.lastModified || null;
+      if (response.status === 304 && cached) {
+        const result = { ...cached, checkedAt: new Date().toISOString(), status: 304, contentType: cached.contentType || contentType, etag, lastModified, notModified: true, fromCache: true };
+        writeFeedCache(url, result);
+        return result;
+      }
+      const declaredLength = Number(response.headers.get("content-length") || 0);
+      if (declaredLength > MAX_FEED_BYTES) throw new Error(`피드 응답이 너무 큽니다: ${declaredLength} bytes`);
+      const buffer = Buffer.from(await response.arrayBuffer());
+      if (buffer.length > MAX_FEED_BYTES) throw new Error(`피드 응답이 너무 큽니다: ${buffer.length} bytes`);
+      const body = buffer.toString("utf8");
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const parsed = parseFeed(body, response.url || url, source);
       if (!parsed.isFeed) throw new Error("RSS/Atom/XML 형식이 아닙니다");
-      const result = { fetchedAt: new Date().toISOString(), url, finalUrl: response.url || url, status: response.status, contentType, elapsedMs: Date.now() - started, ...parsed };
+      if (!parsed.entries.length && cached?.entries?.length) throw new Error("빈 피드 응답으로 기존 캐시를 덮어쓰지 않습니다");
+      const result = { fetchedAt: new Date().toISOString(), checkedAt: new Date().toISOString(), url, finalUrl: response.url || url, redirected: (response.url || url) !== url, status: response.status, contentType, etag, lastModified, responseBytes: buffer.length, elapsedMs: Date.now() - started, consecutiveFailures: 0, ...parsed };
       writeFeedCache(url, result);
       return { ...result, fromCache: false };
     } catch (error) {
       lastError = error;
-      if (attempt < retries) await new Promise((resolve) => setTimeout(resolve, Math.min(source.rateLimitMs, 2000)));
+      if (attempt < retries) {
+        const backoff = Math.min(8000, Math.max(250, source.rateLimitMs) * (2 ** attempt));
+        await new Promise((resolve) => setTimeout(resolve, backoff));
+      }
     }
   }
-  if (cached && Date.now() - new Date(cached.fetchedAt || 0).getTime() <= maxCacheAgeMs) return { ...cached, fromCache: true, error: lastError?.message || "fetch failed" };
+  if (cached && Date.now() - new Date(cached.fetchedAt || 0).getTime() <= maxCacheAgeMs) return { ...cached, fromCache: true, error: lastError?.message || "fetch failed", lastError: lastError?.message || null };
   throw lastError || new Error("feed fetch failed");
 }
 

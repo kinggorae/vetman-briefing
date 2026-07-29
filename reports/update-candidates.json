@@ -1,0 +1,2624 @@
+{
+  "generatedAt": "2026-07-29T23:10:31.565Z",
+  "counts": {
+    "duplicate": 71,
+    "minor-update": 0,
+    "substantive-update": 0,
+    "correction": 0,
+    "separate-story": 0,
+    "unresolved": 4
+  },
+  "rows": [
+    {
+      "candidateId": "https://drandyroark.com/?p=25079",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "A Cry For Help From the Pathology Department",
+        "sourceUrl": "https://drandyroark.com/cry-for-help-from-pathology",
+        "sourceUrlRaw": "https://drandyroark.com/cry-for-help-from-pathology",
+        "publishedAt": "2026-07-22T20:14:58.000Z",
+        "sourceHash": "d27c8d3818d531a99433846376806e71f026fdfb8733b607cd2e9365f104a9cd",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의병리학 위기, AI 진단 시대 지속 가능한 모델 필요",
+        "date": "2026-07-24",
+        "sourceUrl": "https://drandyroark.com/cry-for-help-from-pathology/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "8",
+          "12",
+          "8",
+          "12"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=25079"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=25019",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "The Dangers of Dutch",
+        "sourceUrl": "https://drandyroark.com/dangers-of-dutch",
+        "sourceUrlRaw": "https://drandyroark.com/dangers-of-dutch",
+        "publishedAt": "2026-07-09T04:00:00.000Z",
+        "sourceHash": "cea7f9726c32b7654b29fcb349e334aa2834582c3730dee47b6f029d07c2182e",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "원격진료 플랫폼 'Dutch'의 위험성 - 수의학적 안전장치 해체 우려",
+        "date": "2026-07-09",
+        "sourceUrl": "https://drandyroark.com/dangers-of-dutch/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=25019"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24961",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Fireworks Phobia Over the Phone",
+        "sourceUrl": "https://drandyroark.com/hof-fireworks-26",
+        "sourceUrlRaw": "https://drandyroark.com/hof-fireworks-26",
+        "publishedAt": "2026-07-02T04:00:00.000Z",
+        "sourceHash": "20ef8d26f1d3de8d0d1d4e42bbdd9319505445c7fad714f939f67aad21a84977",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "폭죽 공포증 전화 상담 — 수의사가 지금 바로 확인해야 할 대응법",
+        "date": "2026-07-02",
+        "sourceUrl": "https://drandyroark.com/hof-fireworks-26/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24961"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24946",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Redefining the DVM Career Path",
+        "sourceUrl": "https://drandyroark.com/redefining-the-dvm-career-path",
+        "sourceUrlRaw": "https://drandyroark.com/redefining-the-dvm-career-path",
+        "publishedAt": "2026-06-29T03:00:00.000Z",
+        "sourceHash": "7105ac5cf36d5c291fccb8d493ddf7a22512c5b3a9c492e1aaa7cfbe25715482",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의사 커리어 경로의 새로운 가능성",
+        "date": "2026-06-29",
+        "sourceUrl": "https://drandyroark.com/redefining-the-dvm-career-path/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "4",
+          "4",
+          "15",
+          "4"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24946"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24956",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Three Areas Every New Vet Should Be Looking At",
+        "sourceUrl": "https://drandyroark.com/three-areas-for-new-vets",
+        "sourceUrlRaw": "https://drandyroark.com/three-areas-for-new-vets",
+        "publishedAt": "2026-06-26T04:00:00.000Z",
+        "sourceHash": "9fc58686e068c74eda5610dd8ce6aeb68884d518824741a9b7b8f4393dda26d3",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "신입 수의사 주목 영역, 고난도 수술·가정방문·난치 케이스",
+        "date": "2026-06-26",
+        "sourceUrl": "https://drandyroark.com/three-areas-for-new-vets/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24956"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24939",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "HDYTT: The Critical Feline Patient",
+        "sourceUrl": "https://drandyroark.com/hdytt-the-critical-feline",
+        "sourceUrlRaw": "https://drandyroark.com/hdytt-the-critical-feline",
+        "publishedAt": "2026-06-25T05:00:00.000Z",
+        "sourceHash": "4ab213d4a1caf13cc200cb772517608c900b2b439ef8c82088660156263527d6",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "중증 외상 고양이 환자, 안정화가 먼저입니다",
+        "date": "2026-06-25",
+        "sourceUrl": "https://drandyroark.com/hdytt-the-critical-feline/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24939"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24931",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "A New Vet Guide to Working with Senior Paraprofessionals",
+        "sourceUrl": "https://drandyroark.com/new-vets-working-with-seniors",
+        "sourceUrlRaw": "https://drandyroark.com/new-vets-working-with-seniors",
+        "publishedAt": "2026-06-16T18:13:32.000Z",
+        "sourceHash": "3f183cf4442bcbb4714a48fa20bb6eff8e9fd4d232633ff11d859da232beeea9",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "신입수의사·경력 수의기사 협업 가이드",
+        "date": "2026-06-17",
+        "sourceUrl": "https://drandyroark.com/new-vets-working-with-seniors/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "23"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24931"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24918",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Three Super-Judgy Things Vets Should Stop Saying (Maybe)",
+        "sourceUrl": "https://drandyroark.com/super-judgy-things",
+        "sourceUrlRaw": "https://drandyroark.com/super-judgy-things",
+        "publishedAt": "2026-06-11T05:00:00.000Z",
+        "sourceHash": "f286e3305110bb2ab973cedd658bcfa685aa760580b408444c169bb58c9500a4",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의사가 사용해선 안 되는 비판적 표현 3가지",
+        "date": "2026-06-11",
+        "sourceUrl": "https://drandyroark.com/super-judgy-things/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "3"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24918"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24914",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Specialists Are Not the Future (and That’s a Good Thing)",
+        "sourceUrl": "https://drandyroark.com/specialists-are-not-the-future",
+        "sourceUrlRaw": "https://drandyroark.com/specialists-are-not-the-future",
+        "publishedAt": "2026-06-04T19:38:26.000Z",
+        "sourceHash": "9f55e6ad84f7f8f21f116c49df0eafe12771c255475ad1f6ace9f1e13a957df3",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의학에서 일반수의의 역할, 전문의보다 중요하다",
+        "date": "2026-06-05",
+        "sourceUrl": "https://drandyroark.com/specialists-are-not-the-future/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "25",
+          "50",
+          "5",
+          "2",
+          "33",
+          "5",
+          "2"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24914"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24896",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Are PIMS Still the Center of Your Practice?",
+        "sourceUrl": "https://drandyroark.com/are-pims-still-the-center",
+        "sourceUrlRaw": "https://drandyroark.com/are-pims-still-the-center",
+        "publishedAt": "2026-05-28T22:51:05.000Z",
+        "sourceHash": "042ebd6249a4eecdbdb669aabdac519bbc21a4c3f36310985f8d39aaf9ea0ea3",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의 PIMS와 AI 워크플로우, 병원 운영의 미래",
+        "date": "2026-05-29",
+        "sourceUrl": "https://drandyroark.com/are-pims-still-the-center/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "17"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24896"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24888",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "There’s Nothing Inherently Wrong With Production Pay",
+        "sourceUrl": "https://drandyroark.com/nothing-inherently-wrong",
+        "sourceUrlRaw": "https://drandyroark.com/nothing-inherently-wrong",
+        "publishedAt": "2026-05-21T17:40:39.000Z",
+        "sourceHash": "67ed899732095fbd154c6e14ecc51574d2a5b5bf3813c769efac5740a5af2a57",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의사 생산성 보상, 진짜 문제점은 무엇인가",
+        "date": "2026-05-22",
+        "sourceUrl": "https://drandyroark.com/nothing-inherently-wrong/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24888"
+      }
+    },
+    {
+      "candidateId": "https://drandyroark.com/?p=24878",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "What We Get Wrong in Anesthesia",
+        "sourceUrl": "https://drandyroark.com/wrong-in-anesthesia",
+        "sourceUrlRaw": "https://drandyroark.com/wrong-in-anesthesia",
+        "publishedAt": "2026-05-21T05:00:00.000Z",
+        "sourceHash": "6c7b992b3ebb50cbc951ffe70081995e0a72c4f813f554b2d9b848e6b1cbc348",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의 마취에서 우리가 잘못 생각하는 것들",
+        "date": "2026-05-21",
+        "sourceUrl": "https://drandyroark.com/wrong-in-anesthesia/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://drandyroark.com/?p=24878"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37198",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "6 Canine Conditions That Benefit From Heat Therapy",
+        "sourceUrl": "https://ivcjournal.com/6-canine-conditions-that-can-benefit-from-heat-therapy",
+        "sourceUrlRaw": "https://ivcjournal.com/6-canine-conditions-that-can-benefit-from-heat-therapy",
+        "publishedAt": "2026-07-23T13:00:16.000Z",
+        "sourceHash": "182cdfa0189efdb542991e5676a86c34a290bedc0eaeb7692a2437e1c6748c6d",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개 열치료, 이 6가지 상황에 효과적",
+        "date": "2026-07-25",
+        "sourceUrl": "https://ivcjournal.com/6-canine-conditions-that-can-benefit-from-heat-therapy/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "6",
+          "6",
+          "6 "
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37198"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37182",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "5 Ways Veterinary Professionals Can Improve Client Compliance",
+        "sourceUrl": "https://ivcjournal.com/5-ways-veterinary-professionals-can-improve-client-compliance",
+        "sourceUrlRaw": "https://ivcjournal.com/5-ways-veterinary-professionals-can-improve-client-compliance",
+        "publishedAt": "2026-07-22T17:00:14.000Z",
+        "sourceHash": "5dd7644d37506ceb732dcf98962c1d1cb6904eb9ce15bdfc72862f39b57f7d8b",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의사 고객 준수율 높이는 5가지 방법",
+        "date": "2026-07-23",
+        "sourceUrl": "https://ivcjournal.com/5-ways-veterinary-professionals-can-improve-client-compliance/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "5",
+          "2",
+          "5 "
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37182"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37184",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Nutritional Testing for Dogs and Cats: Ascertain if Patients Are Getting the Right Nourishment",
+        "sourceUrl": "https://ivcjournal.com/nutritional-testing-for-dogs-and-cats-ascertain-if-patients-are-getting-the-right-nourishment",
+        "sourceUrlRaw": "https://ivcjournal.com/nutritional-testing-for-dogs-and-cats-ascertain-if-patients-are-getting-the-right-nourishment",
+        "publishedAt": "2026-07-22T13:00:23.000Z",
+        "sourceHash": "230f7c38925d914d49a2785b85ad9c1debc40a619ac64adb8aeb388877065f29",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개 고양이 영양 검사, 미량영양소 결핍 확인 가능",
+        "date": "2026-07-23",
+        "sourceUrl": "https://ivcjournal.com/nutritional-testing-for-dogs-and-cats-ascertain-if-patients-are-getting-the-right-nourishment/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37184"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37122",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Unlocking the Canine Gut: A New Era in Dog Microbiome Research",
+        "sourceUrl": "https://ivcjournal.com/unlocking-the-canine-gut-a-new-era-in-dog-microbiome-research",
+        "sourceUrlRaw": "https://ivcjournal.com/unlocking-the-canine-gut-a-new-era-in-dog-microbiome-research",
+        "publishedAt": "2026-07-21T13:00:44.000Z",
+        "sourceHash": "80f3675be0adc9a319b47d97cb5569b0e2427231603f58a5c8b385f2ff1a0ff6",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개 장 미생물군집 연구 새 시대 열었다",
+        "date": "2026-07-22",
+        "sourceUrl": "https://ivcjournal.com/unlocking-the-canine-gut-a-new-era-in-dog-microbiome-research/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "25"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37122"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37138",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Structured Therapeutic Exercise Significantly Improves Joint Mobility and Muscle Mass in Dogs",
+        "sourceUrl": "https://ivcjournal.com/structured-therapeutic-exercise-significantly-improves-joint-mobility-and-muscle-mass-in-dogs",
+        "sourceUrlRaw": "https://ivcjournal.com/structured-therapeutic-exercise-significantly-improves-joint-mobility-and-muscle-mass-in-dogs",
+        "publishedAt": "2026-07-17T18:00:56.000Z",
+        "sourceHash": "a841fdfba4bd120a4a2c2e368ca3ca836acb90871126ac333656c0a21d7f7c57",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개의 관절염, 치료적 운동으로 관절 가동성과 근육량 개선",
+        "date": "2026-07-20",
+        "sourceUrl": "https://ivcjournal.com/structured-therapeutic-exercise-significantly-improves-joint-mobility-and-muscle-mass-in-dogs/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37138"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37133",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Quorum Sensing Modulators: From Bacterial Signaling to Gut Health and Performance",
+        "sourceUrl": "https://ivcjournal.com/quorum-sensing-modulators-from-bacterial-signaling-to-gut-health-and-performance",
+        "sourceUrlRaw": "https://ivcjournal.com/quorum-sensing-modulators-from-bacterial-signaling-to-gut-health-and-performance",
+        "publishedAt": "2026-07-16T14:30:09.000Z",
+        "sourceHash": "7fb6423a132f6a5c62a26818b3c8cf8cde38f30c074c95b4f8ee68f092e05300",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개에서 쿼럼 센싱 조절제: 세균 신호 차단을 통한 장 건강 관리",
+        "date": "2026-07-20",
+        "sourceUrl": "https://ivcjournal.com/quorum-sensing-modulators-from-bacterial-signaling-to-gut-health-and-performance/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "3"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37133"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37125",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Nutraceuticals for Canine Cognitive Dysfunction",
+        "sourceUrl": "https://ivcjournal.com/nutraceutical-protocols-for-canine-cognitive-dysfunction",
+        "sourceUrlRaw": "https://ivcjournal.com/nutraceutical-protocols-for-canine-cognitive-dysfunction",
+        "publishedAt": "2026-07-15T19:00:47.000Z",
+        "sourceHash": "54fcee31ade6271743de3fcb9711a5704dd8f7dcc3cf2cbb2eecf0bb4459fb44",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "노령개 인지기능장애, 영양보충제로 관리한다",
+        "date": "2026-07-20",
+        "sourceUrl": "https://ivcjournal.com/nutraceutical-protocols-for-canine-cognitive-dysfunction/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "3",
+          "3",
+          "3"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37125"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37117",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Gut Microbiome Modulation in Dogs to Reduce Antimicrobial Use and AMR",
+        "sourceUrl": "https://ivcjournal.com/gut-microbiome-modulation-in-dogs-to-reduce-antimicrobial-use-and-amr",
+        "sourceUrlRaw": "https://ivcjournal.com/gut-microbiome-modulation-in-dogs-to-reduce-antimicrobial-use-and-amr",
+        "publishedAt": "2026-07-10T13:00:59.000Z",
+        "sourceHash": "a799da540df15b26bf5228f6a0e7641764378f6fdf8e24d891b0ef372110b6ac",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개 미생물군집 조절로 항생제 의존도 낮추기",
+        "date": "2026-07-20",
+        "sourceUrl": "https://ivcjournal.com/gut-microbiome-modulation-in-dogs-to-reduce-antimicrobial-use-and-amr/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "70",
+          "70"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37117"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37113",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Integrative Rehabilitation in Canine Cervical Disc Disease: A Case Report",
+        "sourceUrl": "https://ivcjournal.com/integrative-rehabilitation-in-canine-cervical-disc-disease-a-case-report",
+        "sourceUrlRaw": "https://ivcjournal.com/integrative-rehabilitation-in-canine-cervical-disc-disease-a-case-report",
+        "publishedAt": "2026-07-09T13:00:14.000Z",
+        "sourceHash": "ea817efdb4c387ff2209d071eba241cc534c8e91bb1533418e82f3da6e09427e",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개 경추 추간판 질환 통합 재활치료 사례 – 외과와 한의학 협업의 가능성",
+        "date": "2026-07-09",
+        "sourceUrl": "https://ivcjournal.com/integrative-rehabilitation-in-canine-cervical-disc-disease-a-case-report/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "5",
+          "17",
+          "5"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37113"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37108",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "7 Integrative Approaches to Managing Stress-Induced Urinary Issues in Feline Patients",
+        "sourceUrl": "https://ivcjournal.com/7-integrative-approaches-to-managing-stress-induced-urinary-issues-in-feline-patients",
+        "sourceUrlRaw": "https://ivcjournal.com/7-integrative-approaches-to-managing-stress-induced-urinary-issues-in-feline-patients",
+        "publishedAt": "2026-07-07T14:30:07.000Z",
+        "sourceHash": "b474c39b8bee44602e64733f3d96f1031d6e680d7bbc567c5bc0cc4dc47c6b53",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 스트레스성 비뇨기 질환 관리 통합치료 7가지 접근법",
+        "date": "2026-07-07",
+        "sourceUrl": "https://ivcjournal.com/7-integrative-approaches-to-managing-stress-induced-urinary-issues-in-feline-patients/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "7",
+          "7 "
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37108"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=36681",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "3 Herbs for Canine Autoimmune Skin Conditions",
+        "sourceUrl": "https://ivcjournal.com/3-promising-herbs-for-canine-autoimmune-skin-conditions",
+        "sourceUrlRaw": "https://ivcjournal.com/3-promising-herbs-for-canine-autoimmune-skin-conditions",
+        "publishedAt": "2026-07-01T13:00:34.000Z",
+        "sourceHash": "334959b280b22917fd8e50e464fb722e72405dc99f3f9bae1d60a33096f5c7c4",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개 자가면역 피부질환에 사용되는 허브 3가지",
+        "date": "2026-07-01",
+        "sourceUrl": "https://ivcjournal.com/3-promising-herbs-for-canine-autoimmune-skin-conditions/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "3",
+          "3",
+          "3 "
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=36681"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37102",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Adsc-Enriched Secretome as an Adjunct in TPLO Recovery and Canine OA Management",
+        "sourceUrl": "https://ivcjournal.com/adsc-enriched-secretome-a-promising-adjunct-in-tplo-recovery-and-canine-oa-management",
+        "sourceUrlRaw": "https://ivcjournal.com/adsc-enriched-secretome-a-promising-adjunct-in-tplo-recovery-and-canine-oa-management",
+        "publishedAt": "2026-06-30T13:00:20.000Z",
+        "sourceHash": "97033b92ec949c6138cade271e9a38d203e16b783ae6c561724a22cf71e46af9",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개 전십자 인대 질환에서 ADSC Enriched Secretome의 TPLO 회복 보조 효과",
+        "date": "2026-06-30",
+        "sourceUrl": "https://ivcjournal.com/adsc-enriched-secretome-a-promising-adjunct-in-tplo-recovery-and-canine-oa-management/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37102"
+      }
+    },
+    {
+      "candidateId": "https://ivcjournal.com/?p=37099",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Promising Phytochemicals and Plant Extracts in Canine and Feline Mammary Tumors",
+        "sourceUrl": "https://ivcjournal.com/phytochemicals-and-plant-extracts-in-canine-and-feline-mammary-tumors-emerging-insights-for-veterinary-oncology",
+        "sourceUrlRaw": "https://ivcjournal.com/phytochemicals-and-plant-extracts-in-canine-and-feline-mammary-tumors-emerging-insights-for-veterinary-oncology",
+        "publishedAt": "2026-06-29T13:00:19.000Z",
+        "sourceHash": "4051f17c8c92ad76e0f8b1e3505e036cf6af8806a8d38709e2f0217b3820929d",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개·고양이 유방종양, 식물 화학물질 연구 동향",
+        "date": "2026-06-29",
+        "sourceUrl": "https://ivcjournal.com/phytochemicals-and-plant-extracts-in-canine-and-feline-mammary-tumors-emerging-insights-for-veterinary-oncology/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://ivcjournal.com/?p=37099"
+      }
+    },
+    {
+      "candidateId": "https://www.sciencedaily.com/releases/2026/03/260325005924.htm",
+      "classification": "unresolved",
+      "candidate": {
+        "title": "Scientists open a million-year-old time capsule beneath New Zealand",
+        "sourceUrl": "https://www.sciencedaily.com/releases/2026/03/260325005924.htm",
+        "sourceUrlRaw": "https://www.sciencedaily.com/releases/2026/03/260325005924.htm",
+        "publishedAt": "2026-03-26T04:58:43.000Z",
+        "sourceHash": "bab812cdf319a2ca4f0969cc805afef7b88e7b18181d0de7fc6ddcf3741844d0",
+        "contentHash": null
+      },
+      "existing": null,
+      "comparison": {
+        "titleSimilarity": 0.158,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": null
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.sciencedaily.com/releases/2026/03/260325005924.htm"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarybusiness.com/?p=79902",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Veterinary Industry News",
+        "sourceUrl": "https://todaysveterinarybusiness.com/veterinary-news-07272026",
+        "sourceUrlRaw": "https://todaysveterinarybusiness.com/veterinary-news-07272026",
+        "publishedAt": "2026-07-27T16:54:50.000Z",
+        "sourceHash": "85aabf726b907b61f197bdd770e8bcef406c437f451901f614b1226db87e36fe",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 갑상선기능항진증 치료제 세계 최초.제네릭 출시",
+        "date": "2026-07-23",
+        "sourceUrl": "https://todaysveterinarybusiness.com/veterinary-news-07202026/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "2.5mg",
+          "5mg",
+          "2.5mg",
+          "5mg"
+        ],
+        "sourceDateDeltaDays": 6.799768518518518
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarybusiness.com/?p=79902"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarybusiness.com/?p=79896",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Nutrition Resource Helps Veterinarians Choose Therapeutic Diets",
+        "sourceUrl": "https://todaysveterinarybusiness.com/nutrition-resource-helps-veterinarians-choose-therapeutic-diets",
+        "sourceUrlRaw": "https://todaysveterinarybusiness.com/nutrition-resource-helps-veterinarians-choose-therapeutic-diets",
+        "publishedAt": "2026-07-23T22:40:11.000Z",
+        "sourceHash": "d3f6708c973ae983f4af00e1ebdd290116bbd0d4a23ffb6b2ef2ac3d5dc07c73",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "치료식 선택 도우미 도구, 2600명 이상 수의사 사용 중",
+        "date": "2026-07-25",
+        "sourceUrl": "https://todaysveterinarybusiness.com/nutrition-resource-helps-veterinarians-choose-therapeutic-diets/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "2600",
+          "2600",
+          "2600",
+          "2600"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarybusiness.com/?p=79896"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarybusiness.com/?p=79890",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Veterinary Industry News",
+        "sourceUrl": "https://todaysveterinarybusiness.com/veterinary-news-07202026",
+        "sourceUrlRaw": "https://todaysveterinarybusiness.com/veterinary-news-07202026",
+        "publishedAt": "2026-07-20T21:43:10.000Z",
+        "sourceHash": "ae3e55162e25b70826d24ed4e3af1feafba2b39a0ca1849d75b5ff94269d95f0",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 갑상선기능항진증 치료제 세계 최초.제네릭 출시",
+        "date": "2026-07-23",
+        "sourceUrl": "https://todaysveterinarybusiness.com/veterinary-news-07202026/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "2.5mg",
+          "5mg",
+          "2.5mg",
+          "5mg"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarybusiness.com/?p=79890"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarybusiness.com/?p=79882",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Veterinary Industry News",
+        "sourceUrl": "https://todaysveterinarybusiness.com/veterinary-news-07142026",
+        "sourceUrlRaw": "https://todaysveterinarybusiness.com/veterinary-news-07142026",
+        "publishedAt": "2026-07-14T13:16:07.000Z",
+        "sourceHash": "e5245981fcd0fe956db87df926f2a5d4cff3a59226a16dab80c7a328283c3673",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 갑상선기능항진증 치료제 세계 최초.제네릭 출시",
+        "date": "2026-07-23",
+        "sourceUrl": "https://todaysveterinarybusiness.com/veterinary-news-07202026/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "2.5mg",
+          "5mg",
+          "2.5mg",
+          "5mg"
+        ],
+        "sourceDateDeltaDays": 6.352118055555556
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarybusiness.com/?p=79882"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarybusiness.com/?p=79878",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Pet Owners Underestimate Heartworm Risk",
+        "sourceUrl": "https://todaysveterinarybusiness.com/pet-owners-underestimate-heartworm-risk",
+        "sourceUrlRaw": "https://todaysveterinarybusiness.com/pet-owners-underestimate-heartworm-risk",
+        "publishedAt": "2026-07-11T18:11:45.000Z",
+        "sourceHash": "2f6698eca7ca9f99ef639d0a3890c2dfc05fd6c061ed1ffc5bbca75c4132859d",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개구충 위험 북상... 예방 미흡한 반려동물 증가 우려",
+        "date": "2026-07-12",
+        "sourceUrl": "https://todaysveterinarybusiness.com/pet-owners-underestimate-heartworm-risk/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "5",
+          "200",
+          "2020",
+          "2025",
+          "200",
+          "94",
+          "70",
+          "62",
+          "79",
+          "4",
+          "2020",
+          "2025",
+          "200",
+          "79",
+          "4",
+          "70"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarybusiness.com/?p=79878"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarybusiness.com/?p=79874",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "New Tool Evaluates Feline Well-Being",
+        "sourceUrl": "https://todaysveterinarybusiness.com/new-tool-evaluates-feline-well-being",
+        "sourceUrlRaw": "https://todaysveterinarybusiness.com/new-tool-evaluates-feline-well-being",
+        "publishedAt": "2026-07-08T15:32:50.000Z",
+        "sourceHash": "0e631eb7cc852a818dc4bd72b6d4b0f763d7e52aaf095a3d5faa6fd7774208da",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 삶의 질 평가 도구 FelQoL 개발",
+        "date": "2026-07-09",
+        "sourceUrl": "https://todaysveterinarybusiness.com/new-tool-evaluates-feline-well-being/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "1,324",
+          "7",
+          "2",
+          "1,324",
+          "7"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarybusiness.com/?p=79874"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarybusiness.com/?p=79847",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Why Veterinary Software Should Embrace Open APIs",
+        "sourceUrl": "https://todaysveterinarybusiness.com/why-veterinary-software-should-embrace-open-apis",
+        "sourceUrlRaw": "https://todaysveterinarybusiness.com/why-veterinary-software-should-embrace-open-apis",
+        "publishedAt": "2026-07-07T20:56:23.000Z",
+        "sourceHash": "e43b6c98dbf7334463a9770133f82faf3636baeb6b97044e75f4fbb7a7999c71",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개방형 API가 동물 병원 소프트웨어의 미래를 바꾼다",
+        "date": "2026-07-08",
+        "sourceUrl": "https://todaysveterinarybusiness.com/why-veterinary-software-should-embrace-open-apis/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarybusiness.com/?p=79847"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarybusiness.com/?p=79836",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "How to Perform a Veterinary Software Audit in 90 Minutes",
+        "sourceUrl": "https://todaysveterinarybusiness.com/how-to-perform-a-veterinary-software-audit-in-90-minutes",
+        "sourceUrlRaw": "https://todaysveterinarybusiness.com/how-to-perform-a-veterinary-software-audit-in-90-minutes",
+        "publishedAt": "2026-07-07T20:51:12.000Z",
+        "sourceHash": "5bcf7b00ce07b4dc14379b17bedb3bdf06c0ced5ae179d537042bacb842b1e8a",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "동물병원 소프트웨어 감사, 90분 안에 자가 점검하는 법",
+        "date": "2026-07-08",
+        "sourceUrl": "https://todaysveterinarybusiness.com/how-to-perform-a-veterinary-software-audit-in-90-minutes/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "90",
+          "90",
+          "8",
+          "10",
+          "90",
+          "4",
+          "3",
+          "5",
+          "60",
+          "90",
+          "90",
+          "3",
+          "5",
+          "60",
+          "90",
+          "90 "
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarybusiness.com/?p=79836"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarynurse.com/?p=128785",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "A Step-by-Step Guide to Intravenous Catheter Placement in the Equine Patient",
+        "sourceUrl": "https://todaysveterinarynurse.com/equine-medicine/a-step-by-step-guide-to-intravenous-catheter-placement-in-the-equine-patient",
+        "sourceUrlRaw": "https://todaysveterinarynurse.com/equine-medicine/a-step-by-step-guide-to-intravenous-catheter-placement-in-the-equine-patient",
+        "publishedAt": "2026-06-25T19:03:16.000Z",
+        "sourceHash": "dbf77f4b236e414a80f1cc4f4508a934cdfdaab257065ef0f75210363b37711e",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "말 정맥 카테터 삽입 완벽 가이드: 합병증 예방을 위한 실천적 단계",
+        "date": "2026-06-26",
+        "sourceUrl": "https://todaysveterinarynurse.com/equine-medicine/a-step-by-step-guide-to-intravenous-catheter-placement-in-the-equine-patient/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "14",
+          "10",
+          "12",
+          "3",
+          "2",
+          "1",
+          "3",
+          "1",
+          "3",
+          "3",
+          "2"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarynurse.com/?p=128785"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarypractice.com/?p=37995",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "CHCM vs MCHC: Why Measured Hemoglobin Matters",
+        "sourceUrl": "https://todaysveterinarypractice.com/chcm-vs-mchc-why-measured-hemoglobin-matters",
+        "sourceUrlRaw": "https://todaysveterinarypractice.com/chcm-vs-mchc-why-measured-hemoglobin-matters",
+        "publishedAt": "2026-07-08T18:23:23.000Z",
+        "sourceHash": "49b24361ed09770ec189c56c34f14af2945f089b9247d2ce33679b77d790363c",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "빈혈 검사, MCHC만으로는 부족하다-CHCM의 임상적 가치",
+        "date": "2026-07-09",
+        "sourceUrl": "https://todaysveterinarypractice.com/chcm-vs-mchc-why-measured-hemoglobin-matters/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "7",
+          "28.1"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarypractice.com/?p=37995"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarypractice.com/?p=37988",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Breaking the Barriers to Positive In-Clinic Nutrition Conversations",
+        "sourceUrl": "https://todaysveterinarypractice.com/personal-professional-development/breaking-the-barriers-to-positive-in-clinic-nutrition-conversations",
+        "sourceUrlRaw": "https://todaysveterinarypractice.com/personal-professional-development/breaking-the-barriers-to-positive-in-clinic-nutrition-conversations",
+        "publishedAt": "2026-07-07T19:54:45.000Z",
+        "sourceHash": "0109421a0bc4d48aea96d042c1627f6737383f4b5e89b4bc7a8be080664766af",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의사 영양 상담, 실제로 얼마나 이루어질까",
+        "date": "2026-07-08",
+        "sourceUrl": "https://todaysveterinarypractice.com/personal-professional-development/breaking-the-barriers-to-positive-in-clinic-nutrition-conversations/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "16",
+          "561",
+          "25",
+          "561",
+          "16",
+          "25",
+          "561"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarypractice.com/?p=37988"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarypractice.com/?p=37977",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Optimizing Treatment for Canine Osteoarthritis: Expert Insights",
+        "sourceUrl": "https://todaysveterinarypractice.com/sponsored/optimizing-treatment-for-canine-osteoarthritis-expert-insights",
+        "sourceUrlRaw": "https://todaysveterinarypractice.com/sponsored/optimizing-treatment-for-canine-osteoarthritis-expert-insights",
+        "publishedAt": "2026-06-30T20:21:56.000Z",
+        "sourceHash": "b31c2e28fa823cbc425a401adafcb6b01bc63bdf5d6384fe06ba23e14b33cecd",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개 관절염 치료 새로운 선택지...관절 내 방사성동위원소 주사",
+        "date": "2026-07-01",
+        "sourceUrl": "https://todaysveterinarypractice.com/sponsored/optimizing-treatment-for-canine-osteoarthritis-expert-insights/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "1",
+          "60",
+          "1",
+          "1",
+          "60"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarypractice.com/?p=37977"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarypractice.com/?p=37939",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "From Salad Dressing to Lifesaving Antidote: The Unexpected Path of ILEs",
+        "sourceUrl": "https://todaysveterinarypractice.com/personal-professional-development/from-salad-dressing-to-lifesaving-antidote-the-unexpected-path-of-iles",
+        "sourceUrlRaw": "https://todaysveterinarypractice.com/personal-professional-development/from-salad-dressing-to-lifesaving-antidote-the-unexpected-path-of-iles",
+        "publishedAt": "2026-06-18T18:56:10.000Z",
+        "sourceHash": "d554331078f845e4696b15b3af96d3194f45388758cc0dd99f8db521c8af0d73",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "통조림 Dressing에서 생명 구하는 해독제로, 정맥 내 지방 유제 치료의 탄생",
+        "date": "2026-06-19",
+        "sourceUrl": "https://todaysveterinarypractice.com/personal-professional-development/from-salad-dressing-to-lifesaving-antidote-the-unexpected-path-of-iles/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "1962",
+          "1998",
+          "2006",
+          "1998"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarypractice.com/?p=37939"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarypractice.com/?p=37920",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Continuous Glucose Monitor Use in Small Animal Medicine",
+        "sourceUrl": "https://todaysveterinarypractice.com/endocrinology/continuous-glucose-monitor-use-in-small-animal-medicine",
+        "sourceUrlRaw": "https://todaysveterinarypractice.com/endocrinology/continuous-glucose-monitor-use-in-small-animal-medicine",
+        "publishedAt": "2026-06-18T18:55:30.000Z",
+        "sourceHash": "f25c9b4327bbc95b0781a8ee9e177b5e8b0a2fcd9f17209f94e00494a81aab91",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개의당뇨병 관리에서 연속혈당측정기 활용 최신 동향",
+        "date": "2026-06-19",
+        "sourceUrl": "https://todaysveterinarypractice.com/endocrinology/continuous-glucose-monitor-use-in-small-animal-medicine/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "14"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarypractice.com/?p=37920"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarypractice.com/?p=37909",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Diagnosis and Treatment of Lungworms in Dogs",
+        "sourceUrl": "https://todaysveterinarypractice.com/parasitology/diagnosis-and-treatment-of-lungworms-in-dogs",
+        "sourceUrlRaw": "https://todaysveterinarypractice.com/parasitology/diagnosis-and-treatment-of-lungworms-in-dogs",
+        "publishedAt": "2026-06-18T18:55:19.000Z",
+        "sourceHash": "a4a670ecf7ea0944054f5c0a3805f8c10cbd3aa731e59580bd6edb4f3692b2a6",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개 폐충감염의 진단과 치료: 임상에서 반드시 고려해야 할 원인",
+        "date": "2026-06-19",
+        "sourceUrl": "https://todaysveterinarypractice.com/parasitology/diagnosis-and-treatment-of-lungworms-in-dogs/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "0.3",
+          "0.04",
+          "20.8",
+          "20"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarypractice.com/?p=37909"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarypractice.com/?p=37902",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Nutritional Management of Uremic Toxin Accumulation in Cats with Chronic Kidney Disease",
+        "sourceUrl": "https://todaysveterinarypractice.com/nutrition/nutritional-management-of-uremic-toxin-accumulation-in-cats-with-chronic-kidney-disease",
+        "sourceUrlRaw": "https://todaysveterinarypractice.com/nutrition/nutritional-management-of-uremic-toxin-accumulation-in-cats-with-chronic-kidney-disease",
+        "publishedAt": "2026-06-18T18:54:55.000Z",
+        "sourceHash": "3a2634d34f77f11f992c909267eeb700633419578da327817e112474dac71d80",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 만성질환에서 장유래 독소 관리와 영양 전략",
+        "date": "2026-06-19",
+        "sourceUrl": "https://todaysveterinarypractice.com/nutrition/nutritional-management-of-uremic-toxin-accumulation-in-cats-with-chronic-kidney-disease/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "3",
+          "8",
+          "5.3",
+          "100"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarypractice.com/?p=37902"
+      }
+    },
+    {
+      "candidateId": "https://todaysveterinarypractice.com/?p=37886",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Decoding Canine Protein-Losing Enteropathy",
+        "sourceUrl": "https://todaysveterinarypractice.com/gastroenterology/decoding-canine-protein-losing-enteropathy",
+        "sourceUrlRaw": "https://todaysveterinarypractice.com/gastroenterology/decoding-canine-protein-losing-enteropathy",
+        "publishedAt": "2026-06-18T18:54:09.000Z",
+        "sourceHash": "afc512996a86a902bd0efe46d40e131d95c724892d03321d25722c7f14fca269",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개의 단백질 손실 장염, 조기 진단이 생사를 가른다",
+        "date": "2026-06-19",
+        "sourceUrl": "https://todaysveterinarypractice.com/gastroenterology/decoding-canine-protein-losing-enteropathy/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "54"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://todaysveterinarypractice.com/?p=37886"
+      }
+    },
+    {
+      "candidateId": "5c2aec4b1137a6d8849debf1:6512489d8040f03c02fce8a0:6a31d9b064969441a997ec99",
+      "classification": "unresolved",
+      "candidate": {
+        "title": "New study explores potential cross-species spread of chronic wasting disease",
+        "sourceUrl": "https://www.myvetcandy.com/news/2026/6/16/new-study-explores-potential-cross-species-spread-of-chronic-wasting-disease",
+        "sourceUrlRaw": "https://www.myvetcandy.com/news/2026/6/16/new-study-explores-potential-cross-species-spread-of-chronic-wasting-disease",
+        "publishedAt": "2026-06-16T23:18:08.000Z",
+        "sourceHash": "fd2f03f58e79c5bbd73e1868918b7f8585fd87895f4c58e6bad87ad39c3f4535",
+        "contentHash": null
+      },
+      "existing": null,
+      "comparison": {
+        "titleSimilarity": 0.273,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": null
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- 5c2aec4b1137a6d8849debf1:6512489d8040f03c02fce8a0:6a31d9b064969441a997ec99"
+      }
+    },
+    {
+      "candidateId": "5c2aec4b1137a6d8849debf1:6512489d8040f03c02fce8a0:69e1af777535cf57d31d4935",
+      "classification": "unresolved",
+      "candidate": {
+        "title": "Elephant genomes reveal a past of continental connectivity and a future of increasing isolation",
+        "sourceUrl": "https://www.myvetcandy.com/news/2026/4/16/elephant-genomes-reveal-a-past-of-continental-connectivity-and-a-future-of-increasing-isolation",
+        "sourceUrlRaw": "https://www.myvetcandy.com/news/2026/4/16/elephant-genomes-reveal-a-past-of-continental-connectivity-and-a-future-of-increasing-isolation",
+        "publishedAt": "2026-04-17T03:56:39.000Z",
+        "sourceHash": "984c72f7a9e6322da0c2c48308861d07fdecb01965b75ac087e45d8641f6a974",
+        "contentHash": null
+      },
+      "existing": null,
+      "comparison": {
+        "titleSimilarity": 0.182,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": null
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- 5c2aec4b1137a6d8849debf1:6512489d8040f03c02fce8a0:69e1af777535cf57d31d4935"
+      }
+    },
+    {
+      "candidateId": "https://www.vetpracticemag.com.au/?p=38371",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "SA birding community answers call to form nation-leading bird flu response collaboration",
+        "sourceUrl": "https://www.vetpracticemag.com.au/sa-birding-community-answers-call-to-form-nation-leading-bird-flu-response-collaboration",
+        "sourceUrlRaw": "https://www.vetpracticemag.com.au/sa-birding-community-answers-call-to-form-nation-leading-bird-flu-response-collaboration",
+        "publishedAt": "2026-07-28T23:00:00.000Z",
+        "sourceHash": "9e64ecd73352da62a85746b45688d2958dd30ba723216ebd2c4a7401952c012c",
+        "contentHash": null
+      },
+      "existing": {
+        "id": "v1_aa6becfdbbcbbfdd",
+        "title": "사우스오스트레일리아, 조객 참여 조류인플루엔자 대응 훈련 프로그램 추진",
+        "date": "2026-07-29",
+        "sourceUrl": "https://www.vetpracticemag.com.au/sa-birding-community-answers-call-to-form-nation-leading-bird-flu-response-collaboration/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "3",
+          "3"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.vetpracticemag.com.au/?p=38371"
+      }
+    },
+    {
+      "candidateId": "https://www.vetpracticemag.com.au/?p=38365",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Feline Guardians announces US nonprofit status",
+        "sourceUrl": "https://www.vetpracticemag.com.au/feline-guardians-announces-us-nonprofit-status",
+        "sourceUrlRaw": "https://www.vetpracticemag.com.au/feline-guardians-announces-us-nonprofit-status",
+        "publishedAt": "2026-07-26T23:00:00.000Z",
+        "sourceHash": "cd72a203c0d8c196f8236c4f62981695a1f3cf879c4dab238000459bff126eb8",
+        "contentHash": null
+      },
+      "existing": {
+        "id": "v1_f9a292db21dfdb30",
+        "title": "고양이 학대 방지 단체, 미국서 비영리단체 지위 획득",
+        "date": "2026-07-27",
+        "sourceUrl": "https://www.vetpracticemag.com.au/feline-guardians-announces-us-nonprofit-status/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "501",
+          "3",
+          "3",
+          "6",
+          "501",
+          "3",
+          "3",
+          "6"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.vetpracticemag.com.au/?p=38365"
+      }
+    },
+    {
+      "candidateId": "https://www.vetpracticemag.com.au/?p=38347",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Hidden health risks found in New York City&#8217;s free-roaming cats",
+        "sourceUrl": "https://www.vetpracticemag.com.au/hidden-health-risks-found-in-new-york-citys-free-roaming-cats",
+        "sourceUrlRaw": "https://www.vetpracticemag.com.au/hidden-health-risks-found-in-new-york-citys-free-roaming-cats",
+        "publishedAt": "2026-07-21T22:22:23.000Z",
+        "sourceHash": "ac9272f53262750af4917f3a0bb158e4a0b86816a13afdb7ed1d475e1de11f98",
+        "contentHash": null
+      },
+      "existing": {
+        "id": "v1_f46575b98c392986",
+        "title": "NYC 자유방목 고양이 57% 기생충 감염…인간 전염 위험",
+        "date": "2026-07-26",
+        "sourceUrl": "https://www.vetpracticemag.com.au/hidden-health-risks-found-in-new-york-citys-free-roaming-cats/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 0.917,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "57",
+          "87",
+          "57.5",
+          "1",
+          "87",
+          "57.5",
+          "1"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.vetpracticemag.com.au/?p=38347"
+      }
+    },
+    {
+      "candidateId": "https://www.vetpracticemag.com.au/?p=38186",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Why pet adoption rates are in decline",
+        "sourceUrl": "https://www.vetpracticemag.com.au/why-pet-adoption-rates-are-in-decline",
+        "sourceUrlRaw": "https://www.vetpracticemag.com.au/why-pet-adoption-rates-are-in-decline",
+        "publishedAt": "2026-07-19T23:34:58.000Z",
+        "sourceHash": "3c4a5c3d045002b70a1b09b7c8244730834c67a42c7eb0cb1c50addc6cd25ca1",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "호주 동물 입양률 40% 급락…주거 불안정 주요 원인",
+        "date": "2026-07-21",
+        "sourceUrl": "https://www.vetpracticemag.com.au/why-pet-adoption-rates-are-in-decline/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "40",
+          "6",
+          "90",
+          "50",
+          "850",
+          "20",
+          "100",
+          "6",
+          "90",
+          "50",
+          "10",
+          "2020",
+          "2025",
+          "7",
+          "4,664",
+          "4,100",
+          "6",
+          "90",
+          "50",
+          "10"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.vetpracticemag.com.au/?p=38186"
+      }
+    },
+    {
+      "candidateId": "https://www.vetpracticemag.com.au/?p=38350",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Assessing lab animal welfare with AI",
+        "sourceUrl": "https://www.vetpracticemag.com.au/assessing-lab-animal-welfare-with-ai",
+        "sourceUrlRaw": "https://www.vetpracticemag.com.au/assessing-lab-animal-welfare-with-ai",
+        "publishedAt": "2026-07-19T23:33:24.000Z",
+        "sourceHash": "7113d6d02ab6d5d6de2f27116cd99ab701a2854c5d1e117040f2fa94740cf8ef",
+        "contentHash": null
+      },
+      "existing": {
+        "id": "v1_3f30019162c8a461",
+        "title": "AI로 실험쥐 건강 이상 5일 전에 감지",
+        "date": "2026-07-26",
+        "sourceUrl": "https://www.vetpracticemag.com.au/assessing-lab-animal-welfare-with-ai/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "5",
+          "24",
+          "3",
+          "5",
+          "50",
+          "24",
+          "3",
+          "5",
+          "50"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.vetpracticemag.com.au/?p=38350"
+      }
+    },
+    {
+      "candidateId": "https://www.vetpracticemag.com.au/?p=38298",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Shorter front-leg strides can be an early warning sign of dementia in senior dogs",
+        "sourceUrl": "https://www.vetpracticemag.com.au/shorter-front-leg-strides-can-be-an-early-warning-sign-of-dementia-in-senior-dogs",
+        "sourceUrlRaw": "https://www.vetpracticemag.com.au/shorter-front-leg-strides-can-be-an-early-warning-sign-of-dementia-in-senior-dogs",
+        "publishedAt": "2026-07-12T22:43:13.000Z",
+        "sourceHash": "6e21b0ec3e398d37f74cd9d63c5235e83876759fa71c57191691b4d6f384a4b4",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "노령견 전지 보폭 감소, 치매 조기 경고 신호 가능성",
+        "date": "2026-07-20",
+        "sourceUrl": "https://www.vetpracticemag.com.au/shorter-front-leg-strides-can-be-an-early-warning-sign-of-dementia-in-senior-dogs/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "88",
+          "6",
+          "3",
+          "12.7",
+          "75",
+          "5",
+          "10",
+          "1.2",
+          "10",
+          "1.2"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.vetpracticemag.com.au/?p=38298"
+      }
+    },
+    {
+      "candidateId": "https://www.vetpracticemag.com.au/?p=38195",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "The importance of pet enrichment",
+        "sourceUrl": "https://www.vetpracticemag.com.au/the-importance-of-pet-enrichment",
+        "sourceUrlRaw": "https://www.vetpracticemag.com.au/the-importance-of-pet-enrichment",
+        "publishedAt": "2026-07-12T22:42:38.000Z",
+        "sourceHash": "e31d279a7ec3019cd832b0d46ba424478a857d83633fa873076fa9c46f7ab524",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "반려동물 Enrichment의 모든 것: 5가지 범주로 이해하는 동물 복지",
+        "date": "2026-07-20",
+        "sourceUrl": "https://www.vetpracticemag.com.au/the-importance-of-pet-enrichment/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "5",
+          "5",
+          "530",
+          "5"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.vetpracticemag.com.au/?p=38195"
+      }
+    },
+    {
+      "candidateId": "https://www.vetpracticemag.com.au/?p=38198",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Treating dogs with hydrotherapy",
+        "sourceUrl": "https://www.vetpracticemag.com.au/treating-dogs-with-hydrotherapy",
+        "sourceUrlRaw": "https://www.vetpracticemag.com.au/treating-dogs-with-hydrotherapy",
+        "publishedAt": "2026-07-05T22:52:43.000Z",
+        "sourceHash": "4a07175a118786d9e1957718d14fe764d47bf72c37609a01b1fe0ff6957f80da",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수중 운동으로 관절염 개 낮추기… 운동 어려웠던 강아지 9kg 감량",
+        "date": "2026-07-06",
+        "sourceUrl": "https://www.vetpracticemag.com.au/treating-dogs-with-hydrotherapy/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "9",
+          "9",
+          "9"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.vetpracticemag.com.au/?p=38198"
+      }
+    },
+    {
+      "candidateId": "https://www.vetpracticemag.com.au/?p=38190",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Social workers in the veterinary space",
+        "sourceUrl": "https://www.vetpracticemag.com.au/social-workers-in-the-veterinary-space",
+        "sourceUrlRaw": "https://www.vetpracticemag.com.au/social-workers-in-the-veterinary-space",
+        "publishedAt": "2026-06-30T23:13:35.000Z",
+        "sourceHash": "1018ef8996c3c678ef88ac3f44bdb4095b4dd6209f9c794174f408be316bf596",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의 의료에 사회복지사 도입... 호주 18개월 파일럿 진행",
+        "date": "2026-07-01",
+        "sourceUrl": "https://www.vetpracticemag.com.au/social-workers-in-the-veterinary-space/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "18",
+          "18",
+          "30",
+          "2022",
+          "28",
+          "18",
+          "5",
+          "16",
+          "3",
+          "6",
+          "5",
+          "18"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.vetpracticemag.com.au/?p=38190"
+      }
+    },
+    {
+      "candidateId": "https://vetgirlontherun.com/?p=700156",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Discharge Is the Last Word: Five Workflow Fixes Your Hospital Will Actually Feel",
+        "sourceUrl": "https://vetgirlontherun.com/discharge-is-the-last-word-five-workflow-fixes-your-hospital-will-actually-feel-vetgirl-veterinary-continuing-education-blogs",
+        "sourceUrlRaw": "https://vetgirlontherun.com/discharge-is-the-last-word-five-workflow-fixes-your-hospital-will-actually-feel-vetgirl-veterinary-continuing-education-blogs",
+        "publishedAt": "2026-07-24T10:00:30.000Z",
+        "sourceHash": "cddf732f60b5a11e1483b42df2486e682e1ce2569830ff075a693fcf1d752c3e",
+        "contentHash": null
+      },
+      "existing": {
+        "id": "v1_97407f7b28526af0",
+        "title": "퇴원 처방 개선, 그 순간부터 환자 결과가 달라집니다",
+        "date": "2026-07-26",
+        "sourceUrl": "https://vetgirlontherun.com/discharge-is-the-last-word-five-workflow-fixes-your-hospital-will-actually-feel-vetgirl-veterinary-continuing-education-blogs/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "5",
+          "2023",
+          "2025",
+          "2023",
+          "75",
+          "10",
+          "15",
+          "24",
+          "48"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://vetgirlontherun.com/?p=700156"
+      }
+    },
+    {
+      "candidateId": "https://vetgirlontherun.com/?p=687155",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Handling techniques for Dogs with Moderate to High Levels of Fear, Anxiety, or Stress",
+        "sourceUrl": "https://vetgirlontherun.com/handling-techniques-for-dogs-with-moderate-to-high-levels-of-fear-anxiety-or-stress-vetgirl-veterinary-continuing-education-blogs",
+        "sourceUrlRaw": "https://vetgirlontherun.com/handling-techniques-for-dogs-with-moderate-to-high-levels-of-fear-anxiety-or-stress-vetgirl-veterinary-continuing-education-blogs",
+        "publishedAt": "2026-07-17T10:00:56.000Z",
+        "sourceHash": "e758f55fb8454c76097151efe94b72388604f88211eb3043adc4b526e86cd5e2",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "중고도 공포·불안 강아지의 수의과 진료실 대처법",
+        "date": "2026-07-20",
+        "sourceUrl": "https://vetgirlontherun.com/handling-techniques-for-dogs-with-moderate-to-high-levels-of-fear-anxiety-or-stress-vetgirl-veterinary-continuing-education-blogs/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "5",
+          "8",
+          "5",
+          "8"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://vetgirlontherun.com/?p=687155"
+      }
+    },
+    {
+      "candidateId": "https://vetgirlontherun.com/?p=699129",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "What’s New in Diabetes Management",
+        "sourceUrl": "https://vetgirlontherun.com/whats-new-in-diabetes-management-vetgirl-veterinary-continuing-education-blogs",
+        "sourceUrlRaw": "https://vetgirlontherun.com/whats-new-in-diabetes-management-vetgirl-veterinary-continuing-education-blogs",
+        "publishedAt": "2026-07-10T10:00:08.000Z",
+        "sourceHash": "b9ac5ce3bb78082a1b9657c0da400de5bfa49c3154ece429b7933166f793ccb9",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 당뇨병 관리의 새로운 선택지, SGLT2 억제제",
+        "date": "2026-07-20",
+        "sourceUrl": "https://vetgirlontherun.com/whats-new-in-diabetes-management-vetgirl-veterinary-continuing-education-blogs/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "20",
+          "1",
+          "80",
+          "2",
+          "80",
+          "90",
+          "3",
+          "1",
+          "2",
+          "4",
+          "12",
+          "4",
+          "12",
+          "80",
+          "80",
+          "90",
+          "3"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://vetgirlontherun.com/?p=699129"
+      }
+    },
+    {
+      "candidateId": "https://vetgirlontherun.com/?p=686893",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "The Top 5 Husbandry Mistakes That Land Exotic Pets in the Clinic",
+        "sourceUrl": "https://vetgirlontherun.com/the-top-5-husbandry-mistakes-that-land-exotic-pets-in-the-clinic-vetgirl-veterinary-continuing-education-blogs",
+        "sourceUrlRaw": "https://vetgirlontherun.com/the-top-5-husbandry-mistakes-that-land-exotic-pets-in-the-clinic-vetgirl-veterinary-continuing-education-blogs",
+        "publishedAt": "2026-07-03T10:00:25.000Z",
+        "sourceHash": "ba2924e6408dd8d619812f18c7033190b6af4def09336b431f4aed89cae03660",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "이글 병원 방문 원인 5가지, 가장 흔한 관리 실수",
+        "date": "2026-07-03",
+        "sourceUrl": "https://vetgirlontherun.com/the-top-5-husbandry-mistakes-that-land-exotic-pets-in-the-clinic-vetgirl-veterinary-continuing-education-blogs/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "5",
+          "5 "
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://vetgirlontherun.com/?p=686893"
+      }
+    },
+    {
+      "candidateId": "https://vetgirlontherun.com/?p=687666",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Feline Elimination Disorders: A Practical Approach for Veterinarians",
+        "sourceUrl": "https://vetgirlontherun.com/feline-elimination-disorders-a-practical-approach-for-veterinarians-vetgirl-veterinary-continuing-education-blog",
+        "sourceUrlRaw": "https://vetgirlontherun.com/feline-elimination-disorders-a-practical-approach-for-veterinarians-vetgirl-veterinary-continuing-education-blog",
+        "publishedAt": "2026-06-26T10:00:55.000Z",
+        "sourceHash": "58cfb0073da443deec88b036908d9ed9b0b0619fed96d450197f27df27c7ccd8",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 배설 장애: 수의사를 위한 실용적 접근법",
+        "date": "2026-06-26",
+        "sourceUrl": "https://vetgirlontherun.com/feline-elimination-disorders-a-practical-approach-for-veterinarians-vetgirl-veterinary-continuing-education-blog/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "1",
+          "1"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://vetgirlontherun.com/?p=687666"
+      }
+    },
+    {
+      "candidateId": "https://vetgirlontherun.com/?p=651498",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Why the Litterbox Conversation Matters: Rethinking Feline House Soiling in Veterinary Practice",
+        "sourceUrl": "https://vetgirlontherun.com/why-the-litterbox-conversation-matters-rethinking-feline-house-soiling-in-veterinary-practice-vetgirl-veterinary-continuing-education-blog",
+        "sourceUrlRaw": "https://vetgirlontherun.com/why-the-litterbox-conversation-matters-rethinking-feline-house-soiling-in-veterinary-practice-vetgirl-veterinary-continuing-education-blog",
+        "publishedAt": "2026-06-19T10:00:33.000Z",
+        "sourceHash": "faa097e0d8992e199352eb8cb5e0ed7a06bb4b14a0c491d7c453f4790bc4432b",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 배변 문제, 예방은 대화에서 시작된다",
+        "date": "2026-06-19",
+        "sourceUrl": "https://vetgirlontherun.com/why-the-litterbox-conversation-matters-rethinking-feline-house-soiling-in-veterinary-practice-vetgirl-veterinary-continuing-education-blog/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://vetgirlontherun.com/?p=651498"
+      }
+    },
+    {
+      "candidateId": "https://vetgirlontherun.com/?p=642994",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Secrets to Securing a Patent Airway Through Orotracheal Intubation: Part 2",
+        "sourceUrl": "https://vetgirlontherun.com/secrets-to-securing-a-patent-airway-through-orotracheal-intubation-part-2-vetgirl-veterinary-continuing-education-blogs",
+        "sourceUrlRaw": "https://vetgirlontherun.com/secrets-to-securing-a-patent-airway-through-orotracheal-intubation-part-2-vetgirl-veterinary-continuing-education-blogs",
+        "publishedAt": "2026-06-12T10:00:36.000Z",
+        "sourceHash": "35e156af42bc06069f38c89b5eb7b0e0c7177767ecc61986b8e34796e43b6855",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "개·고양이 기관튜브 선택과 삽관 깊이 관리 핵심",
+        "date": "2026-06-12",
+        "sourceUrl": "https://vetgirlontherun.com/secrets-to-securing-a-patent-airway-through-orotracheal-intubation-part-2-vetgirl-veterinary-continuing-education-blogs/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "3.5",
+          "3.5",
+          "2"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://vetgirlontherun.com/?p=642994"
+      }
+    },
+    {
+      "candidateId": "https://vetgirlontherun.com/?p=625860",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "How to Inflate an Endotracheal Tube Cuff to Minimize Risks, Maximize Benefit",
+        "sourceUrl": "https://vetgirlontherun.com/how-to-inflate-an-endotracheal-tube-cuff-to-minimize-risks-maximize-benefit-vetgirl-veterinary-continuing-education-blogs",
+        "sourceUrlRaw": "https://vetgirlontherun.com/how-to-inflate-an-endotracheal-tube-cuff-to-minimize-risks-maximize-benefit-vetgirl-veterinary-continuing-education-blogs",
+        "publishedAt": "2026-06-05T10:00:26.000Z",
+        "sourceHash": "5b35d43d5f4aacb9c5ce00f509a26ddc6b8680cf817aa3100afe926c3c025343",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "기관내관 풍선 적절한 팽창, 왜 중요한가",
+        "date": "2026-06-05",
+        "sourceUrl": "https://vetgirlontherun.com/how-to-inflate-an-endotracheal-tube-cuff-to-minimize-risks-maximize-benefit-vetgirl-veterinary-continuing-education-blogs/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "86",
+          "47.1",
+          "54",
+          "13.3",
+          "35.5",
+          "20",
+          "86"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://vetgirlontherun.com/?p=625860"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58578",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Best practices to attract and keep top talent",
+        "sourceUrl": "https://www.veterinarypracticenews.com/best-practices-attracting-keeping-top-talent",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/best-practices-attracting-keeping-top-talent",
+        "publishedAt": "2026-07-28T15:39:09.000Z",
+        "sourceHash": "3440e23eaf58fa7b93607eee61e9f022d3721038eb0af1f2c4a176953575b106",
+        "contentHash": null
+      },
+      "existing": {
+        "id": "v1_5ef792dba5c1c590",
+        "title": "수의 임상 인력 채용·유지 전략",
+        "date": "2026-07-29",
+        "sourceUrl": "https://www.veterinarypracticenews.com/best-practices-attracting-keeping-top-talent/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58578"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58551",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "The art of the aspirate",
+        "sourceUrl": "https://www.veterinarypracticenews.com/art-of-aspirate-collection-techniques-slide-preparation-common-mistakes",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/art-of-aspirate-collection-techniques-slide-preparation-common-mistakes",
+        "publishedAt": "2026-07-23T11:31:43.000Z",
+        "sourceHash": "75935a8eadb8f6284ec78bfcee95fcb25724f93c476879148921176905b5b1c2",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "소동물 종양 조기 발견, 천자흡인검사가 답이다",
+        "date": "2026-07-24",
+        "sourceUrl": "https://www.veterinarypracticenews.com/art-of-aspirate-collection-techniques-slide-preparation-common-mistakes/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "1",
+          "22",
+          "25",
+          "95",
+          "2",
+          "5",
+          "1",
+          "1"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58551"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58565",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Why you need an AI vet scribe ASAP",
+        "sourceUrl": "https://www.veterinarypracticenews.com/why-you-need-ai-vet-scribe-asap",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/why-you-need-ai-vet-scribe-asap",
+        "publishedAt": "2026-07-22T18:50:55.000Z",
+        "sourceHash": "ac71cde0c9a875421a1e24e34986afe74268bd3323ded7cfdbad299ee2bffb36",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수가 진료실 AI 필기 도구, 도입이 필요한 이유",
+        "date": "2026-07-23",
+        "sourceUrl": "https://www.veterinarypracticenews.com/why-you-need-ai-vet-scribe-asap/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "1986"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58565"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58546",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Space: The final frontier in surgical efficiency",
+        "sourceUrl": "https://www.veterinarypracticenews.com/space-final-frontier-surgical-efficiency",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/space-final-frontier-surgical-efficiency",
+        "publishedAt": "2026-07-22T17:31:08.000Z",
+        "sourceHash": "620c8f150a8085ccc8d1772bda4cb418ac7861802dbad6f6b8c0184dc4300169",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의 수술실 효율화, 입체적 배치 전략",
+        "date": "2026-07-23",
+        "sourceUrl": "https://www.veterinarypracticenews.com/space-final-frontier-surgical-efficiency/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "2"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58546"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58501",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Select pet medications now available at CVS Pharmacy",
+        "sourceUrl": "https://www.veterinarypracticenews.com/select-pet-medications-available-cvs-pharmacy",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/select-pet-medications-available-cvs-pharmacy",
+        "publishedAt": "2026-07-22T13:47:44.000Z",
+        "sourceHash": "c885ddfcca96ca0e22cfb2f2793ac3068a184bca94b762a11a70e6da68857e97",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "CVS, 전국 9천개 매장에서 개·고양이 처방약 조제 시작",
+        "date": "2026-07-25",
+        "sourceUrl": "https://www.veterinarypracticenews.com/select-pet-medications-available-cvs-pharmacy/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "9",
+          "9,000",
+          "9,000"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58501"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58495",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "New analytics platform bolsters veterinary workforce management",
+        "sourceUrl": "https://www.veterinarypracticenews.com/new-analytics-platform-bolsters-veterinary-workforce-management",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/new-analytics-platform-bolsters-veterinary-workforce-management",
+        "publishedAt": "2026-07-22T12:58:06.000Z",
+        "sourceHash": "f119e10634103cd0ea12cf4ad19a7203b6b28094e219eae46137aed0c1107cd9",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "수의 인력 분석 플랫폼 출시, 리프스태핑 성과 데이터로 확인한다",
+        "date": "2026-07-23",
+        "sourceUrl": "https://www.veterinarypracticenews.com/new-analytics-platform-bolsters-veterinary-workforce-management/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "100",
+          "400"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58495"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58492",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "CVTEA releases latest veterinary technology accreditation decisions",
+        "sourceUrl": "https://www.veterinarypracticenews.com/cvtea-releasesa-latest-veterinary-technology-accredition",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/cvtea-releasesa-latest-veterinary-technology-accredition",
+        "publishedAt": "2026-07-22T12:29:20.000Z",
+        "sourceHash": "ab2288f5bd14b9ff07ec58fe5de6b02d183df71e1af786ffaef81f61b520c9d2",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "미국 CVTEA, 수의사 기술 교육 프로그램 인준 결정 발표",
+        "date": "2026-07-25",
+        "sourceUrl": "https://www.veterinarypracticenews.com/cvtea-releasesa-latest-veterinary-technology-accredition/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "6",
+          "219",
+          "84",
+          "6",
+          "219",
+          "84"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58492"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58488",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Study links feline CKD to changes in gut metabolites",
+        "sourceUrl": "https://www.veterinarypracticenews.com/study-links-feline-ckd-to-changes-in-gut-metabolites",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/study-links-feline-ckd-to-changes-in-gut-metabolites",
+        "publishedAt": "2026-07-22T12:13:17.000Z",
+        "sourceHash": "2489ea182dc044b62e99f6b2166c2a7abfaee3822827cc892f9b3d8284e897d3",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "고양이 만성신장질환, 장내 대사물질 변화와 연관 발견",
+        "date": "2026-07-23",
+        "sourceUrl": "https://www.veterinarypracticenews.com/study-links-feline-ckd-to-changes-in-gut-metabolites/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "108",
+          "6",
+          "12",
+          "2",
+          "5",
+          "108",
+          "2",
+          "5"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58488"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58482",
+      "classification": "unresolved",
+      "candidate": {
+        "title": "WordRx: Your dose of veterinary wordplay",
+        "sourceUrl": "https://www.veterinarypracticenews.com/wordrx-july-21-2026",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/wordrx-july-21-2026",
+        "publishedAt": "2026-07-21T19:29:02.000Z",
+        "sourceHash": "c46dcf18ffe6ad07a59348620980976d71123b9502679ca5a3a7c8a3eee7e8a4",
+        "contentHash": null
+      },
+      "existing": null,
+      "comparison": {
+        "titleSimilarity": 0.286,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [],
+        "sourceDateDeltaDays": null
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58482"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58477",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "New feline-only organization aims to close gap in veterinary care",
+        "sourceUrl": "https://www.veterinarypracticenews.com/new-feline-only-organizations-aims-close-gap-veterinary-care",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/new-feline-only-organizations-aims-close-gap-veterinary-care",
+        "publishedAt": "2026-07-21T19:15:55.000Z",
+        "sourceHash": "6716de7b56acbd5ad6ca0f33b75353df3bfddc9b81781dfa11e0d01bb58b373a",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "미국 콜로라도에 고양이 전용 동물병원 개원... 진료 공백 해소 도전",
+        "date": "2026-07-24",
+        "sourceUrl": "https://www.veterinarypracticenews.com/new-feline-only-organizations-aims-close-gap-veterinary-care/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "7600",
+          "2025",
+          "3",
+          "1",
+          "70",
+          "2026 ",
+          "2027",
+          "7600",
+          "2025",
+          "33",
+          "3"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58477"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58470",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Report highlights financial barriers shaping veterinary care decisions",
+        "sourceUrl": "https://www.veterinarypracticenews.com/report-highlights-financial-barriers-shaping-veterinary-care-decisions",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/report-highlights-financial-barriers-shaping-veterinary-care-decisions",
+        "publishedAt": "2026-07-21T19:00:44.000Z",
+        "sourceHash": "bfe0a44f235c05f1ec19afd1c34455759e1a7e3bd153e7766f4de4eb744bfc8f",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "미국 보호자 46%, 비용 문제로 수의료 지연 경험",
+        "date": "2026-07-22",
+        "sourceUrl": "https://www.veterinarypracticenews.com/report-highlights-financial-barriers-shaping-veterinary-care-decisions/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "46",
+          "2026",
+          "46",
+          "1",
+          "91",
+          "2,000",
+          "44",
+          "25",
+          "80",
+          "2025",
+          "75",
+          "34",
+          "25",
+          "37",
+          "1",
+          "46",
+          "1",
+          "44",
+          "25",
+          "80",
+          "34",
+          "37"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58470"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58420",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "Bringing specialist level interpretation in-clinic",
+        "sourceUrl": "https://www.veterinarypracticenews.com/bringing-specialist-level-interpretation-in-clinic",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/bringing-specialist-level-interpretation-in-clinic",
+        "publishedAt": "2026-07-20T04:00:24.000Z",
+        "sourceHash": "ff56a4a0a86ebf302411709269842fbecda13227d3de60ab13aa9254a7191f63",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "AI 혈액도말 분석, 개 IMHA 진단 시간 획기적 단축",
+        "date": "2026-07-21",
+        "sourceUrl": "https://www.veterinarypracticenews.com/bringing-specialist-level-interpretation-in-clinic/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "5",
+          "5",
+          "3",
+          "160",
+          "1",
+          "3"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58420"
+      }
+    },
+    {
+      "candidateId": "https://www.veterinarypracticenews.com/?p=58461",
+      "classification": "duplicate",
+      "candidate": {
+        "title": "New dog food rolls enter the fresh pet food market",
+        "sourceUrl": "https://www.veterinarypracticenews.com/new-dog-food-rolls-enter-fresh-pet-food-market",
+        "sourceUrlRaw": "https://www.veterinarypracticenews.com/new-dog-food-rolls-enter-fresh-pet-food-market",
+        "publishedAt": "2026-07-17T18:51:18.000Z",
+        "sourceHash": "c26875b135cbcc16e308a24c78647a4f1f6bd1317ed1526a511176799394b229",
+        "contentHash": null
+      },
+      "existing": {
+        "title": "힐스, 개용 신선 펫푸드 시장 진출…단백질 원료 함유 롤 출시",
+        "date": "2026-07-25",
+        "sourceUrl": "https://www.veterinarypracticenews.com/new-dog-food-rolls-enter-fresh-pet-food-market/",
+        "sourceHash": null,
+        "contentHash": null
+      },
+      "comparison": {
+        "titleSimilarity": 1,
+        "sameSource": false,
+        "candidateNumbers": [],
+        "existingNumbers": [
+          "3",
+          "3"
+        ],
+        "sourceDateDeltaDays": 0
+      },
+      "approval": {
+        "dryRun": true,
+        "command": "npm run updates:approve -- https://www.veterinarypracticenews.com/?p=58461"
+      }
+    }
+  ],
+  "note": "분류는 검수 후보이며 기존 기사를 자동 덮어쓰지 않습니다."
+}

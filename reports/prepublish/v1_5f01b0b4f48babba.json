@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-07-29T23:10:25.654Z",
+  "previewOnly": true,
+  "eligibleForPublish": false,
+  "reason": "실제 reviewerId와 사람 승인 기록이 없습니다",
+  "title": "Do You Like Being a Veterinarian on Thursdays?",
+  "description": "Today was a good Thursday. I saw a litter of kittens that have clearly been well loved and taken care of. I had a bunch of appointments for diarrhea (diarrhea… it comes in waves) and they were all fine. I had to stay a little bit late because my last appointment was a dog having... Read More The post Do You Like Being a Veterinarian on Thursdays? appeared first on DrAndyRoark.com .",
+  "canonical": "https://drandyroark.com/being-a-vet-on-thursdays",
+  "contentTier": "brief",
+  "clinicalRisk": "low",
+  "editorialStatus": "editor-review-required",
+  "source": {
+    "label": "Dr. Andy Roark",
+    "title": "Do You Like Being a Veterinarian on Thursdays?",
+    "url": "https://drandyroark.com/being-a-vet-on-thursdays",
+    "rawUrl": "https://drandyroark.com/being-a-vet-on-thursdays",
+    "publishedAt": "2026-05-14T18:34:34.000Z"
+  },
+  "evidence": null,
+  "image": {
+    "url": null,
+    "ownership": "unknown",
+    "alt": null
+  },
+  "author": null,
+  "reviewer": null,
+  "relatedArticles": [],
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Do You Like Being a Veterinarian on Thursdays?",
+    "description": "Today was a good Thursday. I saw a litter of kittens that have clearly been well loved and taken care of. I had a bunch of appointments for diarrhea (diarrhea… it comes in waves) and they were all fine. I had to stay a little bit late because my last appointment was a dog having... Read More The post Do You Like Being a Veterinarian on Thursdays? appeared first on DrAndyRoark.com .",
+    "isBasedOn": {
+      "@type": "CreativeWork",
+      "url": "https://drandyroark.com/being-a-vet-on-thursdays"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "VetManLab 편집팀"
+    }
+  },
+  "rss": {
+    "title": "Do You Like Being a Veterinarian on Thursdays?",
+    "description": "Today was a good Thursday. I saw a litter of kittens that have clearly been well loved and taken care of. I had a bunch of appointments for diarrhea (diarrhea… it comes in waves) and they were all fine. I had to stay a little bit late because my last appointment was a dog having... Read More The post Do You Like Being a Veterinarian on Thursdays? appeared first on DrAndyRoark.com .",
+    "guid": "v1_5f01b0b4f48babba",
+    "link": "https://drandyroark.com/being-a-vet-on-thursdays"
+  },
+  "sitemap": {
+    "included": false,
+    "reason": "preview-only draft"
+  },
+  "quality": {
+    "warnings": [],
+    "passed": true
+  }
+}

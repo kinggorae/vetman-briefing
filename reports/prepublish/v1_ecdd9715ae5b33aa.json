@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-07-29T23:10:25.654Z",
+  "previewOnly": true,
+  "eligibleForPublish": false,
+  "reason": "실제 reviewerId와 사람 승인 기록이 없습니다",
+  "title": "Life Stages and Large Breeds in Canine Nutrition",
+  "description": "Dr. Flavia Vedova, DVM, MBA, DACVIM (Nutrition), jumps into one of the most confusing parts of pet nutrition, figuring out when to switch diets, what “all life stages” actually means, and whether your large breed dog really needs a large breed formula. If you’ve ever stared at a pet food bag wondering if you’re helping... Read More The post Life Stages and Large Breeds in Canine Nutrition appeared first on DrAndyRoark.com .",
+  "canonical": "https://drandyroark.com/large-breeds-in-canine-nutrition",
+  "contentTier": "brief",
+  "clinicalRisk": "low",
+  "editorialStatus": "editor-review-required",
+  "source": {
+    "label": "Dr. Andy Roark",
+    "title": "Life Stages and Large Breeds in Canine Nutrition",
+    "url": "https://drandyroark.com/large-breeds-in-canine-nutrition",
+    "rawUrl": "https://drandyroark.com/large-breeds-in-canine-nutrition",
+    "publishedAt": "2026-05-18T05:00:00.000Z"
+  },
+  "evidence": null,
+  "image": {
+    "url": null,
+    "ownership": "unknown",
+    "alt": null
+  },
+  "author": null,
+  "reviewer": null,
+  "relatedArticles": [],
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Life Stages and Large Breeds in Canine Nutrition",
+    "description": "Dr. Flavia Vedova, DVM, MBA, DACVIM (Nutrition), jumps into one of the most confusing parts of pet nutrition, figuring out when to switch diets, what “all life stages” actually means, and whether your large breed dog really needs a large breed formula. If you’ve ever stared at a pet food bag wondering if you’re helping... Read More The post Life Stages and Large Breeds in Canine Nutrition appeared first on DrAndyRoark.com .",
+    "isBasedOn": {
+      "@type": "CreativeWork",
+      "url": "https://drandyroark.com/large-breeds-in-canine-nutrition"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "VetManLab 편집팀"
+    }
+  },
+  "rss": {
+    "title": "Life Stages and Large Breeds in Canine Nutrition",
+    "description": "Dr. Flavia Vedova, DVM, MBA, DACVIM (Nutrition), jumps into one of the most confusing parts of pet nutrition, figuring out when to switch diets, what “all life stages” actually means, and whether your large breed dog really needs a large breed formula. If you’ve ever stared at a pet food bag wondering if you’re helping... Read More The post Life Stages and Large Breeds in Canine Nutrition appeared first on DrAndyRoark.com .",
+    "guid": "v1_ecdd9715ae5b33aa",
+    "link": "https://drandyroark.com/large-breeds-in-canine-nutrition"
+  },
+  "sitemap": {
+    "included": false,
+    "reason": "preview-only draft"
+  },
+  "quality": {
+    "warnings": [],
+    "passed": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "terms": [
+    {"canonicalKo":"만성 신장질환","english":"chronic kidney disease","latin":"","aliases":["CKD","만성콩팥병"],"species":["개","고양이"],"specialty":"신장·비뇨","context":"반려동물의 만성 신장 기능 저하","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"고양이 전염성 복막염","english":"feline infectious peritonitis","latin":"","aliases":["FIP"],"species":["고양이"],"specialty":"감염병","context":"고양이 코로나바이러스와 관련된 질환","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"심장사상충증","english":"heartworm disease","latin":"Dirofilaria immitis","aliases":["심장사상충"],"species":["개","고양이"],"specialty":"감염병","context":"Dirofilaria immitis 감염","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"외이염","english":"otitis externa","latin":"","aliases":["외이도염"],"species":["개","고양이"],"specialty":"피부·귀","context":"외이도의 염증","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"아토피 피부염","english":"atopic dermatitis","latin":"","aliases":["아토피성 피부염"],"species":["개","고양이"],"specialty":"피부·귀","context":"알레르기와 관련된 만성 피부 질환","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"비만세포종","english":"mast cell tumor","latin":"","aliases":["비만세포 종양"],"species":["개","고양이"],"specialty":"종양","context":"비만세포에서 발생하는 종양","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"항생제 내성","english":"antimicrobial resistance","latin":"","aliases":["항균제 내성","AMR"],"species":["개","고양이","사람"],"specialty":"감염병","context":"항균제에 대한 미생물의 내성","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"무작위 대조시험","english":"randomized controlled trial","latin":"","aliases":["RCT","무작위 배정 임상시험"],"species":[],"specialty":"근거중심수의학","context":"중재 효과를 비교하는 연구 설계","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"코호트 연구","english":"cohort study","latin":"","aliases":[],"species":[],"specialty":"근거중심수의학","context":"노출과 결과를 집단 단위로 추적하는 연구","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"증례 보고","english":"case report","latin":"","aliases":["사례 보고"],"species":[],"specialty":"근거중심수의학","context":"개별 또는 소수 환자의 임상 경과 보고","forbiddenTranslations":[],"reviewRequired":true},
+    {"canonicalKo":"췌장염","english":"pancreatitis","latin":"","aliases":[],"species":["개","고양이"],"specialty":"내과","context":"췌장의 염증","forbiddenTranslations":[],"reviewRequired":false},
+    {"canonicalKo":"기관허탈","english":"tracheal collapse","latin":"","aliases":[],"species":["개"],"specialty":"호흡기","context":"기관 내강이 허탈하는 질환","forbiddenTranslations":[],"reviewRequired":false}
+  ]
+}
