@@ -1,5 +1,6 @@
 // 기사 공개·색인 품질 기준. 수집기, 빌더, 검증기가 같은 판정을 사용한다.
 // 420자는 검색엔진 권장량이 아니라 이 프로젝트의 최소 편집 검수 기준이다.
+import { clinicalReviewIssues } from "./editorial-review.js";
 
 export const CONTENT_TIERS = new Set(["brief", "analysis", "evidence"]);
 export const CARD_BLOCKERS = new Set([
@@ -129,7 +130,8 @@ export function qualityIssues(item = {}) {
 export function publishQualityIssues(item = {}, { duplicate = false } = {}) {
   const issues = qualityIssues(item);
   if (duplicate && !issues.includes("duplicate-source")) issues.push("duplicate-source");
-  return issues;
+  issues.push(...clinicalReviewIssues(item, { issueDate: item._day || item.day || item.publishedAt }));
+  return [...new Set(issues)];
 }
 
 export function isCardRenderable(item = {}) {

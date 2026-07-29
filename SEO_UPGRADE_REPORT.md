@@ -199,3 +199,74 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - index 170건의 임상 표현·수치·번역·한국 적용 해설 표본 검수
 - 실제 author/reviewer/credentials/전문 분야가 확인된 뒤에만 `data/authors.json`, `data/reviewers.json` 입력
 - Cloudflare preview에서 extensionless routing, 관리자 인증, 모바일 화면, SW 캐시 갱신 확인
+
+## 11. 3차 고도화: editorial review·rights·observability
+
+작성 브랜치: `codex/editorial-review-observability`
+기준: `origin/main` 최신 production 반영본
+현재 상태: 로컬 구현·검증 완료, PR/merge/production 배포 전 최종 대기
+
+### 핵심 설계
+
+- `src/lib/image-rights.js`가 `owned`, `licensed`, `official-press`, `source-embed`, `unknown`만 허용합니다. 권리 정보가 없는 외부 이미지는 추정하지 않고 `unknown`으로 남기며, index 기사에는 다운로드·복제 없이 ID 기반 자체 편집 카드로 대체합니다.
+- `scripts/image-rights-audit.js`는 전체 463개 기사의 외부 이미지 URL에 HEAD 감사(상태·MIME·응답·프로토콜·중복)를 수행하고 `reports/image-rights-audit.json/.md`에 기록합니다. `imageUrlRaw`, `imageSourceUrl`, 권리 필드는 보존됩니다.
+- `data/source-publishers.json`과 `scripts/resolve-source-candidates.js`는 공식 도메인·저장소 내 직접 원문·제목/날짜 유사도를 결합합니다. Google News 중계 URL을 반복 스크래핑하지 않으며, 높은 확신 조건을 충족하지 않으면 적용하지 않습니다. `scripts/source-review.js`는 명시적 승인·거절만 결정 파일에 저장합니다.
+- `src/lib/editorial-review.js`는 임상 위험도와 `editorialStatus`를 정규화합니다. 기존 기사는 소급 차단하지 않고, 시행일 이후 새 기사에 high-risk 수의사 감수·medium-risk 사람 편집 검수 게이트를 적용합니다. 현재 확인되지 않은 검수자·저자 프로필은 생성하지 않았습니다.
+- 기사 본문에 콘텐츠 유형, 자동화 사용, 편집 상태, 임상 위험도, 원문·발행일, 수정일, 정정·면책을 텍스트로 표시합니다. 관리자 화면에는 색인·등급·위험도·검수 상태·권리·출처 필터와 JSON/CSV 큐를 추가했으며 기존 인증/noindex를 유지합니다.
+- `playwright.config.js`, `qa/site.spec.js`, `lighthouserc.cjs`와 GitHub Actions로 모바일·태블릿·데스크톱 브라우저 QA, axe critical 검사, Lighthouse 3회 중앙값, 실패 artifact를 구성했습니다. Chrome이 설치되지 않은 CI에서는 Playwright Chromium 설치를 시도합니다.
+- `production-monitoring.yml`은 주 3회 운영 홈·robots·sitemap·news sitemap·RSS의 응답 및 XML을 확인하고 artifact만 남깁니다. 운영 데이터를 수정하지 않습니다.
+
+### 3차 통계
+
+| 항목 | 결과 |
+|---|---:|
+| 전체 기사 | 463 |
+| index / noindex | 170 / 293 |
+| sitemap / news sitemap | 212 / 11 |
+| index 대표 이미지 | 170/170 |
+| index 자체 편집 카드 | 170 |
+| index 유효 이미지 권리 미분류 | 0 |
+| 권리 불명 외부 원본(재복제 없음) | 87 |
+| 외부 이미지 응답 성공 / 실패 | 87 / 0 |
+| 외부 이미지 HTTP / HTTPS | 5 / 82 |
+| 중계 URL resolved / candidate / unresolved / rejected / manually-approved | 0 / 0 / 187 / 0 / 0 |
+| 임상 위험도 low / medium / high | 111 / 211 / 141 |
+| 명시적 작성자·감수 프로필 | 0건 생성(가짜 정보 방지) |
+| 홈페이지 HTML | 157,971 bytes |
+| 검색 전체 JSON / 첫 shard | 151,602 / 133,553 bytes |
+| RSS 본문 누락 | 0 |
+
+### 3차 검증 결과
+
+- `npm ci`: 성공. 설치 후 `npm audit --omit=dev`: production 취약점 0건.
+- `npm test`: 성공, 기존 12개를 유지하고 신규 2개를 추가해 14개 통과.
+- `npm run check`: 성공. 전체 build·validate 포함.
+- `npm run seo:audit`: 성공, 170 index·293 noindex·212 sitemap·치명 0·경고 0.
+- `npm run image:rights`: 463개 감사, index 이미지 170/170, 권리 미분류 유효 이미지 0, 외부 응답 실패 0.
+- `npm run source:resolve -- --dry-run`: 187개 모두 상태 기록, 자동 적용 0. `npm run source:review`: 후보·미해결 수동 큐 출력.
+- `npm run test:browser`: 390×844·768×1024·1440×1000에서 12/12 통과. 콘솔 오류·로컬 요청 실패·깨진 이미지·robots/canonical/H1·axe critical·키보드 포커스 오류 0.
+- `npm run lighthouse`: 홈·대표 기사·주제 허브 각 3회 실행. 중앙값은 `reports/lighthouse-summary.json/.md`에 URL별로 저장했으며 Performance/Accessibility/Best Practices/SEO 치명 기준과 CLS/LCP 경고 기준을 통과했습니다.
+- `npm run monitor:production`: 운영 endpoint 5/5 HTTP 200, XML critical 0. sitemap 212개 URL, 대표 URL 응답 200·canonical 일치·noindex 없음, 급격한 sitemap 변동 경고 없음.
+- JSON-LD·sitemap/news sitemap/RSS XML·내부 링크·noindex/sitemap 충돌: 0건.
+
+### 남은 사람 검수
+
+- `reports/source-resolution.md`의 187개 큐를 매체 공식 사이트에서 제목·발행일·canonical과 대조하고 승인 URL을 `source-review` CLI로 명시적으로 기록합니다.
+- `reports/image-rights-audit.md`의 87개 원본 외부 이미지에 사용 권한·크레딧·라이선스를 확인합니다. 확인 전에는 자체 호스팅·license 표기를 하지 않습니다.
+- high 141개와 medium 211개의 임상 표현, 연구 대상·연구 유형·표본 수·상관/인과·약물 용량·국내 적용 표현을 우선 검수합니다. 현재 기사는 기존 정책에 따라 일괄 noindex하지 않았습니다.
+- 실제 작성자·편집자·수의사 감수자가 확인된 경우에만 `data/authors.json`, `data/reviewers.json`과 기사 필드를 입력합니다.
+- Cloudflare preview에서 모바일 메뉴, 실제 외부 원문 링크, 카드 시각 품질을 확인합니다.
+
+### Search Console·네이버 확인
+
+- Google Search Console에서 `sitemap.xml`과 `news-sitemap.xml` 처리 상태, 발견 URL 212개, 의도한 noindex 293개, canonical/중복/크롤링 오류를 확인합니다.
+- 뉴스·Discover 노출은 대표 이미지·발행 시각·정책 위반·수동 조치 여부를 별도 확인합니다. Lighthouse 점수는 검색 노출 보장이 아니라 회귀 기준으로 사용합니다.
+- 네이버 서치어드바이저에서 sitemap/RSS 수집 성공, 모바일 사용성, canonical·noindex·리디렉션, 색인 제외 사유를 확인합니다.
+
+### production 배포 체크리스트
+
+- PR CI와 Cloudflare Pages preview에서 `npm test`, `npm run check`, `npm run seo:audit`, Playwright, Lighthouse가 통과할 것
+- 원출처·이미지 권리·임상 high/medium 우선 큐에 대한 사람 검수 정책을 확인할 것
+- 현재 170/293 index 정책과 주요 URL을 비교하고 sitemap에 noindex URL이 없을 것
+- production 배포 후 홈페이지, 대표 index/noindex 기사, 주제, archive, RSS, sitemap, robots, 이미지·관리자 인증 smoke test
+- 서비스워커 캐시 `vmcache-v6` 갱신과 운영 Search Console·네이버 수집 상태를 확인할 것

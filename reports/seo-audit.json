@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T13:56:03.106Z",
+  "generatedAt": "2026-07-29T14:41:21.723Z",
   "status": "passed",
   "counts": {
     "htmlPages": 537,
@@ -12,30 +12,32 @@
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
-    "brokenInternalLinks": 0
+    "brokenInternalLinks": 0,
+    "indexImages": 170,
+    "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 158050,
+    "homepageBytes": 157971,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 153890
+        "bytes": 151602
       },
       {
         "file": "search/2026-05.json",
-        "bytes": 1845
+        "bytes": 1820
       },
       {
         "file": "search/2026-06.json",
-        "bytes": 17001
+        "bytes": 16354
       },
       {
         "file": "search/2026-07.json",
-        "bytes": 135169
+        "bytes": 133553
       }
     ],
-    "articleBytes": 8769830,
-    "searchFirstRequestBytes": 135169
+    "articleBytes": 9227040,
+    "searchFirstRequestBytes": 133553
   },
   "duplicate": {
     "title": [],
@@ -71,6 +73,7 @@
           "title": "고양이 긁기병으로 인한 비정상적 고열 및 신경정신 증상 1례 보고",
           "indexable": true,
           "tier": "analysis",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -81,6 +84,7 @@
           "title": "중환자 개에서 전신 면역염증 지표의 예후 예측 가치",
           "indexable": true,
           "tier": "analysis",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -91,6 +95,7 @@
           "title": "개 적외선 열화상 검사, 체부 위치와 털 길이에 따라 온도차 발견",
           "indexable": true,
           "tier": "analysis",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -101,6 +106,7 @@
           "title": "가축 바이러스 연구에 CRISPR 스크리닝 적용... 새로운 항바이러스 전략 개발 전망",
           "indexable": true,
           "tier": "analysis",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -111,6 +117,7 @@
           "title": "나트륨 히알루론산·난각막 복합 보충제, 고양이 피모 건강 개선 효과 입증",
           "indexable": true,
           "tier": "analysis",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -121,6 +128,7 @@
           "title": "노령 고양이 근감소증과 악액질, 노쇠: 메커니즘·진단·치료 총론",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -131,6 +139,7 @@
           "title": "개 소전염바이러스 VP2 돌연변이의 기능적 영향 분석",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -141,6 +150,7 @@
           "title": "고양이와 개의 무릎관절에도 인대 존재 확인",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -151,6 +161,7 @@
           "title": "잠비아 닭에서 사육 방식과 무관한 ESBL 대장균 높은 검출률",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -161,6 +172,7 @@
           "title": "개 치경부 결손 재생을 위한 신규 삼중 수화물 Gel 개발",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -171,6 +183,7 @@
           "title": "곰팡이와 박하화합물 병용으로 진드기 사멸 효과 입증",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "high",
           "paragraphs": 4,
           "qualityIssues": [],
           "reasons": []
@@ -181,6 +194,7 @@
           "title": "고양이 유전성 메틸말론산혈증 사례: 임상·MRI·병리 소견",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -191,6 +205,7 @@
           "title": "개와 환자에서 발견된 리슈만편충 유전적 다양성과 잡종 형성",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -201,6 +216,7 @@
           "title": "양계장 Biosecurity 실패가 내성 대장균 확산을 주도; 은나노입자-과산화수소 복합제가 유망한 결과 보여",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -211,6 +227,7 @@
           "title": "개 가속 노화에서 국가 간 차이 확인 - 한국 개 표현형학적 나이 더 빠르게",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -221,6 +238,7 @@
           "title": "고양이 만성콩팥병 진단에서 신피질 두께 및 파생 비율이 우월한 초음파 지표임",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -231,6 +249,7 @@
           "title": "고양이 대동맥 색전증에서 tPA thrombolysis 효과 — 183마리 다기관 연구",
           "indexable": true,
           "tier": "analysis",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -241,6 +260,7 @@
           "title": "쿠싱증후군·프레드니솔론 치료 동반 개에서 혈액응고 과다",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -251,6 +271,7 @@
           "title": "고양이 홍채 melanoma 진단 도구로 AS-OCT 유용성 확인",
           "indexable": true,
           "tier": "evidence",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -261,6 +282,7 @@
           "title": "퇴원 처방 개선, 그 순간부터 환자 결과가 달라집니다",
           "indexable": true,
           "tier": "analysis",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
@@ -273,6 +295,7 @@
           "title": "수의 임상 인력 채용·유지 전략",
           "indexable": false,
           "tier": "analysis",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [
             "banned-term",
@@ -291,6 +314,7 @@
           "title": "중국 코로나19 이후 야생동물 규제 변화, '원헬스' 접근 약화된 이유는",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "low",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": [
@@ -303,6 +327,7 @@
           "title": "강아지와 야생 버섯 중독 위험…비 온 뒤 버섯 주의",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [
             "brief-too-short"
@@ -318,6 +343,7 @@
           "title": "진드기 방지제별 검은다리진드기(Blacklegged Tick) 사멸 속도 연구 비교",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": [
@@ -330,6 +356,7 @@
           "title": "지난 10년 개·고양이 진료 혁신...수의학 주요 발견 총정리",
           "indexable": false,
           "tier": "analysis",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [
             "source-relay"
@@ -344,6 +371,7 @@
           "title": "텍사스 카운티, 가족 마당서 발견된 스컹크서 rabies 7번째 사례 확인",
           "indexable": false,
           "tier": "analysis",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [
             "source-relay"
@@ -358,6 +386,7 @@
           "title": "애완동물 아시아극동분들 중증 기생충 위협 증가",
           "indexable": false,
           "tier": "analysis",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [
             "source-relay"
@@ -372,6 +401,7 @@
           "title": "PET 리포터 리간드로 뇌 유전자 발현 정량 영상화",
           "indexable": false,
           "tier": "analysis",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [
             "source-relay"
@@ -386,6 +416,7 @@
           "title": "새 동물보험 가입, 비용 대비 가장 현명한 첫걸음",
           "indexable": false,
           "tier": "analysis",
+          "clinicalRisk": "high",
           "paragraphs": 3,
           "qualityIssues": [
             "source-relay"
@@ -400,6 +431,7 @@
           "title": "미접종·미등록 동물, 소유주에게 과태료 부과 가능",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [
             "brief-too-short"
@@ -415,6 +447,7 @@
           "title": "수의사 기술, 정책 활동과 옹호로 이어지는 길",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [
             "brief-too-short"
@@ -430,6 +463,7 @@
           "title": "국내말, 시각적 포식자cue만으로 생리적 경계 반응 보인다",
           "indexable": false,
           "tier": "evidence",
+          "clinicalRisk": "medium",
           "paragraphs": 4,
           "qualityIssues": [
             "internal-ascii",
@@ -446,6 +480,7 @@
           "title": "아픈 망아지(말 새끼)의 생명을 위협하는 호르몬 기능장애 진단 테스트 개발",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "medium",
           "paragraphs": 1,
           "qualityIssues": [],
           "reasons": [
@@ -458,6 +493,7 @@
           "title": "식물 항균제 가금 생산 내성 유전자 확산 방지 효과",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "medium",
           "paragraphs": 1,
           "qualityIssues": [],
           "reasons": [
@@ -470,6 +506,7 @@
           "title": "미국 사료 리콜 10건...반려동물 주인의 신속 대응법",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "low",
           "paragraphs": 1,
           "qualityIssues": [],
           "reasons": [
@@ -482,6 +519,7 @@
           "title": "미국 의회, 식량안보 위해 사료·수의 업무 역할 강조",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "low",
           "paragraphs": 1,
           "qualityIssues": [],
           "reasons": [
@@ -494,6 +532,7 @@
           "title": "미국 폴크 카운티, 무료 마이크로칩·광견병 예방접종 제공",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "low",
           "paragraphs": 1,
           "qualityIssues": [],
           "reasons": [
@@ -506,6 +545,7 @@
           "title": "미국 CVS 9000개 약국, 개·고양이 처방약 조제 시작",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "low",
           "paragraphs": 1,
           "qualityIssues": [],
           "reasons": [
@@ -518,6 +558,7 @@
           "title": "사우스오스트레일리아, 조객 참여 조류인플루엔자 대응 훈련 프로그램 추진",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "low",
           "paragraphs": 1,
           "qualityIssues": [
             "banned-term"
@@ -533,6 +574,7 @@
           "title": "카자흐스탄 뉴캐슬병바이러스 유전체 분석",
           "indexable": false,
           "tier": "brief",
+          "clinicalRisk": "medium",
           "paragraphs": 1,
           "qualityIssues": [],
           "reasons": [
@@ -1377,6 +1419,1241 @@
       "file": "data/issues/2026-07-29.json",
       "id": "v1_39ff1f1ef8646d29",
       "title": "개의 삶의 질 높이는 Zoetis 의료 혁신"
+    }
+  ],
+  "images": {
+    "indexImageRows": [
+      {
+        "file": "article/2026-05-21_1-수의-마취에서-우리가-잘못-생각하는-것들.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-05-22_1-수의사-생산성-보상-진짜-문제점은-무엇인가.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-05_1-기관내관-풍선-적절한-팽창-왜-중요한가.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-05_2-수의학에서-일반수의의-역할-전문의보다-중요하다.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-11_1-수의사가-사용해선-안-되는-비판적-표현-3가지.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-11_2-미국-태평양-북서부에서-폐활성-조충-발견너구리-37-감염.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-12_1-개고양이-기관튜브-선택과-삽관-깊이-관리-핵심.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-17_1-신입수의사경력-수의기사-협업-가이드.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-19_1-고양이-만성질환에서-장유래-독소-관리와-영양-전략.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-19_2-개의-단백질-손실-장염-조기-진단이-생사를-가른다.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-19_5-개-폐충감염의-진단과-치료-임상에서-반드시-고려해야-할-원인.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-19_7-애완동물-환각버섯-중독-증가수의사-주목-필요.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-22_1-개와-고양이-소음-민감증-삼중-접근법으로-관리하기.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-23_1-고양이-식이-칼륨-보충-요로결석-위험-낮추는-효과-확인.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-23_2-H5N1-소-유선에서만-심한-감염-보이는-이유-규명.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-26_1-고양이-배설-장애-수의사를-위한-실용적-접근법.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-26_3-말-정맥-카테터-삽입-완벽-가이드-합병증-예방을-위한-실천적-단계.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-29_1-수의사-커리어-경로의-새로운-가능성.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-29_2-개고양이-유방종양-식물-화학물질-연구-동향.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-06-30_1-개-전십자-인대-질환에서-ADSC-Enriched-Secretome의-T.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-01_1-개-관절염-치료-새로운-선택지관절-내-방사성동위원소-주사.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-01_2-개-자가면역-피부질환에-사용되는-허브-3가지.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-01_3-수의-의료에-사회복지사-도입-호주-18개월-Pilot-진행.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-02_1-폭죽-공포증-전화-상담-수의사가-지금-바로-확인해야-할-대응법.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-02_2-동물병원-PIMS-제대로-활용하고-계신가요.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-03_2-미국-여름철-반려동물-클레임-증가-열사병-266독사-물림-145-상승.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-06_1-수중-운동으로-관절염-개-낮추기-운동-어려웠던-강아지-9kg-감량.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-07_1-고양이-스트레스성-비뇨기-질환-관리-통합치료-7가지-접근법.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-08_1-수의-AI-필기-도구-사용법과-한계-살펴보기.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-08_2-동물병원-채용-실패-루프를-끊는-9가지-HR-도구.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-08_3-수의사-영양-상담-실제로-얼마나-이루어질까.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-08_4-동물병원-소프트웨어-감사-90분-안에-자가-점검하는-법.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-08_5-24시간-동물병원-개축-시-임상-운영-연속성-유지-사례.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-08_8-수의-리더십의-새로운-시대-기업-동물병원-운영의-핵심.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-09_1-개-경추-추간판-질환-통합-재활치료-사례-외과와-한의학-협업의-가능성.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-09_2-개고양이-치주낭-치료제를-위한-이식재-활용-가이드.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-09_4-빈혈-검사-MCHC만으로는-부족하다CHCM의-임상적-가치.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-09_6-원격진료-플랫폼-Dutch의-위험성-수의학적-안전장치-해체-우려.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-12_1-개구충-위험-북상-예방-미흡한-반려동물-증가-우려.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-17_2-플루니키신-송아지-플루오로퀴놀론-약물동태에-미치는-영향.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-17_3-로미피딘이-말-인두-기능-등급에-미치는-영향-연구.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-17_4-수의사의-애완동물-말하기-보호자-재방문-의향-높여.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-17_6-전자건강기록으로-가축-질병-감시한다영국-연구의-시사점.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_1-고령-동물-관절염-통증-약물비약물-복합-관리의-실제.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_10-개-microbiome-조절로-항생제-의존도-낮추기.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_11-노령견-전지-보폭-감소-치매-조기-경고-신호-가능성.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_21-고양이-요로결석의-비수술적-파쇄-치료-가능성.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_22-수의대병원-개-피부염-다제내성균-유병률-연구.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_23-고양이-전염성-복막염-치료용-GS441524-경구현탁액-개발-및-물리화학.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_24-안면구조가-짧은-개와-고양이에서-흔한-눈-질환-종합-분석.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_25-수의학에서-박테리오신의-항생제-대안-가능성-검토.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_26-개의-폐활성-담낭염-35례-임상-양상과-치료-결과.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_28-개와-고양이-스마트폰-안저-영상-시스템-비교-OQVet-화질-최고.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_29-개의-만성-장염-주인의-돌봄-부담감과-삶의-질에-미치는-영향.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_3-중고도-공포불안-강아지의-수의과-진료실-대처법.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_30-보더테리어의-식이-반응성-전신-호산구증가-1례.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_31-개-췌장-초음파-검사-관찰자-간-결과-차이-커.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_33-저장용-MRI-개-뇌-영상에서-기존-15T와-유사한-해부학적-시각화-가능.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_34-개고양이-흉부-Xray에서-인공지능으로-폐렴-진단하기.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_35-경미한-심근병증-소변관-우회술-예후에-영향-없어.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_4-고양이-당뇨병-관리의-새로운-선택지-SGLT2-억제제.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_5-개의-관절염-치료적-운동으로-관절-가동성과-근육량-개선.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_8-개에서-쿼럼-센싱-조절제-세균-신호-차단을-통한-장-건강-관리.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-20_9-노령개-인지기능장애-영양보충제로-관리한다.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_1-고양이-소화선-종양-연관-급성-근무력증-1례.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_10-개-직장-근수막외-형질세포종으로-간-전이-사례-멜팔란-치료-프로토콜-수정.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_13-탄자니아-농촌에서-지역사회-기반-개-광견병-예방접종-실행-평가.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_14-고양이-호산구성-각막염-약물-종류에-따른-치료-성적-비교.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_16-개-췌장-초음파-연령과-체지방이-영상에-미치는-영향.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_18-호주-동물-입양률-40-급락주거-불안정-주요-원인.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_2-AI-혈액도말-분석-개-IMHA-진단-시간-획기적-단축.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_20-개-전십자-인대-파열수술-TPLO와-TTA-관절염-진행은-어떤-것이-더.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_21-개-무릎-수술-통증관리-신경마비-차단-대-경막외-마취-어떤-게-더-효과적.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_23-슬로베니아체코-고양이-톡소플라즈마FIV-공동감염율-48-임상증상-발생률.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_24-개-유방암-수술에서-CBDTHC-유지류-유분의-진정-및-마약절감-효과.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_25-개의-안구-위협-질환에서-자기-체막-이식의-임상적-유용성.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_27-개-복지-평가-도구-AWAG-임상-의사결정에-유용.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_3-개-발치-후-생체재료가-치조골-높이를-보존한다.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_32-레드팜유와-천연추출물-복합-펫샴푸의-항균항진균항염-효과-연구.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_33-소-Liver-Abscess-초기-항생제-투여가-장기-위험에-영향.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_34-수의학의-새로운-접근법-환자-전체를-고려하는-상황적-케어.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_35-고양이-비침습-혈압-측정-침습-측정과-얼마나-일치할까.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_4-개고양이-refractory-감염각막염에서-Rose-Bengal-광동력치.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_5-개의-가스트린종-반복-수술과-혈청-가스트린-모니터링으로-장기-생존-사례.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-21_7-고양이-갑상선기능항진증-치료-중-혈구-수치로-TT4-추적-가능.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-22_14-인도-일차-진료수의사의-개-특발성-간질-관리-실태-조사.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-22_19-강아지-유방종양-진단-생물표지자로서의-혈청-TP53-자가항체.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-22_21-고양이-전십자-인대-파열-동반-무릎뼈-탈구의-신규-절골술-치료.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-22_22-커큐민-고양이-만성콩팥병에서-신장-보호-효과-확인.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-22_23-개소-레프토스피라증-진단용-재조합-단백질-기반-검사법-개발.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-22_25-수중-트레드밀-개-추간판-수술-후-보행-회복-단축.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-22_28-개-아토피-피부염에서-T-세포의-피부-침윤과-IL17-발현.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-22_3-개-척수-수막염에서-발견된-진균성-농피전증-1례.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-22_9-개-장-Microbiome-연구-새-시대-열었다.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_1-수의-수술실-효율화-입체적-배치-전략.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_14-어린-가축-건강-관리의-새로운-추세-뽕나무잎-플라보노이드-항생제-대안으로.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_19-고양이-비대성-심근증에서-심혈관-생체표지자의-임상적-유용성-10년-간-체.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_2-고양이-만성신장질환-장내-대사물질-변화와-연관-발견.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_21-개에서-단두증과-수면호흡장애-염증-반응의-연관성-규명.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_23-반려동물-뇌장-건강axis-미생물군-기반-신경행동장애-치료-전략.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_24-전산기법으로-발견한-고양이-심장병-후보-치료제.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_25-개-호중구성-염증성-장염-27례-임상-분석.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_29-재발성-요도-폐쇄-수고양이-초기-발병보다-질소혈증-발생-위험-낮아.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_3-개와-고양이-암-영양학의-단백질-권장량-수정.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_5-수가-진료실-AI-필기-도구-도입이-필요한-이유.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_6-수의사-고객-준수율-높이는-5가지-방법.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_7-수의-인력-분석-플랫폼-출시-리프스태핑-성과-데이터로-확인한다.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-23_8-개-고양이-영양-검사-미량영양소-결핍-확인-가능.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_1-소동물-종양-조기-발견-천자흡인검사가-답이다.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_10-구제역-바이러스-3D-단백질이-네크로프토시스-유도-RIPK3-경로-활성화.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_14-임신-말기-암컷-개에서-아디슨-위기로-오인된-응급-상황.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_16-고양이-의인성-고혈칼슘증-및-급성-신장-손상-혈액투석으로-성공적-치료.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_17-건강-고양이에서-베agliflozin-약동학-경구-생체이용률-78로-하루.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_18-GnRH-차단Vaccine-Improvac-고양이-피임-효과-확인.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_19-elastin-분해-산물-저해로-노화된-마우스개인간-모델에서-관절-변성.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_20-로도코커스-에퀴-감염-송아지의-관절골수염-병리-소견.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_21-프렌치불도그-신장대동맥-비율-초음파-기준치-확립.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_22-디오드-레이저로-치료한-고양이-눈꺼풀-아포크린-낭포선종증-4례.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_23-개-안면신경장애의-안과적-특징중두개견에서-각막염-더-빈번.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_3-미국-콜로라도에-고양이-전용-동물병원-개원-진료-공백-해소-도전.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-24_4-염소백시균-불활화-백신-돼지-살모넬라-choleraesuis-감염-예방.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_1-개의-아토피-피부염-JAK-억제제-치료-최신-관점.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_15-말-관절경-시술의-탄소-발자국-연구-운반과-소모품이-주요-배출원.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_17-쥐-낙관적-편향의-traitstate-차원-구분-연구.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_19-환경-스트레스와-종마-불임의-분자-기전.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_20-개의-고등급-수막내-희소돌기아교종-2년간-비정상적으로-느린-진행.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_21-개-두개골-골화성-섬유종의-영상-소견-및-수술방사선-치료-사례.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_22-개의-진행성-치주염에서-특이적으로-증가하는-세균과-엑소솜-치료-가능성.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_23-개-각막-손상에-대한-HA-기반-광경화-접착제-적용-사례.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_27-말-경추-추간공의-해부학적-특성-규명.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/2026-07-25_4-치료식-선택-도우미-도구-2600명-이상-수의사-사용-중.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_06ce49c95607933d.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_103ba30adfca986c.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_122239e469ae8bb6.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_1326c67ebc8d46fe.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_20a9351a0caea64a.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_21e812160281fc5c.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_237a0fa7f626d219.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_2458364d7ea09d4c.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_2688f13fc6d2660b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_2b0fbe31bd7499f6.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_2ec0c68fded89d00.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_494886c6f4b5b089.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_494f97a9462855cc.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_4ddbe75b581f6b93.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_561202055a32f9a2.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_592f1d8e702ec6a0.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_5a9fbdf10a1f09c8.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_5c1783822aafadb2.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_6082eb09e4c7fb01.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_61b9a23dba93f6a4.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_67badcee51a08493.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_710e69cc91d80d88.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_717de352ac7865a6.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_94e3799cebd31d4b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_97407f7b28526af0.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_9996059839065d8b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_a5b554217652df94.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_a7b57667e01fa858.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_a8c8d0ced9731d44.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_b1565da63f8497f3.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_c3cdce99920a1017.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_c4f23daf8340112a.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_cb5546d9e248b911.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_cc752d4547496da4.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_d1fbaef3e76d80d3.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_db3e142ba9f0be9f.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_e174695d8cae4128.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_e29143e61f54ae8d.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_fcbd7aa64148ba95.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      }
+    ],
+    "report": {
+      "indexImages": 170,
+      "indexEditorialCards": 170,
+      "unknownRawExternal": 87,
+      "unclassifiedEffectiveIndex": 0
+    }
+  },
+  "sourceResolution": {
+    "counts": {
+      "resolved": 0,
+      "candidate": 0,
+      "unresolved": 187,
+      "rejected": 0,
+      "manually-approved": 0
+    },
+    "total": 187
+  },
+  "clinical": {
+    "riskCounts": {
+      "low": 111,
+      "medium": 211,
+      "high": 141
+    },
+    "explicitReviewFields": 0
+  },
+  "favicon": [
+    {
+      "size": 48,
+      "exists": true,
+      "bytes": 977
+    },
+    {
+      "size": 192,
+      "exists": true,
+      "bytes": 3413
+    },
+    {
+      "size": 512,
+      "exists": true,
+      "bytes": 11262
     }
   ],
   "xmlError": null,

@@ -99,8 +99,11 @@ export function generatedImageMeta(id, title) {
     imageCaption: "VetManLab 편집용 정보 카드입니다. 실제 환자·검사 사진이 아닙니다.",
     imageCredit: "VetManLab 편집팀 자체 제작",
     imageLicense: "VetManLab 자체 제작",
+    imageLicenseUrl: null,
     imageWidth: EDITORIAL_CARD_WIDTH,
     imageHeight: EDITORIAL_CARD_HEIGHT,
     imageOrigin: "editorial-card",
+    imageOwnership: "owned",
+    imageSourceUrl: null,
   };
 }

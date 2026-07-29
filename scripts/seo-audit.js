@@ -4,6 +4,8 @@ import { fileURLToPath } from "node:url";
 import { XMLParser } from "fast-xml-parser";
 import { normalizeContentTier, qualityIssues } from "../src/lib/quality.js";
 import { normalizeSourceUrl } from "../src/identity.js";
+import { clinicalReviewIssues, inferClinicalRisk } from "../src/lib/editorial-review.js";
+import { imageRightsIssues } from "../src/lib/image-rights.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const SITE = path.join(ROOT, "site");
@@ -123,19 +125,30 @@ function main() {
       if (normalizeContentTier(item) === "brief") reasons.push("brief-tier");
       for (const issue of q) reasons.push(issue);
       if (!reasons.length && !indexable) reasons.push("build-policy");
-      policyRows.push({ date, id, title: item.titleKo || "", indexable, tier: normalizeContentTier(item), paragraphs: Array.isArray(item.bodyKo) ? item.bodyKo.filter(Boolean).length : 0, qualityIssues: q, reasons: [...new Set(reasons)] });
+      policyRows.push({ date, id, title: item.titleKo || "", indexable, tier: normalizeContentTier(item), clinicalRisk: inferClinicalRisk(item), paragraphs: Array.isArray(item.bodyKo) ? item.bodyKo.filter(Boolean).length : 0, qualityIssues: q, reasons: [...new Set(reasons)] });
     }
   }
   const reasonCounts = {};
   for (const row of policyRows.filter((row) => !row.indexable)) for (const reason of row.reasons) reasonCounts[reason] = (reasonCounts[reason] || 0) + 1;
+  const searchItems = fs.existsSync(path.join(SITE, "search.json")) ? JSON.parse(read(path.join(SITE, "search.json"))).items || [] : [];
+  const indexImageRows = articles.filter((page) => !page.robots.includes("noindex")).map((page) => ({ file: path.relative(SITE, page.file), hero: Boolean(page.html.match(/class=["'][^"']*hero-image/)), og: Boolean(page.html.match(/property=["']og:image/)), external: /<meta[^>]+property=["']og:image["'][^>]+content=["']https?:\/\/(?!news\.vetmanlab\.com)/i.test(page.html), card: page.html.includes("/media/editorial/") }));
+  for (const row of indexImageRows.filter((row) => !row.hero || !row.og || row.external)) addCritical("index-image-rights-or-render", row);
+  const sourceReport = fs.existsSync(path.join(ROOT, "reports", "source-resolution.json")) ? JSON.parse(read(path.join(ROOT, "reports", "source-resolution.json"))) : null;
+  const rightsReport = fs.existsSync(path.join(ROOT, "reports", "image-rights-audit.json")) ? JSON.parse(read(path.join(ROOT, "reports", "image-rights-audit.json"))) : null;
+  const favicon = [48, 192, 512].map((size) => ({ size, exists: fs.existsSync(path.join(SITE, `icon-${size}.png`)), bytes: fs.existsSync(path.join(SITE, `icon-${size}.png`)) ? fs.statSync(path.join(SITE, `icon-${size}.png`)).size : 0 }));
+  if (favicon.some((item) => !item.exists)) addCritical("favicon-missing", favicon);
   const audit = {
     generatedAt: new Date().toISOString(),
     status: critical.length ? "failed" : "passed",
-    counts: { htmlPages: pages.length, articles: articles.length, index: indexPages.length, noindex: noindexPages.length, sitemap: sitemapUrls.length, newsSitemap: newsUrls.length, rssItems: rssItems.length, rssIncomplete, noindexInSitemap: noindexInSitemap.length, knownQualityHits: errorHits.length, brokenInternalLinks: critical.filter((item) => item.code === "broken-internal-link").length },
+    counts: { htmlPages: pages.length, articles: articles.length, index: indexPages.length, noindex: noindexPages.length, sitemap: sitemapUrls.length, newsSitemap: newsUrls.length, rssItems: rssItems.length, rssIncomplete, noindexInSitemap: noindexInSitemap.length, knownQualityHits: errorHits.length, brokenInternalLinks: critical.filter((item) => item.code === "broken-internal-link").length, indexImages: indexImageRows.filter((row) => row.hero && row.og && !row.external).length, indexImageRightsCritical: critical.filter((item) => item.code === "index-image-rights-or-render").length },
     performance: { homepageBytes: fs.existsSync(path.join(SITE, "index.html")) ? fs.statSync(path.join(SITE, "index.html")).size : 0, searchSizes, articleBytes, searchFirstRequestBytes: searchSizes.filter((item) => item.file === "search/2026-07.json")[0]?.bytes || searchSizes.find((item) => item.file === "search.json")?.bytes || 0 },
     duplicate,
     indexPolicy: { previousIndex: 318, currentIndex: indexPages.length, currentNoindex: noindexPages.length, delta: indexPages.length - 318, reasonCounts, samples: { index: policyRows.filter((row) => row.indexable).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 20), noindex: policyRows.filter((row) => !row.indexable).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 20) } },
     relayUrls,
+    images: { indexImageRows, report: rightsReport ? { indexImages: rightsReport.indexImages, indexEditorialCards: rightsReport.indexEditorialCards, unknownRawExternal: rightsReport.unknownRawExternal, unclassifiedEffectiveIndex: rightsReport.unclassifiedEffectiveIndex } : null },
+    sourceResolution: sourceReport ? { counts: sourceReport.counts, total: sourceReport.totalRelayArticles } : null,
+    clinical: { riskCounts: Object.fromEntries(["low", "medium", "high"].map((risk) => [risk, policyRows.filter((row) => row.clinicalRisk === risk).length])), explicitReviewFields: dataFiles.reduce((sum, file) => sum + (JSON.parse(read(file)).items || []).filter((item) => item.editorialStatus || item.vetReviewer || item.reviewedBy).length, 0) },
+    favicon,
     xmlError,
     warnings,
     critical,

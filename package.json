@@ -9,10 +9,17 @@
     "run": "node --env-file-if-exists=.env src/run.js",
     "publish:today": "node --env-file-if-exists=.env src/run.js --publish",
     "build": "node src/build.js",
-    "prebuild": "node scripts/generate-editorial-cards.js",
+    "prebuild": "node scripts/generate-editorial-cards.js && node scripts/generate-icons.js",
     "media:cards": "node scripts/generate-editorial-cards.js",
     "normalize:sources": "node scripts/resolve-source-urls.js",
+    "source:resolve": "node scripts/resolve-source-candidates.js",
+    "source:review": "node scripts/source-review.js",
+    "image:rights": "node scripts/image-rights-audit.js",
     "seo:audit": "node scripts/seo-audit.js",
+    "test:browser": "playwright test",
+    "lighthouse": "lhci autorun && node scripts/lighthouse-summary.js",
+    "qa": "npm run test:browser && npm run lighthouse",
+    "monitor:production": "node scripts/monitor-production.js",
     "dev": "wrangler pages dev site --port 8788",
     "check": "npm test && npm run build && npm run validate",
     "validate": "node src/validate.js",
@@ -28,7 +35,11 @@
     "fast-xml-parser": "^5.10.1"
   },
   "devDependencies": {
-    "wrangler": "^4.112.0",
-    "sharp": "0.34.5"
+    "@axe-core/playwright": "^4.12.1",
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.62.0",
+    "lighthouse": "^13.4.1",
+    "sharp": "0.34.5",
+    "wrangler": "^4.112.0"
   }
 }
