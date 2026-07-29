@@ -17,6 +17,7 @@ import { addSourceKeys, sourceKeys, stableItemId, titleKey } from "./identity.js
 import { markQuality, normalizeContentTier, publishQualityIssues, qualityIssues } from "./quality.js";
 import { inferClinicalRisk } from "./lib/editorial-review.js";
 import { SCHEMA_VERSION } from "./lib/editorial-operations.js";
+import { contentHash as sourceContentHash, loadRegistry, metadataHash } from "./lib/source-first.js";
 import { removeRepeatedImages } from "./images.js";
 
 const noPapers = process.argv.includes("--no-papers");
@@ -26,6 +27,7 @@ const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const collectOnly = process.argv.includes("--collect-only");
 const noWebsearch = process.argv.includes("--no-websearch");
 const requestedDirectPublish = process.argv.includes("--publish");
+const allowGoogleDiscovery = process.argv.includes("--discover-google-news");
 // 4차부터 수집기는 어떤 플래그에서도 published 파일을 만들지 않는다. 기존
 // 자동화 호출과의 호환성을 위해 --publish는 허용하되, draft를 만든 뒤
 // 사람이 review CLI와 src/publish.js로 명시적으로 승인해야 한다.
@@ -63,17 +65,38 @@ function saveSeen(seen) {
 }
 
 function withIdentity(item, post, fallback = "item") {
+  const rawUrl = item.sourceUrlRaw || post.url || null;
+  const candidateUrl = item.sourceUrl || post.finalUrl || post.url || null;
+  const relay = /^https?:\/\/(?:news\.)?google\.[^/]+\/rss\/articles\//i.test(String(candidateUrl || ""));
+  const generatedAt = item.generation?.generatedAt || new Date().toISOString();
+  const provenance = item.generation || {
+    model: process.env.CLAUDE_MODEL || "configured-model",
+    promptVersion: "legacy-run-source-first-v1",
+    generatedAt,
+    inputSourceIds: post.sourceId ? [post.sourceId] : [],
+    inputHash: metadataHash({ title: post.title, url: rawUrl, publishedAt: post.publishedAt, sourceLabel: post.sourceLabel }),
+    outputHash: sourceContentHash(JSON.stringify(item)),
+    generationWarnings: [],
+  };
   return markQuality({
     ...item,
     dataSchemaVersion: Number(item.dataSchemaVersion) || SCHEMA_VERSION,
-    workflowStatus: item.workflowStatus || "draft",
+    // 수집·생성 경로에서는 모델 출력이나 이전 필드가 published를 주장해도
+    // 절대 승격하지 않는다. 사람 승인과 별도 publish 단계가 필요하다.
+    workflowStatus: "draft",
     reviewPolicyVersion: item.reviewPolicyVersion || "2026-07-30",
     clinicalRisk: item.clinicalRisk || inferClinicalRisk(item),
     editorialStatus: item.editorialStatus || "automated",
     market: item.market || post.market || null,
     id: item.id || stableItemId({ ...post, ...item }, fallback),
-    sourceUrl: item.sourceUrl || post.finalUrl || post.url,
-    sourceUrlRaw: item.sourceUrlRaw || post.url || null,
+    sourceUrl: relay ? null : candidateUrl,
+    sourceUrlRaw: rawUrl,
+    sourceStatus: item.sourceStatus || (relay ? "unresolved" : "candidate"),
+    discoverySource: item.discoverySource || (post.type === "gnews" ? "google-news-discovery" : "official-rss"),
+    canonicalUrl: item.canonicalUrl || post.canonicalUrl || null,
+    sourceTitle: item.sourceTitle || post.title || null,
+    sourcePublishedAt: item.sourcePublishedAt || post.publishedAt || null,
+    generation: provenance,
   });
 }
 
@@ -91,9 +114,16 @@ async function collect() {
   const candidates = [];
   const gnewsGroups = [];
 
-  // 1) Plan C (기본): 수의 미디어·저널 RSS + 구글 뉴스 토픽 쿼리
+  // 1) source-first: 레지스트리에 등록된 공식 RSS/Atom을 기본 수집한다.
+  // Google News는 명시적 discovery 플래그가 있을 때만 후보 발견 신호로 허용한다.
+  const registryFeeds = loadRegistry().sources
+    .filter((source) => source.enabled)
+    .flatMap((source) => [...(source.rssUrls || []), ...(source.atomUrls || [])].map((url) => ({ name: source.label, url, max: source.max, maxAgeDays: source.maxAgeDays, sourceId: source.id, officialDomains: source.officialDomains })))
+    .filter((feed) => feed.url);
+  const directFeeds = registryFeeds.length ? registryFeeds : FEEDS.filter((feed) => feed.type !== "gnews");
+  const collectionFeeds = [...directFeeds, ...(allowGoogleDiscovery ? FEEDS.filter((feed) => feed.type === "gnews") : [])];
   let gnewsTotal = 0;
-  for (const feed of FEEDS) {
+  for (const feed of collectionFeeds) {
     try {
       const items = await fetchFeed(feed);
       if (feed.type === "gnews") {
@@ -107,7 +137,7 @@ async function collect() {
       console.error(`  [RSS] ${feed.name}: 실패 — ${err.message}`);
     }
   }
-  console.log(`  [Google News] 토픽 쿼리 ${gnewsGroups.length}개에서 ${gnewsTotal}개`);
+  if (allowGoogleDiscovery) console.log(`  [Google News discovery] 토픽 쿼리 ${gnewsGroups.length}개에서 ${gnewsTotal}개`);
   candidates.push(...roundRobin(gnewsGroups));
 
   // 2) Reddit API 직접 수집 (키가 있을 때만)
@@ -153,10 +183,10 @@ async function collect() {
 async function papersOnlyRun() {
   const seen = loadSeen();
   const label = dateLabel();
-  const issuePath = path.join(ROOT, "data", "issues", `${label}.json`);
+  const issuePath = path.join(ROOT, "data", "issues", `${label}.draft.json`);
   const issue = fs.existsSync(issuePath)
     ? JSON.parse(fs.readFileSync(issuePath, "utf8"))
-    : { date: label, status: "published", generatedAt: new Date().toISOString(), publishedAt: new Date().toISOString(), items: [] };
+    : { date: label, status: "draft", generatedAt: new Date().toISOString(), items: [] };
   const existing = new Set();
   issue.items.forEach((it) => addSourceKeys(existing, it));
   console.log("최신 연구(PubMed) 수집·생성 중...");
@@ -196,7 +226,7 @@ async function main() {
   if (papersOnly) return papersOnlyRun();
   console.log("1/4 수집 중...");
   console.log(
-    `  소스: RSS ${FEEDS.length}개${hasRedditCreds ? " + Reddit API" : ""}${!hasRedditCreds && useWebsearch && !noWebsearch && !collectOnly ? " + 웹 검색(레딧)" : ""}`
+    `  소스: 공식 RSS/Atom 우선${allowGoogleDiscovery ? " + Google News discovery" : ""}${hasRedditCreds ? " + Reddit API" : ""}${!hasRedditCreds && useWebsearch && !noWebsearch && !collectOnly ? " + 웹 검색(레딧)" : ""}`
   );
   const seen = loadSeen();
   const collected = await collect();
@@ -287,12 +317,14 @@ async function main() {
   }
 
   // ── 진료실 밖 이야기(가십·화제성 썰) — 신뢰 뉴스와 분리된 별도 섹션 ──
-  try {
-    console.log("+ 진료실 밖 이야기(가십) 수집·생성 중...");
-    await addStories(items, seen);
-  } catch (err) {
-    console.error(`  진료실 밖 이야기 생성 실패, 건너뜀: ${err.message}`);
-  }
+  if (allowGoogleDiscovery) {
+    try {
+      console.log("+ Google News discovery 기반 진료실 밖 이야기 후보 수집 중...");
+      await addStories(items, seen);
+    } catch (err) {
+      console.error(`  진료실 밖 이야기 생성 실패, 건너뜀: ${err.message}`);
+    }
+  } else console.log("+ Google News discovery 미사용 — 가십 후보를 생성하지 않습니다.");
 
   // ── 브리프(간추린 소식) — 심층 탈락분을 짧은 소식으로. 개별 페이지 없음, 색인 X ──
   // 레이더 없이 1콜만 쓰므로 심층 대비 시간·비용이 훨씬 적다(무료 예산 안에서 볼륨 확보).

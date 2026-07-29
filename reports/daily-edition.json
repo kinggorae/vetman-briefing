@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-07-29T16:50:53.883Z",
+  "date": "2026-07-29",
+  "limits": {
+    "indexAnalysisPerDay": 8,
+    "briefSeparate": true
+  },
+  "selected": [],
+  "groups": {
+    "analysis": [],
+    "evidence": [],
+    "brief": [],
+    "other": []
+  },
+  "excluded": 463,
+  "note": "편성 제안이며 자동 발행하지 않습니다. 발행 전 승인·임상 검수 상태를 다시 확인하세요."
+}

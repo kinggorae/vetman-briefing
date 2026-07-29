@@ -22,6 +22,7 @@ import {
   BRIEFS_PER_ISSUE,
   PAPERS_PER_ISSUE,
 } from "../config.js";
+import { dedupeFeedEntries, isOfficialUrl, parseFeed, sourceStatusFor } from "../src/lib/source-first.js";
 
 test("source URLs normalize tracking parameters and fragments", () => {
   const clean = "https://example.com/story";
@@ -190,4 +191,38 @@ test("evidence metadata is explicit and numeric conflicts are warnings only", ()
   const item = { studyType: "case-report", sampleSize: 3, leadKo: "표본 수는 3마리입니다.", bodyKo: ["본문에서는 4마리로 보고했습니다."] };
   assert.deepEqual(evidenceMetadata(item), { studyType: "case-report", sampleSize: 3 });
   assert.ok(numericEvidenceIssues(item).includes("numeric-lead-body-mismatch"));
+});
+
+test("source-first feed parsing keeps official canonical explicit and rejects relay final URLs", () => {
+  const source = { id: "src-example", label: "Example", officialDomains: ["example.com"] };
+  const parsed = parseFeed(`<?xml version="1.0"?><rss version="2.0"><channel><item><title>Veterinary study</title><link>https://example.com/news/study</link><guid>abc</guid><pubDate>Wed, 30 Jul 2026 00:00:00 GMT</pubDate></item></channel></rss>`, "https://example.com/feed.xml", source);
+  assert.equal(parsed.entries.length, 1);
+  assert.equal(parsed.entries[0].canonicalUrl, null);
+  assert.equal(sourceStatusFor(parsed.entries[0], source), "unresolved");
+  assert.equal(isOfficialUrl(parsed.entries[0].url, source), true);
+  const relay = { ...parsed.entries[0], url: "https://news.google.com/rss/articles/relay", canonicalUrl: "https://news.google.com/rss/articles/relay" };
+  assert.equal(sourceStatusFor(relay, source), "unresolved");
+});
+
+test("relay URLs preserved as raw evidence cannot pass the index gate", () => {
+  const item = {
+    titleKo: "수의학 연구 결과를 임상에 적용할 때 확인할 점입니다.",
+    leadKo: "원문 연구의 의미와 한계를 검토하고 임상 적용 전 최신 근거를 확인해야 합니다.",
+    bodyKo: ["첫 번째 검수 문단은 연구 대상과 설계를 설명합니다.", "두 번째 검수 문단은 결과와 불확실성을 설명합니다.", "세 번째 검수 문단은 국내 적용 시 주의점을 설명합니다."],
+    contentTier: "analysis", radar: { clinical: "임상적 추가 가치가 있습니다." }, sourceUrlRaw: "https://news.google.com/rss/articles/relay",
+  };
+  assert.ok(qualityIssues(item).includes("source-relay"));
+  assert.equal(isProfessionallyIndexable(item), false);
+});
+
+test("source-first deduplication distinguishes unique, duplicate, and update candidates", () => {
+  const existing = [{ id: "old-1", sourceUrl: "https://example.com/old", sourceTitle: "Existing veterinary study" }];
+  const rows = dedupeFeedEntries([
+    { guid: "same", url: "https://example.com/old", title: "New title" },
+    { guid: "new", url: "https://example.com/new", title: "Existing veterinary study" },
+    { guid: "fresh", url: "https://example.com/fresh", title: "Different animal hospital update" },
+  ], existing);
+  assert.equal(rows[0].duplicateStatus, "exact-duplicate");
+  assert.equal(rows[1].duplicateStatus, "update-of-existing");
+  assert.equal(rows[2].duplicateStatus, "unique");
 });

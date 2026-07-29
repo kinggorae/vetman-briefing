@@ -5,3 +5,5 @@ data/candidates.json
 reports/lighthouse/
 .lighthouseci/
 test-results/
+.source-cache/
+data/drafts/*.tmp-*

@@ -1,0 +1,149 @@
+# 원출처 검수 배치
+
+총 187건, 145개 매체 그룹입니다. 빈도순으로 정렬했습니다.
+
+- [DVM360](001-dvm360.md) · 10건
+- [CBS News](002-cbs-news.md) · 6건
+- [MSN](003-msn.md) · 5건
+- [New York Post](004-new-york-post.md) · 5건
+- [Yahoo Creators](005-yahoo-creators.md) · 4건
+- [Purdue University College of Veterinary Medicine](006-purdue-university-college-of-veterinary-medicine.md) · 3건
+- [MyNorthwest.com](007-mynorthwest-com.md) · 2건
+- [Vet Times](008-vet-times.md) · 2건
+- [Forbes](009-forbes.md) · 2건
+- [Pet Food Processing](010-pet-food-processing.md) · 2건
+- [NC State University](011-nc-state-university.md) · 2건
+- [aphis.usda.gov](012-aphis-usda-gov.md) · 2건
+- [American Animal Hospital Association - AAHA](013-american-animal-hospital-association-aaha.md) · 2건
+- [FOX5 Vegas](014-fox5-vegas.md) · 2건
+- [FOX 13 Tampa Bay](015-fox-13-tampa-bay.md) · 2건
+- [PetfoodIndustry](016-petfoodindustry.md) · 2건
+- [ABC15 Arizona](017-abc15-arizona.md) · 2건
+- [Spherical Insights](018-spherical-insights.md) · 2건
+- [ニコニコニュース](019-source.md) · 2건
+- [avinews.com](020-avinews-com.md) · 2건
+- [USA Today](021-usa-today.md) · 2건
+- [Cureus](022-cureus.md) · 1건
+- [Indiana Public Media](023-indiana-public-media.md) · 1건
+- [CNBC](024-cnbc.md) · 1건
+- [tag24.com](025-tag24-com.md) · 1건
+- [The New York Times](026-the-new-york-times.md) · 1건
+- [Phys.org](027-phys-org.md) · 1건
+- [Region Canberra](028-region-canberra.md) · 1건
+- [Rising Kashmir](029-rising-kashmir.md) · 1건
+- [The Irish Times](030-the-irish-times.md) · 1건
+- [TAPinto](031-tapinto.md) · 1건
+- [ColoradoBiz](032-coloradobiz.md) · 1건
+- [aviglianonews.it](033-aviglianonews-it.md) · 1건
+- [NerdWallet](034-nerdwallet.md) · 1건
+- [Fortune](035-fortune.md) · 1건
+- [DogTime](036-dogtime.md) · 1건
+- [AOL.com](037-aol-com.md) · 1건
+- [ABC Columbia](038-abc-columbia.md) · 1건
+- [Peoples Gazette Nigeria](039-peoples-gazette-nigeria.md) · 1건
+- [WNYT.com](040-wnyt-com.md) · 1건
+- [Bovine Veterinarian](041-bovine-veterinarian.md) · 1건
+- [nwitimes.com](042-nwitimes-com.md) · 1건
+- [Winchester Sun](043-winchester-sun.md) · 1건
+- [Ohio House of Representatives (.gov)](044-ohio-house-of-representatives-gov.md) · 1건
+- [WTMJ](045-wtmj.md) · 1건
+- [KRDO](046-krdo.md) · 1건
+- [Wamiz.co.uk](047-wamiz-co-uk.md) · 1건
+- [Dogster](048-dogster.md) · 1건
+- [HOLA](049-hola.md) · 1건
+- [NBC 5 Dallas-Fort Worth](050-nbc-5-dallas-fort-worth.md) · 1건
+- [Tamarac Talk](051-tamarac-talk.md) · 1건
+- [Your Observer](052-your-observer.md) · 1건
+- [Tampa Bay 28](053-tampa-bay-28.md) · 1건
+- [Virginia Tech News](054-virginia-tech-news.md) · 1건
+- [Michigan State University](055-michigan-state-university.md) · 1건
+- [VOCM](056-vocm.md) · 1건
+- [thesenior.com.au](057-thesenior-com-au.md) · 1건
+- [PerthNow](058-perthnow.md) · 1건
+- [The Tribune](059-the-tribune.md) · 1건
+- [KalingaTV](060-kalingatv.md) · 1건
+- [San Antonio Express-News](061-san-antonio-express-news.md) · 1건
+- [MoneyMagpie](062-moneymagpie.md) · 1건
+- [Newsweek](063-newsweek.md) · 1건
+- [qz.com](064-qz-com.md) · 1건
+- [Houston Public Media](065-houston-public-media.md) · 1건
+- [Pan American Health Organization (PAHO)](066-pan-american-health-organization-paho.md) · 1건
+- [Farms.com](067-farms-com.md) · 1건
+- [Indiana Public Radio](068-indiana-public-radio.md) · 1건
+- [The Providence Journal](069-the-providence-journal.md) · 1건
+- [Seaside Signal](070-seaside-signal.md) · 1건
+- [Morningstar](071-morningstar.md) · 1건
+- [citybiz](072-citybiz.md) · 1건
+- [Anne Arundel County Health Department](073-anne-arundel-county-health-department.md) · 1건
+- [IndexBox](074-indexbox.md) · 1건
+- [cbs19.tv](075-cbs19-tv.md) · 1건
+- [Turkmenportal.com](076-turkmenportal-com.md) · 1건
+- [Audacy](077-audacy.md) · 1건
+- [EquiManagement](078-equimanagement.md) · 1건
+- [Gainesville Sun](079-gainesville-sun.md) · 1건
+- [Mshale](080-mshale.md) · 1건
+- [edge1021.com.au](081-edge1021-com-au.md) · 1건
+- [KOMO](082-komo.md) · 1건
+- [ecommercenews.com.au](083-ecommercenews-com-au.md) · 1건
+- [Mahoning Matters](084-mahoning-matters.md) · 1건
+- [아시아경제](085-아시아경제.md) · 1건
+- [Colorado State University](086-colorado-state-university.md) · 1건
+- [THISDAYLIVE](087-thisdaylive.md) · 1건
+- [Bryan Times](088-bryan-times.md) · 1건
+- [Vietnam.vn](089-vietnam-vn.md) · 1건
+- [crossroadstoday.com](090-crossroadstoday-com.md) · 1건
+- [Eye On Annapolis](091-eye-on-annapolis.md) · 1건
+- [MPR News](092-mpr-news.md) · 1건
+- [1News](093-1news.md) · 1건
+- [El Informador](094-el-informador.md) · 1건
+- [Your Oregon News](095-your-oregon-news.md) · 1건
+- [WPSD Local 6](096-wpsd-local-6.md) · 1건
+- [Encyclopedia Britannica](097-encyclopedia-britannica.md) · 1건
+- [Spectrum News](098-spectrum-news.md) · 1건
+- [Infectious Disease Advisor](099-infectious-disease-advisor.md) · 1건
+- [TV Jaguari](100-tv-jaguari.md) · 1건
+- [Nutrition Insight](101-nutrition-insight.md) · 1건
+- [NonStop Local Billings](102-nonstop-local-billings.md) · 1건
+- [WILX](103-wilx.md) · 1건
+- [Volksstimme](104-volksstimme.md) · 1건
+- [WGRZ](105-wgrz.md) · 1건
+- [ABC News & Headlines – Australian Broadcasting Corporation](106-abc-news-headlines-australian-broadcasting-corporation.md) · 1건
+- [KRGV](107-krgv.md) · 1건
+- [INFO.FR](108-info-fr.md) · 1건
+- [thestokesnews.com](109-thestokesnews-com.md) · 1건
+- [NorthEscambia.com](110-northescambia-com.md) · 1건
+- [DairyReporter.com](111-dairyreporter-com.md) · 1건
+- [Veterinaria Atual](112-veterinaria-atual.md) · 1건
+- [WPR](113-wpr.md) · 1건
+- [Bioengineer.org](114-bioengineer-org.md) · 1건
+- [Pioneer Press](115-pioneer-press.md) · 1건
+- [KHGI](116-khgi.md) · 1건
+- [Modern Healthcare](117-modern-healthcare.md) · 1건
+- [myfoxzone.com](118-myfoxzone-com.md) · 1건
+- [Coverager](119-coverager.md) · 1건
+- [The Straits Times](120-the-straits-times.md) · 1건
+- [KOAT](121-koat.md) · 1건
+- [porciNews](122-porcinews.md) · 1건
+- [1851 Franchise](123-1851-franchise.md) · 1건
+- [WKTV](124-wktv.md) · 1건
+- [companionlife.co.uk](125-companionlife-co-uk.md) · 1건
+- [WSAZ](126-wsaz.md) · 1건
+- [ide.go.jp](127-ide-go-jp.md) · 1건
+- [Raleigh News & Observer](128-raleigh-news-observer.md) · 1건
+- [inkl](129-inkl.md) · 1건
+- [kens5.com](130-kens5-com.md) · 1건
+- [Illinois News Bureau](131-illinois-news-bureau.md) · 1건
+- [Nature](132-nature.md) · 1건
+- [Panay News](133-panay-news.md) · 1건
+- [The Cool Down](134-the-cool-down.md) · 1건
+- [Yahoo](135-yahoo.md) · 1건
+- [Yahoo Finance](136-yahoo-finance.md) · 1건
+- [Central Oregon Daily](137-central-oregon-daily.md) · 1건
+- [Boehringer Ingelheim](138-boehringer-ingelheim.md) · 1건
+- [Trinidad Guardian](139-trinidad-guardian.md) · 1건
+- [Arkansas Money & Politics](140-arkansas-money-politics.md) · 1건
+- [The Age](141-the-age.md) · 1건
+- [WSU Insider](142-wsu-insider.md) · 1건
+- [WHRO](143-whro.md) · 1건
+- [Business Insider](144-business-insider.md) · 1건
+- [The Atlantic](145-the-atlantic.md) · 1건

@@ -37,6 +37,7 @@ import {
   workflowLabel,
 } from "./lib/editorial-operations.js";
 import { evidenceMetadata, numericEvidenceIssues, studyTypeLabel } from "./lib/evidence.js";
+import { isRelayUrl } from "./lib/source-first.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -140,10 +141,16 @@ const articleImages = (a) => a.images?.length ? a.images : [articleImage(a)];
 
 function loadIssues() {
   if (!fs.existsSync(ISSUES_DIR)) return [];
+  const now = Date.now();
   return fs
     .readdirSync(ISSUES_DIR)
-    .filter((f) => f.endsWith(".json"))
+    .filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
     .map((f) => JSON.parse(fs.readFileSync(path.join(ISSUES_DIR, f), "utf8")))
+    .filter((issue) => !issue.scheduledAt || Number.isNaN(new Date(issue.scheduledAt).getTime()) || new Date(issue.scheduledAt).getTime() <= now)
+    .map((issue) => ({
+      ...issue,
+      items: (issue.items || []).filter((item) => !item.scheduledAt || Number.isNaN(new Date(item.scheduledAt).getTime()) || new Date(item.scheduledAt).getTime() <= now),
+    }))
     .sort((a, b) => (labelOf(a) < labelOf(b) ? 1 : -1));
 }
 
@@ -204,12 +211,16 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
   const rawImageOrigin = item.imageOrigin || (rawImageUrl ? "external-source" : null);
   const rawImageOwnership = normalizeImageOwnership(item.imageOwnership, { hasImage: Boolean(rawImageUrl), origin: rawImageOrigin });
   const imageAllowed = imageCanRender({ url: rawImageUrl, ownership: rawImageOwnership, origin: rawImageOrigin });
+  const rawSourceCandidate = item.finalUrl || item.sourceUrl || item.sourceUrlRaw || "";
+  const safeSourceLink = isRelayUrl(rawSourceCandidate) ? null : normalizeSourceUrl(rawSourceCandidate);
   const article = {
     id,
     legacySlug: item.legacySlug || null,
     day: sourceDay,
     ts: pub ? pub.getTime() : shown.getTime(),
     publishedAt: pub ? pub.toISOString() : null,
+    firstPublishedAt: validIsoDate(item.firstPublishedAt),
+    scheduledAt: validIsoDate(item.scheduledAt),
     cat: item.category || "other",
     kicker: CATEGORY_LABELS[item.category] || item.category || "브리핑",
     isToday,
@@ -238,11 +249,16 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     imageReviewedAt: validIsoDate(item.imageReviewedAt),
     imageReviewedBy: item.imageReviewedBy || null,
     sourceUrlRaw: item.sourceUrlRaw || item.sourceUrl || null,
-    sourceUrl: normalizeSourceUrl(item.finalUrl || item.sourceUrl || item.sourceUrlRaw || ""),
+    sourceUrl: safeSourceLink,
     finalUrl: item.finalUrl || null,
     sourceTitle: item.sourceTitle || null,
     sourceAuthor: item.sourceAuthor || null,
     sourcePublishedAt: validIsoDate(item.sourcePublishedAt || item.publishedAt),
+    sourceStatus: item.sourceStatus || (isRelayUrl(item.sourceUrlRaw || item.sourceUrl) ? "unresolved" : item.sourceUrl ? "ok" : "missing"),
+    discoverySource: item.discoverySource || null,
+    canonicalUrl: item.canonicalUrl || null,
+    sourceEvidence: item.sourceEvidence || null,
+    generation: item.generation || null,
     doi: item.doi || null,
     journal: item.journal || null,
     author: item.author || null,
@@ -1270,7 +1286,7 @@ const APP_JS = String.raw`
     +'<p style="font-size:calc(17px*var(--fs));line-height:1.75;color:var(--color-label-normal);margin:0 0 18px;font-weight:500;">'+e(a.dek)+'</p>'
     +body
     +radarBlock(a)
-    +'<div style="margin:26px 0 4px;padding:16px 18px;background:var(--color-background-alternative);border-radius:12px;"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">원문 출처</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;"><div style="font-size:14px;color:var(--color-label-neutral);"><b style="color:var(--color-label-strong);font-weight:700;">'+e(a.source)+'</b>'+(a.country?' · '+e(a.country):'')+(a.date?' · '+e(a.date):'')+'</div><a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">원문 사이트로 이동 '+EXT+'</a></div><p style="margin:10px 0 0;font-size:11.5px;line-height:1.5;color:var(--color-label-alternative);">해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></div>'
+    +'<div style="margin:26px 0 4px;padding:16px 18px;background:var(--color-background-alternative);border-radius:12px;"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">원문 출처</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;"><div style="font-size:14px;color:var(--color-label-neutral);"><b style="color:var(--color-label-strong);font-weight:700;">'+e(a.source)+'</b>'+(a.country?' · '+e(a.country):'')+(a.date?' · '+e(a.date):'')+'</div>'+(a.sourceUrl?'<a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">원문 사이트로 이동 '+EXT+'</a>':'<span style="font-size:13px;color:var(--color-label-alternative);">원문 URL 확인 중</span>')+'</div><p style="margin:10px 0 0;font-size:11.5px;line-height:1.5;color:var(--color-label-alternative);">해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></div>'
     + (a.blog ? '<div style="margin:26px 0;padding-top:18px;border-top:1px solid var(--color-line-normal);">'
       +'<div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:10px;">블로그 글감</div>'
       +'<p style="font-family:var(--font-display);font-size:calc(18px*var(--fs));line-height:1.45;font-weight:700;color:var(--color-label-strong);margin:0 0 '+(angle?'12px':'14px')+';text-wrap:pretty;">'+e(a.blog)+'</p>'
@@ -2030,7 +2046,7 @@ function renderArticlePage(a, data, prev, next, related = []) {
           mentions: { "@type": "Question", name: a.radar.owner.q },
         }
       : {}),
-    ...(a.source ? { citation: { "@type": "CreativeWork", name: a.journal || a.source, url: a.doi ? `https://doi.org/${a.doi}` : a.sourceUrl } } : {}),
+    ...(a.source ? { citation: { "@type": "CreativeWork", name: a.journal || a.source, ...(a.doi ? { url: `https://doi.org/${a.doi}` } : a.sourceUrl ? { url: a.sourceUrl } : {}) } } : {}),
     ...(a.doi ? { identifier: { "@type": "PropertyValue", propertyID: "DOI", value: a.doi } } : {}),
   };
   // 보호자 문답은 검색 질의와 직접 겹치는 자산이다. FAQPage를 따로 내보내면
@@ -2222,7 +2238,7 @@ ${
     })()
   }
 <div class="src"><b>원문 출처</b> · ${esc(a.source)}${a.country ? ` · ${esc(a.country)}` : ""}${a.sourceAuthor ? ` · ${esc(a.sourceAuthor)}` : ""}${a.sourcePublishedAt ? ` · 원문 발행 ${esc(a.sourcePublishedAt.slice(0, 10).replace(/-/g, "."))}` : ""}<br>
-<a href="${esc(a.sourceUrl || "#")}" target="_blank" rel="noopener noreferrer">원문 사이트로 이동 ↗</a>${a.doi ? ` · <a href="https://doi.org/${esc(a.doi)}" target="_blank" rel="noopener noreferrer">DOI ${esc(a.doi)}</a>` : ""}${a.journal ? `<div class="dis">저널: ${esc(a.journal)}</div>` : ""}
+${a.sourceUrl ? `<a href="${esc(a.sourceUrl)}" target="_blank" rel="noopener noreferrer">원문 사이트로 이동 ↗</a>` : `<span>원문 URL 확인 중</span>`}${a.doi ? ` · <a href="https://doi.org/${esc(a.doi)}" target="_blank" rel="noopener noreferrer">DOI ${esc(a.doi)}</a>` : ""}${a.journal ? `<div class="dis">저널: ${esc(a.journal)}</div>` : ""}
 <div class="dis">${esc(brand)}이 해외 공개 자료를 요약·번역한 콘텐츠이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</div></div>
 <div class="nav">${
     prev ? `<a href="${esc(articlePath(prev))}"><div class="l">이전 기사</div><div class="t">${esc(prev.title)}</div></a>` : ""
