@@ -495,3 +495,14 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 5. GSC·네이버 실제 CSV를 내려받아 성과 대시보드에 import
 
 6차 브랜치는 이 보고서와 검증 산출물을 포함해 PR 전 상태로 정리하며, 실제 사람 승인 없이 기존 기사나 신규 draft를 published/approved로 변경하지 않습니다.
+
+### 6차 최종 배포 결과
+
+- feature commit: `d350de9` (`feat: add newsroom review and reliable feed operations`)
+- PR: [#10](https://github.com/kinggorae/vetman-briefing/pull/10)
+- merge commit: `0359a12488efc2260c8b224bf22149eb5b0f2d0a`
+- CI: GitHub Actions `quality` 성공. Playwright 12개와 Lighthouse 3 URL×3회 중앙값 검증을 포함합니다.
+- production deployment: 기존 Cloudflare Pages 프로젝트 `vetman-briefing`의 main 배포 완료. deployment URL `https://b3ae2ca5.vetman-briefing.pages.dev`, custom domain `https://news.vetmanlab.com/`에 반영했습니다. 새 프로젝트는 만들지 않았습니다.
+- production smoke: 홈페이지·robots.txt·sitemap.xml·news-sitemap.xml·rss.xml 모두 HTTP 200; sitemap 212 URL, news sitemap 11 URL, RSS 50 item/50 content:encoded를 확인했습니다.
+- production security smoke: `/admin-ui.html`은 `noindex,nofollow`, 인증 없는 `/api/admin?resource=audit`는 HTTP 401입니다.
+- 배포 후 상태: index/noindex 170/293, 자동 published 0건, feed stale 1·degraded 11·failing 1. 사람 검수가 필요한 high-risk 75건, 언어 경고 20건, 임상 주장 경고 64건은 자동 승인하지 않았습니다.
