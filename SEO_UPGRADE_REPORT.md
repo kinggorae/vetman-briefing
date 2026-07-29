@@ -127,3 +127,70 @@ Production 배포: Cloudflare Pages `vetman-briefing`, production branch `main`,
 - 뉴스 sitemap의 최근 48시간 기사와 실제 발행일 확인
 - 운영 배포 후 대표 기사 URL 검사 및 404/리디렉션 모니터링
 - 최종 확인 후에만 별도 커밋·push·production 배포 수행
+
+## 10. 2차 고도화: editorial authority·media·SEO audit
+
+작성 브랜치: `codex/seo-authority-media`
+기준: `origin/main`에 1차 SEO 하드닝 커밋을 보존해 병합한 상태
+상태: 로컬 검증 완료, 원격 push·PR·production 배포 전
+커밋: `ab9eafd` (`feat: add editorial authority, media, and SEO auditing`)
+
+### 변경 파일과 설계
+
+- `src/editorial-cards.js`, `scripts/generate-editorial-cards.js`: index 기사에만 안정적인 ID 기반 SVG·WebP·PNG 편집 카드를 생성합니다. 1200×630 자체 호스팅 카드이며 실제 환자·검사 이미지가 아님을 alt/caption에 명시합니다.
+- `scripts/image-audit.js`, `reports/image-audit.json`, `reports/image-audit.md`: 463개 기사의 이미지 출처·프로토콜·응답·중복·메타데이터·카드 보완 현황을 재현 가능하게 기록합니다. 외부 이미지는 권리 확인 없이 다운로드하지 않았습니다.
+- `scripts/resolve-source-urls.js`, `reports/source-url-audit.json`: Google News 중계 URL을 dry-run으로 제한적으로 추적합니다. raw URL·캐시·재시도·타임아웃·제목 검증·수동 큐를 보존하며, 이번 환경에서 성공 0·후보 0·manual-review 상태 0·실패 187건, 수동 큐 187건입니다.
+- `data/topics.json`, `config.js`: 주제 메타데이터를 분리하고 5개 이상 index 기사와 고유 intro가 있을 때만 주제 허브를 index합니다. 현재 허브 15개가 생성됐습니다.
+- `data/authors.json`, `data/reviewers.json`: 현재는 빈 설정으로 두어 확인되지 않은 프로필을 만들지 않습니다. 실제 데이터가 입력될 때만 `/authors/`, `/reviewers/`와 Person JSON-LD가 생성됩니다.
+- `functions/api/admin.js`, `site/admin-ui.html`, `site/admin-review.json`: 기존 Bearer 인증을 유지한 SEO·편집 검수 큐와 JSON/CSV 다운로드를 추가했습니다. 화면·데이터·응답 헤더 모두 noindex 상태입니다.
+- `scripts/seo-audit.js`, `reports/seo-audit.json`, `package.json`, `package-lock.json`: `npm run seo:audit`가 색인 정책, known error, sitemap/RSS/XML, JSON-LD, 내부 링크, 이미지, relay, 용량을 검사합니다. 치명 오류만 exit 1입니다.
+- `src/build.js`, `src/validate.js`, `test/core.test.js`: 초기 홈 데이터 축약·검색 shard 지연 로딩·엔티티 기반 관련 기사·이미지 표시·legacy 품질 필드 연결·회귀 검사를 반영했습니다.
+
+### 2차 최종 통계
+
+| 항목 | 결과 |
+|---|---:|
+| 원본 기사 | 463 |
+| index 기사 | 170 |
+| noindex 기사 | 293 |
+| 1차 결과 대비 변화 | 173 → 170 (오염된 legacy `keyPointsKo`·`angleKo` 3건 추가 차단) |
+| sitemap URL | 212 |
+| news sitemap URL | 11 |
+| index 기사 원본 이미지 없음 | 108 |
+| index 기사 원본 이미지 있음 | 62 |
+| index 기사 고유 편집 카드 | 108 |
+| index 기사 실제 대표 이미지 | 170/170 |
+| index 기사 hero 이미지·alt | 170/170 |
+| 원본 이미지 URL | 87 (고유 87, 외부 87, HTTP 5, HTTPS 82, 응답 실패 0) |
+| 이미지 원본 메타데이터 누락 | alt/caption/credit/license 각 87건 — 확인 전 임의 생성하지 않음 |
+| Google News relay | 187 (성공 0, 후보 0, 실패 187, 수동 큐 187) |
+| 홈페이지 HTML | 158,050 bytes (1차 252,971 bytes 대비 37.5% 감소) |
+| 검색 전체 JSON | 153,890 bytes |
+| 최초 검색 shard | 135,169 bytes (250KB 이하) |
+| RSS 기사 / 본문 누락 | 50 / 0 |
+
+색인 정책 사유는 중복 집계입니다. `brief-tier` 215, `suppressed` 30, `brief-too-short` 49, `source-relay` 39, `body-too-short` 19, `internal-ascii` 19, `banned-term` 11, `duplicate-source` 8, `body-not-korean-sentence` 7, `lead-not-korean-sentence` 4, `repeated-word` 4, `garbled-text` 5, `title-not-korean-sentence` 3, `paragraph-too-short` 1입니다. 최신 index/noindex 각 20건 표본은 `reports/seo-audit.json`의 `indexPolicy.samples`에 저장했습니다.
+
+### 2차 검증 결과
+
+- `npm ci`: 성공
+- `npm test`: 성공, 12개 통과
+- `npm run check`: 성공
+- `npm run validate`: 성공
+- `npm run seo:audit`: 성공, 치명 0·경고 0
+- `npm audit --omit=dev`: production 취약점 0건
+- 모든 JSON-LD 1,264개 블록 파싱 성공
+- sitemap/news sitemap/RSS XML 파싱 성공
+- index/noindex·canonical·sitemap 일치, noindex sitemap 포함 0건, 내부 링크 대상 누락 0건
+- known error strings가 index 기사에 남은 건수 0건
+- local HTTP smoke test: 홈페이지·최신 이슈·index/noindex 기사·주제·archive·weekly·admin·search shard·편집 카드 모두 200
+- Lighthouse: 실행 파일이 환경에 없어 미실행
+- 실제 브라우저 캡처: 브라우저 런타임이 제공되지 않아 미실행. 정적 HTML, 390px viewport 메타, 이미지 aspect-ratio, 키보드용 링크·aria 속성, 로컬 HTTP로 대체 확인
+
+### 2차 배포 전 사람 검수
+
+- `reports/source-url-audit.json`의 187개 수동 큐를 원문 제목·매체명과 대조해 최종 출판사 URL 확인
+- HTTP 이미지 5건과 87건의 credit/license 권리 확인
+- index 170건의 임상 표현·수치·번역·한국 적용 해설 표본 검수
+- 실제 author/reviewer/credentials/전문 분야가 확인된 뒤에만 `data/authors.json`, `data/reviewers.json` 입력
+- Cloudflare preview에서 extensionless routing, 관리자 인증, 모바일 화면, SW 캐시 갱신 확인

@@ -10,6 +10,7 @@ import {
   qualityIssues,
 } from "../src/quality.js";
 import { cleanImageUrl, removeRepeatedImages } from "../src/images.js";
+import { cardAssetPath, cardRelativePath, generatedImageMeta } from "../src/editorial-cards.js";
 import {
   FEEDS,
   CANDIDATES_MAX,
@@ -130,4 +131,29 @@ test("index gate keeps dateModified absent unless updatedAt is present", () => {
   };
   assert.equal(isProfessionallyIndexable(item), true);
   assert.equal(isProfessionallyIndexable({ ...item, updatedAt: "2026-07-29T00:00:00Z" }), true);
+});
+
+test("editorial cards have stable hosted paths and non-clinical accessible metadata", () => {
+  const a = generatedImageMeta("v1_0123456789abcdef", "고양이 진료 연구 요약");
+  const b = generatedImageMeta("v1_0123456789abcdef", "고양이 진료 연구 요약");
+  assert.deepEqual(a, b);
+  assert.equal(cardRelativePath("v1_0123456789abcdef", "webp"), "/media/editorial/v1_0123456789abcdef.webp");
+  assert.ok(cardAssetPath("/tmp/assets", "v1_0123456789abcdef", "svg").endsWith("/media/editorial/v1_0123456789abcdef.svg"));
+  assert.match(a.imageAlt, /편집용 정보/);
+  assert.match(a.imageCaption, /실제 환자|검사 이미지 아님/);
+});
+
+test("quality view fields carried by legacy articles remain part of the index gate", () => {
+  const item = {
+    contentTier: "analysis",
+    titleKo: "개의 열치료 임상 활용",
+    leadKo: "임상에서 열치료를 적용할 때 주의할 점과 활용 범위를 정리했습니다.",
+    bodyKo: ["첫 문단입니다. 임상 맥락과 환자 상태를 함께 설명합니다. 충분한 배경을 제공합니다.", "둘째 문단입니다. 원문 결과와 한계를 구분해 설명합니다. 적용 범위를 확인합니다.", "셋째 문단입니다. 한국 동물병원에서 보호자에게 설명할 점을 정리합니다. 최신 근거를 확인합니다."],
+    keyPointsKo: ["사용 시 주의할 점을 확인합니다."],
+    angleKo: "ractical한 안내 글로 확장합니다.",
+    radar: { clinical: "환자 상태를 함께 확인합니다." },
+    sourceUrl: "https://example.com/heat",
+  };
+  assert.ok(qualityIssues(item).includes("banned-term"));
+  assert.equal(isProfessionallyIndexable(item), false);
 });

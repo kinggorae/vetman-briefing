@@ -1,0 +1,1385 @@
+{
+  "generatedAt": "2026-07-29T13:56:03.106Z",
+  "status": "passed",
+  "counts": {
+    "htmlPages": 537,
+    "articles": 463,
+    "index": 170,
+    "noindex": 293,
+    "sitemap": 212,
+    "newsSitemap": 11,
+    "rssItems": 50,
+    "rssIncomplete": 0,
+    "noindexInSitemap": 0,
+    "knownQualityHits": 0,
+    "brokenInternalLinks": 0
+  },
+  "performance": {
+    "homepageBytes": 158050,
+    "searchSizes": [
+      {
+        "file": "search.json",
+        "bytes": 153890
+      },
+      {
+        "file": "search/2026-05.json",
+        "bytes": 1845
+      },
+      {
+        "file": "search/2026-06.json",
+        "bytes": 17001
+      },
+      {
+        "file": "search/2026-07.json",
+        "bytes": 135169
+      }
+    ],
+    "articleBytes": 8769830,
+    "searchFirstRequestBytes": 135169
+  },
+  "duplicate": {
+    "title": [],
+    "description": [],
+    "canonical": []
+  },
+  "indexPolicy": {
+    "previousIndex": 318,
+    "currentIndex": 170,
+    "currentNoindex": 293,
+    "delta": -148,
+    "reasonCounts": {
+      "banned-term": 11,
+      "internal-ascii": 19,
+      "body-not-korean-sentence": 7,
+      "brief-tier": 215,
+      "brief-too-short": 49,
+      "source-relay": 39,
+      "title-not-korean-sentence": 3,
+      "lead-not-korean-sentence": 4,
+      "body-too-short": 19,
+      "suppressed": 30,
+      "duplicate-source": 8,
+      "garbled-text": 5,
+      "repeated-word": 4,
+      "paragraph-too-short": 1
+    },
+    "samples": {
+      "index": [
+        {
+          "date": "2026-07-29",
+          "id": "v1_e174695d8cae4128",
+          "title": "고양이 긁기병으로 인한 비정상적 고열 및 신경정신 증상 1례 보고",
+          "indexable": true,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_5a9fbdf10a1f09c8",
+          "title": "중환자 개에서 전신 면역염증 지표의 예후 예측 가치",
+          "indexable": true,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_fcbd7aa64148ba95",
+          "title": "개 적외선 열화상 검사, 체부 위치와 털 길이에 따라 온도차 발견",
+          "indexable": true,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-28",
+          "id": "v1_21e812160281fc5c",
+          "title": "가축 바이러스 연구에 CRISPR 스크리닝 적용... 새로운 항바이러스 전략 개발 전망",
+          "indexable": true,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-28",
+          "id": "v1_494f97a9462855cc",
+          "title": "나트륨 히알루론산·난각막 복합 보충제, 고양이 피모 건강 개선 효과 입증",
+          "indexable": true,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-28",
+          "id": "v1_2688f13fc6d2660b",
+          "title": "노령 고양이 근감소증과 악액질, 노쇠: 메커니즘·진단·치료 총론",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-28",
+          "id": "v1_2ec0c68fded89d00",
+          "title": "개 소전염바이러스 VP2 돌연변이의 기능적 영향 분석",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-28",
+          "id": "v1_e29143e61f54ae8d",
+          "title": "고양이와 개의 무릎관절에도 인대 존재 확인",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-28",
+          "id": "v1_237a0fa7f626d219",
+          "title": "잠비아 닭에서 사육 방식과 무관한 ESBL 대장균 높은 검출률",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-28",
+          "id": "v1_b1565da63f8497f3",
+          "title": "개 치경부 결손 재생을 위한 신규 삼중 수화물 Gel 개발",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-28",
+          "id": "v1_122239e469ae8bb6",
+          "title": "곰팡이와 박하화합물 병용으로 진드기 사멸 효과 입증",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 4,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-27",
+          "id": "v1_a7b57667e01fa858",
+          "title": "고양이 유전성 메틸말론산혈증 사례: 임상·MRI·병리 소견",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-27",
+          "id": "v1_c4f23daf8340112a",
+          "title": "개와 환자에서 발견된 리슈만편충 유전적 다양성과 잡종 형성",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-27",
+          "id": "v1_592f1d8e702ec6a0",
+          "title": "양계장 Biosecurity 실패가 내성 대장균 확산을 주도; 은나노입자-과산화수소 복합제가 유망한 결과 보여",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-27",
+          "id": "v1_db3e142ba9f0be9f",
+          "title": "개 가속 노화에서 국가 간 차이 확인 - 한국 개 표현형학적 나이 더 빠르게",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-26",
+          "id": "v1_cb5546d9e248b911",
+          "title": "고양이 만성콩팥병 진단에서 신피질 두께 및 파생 비율이 우월한 초음파 지표임",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-26",
+          "id": "v1_a5b554217652df94",
+          "title": "고양이 대동맥 색전증에서 tPA thrombolysis 효과 — 183마리 다기관 연구",
+          "indexable": true,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-26",
+          "id": "v1_a8c8d0ced9731d44",
+          "title": "쿠싱증후군·프레드니솔론 치료 동반 개에서 혈액응고 과다",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-26",
+          "id": "v1_6082eb09e4c7fb01",
+          "title": "고양이 홍채 melanoma 진단 도구로 AS-OCT 유용성 확인",
+          "indexable": true,
+          "tier": "evidence",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-26",
+          "id": "v1_97407f7b28526af0",
+          "title": "퇴원 처방 개선, 그 순간부터 환자 결과가 달라집니다",
+          "indexable": true,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        }
+      ],
+      "noindex": [
+        {
+          "date": "2026-07-29",
+          "id": "v1_5ef792dba5c1c590",
+          "title": "수의 임상 인력 채용·유지 전략",
+          "indexable": false,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [
+            "banned-term",
+            "internal-ascii",
+            "body-not-korean-sentence"
+          ],
+          "reasons": [
+            "banned-term",
+            "internal-ascii",
+            "body-not-korean-sentence"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_20469be4391ba0b5",
+          "title": "중국 코로나19 이후 야생동물 규제 변화, '원헬스' 접근 약화된 이유는",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_714583787982c8de",
+          "title": "강아지와 야생 버섯 중독 위험…비 온 뒤 버섯 주의",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 3,
+          "qualityIssues": [
+            "brief-too-short"
+          ],
+          "reasons": [
+            "brief-tier",
+            "brief-too-short"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_b57ff7397629a2d4",
+          "title": "진드기 방지제별 검은다리진드기(Blacklegged Tick) 사멸 속도 연구 비교",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_6ce376c377ed20e8",
+          "title": "지난 10년 개·고양이 진료 혁신...수의학 주요 발견 총정리",
+          "indexable": false,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [
+            "source-relay"
+          ],
+          "reasons": [
+            "source-relay"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_0dd20409706debd4",
+          "title": "텍사스 카운티, 가족 마당서 발견된 스컹크서 rabies 7번째 사례 확인",
+          "indexable": false,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [
+            "source-relay"
+          ],
+          "reasons": [
+            "source-relay"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_a501789c4aa37005",
+          "title": "애완동물 아시아극동분들 중증 기생충 위협 증가",
+          "indexable": false,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [
+            "source-relay"
+          ],
+          "reasons": [
+            "source-relay"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_8a4f25e0108529ad",
+          "title": "PET 리포터 리간드로 뇌 유전자 발현 정량 영상화",
+          "indexable": false,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [
+            "source-relay"
+          ],
+          "reasons": [
+            "source-relay"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_5f4a47374d84fda1",
+          "title": "새 동물보험 가입, 비용 대비 가장 현명한 첫걸음",
+          "indexable": false,
+          "tier": "analysis",
+          "paragraphs": 3,
+          "qualityIssues": [
+            "source-relay"
+          ],
+          "reasons": [
+            "source-relay"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_687b4b98c979ad9f",
+          "title": "미접종·미등록 동물, 소유주에게 과태료 부과 가능",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 3,
+          "qualityIssues": [
+            "brief-too-short"
+          ],
+          "reasons": [
+            "brief-tier",
+            "brief-too-short"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_cf59fd26eb360f13",
+          "title": "수의사 기술, 정책 활동과 옹호로 이어지는 길",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 3,
+          "qualityIssues": [
+            "brief-too-short"
+          ],
+          "reasons": [
+            "brief-tier",
+            "brief-too-short"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_98a932034c9ef0cd",
+          "title": "국내말, 시각적 포식자cue만으로 생리적 경계 반응 보인다",
+          "indexable": false,
+          "tier": "evidence",
+          "paragraphs": 4,
+          "qualityIssues": [
+            "internal-ascii",
+            "title-not-korean-sentence"
+          ],
+          "reasons": [
+            "internal-ascii",
+            "title-not-korean-sentence"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_a1cb75d3fc1c8328",
+          "title": "아픈 망아지(말 새끼)의 생명을 위협하는 호르몬 기능장애 진단 테스트 개발",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_f1921b33d4439071",
+          "title": "식물 항균제 가금 생산 내성 유전자 확산 방지 효과",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_a8f29b32764cd2d8",
+          "title": "미국 사료 리콜 10건...반려동물 주인의 신속 대응법",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_761887efcc6d349b",
+          "title": "미국 의회, 식량안보 위해 사료·수의 업무 역할 강조",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_267897d027711e99",
+          "title": "미국 폴크 카운티, 무료 마이크로칩·광견병 예방접종 제공",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_8937a8decbfb76ec",
+          "title": "미국 CVS 9000개 약국, 개·고양이 처방약 조제 시작",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_aa6becfdbbcbbfdd",
+          "title": "사우스오스트레일리아, 조객 참여 조류인플루엔자 대응 훈련 프로그램 추진",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 1,
+          "qualityIssues": [
+            "banned-term"
+          ],
+          "reasons": [
+            "brief-tier",
+            "banned-term"
+          ]
+        },
+        {
+          "date": "2026-07-29",
+          "id": "v1_ff6854e77a08ce51",
+          "title": "카자흐스탄 뉴캐슬병바이러스 유전체 분석",
+          "indexable": false,
+          "tier": "brief",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        }
+      ]
+    }
+  },
+  "relayUrls": [
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "애완동물 병원 방문 시 AI가 실제로 하는 일 — AVMA 회장 인터뷰"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "수의 진료에서 수술 후 호흡 억제 및 폐합병증: 문헌 고찰"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "푸르듀 수의대, 수의사 부족 해결 위한 확장 계획 발표"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "반려동물 비만 치료제 개발 진행 중, 하반기 출시 예정"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "반려동물 보험, 수의사가 말하는 가입 전 필수 체크포인트"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "개 벼룩·진드기 예방, 사계절이 중요"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "시애틀 떠든 너구리 '지모디', 희귀 척추 질환 가능성"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "영국 요크셔수의들, 헤리오트 정신으로 Pop-up 진료소 열어"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "미국 가구 절반 이상이 강아지·고양이 키운다"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "애완견 다리 절름거림에 놀란 주인...수의사 방문 후 드러난 충격적 진실"
+    },
+    {
+      "file": "data/issues/2026-07-20.json",
+      "title": "중국의 '반려 동물 세대'가 들고 일어나다"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "강아지 사회화, 평생의 자신감은 어린 시절부터"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "똑똑한 사회화 훈련으로 자신감 있는 강아지 키우기"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "말 MEED와 개 골종양 원인 규명 단서를 발견한 4학년 수의학생들"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "캔버라 수의사 경고...'레고·백합' 섭취 급증, 보험금 1천300만원 달해"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "수의사가 강조하는 고양이 건강 관리의 7가지 핵심"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "수의 원격 진료와 디지털 접근성 확대"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "마이크 던 수의사 장학금 2026년 수상자 발표, 7월 29일 신청 시작"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "BioCraft, 세포배양 사료 성분 안전문서 공개…수출 규제 대응 가속화"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "반려동물 보험, 병원비 절약에 얼마나 효과적일까?"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "반려동물 보험의 진짜 가치: 진료비 부담 줄이기"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "콜로라도 '고양이전용' 수의원 Aurora에 신규 개원"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "수간호사에게 감사한 미국 수의사 접수 담당자 주간 선물"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "반려동물 보험, 과연 필요할까?"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "애완동물 응급진료비 800만 원... 미국인들 '생사결정' 불안"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "개 한 마리 구하려고 했더니... 뜻밖의 전개"
+    },
+    {
+      "file": "data/issues/2026-07-21.json",
+      "title": "개와 고양이가 더운데도 해바라기 하는 진짜 이유"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "응급수의과 전문수의사의 중환자관리 Q&A"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "심장사상충 새로운주로 확산… 개·고양이 위험 증가 경고"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "반려동물과 가족을 위한 광견병 예방 가이드"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "나이지리아 광역수도, 광견병 사망자 발생에 전문가들 촉구"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "뉴욕주 광견병 위험 증가…애완동물과 가족을 지키는 예방 방법"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "농촌 수의사 부족, 해결책은 다른 곳에 있을까"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "퍼듀수의대 학생 정원 50% 확대... 성장통 예상"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "미국 윈체스터서 박쥐 광견병 양성 확인…주거지역 경고"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "오하이오 주하원, 수의사 인력 부족 해결 법안 통과"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "라신County 박쥐에서 광견병 양성 확인...주의 필요"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "콜로라도수의사, 약물·음주 위반으로 면허 포기"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "동물병원 문 뒤에서 35마리 고양이가...?"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "반려동물 진료비, 이 정도였어?"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "연기 피해를 입은 비둘기, 소장관에게 도움 요청"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "베네수엘라 지진현장… 잔해 아래 강아지의 기적적 구조"
+    },
+    {
+      "file": "data/issues/2026-07-22.json",
+      "title": "MLB팀에 물린 라쿤? 시애틀 팬들 \"공식 창립자인데 이상해\""
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "개에게 유해한 5가지 음식, 주의가 필요한 이유"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "비영리단체, 외과 멘토링 센터 개소로 수의사 부족 해결 도전"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "소형 개·고양이 위한 비시멘트 고관절 치환술 도입"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "개 암 진단 후 동물병원 강도 사건... 직원 위협하며 강아지 도난"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "새러소타 군 광견병 발생…공중보건 경보 발령"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "폴크 카운티, 광견병 확인에 무료 예방접종 및 마이크로칩 시술EVENT 개최"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "버지니아텍, 인터랙티브 3D 모델로 수의학 교육 확대"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "MSU 수의사, 아프리카 페인티드 도그 긴급 수술 성공"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "트리니티 베이서 박쥐에 광견병 발견"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "800만 원 수술 증가...'침묵의 병' 강아지 위협"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "호주 퍼스 강아지 1300만원 진료비에 놀란 네티즌들"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "\"코끼리가 호랑이 구해요\" 영상 화제였지만, 진짜 사람은?"
+    },
+    {
+      "file": "data/issues/2026-07-23.json",
+      "title": "고속도로 다친 송아지, 낯선 사람들이 펼친 기적 같은 구조"
+    },
+    {
+      "file": "data/issues/2026-07-24.json",
+      "title": "캔 카운티, 애완동물 광견병 예방접종 효과 저하 가능성 발표"
+    },
+    {
+      "file": "data/issues/2026-07-24.json",
+      "title": "신대륙 파리유충 미국 확산... 동물병원 경고"
+    },
+    {
+      "file": "data/issues/2026-07-24.json",
+      "title": "AAVSB, 미국 수의진료보조 자격시험 개발 담당"
+    },
+    {
+      "file": "data/issues/2026-07-24.json",
+      "title": "동물병원 진료비 상승 이유와 대처법"
+    },
+    {
+      "file": "data/issues/2026-07-24.json",
+      "title": "노령 개·고양이 건강 관리, 수의사가 전하는 핵심 팁"
+    },
+    {
+      "file": "data/issues/2026-07-24.json",
+      "title": "수의대 커뮤니티 메디슨, 지역에서 동물과 사람 만나"
+    },
+    {
+      "file": "data/issues/2026-07-24.json",
+      "title": "반려동물 진료비, 알고 보면 놀라운 사실들"
+    },
+    {
+      "file": "data/issues/2026-07-24.json",
+      "title": "반려동물 진료비 5천만원?...'반려동물 부채 위기' 속보"
+    },
+    {
+      "file": "data/issues/2026-07-24.json",
+      "title": "반려동물 진료비 이렇게 비싸졌어?"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "강아지가 리콜 사료 먹었을 때 수의사가 알려주는 대처법"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "개의 음식 중독 위험, 예상치 못한 25가지 식품"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "고양이 삶의 질 평가 도구 등장"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "미국 Galveston, 벼룩 매개 티푸스 재출현 연구의 중심지로"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "반려동물 구강건강 영양학: 근본부터 개선하는 영양제품 개발동향"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "입에 관통된 강철 조각... 라스베이거스 고양이 새끼 구출 Invol"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "애완동물 응급진료비 3천 달러! 주인의 긴급 결단"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "PAHO·수의대 One Health 파트너십 체결…동카리브 건강안보 강화"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "농촌 미국, 수의사 부족 심화"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "Purdue 수의대 확장 검토, 미국 수의사 부족 해결 위해"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "CVS, 애완동물 처방전 조제 서비스 시작"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "클래츠프 카운티, 수의사 부족 문제 제기"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "ASPCA, 동물 복지 분야 학생에 최초 수의학 장학금 수여"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "VANE, 펫 결제 플랫폼 PawPay에 투자"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "CVS, 전국 약국에서 애완동물 처방약 판매 시작"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "투자사 VANE, 동물보험 결제 플랫폼 PawPay에 투자"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "세번서 발견된 박쥐, 광견병 양성 확인"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "세계 수의용 초음파기기 시장 전망 보고서"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "폴크 County·SPCA, 무료 광견병 예방접종 협력"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "스미스 카운티, 두 번째 스컹크 광견병 양성 확인"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "Cook County서 세 번째 광견병 박쥐 발견"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "투르크메니스탄, 원헬스 추진 위한 국가 위원회 가동"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "니아가라 카운티, 박쥐 2마리 광견병 확인"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "승마수의가 되는 법, 몰랐던 10가지"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "미국 수의대생, 모의 범죄 현장 훈련 참여"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "알브라이트 원료 사료 리콜"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "미네소타, 남은 동물용 약 기부 허용 법안 통과"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "FDA, 펫푸드 GRAS 규정 적용 2026년 12월로 연기"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "개 소위바이러스 확산 주의, 예방접종 요청"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "비버독수리 새끼, 워싱턴주립대 수의사에게 구조받다"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "마리코파 동물 보호소, 혹서에 방목견 급증"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "타이로헬스, 동물병원 위한 GapOnly 포털 출시"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "오하이오 마호닝 카운티 박쥐에서 광견병 확인"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "Purdue 출신 리차드 '딕' 설리반, AVMA 이사장 선출"
+    },
+    {
+      "file": "data/issues/2026-07-25.json",
+      "title": "조지아주 스톤마운틴서 광견병 양성 사례 발생"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_04dcac6513613a5d",
+      "title": "중국 수의대 입학 경쟁률 의대 역전 현상"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_6b3c3101574c9e89",
+      "title": "뉴월드 스크류웜 발생 — 미국 수의사 대응 가이드"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_63895fdbcd0da13c",
+      "title": "대기오염이 애완동물 건강에 미치는 영향"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_5817bc9f0a0c5732",
+      "title": "나이지리아 수도 지역서 광견병 발생으로 2명 사망"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_baad3fc22a24094a",
+      "title": "오하이오 주, 수의사 부족 심화로 동물 의료 공백 우려"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_eca5928ac0fbd841",
+      "title": "베트남 람돈성, 8월 말까지 광견병 예방접종률 70% 목표"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_999d89f9f303dee2",
+      "title": "비토리아 동물병원 SUV 충돌 사고"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_6bff93f2db6d52a5",
+      "title": "동물영양 업계 AI 도입, 파일럿 넘어 실제 운영으로 확대"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_13a1504332f9f202",
+      "title": "메릴랜드 세번 지역 광견병 경보 발생"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_24454a99ba1b3b27",
+      "title": "vetshop 비용이 부담된다면? 전문가가 추천하는 6가지 방법"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_f187877efb731137",
+      "title": "미네소타, 동물 의약품 기부법 통과…미국 4번째 주"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_0122e920d7f56d31",
+      "title": "탬파베이 광견병 지역사회 확산 예방 노력"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_11ca35ae4f390d80",
+      "title": "네바다주, 애완동물 광견병 예방접종 권고"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_9b0a0cd0b3cc0863",
+      "title": "퍼듀 수의대 동문, 캘리포니아서 AVMA 연차대회 참가"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_8c66973cd21e8285",
+      "title": "보험금 가장 많이 받는 강아지·고양이 품종은?"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_91b82787350716ae",
+      "title": "멕시코 강아지 로키 유기 사건, 여성 기소 절차 진행"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_37858ada0a9b4a9e",
+      "title": "클래츠십 카운티 수의사 부족 실태 파악"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_149c946588d49193",
+      "title": "미시건주립대 수의학교 설립 공 시작"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_706e7e9b220b357b",
+      "title": "인수공통질환은 어떻게 발생하나요"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_e7998638faff1184",
+      "title": "캬호가 County 동물보호소, 개에 무료 마이크로칩 삽입 제공"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_351750be73e187fa",
+      "title": "하나의 건강 안과 프레임워크, 서 Nile 바이러스 사례"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_cad4681a20a87792",
+      "title": "애완동물 더위 안전 수칙 및 증상 파악"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_f33061b2cf7c6888",
+      "title": "반려동물만 전문?수의학의 예상치 못한 진로"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_e3107c8befbb223e",
+      "title": "반려동물도 '인간식' 영양을? 마이크로바이옴 과학의 최신 트렌드"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_874ed45e50c56dd4",
+      "title": "옐로스톤 밸리 동물쉼터, 토지 기증으로 새 캠퍼스 건설 계획"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_9afd8101a3bd073c",
+      "title": "미시간주 고등학생, 보호소에 개 산책로 건설 Eagle Scout 프로젝트로"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_5c479905aac2dc2a",
+      "title": "글로벌 수의백신 시장 상위 20개 기업 분석 보고서"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_a2747a3c6d7159bf",
+      "title": "글로벌 동물용 백 시장 20개 기업 분석 보고"
+    },
+    {
+      "file": "data/issues/2026-07-26.json",
+      "id": "v1_ad7de196f682a9aa",
+      "title": "일본 동물용 헬스케어 시장 2035년 전망 보고서"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_42e7c8802cc8c51c",
+      "title": "독일 가축 전염병 확산 우려 – 농가 위기감 고조"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_4238df015207f473",
+      "title": "퍼듀 수수의사, 한국 정형외과 수술 훈련 지원 위한 대륙 초월 협력"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_1521d654a62580a6",
+      "title": "니아가라 카운티, 박쥐 통한 광견병 발생… 4명 치료받아"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_7722dcef04a566bb",
+      "title": "일본 동물용 헬스케어 시장 2035년 전망 보고서"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_d37a59f17cf1f0bc",
+      "title": "호주 수의대생, 유급 실습 훈련 배제되어"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_9a34ccd3dafec812",
+      "title": "Alamo 시, 모바일 중성화 클리닉 운영 추진"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_4f8b2e2e1d2dede8",
+      "title": "미국서 애완동물 타국 수출 가이드 공개"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_814d51d3fbb16064",
+      "title": "니스 당국, 해외 여행 전 광견병 예방 수칙 안내"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_676580e2613995a9",
+      "title": "농장과 스포츠,수의학 꿈을 동시에 향하는 청소년"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_2bcc4b22442258f3",
+      "title": "미국 Escambia 동물보호소, 오늘까지 무료 입양 진행"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_eb8baedadea6f053",
+      "title": "NIH, NC State 박사과정 훈련지원금 갱신"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_49f269138a9190f6",
+      "title": "의회, 식량 안보에서 사료와 수의 역할 강조"
+    },
+    {
+      "file": "data/issues/2026-07-27.json",
+      "id": "v1_9571862cc283108a",
+      "title": "스코틀랜드 유업체, 수의약 오염 의심으로 우유 회수"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_fb6f7d5f583a1c58",
+      "title": "영양 보충제, 개와 고양이의 경미한 위장관 문제 개선에 도움"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_5bbf94b7102ede00",
+      "title": "저소득 가정의 동물, 간접흡연 노출 위험 2배 이상"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_7b21f73b951c77b0",
+      "title": "수의전문가, 조직 리더십 기여하는 방법은"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_4461255a1cb71932",
+      "title": "라임병-렙토스피라증 콤백 백신 승인"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_99ac2c6829247bca",
+      "title": "뒤영벌 방제 강화로 보호소 동물 이전 지연"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_16e467c3205dbffa",
+      "title": "애완동물 사료 안전성 확인법…라벨 읽기와 보관 원칙"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_31506b8fe2022df6",
+      "title": "PET 리간드로 뇌 유전자 발현 정량 영상화 가능"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_d7058b04312fa69b",
+      "title": "강아지 사료 리콜 당했나요? 소유주가 즉시 확인해야 할 사항"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_e512900435561c51",
+      "title": "미국 주, 미사용 약 기증 법 제정…필요한 동물에 약 지원"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_8cb1cced241aa789",
+      "title": "미국 동물병원, Cherry 할부 금융 서비스 도입"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_809421549d128e9e",
+      "title": "수의학에서 배운 환자관리 교훈, 인간 의료에 적용"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_d3bfda3b23b4ffbb",
+      "title": "피셔 카운티에서 광견병 1건 확인"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_5b910126229a3632",
+      "title": "ChatGPT에 출시된 반려동물보험 비교 앱 'Fletch'"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_8ba43de9ac425b0f",
+      "title": "반려동물 사별,… 동물병원 돌봄 가이드라인 최신 동향"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_a4deff1b3d5e111c",
+      "title": "2026년 애완동물 양육비 현실 — 소유주들이 알아야 할 사실"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_ac6c719fda72e663",
+      "title": "이동식 수의 클리닉, 부족민 커뮤니티 의료 접근성 확대"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_5e7c4dedbecefc8f",
+      "title": "미국 하원, 불법 자일라진 규제 법안 추진 가속화"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_291cdfc8d9fbfca6",
+      "title": "미국 의회, 식량 안보 위한 사료·수의업 역할 강조"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_48316054f235a5b4",
+      "title": "Fear Free·Exubrion Therapeutics 임원 인사"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_a04825d370a4cb08",
+      "title": "애완묘 영양 전문성으로 매출↑… Pet Wants 프랜차이즈 전략"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_ac67ca4d3f3a5b0f",
+      "title": "코퍼스타운 동물 보호소, 압수 동물 수용 후 검역"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_25fad8b77fc7a728",
+      "title": "휴가철 애완동물 여행 검색 957% 급증... 준비 안 하면 대혼란"
+    },
+    {
+      "file": "data/issues/2026-07-28.json",
+      "id": "v1_677ad59763240e78",
+      "title": "동물쉼터 개간식 고갈되자 지역 주민들 자원봉사·기부로 지원"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_20469be4391ba0b5",
+      "title": "중국 코로나19 이후 야생동물 규제 변화, '원헬스' 접근 약화된 이유는"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_714583787982c8de",
+      "title": "강아지와 야생 버섯 중독 위험…비 온 뒤 버섯 주의"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_6ce376c377ed20e8",
+      "title": "지난 10년 개·고양이 진료 혁신...수의학 주요 발견 총정리"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_0dd20409706debd4",
+      "title": "텍사스 카운티, 가족 마당서 발견된 스컹크서 rabies 7번째 사례 확인"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_a501789c4aa37005",
+      "title": "애완동물 아시아극동분들 중증 기생충 위협 증가"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_8a4f25e0108529ad",
+      "title": "PET 리포터 리간드로 뇌 유전자 발현 정량 영상화"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_5f4a47374d84fda1",
+      "title": "새 동물보험 가입, 비용 대비 가장 현명한 첫걸음"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_687b4b98c979ad9f",
+      "title": "미접종·미등록 동물, 소유주에게 과태료 부과 가능"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_cf59fd26eb360f13",
+      "title": "수의사 기술, 정책 활동과 옹호로 이어지는 길"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_a8f29b32764cd2d8",
+      "title": "미국 사료 리콜 10건...반려동물 주인의 신속 대응법"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_761887efcc6d349b",
+      "title": "미국 의회, 식량안보 위해 사료·수의 업무 역할 강조"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_267897d027711e99",
+      "title": "미국 폴크 카운티, 무료 마이크로칩·광견병 예방접종 제공"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_ad8aed7acd06b110",
+      "title": "NexTel, 반려동물 초기 암 검진 출시로 수의 종양학 전략 확대"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_b91cf3102bfdb099",
+      "title": "산불 연기가 박쥐 혼란시켜.. 데슈치스 군 광견병 발생 증가"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_7ca8fbb83455cf56",
+      "title": "애완동물 심장 건강 관리 앱 출시"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_ff9d0cb0f4ef8b96",
+      "title": "트리니다드 토바고 수의사, 수의 의료 수준 한 단계 높이다"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_e1d83020dec22783",
+      "title": "애리조나 주립대, 수의학 과정 학생 환영 준비"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_510c9543c06b49fb",
+      "title": "멜버른컵 수의사, 괴롭힘 주장 후 상 수상"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_b29ae1af1060667b",
+      "title": "WSU 다람쥐 Jimothy, 인터넷 스타 되어 야생동물 공간 줘야 한다는 교훈"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_6e061d9cd23f29aa",
+      "title": "펜실베이니아 수의사, 첸코티지 야생말 케어 이끄는 사연"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_cc555ae7423eb608",
+      "title": "알라바마 동물보호소, AI 데이터센터 법적 대응"
+    },
+    {
+      "file": "data/issues/2026-07-29.json",
+      "id": "v1_39ff1f1ef8646d29",
+      "title": "개의 삶의 질 높이는 Zoetis 의료 혁신"
+    }
+  ],
+  "xmlError": null,
+  "warnings": [],
+  "critical": []
+}

@@ -1,3 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 // ── 사이트 메타 (SEO/GEO) ──
 export const SITE = {
   baseUrl: "https://news.vetmanlab.com",
@@ -76,7 +80,7 @@ export const SPONSOR = {
 //
 //   slug  URL(/topic/{slug})   match  제목·리드·본문에 대한 정규식
 //   lede  허브 상단 한 줄 설명. 임상적 주장이 아니라 '무엇을 모아둔 곳인지'만 쓴다.
-export const TOPICS = [
+const LEGACY_TOPICS = [
   { slug: "영양-비만", name: "영양·비만·식이", match: /영양|사료|비만|체중|식이|다이어트|급여/,
     lede: "체중 관리와 처방식, 영양 보조제에 관한 해외 소식을 모았습니다." },
   { slug: "행동", name: "행동·정신 건강", match: /행동|불안|스트레스|사회화|공격성|분리불안/,
@@ -110,6 +114,23 @@ export const TOPICS = [
   { slug: "병원경영", name: "병원 경영·인력", match: /경영|채용|인력|매출|마케팅|리더십|번아웃|수가|인수/,
     lede: "동물병원 운영, 채용, 번아웃에 관한 해외 소식을 모았습니다." },
 ];
+
+// 주제 메타데이터는 코드와 분리해 편집자가 검토·수정할 수 있게 한다.
+// 파일이 손상되었을 때도 기존 빌드를 깨뜨리지 않고 레거시 정의로 폴백한다.
+const TOPICS_FILE = path.join(path.dirname(fileURLToPath(import.meta.url)), "data", "topics.json");
+let topicData = null;
+try {
+  topicData = JSON.parse(fs.readFileSync(TOPICS_FILE, "utf8"));
+} catch {
+  topicData = null;
+}
+export const TOPICS = Array.isArray(topicData) && topicData.length
+  ? topicData.map((topic) => ({
+      ...topic,
+      minIndexArticles: Number(topic.minIndexArticles || 5),
+      match: new RegExp(String(topic.match || ".^"), "i"),
+    }))
+  : LEGACY_TOPICS.map((topic) => ({ ...topic, minIndexArticles: 5 }));
 
 // ── 법적 고지 페이지(/privacy · /terms · /about)에 들어갈 사업자·연락처 정보 ──
 // 빈 값은 페이지에 아예 표기하지 않는다. 확인되지 않은 값을 임의로 채우면

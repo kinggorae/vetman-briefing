@@ -6,15 +6,34 @@ import { normalizeSourceUrl } from "./identity.js";
 import { cleanImageUrl, removeRepeatedImages } from "./images.js";
 import { jsonLdScript } from "./lib/schema.js";
 import {
+  cardAssetPath,
+  cardRelativePath,
+  generatedImageMeta,
+} from "./editorial-cards.js";
+import {
   isCardRenderable,
   isProfessionallyIndexable,
   normalizeContentTier,
+  qualityIssues,
   publishQualityIssues,
 } from "./quality.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
 const SITE_DIR = path.join(ROOT, "site");
+const DATA_ROOT = path.join(ROOT, "data");
+
+function loadJsonFile(name, fallback = []) {
+  try {
+    const value = JSON.parse(fs.readFileSync(path.join(DATA_ROOT, name), "utf8"));
+    return value ?? fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+const AUTHOR_PROFILES = loadJsonFile("authors.json", []);
+const REVIEWER_PROFILES = loadJsonFile("reviewers.json", []);
 
 const CATEGORY_LABELS = {
   research: "최신 연구",
@@ -77,8 +96,14 @@ const PUBLISHER_LD = {
 };
 const AUTHOR_LD = { "@type": "Organization", name: `${SITE.brandKo} 편집팀`, url: `${SITE.baseUrl}/about` };
 function authorLd(a = {}) {
+  const profile = profileFor(AUTHOR_PROFILES, a.author);
   return a.author
-    ? { "@type": "Person", name: a.author, ...(a.authorUrl ? { url: a.authorUrl } : {}) }
+    ? {
+        "@type": "Person",
+        name: a.author,
+        ...((a.authorUrl || profile?.profileUrl) ? { url: a.authorUrl || profile.profileUrl } : {}),
+        ...(profile?.sameAs?.length ? { sameAs: profile.sameAs } : {}),
+      }
     : AUTHOR_LD;
 }
 function validIsoDate(value) {
@@ -178,9 +203,14 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     imageCaption: item.imageCaption || null,
     imageCredit: item.imageCredit || null,
     imageLicense: item.imageLicense || null,
+    imageLicenseUrl: item.imageLicenseUrl || null,
+    imageWidth: Number(item.imageWidth) || null,
+    imageHeight: Number(item.imageHeight) || null,
+    imageOrigin: item.imageOrigin || (item.imageUrl ? "external-source" : null),
     sourceUrlRaw: item.sourceUrlRaw || item.sourceUrl || null,
     sourceUrl: normalizeSourceUrl(item.finalUrl || item.sourceUrl || item.sourceUrlRaw || ""),
     finalUrl: item.finalUrl || null,
+    sourceTitle: item.sourceTitle || null,
     sourceAuthor: item.sourceAuthor || null,
     sourcePublishedAt: validIsoDate(item.sourcePublishedAt || item.publishedAt),
     doi: item.doi || null,
@@ -193,6 +223,11 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     updatedAt: validIsoDate(item.updatedAt),
     aiAssisted: typeof item.aiAssisted === "boolean" ? item.aiAssisted : null,
     correctionNote: item.correctionNote || null,
+    species: Array.isArray(item.species) ? item.species.filter(Boolean) : item.species ? [String(item.species)] : [],
+    conditions: Array.isArray(item.conditions) ? item.conditions.filter(Boolean) : item.conditions ? [String(item.conditions)] : [],
+    specialty: item.specialty || null,
+    audience: Array.isArray(item.audience) ? item.audience.filter(Boolean) : item.audience ? [String(item.audience)] : [],
+    articleType: item.articleType || (item.doi || item.journal || item.sourceType === "paper" ? "research" : "analysis"),
     dateLong,
     body,
     blog: item.angleKo || "",
@@ -203,6 +238,22 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     tier: item.tier || (normalizeContentTier(item) === "brief" ? "brief" : "deep"),
     ...(item.visibility ? { visibility: item.visibility, suppressedReason: item.suppressedReason || [] } : {}),
   };
+  // 색인 가능한 기사에만 자체 제작 편집 카드가 붙는다. brief·검수 대기·중계 URL은
+  // 이미지를 억지로 만들지 않아 기사 수를 늘리거나 품질 신호를 왜곡하지 않는다.
+  if (!article.image && isIndexable(article)) {
+    const meta = generatedImageMeta(article.id, article.title);
+    if (fs.existsSync(cardAssetPath(path.join(ROOT, "assets"), article.id, "webp"))) {
+      article.image = meta.image;
+      article.images = [meta.image];
+      article.imageAlt = meta.imageAlt;
+      article.imageCaption = meta.imageCaption;
+      article.imageCredit = meta.imageCredit;
+      article.imageLicense = meta.imageLicense;
+      article.imageWidth = meta.imageWidth;
+      article.imageHeight = meta.imageHeight;
+      article.imageOrigin = meta.imageOrigin;
+    }
+  }
   article.href = article.contentTier === "brief" ? `/issues/${sourceDay}#${article.id}` : articlePath(article);
   return article;
 }
@@ -274,13 +325,14 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
     : `${brand}이 만드는 ${label} 해외 수의 브리핑. ${data.articles[0]?.dek || SITE.description}`.slice(0, 300);
   const canonical = `${SITE.baseUrl}${canonicalPath}`;
   const ogImage = data.articles.find((a) => a.image)?.image || `${SITE.baseUrl}/og.png`;
+  const structuredArticles = data.articles.filter(isIndexable).slice(0, isIndex ? 12 : 50);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: title,
     description: SITE.description,
     url: canonical,
-    itemListElement: data.articles.filter(isIndexable).map((a, idx) => ({
+    itemListElement: structuredArticles.map((a, idx) => ({
       "@type": "ListItem",
       position: idx + 1,
       item: {
@@ -624,19 +676,24 @@ const APP_JS = String.raw`
   function loadSearch(){
     if(SEARCH_INDEX||searchLoading) return;
     searchLoading=true; render();
-    // 검색 색인은 날짜별 청크로 나눠 둔다. 매일 새 글이 추가되어도 과거 청크의
-    // CDN 캐시를 무효화하지 않고, 장애·구버전 배포에서는 기존 search.json으로 폴백한다.
-    fetch('/search-manifest.json').then(function(r){if(!r.ok)throw new Error('manifest');return r.json();}).then(function(manifest){
-      var chunks=Array.isArray(manifest.chunks)?manifest.chunks:[];
-      if(!chunks.length) throw new Error('empty manifest');
-      return Promise.all(chunks.map(function(chunk){return fetch(chunk.href).then(function(r){if(!r.ok)throw new Error('chunk');return r.json();});}))
-        .then(function(parts){ return parts.reduce(function(all,part){ return all.concat(Array.isArray(part.items)?part.items:[]); },[]); });
-    }).catch(function(){
-      return fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){return Array.isArray(data.items)?data.items:[];});
-    }).then(function(items){
-      SEARCH_INDEX=items;
+    // 검색 실행 시 최신 월 청크만 먼저 가져온다. 과거 청크는 백그라운드로 이어 받아
+    // 첫 검색 요청의 전송량을 낮추고, CDN 캐시가 오래된 월까지 매번 깨지지 않게 한다.
+    function add(parts){
+      var incoming=parts.reduce(function(all,part){return all.concat(Array.isArray(part.items)?part.items:[]);},[]);
+      SEARCH_INDEX=(SEARCH_INDEX||[]).concat(incoming);
       SEARCH_INDEX.forEach(function(a){ byId[a.id]=a; });
       searchLoading=false; render();
+    }
+    fetch('/search-manifest.json').then(function(r){if(!r.ok)throw new Error('manifest');return r.json();}).then(function(manifest){
+      var chunks=Array.isArray(manifest.chunks)?manifest.chunks.slice().sort(function(a,b){return String(b.key).localeCompare(String(a.key));}):[];
+      if(!chunks.length) throw new Error('empty manifest');
+      var read=function(chunk){return fetch(chunk.href).then(function(r){if(!r.ok)throw new Error('chunk');return r.json();});};
+      return read(chunks[0]).then(function(first){
+        add([first]);
+        Promise.all(chunks.slice(1).map(read)).then(function(rest){add(rest);}).catch(function(){toast('일부 과거 검색 색인을 불러오지 못했습니다');});
+      });
+    }).catch(function(){
+      return fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){add([{items:Array.isArray(data.items)?data.items:[]}]);});
     }).catch(function(){ searchLoading=false; toast('전체 검색 색인을 불러오지 못했습니다'); });
   }
 
@@ -1004,7 +1061,7 @@ const APP_JS = String.raw`
     var feat=arr[i++];
     var bandAll=arr.slice(i);
     var band=S.showAll?bandAll:bandAll.slice(0,12);
-    var top5=arr.slice(0,5), more=bandAll.length-band.length, clipped=allArr.length-arr.length;
+    var top5=arr.slice(0,5), more=bandAll.length-band.length, clipped=(DATA.hasMore?1:allArr.length-arr.length);
 
     var h='<div>'
     // ① 폴드 — 3단 비대칭
@@ -1312,7 +1369,29 @@ const APP_JS = String.raw`
     if(typeof gtag!=='function') return;
     try{ gtag('event','section_view',{section:cat||'all',issue_date:DATA.date}); }catch(e){}
   }
-  function openArticle(id){
+  function hydrateArticle(id){
+    var compact=byId[id], date=(compact&&compact.day)||DATA.date;
+    if(!compact||!compact._compact) return Promise.resolve(compact);
+    return fetch('/data/'+encodeURIComponent(date)+'.json').then(function(r){if(!r.ok)throw new Error('article-data');return r.json();}).then(function(full){
+      var list=(full.articles||[]).concat(full.briefs||[],full.stories||[]), found=list.find(function(a){return a.id===id;});
+      if(!found) throw new Error('article-not-found');
+      byId[id]=found;
+      if(date===DATA.date){ DATA.articles=full.articles||[]; DATA.briefs=full.briefs||[]; DATA.stories=full.stories||[]; DATA._compact=false; DATA.hasMore=false; indexDay(); }
+      return found;
+    });
+  }
+  function hydrateCurrent(){
+    if(!DATA._compact) return Promise.resolve(DATA);
+    return fetch('/data/'+encodeURIComponent(DATA.date)+'.json').then(function(r){if(!r.ok)throw new Error('issue-data');return r.json();}).then(function(full){
+      DATA.articles=full.articles||[]; DATA.briefs=full.briefs||[]; DATA.stories=full.stories||[]; DATA._compact=false; DATA.hasMore=false; indexDay(); render(); return DATA;
+    });
+  }
+  function openArticle(id, hydrated){
+    if(byId[id]&&!hydrated&&byId[id]._compact){
+      toast('기사 본문을 불러오는 중…');
+      hydrateArticle(id).then(function(){openArticle(id,true);}).catch(function(){toast('기사 본문을 불러오지 못했습니다');});
+      return;
+    }
     if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
     else {
       var stored=S.saved[id]||S.ideas[id];
@@ -1358,7 +1437,7 @@ const APP_JS = String.raw`
       else if(act==='rel'){ S.sort='rel'; }
       else if(act==='latest'){ S.sort='latest'; }
       else if(act==='unread'){ S.unreadOnly=!S.unreadOnly; S.showAll=false; }
-      else if(act==='more'){ S.showAll=true; }
+      else if(act==='more'){ if(DATA._compact){ hydrateCurrent().catch(function(){toast('전체 기사를 불러오지 못했습니다');}); } else { S.showAll=true; } }
       else if(act==='brief-more'){ S.briefAll=true; }
       else if(act==='brief-less'){ S.briefAll=false; }
       else if(act==='close'){ S.openId=null; }
@@ -1439,6 +1518,45 @@ function recentArticles(current, allIssues, limit = 6) {
   return [...preferred, ...fallback].slice(0, limit);
 }
 
+function compactClientArticle(a) {
+  return {
+    id: a.id,
+    href: a.href,
+    day: a.day,
+    title: a.title,
+    dek: String(a.dek || "").slice(0, 180),
+    kicker: a.kicker,
+    source: a.source,
+    country: a.country,
+    date: a.date,
+    read: a.read,
+    cat: a.cat,
+    image: a.image,
+    isToday: a.isToday,
+    contentTier: a.contentTier,
+    tier: a.tier,
+    tag: a.tag,
+    // 상세 Q&A와 근거 블록은 기사 JSON을 hydrate한 뒤 표시한다. 초기 HTML에는
+    // 카드와 탐색에 필요한 필드만 넣어 첫 화면의 전송량을 제한한다.
+    radar: null,
+    _compact: true,
+  };
+}
+
+function compactClientData(data) {
+  const articles = (data.articles || []).slice(0, 24).map(compactClientArticle);
+  const briefs = (data.briefs || []).slice(0, 12).map(compactClientArticle);
+  const stories = (data.stories || []).slice(0, 8).map(compactClientArticle);
+  const recent = (data.recent || []).slice(0, 6).map(compactClientArticle);
+  const initialCounts = {
+    articles: (data.articles || []).length,
+    briefs: (data.briefs || []).length,
+    stories: (data.stories || []).length,
+    recent: (data.recent || []).length,
+  };
+  return { ...data, articles, briefs, stories, recent, initialCounts, hasMore: Object.values(initialCounts).some((count, i) => count > [24, 12, 8, 6][i]), _compact: true };
+}
+
 function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) {
   const data = buildIssueData(issue);
   // 홈(/)에서만 SPA 뷰 전환이 의미가 있다. 주간·날짜별 페이지는 각자 독립된 HTML이라
@@ -1465,7 +1583,8 @@ function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) 
   // Cloudflare Pages는 /foo.html을 /foo로 308 리다이렉트한다.
   // canonical·사이트맵에 .html을 쓰면 실제 서빙 주소와 어긋나므로 확장자를 뺀다.
   const canonicalPath = isIndex ? "/" : weekly ? `/weekly/${labelOf(issue)}` : `/issues/${labelOf(issue)}`;
-  const json = JSON.stringify(data).replace(/</g, "\\u003c");
+  const clientData = isIndex ? compactClientData(data) : data;
+  const json = JSON.stringify(clientData).replace(/</g, "\\u003c");
   return `<!doctype html>
 <html lang="ko">
 <head>
@@ -1623,6 +1742,7 @@ button{border:0;border-radius:8px;padding:9px 15px;font-weight:700;cursor:pointe
 var TOKEN=sessionStorage.getItem('vm_admin_token')||'';
 var app=document.getElementById('app');
 var ISSUE=null, EX={};
+var AUDIT=null;
 function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function foreign(it){var m=JSON.stringify([it.titleKo,it.leadKo,it.bodyKo,it.keyPointsKo,it.angleKo]).match(/[一-鿿぀-ヿЀ-ӿ]+/g);return m?m.join(','):null;}
 function flags(it){
@@ -1641,6 +1761,11 @@ function gate(){
 }
 function authFetch(url){return fetch(url,{headers:{Authorization:'Bearer '+TOKEN}}).then(function(r){if(r.status===401){TOKEN='';sessionStorage.removeItem('vm_admin_token');gate();throw new Error('unauthorized');}if(!r.ok)throw new Error('request failed');return r;});}
 window.tryPw=function(){var v=document.getElementById('pw').value.trim();if(!v)return;TOKEN=v;sessionStorage.setItem('vm_admin_token',v);boot();};
+function loadAudit(){return authFetch('/api/admin?resource=audit').then(function(r){return r.json();}).then(function(d){AUDIT=d;}).catch(function(){});}
+function auditRows(){return (AUDIT&&AUDIT.rows)||[];}
+function filteredAudit(){var tier=document.getElementById('af-tier')?.value||'';var status=document.getElementById('af-status')?.value||'';var issue=document.getElementById('af-issue')?.value||'';return auditRows().filter(function(row){return (!tier||row.contentTier===tier)&&(!status||status===(row.indexable?'index':'noindex'))&&(!issue||JSON.stringify(row).toLowerCase().indexOf(issue.toLowerCase())>=0);});}
+window.showAudit=function(){if(!AUDIT){loadAudit().then(showAudit);return;}var rows=filteredAudit();var h='<h1>SEO·편집 검수</h1><div class="sub">인증된 관리자에게만 제공되는 색인·출처·이미지·감수 큐입니다.</div><div class="metrics"><div class="metric"><b>'+AUDIT.summary.total+'</b><span>전체 기사</span></div><div class="metric"><b>'+AUDIT.summary.index+'</b><span>index</span></div><div class="metric"><b>'+AUDIT.summary.missingImage+'</b><span>index 원본 이미지 누락</span></div><div class="metric"><b>'+AUDIT.summary.relayUrl+'</b><span>중계 URL</span></div></div><div class="bar"><select id="af-status" onchange="showAudit()"><option value="">전체 색인 상태</option><option value="index">index</option><option value="noindex">noindex</option></select><select id="af-tier" onchange="showAudit()"><option value="">전체 등급</option><option value="analysis">analysis</option><option value="evidence">evidence</option><option value="brief">brief</option></select><input id="af-issue" placeholder="문제·기사·출처 검색" value="'+e(document.getElementById('af-issue')?.value||'')+'" onkeydown="if(event.key===\'Enter\')showAudit()"><button class="ghost" onclick="downloadAudit(\'json\')">JSON 다운로드</button><button class="ghost" onclick="downloadAudit(\'csv\')">CSV 다운로드</button><button class="ghost" onclick="render()">오늘 원본 검수</button><span class="stat">'+rows.length+'건 표시</span></div><div class="audit-list">'+rows.map(function(row){var fl=(row.qualityIssues||[]).map(function(x){return '<span class="flag f-red">'+e(x)+'</span>';}).join('');if(row.relayUrl)fl+='<span class="flag f-amb">중계 URL</span>';if(row.indexable&&row.rawImageMissing)fl+='<span class="flag f-amb">원본 이미지 누락</span>';if(row.imageSourceMissing)fl+='<span class="flag f-amb">이미지 출처 누락</span>';if(row.reviewerNeeded)fl+='<span class="flag f-amb">감수 필요</span>';return '<div class="item"><div class="cat">우선순위 '+row.priority+' · '+e(row.date)+' · '+e(row.contentTier)+' · '+(row.indexable?'index':'noindex')+'</div><div class="ttl">'+e(row.title)+'</div><div class="src">'+e(row.source||'출처 없음')+' · '+e(row.id)+' · '+e(row.dataFile)+'</div><div class="flags">'+(fl||'<span class="flag f-grn">이상없음</span>')+'</div><div class="src" style="margin-top:8px"><a href="'+e(row.generatedUrl)+'" target="_blank">생성 기사</a> · '+(row.sourceUrl?'<a href="'+e(row.sourceUrl)+'" target="_blank" rel="noopener noreferrer">원문</a>':'원문 없음')+' · '+e(row.reviewerStatus)+'</div></div>';}).join('')+'</div>';app.innerHTML=h;};
+window.downloadAudit=function(kind){var rows=filteredAudit();if(kind==='json'){var blob=new Blob([JSON.stringify(rows,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vetman-seo-review.json';a.click();return;}var cols=['id','date','title','source','indexable','contentTier','priority','qualityIssues','sourceUrl','generatedUrl','dataFile','image','relayUrl','reviewerStatus'];var csv=[cols.join(',')].concat(rows.map(function(row){return cols.map(function(col){var val=Array.isArray(row[col])?row[col].join('|'):row[col];return '"'+String(val==null?'':val).replace(/"/g,'""')+'"';}).join(',');})).join('\n');var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vetman-seo-review.csv';a.click();};
 function load(date){
   authFetch('/api/admin?resource=raw&date='+encodeURIComponent(date)).then(function(r){return r.json();}).then(function(d){ISSUE=d;EX={};render();}).catch(function(){});
 }
@@ -1653,7 +1778,7 @@ function render(){
   var sourceCount=items.filter(function(it){return !!it.sourceUrl&&it.sourceUrl!=='#';}).length;
   var h='<h1>검수 · '+e(ISSUE.date)+'</h1><div class="sub">발행 상태: '+e(ISSUE.status||'')+' · 총 '+items.length+'건</div>';
   h+='<div class="metrics"><div class="metric"><b>'+items.length+'</b><span>전체 항목</span></div><div class="metric"><b>'+reviewCount+'</b><span>검수 필요</span></div><div class="metric"><b>'+imageCount+'/'+items.length+'</b><span>대표 이미지</span></div><div class="metric"><b>'+sourceCount+'/'+items.length+'</b><span>원문 링크</span></div></div>';
-  h+='<div class="bar"><select id="dsel" onchange="load(this.value)"></select><button class="primary" onclick="copyClean()">제외 반영 JSON 복사</button><button class="ghost" onclick="copyAll()">전체 JSON</button><span class="stat">'+items.length+'건 중 <b>'+exCount+'건 제외</b> → 발행 '+(items.length-exCount)+'건</span></div>';
+  h+='<div class="bar"><select id="dsel" onchange="load(this.value)"></select><button class="primary" onclick="copyClean()">제외 반영 JSON 복사</button><button class="ghost" onclick="copyAll()">전체 JSON</button><button class="ghost" onclick="showAudit()">SEO·편집 검수</button><span class="stat">'+items.length+'건 중 <b>'+exCount+'건 제외</b> → 발행 '+(items.length-exCount)+'건</span></div>';
   h+=items.map(function(it,i){
     var fl=flags(it).map(function(f){return '<span class="flag '+f[0]+'">'+e(f[1])+'</span>';}).join('');
     var ex=EX[i]?' ex':'';
@@ -1667,7 +1792,7 @@ window.toggleEx=function(i){EX[i]=!EX[i];render();};
 window.tg=function(i){document.getElementById('it'+i).classList.toggle('open');event.target.textContent=document.getElementById('it'+i).classList.contains('open')?'본문 접기 ▴':'본문 펼치기 ▾';};
 window.copyClean=function(){var out=Object.assign({},ISSUE);out.items=ISSUE.items.filter(function(it,i){return !EX[i];});navigator.clipboard.writeText(JSON.stringify(out,null,2));alert('제외 반영 JSON을 복사했습니다.\n\ndata/issues/'+ISSUE.date+'.json 에 붙여넣고 재배포하세요.');};
 window.copyAll=function(){navigator.clipboard.writeText(JSON.stringify(ISSUE,null,2));alert('전체 JSON 복사됨');};
-function boot(){authFetch('/api/admin?resource=archive').then(function(r){return r.json();}).then(function(a){var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';}).catch(function(){gate();});}
+function boot(){Promise.all([authFetch('/api/admin?resource=archive').then(function(r){return r.json();}),loadAudit()]).then(function(results){var a=results[0];var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';}).catch(function(){gate();});}
 if(TOKEN) boot(); else gate();
 </script><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 
@@ -1703,10 +1828,32 @@ function issueIndexable(data) {
 // 남는 건 해외 기사의 한국어 요약뿐이다. 사이트에는 남기되 색인 대상에서는 뺀다 —
 // 이런 페이지가 쌓이면 사이트 전체가 재작성 콘텐츠로 평가된다.
 function isIndexable(a) {
-  return isProfessionallyIndexable(
-    { ...a, titleKo: a.titleKo || a.title, leadKo: a.leadKo || a.dek, bodyKo: a.bodyKo || a.body },
-    { duplicate: Boolean(a.duplicateSource) }
-  );
+  return isProfessionallyIndexable(qualityView(a), { duplicate: Boolean(a.duplicateSource) });
+}
+
+function qualityView(a) {
+  return {
+    ...a,
+    titleKo: a.titleKo || a.title,
+    leadKo: a.leadKo || a.dek,
+    bodyKo: a.bodyKo || a.body,
+    keyPointsKo: a.keyPointsKo || a.blogAngle,
+    angleKo: a.angleKo || a.blog,
+  };
+}
+
+function profileFor(profiles, name) {
+  if (!name) return null;
+  return profiles.find((profile) => profile.name === name || profile.slug === name) || null;
+}
+
+function reviewStatus(a) {
+  const reviewer = profileFor(REVIEWER_PROFILES, a.reviewer) || (a.reviewer ? { name: a.reviewer } : null);
+  const credentials = `${reviewer?.role || ""} ${reviewer?.credentials || ""}`;
+  const veterinarian = /수의사|수의학|DVM|VMD|veterinar/i.test(credentials);
+  if (reviewer && a.reviewedAt) return veterinarian ? "수의사 감수 완료" : "사람 검수 완료";
+  if (a.aiAssisted === true) return "AI 보조 번역·요약 · 사람 검수 대기";
+  return "편집팀 작성 · 사람 검수 대기";
 }
 
 function renderSuppressedArticlePage(a) {
@@ -1724,11 +1871,18 @@ ${gaSnippet()}</head><body><div class="wrap"><header><a href="/">${esc(SITE.name
 
 function relatedArticles(current, all = []) {
   const currentTopics = new Set(topicsOf(current).map((topic) => topic.slug));
+  const entities = (value) => new Set([
+    ...(Array.isArray(value?.species) ? value.species : []),
+    ...(Array.isArray(value?.conditions) ? value.conditions : []),
+    ...(value?.specialty ? [value.specialty] : []),
+  ].map((name) => String(name).trim().toLowerCase()).filter(Boolean));
+  const currentEntities = entities(current);
   return all
     .filter((candidate) => candidate.id !== current.id && isIndexable(candidate))
     .map((candidate) => ({
       candidate,
       score: topicsOf(candidate).filter((topic) => currentTopics.has(topic.slug)).length * 10 +
+        [...entities(candidate)].filter((entity) => currentEntities.has(entity)).length * 18 +
         (candidate.cat === current.cat ? 3 : 0),
     }))
     .sort((a, b) => b.score - a.score || (b.candidate.ts || 0) - (a.candidate.ts || 0))
@@ -1758,13 +1912,21 @@ function renderArticlePage(a, data, prev, next, related = []) {
     author: authorLd(a),
     ...(a.sourceUrl ? { isBasedOn: { "@type": "CreativeWork", url: a.sourceUrl, ...(a.sourceTitle ? { name: a.sourceTitle } : {}), ...(a.sourceAuthor ? { author: { "@type": "Person", name: a.sourceAuthor } } : {}), ...(a.sourcePublishedAt ? { datePublished: a.sourcePublishedAt } : {}) } } : {}),
     articleSection: a.kicker,
+    ...(a.species?.length || a.conditions?.length || a.specialty ? {
+      about: [
+        ...(a.species || []).map((name) => ({ "@type": "Thing", name })),
+        ...(a.conditions || []).map((name) => ({ "@type": "MedicalCondition", name })),
+        ...(a.specialty ? [{ "@type": "Thing", name: a.specialty }] : []),
+      ],
+    } : {}),
+    ...(a.audience?.length ? { audience: a.audience.map((name) => ({ "@type": "Audience", audienceType: name })) } : {}),
     // 주제어 — 검색/AI가 이 기사를 어떤 질의에 매칭할지 판단하는 신호
     keywords: [a.tag, a.kicker, ...topicsOf(a).map((t) => t.name)].filter(Boolean).join(", "),
     // 음성비서·AI 개요가 우선 낭독/추출할 핵심 영역을 지정(GEO)
     speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".lead"] },
     publisher: PUBLISHER_LD,
     mainEntityOfPage: canonical,
-    ...(a.reviewer ? { reviewedBy: { "@type": "Person", name: a.reviewer, ...(a.reviewerUrl ? { url: a.reviewerUrl } : {}) } } : {}),
+    ...(a.reviewer ? { reviewedBy: { "@type": "Person", name: a.reviewer, ...(a.reviewerUrl ? { url: a.reviewerUrl } : {}), ...(profileFor(REVIEWER_PROFILES, a.reviewer)?.profileUrl ? { url: profileFor(REVIEWER_PROFILES, a.reviewer).profileUrl } : {}) } } : {}),
     ...(a.correctionNote ? { correction: a.correctionNote } : {}),
     ...((a.aiAssisted !== null && a.aiAssisted !== undefined) || a.correctionNote
       ? { additionalProperty: [{ "@type": "PropertyValue", propertyID: "aiAssisted", value: a.aiAssisted === true }, ...(a.correctionNote ? [{ "@type": "PropertyValue", propertyID: "correctionNote", value: a.correctionNote }] : [])] }
@@ -1832,7 +1994,7 @@ function renderArticlePage(a, data, prev, next, related = []) {
     // 이미지 없는 기사가 절반이다. 폴백이 없으면 카톡·페북 공유 시 썸네일 없는
     // 맨 링크로 나가 클릭률이 떨어진다
     `\n<meta property="og:image" content="${esc(articleImage(a))}">\n<meta property="og:image:alt" content="${esc(a.imageAlt || a.title)}">` +
-    (a.image ? "" : `\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">`)
+    `\n<meta property="og:image:width" content="${a.imageWidth || 1200}">\n<meta property="og:image:height" content="${a.imageHeight || 630}">`
   }
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(a.title)}">
@@ -1931,10 +2093,10 @@ ${jsonLdScript(faqLd)}` : ""
   } <span aria-hidden="true">›</span> <span class="cur" aria-current="page">${esc(a.title)}</span></nav>
 <div class="kick">${esc(a.kicker)}</div>
 <h1>${esc(a.title)}</h1>
-<div class="by">${a.author ? `<a href="${esc(a.authorUrl || "/about")}" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(a.author)}</a>` : `<a href="/about" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(SITE.brandKo)} 편집팀</a>`} · ${esc(a.contentTier === "evidence" ? "근거 기반 해설" : a.contentTier === "analysis" ? "전문 해설" : "간추린 소식")} · 발행 ${esc(a.dateLong || a.date)}${a.updatedAt ? ` · 수정 ${esc(a.updatedAt.slice(0, 10).replace(/-/g, "."))}` : ""}${a.read ? ` · ${esc(a.read)}` : ""}${a.reviewer ? ` · 감수 ${a.reviewerUrl ? `<a href="${esc(a.reviewerUrl)}" rel="noopener noreferrer" style="color:inherit;">${esc(a.reviewer)}</a>` : esc(a.reviewer)}${a.reviewedAt ? ` (${esc(a.reviewedAt.slice(0, 10).replace(/-/g, "."))})` : ""}` : ""}${a.aiAssisted === true ? " · AI 보조 후 편집" : ""}${
+<div class="by">${a.author ? `<a href="${esc(a.authorUrl || "/about")}" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(a.author)}</a>` : `<a href="/about" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(SITE.brandKo)} 편집팀</a>`} · ${esc(a.contentTier === "evidence" ? "근거 기반 해설" : a.contentTier === "analysis" ? "전문 해설" : "간추린 소식")} · 발행 ${esc(a.dateLong || a.date)}${a.updatedAt ? ` · 수정 ${esc(a.updatedAt.slice(0, 10).replace(/-/g, "."))}` : ""}${a.read ? ` · ${esc(a.read)}` : ""}${a.reviewer ? ` · 감수 ${a.reviewerUrl ? `<a href="${esc(a.reviewerUrl)}" rel="noopener noreferrer" style="color:inherit;">${esc(a.reviewer)}</a>` : esc(a.reviewer)}${a.reviewedAt ? ` (${esc(a.reviewedAt.slice(0, 10).replace(/-/g, "."))})` : ""}` : ""}${a.aiAssisted === true ? " · AI 보조 후 편집" : ""} · ${esc(reviewStatus(a))}${
     ev ? `<div class="ev">근거 · ${[ev.design, ev.n].filter(Boolean).map(esc).join(" · ")}${ev.note ? ` — ${esc(ev.note)}` : ""}</div>` : ""
   }</div>
-${a.image ? `<figure><img class="hero-image" src="${esc(a.image)}" alt="${esc(a.imageAlt || a.title)}" width="1200" height="675" loading="eager" decoding="async">${a.imageCaption || a.imageCredit ? `<figcaption class="image-credit">${esc(a.imageCaption || "")}${a.imageCredit ? `${a.imageCaption ? " · " : ""}이미지: ${esc(a.imageCredit)}` : ""}</figcaption>` : ""}</figure>` : ""}
+${a.image ? `<figure><img class="hero-image" src="${esc(a.image)}" alt="${esc(a.imageAlt || a.title)}" width="${a.imageWidth || 1200}" height="${a.imageHeight || 675}" style="aspect-ratio:${a.imageWidth || 1200}/${a.imageHeight || 675}" loading="eager" decoding="async" fetchpriority="high">${a.imageCaption || a.imageCredit || a.imageLicense ? `<figcaption class="image-credit">${esc(a.imageCaption || "")}${a.imageCredit ? `${a.imageCaption ? " · " : ""}이미지: ${esc(a.imageCredit)}` : ""}${a.imageLicense ? `${a.imageCaption || a.imageCredit ? " · " : ""}라이선스: ${esc(a.imageLicense)}` : ""}${a.imageLicenseUrl ? ` · <a href="${esc(a.imageLicenseUrl)}" target="_blank" rel="noopener noreferrer">라이선스 확인</a>` : ""}</figcaption>` : ""}</figure>` : ""}
 <div class="lead">${esc(a.dek)}</div>
 ${(a.body || []).map(para).join("\n")}
 ${a.correctionNote ? `<div class="note"><div class="lb">정정·편집 메모</div><div class="tx">${esc(a.correctionNote)}</div></div>` : ""}
@@ -1950,10 +2112,10 @@ ${a.blog ? `<div class="qa"><div class="lb">블로그 글감</div><p class="q">$
 ${
     (() => {
       // 기사 → 허브 링크. 허브가 기사로만 링크하면 단방향이라 클러스터가 되지 않는다.
-      const ts = topicsOf(a);
-      return ts.length
-        ? `<div class="tpc"><b>주제</b> ${ts
-            .map((t) => `<a href="${topicPath(t)}">${esc(t.name)}</a>`)
+  const ts = topicsOf(a);
+      const entityLabels = [...(a.species || []), ...(a.conditions || []), a.specialty].filter(Boolean);
+      return ts.length || entityLabels.length
+        ? `<div class="tpc"><b>분류</b> ${[...ts.map((t) => `<a href="${topicPath(t)}">${esc(t.name)}</a>`), ...entityLabels.map((label) => `<span>${esc(label)}</span>`)]
             .join("")}</div>`
         : "";
     })()
@@ -2316,6 +2478,15 @@ const ABOUT_BODY = `
 확인 후 지체 없이 조치하고, 수정 시각과 정정 내용을 해당 기사에 표기합니다. 정정 전후의
 차이가 임상 판단에 영향을 줄 수 있으면 기사 색인을 일시 중지할 수 있습니다.</p>
 
+<h2>편집 상태와 검수 구분</h2>
+<p>기사 화면의 작성자·감수 표기는 실제 데이터가 확인된 경우에만 표시합니다. “AI 보조 번역·요약”은 자동화가 사용되었다는 뜻이며, “사람 검수”와 “수의사 감수”는 서로 다른 상태입니다. 수의사 감수는 공개 프로필과 감수일이 확인된 경우에만 표시하고, 정보가 없으면 감수 대기로 남깁니다.</p>
+
+<h2>이미지 사용 원칙</h2>
+<p>권리와 출처가 확인되지 않은 이미지를 내려받아 재배포하지 않습니다. 기사별 이미지에는 확인된 경우에만 캡션·크레딧·라이선스를 표시합니다. 원본 이미지가 없는 색인 기사에는 실제 환자나 검사 결과로 오인되지 않는 자체 제작 편집 카드를 사용하며, 고유 이미지가 없다는 사실을 숨기지 않습니다.</p>
+
+<h2>오류 제보와 업데이트 이력</h2>
+<p>오역·사실 오류·출처 변경을 발견하면 문의처로 기사 URL과 근거를 보내 주세요. 확인된 정정은 기사 화면의 정정 메모와 수정일에 반영하고, 임상 판단에 영향을 줄 수 있는 오류는 수정 전까지 색인을 중지합니다.</p>
+
 <h2>임상 정보 면책</h2>
 <p>기사의 진료 포인트와 보호자 설명은 참고용 편집 정보입니다. 진단·처방·용량 결정은
 담당 수의사가 최신 원문과 국내 허가·지침을 확인한 뒤 환자별로 판단해야 합니다.
@@ -2388,9 +2559,9 @@ function dedupeBy(arr, keyFn, limit) {
 function renderTopicPage(topic, arts) {
   const canonical = `${SITE.baseUrl}${topicPath(topic)}`;
   const brand = `${SITE.brandKo}(${SITE.brandEn})`;
-  const indexable = arts.length >= 3;
+  const indexable = arts.length >= Number(topic.minIndexArticles || 5) && Boolean(topic.intro);
   const title = `${topic.name} — 해외 수의 소식 모음 | ${SITE.name} · ${SITE.brandKo}`;
-  const desc = `${topic.lede} ${brand}이 정리한 ${arts.length}건.`.slice(0, 200);
+  const desc = `${topic.intro || topic.lede} ${brand}이 정리한 ${arts.length}건.`.slice(0, 200);
 
   const clinical = dedupeBy(
     arts.filter((a) => a.radar?.clinical),
@@ -2513,10 +2684,21 @@ function renderTopicPage(topic, arts) {
 <nav><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/about">서비스 소개</a></nav></header>
 <nav class="crumb" aria-label="breadcrumb"><a href="/">홈</a> <span aria-hidden="true">›</span> <a href="/topic/">주제별 보기</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(topic.name)}</span></nav>
 <h1>${esc(topic.name)}</h1>
-<p class="lede">${esc(topic.lede)}</p>
+<p class="lede">${esc(topic.intro || topic.lede)}</p>
+${topic.synonyms?.length ? `<p class="meta">함께 찾는 말: ${topic.synonyms.map((term) => esc(term)).join(" · ")}</p>` : ""}
 <p class="meta">기사 ${arts.length}건${papers.length ? ` · 근거 있는 연구 ${papers.length}건` : ""}${
     qas.length ? ` · 보호자 문답 ${qas.length}건` : ""
   }</p>
+
+${sec(
+  "최신 기사",
+  arts.slice(0, 5).map((a) => `<li class="art"><a href="${esc(articlePath(a))}">${esc(a.title)}</a><div class="sub">${esc([a.date, a.source].filter(Boolean).join(" · "))}</div></li>`).join("")
+)}
+
+${sec(
+  "핵심 전문 해설",
+  arts.filter((a) => a.contentTier === "analysis" || a.contentTier === "evidence").slice(0, 8).map((a) => `<li class="art"><a href="${esc(articlePath(a))}">${esc(a.title)}</a><div class="sub">${esc([a.contentTier === "evidence" ? "근거 기반" : "전문 해설", a.source].filter(Boolean).join(" · "))}</div></li>`).join("")
+)}
 
 ${sec(
   "진료 포인트 모음",
@@ -2711,6 +2893,33 @@ footer{margin-top:58px;padding-top:20px;border-top:1px solid var(--line);font-si
 <footer><nav><a href="/">오늘의 브리핑</a><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/rss.xml">RSS</a><a href="/about">편집 원칙</a></nav><p>© ${new Date().getFullYear()} ${esc(SITE.brandKo)}(${esc(SITE.brandEn)})</p></footer></main></body></html>`;
 }
 
+function renderProfilePage(profile, kind = "author") {
+  const isReviewer = kind === "reviewer";
+  const title = `${profile.name} · ${isReviewer ? "감수자" : "작성자"}`;
+  const canonicalPath = `/${isReviewer ? "reviewers" : "authors"}/${profile.slug}`;
+  const canonical = `${SITE.baseUrl}${canonicalPath}`;
+  const person = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    url: canonical,
+    ...(profile.role ? { jobTitle: profile.role } : {}),
+    ...(profile.credentials ? { hasCredential: profile.credentials } : {}),
+    ...(profile.specialties?.length ? { knowsAbout: profile.specialties } : {}),
+    ...(profile.profileUrl ? { sameAs: [profile.profileUrl, ...(profile.sameAs || [])] } : profile.sameAs?.length ? { sameAs: profile.sameAs } : {}),
+  };
+  const image = profile.profileImage ? `<img src="${esc(profile.profileImage)}" alt="${esc(profile.name)} 프로필" width="160" height="160" loading="eager" style="width:160px;height:160px;object-fit:cover;border-radius:50%">` : "";
+  const links = [...new Set([profile.profileUrl, ...(profile.sameAs || [])].filter(Boolean))].map((url) => `<a href="${esc(url)}" rel="noopener noreferrer">프로필·공개 링크</a>`).join(" · ");
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)} | ${esc(SITE.name)}</title><meta name="description" content="${esc(`${profile.name}의 ${isReviewer ? "감수 범위와 공개 프로필" : "작성 범위와 공개 프로필"}`)}"><meta name="robots" content="index, follow"><link rel="canonical" href="${esc(canonical)}"><link rel="icon" href="/icon.svg" type="image/svg+xml"><script type="application/ld+json">${JSON.stringify(person)}</script><style>body{margin:0;background:#fff;color:#171719;font-family:system-ui,"Apple SD Gothic Neo",sans-serif}.wrap{max-width:720px;margin:0 auto;padding:28px 22px 72px}a{color:#06f}nav{border-bottom:1px solid #e5e5e8;padding-bottom:16px}main{padding:56px 0}h1{font-size:34px;line-height:1.3}p{color:#62636a;line-height:1.8}dt{font-weight:800;margin-top:18px}dd{margin:5px 0 0;color:#45464b;line-height:1.7}footer{border-top:1px solid #e5e5e8;padding-top:18px;color:#8a8b91;font-size:12px}</style>${gaSnippet()}</head><body><div class="wrap"><nav><a href="/">${esc(SITE.name)}</a> · <a href="/${isReviewer ? "reviewers" : "authors"}/">${isReviewer ? "감수자" : "작성자"}</a></nav><main>${image}<h1>${esc(profile.name)}</h1><p>${esc(profile.bio || "공개된 편집·감수 프로필입니다.")}</p><dl>${profile.role ? `<dt>역할</dt><dd>${esc(profile.role)}</dd>` : ""}${profile.credentials ? `<dt>자격·소속</dt><dd>${esc(profile.credentials)}</dd>` : ""}${profile.specialties?.length ? `<dt>전문 분야</dt><dd>${profile.specialties.map(esc).join(" · ")}</dd>` : ""}</dl><p>${links}</p></main><footer><a href="/about">편집 원칙</a> · <a href="/">최신 브리핑</a></footer></div></body></html>`;
+}
+
+function renderProfileIndex(profiles, kind = "author") {
+  const isReviewer = kind === "reviewer";
+  const label = isReviewer ? "감수자" : "작성자";
+  const body = `<div class="grid">${profiles.map((profile) => `<a class="card" href="/${isReviewer ? "reviewers" : "authors"}/${esc(profile.slug)}"><b>${esc(profile.name)}</b><span>${esc(profile.role || label)}</span></a>`).join("")}</div>`;
+  return renderDirectoryPage({ title: `${label} 프로필`, description: `VetManLab ${label}의 공개 역할과 전문 분야를 확인합니다.`, canonicalPath: `/${isReviewer ? "reviewers" : "authors"}/`, body, itemList: profiles.map((profile) => ({ name: profile.name, url: `${SITE.baseUrl}/${isReviewer ? "reviewers" : "authors"}/${profile.slug}` })) });
+}
+
 function renderArchiveIndex(issues, weeklies) {
   const records = issues
     .filter((issue) => !issue.weekly)
@@ -2796,7 +3005,7 @@ function renderSourcesIndex(searchEntries) {
 function buildSitemap(issues, weeklies = [], extraEntries = [], extraTopics = []) {
   // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다.
   // 날짜 문자열을 가짜 수정일로 쓰지 않고 데이터에 실제로 기록된 시각만 사용한다.
-  const issueLastmod = (issue) => issue.updatedAt || issue.publishedAt || issue.generatedAt || null;
+  const issueLastmod = (issue) => issue.updatedAt || issue.publishedAt || null;
   const latestLastmod = issues[0] ? issueLastmod(issues[0]) : null;
   const staticUrls = [
     { loc: `${SITE.baseUrl}/`, lastmod: latestLastmod },
@@ -2808,10 +3017,11 @@ function buildSitemap(issues, weeklies = [], extraEntries = [], extraTopics = []
     { loc: `${SITE.baseUrl}/sources/`, lastmod: latestLastmod },
     ...(extraTopics || []).map((u) => ({ loc: u, lastmod: latestLastmod })),
   ];
-  // 기사 URL은 발행일을 lastmod로 — 크롤러가 신선도를 판단하는 신호가 된다
+  // 기사 URL은 실제 수정 시각만 lastmod로 제공한다. 최초 발행일은 News Sitemap과
+  // Article.datePublished의 역할이며, 수정되지 않은 기사를 매번 새로 고치지 않는다.
   const entries = [
     ...staticUrls,
-    ...extraEntries.map((e) => ({ loc: e.url, lastmod: e.modifiedAt || e.publishedAt || null })),
+    ...extraEntries.map((e) => ({ loc: e.url, lastmod: e.modifiedAt || null })),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -2950,6 +3160,10 @@ function build() {
   fs.mkdirSync(path.join(SITE_DIR, "issues"), { recursive: true });
   fs.mkdirSync(path.join(SITE_DIR, "data"), { recursive: true });
   fs.mkdirSync(path.join(SITE_DIR, "search"), { recursive: true });
+  const editorialAssetDir = path.join(ROOT, "assets", "media", "editorial");
+  if (fs.existsSync(editorialAssetDir)) {
+    fs.cpSync(editorialAssetDir, path.join(SITE_DIR, "media", "editorial"), { recursive: true });
+  }
 
   const latest = issues[0];
   fs.writeFileSync(path.join(SITE_DIR, "index.html"), renderPage(latest, issues, { isIndex: true }));
@@ -2961,6 +3175,7 @@ function build() {
   const topicBuckets = {};
   const indexedSources = new Set();
   const searchChunks = {};
+  const reviewRows = [];
   const pageTitleCounts = new Map();
   for (const issue of issues) {
     for (const [index, item] of (issue.items || []).entries()) {
@@ -2997,13 +3212,61 @@ function build() {
         path.join(SITE_DIR, "article", `${articleSlug(a)}.html`),
         renderArticlePage(a, data, all[i - 1] || null, all[i + 1] || null, relatedArticles(a, all))
       );
+      const flags = publishQualityIssues(qualityView(a), { duplicate: Boolean(a.duplicateSource) });
+      const relay = /^https?:\/\/(?:news\.)?google\.[^/]+\/rss\/articles\//i.test(String(a.sourceUrlRaw || a.sourceUrl || ""));
+      const hasImage = Boolean(a.image);
+      const rawImageMissing = a.imageOrigin === "editorial-card" || !hasImage;
+      const imageSourceMissing = Boolean(hasImage && !a.imageCredit && !a.imageLicense && a.imageOrigin !== "editorial-card");
+      const priority = (isIndexable(a) ? 2 : 0) + (flags.length * 4) + (relay ? 3 : 0) + (rawImageMissing ? 2 : 0) + (imageSourceMissing ? 1 : 0) + (!a.reviewer ? 1 : 0);
+      reviewRows.push({
+        id: a.id,
+        date: a.day,
+        title: a.title,
+        source: a.source,
+        sourceUrl: a.sourceUrl || null,
+        sourceUrlRaw: a.sourceUrlRaw || null,
+        generatedUrl: `${SITE.baseUrl}${articlePath(a)}`,
+        dataFile: `data/issues/${a.day}.json`,
+        indexable: isIndexable(a),
+        contentTier: a.contentTier,
+        qualityIssues: flags,
+        priority,
+        image: Boolean(a.image),
+        rawImageMissing,
+        imageOrigin: a.imageOrigin || null,
+        imageSourceMissing,
+        relayUrl: relay,
+        reviewerNeeded: !a.reviewer,
+        reviewerStatus: reviewStatus(a),
+        updatedAt: a.updatedAt || null,
+        category: a.cat,
+        sourceStatus: relay ? "manual-review" : a.sourceUrl ? "ok" : "missing",
+      });
       if (isIndexable(a)) {
         const u = `${SITE.baseUrl}${articlePath(a)}`;
         articleUrls.push(u);
-        articleEntries.push({ url: u, ts: a.ts || null, publishedAt: a.publishedAt || null, modifiedAt: a.updatedAt || a.publishedAt || null, title: a.title, section: a.kicker });
+        articleEntries.push({ url: u, ts: a.ts || null, publishedAt: a.publishedAt || null, modifiedAt: a.updatedAt || null, title: a.title, section: a.kicker });
         // 검색은 최신 지면에만 갇히면 과거 기사 유입을 놓친다. 상세 화면에
         // 필요한 필드까지 포함한 검색 전용 색인을 별도 파일로 제공한다.
-        const searchItem = { ...a, url: u };
+        const searchItem = {
+          id: a.id,
+          url: u,
+          href: a.href,
+          day: a.day,
+          ts: a.ts,
+          title: a.title,
+          dek: a.dek,
+          source: a.source,
+          country: a.country,
+          date: a.date,
+          kicker: a.kicker,
+          cat: a.cat,
+          contentTier: a.contentTier,
+          tier: a.tier,
+          image: a.image,
+          topics: topicsOf(a).map((topic) => topic.slug),
+          _compact: true,
+        };
         searchEntries.push(searchItem);
         const chunkKey = /^\d{4}-\d{2}/.test(a.day || "") ? a.day.slice(0, 7) : "legacy";
         (searchChunks[chunkKey] ||= []).push(searchItem);
@@ -3021,9 +3284,9 @@ function build() {
   for (const t of TOPICS) {
     const arts = topicBuckets[t.slug] || [];
     arts.sort((a, b) => (b.ts ?? 0) - (a.ts ?? 0));
-    if (arts.length >= 3) topicCounts[t.slug] = arts.length;
+    if (arts.length >= Number(t.minIndexArticles || 5) && t.intro) topicCounts[t.slug] = arts.length;
     fs.writeFileSync(path.join(SITE_DIR, "topic", `${t.slug}.html`), renderTopicPage(t, arts));
-    if (arts.length >= 3) topicUrls.push(`${SITE.baseUrl}${topicPath(t)}`);
+    if (arts.length >= Number(t.minIndexArticles || 5) && t.intro) topicUrls.push(`${SITE.baseUrl}${topicPath(t)}`);
   }
   fs.writeFileSync(path.join(SITE_DIR, "topic", "index.html"), renderTopicIndex(topicCounts));
   console.log(`  주제 허브 ${topicUrls.length}개 생성`);
@@ -3049,6 +3312,18 @@ function build() {
   fs.mkdirSync(path.join(SITE_DIR, "sources"), { recursive: true });
   fs.writeFileSync(path.join(SITE_DIR, "archive", "index.html"), renderArchiveIndex(issues, weeklies));
   fs.writeFileSync(path.join(SITE_DIR, "sources", "index.html"), renderSourcesIndex(searchEntries));
+  if (AUTHOR_PROFILES.length) {
+    fs.mkdirSync(path.join(SITE_DIR, "authors"), { recursive: true });
+    fs.writeFileSync(path.join(SITE_DIR, "authors", "index.html"), renderProfileIndex(AUTHOR_PROFILES, "author"));
+    for (const profile of AUTHOR_PROFILES.filter((item) => item.slug && item.name)) fs.writeFileSync(path.join(SITE_DIR, "authors", `${profile.slug}.html`), renderProfilePage(profile, "author"));
+  }
+  if (REVIEWER_PROFILES.length) {
+    fs.mkdirSync(path.join(SITE_DIR, "reviewers"), { recursive: true });
+    fs.writeFileSync(path.join(SITE_DIR, "reviewers", "index.html"), renderProfileIndex(REVIEWER_PROFILES, "reviewer"));
+    for (const profile of REVIEWER_PROFILES.filter((item) => item.slug && item.name)) fs.writeFileSync(path.join(SITE_DIR, "reviewers", `${profile.slug}.html`), renderProfilePage(profile, "reviewer"));
+  }
+  const auditRows = reviewRows.sort((a, b) => b.priority - a.priority || String(b.date).localeCompare(String(a.date)));
+  fs.writeFileSync(path.join(SITE_DIR, "admin-review.json"), JSON.stringify({ generatedAt: new Date().toISOString(), noindex: true, summary: { total: auditRows.length, index: auditRows.filter((row) => row.indexable).length, noindex: auditRows.filter((row) => !row.indexable).length, missingImage: auditRows.filter((row) => row.indexable && row.rawImageMissing).length, relayUrl: auditRows.filter((row) => row.relayUrl).length, reviewerNeeded: auditRows.filter((row) => row.reviewerNeeded).length }, rows: auditRows }, null, 2));
   fs.writeFileSync(
     path.join(SITE_DIR, "search.json"),
     JSON.stringify({ generatedAt: new Date().toISOString(), count: searchEntries.length, items: searchEntries })
@@ -3056,8 +3331,9 @@ function build() {
   const searchManifest = { generatedAt: new Date().toISOString(), count: searchEntries.length, chunks: [] };
   for (const [key, items] of Object.entries(searchChunks).sort(([a], [b]) => a.localeCompare(b))) {
     const href = `/search/${key}.json`;
-    fs.writeFileSync(path.join(SITE_DIR, "search", `${key}.json`), JSON.stringify({ generatedAt: searchManifest.generatedAt, count: items.length, items }));
-    searchManifest.chunks.push({ key, href, count: items.length });
+    const chunkPath = path.join(SITE_DIR, "search", `${key}.json`);
+    fs.writeFileSync(chunkPath, JSON.stringify({ generatedAt: searchManifest.generatedAt, count: items.length, items }));
+    searchManifest.chunks.push({ key, href, count: items.length, bytes: fs.statSync(chunkPath).size });
   }
   fs.writeFileSync(path.join(SITE_DIR, "search-manifest.json"), JSON.stringify(searchManifest));
   const publicLatest = {
@@ -3082,6 +3358,7 @@ function build() {
   const blockedRules = [
     "Disallow: /admin",
     "Disallow: /admin-ui.html",
+    "Disallow: /admin-review.json",
     "Disallow: /api/",
     "Disallow: /raw/",
     "Disallow: /data/",
@@ -3148,6 +3425,10 @@ function build() {
   ! Cache-Control
   Cache-Control: public, max-age=31536000, immutable
 
+/media/editorial/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
+
 /og.png
   ! Cache-Control
   Cache-Control: public, max-age=86400
@@ -3177,6 +3458,9 @@ function build() {
   X-Robots-Tag: noindex, nofollow, noarchive
 
 /search-manifest.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/admin-review.json
   X-Robots-Tag: noindex, nofollow, noarchive
 `
   );

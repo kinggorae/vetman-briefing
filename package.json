@@ -9,6 +9,10 @@
     "run": "node --env-file-if-exists=.env src/run.js",
     "publish:today": "node --env-file-if-exists=.env src/run.js --publish",
     "build": "node src/build.js",
+    "prebuild": "node scripts/generate-editorial-cards.js",
+    "media:cards": "node scripts/generate-editorial-cards.js",
+    "normalize:sources": "node scripts/resolve-source-urls.js",
+    "seo:audit": "node scripts/seo-audit.js",
     "dev": "wrangler pages dev site --port 8788",
     "check": "npm test && npm run build && npm run validate",
     "validate": "node src/validate.js",
@@ -24,6 +28,7 @@
     "fast-xml-parser": "^5.10.1"
   },
   "devDependencies": {
-    "wrangler": "^4.112.0"
+    "wrangler": "^4.112.0",
+    "sharp": "0.34.5"
   }
 }

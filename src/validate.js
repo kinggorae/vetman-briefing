@@ -250,7 +250,10 @@ if (firstScript >= 0) {
     const issueData = JSON.parse(home.slice(home.indexOf(">", firstScript) + 1, endScript));
     const visibleCount = [issueData.articles, issueData.briefs, issueData.stories]
       .reduce((sum, list) => sum + (Array.isArray(list) ? list.length : 0), 0);
-    if (Number(issueData.count) !== visibleCount) fail("홈 기사 수 표기 불일치: " + issueData.count + " !== " + visibleCount);
+    const initialVisibleCount = issueData.initialCounts
+      ? ["articles", "briefs", "stories"].reduce((sum, key) => sum + Number(issueData.initialCounts[key] || 0), 0)
+      : visibleCount;
+    if (Number(issueData.count) !== initialVisibleCount) fail("홈 기사 수 표기 불일치: " + issueData.count + " !== " + initialVisibleCount);
     if (visibleCount > 0 && (initialHtml.match(/href="\/(?:article|issues)\//g) || []).length < Math.min(visibleCount, 24)) {
       fail("홈 원본 HTML 기사 링크 부족: " + visibleCount + "건 중 정적 링크 부족");
     }

@@ -261,19 +261,24 @@ a:hover{color:var(--color-primary-strong);}
   function loadSearch(){
     if(SEARCH_INDEX||searchLoading) return;
     searchLoading=true; render();
-    // 검색 색인은 날짜별 청크로 나눠 둔다. 매일 새 글이 추가되어도 과거 청크의
-    // CDN 캐시를 무효화하지 않고, 장애·구버전 배포에서는 기존 search.json으로 폴백한다.
-    fetch('/search-manifest.json').then(function(r){if(!r.ok)throw new Error('manifest');return r.json();}).then(function(manifest){
-      var chunks=Array.isArray(manifest.chunks)?manifest.chunks:[];
-      if(!chunks.length) throw new Error('empty manifest');
-      return Promise.all(chunks.map(function(chunk){return fetch(chunk.href).then(function(r){if(!r.ok)throw new Error('chunk');return r.json();});}))
-        .then(function(parts){ return parts.reduce(function(all,part){ return all.concat(Array.isArray(part.items)?part.items:[]); },[]); });
-    }).catch(function(){
-      return fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){return Array.isArray(data.items)?data.items:[];});
-    }).then(function(items){
-      SEARCH_INDEX=items;
+    // 검색 실행 시 최신 월 청크만 먼저 가져온다. 과거 청크는 백그라운드로 이어 받아
+    // 첫 검색 요청의 전송량을 낮추고, CDN 캐시가 오래된 월까지 매번 깨지지 않게 한다.
+    function add(parts){
+      var incoming=parts.reduce(function(all,part){return all.concat(Array.isArray(part.items)?part.items:[]);},[]);
+      SEARCH_INDEX=(SEARCH_INDEX||[]).concat(incoming);
       SEARCH_INDEX.forEach(function(a){ byId[a.id]=a; });
       searchLoading=false; render();
+    }
+    fetch('/search-manifest.json').then(function(r){if(!r.ok)throw new Error('manifest');return r.json();}).then(function(manifest){
+      var chunks=Array.isArray(manifest.chunks)?manifest.chunks.slice().sort(function(a,b){return String(b.key).localeCompare(String(a.key));}):[];
+      if(!chunks.length) throw new Error('empty manifest');
+      var read=function(chunk){return fetch(chunk.href).then(function(r){if(!r.ok)throw new Error('chunk');return r.json();});};
+      return read(chunks[0]).then(function(first){
+        add([first]);
+        Promise.all(chunks.slice(1).map(read)).then(function(rest){add(rest);}).catch(function(){toast('일부 과거 검색 색인을 불러오지 못했습니다');});
+      });
+    }).catch(function(){
+      return fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){add([{items:Array.isArray(data.items)?data.items:[]}]);});
     }).catch(function(){ searchLoading=false; toast('전체 검색 색인을 불러오지 못했습니다'); });
   }
 
@@ -641,7 +646,7 @@ a:hover{color:var(--color-primary-strong);}
     var feat=arr[i++];
     var bandAll=arr.slice(i);
     var band=S.showAll?bandAll:bandAll.slice(0,12);
-    var top5=arr.slice(0,5), more=bandAll.length-band.length, clipped=allArr.length-arr.length;
+    var top5=arr.slice(0,5), more=bandAll.length-band.length, clipped=(DATA.hasMore?1:allArr.length-arr.length);
 
     var h='<div>'
     // ① 폴드 — 3단 비대칭
@@ -949,7 +954,29 @@ a:hover{color:var(--color-primary-strong);}
     if(typeof gtag!=='function') return;
     try{ gtag('event','section_view',{section:cat||'all',issue_date:DATA.date}); }catch(e){}
   }
-  function openArticle(id){
+  function hydrateArticle(id){
+    var compact=byId[id], date=(compact&&compact.day)||DATA.date;
+    if(!compact||!compact._compact) return Promise.resolve(compact);
+    return fetch('/data/'+encodeURIComponent(date)+'.json').then(function(r){if(!r.ok)throw new Error('article-data');return r.json();}).then(function(full){
+      var list=(full.articles||[]).concat(full.briefs||[],full.stories||[]), found=list.find(function(a){return a.id===id;});
+      if(!found) throw new Error('article-not-found');
+      byId[id]=found;
+      if(date===DATA.date){ DATA.articles=full.articles||[]; DATA.briefs=full.briefs||[]; DATA.stories=full.stories||[]; DATA._compact=false; DATA.hasMore=false; indexDay(); }
+      return found;
+    });
+  }
+  function hydrateCurrent(){
+    if(!DATA._compact) return Promise.resolve(DATA);
+    return fetch('/data/'+encodeURIComponent(DATA.date)+'.json').then(function(r){if(!r.ok)throw new Error('issue-data');return r.json();}).then(function(full){
+      DATA.articles=full.articles||[]; DATA.briefs=full.briefs||[]; DATA.stories=full.stories||[]; DATA._compact=false; DATA.hasMore=false; indexDay(); render(); return DATA;
+    });
+  }
+  function openArticle(id, hydrated){
+    if(byId[id]&&!hydrated&&byId[id]._compact){
+      toast('기사 본문을 불러오는 중…');
+      hydrateArticle(id).then(function(){openArticle(id,true);}).catch(function(){toast('기사 본문을 불러오지 못했습니다');});
+      return;
+    }
     if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
     else {
       var stored=S.saved[id]||S.ideas[id];
@@ -995,7 +1022,7 @@ a:hover{color:var(--color-primary-strong);}
       else if(act==='rel'){ S.sort='rel'; }
       else if(act==='latest'){ S.sort='latest'; }
       else if(act==='unread'){ S.unreadOnly=!S.unreadOnly; S.showAll=false; }
-      else if(act==='more'){ S.showAll=true; }
+      else if(act==='more'){ if(DATA._compact){ hydrateCurrent().catch(function(){toast('전체 기사를 불러오지 못했습니다');}); } else { S.showAll=true; } }
       else if(act==='brief-more'){ S.briefAll=true; }
       else if(act==='brief-less'){ S.briefAll=false; }
       else if(act==='close'){ S.openId=null; }

@@ -3,6 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -17,6 +18,7 @@ User-agent: GPTBot
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -31,6 +33,7 @@ User-agent: OAI-SearchBot
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -45,6 +48,7 @@ User-agent: ChatGPT-User
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -59,6 +63,7 @@ User-agent: ClaudeBot
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -73,6 +78,7 @@ User-agent: anthropic-ai
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -87,6 +93,7 @@ User-agent: Claude-Web
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -101,6 +108,7 @@ User-agent: Claude-SearchBot
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -115,6 +123,7 @@ User-agent: PerplexityBot
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -129,6 +138,7 @@ User-agent: Perplexity-User
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -143,6 +153,7 @@ User-agent: Google-Extended
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -157,6 +168,7 @@ User-agent: Applebot-Extended
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -171,6 +183,7 @@ User-agent: CCBot
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -185,6 +198,7 @@ User-agent: Bytespider
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -199,6 +213,7 @@ User-agent: Amazonbot
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -213,6 +228,7 @@ User-agent: cohere-ai
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -227,6 +243,7 @@ User-agent: Meta-ExternalAgent
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
@@ -241,6 +258,7 @@ User-agent: DuckAssistBot
 Allow: /
 Disallow: /admin
 Disallow: /admin-ui.html
+Disallow: /admin-review.json
 Disallow: /api/
 Disallow: /raw/
 Disallow: /data/
