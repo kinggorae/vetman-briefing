@@ -54,6 +54,7 @@ test("feeds and administrator remain available and protected", async ({ page, re
   await page.goto("/admin-ui.html", { waitUntil: "domcontentloaded" });
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
   await expect(page.locator("input[type=password]")).toBeVisible();
+  expect((await request.get("/admin-review.json")).status()).toBe(401);
 });
 
 test("public pages pass axe critical checks and keyboard focus is visible", async ({ page }) => {

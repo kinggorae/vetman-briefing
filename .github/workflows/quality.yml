@@ -31,12 +31,15 @@ jobs:
       - run: npm run source:stats
       - run: npm run source:registry:audit
       - run: npm run sources:diagnose
+      - run: npm run sources:repair:validate
       - run: npm run sources:health
       - run: npm run ingest:dry
       - run: npm run updates:stats
       - run: npm run language:audit
       - run: npm run terminology:audit
       - run: npm run claims:audit
+      - run: npm run publish:first-candidates
+      - run: npm run shadow:trend
       - run: npm run review:queue
       - run: npm run draft:e2e
       - run: npm run test:browser
@@ -55,6 +58,9 @@ jobs:
             reports/source-health.json
             reports/feed-diagnostics.json
             reports/feed-diagnostics.md
+            reports/feed-history.json
+            reports/feed-repair-validation.json
+            reports/feed-repair-validation.md
             reports/ingest-report.json
             reports/update-candidates.json
             reports/language-audit.json
@@ -62,6 +68,9 @@ jobs:
             reports/claims-audit.json
             reports/draft-newsroom.json
             reports/end-to-end-drafts.md
+            reports/first-publish-candidates.json
+            reports/first-publish-candidates.md
+            reports/shadow/
             reports/clinical-review-packets.json
             reports/seo-performance.json
             reports/playwright.json

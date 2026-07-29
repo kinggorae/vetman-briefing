@@ -1,0 +1,96 @@
+{
+  "runId": "2026-07-30-1785369005514",
+  "date": "2026-07-30",
+  "startedAt": "2026-07-29T23:47:15.242Z",
+  "completedAt": "2026-07-29T23:50:05.514Z",
+  "ok": true,
+  "steps": [
+    {
+      "command": "sources.js",
+      "ok": true,
+      "elapsedMs": 87881,
+      "error": null
+    },
+    {
+      "command": "validate-feed-candidates.js",
+      "ok": true,
+      "elapsedMs": 9505,
+      "error": null
+    },
+    {
+      "command": "sources.js",
+      "ok": true,
+      "elapsedMs": 42,
+      "error": null
+    },
+    {
+      "command": "ingest.js",
+      "ok": true,
+      "elapsedMs": 72476,
+      "error": null
+    },
+    {
+      "command": "updates.js",
+      "ok": true,
+      "elapsedMs": 156,
+      "error": null
+    },
+    {
+      "command": "editorial-audits.js",
+      "ok": true,
+      "elapsedMs": 49,
+      "error": null
+    },
+    {
+      "command": "editorial-audits.js",
+      "ok": true,
+      "elapsedMs": 44,
+      "error": null
+    },
+    {
+      "command": "editorial-audits.js",
+      "ok": true,
+      "elapsedMs": 42,
+      "error": null
+    },
+    {
+      "command": "first-publish-candidates.js",
+      "ok": true,
+      "elapsedMs": 35,
+      "error": null
+    },
+    {
+      "command": "newsroom-review.js",
+      "ok": true,
+      "elapsedMs": 42,
+      "error": null
+    }
+  ],
+  "stats": {
+    "collected": 677,
+    "unique": 569,
+    "duplicate": 33,
+    "update": 75,
+    "draft": 50,
+    "canonicalRate": 1,
+    "relayRate": 0,
+    "low": 38,
+    "medium": 9,
+    "high": 3,
+    "languageWarnings": 20,
+    "claimWarnings": 64,
+    "sourceFailures": 1,
+    "sourceCounts": {
+      "healthy": 0,
+      "quiet": 0,
+      "stale": 1,
+      "degraded": 11,
+      "failing": 1,
+      "retired": 0,
+      "disabled": 186
+    }
+  },
+  "packetCount": 10,
+  "published": 0,
+  "public": false
+}

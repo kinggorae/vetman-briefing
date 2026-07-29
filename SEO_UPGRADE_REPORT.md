@@ -506,3 +506,49 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - production smoke: 홈페이지·robots.txt·sitemap.xml·news-sitemap.xml·rss.xml 모두 HTTP 200; sitemap 212 URL, news sitemap 11 URL, RSS 50 item/50 content:encoded를 확인했습니다.
 - production security smoke: `/admin-ui.html`은 `noindex,nofollow`, 인증 없는 `/api/admin?resource=audit`는 HTTP 401입니다.
 - 배포 후 상태: index/noindex 170/293, 자동 published 0건, feed stale 1·degraded 11·failing 1. 사람 검수가 필요한 high-risk 75건, 언어 경고 20건, 임상 주장 경고 64건은 자동 승인하지 않았습니다.
+
+## 15. 7차 고도화: shadow newsroom·controlled publishing
+
+작성 브랜치: `codex/shadow-newsroom-rollout`
+기준: 6차 production 반영 후 `origin/main`
+배포 원칙: 기존 index/noindex 170/293과 canonical을 유지하고, shadow 산출물과 신규 draft는 공개 site·sitemap·RSS에 넣지 않았습니다.
+
+### 구현 내용
+
+- `scripts/sources.js`에 `reports/feed-history.json` 누적 이력을 추가했습니다. HTTP/redirect·MIME·XML·최신 게시일·발행 간격·canonical/relay·ETag/Last-Modified·GUID·오류를 실행별로 기록하고, 성공 3회 전에는 healthy로 확정하지 않습니다. 저빈도 정상 피드는 quiet 후보로 구분할 수 있는 상태 체계를 유지합니다.
+- `scripts/validate-feed-candidates.js`와 `npm run sources:repair:validate`를 추가했습니다. 기존 5개 대체 후보를 공식 도메인·XML·최근 항목·canonical·relay·GUID·3회 성공 이력으로 검증하며, 이번 실행은 approved-candidate 0·needs-human-review 5·rejected 0·retired-source 0이었습니다. 레지스트리나 source URL은 자동 변경하지 않았습니다.
+- `.github/workflows/shadow-newsroom.yml`을 추가했습니다. 매일 05:30 KST와 수동 실행을 지원하고 source 진단·ingest dry-run·중복/update·언어/용어/주장 감사·첫 발행 후보·검수 패킷을 artifact와 Step Summary에 남깁니다. `contents: read`만 사용하며 data/issues·published·sitemap·RSS·PR merge·production을 수정하지 않습니다.
+- `scripts/shadow-newsroom.js`는 실제 실행 결과만 `reports/shadow/YYYY-MM-DD/`와 누적 이력에 저장하고, 최대 10개 후보 패킷에 원문 메타데이터·한글 초안·연구/수치/약물·경고·중복·이미지·JSON-LD·체크리스트·CLI를 포함합니다. 오늘 실행은 수집 677·unique 569·duplicate 33·update 75·draft 50·패킷 10·자동 published 0이며, 실제 실행 1회뿐이므로 추세를 계산하지 않았습니다.
+- `scripts/publish-control.js`의 prepare/validate/approve/release/rollback을 추가했습니다. 기본 dry-run, 실제 `people.json` reviewerId와 역할, 완료 체크리스트, 공식 source/canonical, 품질·이미지 권리·중복·JSON-LD 검사를 요구하며, 승인 후 contentHash 변경·high-risk 비수의사·unresolved source·미승인 상태는 fail-closed로 차단합니다. release는 원자적 저장·backup·이력만 수행하고 자동 commit/push하지 않습니다.
+- `scripts/first-publish-candidates.js`로 기존 low-risk preview 5개를 재분류했습니다. 5개 모두 한국어 제목·리드·본문 초안이 없어 `needs-language-fix`이며 ready-for-editor 0·needs-source-fix 0·duplicate 0·rejected 0입니다. 실제 reviewer가 0명이므로 published로 전환하지 않았습니다.
+- `src/build.js`와 관리자 정적 데이터에 최근 shadow 실행·패킷·피드 복구 검증·첫 발행 후보·GSC/Naver 빈 상태를 연결했습니다. `functions/admin-review.json.js`를 추가해 `admin-review.json` 직접 접근도 Bearer 인증 없이는 401이 되도록 했고, 관리자 화면은 읽기 전용 noindex/nofollow로 유지했습니다.
+- 운영 문서 `docs/SHADOW_NEWSROOM_OPERATIONS.md`, `docs/PUBLISH_CONTROL_RUNBOOK.md`, `docs/FEED_HEALTH_HISTORY.md`와 7차 CI artifact 설정을 추가했습니다. GSC/Naver 성과 데이터는 실제 CSV가 없으므로 0행 빈 상태이며 가짜 추세를 생성하지 않았습니다.
+
+### 7차 검증 결과
+
+- `npm ci`: 성공. 설치 전체 audit에는 기존 dev dependency 경고가 있었으나 `npm audit --omit=dev`: production vulnerabilities 0건.
+- `npm test`: 25개 통과(기존 22개 + shadow/publish 회귀 3개). unregistered reviewer 승인 실패, shadow 공개 플래그, 5개 첫 발행 후보 unpublished 상태를 확인했습니다.
+- `npm run check`, `npm run build`, `npm run validate`, `npm run seo:audit`: 성공. index/noindex 170/293, sitemap 211, SEO critical 0을 유지했습니다. UTC runner에서 발견된 `weekly/2026-W31` noindex·sitemap 불일치를 `weeklyIssue()` 공통 판정으로 수정했습니다.
+- `npm run sources:diagnose`, `npm run sources:repair:validate`, `npm run sources:health`: 성공. 공식 피드 13개는 stale 1·degraded 11·failing 1이며 후보 5개 모두 사람 검토 대기입니다.
+- `npm run shadow:run`, `npm run shadow:trend`: 성공. shadow 실행은 success, 검수 패킷 10개, 자동 published 0개, 실제 실행 1회로 trendAvailable false입니다.
+- `npm run ingest:dry`, `npm run updates:stats`, `npm run language:audit`, `npm run terminology:audit`, `npm run claims:audit`: 성공. 677 수집·569 unique·33 duplicate·75 update·50 draft, update duplicate 71·unresolved 4, 언어 경고 20·용어 0·임상 주장 64를 기록했습니다.
+- `npm run publish:prepare`와 `publish:validate`: preview-only로 성공했습니다. 등록되지 않은 reviewer를 사용한 `publish:approve`는 비정상 종료했으며 승인 기록을 만들지 않았습니다. 자동 published 0건입니다.
+- Playwright: 390/768/1440 viewport 12개 통과. 콘솔/요청 실패·깨진 이미지·axe critical 0, 관리자 직접 JSON 접근 401을 확인했습니다.
+- Lighthouse CI: 3 URL×3회 중앙값 성공, Performance 99~100, Accessibility 95~96, Best Practices 100, SEO 100, 최대 CLS 0.028, 최대 LCP 약 2.06초, warning 0입니다.
+- JSON-LD/XML/internal link와 git diff check는 배포 전 최종 단계에서 재실행합니다.
+
+### 사람이 다음으로 수행할 정확한 승인 절차
+
+1. 실제 편집자 또는 수의사의 확인된 프로필을 `data/editorial/people.json`에 추가하고 역할·전문분야·profile URL을 검증합니다.
+2. `npm run publish:first-candidates`에서 `ready-for-editor` 후보를 고르고 `npm run publish:prepare -- <draft-id>`로 패키지를 확인합니다.
+3. `npm run publish:validate -- <draft-id>` 결과의 공식 canonical·중복·언어·주장·이미지 권리·내부 링크를 원문과 대조합니다.
+4. 체크리스트를 실제로 완료한 뒤 `npm run publish:approve -- <draft-id> --reviewer <id> --checklist=all --apply`를 실행합니다. high-risk는 vet/admin 역할만 승인할 수 있습니다.
+5. diff와 contentHash를 다시 확인하고 `npm run publish:release -- <draft-id> --apply`를 별도 PR에서 실행합니다. 승인 후 내용이 바뀌면 release는 거부됩니다.
+6. 배포 후 sitemap/RSS/JSON-LD/운영 smoke test를 수행하고 문제가 있으면 `npm run publish:rollback -- <article-id> --apply`로 backup 기반 복구합니다.
+
+### GSC·네이버 다음 단계
+
+- GSC Search results의 기간별 쿼리·페이지·국가·기기 CSV와 Page indexing의 제외 사유를 내려받습니다.
+- GSC sitemap 처리 상태, 대표 URL 검사, News/Discover 노출을 확인합니다.
+- 네이버 서치어드바이저의 검색 유입·페이지·수집 오류·sitemap/RSS 상태 CSV를 내려받습니다.
+- 인증정보를 저장소나 로그에 넣지 않고 `npm run seo:import:gsc -- <csv>`, `npm run seo:import:naver -- <csv>`로 로컬/보안 환경에서만 가져옵니다.

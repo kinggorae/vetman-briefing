@@ -1,0 +1,80 @@
+# Update 후보
+
+- 실행 시각: 2026-07-29T23:50:05.292Z
+- 분포: {"duplicate":71,"minor-update":0,"substantive-update":0,"correction":0,"separate-story":0,"unresolved":4}
+
+- duplicate · https://drandyroark.com/?p=25079 · A Cry For Help From the Pathology Department
+- duplicate · https://drandyroark.com/?p=25019 · The Dangers of Dutch
+- duplicate · https://drandyroark.com/?p=24961 · Fireworks Phobia Over the Phone
+- duplicate · https://drandyroark.com/?p=24946 · Redefining the DVM Career Path
+- duplicate · https://drandyroark.com/?p=24956 · Three Areas Every New Vet Should Be Looking At
+- duplicate · https://drandyroark.com/?p=24939 · HDYTT: The Critical Feline Patient
+- duplicate · https://drandyroark.com/?p=24931 · A New Vet Guide to Working with Senior Paraprofessionals
+- duplicate · https://drandyroark.com/?p=24918 · Three Super-Judgy Things Vets Should Stop Saying (Maybe)
+- duplicate · https://drandyroark.com/?p=24914 · Specialists Are Not the Future (and That’s a Good Thing)
+- duplicate · https://drandyroark.com/?p=24896 · Are PIMS Still the Center of Your Practice?
+- duplicate · https://drandyroark.com/?p=24888 · There’s Nothing Inherently Wrong With Production Pay
+- duplicate · https://drandyroark.com/?p=24878 · What We Get Wrong in Anesthesia
+- duplicate · https://ivcjournal.com/?p=37198 · 6 Canine Conditions That Benefit From Heat Therapy
+- duplicate · https://ivcjournal.com/?p=37182 · 5 Ways Veterinary Professionals Can Improve Client Compliance
+- duplicate · https://ivcjournal.com/?p=37184 · Nutritional Testing for Dogs and Cats: Ascertain if Patients Are Getting the Right Nourishment
+- duplicate · https://ivcjournal.com/?p=37122 · Unlocking the Canine Gut: A New Era in Dog Microbiome Research
+- duplicate · https://ivcjournal.com/?p=37138 · Structured Therapeutic Exercise Significantly Improves Joint Mobility and Muscle Mass in Dogs
+- duplicate · https://ivcjournal.com/?p=37133 · Quorum Sensing Modulators: From Bacterial Signaling to Gut Health and Performance
+- duplicate · https://ivcjournal.com/?p=37125 · Nutraceuticals for Canine Cognitive Dysfunction
+- duplicate · https://ivcjournal.com/?p=37117 · Gut Microbiome Modulation in Dogs to Reduce Antimicrobial Use and AMR
+- duplicate · https://ivcjournal.com/?p=37113 · Integrative Rehabilitation in Canine Cervical Disc Disease: A Case Report
+- duplicate · https://ivcjournal.com/?p=37108 · 7 Integrative Approaches to Managing Stress-Induced Urinary Issues in Feline Patients
+- duplicate · https://ivcjournal.com/?p=36681 · 3 Herbs for Canine Autoimmune Skin Conditions
+- duplicate · https://ivcjournal.com/?p=37102 · Adsc-Enriched Secretome as an Adjunct in TPLO Recovery and Canine OA Management
+- duplicate · https://ivcjournal.com/?p=37099 · Promising Phytochemicals and Plant Extracts in Canine and Feline Mammary Tumors
+- unresolved · https://www.sciencedaily.com/releases/2026/03/260325005924.htm · Scientists open a million-year-old time capsule beneath New Zealand
+- duplicate · https://todaysveterinarybusiness.com/?p=79902 · Veterinary Industry News
+- duplicate · https://todaysveterinarybusiness.com/?p=79896 · Nutrition Resource Helps Veterinarians Choose Therapeutic Diets
+- duplicate · https://todaysveterinarybusiness.com/?p=79890 · Veterinary Industry News
+- duplicate · https://todaysveterinarybusiness.com/?p=79882 · Veterinary Industry News
+- duplicate · https://todaysveterinarybusiness.com/?p=79878 · Pet Owners Underestimate Heartworm Risk
+- duplicate · https://todaysveterinarybusiness.com/?p=79874 · New Tool Evaluates Feline Well-Being
+- duplicate · https://todaysveterinarybusiness.com/?p=79847 · Why Veterinary Software Should Embrace Open APIs
+- duplicate · https://todaysveterinarybusiness.com/?p=79836 · How to Perform a Veterinary Software Audit in 90 Minutes
+- duplicate · https://todaysveterinarynurse.com/?p=128785 · A Step-by-Step Guide to Intravenous Catheter Placement in the Equine Patient
+- duplicate · https://todaysveterinarypractice.com/?p=37995 · CHCM vs MCHC: Why Measured Hemoglobin Matters
+- duplicate · https://todaysveterinarypractice.com/?p=37988 · Breaking the Barriers to Positive In-Clinic Nutrition Conversations
+- duplicate · https://todaysveterinarypractice.com/?p=37977 · Optimizing Treatment for Canine Osteoarthritis: Expert Insights
+- duplicate · https://todaysveterinarypractice.com/?p=37939 · From Salad Dressing to Lifesaving Antidote: The Unexpected Path of ILEs
+- duplicate · https://todaysveterinarypractice.com/?p=37920 · Continuous Glucose Monitor Use in Small Animal Medicine
+- duplicate · https://todaysveterinarypractice.com/?p=37909 · Diagnosis and Treatment of Lungworms in Dogs
+- duplicate · https://todaysveterinarypractice.com/?p=37902 · Nutritional Management of Uremic Toxin Accumulation in Cats with Chronic Kidney Disease
+- duplicate · https://todaysveterinarypractice.com/?p=37886 · Decoding Canine Protein-Losing Enteropathy
+- unresolved · 5c2aec4b1137a6d8849debf1:6512489d8040f03c02fce8a0:6a31d9b064969441a997ec99 · New study explores potential cross-species spread of chronic wasting disease
+- unresolved · 5c2aec4b1137a6d8849debf1:6512489d8040f03c02fce8a0:69e1af777535cf57d31d4935 · Elephant genomes reveal a past of continental connectivity and a future of increasing isolation
+- duplicate · https://www.vetpracticemag.com.au/?p=38371 · SA birding community answers call to form nation-leading bird flu response collaboration
+- duplicate · https://www.vetpracticemag.com.au/?p=38365 · Feline Guardians announces US nonprofit status
+- duplicate · https://www.vetpracticemag.com.au/?p=38347 · Hidden health risks found in New York City&#8217;s free-roaming cats
+- duplicate · https://www.vetpracticemag.com.au/?p=38186 · Why pet adoption rates are in decline
+- duplicate · https://www.vetpracticemag.com.au/?p=38350 · Assessing lab animal welfare with AI
+- duplicate · https://www.vetpracticemag.com.au/?p=38298 · Shorter front-leg strides can be an early warning sign of dementia in senior dogs
+- duplicate · https://www.vetpracticemag.com.au/?p=38195 · The importance of pet enrichment
+- duplicate · https://www.vetpracticemag.com.au/?p=38198 · Treating dogs with hydrotherapy
+- duplicate · https://www.vetpracticemag.com.au/?p=38190 · Social workers in the veterinary space
+- duplicate · https://vetgirlontherun.com/?p=700156 · Discharge Is the Last Word: Five Workflow Fixes Your Hospital Will Actually Feel
+- duplicate · https://vetgirlontherun.com/?p=687155 · Handling techniques for Dogs with Moderate to High Levels of Fear, Anxiety, or Stress
+- duplicate · https://vetgirlontherun.com/?p=699129 · What’s New in Diabetes Management
+- duplicate · https://vetgirlontherun.com/?p=686893 · The Top 5 Husbandry Mistakes That Land Exotic Pets in the Clinic
+- duplicate · https://vetgirlontherun.com/?p=687666 · Feline Elimination Disorders: A Practical Approach for Veterinarians
+- duplicate · https://vetgirlontherun.com/?p=651498 · Why the Litterbox Conversation Matters: Rethinking Feline House Soiling in Veterinary Practice
+- duplicate · https://vetgirlontherun.com/?p=642994 · Secrets to Securing a Patent Airway Through Orotracheal Intubation: Part 2
+- duplicate · https://vetgirlontherun.com/?p=625860 · How to Inflate an Endotracheal Tube Cuff to Minimize Risks, Maximize Benefit
+- duplicate · https://www.veterinarypracticenews.com/?p=58578 · Best practices to attract and keep top talent
+- duplicate · https://www.veterinarypracticenews.com/?p=58551 · The art of the aspirate
+- duplicate · https://www.veterinarypracticenews.com/?p=58565 · Why you need an AI vet scribe ASAP
+- duplicate · https://www.veterinarypracticenews.com/?p=58546 · Space: The final frontier in surgical efficiency
+- duplicate · https://www.veterinarypracticenews.com/?p=58501 · Select pet medications now available at CVS Pharmacy
+- duplicate · https://www.veterinarypracticenews.com/?p=58495 · New analytics platform bolsters veterinary workforce management
+- duplicate · https://www.veterinarypracticenews.com/?p=58492 · CVTEA releases latest veterinary technology accreditation decisions
+- duplicate · https://www.veterinarypracticenews.com/?p=58488 · Study links feline CKD to changes in gut metabolites
+- unresolved · https://www.veterinarypracticenews.com/?p=58482 · WordRx: Your dose of veterinary wordplay
+- duplicate · https://www.veterinarypracticenews.com/?p=58477 · New feline-only organization aims to close gap in veterinary care
+- duplicate · https://www.veterinarypracticenews.com/?p=58470 · Report highlights financial barriers shaping veterinary care decisions
+- duplicate · https://www.veterinarypracticenews.com/?p=58420 · Bringing specialist level interpretation in-clinic
+- duplicate · https://www.veterinarypracticenews.com/?p=58461 · New dog food rolls enter the fresh pet food market
