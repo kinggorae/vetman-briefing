@@ -1,0 +1,196 @@
+# 원출처 URL 반자동 검수 보고서
+
+- 생성 시각: 2026-07-29T14:32:16.057Z
+- Google News 중계 기사: 187개
+- 상태: {"resolved":0,"candidate":0,"unresolved":187,"rejected":0,"manually-approved":0}
+- 자동 적용 기준: 공식 도메인 + 제목 유사도 0.92 이상 + 발행일 차이 3일 이내 + 사람 승인 없는 추정 금지
+
+## 수동 검수 큐
+
+- `2026-07-20_6` · Yahoo Creators · 애완동물 병원 방문 시 AI가 실제로 하는 일 — AVMA 회장 인터뷰 · unresolved · 후보 없음 · 검색어: What AI is really doing at your pet's next vet visit, according to the AVMA's president
+- `2026-07-20_7` · Cureus · 수의 진료에서 수술 후 호흡 억제 및 폐합병증: 문헌 고찰 · unresolved · 후보 없음 · 검색어: Postoperative Respiratory Depression and Other Postoperative Pulmonary Complications in Veterinary Practice: A Narrative Review
+- `2026-07-20_13` · Indiana Public Media · 푸르듀 수의대, 수의사 부족 해결 위한 확장 계획 발표 · unresolved · 후보 없음 · 검색어: Purdue veterinary college looks at expansion to address vet shortage
+- `2026-07-20_14` · CNBC · 반려동물 비만 치료제 개발 진행 중, 하반기 출시 예정 · unresolved · 후보 없음 · 검색어: Fat cat? Weight-loss drugs may be coming for your overweight pet
+- `2026-07-20_19` · Yahoo Creators · 반려동물 보험, 수의사가 말하는 가입 전 필수 체크포인트 · unresolved · 후보 없음 · 검색어: Is pet insurance worth it? A veterinarian explains what every pet owner should know before buying
+- `2026-07-20_20` · MSN · 개 벼룩·진드기 예방, 사계절이 중요 · unresolved · 후보 없음 · 검색어: Veterinarians urge year-round flea and tick prevention for dogs
+- `2026-07-20_36` · MyNorthwest.com · 시애틀 떠든 너구리 '지모디', 희귀 척추 질환 가능성 · unresolved · 후보 없음 · 검색어: Seattle’s viral ‘Jimothy’ raccoon may have rare spinal condition, veterinarian says
+- `2026-07-20_37` · Vet Times · 영국 요크셔수의들, 헤리오트 정신으로 Pop-up 진료소 열어 · unresolved · 후보 없음 · 검색어: Herriot heritage inspires North Yorkshire vet group’s pop-up clinic
+- `2026-07-20_38` · Forbes · 미국 가구 절반 이상이 강아지·고양이 키운다 · unresolved · 후보 없음 · 검색어: Pet Ownership Statistics
+- `2026-07-20_39` · tag24.com · 애완견 다리 절름거림에 놀란 주인...수의사 방문 후 드러난 충격적 진실 · unresolved · 후보 없음 · 검색어: Dog suffers from concerning limp – but a vet visit reveals the shocking truth!
+- `2026-07-20_40` · The New York Times · 중국의 '반려 동물 세대'가 들고 일어나다 · unresolved · 후보 없음 · 검색어: As More Chinese Own Pets, Young People Stand Up for Animal Welfare
+- `2026-07-21_11` · MSN · 강아지 사회화, 평생의 자신감은 어린 시절부터 · unresolved · 후보 없음 · 검색어: Raising a confident, happy puppy through socialization
+- `2026-07-21_12` · MSN · 똑똑한 사회화 훈련으로 자신감 있는 강아지 키우기 · unresolved · 후보 없음 · 검색어: Raising confident dogs through smart socialization
+- `2026-07-21_15` · Phys.org · 말 MEED와 개 골종양 원인 규명 단서를 발견한 4학년 수의학생들 · unresolved · 후보 없음 · 검색어: Fourth-year vet students reveal clues to horse MEED and dog bone cancer
+- `2026-07-21_22` · Region Canberra · 캔버라 수의사 경고...'레고·백합' 섭취 급증, 보험금 1천300만원 달해 · unresolved · 후보 없음 · 검색어: Pet insurance claims hit $13,500 as Canberra vet warns pets swallow everything from Lego to lilies
+- `2026-07-21_29` · MSN · 수의사가 강조하는 고양이 건강 관리의 7가지 핵심 · unresolved · 후보 없음 · 검색어: 7 things veterinarians wish you knew about your cat's health
+- `2026-07-21_30` · Rising Kashmir · 수의 원격 진료와 디지털 접근성 확대 · unresolved · 후보 없음 · 검색어: Telemedicine and Digital Access to Veterinary Care
+- `2026-07-21_31` · DVM360 · 마이크 던 수의사 장학금 2026년 수상자 발표, 7월 29일 신청 시작 · unresolved · 후보 없음 · 검색어: Applications open July 29 for Mike Dunn, DVM veterinary student scholarship; 2026 recipients named
+- `2026-07-21_36` · Pet Food Processing · BioCraft, 세포배양 사료 성분 안전문서 공개…수출 규제 대응 가속화 · unresolved · 후보 없음 · 검색어: BioCraft Pet Nutrition releases safety dossier on cell-cultured pet food ingredient
+- `2026-07-21_37` · The Irish Times · 반려동물 보험, 병원비 절약에 얼마나 효과적일까? · unresolved · 후보 없음 · 검색어: Pet insurance: can it save you thousands in vet bills?
+- `2026-07-21_38` · TAPinto · 반려동물 보험의 진짜 가치: 진료비 부담 줄이기 · unresolved · 후보 없음 · 검색어: Protecting Pets and Your Wallet:State Farm Agent Teri DiGrande Highlights The Importance of Pet Insurance
+- `2026-07-21_39` · ColoradoBiz · 콜로라도 '고양이전용' 수의원 Aurora에 신규 개원 · unresolved · 후보 없음 · 검색어: CatsOnly veterinary hospital to open feline-only clinic in Aurora
+- `2026-07-21_40` · aviglianonews.it · 수간호사에게 감사한 미국 수의사 접수 담당자 주간 선물 · unresolved · 후보 없음 · 검색어: Wood And Acrylic Office Decor Gift Veterinary Receptionist Gift, Card | Funny Vet Receptionist Week Gift | Vet Receptionist Thank You Appreciation Gift Idea - Greeting Card Desk Decorative Sign Plaque
+- `2026-07-21_41` · NerdWallet · 반려동물 보험, 과연 필요할까? · unresolved · 후보 없음 · 검색어: Is Pet Insurance Worth It? 2026 Guide
+- `2026-07-21_42` · Fortune · 애완동물 응급진료비 800만 원... 미국인들 '생사결정' 불안 · unresolved · 후보 없음 · 검색어: A pet emergency can cost $8,000. For millions of Americans, that bill is now a ‘life and death’ decision
+- `2026-07-21_43` · DogTime · 개 한 마리 구하려고 했더니... 뜻밖의 전개 · unresolved · 후보 없음 · 검색어: Human Rescues Dog Thinking They Saved One Life, Unaware of What’s Next
+- `2026-07-21_44` · AOL.com · 개와 고양이가 더운데도 해바라기 하는 진짜 이유 · unresolved · 후보 없음 · 검색어: Dogs and Cats Keep Sunbathing During Heatwaves Despite the Danger, and a Vet Reveals the Surprising Reason Why
+- `2026-07-22_2` · DVM360 · 응급수의과 전문수의사의 중환자관리 Q&A · unresolved · 후보 없음 · 검색어: Q&A with an emergency veterinarian on critical care and common ER misconceptions
+- `2026-07-22_4` · Yahoo Creators · 심장사상충 새로운주로 확산… 개·고양이 위험 증가 경고 · unresolved · 후보 없음 · 검색어: Heartworm is spreading to new states, and vets say your dog or cat could already be at risk
+- `2026-07-22_5` · ABC Columbia · 반려동물과 가족을 위한 광견병 예방 가이드 · unresolved · 후보 없음 · 검색어: Rabies — how to protect your pets and loved ones from the virus
+- `2026-07-22_6` · Peoples Gazette Nigeria · 나이지리아 광역수도, 광견병 사망자 발생에 전문가들 촉구 · unresolved · 후보 없음 · 검색어: Health experts urge pet vaccination as rabies outbreak claims two lives in FCT
+- `2026-07-22_7` · WNYT.com · 뉴욕주 광견병 위험 증가…애완동물과 가족을 지키는 예방 방법 · unresolved · 후보 없음 · 검색어: Rabies risk in NY: How to protect family and pets
+- `2026-07-22_8` · Bovine Veterinarian · 농촌 수의사 부족, 해결책은 다른 곳에 있을까 · unresolved · 후보 없음 · 검색어: We Need More Rural Veterinarians. Are We Looking in the Wrong Place?
+- `2026-07-22_12` · nwitimes.com · 퍼듀수의대 학생 정원 50% 확대... 성장통 예상 · unresolved · 후보 없음 · 검색어: Purdue vet school to expand class sizes by 50%; growing pains to follow
+- `2026-07-22_13` · Winchester Sun · 미국 윈체스터서 박쥐 광견병 양성 확인…주거지역 경고 · unresolved · 후보 없음 · 검색어: Bat tests positives for rabies near Shanahan Lane
+- `2026-07-22_15` · Ohio House of Representatives (.gov) · 오하이오 주하원, 수의사 인력 부족 해결 법안 통과 · unresolved · 후보 없음 · 검색어: Ohio House Passes Addressing Veterinarian Shortage
+- `2026-07-22_16` · WTMJ · 라신County 박쥐에서 광견병 양성 확인...주의 필요 · unresolved · 후보 없음 · 검색어: Racine County reports bat tests positive for rabies
+- `2026-07-22_17` · KRDO · 콜로라도수의사, 약물·음주 위반으로 면허 포기 · unresolved · 후보 없음 · 검색어: KRDO13 Investigates: Colorado vet surrenders license after alleged drug and alcohol violations
+- `2026-07-22_29` · Wamiz.co.uk · 동물병원 문 뒤에서 35마리 고양이가...? · unresolved · 후보 없음 · 검색어: Shocking discovery of 35 abandoned cats behind a vet clinic's closed doors
+- `2026-07-22_30` · Dogster · 반려동물 진료비, 이 정도였어? · unresolved · 후보 없음 · 검색어: 12 Pet Healthcare Statistics & Facts: 2026 Update
+- `2026-07-22_31` · HOLA · 연기 피해를 입은 비둘기, 소장관에게 도움 요청 · unresolved · 후보 없음 · 검색어: Smoke-injured pigeon seeks help from firefighters in heartwarming viral rescue
+- `2026-07-22_32` · New York Post · 베네수엘라 지진현장… 잔해 아래 강아지의 기적적 구조 · unresolved · 후보 없음 · 검색어: Heartwarming video shows moment firefighters rescue dog from the rubble of Venezuela earthquakes
+- `2026-07-22_33` · MyNorthwest.com · MLB팀에 물린 라쿤? 시애틀 팬들 "공식 창립자인데 이상해" · unresolved · 후보 없음 · 검색어: 'If they're going to do Jimothy, do it right': Jake and Spike critique Mariners' representation of viral raccoon
+- `2026-07-23_9` · MSN · 개에게 유해한 5가지 음식, 주의가 필요한 이유 · unresolved · 후보 없음 · 검색어: 5 foods that are toxic to dogs
+- `2026-07-23_10` · NBC 5 Dallas-Fort Worth · 비영리단체, 외과 멘토링 센터 개소로 수의사 부족 해결 도전 · unresolved · 후보 없음 · 검색어: Nonprofit partnership opens surgical mentorship center to address veterinary shortage - NBC 5 Dallas-Fort Worth
+- `2026-07-23_11` · NC State University · 소형 개·고양이 위한 비시멘트 고관절 치환술 도입 · unresolved · 후보 없음 · 검색어: NC State to Offer New Uncemented Hip Replacements for Small Dogs, Cats
+- `2026-07-23_12` · Tamarac Talk · 개 암 진단 후 동물병원 강도 사건... 직원 위협하며 강아지 도난 · unresolved · 후보 없음 · 검색어: "The Dog Is Dead! I'll Kill Everyone Here!": Deputies Say Man Stole Dog From Animal Hospital After Cancer Diagnosis
+- `2026-07-23_15` · Your Observer · 새러소타 군 광견병 발생…공중보건 경보 발령 · unresolved · 후보 없음 · 검색어: Rabies case prompts public health warning in Sarasota County
+- `2026-07-23_16` · Tampa Bay 28 · 폴크 카운티, 광견병 확인에 무료 예방접종 및 마이크로칩 시술EVENT 개최 · unresolved · 후보 없음 · 검색어: Recent rabies case prompts free rabies vaccination, microchipping event in Polk County
+- `2026-07-23_17` · Virginia Tech News · 버지니아텍, 인터랙티브 3D 모델로 수의학 교육 확대 · unresolved · 후보 없음 · 검색어: Interactive 3D models expand veterinary learning
+- `2026-07-23_18` · Michigan State University · MSU 수의사, 아프리카 페인티드 도그 긴급 수술 성공 · unresolved · 후보 없음 · 검색어: MSU veterinarians provide advanced care for African painted dog
+- `2026-07-23_30` · VOCM · 트리니티 베이서 박쥐에 광견병 발견 · unresolved · 후보 없음 · 검색어: Rare Case of Rabies Confirmed in Bat in Trinity Bay Area
+- `2026-07-23_31` · thesenior.com.au · 800만 원 수술 증가...'침묵의 병' 강아지 위협 · unresolved · 후보 없음 · 검색어: $8000 surgery on the rise as silent condition puts strain on pups
+- `2026-07-23_32` · PerthNow · 호주 퍼스 강아지 1300만원 진료비에 놀란 네티즌들 · unresolved · 후보 없음 · 검색어: Perth puppy’s $13k vet bill exposes costly dog breeds
+- `2026-07-23_33` · The Tribune · "코끼리가 호랑이 구해요" 영상 화제였지만, 진짜 사람은? · unresolved · 후보 없음 · 검색어: It looks heartwarming, but viral elephant rescuing tiger video in Indonesia floodwaters is AI-generated
+- `2026-07-23_34` · KalingaTV · 고속도로 다친 송아지, 낯선 사람들이 펼친 기적 같은 구조 · unresolved · 후보 없음 · 검색어: Kind strangers rescue injured calf on busy highway, heartwarming video goes viral
+- `2026-07-24_2` · CBS News · 캔 카운티, 애완동물 광견병 예방접종 효과 저하 가능성 발표 · unresolved · 후보 없음 · 검색어: Kane County officials say rabies shots given to pets last year may have lost potency, have been recalled
+- `2026-07-24_6` · aphis.usda.gov · 신대륙 파리유충 미국 확산... 동물병원 경고 · unresolved · 후보 없음 · 검색어: New World Screwworm | Animal and Plant Health Inspection Service
+- `2026-07-24_7` · DVM360 · AAVSB, 미국 수의진료보조 자격시험 개발 담당 · unresolved · 후보 없음 · 검색어: AAVSB tapped to develop VPA licensing examination
+- `2026-07-24_8` · San Antonio Express-News · 동물병원 진료비 상승 이유와 대처법 · unresolved · 후보 없음 · 검색어: Why your vet bill keeps rising - San Antonio Express-News
+- `2026-07-24_11` · Yahoo Creators · 노령 개·고양이 건강 관리, 수의사가 전하는 핵심 팁 · unresolved · 후보 없음 · 검색어: Senior pet care: what a veterinarian wishes every dog and cat owner knew
+- `2026-07-24_12` · American Animal Hospital Association - AAHA · 수의대 커뮤니티 메디슨, 지역에서 동물과 사람 만나 · unresolved · 후보 없음 · 검색어: Vet school shelter and community medicine programs meet people and pets where they are - American Animal Hospital Association
+- `2026-07-24_24` · MoneyMagpie · 반려동물 진료비, 알고 보면 놀라운 사실들 · unresolved · 후보 없음 · 검색어: The Vet Bill Changes Every Dog and Cat Owner Needs to Know About
+- `2026-07-24_25` · New York Post · 반려동물 진료비 5천만원?...'반려동물 부채 위기' 속보 · unresolved · 후보 없음 · 검색어: The $50,000 dog: Inside the pet debt crisis hitting a breaking point in 2026
+- `2026-07-24_26` · CBS News · 반려동물 진료비 이렇게 비싸졌어? · unresolved · 후보 없음 · 검색어: How today's high pet care costs are straining household finances
+- `2026-07-25_7` · Newsweek · 강아지가 리콜 사료 먹었을 때 수의사가 알려주는 대처법 · unresolved · 후보 없음 · 검색어: Realized your dog has eaten recalled food? Vet explains exactly what to do
+- `2026-07-25_8` · qz.com · 개의 음식 중독 위험, 예상치 못한 25가지 식품 · unresolved · 후보 없음 · 검색어: 25 foods toxic to dogs, including some surprising ones
+- `2026-07-25_9` · Vet Times · 고양이 삶의 질 평가 도구 등장 · unresolved · 후보 없음 · 검색어: New tool launched to help owners assess cats' quality of life
+- `2026-07-25_12` · Houston Public Media · 미국 Galveston, 벼룩 매개 티푸스 재출현 연구의 중심지로 · unresolved · 후보 없음 · 검색어: Galveston at center of new CDC study on resurgence of flea-borne typhus
+- `2026-07-25_13` · Pet Food Processing · 반려동물 구강건강 영양학: 근본부터 개선하는 영양제품 개발동향 · unresolved · 후보 없음 · 검색어: Getting to the root: Optimizing oral health pet nutrition products
+- `2026-07-25_28` · FOX5 Vegas · 입에 관통된 강철 조각... 라스베이거스 고양이 새끼 구출 Invol · unresolved · 후보 없음 · 검색어: Vets, fire crews team up to save kitten with metal through mouth
+- `2026-07-25_29` · New York Post · 애완동물 응급진료비 3천 달러! 주인의 긴급 결단 · unresolved · 후보 없음 · 검색어: I spent $3,000 trying to save my dog: The devastating reality of emergency vet care
+- `2026-07-25_34` · Pan American Health Organization (PAHO) · PAHO·수의대 One Health 파트너십 체결…동카리브 건강안보 강화 · unresolved · 후보 없음 · 검색어: PAHO/WHO and Ross University School of Veterinary Medicine forge One Health partnership to strengthen health security in the Eastern Caribbean
+- `2026-07-25_35` · Farms.com · 농촌 미국, 수의사 부족 심화 · unresolved · 후보 없음 · 검색어: Veterinarian Shortage Challenges Rural America
+- `2026-07-25_36` · Indiana Public Radio · Purdue 수의대 확장 검토, 미국 수의사 부족 해결 위해 · unresolved · 후보 없음 · 검색어: Purdue veterinary college looks at expansion to address vet shortage
+- `2026-07-25_37` · The Providence Journal · CVS, 애완동물 처방전 조제 서비스 시작 · unresolved · 후보 없음 · 검색어: CVS now filling pet prescriptions. Here's how to order your dog's meds
+- `2026-07-25_38` · Seaside Signal · 클래츠프 카운티, 수의사 부족 문제 제기 · unresolved · 후보 없음 · 검색어: Is there a veterinary shortage in Clatsop County?
+- `2026-07-25_39` · DVM360 · ASPCA, 동물 복지 분야 학생에 최초 수의학 장학금 수여 · unresolved · 후보 없음 · 검색어: ASPCA awards inaugural veterinary scholarships to students pursuing animal welfare careers
+- `2026-07-25_40` · Morningstar · VANE, 펫 결제 플랫폼 PawPay에 투자 · unresolved · 후보 없음 · 검색어: VANE Announces Investment in PawPay
+- `2026-07-25_41` · Forbes · CVS, 전국 약국에서 애완동물 처방약 판매 시작 · unresolved · 후보 없음 · 검색어: CVS Now Carries Pet Prescription Medication—Here’s How To Save
+- `2026-07-25_42` · citybiz · 투자사 VANE, 동물보험 결제 플랫폼 PawPay에 투자 · unresolved · 후보 없음 · 검색어: VANE Invests in PawPay to Advance Veterinary Insurance Payments
+- `2026-07-25_45` · Anne Arundel County Health Department · 세번서 발견된 박쥐, 광견병 양성 확인 · unresolved · 후보 없음 · 검색어: Rabies Alert – Bat Found in Severn Tests Positive for Rabies
+- `2026-07-25_46` · IndexBox · 세계 수의용 초음파기기 시장 전망 보고서 · unresolved · 후보 없음 · 검색어: World Veterinary Ultrasound Machine - Market Analysis, Forecast, Size, Trends and Insights
+- `2026-07-25_47` · FOX 13 Tampa Bay · 폴크 County·SPCA, 무료 광견병 예방접종 협력 · unresolved · 후보 없음 · 검색어: Free rabies vaccines: Polk animal control, SPCA Florida partner after recent cases
+- `2026-07-25_48` · cbs19.tv · 스미스 카운티, 두 번째 스컹크 광견병 양성 확인 · unresolved · 후보 없음 · 검색어: Second skunk tests positive for rabies in Smith County, animal control warns
+- `2026-07-25_49` · CBS News · Cook County서 세 번째 광견병 박쥐 발견 · unresolved · 후보 없음 · 검색어: Third rabid bat found this year in Cook County
+- `2026-07-25_50` · Turkmenportal.com · 투르크메니스탄, 원헬스 추진 위한 국가 위원회 가동 · unresolved · 후보 없음 · 검색어: National Intersectoral Coordination Committee advances the implementation of the One Health approach in Turkmenistan
+- `2026-07-25_51` · Audacy · 니아가라 카운티, 박쥐 2마리 광견병 확인 · unresolved · 후보 없음 · 검색어: Two bats found to have rabies in Niagara County
+- `2026-07-25_52` · EquiManagement · 승마수의가 되는 법, 몰랐던 10가지 · unresolved · 후보 없음 · 검색어: 10 Things You Might Not Know About Becoming an Equine Veterinarian
+- `2026-07-25_56` · Gainesville Sun · 미국 수의대생, 모의 범죄 현장 훈련 참여 · unresolved · 후보 없음 · 검색어: UF veterinary students tackle mock crime scene
+- `2026-07-25_57` · Mshale · 알브라이트 원료 사료 리콜 · unresolved · 후보 없음 · 검색어: PREMIERE CLUBES HD 20200905 192728 Albright's Raw Pet Food Recall (PqS2kfGuW0)
+- `2026-07-25_58` · CBS News · 미네소타, 남은 동물용 약 기부 허용 법안 통과 · unresolved · 후보 없음 · 검색어: Unused, unexpired veterinary drugs can be donated to animals in need under new Minnesota law
+- `2026-07-25_59` · PetfoodIndustry · FDA, 펫푸드 GRAS 규정 적용 2026년 12월로 연기 · unresolved · 후보 없음 · 검색어: FDA GRAS rule timeline pushed to December 2026
+- `2026-07-25_60` · edge1021.com.au · 개 소위바이러스 확산 주의, 예방접종 요청 · unresolved · 후보 없음 · 검색어: Canine Parvovirus
+- `2026-07-25_61` · KOMO · 비버독수리 새끼, 워싱턴주립대 수의사에게 구조받다 · unresolved · 후보 없음 · 검색어: Amazing Washington: Bald eagle chicks given second chance by WSU vets
+- `2026-07-25_62` · ABC15 Arizona · 마리코파 동물 보호소, 혹서에 방목견 급증 · unresolved · 후보 없음 · 검색어: Stray dogs flood into Maricopa County animal shelter during extreme heat
+- `2026-07-25_63` · ecommercenews.com.au · 타이로헬스, 동물병원 위한 GapOnly 포털 출시 · unresolved · 후보 없음 · 검색어: Tyro Health launches GapOnly Vet Portal for clinics
+- `2026-07-25_64` · Mahoning Matters · 오하이오 마호닝 카운티 박쥐에서 광견병 확인 · unresolved · 후보 없음 · 검색어: Mahoning County bat tests positive for rabies, stay alert
+- `2026-07-25_65` · Purdue University College of Veterinary Medicine · Purdue 출신 리차드 '딕' 설리반, AVMA 이사장 선출 · unresolved · 후보 없음 · 검색어: Purdue Alumnus Richard “Dick” Sullivan Elected as AVMA Board Chair
+- `2026-07-25_66` · CBS News · 조지아주 스톤마운틴서 광견병 양성 사례 발생 · unresolved · 후보 없음 · 검색어: Protecting pets and people: Positive rabies case reported in Stone Mountain, DeKalb health officials say
+- `v1_04dcac6513613a5d` · 아시아경제 · 중국 수의대 입학 경쟁률 의대 역전 현상 · unresolved · 후보 없음 · 검색어: "Why Are Veterinary School Entrance Scores Now Higher Than Medical Schools in China?"
+- `v1_6b3c3101574c9e89` · DVM360 · 뉴월드 스크류웜 발생 — 미국 수의사 대응 가이드 · unresolved · 후보 없음 · 검색어: A veterinarian's guide to New World screwworm cases, treatment, reporting, response in the US & more
+- `v1_63895fdbcd0da13c` · Colorado State University · 대기오염이 애완동물 건강에 미치는 영향 · unresolved · 후보 없음 · 검색어: Do you know how poor air quality affects pets? Learn through this adapted index
+- `v1_5817bc9f0a0c5732` · THISDAYLIVE · 나이지리아 수도 지역서 광견병 발생으로 2명 사망 · unresolved · 후보 없음 · 검색어: Two Dead in FCT Rabies Outbreak
+- `v1_baad3fc22a24094a` · Bryan Times · 오하이오 주, 수의사 부족 심화로 동물 의료 공백 우려 · unresolved · 후보 없음 · 검색어: State seeing shortage of veterinarians
+- `v1_eca5928ac0fbd841` · Vietnam.vn · 베트남 람돈성, 8월 말까지 광견병 예방접종률 70% 목표 · unresolved · 후보 없음 · 검색어: ラムドン省は、8月31日までに犬と猫の狂犬病ワクチン接種率を70％にすることを目標としている。
+- `v1_999d89f9f303dee2` · crossroadstoday.com · 비토리아 동물병원 SUV 충돌 사고 · unresolved · 후보 없음 · 검색어: SUV crashes into a Victoria animal hospital
+- `v1_6bff93f2db6d52a5` · PetfoodIndustry · 동물영양 업계 AI 도입, 파일럿 넘어 실제 운영으로 확대 · unresolved · 후보 없음 · 검색어: Report: AI adoption in animal nutrition outpaces stalled-pilot narrative
+- `v1_13a1504332f9f202` · Eye On Annapolis · 메릴랜드 세번 지역 광견병 경보 발생 · unresolved · 후보 없음 · 검색어: Severn Rabies Alert
+- `v1_24454a99ba1b3b27` · CBS News · vetshop 비용이 부담된다면? 전문가가 추천하는 6가지 방법 · unresolved · 후보 없음 · 검색어: Can't afford a vet visit? Consider doing these 6 things
+- `v1_f187877efb731137` · MPR News · 미네소타, 동물 의약품 기부법 통과…미국 4번째 주 · unresolved · 후보 없음 · 검색어: Meds for pets! Minnesota becomes fourth state to adopt veterinary drug donation law
+- `v1_0122e920d7f56d31` · FOX 13 Tampa Bay · 탬파베이 광견병 지역사회 확산 예방 노력 · unresolved · 후보 없음 · 검색어: Rabies prevention efforts amid local cases
+- `v1_11ca35ae4f390d80` · FOX5 Vegas · 네바다주, 애완동물 광견병 예방접종 권고 · unresolved · 후보 없음 · 검색어: Nevada urges residents to vaccinate pets against rabies
+- `v1_9b0a0cd0b3cc0863` · Purdue University College of Veterinary Medicine · 퍼듀 수의대 동문, 캘리포니아서 AVMA 연차대회 참가 · unresolved · 후보 없음 · 검색어: Purdue Veterinary Alumni Connect in California During Annual AVMA Convention
+- `v1_8c66973cd21e8285` · 1News · 보험금 가장 많이 받는 강아지·고양이 품종은? · unresolved · 후보 없음 · 검색어: The dog and cat breeds triggering the most pet insurance payouts
+- `v1_91b82787350716ae` · El Informador · 멕시코 강아지 로키 유기 사건, 여성 기소 절차 진행 · unresolved · 후보 없음 · 검색어: Quién es Liliana "N", vinculada a proceso por caso de perrito "Rocky" en Saltillo
+- `v1_37858ada0a9b4a9e` · Your Oregon News · 클래츠십 카운티 수의사 부족 실태 파악 · unresolved · 후보 없음 · 검색어: Is there a veterinary shortage in Clatsop County?
+- `v1_149c946588d49193` · WPSD Local 6 · 미시건주립대 수의학교 설립 공 시작 · unresolved · 후보 없음 · 검색어: Construction to begin on MSU veterinary school
+- `v1_706e7e9b220b357b` · Encyclopedia Britannica · 인수공통질환은 어떻게 발생하나요 · unresolved · 후보 없음 · 검색어: What causes zoonotic disease?
+- `v1_e7998638faff1184` · Spectrum News · 캬호가 County 동물보호소, 개에 무료 마이크로칩 삽입 제공 · unresolved · 후보 없음 · 검색어: Cuyahoga County Animal Shelter to offer free mi­crochipping for dogs
+- `v1_351750be73e187fa` · Infectious Disease Advisor · 하나의 건강 안과 프레임워크, 서 Nile 바이러스 사례 · unresolved · 후보 없음 · 검색어: The One Health Framework in Ophthalmology: Lessons Learned From West Nile Virus
+- `v1_cad4681a20a87792` · ABC15 Arizona · 애완동물 더위 안전 수칙 및 증상 파악 · unresolved · 후보 없음 · 검색어: Tips to keep your pets safe in the heat and symptoms to know
+- `v1_f33061b2cf7c6888` · TV Jaguari · 반려동물만 전문?수의학의 예상치 못한 진로 · unresolved · 후보 없음 · 검색어: Medicina Veterinária é só para quem quer trabalhar com pets? Entenda os caminhos da profissão
+- `v1_e3107c8befbb223e` · Nutrition Insight · 반려동물도 '인간식' 영양을? 마이크로바이옴 과학의 최신 트렌드 · unresolved · 후보 없음 · 검색어: Golden Child’s R&D VP unpacks “humanized” pet nutrition and microbiome science
+- `v1_874ed45e50c56dd4` · NonStop Local Billings · 옐로스톤 밸리 동물쉼터, 토지 기증으로 새 캠퍼스 건설 계획 · unresolved · 후보 없음 · 검색어: Yellowstone Valley Animal Shelter plans new campus after land donation
+- `v1_9afd8101a3bd073c` · WILX · 미시간주 고등학생, 보호소에 개 산책로 건설 Eagle Scout 프로젝트로 · unresolved · 후보 없음 · 검색어: Mason teen builds dog walking path at Ingham County Animal Shelter for Eagle Scout project
+- `v1_5c479905aac2dc2a` · Spherical Insights · 글로벌 수의백신 시장 상위 20개 기업 분석 보고서 · unresolved · 후보 없음 · 검색어: 獣医ワクチン市場規模の20企業、株式
+- `v1_a2747a3c6d7159bf` · Spherical Insights · 글로벌 동물용 백 시장 20개 기업 분석 보고 · unresolved · 후보 없음 · 검색어: 20 entreprises de vaccins vétérinaires Taille du marché, part
+- `v1_ad7de196f682a9aa` · ニコニコニュース · 일본 동물용 헬스케어 시장 2035년 전망 보고서 · unresolved · 후보 없음 · 검색어: 日本の動物用ヘルスケア市場インテリジェンスレポート2035：売上高予測、市場シェア、および戦略的動向
+- `v1_42e7c8802cc8c51c` · Volksstimme · 독일 가축 전염병 확산 우려 – 농가 위기감 고조 · unresolved · 후보 없음 · 검색어: Risiko für Tierhalter: Gefahr für die Landwirtschaft: Tierseuche ist auf dem Vormarsch
+- `v1_4238df015207f473` · Purdue University College of Veterinary Medicine · 퍼듀 수수의사, 한국 정형외과 수술 훈련 지원 위한 대륙 초월 협력 · unresolved · 후보 없음 · 검색어: Purdue Veterinary Surgeons Bridge Continents to Meet Need for Orthopedic Surgery Training in South Korea
+- `v1_1521d654a62580a6` · WGRZ · 니아가라 카운티, 박쥐 통한 광견병 발생… 4명 치료받아 · unresolved · 후보 없음 · 검색어: Rabid bats in Niagara County send 4 people for treatment
+- `v1_7722dcef04a566bb` · ニコニコニュース · 일본 동물용 헬스케어 시장 2035년 전망 보고서 · unresolved · 후보 없음 · 검색어: 日本の動物用ヘルスケア市場インテリジェンスレポート2035：売上高予測、市場シェア、および戦略的動向
+- `v1_d37a59f17cf1f0bc` · ABC News & Headlines – Australian Broadcasting Corporation · 호주 수의대생, 유급 실습 훈련 배제되어 · unresolved · 후보 없음 · 검색어: Vet students learning to care for our animals denied paid training
+- `v1_9a34ccd3dafec812` · KRGV · Alamo 시, 모바일 중성화 클리닉 운영 추진 · unresolved · 후보 없음 · 검색어: City of Alamo plans mobile spay, neuter clinics, looking to bring in animal shelter
+- `v1_4f8b2e2e1d2dede8` · aphis.usda.gov · 미국서 애완동물 타국 수출 가이드 공개 · unresolved · 후보 없음 · 검색어: Take a Pet From the United States to Another Country (Export) | Animal and Plant Health Inspection Service
+- `v1_814d51d3fbb16064` · INFO.FR · 니스 당국, 해외 여행 전 광견병 예방 수칙 안내 · unresolved · 후보 없음 · 검색어: Nice : le préfet rappelle les règles anti-rage avant les vacances à l’étranger
+- `v1_676580e2613995a9` · thestokesnews.com · 농장과 스포츠,수의학 꿈을 동시에 향하는 청소년 · unresolved · 후보 없음 · 검색어: Parrish Balances Farm Life, Athletics and Dreams of Veterinary Medicine
+- `v1_2bcc4b22442258f3` · NorthEscambia.com · 미국 Escambia 동물보호소, 오늘까지 무료 입양 진행 · unresolved · 후보 없음 · 검색어: Escambia Animal Shelter Offering Free Cat And Dog Adoptions Through Today
+- `v1_eb8baedadea6f053` · NC State University · NIH, NC State 박사과정 훈련지원금 갱신 · unresolved · 후보 없음 · 검색어: NIH Renews Prestigious Training Grant for NC State Ph.D. Students Preparing to Lead Complex Research Teams
+- `v1_49f269138a9190f6` · avinews.com · 의회, 식량 안보에서 사료와 수의 역할 강조 · unresolved · 후보 없음 · 검색어: Congress highlights feed and veterinary practice in food security
+- `v1_9571862cc283108a` · DairyReporter.com · 스코틀랜드 유업체, 수의약 오염 의심으로 우유 회수 · unresolved · 후보 없음 · 검색어: Scottish dairy pulls milk over fears of vet medicines
+- `v1_fb6f7d5f583a1c58` · Veterinaria Atual · 영양 보충제, 개와 고양이의 경미한 위장관 문제 개선에 도움 · unresolved · 후보 없음 · 검색어: Suplementação nutricional pode melhorar alterações gastrointestinais ligeiras em cães e gatos
+- `v1_5bbf94b7102ede00` · DVM360 · 저소득 가정의 동물, 간접흡연 노출 위험 2배 이상 · unresolved · 후보 없음 · 검색어: Pets in lower-income households face much higher secondhand smoke exposure, study finds
+- `v1_7b21f73b951c77b0` · DVM360 · 수의전문가, 조직 리더십 기여하는 방법은 · unresolved · 후보 없음 · 검색어: How veterinary professionals can contribute to organizational leadership
+- `v1_4461255a1cb71932` · American Animal Hospital Association - AAHA · 라임병-렙토스피라증 콤백 백신 승인 · unresolved · 후보 없음 · 검색어: New combination Lyme/leptospirosis vaccine approved - American Animal Hospital Association
+- `v1_99ac2c6829247bca` · WPR · 뒤영벌 방제 강화로 보호소 동물 이전 지연 · unresolved · 후보 없음 · 검색어: Screwworm restrictions are slowing transports of dogs and cats from crowded shelters
+- `v1_16e467c3205dbffa` · USA Today · 애완동물 사료 안전성 확인법…라벨 읽기와 보관 원칙 · unresolved · 후보 없음 · 검색어: Is my pet's food safe? How to read labels and store meals amid recalls
+- `v1_31506b8fe2022df6` · Bioengineer.org · PET 리간드로 뇌 유전자 발현 정량 영상화 가능 · unresolved · 후보 없음 · 검색어: PET Ligand Enables Quantitative Imaging of Brain Gene Expression
+- `v1_d7058b04312fa69b` · USA Today · 강아지 사료 리콜 당했나요? 소유주가 즉시 확인해야 할 사항 · unresolved · 후보 없음 · 검색어: Your dog's food was recalled. Now what?
+- `v1_e512900435561c51` · Pioneer Press · 미국 주, 미사용 약 기증 법 제정…필요한 동물에 약 지원 · unresolved · 후보 없음 · 검색어: New state law allows pet owners to donate unused medicine to help animals in need
+- `v1_8cb1cced241aa789` · KHGI · 미국 동물병원, Cherry 할부 금융 서비스 도입 · unresolved · 후보 없음 · 검색어: Pet Doc: Cherry financing for veterinary services
+- `v1_809421549d128e9e` · Modern Healthcare · 수의학에서 배운 환자관리 교훈, 인간 의료에 적용 · unresolved · 후보 없음 · 검색어: Strengthening Care Delivery Using Lessons from Veterinary Health
+- `v1_d3bfda3b23b4ffbb` · myfoxzone.com · 피셔 카운티에서 광견병 1건 확인 · unresolved · 후보 없음 · 검색어: One confirmed rabies case reported in Fisher County
+- `v1_5b910126229a3632` · Coverager · ChatGPT에 출시된 반려동물보험 비교 앱 'Fletch' · unresolved · 후보 없음 · 검색어: Fletch launches pet insurance comparison app in ChatGPT
+- `v1_8ba43de9ac425b0f` · The Straits Times · 반려동물 사별,… 동물병원 돌봄 가이드라인 최신 동향 · unresolved · 후보 없음 · 검색어: How to deal with the death of a pet
+- `v1_a4deff1b3d5e111c` · New York Post · 2026년 애완동물 양육비 현실 — 소유주들이 알아야 할 사실 · unresolved · 후보 없음 · 검색어: The real cost of being a pet parent in 2026: What you need to know
+- `v1_ac6c719fda72e663` · KOAT · 이동식 수의 클리닉, 부족민 커뮤니티 의료 접근성 확대 · unresolved · 후보 없음 · 검색어: Mobile veterinary clinic expands care for tribal communities
+- `v1_5e7c4dedbecefc8f` · DVM360 · 미국 하원, 불법 자일라진 규제 법안 추진 가속화 · unresolved · 후보 없음 · 검색어: Sneak peek: Bill targeting illicit xylazine advances in House, and other news
+- `v1_291cdfc8d9fbfca6` · porciNews · 미국 의회, 식량 안보 위한 사료·수의업 역할 강조 · unresolved · 후보 없음 · 검색어: Congress highlights feed and veterinary practice in food security
+- `v1_48316054f235a5b4` · DVM360 · Fear Free·Exubrion Therapeutics 임원 인사 · unresolved · 후보 없음 · 검색어: Paws and profits: Fear Free names chief veterinary officer, Exubrion Therapeutics announces new chief commercial officer, and more updates
+- `v1_a04825d370a4cb08` · 1851 Franchise · 애완묘 영양 전문성으로 매출↑… Pet Wants 프랜차이즈 전략 · unresolved · 후보 없음 · 검색어: How Pet Wants Franchisees Drive Sales with Cat Nutrition Expertise
+- `v1_ac67ca4d3f3a5b0f` · WKTV · 코퍼스타운 동물 보호소, 압수 동물 수용 후 검역 · unresolved · 후보 없음 · 검색어: Cooperstown Animal Shelter Quarantined After Taking in Seized Animals
+- `v1_25fad8b77fc7a728` · companionlife.co.uk · 휴가철 애완동물 여행 검색 957% 급증... 준비 안 하면 대혼란 · unresolved · 후보 없음 · 검색어: Pet owners risk holiday chaos as pet travel searches up 957%
+- `v1_677ad59763240e78` · WSAZ · 동물쉼터 개간식 고갈되자 지역 주민들 자원봉사·기부로 지원 · unresolved · 후보 없음 · 검색어: Community shows up for local animal shelter after running out of dog treats
+- `v1_20469be4391ba0b5` · ide.go.jp · 중국 코로나19 이후 야생동물 규제 변화, '원헬스' 접근 약화된 이유는 · unresolved · 후보 없음 · 검색어: China’s Wildlife Regulations After COVID-19: Why Was “One Health” Approach Weakened?
+- `v1_714583787982c8de` · Raleigh News & Observer · 강아지와 야생 버섯 중독 위험…비 온 뒤 버섯 주의 · unresolved · 후보 없음 · 검색어: Can your dogs eat wild mushrooms that pop up after rain? NCSU vet has answers
+- `v1_6ce376c377ed20e8` · inkl · 지난 10년 개·고양이 진료 혁신...수의학 주요 발견 총정리 · unresolved · 후보 없음 · 검색어: Ten Years of Veterinary Science Discoveries Changing How We Care for Dogs and Cats
+- `v1_0dd20409706debd4` · kens5.com · 텍사스 카운티, 가족 마당서 발견된 스컹크서 rabies 7번째 사례 확인 · unresolved · 후보 없음 · 검색어: Kerr County records seventh rabies case after skunk found in family's yard
+- `v1_a501789c4aa37005` · Illinois News Bureau · 애완동물 아시아극동분들 중증 기생충 위협 증가 · unresolved · 후보 없음 · 검색어: How might the New World screwworm affect dogs and cats?
+- `v1_8a4f25e0108529ad` · Nature · PET 리포터 리간드로 뇌 유전자 발현 정량 영상화 · unresolved · 후보 없음 · 검색어: A PET reporter ligand for quantitative imaging of gene expression in the brain
+- `v1_5f4a47374d84fda1` · New York Post · 새 동물보험 가입, 비용 대비 가장 현명한 첫걸음 · unresolved · 후보 없음 · 검색어: New pet? Here’s why pet insurance should be the first thing you do
+- `v1_687b4b98c979ad9f` · Panay News · 미접종·미등록 동물, 소유주에게 과태료 부과 가능 · unresolved · 후보 없음 · 검색어: Unvaccinated, unregistered pets may expose owners to penalties
+- `v1_cf59fd26eb360f13` · DVM360 · 수의사 기술, 정책 활동과 옹호로 이어지는 길 · unresolved · 후보 없음 · 검색어: Veterinary skills that translate to policy and advocacy
+- `v1_a8f29b32764cd2d8` · The Cool Down · 미국 사료 리콜 10건...반려동물 주인의 신속 대응법 · unresolved · 후보 없음 · 검색어: US pet food recalls hit 10 in 2026, and vets say one simple step can help owners react fast
+- `v1_761887efcc6d349b` · avinews.com · 미국 의회, 식량안보 위해 사료·수의 업무 역할 강조 · unresolved · 후보 없음 · 검색어: Congress highlights feed and veterinary practice in food security
+- `v1_267897d027711e99` · Yahoo · 미국 폴크 카운티, 무료 마이크로칩·광견병 예방접종 제공 · unresolved · 후보 없음 · 검색어: Free microchips and rabies vaccines provided to Polk County pets
+- `v1_ad8aed7acd06b110` · Yahoo Finance · NexTel, 반려동물 초기 암 검진 출시로 수의 종양학 전략 확대 · unresolved · 후보 없음 · 검색어: NexTel Medical Corp. Advances Veterinary Oncology Strategy with Rollout of Early-Stage Cancer Screening for Companion Animals
+- `v1_b91cf3102bfdb099` · Central Oregon Daily · 산불 연기가 박쥐 혼란시켜.. 데슈치스 군 광견병 발생 증가 · unresolved · 후보 없음 · 검색어: Wildfire smoke is confusing bats; Deschutes County rabies cases are high this year
+- `v1_7ca8fbb83455cf56` · Boehringer Ingelheim · 애완동물 심장 건강 관리 앱 출시 · unresolved · 후보 없음 · 검색어: My Pet's Heart2Heart App
+- `v1_ff9d0cb0f4ef8b96` · Trinidad Guardian · 트리니다드 토바고 수의사, 수의 의료 수준 한 단계 높이다 · unresolved · 후보 없음 · 검색어: The doctor taking T&T’s veterinary care to another level
+- `v1_e1d83020dec22783` · Arkansas Money & Politics · 애리조나 주립대, 수의학 과정 학생 환영 준비 · unresolved · 후보 없음 · 검색어: A-State Prepares to Welcome First Veterinary Medicine Students
+- `v1_510c9543c06b49fb` · The Age · 멜버른컵 수의사, 괴롭힘 주장 후 상 수상 · unresolved · 후보 없음 · 검색어: Former Melbourne Cup vet wins prestigious gong after walking away amid allegations she was bullied
+- `v1_b29ae1af1060667b` · WSU Insider · WSU 다람쥐 Jimothy, 인터넷 스타 되어 야생동물 공간 줘야 한다는 교훈 · unresolved · 후보 없음 · 검색어: Jimothy’s internet fame serves as reminder to give wildlife space
+- `v1_6e061d9cd23f29aa` · WHRO · 펜실베이니아 수의사, 첸코티지 야생말 케어 이끄는 사연 · unresolved · 후보 없음 · 검색어: Meet the Pennsylvania veterinarian who leads care for Chincoteague’s famed ponies
+- `v1_cc555ae7423eb608` · Business Insider · 알라바마 동물보호소, AI 데이터센터 법적 대응 · unresolved · 후보 없음 · 검색어: An Alabama animal shelter is taking on a massive AI data center project in court
+- `v1_39ff1f1ef8646d29` · The Atlantic · 개의 삶의 질 높이는 Zoetis 의료 혁신 · unresolved · 후보 없음 · 검색어: The Medical Breakthrough That's Helping Dogs Live Their Best Lives - Sponsor Content - Zoetis

@@ -11,6 +11,8 @@ import {
 } from "../src/quality.js";
 import { cleanImageUrl, removeRepeatedImages } from "../src/images.js";
 import { cardAssetPath, cardRelativePath, generatedImageMeta } from "../src/editorial-cards.js";
+import { imageCanRender, normalizeImageOwnership } from "../src/lib/image-rights.js";
+import { clinicalReviewIssues, inferClinicalRisk, normalizeEditorialStatus } from "../src/lib/editorial-review.js";
 import {
   FEEDS,
   CANDIDATES_MAX,
@@ -156,4 +158,18 @@ test("quality view fields carried by legacy articles remain part of the index ga
   };
   assert.ok(qualityIssues(item).includes("banned-term"));
   assert.equal(isProfessionallyIndexable(item), false);
+});
+
+test("unknown external image rights never become an allowed hosted image", () => {
+  assert.equal(normalizeImageOwnership(undefined, { hasImage: true, origin: "external-source" }), "unknown");
+  assert.equal(imageCanRender({ url: "https://publisher.example/photo.jpg", ownership: "unknown" }), false);
+  assert.equal(imageCanRender({ url: "https://publisher.example/photo.jpg", ownership: "source-embed" }), true);
+  assert.equal(imageCanRender({ url: "http://publisher.example/photo.jpg", ownership: "licensed" }), false);
+});
+
+test("clinical review policy is conservative and does not retroactively block legacy articles", () => {
+  assert.equal(normalizeEditorialStatus("not-a-status"), "automated");
+  assert.equal(inferClinicalRisk({ titleKo: "약물 용량과 응급 대응", bodyKo: [] }), "high");
+  assert.deepEqual(clinicalReviewIssues({ titleKo: "약물 용량", bodyKo: [], publishedAt: "2026-07-29T00:00:00Z" }, { issueDate: "2026-07-29" }), []);
+  assert.ok(clinicalReviewIssues({ titleKo: "약물 용량", bodyKo: [], publishedAt: "2026-07-30T00:00:00Z" }, { issueDate: "2026-07-30" }).includes("high-risk-not-vet-reviewed"));
 });

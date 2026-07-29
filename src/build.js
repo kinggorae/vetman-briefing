@@ -17,6 +17,18 @@ import {
   qualityIssues,
   publishQualityIssues,
 } from "./quality.js";
+import {
+  effectiveImage,
+  imageCanRender,
+  imageRightsIssues,
+  normalizeImageOwnership,
+} from "./lib/image-rights.js";
+import {
+  clinicalReviewIssues,
+  inferClinicalRisk,
+  normalizeEditorialStatus,
+  reviewLabel,
+} from "./lib/editorial-review.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -177,6 +189,10 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
   const sourceDay = item._day || issueDate;
   const sourceIndex = Number.isInteger(item._index) ? item._index : i;
   const id = item.id || `${sourceDay}_${sourceIndex + 1}`;
+  const rawImageUrl = usableImage(item.imageUrl);
+  const rawImageOrigin = item.imageOrigin || (rawImageUrl ? "external-source" : null);
+  const rawImageOwnership = normalizeImageOwnership(item.imageOwnership, { hasImage: Boolean(rawImageUrl), origin: rawImageOrigin });
+  const imageAllowed = imageCanRender({ url: rawImageUrl, ownership: rawImageOwnership, origin: rawImageOrigin });
   const article = {
     id,
     legacySlug: item.legacySlug || null,
@@ -194,11 +210,10 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     date: dateStr,
     read: `${readMin}분 읽기`,
     plate: shortSource(item.sourceLabel) || "출처",
-    image: usableImage(item.imageUrl),
-    images: [item.imageUrl, ...(Array.isArray(item.imageUrls) ? item.imageUrls : []), item.imageSquareUrl, item.imageLandscapeUrl, item.imageWideUrl]
-      .map(usableImage)
-      .filter(Boolean)
-      .filter((url, index, urls) => urls.indexOf(url) === index),
+    // 권리 상태가 확인된 외부 이미지만 화면에 사용한다. 원본 URL은 별도 필드로 보존한다.
+    image: imageAllowed ? rawImageUrl : null,
+    images: imageAllowed && rawImageUrl ? [rawImageUrl] : [],
+    imageUrlRaw: rawImageUrl,
     imageAlt: item.imageAlt || null,
     imageCaption: item.imageCaption || null,
     imageCredit: item.imageCredit || null,
@@ -206,7 +221,11 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     imageLicenseUrl: item.imageLicenseUrl || null,
     imageWidth: Number(item.imageWidth) || null,
     imageHeight: Number(item.imageHeight) || null,
-    imageOrigin: item.imageOrigin || (item.imageUrl ? "external-source" : null),
+    imageOrigin: rawImageOrigin,
+    imageOwnership: rawImageOwnership,
+    imageSourceUrl: item.imageSourceUrl || rawImageUrl || null,
+    imageReviewedAt: validIsoDate(item.imageReviewedAt),
+    imageReviewedBy: item.imageReviewedBy || null,
     sourceUrlRaw: item.sourceUrlRaw || item.sourceUrl || null,
     sourceUrl: normalizeSourceUrl(item.finalUrl || item.sourceUrl || item.sourceUrlRaw || ""),
     finalUrl: item.finalUrl || null,
@@ -223,6 +242,15 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     updatedAt: validIsoDate(item.updatedAt),
     aiAssisted: typeof item.aiAssisted === "boolean" ? item.aiAssisted : null,
     correctionNote: item.correctionNote || null,
+    correctionHistory: Array.isArray(item.correctionHistory) ? item.correctionHistory : [],
+    editorialStatus: normalizeEditorialStatus(item.editorialStatus),
+    _reviewPolicyExplicit: ["editorialStatus", "clinicalRisk", "reviewPolicyVersion", "reviewNotes"].some((key) => Object.prototype.hasOwnProperty.call(item, key)),
+    reviewedBy: item.reviewedBy || null,
+    vetReviewer: item.vetReviewer || null,
+    vetReviewerUrl: item.vetReviewerUrl || null,
+    vetReviewedAt: validIsoDate(item.vetReviewedAt),
+    clinicalRisk: inferClinicalRisk(item),
+    reviewNotes: item.reviewNotes || null,
     species: Array.isArray(item.species) ? item.species.filter(Boolean) : item.species ? [String(item.species)] : [],
     conditions: Array.isArray(item.conditions) ? item.conditions.filter(Boolean) : item.conditions ? [String(item.conditions)] : [],
     specialty: item.specialty || null,
@@ -249,9 +277,11 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
       article.imageCaption = meta.imageCaption;
       article.imageCredit = meta.imageCredit;
       article.imageLicense = meta.imageLicense;
+      article.imageOwnership = "owned";
       article.imageWidth = meta.imageWidth;
       article.imageHeight = meta.imageHeight;
       article.imageOrigin = meta.imageOrigin;
+      article.imageSourceUrl = null;
     }
   }
   article.href = article.contentTier === "brief" ? `/issues/${sourceDay}#${article.id}` : articlePath(article);
@@ -1598,7 +1628,8 @@ ${seoHead(issue, data, canonicalPath, isIndex)}
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#0066ff">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/icon.svg">
+<link rel="icon" href="/icon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/icon-192.png" sizes="192x192">
 <meta name="apple-mobile-web-app-capable" content="yes">${gaSnippet()}
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="VetManLab 브리핑">
@@ -1641,11 +1672,15 @@ const MANIFEST = JSON.stringify({
   background_color: "#ffffff",
   theme_color: "#0066ff",
   lang: "ko",
-  icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" }],
+  icons: [
+    { src: "/icon-48.png", sizes: "48x48", type: "image/png" },
+    { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any maskable" },
+    { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" },
+  ],
 });
 
-const SW_JS = `const C='vmcache-v5';
-const SHELL=['/','/latest.json','/archive.json','/icon.svg','/manifest.webmanifest'];
+const SW_JS = `const C='vmcache-v6';
+const SHELL=['/','/latest.json','/archive.json','/icon.svg','/icon-192.png','/manifest.webmanifest'];
 const OFFLINE='<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 없음</title><style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:#fff;color:#171719}@media(prefers-color-scheme:dark){body{background:#171719;color:#f7f7f8}}.b{max-width:420px;text-align:center}h1{font-size:24px;font-weight:800;margin:0 0 10px}p{margin:0 0 22px;font-size:15px;line-height:1.7;opacity:.7}a{display:inline-block;background:#0066ff;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}</style></head><body><div class="b"><h1>연결이 끊겼습니다</h1><p>이 페이지는 아직 받아두지 않았습니다.<br>연결을 확인한 뒤 다시 시도해 주세요.</p><a href="/">오늘의 브리핑 보기</a></div></body></html>';
 self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(SHELL);}).then(function(){return self.skipWaiting();}));});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){if(k!==C)return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});
@@ -1763,8 +1798,8 @@ function authFetch(url){return fetch(url,{headers:{Authorization:'Bearer '+TOKEN
 window.tryPw=function(){var v=document.getElementById('pw').value.trim();if(!v)return;TOKEN=v;sessionStorage.setItem('vm_admin_token',v);boot();};
 function loadAudit(){return authFetch('/api/admin?resource=audit').then(function(r){return r.json();}).then(function(d){AUDIT=d;}).catch(function(){});}
 function auditRows(){return (AUDIT&&AUDIT.rows)||[];}
-function filteredAudit(){var tier=document.getElementById('af-tier')?.value||'';var status=document.getElementById('af-status')?.value||'';var issue=document.getElementById('af-issue')?.value||'';return auditRows().filter(function(row){return (!tier||row.contentTier===tier)&&(!status||status===(row.indexable?'index':'noindex'))&&(!issue||JSON.stringify(row).toLowerCase().indexOf(issue.toLowerCase())>=0);});}
-window.showAudit=function(){if(!AUDIT){loadAudit().then(showAudit);return;}var rows=filteredAudit();var h='<h1>SEO·편집 검수</h1><div class="sub">인증된 관리자에게만 제공되는 색인·출처·이미지·감수 큐입니다.</div><div class="metrics"><div class="metric"><b>'+AUDIT.summary.total+'</b><span>전체 기사</span></div><div class="metric"><b>'+AUDIT.summary.index+'</b><span>index</span></div><div class="metric"><b>'+AUDIT.summary.missingImage+'</b><span>index 원본 이미지 누락</span></div><div class="metric"><b>'+AUDIT.summary.relayUrl+'</b><span>중계 URL</span></div></div><div class="bar"><select id="af-status" onchange="showAudit()"><option value="">전체 색인 상태</option><option value="index">index</option><option value="noindex">noindex</option></select><select id="af-tier" onchange="showAudit()"><option value="">전체 등급</option><option value="analysis">analysis</option><option value="evidence">evidence</option><option value="brief">brief</option></select><input id="af-issue" placeholder="문제·기사·출처 검색" value="'+e(document.getElementById('af-issue')?.value||'')+'" onkeydown="if(event.key===\'Enter\')showAudit()"><button class="ghost" onclick="downloadAudit(\'json\')">JSON 다운로드</button><button class="ghost" onclick="downloadAudit(\'csv\')">CSV 다운로드</button><button class="ghost" onclick="render()">오늘 원본 검수</button><span class="stat">'+rows.length+'건 표시</span></div><div class="audit-list">'+rows.map(function(row){var fl=(row.qualityIssues||[]).map(function(x){return '<span class="flag f-red">'+e(x)+'</span>';}).join('');if(row.relayUrl)fl+='<span class="flag f-amb">중계 URL</span>';if(row.indexable&&row.rawImageMissing)fl+='<span class="flag f-amb">원본 이미지 누락</span>';if(row.imageSourceMissing)fl+='<span class="flag f-amb">이미지 출처 누락</span>';if(row.reviewerNeeded)fl+='<span class="flag f-amb">감수 필요</span>';return '<div class="item"><div class="cat">우선순위 '+row.priority+' · '+e(row.date)+' · '+e(row.contentTier)+' · '+(row.indexable?'index':'noindex')+'</div><div class="ttl">'+e(row.title)+'</div><div class="src">'+e(row.source||'출처 없음')+' · '+e(row.id)+' · '+e(row.dataFile)+'</div><div class="flags">'+(fl||'<span class="flag f-grn">이상없음</span>')+'</div><div class="src" style="margin-top:8px"><a href="'+e(row.generatedUrl)+'" target="_blank">생성 기사</a> · '+(row.sourceUrl?'<a href="'+e(row.sourceUrl)+'" target="_blank" rel="noopener noreferrer">원문</a>':'원문 없음')+' · '+e(row.reviewerStatus)+'</div></div>';}).join('')+'</div>';app.innerHTML=h;};
+function filteredAudit(){var tier=document.getElementById('af-tier')?.value||'';var status=document.getElementById('af-status')?.value||'';var risk=document.getElementById('af-risk')?.value||'';var editorial=document.getElementById('af-editorial')?.value||'';var issue=document.getElementById('af-issue')?.value||'';return auditRows().filter(function(row){return (!tier||row.contentTier===tier)&&(!status||status===(row.indexable?'index':'noindex'))&&(!risk||row.clinicalRisk===risk)&&(!editorial||row.editorialStatus===editorial)&&(!issue||JSON.stringify(row).toLowerCase().indexOf(issue.toLowerCase())>=0);});}
+window.showAudit=function(){if(!AUDIT){loadAudit().then(showAudit);return;}var rows=filteredAudit();var h='<h1>SEO·편집 검수</h1><div class="sub">인증된 관리자에게만 제공되는 색인·출처·이미지·임상 검수 큐입니다. 관리자 인증과 원본 데이터 보호는 그대로 유지됩니다.</div><div class="metrics"><div class="metric"><b>'+AUDIT.summary.total+'</b><span>전체 기사</span></div><div class="metric"><b>'+AUDIT.summary.index+'</b><span>index</span></div><div class="metric"><b>'+AUDIT.summary.relayUrl+'</b><span>중계 URL</span></div><div class="metric"><b>'+AUDIT.summary.reviewerNeeded+'</b><span>사람 검수 대기</span></div></div><div class="bar"><select id="af-status" onchange="showAudit()"><option value="">전체 색인 상태</option><option value="index">index</option><option value="noindex">noindex</option></select><select id="af-tier" onchange="showAudit()"><option value="">전체 등급</option><option value="analysis">analysis</option><option value="evidence">evidence</option><option value="brief">brief</option></select><select id="af-risk" onchange="showAudit()"><option value="">전체 임상 위험도</option><option value="high">high</option><option value="medium">medium</option><option value="low">low</option></select><select id="af-editorial" onchange="showAudit()"><option value="">전체 검수 상태</option><option value="automated">automated</option><option value="editor-reviewed">editor-reviewed</option><option value="vet-reviewed">vet-reviewed</option><option value="correction-required">correction-required</option></select><input id="af-issue" placeholder="문제·기사·출처 검색" value="'+e(document.getElementById('af-issue')?.value||'')+'" onkeydown="if(event.key===\'Enter\')showAudit()"><button class="ghost" onclick="downloadAudit(\'json\')">JSON 다운로드</button><button class="ghost" onclick="downloadAudit(\'csv\')">CSV 다운로드</button><button class="ghost" onclick="render()">오늘 원본 검수</button><span class="stat">'+rows.length+'건 표시</span></div><div class="audit-list">'+rows.map(function(row){var fl=(row.qualityIssues||[]).map(function(x){return '<span class="flag f-red">'+e(x)+'</span>';}).join('');if(row.relayUrl)fl+='<span class="flag f-amb">중계 URL</span>';if(row.imageSourceMissing)fl+='<span class="flag f-amb">이미지 권리·출처 확인</span>';if(row.imageOwnership==='unknown')fl+='<span class="flag f-amb">권리 unknown</span>';if(row.clinicalRisk==='high')fl+='<span class="flag f-red">임상 high</span>';if(row.editorialStatus==='automated')fl+='<span class="flag f-amb">사람 검수 대기</span>';return '<div class="item"><div class="cat">우선순위 '+row.priority+' · '+e(row.date)+' · '+e(row.contentTier)+' · '+(row.indexable?'index':'noindex')+'</div><div class="ttl">'+e(row.title)+'</div><div class="src">'+e(row.source||'출처 없음')+' · '+e(row.id)+' · '+e(row.dataFile)+'</div><div class="flags">'+(fl||'<span class="flag f-grn">이상없음</span>')+'</div><div class="src" style="margin-top:8px"><a href="'+e(row.generatedUrl)+'" target="_blank">생성 기사</a> · '+(row.sourceUrl?'<a href="'+e(row.sourceUrl)+'" target="_blank" rel="noopener noreferrer">원문</a>':'원문 없음')+' · '+e(row.reviewerStatus)+' · 임상 '+e(row.clinicalRisk||'미분류')+'</div></div>';}).join('')+'</div>';app.innerHTML=h;};
 window.downloadAudit=function(kind){var rows=filteredAudit();if(kind==='json'){var blob=new Blob([JSON.stringify(rows,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vetman-seo-review.json';a.click();return;}var cols=['id','date','title','source','indexable','contentTier','priority','qualityIssues','sourceUrl','generatedUrl','dataFile','image','relayUrl','reviewerStatus'];var csv=[cols.join(',')].concat(rows.map(function(row){return cols.map(function(col){var val=Array.isArray(row[col])?row[col].join('|'):row[col];return '"'+String(val==null?'':val).replace(/"/g,'""')+'"';}).join(',');})).join('\n');var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vetman-seo-review.csv';a.click();};
 function load(date){
   authFetch('/api/admin?resource=raw&date='+encodeURIComponent(date)).then(function(r){return r.json();}).then(function(d){ISSUE=d;EX={};render();}).catch(function(){});
@@ -1848,12 +1883,7 @@ function profileFor(profiles, name) {
 }
 
 function reviewStatus(a) {
-  const reviewer = profileFor(REVIEWER_PROFILES, a.reviewer) || (a.reviewer ? { name: a.reviewer } : null);
-  const credentials = `${reviewer?.role || ""} ${reviewer?.credentials || ""}`;
-  const veterinarian = /수의사|수의학|DVM|VMD|veterinar/i.test(credentials);
-  if (reviewer && a.reviewedAt) return veterinarian ? "수의사 감수 완료" : "사람 검수 완료";
-  if (a.aiAssisted === true) return "AI 보조 번역·요약 · 사람 검수 대기";
-  return "편집팀 작성 · 사람 검수 대기";
+  return reviewLabel(a);
 }
 
 function renderSuppressedArticlePage(a) {
@@ -1926,7 +1956,12 @@ function renderArticlePage(a, data, prev, next, related = []) {
     speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".lead"] },
     publisher: PUBLISHER_LD,
     mainEntityOfPage: canonical,
-    ...(a.reviewer ? { reviewedBy: { "@type": "Person", name: a.reviewer, ...(a.reviewerUrl ? { url: a.reviewerUrl } : {}), ...(profileFor(REVIEWER_PROFILES, a.reviewer)?.profileUrl ? { url: profileFor(REVIEWER_PROFILES, a.reviewer).profileUrl } : {}) } } : {}),
+    ...(profileFor(REVIEWER_PROFILES, a.reviewer) && a.reviewedAt
+      ? { reviewedBy: { "@type": "Person", name: profileFor(REVIEWER_PROFILES, a.reviewer).name, ...(a.reviewerUrl || profileFor(REVIEWER_PROFILES, a.reviewer).profileUrl ? { url: a.reviewerUrl || profileFor(REVIEWER_PROFILES, a.reviewer).profileUrl } : {}) } }
+      : {}),
+    ...(profileFor(REVIEWER_PROFILES, a.vetReviewer) && a.vetReviewedAt
+      ? { editor: { "@type": "Person", name: profileFor(REVIEWER_PROFILES, a.vetReviewer).name, ...(a.vetReviewerUrl || profileFor(REVIEWER_PROFILES, a.vetReviewer).profileUrl ? { url: a.vetReviewerUrl || profileFor(REVIEWER_PROFILES, a.vetReviewer).profileUrl } : {}) } }
+      : {}),
     ...(a.correctionNote ? { correction: a.correctionNote } : {}),
     ...((a.aiAssisted !== null && a.aiAssisted !== undefined) || a.correctionNote
       ? { additionalProperty: [{ "@type": "PropertyValue", propertyID: "aiAssisted", value: a.aiAssisted === true }, ...(a.correctionNote ? [{ "@type": "PropertyValue", propertyID: "correctionNote", value: a.correctionNote }] : [])] }
@@ -2025,6 +2060,8 @@ h1{font-size:33px;line-height:1.25;letter-spacing:-.025em;margin:12px 0 14px;fon
 .lead{font-size:17.5px;font-weight:500;margin:20px 0 18px}
 .hero-image{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin:20px 0 22px;background:#eef0f3}
 .image-credit{font-size:11px;color:var(--sub);margin:-14px 0 20px}
+.trust-panel{margin:24px 0;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:rgba(127,127,127,.06);font-size:13px;line-height:1.75}
+.trust-panel h2{font-size:13px;margin:0 0 8px}.trust-panel dl{display:grid;grid-template-columns:110px 1fr;gap:4px 12px;margin:0}.trust-panel dt{font-weight:800;color:var(--sub)}.trust-panel dd{margin:0}.trust-panel .disclaimer{margin-top:10px;color:var(--sub);font-size:12px}
 p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .note{margin:26px 0;padding:2px 0 2px 18px;border-left:2px solid var(--ink)}
 .note .lb,.qa .lb{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-bottom:5px}
@@ -2097,6 +2134,14 @@ ${jsonLdScript(faqLd)}` : ""
     ev ? `<div class="ev">근거 · ${[ev.design, ev.n].filter(Boolean).map(esc).join(" · ")}${ev.note ? ` — ${esc(ev.note)}` : ""}</div>` : ""
   }</div>
 ${a.image ? `<figure><img class="hero-image" src="${esc(a.image)}" alt="${esc(a.imageAlt || a.title)}" width="${a.imageWidth || 1200}" height="${a.imageHeight || 675}" style="aspect-ratio:${a.imageWidth || 1200}/${a.imageHeight || 675}" loading="eager" decoding="async" fetchpriority="high">${a.imageCaption || a.imageCredit || a.imageLicense ? `<figcaption class="image-credit">${esc(a.imageCaption || "")}${a.imageCredit ? `${a.imageCaption ? " · " : ""}이미지: ${esc(a.imageCredit)}` : ""}${a.imageLicense ? `${a.imageCaption || a.imageCredit ? " · " : ""}라이선스: ${esc(a.imageLicense)}` : ""}${a.imageLicenseUrl ? ` · <a href="${esc(a.imageLicenseUrl)}" target="_blank" rel="noopener noreferrer">라이선스 확인</a>` : ""}</figcaption>` : ""}</figure>` : ""}
+<section class="trust-panel" aria-labelledby="trust-title"><h2 id="trust-title">편집·검수 정보</h2><dl>
+<dt>콘텐츠 유형</dt><dd>${esc(a.contentTier === "evidence" ? "근거 기반 해설" : a.contentTier === "analysis" ? "전문 해설" : "간추린 소식")}</dd>
+<dt>작성·자동화</dt><dd>${a.author ? esc(a.author) : `${esc(SITE.brandKo)} 편집팀`}${a.aiAssisted === true ? " · AI 보조 번역·요약" : ""}</dd>
+<dt>편집 상태</dt><dd>${esc(reviewStatus(a))}</dd>
+<dt>임상 위험도</dt><dd>${esc({ high: "높음", medium: "중간", low: "낮음" }[a.clinicalRisk] || a.clinicalRisk)}</dd>
+<dt>원문</dt><dd>${esc(a.source)}${a.sourcePublishedAt ? ` · ${esc(a.sourcePublishedAt.slice(0, 10).replace(/-/g, "."))}` : ""}</dd>
+${a.updatedAt ? `<dt>최종 수정</dt><dd>${esc(a.updatedAt.slice(0, 10).replace(/-/g, "."))}</dd>` : ""}
+${a.correctionNote ? `<dt>정정 이력</dt><dd>${esc(a.correctionNote)}</dd>` : ""}</dl><p class="disclaimer">임상 정보는 교육·참고용입니다. 환자 적용 전 원문과 최신 문헌, 국내 지침을 확인하고 담당 수의사가 판단해야 합니다.</p></section>
 <div class="lead">${esc(a.dek)}</div>
 ${(a.body || []).map(para).join("\n")}
 ${a.correctionNote ? `<div class="note"><div class="lb">정정·편집 메모</div><div class="tx">${esc(a.correctionNote)}</div></div>` : ""}
@@ -3213,11 +3258,14 @@ function build() {
         renderArticlePage(a, data, all[i - 1] || null, all[i + 1] || null, relatedArticles(a, all))
       );
       const flags = publishQualityIssues(qualityView(a), { duplicate: Boolean(a.duplicateSource) });
+      flags.push(...imageRightsIssues(a));
+      const clinicalFlags = clinicalReviewIssues(qualityView(a), { issueDate: a.day, existingIndex: false });
+      for (const flag of clinicalFlags) if (!flags.includes(flag)) flags.push(flag);
       const relay = /^https?:\/\/(?:news\.)?google\.[^/]+\/rss\/articles\//i.test(String(a.sourceUrlRaw || a.sourceUrl || ""));
       const hasImage = Boolean(a.image);
       const rawImageMissing = a.imageOrigin === "editorial-card" || !hasImage;
-      const imageSourceMissing = Boolean(hasImage && !a.imageCredit && !a.imageLicense && a.imageOrigin !== "editorial-card");
-      const priority = (isIndexable(a) ? 2 : 0) + (flags.length * 4) + (relay ? 3 : 0) + (rawImageMissing ? 2 : 0) + (imageSourceMissing ? 1 : 0) + (!a.reviewer ? 1 : 0);
+      const imageSourceMissing = Boolean(hasImage && a.imageOrigin !== "editorial-card" && (!a.imageCredit || (!a.imageLicense && !a.imageLicenseUrl)));
+      const priority = (isIndexable(a) ? 2 : 0) + (flags.length * 4) + (relay ? 3 : 0) + (rawImageMissing ? 2 : 0) + (imageSourceMissing ? 1 : 0) + (a.clinicalRisk === "high" ? 4 : a.clinicalRisk === "medium" ? 2 : 0) + (a.editorialStatus === "automated" ? 1 : 0);
       reviewRows.push({
         id: a.id,
         date: a.day,
@@ -3234,13 +3282,25 @@ function build() {
         image: Boolean(a.image),
         rawImageMissing,
         imageOrigin: a.imageOrigin || null,
+        imageOwnership: a.imageOwnership || null,
+        imageUrlRaw: a.imageUrlRaw || null,
+        imageSourceUrl: a.imageSourceUrl || null,
+        imageReviewedAt: a.imageReviewedAt || null,
+        imageReviewedBy: a.imageReviewedBy || null,
         imageSourceMissing,
         relayUrl: relay,
         reviewerNeeded: !a.reviewer,
         reviewerStatus: reviewStatus(a),
+        editorialStatus: a.editorialStatus,
+        clinicalRisk: a.clinicalRisk,
+        reviewNotes: a.reviewNotes || null,
+        vetReviewer: a.vetReviewer || null,
+        vetReviewedAt: a.vetReviewedAt || null,
+        clinicalReviewIssues: clinicalFlags,
+        correctionHistory: a.correctionHistory || [],
         updatedAt: a.updatedAt || null,
         category: a.cat,
-        sourceStatus: relay ? "manual-review" : a.sourceUrl ? "ok" : "missing",
+        sourceStatus: relay ? "unresolved" : a.sourceUrl ? "ok" : "missing",
       });
       if (isIndexable(a)) {
         const u = `${SITE.baseUrl}${articlePath(a)}`;
@@ -3470,6 +3530,10 @@ function build() {
   // PWA
   fs.writeFileSync(path.join(SITE_DIR, "manifest.webmanifest"), MANIFEST);
   fs.writeFileSync(path.join(SITE_DIR, "icon.svg"), ICON_SVG);
+  for (const size of [48, 192, 512]) {
+    const icon = path.join(ROOT, "assets", `icon-${size}.png`);
+    if (fs.existsSync(icon)) fs.copyFileSync(icon, path.join(SITE_DIR, `icon-${size}.png`));
+  }
   // 공유 카드 기본 이미지. 기사 자체 이미지가 없을 때의 폴백이라 항상 존재해야 한다
   fs.copyFileSync(path.join(ROOT, "assets-og.png"), path.join(SITE_DIR, "og.png"));
   fs.writeFileSync(path.join(SITE_DIR, "sw.js"), SW_JS);

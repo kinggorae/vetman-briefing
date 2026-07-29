@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-07-29T14:41:20.816Z",
+  "base": "https://news.vetmanlab.com",
+  "endpoints": [
+    {
+      "pathname": "/",
+      "status": 200,
+      "bytes": 158050,
+      "ok": true
+    },
+    {
+      "pathname": "/robots.txt",
+      "status": 200,
+      "bytes": 5688,
+      "ok": true
+    },
+    {
+      "pathname": "/sitemap.xml",
+      "status": 200,
+      "bytes": 26400,
+      "ok": true
+    },
+    {
+      "pathname": "/news-sitemap.xml",
+      "status": 200,
+      "bytes": 5389,
+      "ok": true
+    },
+    {
+      "pathname": "/rss.xml",
+      "status": 200,
+      "bytes": 133232,
+      "ok": true
+    }
+  ],
+  "critical": [],
+  "warnings": [],
+  "sitemap": {
+    "urlCount": 212,
+    "representative": {
+      "url": "https://news.vetmanlab.com/article/v1_e174695d8cae4128",
+      "status": 200,
+      "canonical": "https://news.vetmanlab.com/article/v1_e174695d8cae4128",
+      "canonicalMatches": true,
+      "noindex": false
+    }
+  }
+}

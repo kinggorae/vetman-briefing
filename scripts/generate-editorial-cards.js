@@ -5,6 +5,7 @@ import sharp from "sharp";
 import { TOPICS } from "../config.js";
 import { normalizeSourceUrl } from "../src/identity.js";
 import { isProfessionallyIndexable } from "../src/lib/quality.js";
+import { imageCanRender, normalizeImageOwnership } from "../src/lib/image-rights.js";
 import {
   EDITORIAL_CARD_DIR,
   cardAssetPath,
@@ -43,7 +44,9 @@ async function main() {
     const source = normalizeSourceUrl(item.sourceUrl || item.finalUrl || item.sourceUrlRaw || "");
     const duplicate = Boolean(source && seen.has(source));
     if (source) seen.add(source);
-    if (!isProfessionallyIndexable(item, { duplicate }) || item.imageUrl) continue;
+    const imageOwnership = normalizeImageOwnership(item.imageOwnership, { hasImage: Boolean(item.imageUrl), origin: item.imageOrigin || (item.imageUrl ? "external-source" : null) });
+    const safeImage = imageCanRender({ url: item.imageUrl, ownership: imageOwnership, origin: item.imageOrigin });
+    if (!isProfessionallyIndexable(item, { duplicate }) || safeImage) continue;
     const id = item.id || `${file.slice(0, 10)}_${index + 1}`;
     targets.push({ id, title: item.titleKo || "수의학 기사", category: item.category, topic: topicFor(item) });
   }
