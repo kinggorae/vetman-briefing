@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://news.vetmanlab.com/</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-29</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-28</loc><lastmod>2026-07-28T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-27</loc><lastmod>2026-07-27T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-26</loc><lastmod>2026-07-26T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-25</loc><lastmod>2026-07-25T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-24</loc><lastmod>2026-07-24T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-23</loc><lastmod>2026-07-23T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-22</loc><lastmod>2026-07-22T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-21</loc><lastmod>2026-07-21T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-20</loc><lastmod>2026-07-20T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-17</loc><lastmod>2026-07-17T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-09</loc><lastmod>2026-07-09T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-07-08</loc><lastmod>2026-07-08T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/issues/2026-06-19</loc><lastmod>2026-06-19T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-28</loc><lastmod>2026-07-28T01:29:12.542Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-27</loc><lastmod>2026-07-27T01:31:31.013Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-26</loc><lastmod>2026-07-26T01:35:04.191Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-25</loc><lastmod>2026-07-25T01:37:13.400Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-24</loc><lastmod>2026-07-24T01:43:20.073Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-23</loc><lastmod>2026-07-23T01:53:48.963Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-22</loc><lastmod>2026-07-22T01:43:39.856Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-21</loc><lastmod>2026-07-21T01:49:27.977Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-20</loc><lastmod>2026-07-19T15:56:38.117Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-17</loc><lastmod>2026-07-19T17:18:55.989Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-09</loc><lastmod>2026-07-19T17:18:55.988Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-08</loc><lastmod>2026-07-19T17:18:55.989Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-06-19</loc><lastmod>2026-07-19T17:18:55.984Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/weekly/2026-W31</loc></url>
   <url><loc>https://news.vetmanlab.com/weekly/2026-W30</loc></url>
   <url><loc>https://news.vetmanlab.com/weekly/2026-W29</loc></url>
@@ -25,141 +24,78 @@
   <url><loc>https://news.vetmanlab.com/privacy</loc></url>
   <url><loc>https://news.vetmanlab.com/terms</loc></url>
   <url><loc>https://news.vetmanlab.com/about</loc></url>
-  <url><loc>https://news.vetmanlab.com/topic/</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/archive/</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/sources/</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/영양-비만</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/행동</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/감염-백신</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/마취-통증</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/피부-귀</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/종양</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/신장-비뇨</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/항생제-내성</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/안과</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/정형-관절</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/신경</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/내분비</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/응급-중환자</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/치과</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/심장</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/topic/병원경영</loc><lastmod>2026-07-29T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_5ef792dba5c1c590</loc><lastmod>2026-07-28T15:39:09.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/archive/</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/sources/</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/영양-비만</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/행동</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/감염-백신</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/마취-통증</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/피부-귀</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/종양</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/신장-비뇨</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/항생제-내성</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/안과</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/정형-관절</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/신경</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/내분비</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/치과</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/심장</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/topic/병원경영</loc><lastmod>2026-07-29T01:28:00.508Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_e174695d8cae4128</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_20469be4391ba0b5</loc><lastmod>2026-07-27T09:54:05.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_714583787982c8de</loc><lastmod>2026-07-28T15:16:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_b57ff7397629a2d4</loc><lastmod>2026-07-27T15:54:07.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_5a9fbdf10a1f09c8</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_6ce376c377ed20e8</loc><lastmod>2026-07-26T07:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_0dd20409706debd4</loc><lastmod>2026-07-28T13:01:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_a501789c4aa37005</loc><lastmod>2026-07-28T14:20:52.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_fcbd7aa64148ba95</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_8a4f25e0108529ad</loc><lastmod>2026-07-27T13:48:38.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_5f4a47374d84fda1</loc><lastmod>2026-07-27T22:04:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_687b4b98c979ad9f</loc><lastmod>2026-07-28T16:58:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_98a932034c9ef0cd</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_21e812160281fc5c</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_fb6f7d5f583a1c58</loc><lastmod>2026-07-27T09:00:44.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_5bbf94b7102ede00</loc><lastmod>2026-07-27T20:06:28.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_7b21f73b951c77b0</loc><lastmod>2026-07-27T21:56:22.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_494f97a9462855cc</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_4461255a1cb71932</loc><lastmod>2026-07-27T20:09:43.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_99ac2c6829247bca</loc><lastmod>2026-07-27T13:09:47.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_16e467c3205dbffa</loc><lastmod>2026-07-27T14:46:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_31506b8fe2022df6</loc><lastmod>2026-07-27T15:03:25.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_d7058b04312fa69b</loc><lastmod>2026-07-27T14:23:39.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_e512900435561c51</loc><lastmod>2026-07-27T10:00:23.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_8cb1cced241aa789</loc><lastmod>2026-07-27T12:01:58.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_809421549d128e9e</loc><lastmod>2026-07-27T09:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_d3bfda3b23b4ffbb</loc><lastmod>2026-07-27T16:55:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_5b910126229a3632</loc><lastmod>2026-07-27T18:55:10.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_8ba43de9ac425b0f</loc><lastmod>2026-07-26T02:20:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_a4deff1b3d5e111c</loc><lastmod>2026-07-27T01:30:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_ac6c719fda72e663</loc><lastmod>2026-07-27T12:29:31.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_5e7c4dedbecefc8f</loc><lastmod>2026-07-27T15:54:01.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_2688f13fc6d2660b</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_2ec0c68fded89d00</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_e29143e61f54ae8d</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_237a0fa7f626d219</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_b1565da63f8497f3</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_0074ee65a7214423</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_fdca693310cedee2</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_122239e469ae8bb6</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_a7b57667e01fa858</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_c4f23daf8340112a</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_42e7c8802cc8c51c</loc><lastmod>2026-07-23T14:47:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_4238df015207f473</loc><lastmod>2026-07-24T16:38:30.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_1521d654a62580a6</loc><lastmod>2026-07-24T20:38:00.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_592f1d8e702ec6a0</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_db3e142ba9f0be9f</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_cb5546d9e248b911</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_8d57dea9ecebdac6</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_a5b554217652df94</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_04dcac6513613a5d</loc><lastmod>2026-07-25T09:49:10.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_a8c8d0ced9731d44</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_6082eb09e4c7fb01</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_97407f7b28526af0</loc><lastmod>2026-07-24T10:00:30.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_6b3c3101574c9e89</loc><lastmod>2026-07-24T13:05:18.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_63895fdbcd0da13c</loc><lastmod>2026-07-23T18:30:13.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_97407f7b28526af0</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_9996059839065d8b</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_5817bc9f0a0c5732</loc><lastmod>2026-07-24T08:02:47.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_baad3fc22a24094a</loc><lastmod>2026-07-24T19:42:00.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_5c1783822aafadb2</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_2458364d7ea09d4c</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_c3cdce99920a1017</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_8d4b6dd70a1c07e5</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_4ddbe75b581f6b93</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_2b0fbe31bd7499f6</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_06ce49c95607933d</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_cc752d4547496da4</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_717de352ac7865a6</loc><lastmod>2026-07-24T00:46:03.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_717de352ac7865a6</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_1326c67ebc8d46fe</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_103ba30adfca986c</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_9ed50c819180f566</loc><lastmod>2026-07-21T04:59:22.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_67badcee51a08493</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_494886c6f4b5b089</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_6d2bb92c68fd6eef</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_710e69cc91d80d88</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_61b9a23dba93f6a4</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_561202055a32f9a2</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_eca5928ac0fbd841</loc><lastmod>2026-07-22T16:26:51.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/v1_20a9351a0caea64a</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_94e3799cebd31d4b</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/v1_0acbd4601cde5df9</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_d1fbaef3e76d80d3</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_1-개의-아토피-피부염-JAK-억제제-치료-최신-관점</loc><lastmod>2026-07-24T11:30:08.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_4-치료식-선택-도우미-도구-2600명-이상-수의사-사용-중</loc><lastmod>2026-07-23T22:40:11.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_5-개-열치료-이-6가지-상황에-효과적</loc><lastmod>2026-07-23T13:00:16.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_8-개의-음식-중독-위험-예상치-못한-25가지-식품</loc><lastmod>2026-07-24T15:07:22.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_9-고양이-삶의-질-평가-도구-등장</loc><lastmod>2026-07-22T15:41:50.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_10-Vet-Candy-동물-의료-서비스-품질-보장-정책-발표</loc><lastmod>2026-07-24T01:52:35.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_12-미국-Galveston-벼룩-매개-티푸스-재출현-연구의-중심지로</loc><lastmod>2026-07-23T14:21:02.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_13-반려동물-구강건강-영양학-근본부터-개선하는-영양제품-개발동향</loc><lastmod>2026-07-23T12:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_14-힐스-글로벌-심포지엄-피부장-건강-영양-전략-논의</loc><lastmod>2026-07-20T22:14:46.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_15-말-관절경-시술의-탄소-발자국-연구-운반과-소모품이-주요-배출원</loc><lastmod>2026-07-23T19:19:39.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-25_1-개의-아토피-피부염-JAK-억제제-치료-최신-관점</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-25_4-치료식-선택-도우미-도구-2600명-이상-수의사-사용-중</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-25_15-말-관절경-시술의-탄소-발자국-연구-운반과-소모품이-주요-배출원</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-25_17-쥐-낙관적-편향의-traitstate-차원-구분-연구</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-25_19-환경-스트레스와-종마-불임의-분자-기전</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-25_20-개의-고등급-수막내-희소돌기아교종-2년간-비정상적으로-느린-진행</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-25_21-개-두개골-골화성-섬유종의-영상-소견-및-수술방사선-치료-사례</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-25_22-개의-진행성-치주염에서-특이적으로-증가하는-세균과-엑소솜-치료-가능성</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-25_23-개-각막-손상에-대한-HA-기반-광경화-접착제-적용-사례</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_24-개-인슐린종-수술-후-영양-치료로-혈당-개선</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_25-고양이-신장-혈관육종에-인한-내장-동정맥류-1례</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-25_26-개-경추-정맥총-이상에-따른-만성-통증-초음파-유도-코르티코스테로이드-주</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-25_27-말-경추-추간공의-해부학적-특성-규명</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_1-소동물-종양-조기-발견-천자흡인검사가-답이다</loc><lastmod>2026-07-23T11:31:43.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_2-캔-카운티-애완동물-광견병-예방접종-효과-저하-가능성-발표</loc><lastmod>2026-07-23T19:41:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_3-미국-콜로라도에-고양이-전용-동물병원-개원-진료-공백-해소-도전</loc><lastmod>2026-07-21T19:15:55.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-24_1-소동물-종양-조기-발견-천자흡인검사가-답이다</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-24_3-미국-콜로라도에-고양이-전용-동물병원-개원-진료-공백-해소-도전</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-24_4-염소백시균-불활화-백신-돼지-살모넬라-choleraesuis-감염-예방</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_5-개-Taurine-영양학-심장대사질환-예방-위한-최신-지향</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_6-신대륙-파리유충-미국-확산-동물병원-경고</loc><lastmod>2026-07-21T07:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_7-AAVSB-미국-수의진료보조-자격시험-개발-담당</loc><lastmod>2026-07-22T20:57:59.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_8-동물병원-진료비-상승-이유와-대처법</loc><lastmod>2026-07-23T09:07:42.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-24_10-구제역-바이러스-3D-단백질이-네크로프토시스-유도-RIPK3-경로-활성화</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_12-수의대-커뮤니티-메디슨-지역에서-동물과-사람-만나</loc><lastmod>2026-07-23T19:33:15.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_13-개-정자-선별용-마이크로플루idik-시스템-실용성-평가</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-24_14-임신-말기-암컷-개에서-아디슨-위기로-오인된-응급-상황</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-24_15-고양이-요로감염-원인균의-다제내성-실태</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-24_16-고양이-의인성-고혈칼슘증-및-급성-신장-손상-혈액투석으로-성공적-치료</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-24_17-건강-고양이에서-베agliflozin-약동학-경구-생체이용률-78로-하루</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-24_18-GnRH-차단Vaccine-Improvac-고양이-피임-효과-확인</loc></url>
@@ -168,112 +104,58 @@
   <url><loc>https://news.vetmanlab.com/article/2026-07-24_21-프렌치불도그-신장대동맥-비율-초음파-기준치-확립</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-24_22-디오드-레이저로-치료한-고양이-눈꺼풀-아포크린-낭포선종증-4례</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-24_23-개-안면신경장애의-안과적-특징중두개견에서-각막염-더-빈번</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_1-수의-수술실-효율화-입체적-배치-전략</loc><lastmod>2026-07-22T17:31:08.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_2-고양이-만성신장질환-장내-대사물질-변화와-연관-발견</loc><lastmod>2026-07-22T12:13:17.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-23_1-수의-수술실-효율화-입체적-배치-전략</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-23_2-고양이-만성신장질환-장내-대사물질-변화와-연관-발견</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-23_3-개와-고양이-암-영양학의-단백질-권장량-수정</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_5-수가-진료실-AI-필기-도구-도입이-필요한-이유</loc><lastmod>2026-07-22T18:50:55.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_6-수의사-고객-준수율-높이는-5가지-방법</loc><lastmod>2026-07-22T17:00:14.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_7-수의-인력-분석-플랫폼-출시-리프스태핑-성과-데이터로-확인한다</loc><lastmod>2026-07-22T12:58:06.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_8-개-고양이-영양-검사-미량영양소-결핍-확인-가능</loc><lastmod>2026-07-22T13:00:23.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_9-개에게-유해한-5가지-음식-주의가-필요한-이유</loc><lastmod>2026-07-21T02:48:59.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_10-비영리단체-외과-멘토링-센터-개소로-수의사-부족-해결-도전</loc><lastmod>2026-07-21T10:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_11-소형-개고양이-위한-비시멘트-고관절-치환술-도입</loc><lastmod>2026-07-22T11:15:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_12-개-암-진단-후-동물병원-강도-사건-직원-위협하며-강아지-도난</loc><lastmod>2026-07-21T11:44:55.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-23_5-수가-진료실-AI-필기-도구-도입이-필요한-이유</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-23_6-수의사-고객-준수율-높이는-5가지-방법</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-23_7-수의-인력-분석-플랫폼-출시-리프스태핑-성과-데이터로-확인한다</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-23_8-개-고양이-영양-검사-미량영양소-결핍-확인-가능</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-23_14-어린-가축-건강-관리의-새로운-추세-뽕나무잎-플라보노이드-항생제-대안으로</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_15-새러소타-군-광견병-발생공중보건-경보-발령</loc><lastmod>2026-07-22T18:34:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_16-폴크-카운티-광견병-확인에-무료-예방접종-및-마이크로칩-시술EVENT-개</loc><lastmod>2026-07-22T22:39:21.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_17-버지니아텍-인터랙티브-3D-모델로-수의학-교육-확대</loc><lastmod>2026-07-22T15:45:56.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_18-MSU-수의사-아프리카-페인티드-도그-긴급-수술-성공</loc><lastmod>2026-07-22T15:16:29.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-23_19-고양이-비대성-심근증에서-심혈관-생체표지자의-임상적-유용성-10년-간-체</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_20-개의-흉부-종양-호흡에-따라-3차원-위치-변화-관찰</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-23_21-개에서-단두증과-수면호흡장애-염증-반응의-연관성-규명</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_22-개-폐초음파-B선-탐지를-위한-딥러닝-모델의-검증</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-23_23-반려동물-뇌장-건강axis-미생물군-기반-신경행동장애-치료-전략</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-23_24-전산기법으로-발견한-고양이-심장병-후보-치료제</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-23_25-개-호중구성-염증성-장염-27례-임상-분석</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-23_27-고양이-비종양-CT-소견-악성과-유사한-종양양-성장</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-23_29-재발성-요도-폐쇄-수고양이-초기-발병보다-질소혈증-발생-위험-낮아</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_1-미국-보호자-46-비용-문제로-수의료-지연-경험</loc><lastmod>2026-07-21T19:00:44.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_2-응급수의과-전문수의사의-중환자관리-QA</loc><lastmod>2026-07-21T18:39:13.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-22_3-개-척수-수막염에서-발견된-진균성-농피전증-1례</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_4-심장사상충-새로운주로-확산-개고양이-위험-증가-경고</loc><lastmod>2026-07-21T01:23:48.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_6-나이지리아-광역수도-광견병-사망자-발생에-전문가들-촉구</loc><lastmod>2026-07-19T06:15:23.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_7-뉴욕주-광견병-위험-증가애완동물과-가족을-지키는-예방-방법</loc><lastmod>2026-07-21T17:33:52.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_9-개-장-Microbiome-연구-새-시대-열었다</loc><lastmod>2026-07-21T13:00:44.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_10-개와-고양이-프로바이오틱-기능성-사료-최신-연구-동향</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_11-개-귀염염-Pseudomonas-aeruginosa의-항균제-감수성-및</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_12-퍼듀수의대-학생-정원-50-확대-성장통-예상</loc><lastmod>2026-07-19T21:30:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_13-미국-윈체스터서-박쥐-광견병-양성-확인주거지역-경고</loc><lastmod>2026-07-21T15:45:15.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-22_9-개-장-Microbiome-연구-새-시대-열었다</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-22_14-인도-일차-진료수의사의-개-특발성-간질-관리-실태-조사</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_15-오하이오-주하원-수의사-인력-부족-해결-법안-통과</loc><lastmod>2026-07-20T17:13:53.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_17-콜로라도수의사-약물음주-위반으로-면허-포기</loc><lastmod>2026-07-21T22:29:36.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_18-개-역사세포육종-독립적-클론-원인-최대-45</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-22_19-강아지-유방종양-진단-생물표지자로서의-혈청-TP53-자가항체</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_20-고양이-안와-및-폐-임파종의-제한-확산-소견-첫-보고</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-22_21-고양이-전십자-인대-파열-동반-무릎뼈-탈구의-신규-절골술-치료</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-22_22-커큐민-고양이-만성콩팥병에서-신장-보호-효과-확인</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-22_23-개소-레프토스피라증-진단용-재조합-단백질-기반-검사법-개발</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_24-개-뇌과립세포종-최초-SRT-치료-사례-종양-용적-568-감소</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-22_25-수중-트레드밀-개-추간판-수술-후-보행-회복-단축</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_26-구강-감염에서-유래한-강아지의-경막하-농양-1예</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-22_27-개-무릎수술에서-FLAGS-차단-운동마비-감소-확인</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-22_28-개-아토피-피부염에서-T-세포의-피부-침윤과-IL17-발현</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_1-고양이-소화선-종양-연관-급성-근무력증-1례</loc><lastmod>2026-07-20T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_2-AI-혈액도말-분석-개-IMHA-진단-시간-획기적-단축</loc><lastmod>2026-07-20T04:00:24.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_1-고양이-소화선-종양-연관-급성-근무력증-1례</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_2-AI-혈액도말-분석-개-IMHA-진단-시간-획기적-단축</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_3-개-발치-후-생체재료가-치조골-높이를-보존한다</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_4-개고양이-refractory-감염각막염에서-Rose-Bengal-광동력치</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_5-개의-가스트린종-반복-수술과-혈청-가스트린-모니터링으로-장기-생존-사례</loc><lastmod>2026-07-20T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_6-개의-안와-종양-4례-분석-수술적-치료와-보존적-치료-비교</loc><lastmod>2026-07-20T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_7-고양이-갑상선기능항진증-치료-중-혈구-수치로-TT4-추적-가능</loc><lastmod>2026-07-18T00:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_9-개고양이-자동바늘생검site-미봉합시-장누출-위험-평가</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_5-개의-가스트린종-반복-수술과-혈청-가스트린-모니터링으로-장기-생존-사례</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_7-고양이-갑상선기능항진증-치료-중-혈구-수치로-TT4-추적-가능</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_10-개-직장-근수막외-형질세포종으로-간-전이-사례-멜팔란-치료-프로토콜-수정</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_11-강아지-사회화-평생의-자신감은-어린-시절부터</loc><lastmod>2026-07-20T20:55:23.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_12-똑똑한-사회화-훈련으로-자신감-있는-강아지-키우기</loc><lastmod>2026-07-18T23:37:40.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_13-탄자니아-농촌에서-지역사회-기반-개-광견병-예방접종-실행-평가</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_14-고양이-호산구성-각막염-약물-종류에-따른-치료-성적-비교</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_15-말-MEED와-개-골종양-원인-규명-단서를-발견한-4학년-수의학생들</loc><lastmod>2026-07-20T12:00:04.000Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_16-개-췌장-초음파-연령과-체지방이-영상에-미치는-영향</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_17-뼈대-학습-재구성-MRI-개-무릎-관절-영상-화질-향상</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_18-호주-동물-입양률-40-급락주거-불안정-주요-원인</loc><lastmod>2026-07-19T23:34:58.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_20-개-전십자-인대-파열수술-TPLO와-TTA-관절염-진행은-어떤-것이-더</loc><lastmod>2026-07-09T23:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_21-개-무릎-수술-통증관리-신경마비-차단-대-경막외-마취-어떤-게-더-효과적</loc><lastmod>2026-06-08T23:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_22-캔버라-수의사-경고레고백합-섭취-급증-보험금-1천300만원-달해</loc><lastmod>2026-07-21T01:17:03.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_18-호주-동물-입양률-40-급락주거-불안정-주요-원인</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_20-개-전십자-인대-파열수술-TPLO와-TTA-관절염-진행은-어떤-것이-더</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_21-개-무릎-수술-통증관리-신경마비-차단-대-경막외-마취-어떤-게-더-효과적</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_23-슬로베니아체코-고양이-톡소플라즈마FIV-공동감염율-48-임상증상-발생률</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_24-개-유방암-수술에서-CBDTHC-유지류-유분의-진정-및-마약절감-효과</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_25-개의-안구-위협-질환에서-자기-체막-이식의-임상적-유용성</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_26-애완동물에서-발견된-인류기생-Trichophyton-tonsurans-2</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_27-개-복지-평가-도구-AWAG-임상-의사결정에-유용</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_28-카발리에-킹-찰스-스파니엘의-무릎뼈-탈구-유병률과-위험인자</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_29-수의사가-강조하는-고양이-건강-관리의-7가지-핵심</loc><lastmod>2026-07-19T21:12:12.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_30-수의-원격-진료와-디지털-접근성-확대</loc><lastmod>2026-07-19T19:16:55.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_32-레드팜유와-천연추출물-복합-펫샴푸의-항균항진균항염-효과-연구</loc><lastmod>2026-07-20T00:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_32-레드팜유와-천연추출물-복합-펫샴푸의-항균항진균항염-효과-연구</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-21_33-소-Liver-Abscess-초기-항생제-투여가-장기-위험에-영향</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_34-수의학의-새로운-접근법-환자-전체를-고려하는-상황적-케어</loc><lastmod>2026-07-05T23:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_35-고양이-비침습-혈압-측정-침습-측정과-얼마나-일치할까</loc><lastmod>2026-06-23T23:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_36-BioCraft-세포배양-사료-성분-안전문서-공개수출-규제-대응-가속화</loc><lastmod>2026-07-20T12:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_37-반려동물-보험-병원비-절약에-얼마나-효과적일까</loc><lastmod>2026-07-21T05:01:01.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_38-반려동물-보험의-진짜-가치-진료비-부담-줄이기</loc><lastmod>2026-07-19T20:55:01.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-21_39-콜로라도-고양이전용-수의원-Aurora에-신규-개원</loc><lastmod>2026-07-20T21:59:53.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_1-고령-동물-관절염-통증-약물비약물-복합-관리의-실제</loc><lastmod>2026-07-10T07:00:24.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_2-가바펜틴트라조돈-말고-진정-프로토콜이-안-먹힐-때</loc><lastmod>2026-07-16T04:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_3-중고도-공포불안-강아지의-수의과-진료실-대처법</loc><lastmod>2026-07-17T10:00:56.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_4-고양이-당뇨병-관리의-새로운-선택지-SGLT2-억제제</loc><lastmod>2026-07-10T10:00:08.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_5-개의-관절염-치료적-운동으로-관절-가동성과-근육량-개선</loc><lastmod>2026-07-17T18:00:56.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_6-애완동물-병원-방문-시-AI가-실제로-하는-일-AVMA-회장-인터뷰</loc><lastmod>2026-07-18T21:14:56.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_7-수의-진료에서-수술-후-호흡-억제-및-폐합병증-문헌-고찰</loc><lastmod>2026-07-17T16:58:28.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_8-개에서-쿼럼-센싱-조절제-세균-신호-차단을-통한-장-건강-관리</loc><lastmod>2026-07-16T14:30:09.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_9-노령개-인지기능장애-영양보충제로-관리한다</loc><lastmod>2026-07-15T19:00:47.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_10-개-microbiome-조절로-항생제-의존도-낮추기</loc><lastmod>2026-07-10T13:00:59.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_11-노령견-전지-보폭-감소-치매-조기-경고-신호-가능성</loc><lastmod>2026-07-12T22:43:13.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_12-동물-의학에서-DNA-기반-기생충-검사-도입-확대</loc><lastmod>2026-07-17T11:51:27.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_13-푸르듀-수의대-수의사-부족-해결-위한-확장-계획-발표</loc><lastmod>2026-07-17T18:49:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_14-반려동물-비만-치료제-개발-진행-중-하반기-출시-예정</loc><lastmod>2026-07-18T05:00:02.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_15-야생동물부터-애완동물까지-신뢰-기반-의료의-공통-원칙</loc><lastmod>2026-07-13T17:49:46.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_16-반려동물-Enrichment의-모든-것-5가지-범주로-이해하는-동물-복지</loc><lastmod>2026-07-12T22:42:38.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_17-수의학-영역-항생제-적정-사용-가이드라인-업데이트</loc><lastmod>2026-07-17T11:51:27.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_18-개-관절염-약물-다조콕스-수술-전-진통제로-영국서-신규-허가</loc><lastmod>2026-07-17T11:51:27.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_19-반려동물-보험-수의사가-말하는-가입-전-필수-체크포인트</loc><lastmod>2026-07-17T21:58:20.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_20-개-벼룩진드기-예방-사계절이-중요</loc><lastmod>2026-07-18T19:07:18.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_34-수의학의-새로운-접근법-환자-전체를-고려하는-상황적-케어</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-21_35-고양이-비침습-혈압-측정-침습-측정과-얼마나-일치할까</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-20_1-고령-동물-관절염-통증-약물비약물-복합-관리의-실제</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-20_3-중고도-공포불안-강아지의-수의과-진료실-대처법</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-20_4-고양이-당뇨병-관리의-새로운-선택지-SGLT2-억제제</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-20_5-개의-관절염-치료적-운동으로-관절-가동성과-근육량-개선</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-20_8-개에서-쿼럼-센싱-조절제-세균-신호-차단을-통한-장-건강-관리</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-20_9-노령개-인지기능장애-영양보충제로-관리한다</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-20_10-개-microbiome-조절로-항생제-의존도-낮추기</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-20_11-노령견-전지-보폭-감소-치매-조기-경고-신호-가능성</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-20_21-고양이-요로결석의-비수술적-파쇄-치료-가능성</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-20_22-수의대병원-개-피부염-다제내성균-유병률-연구</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-20_23-고양이-전염성-복막염-치료용-GS441524-경구현탁액-개발-및-물리화학</loc></url>
@@ -284,65 +166,50 @@
   <url><loc>https://news.vetmanlab.com/article/2026-07-20_29-개의-만성-장염-주인의-돌봄-부담감과-삶의-질에-미치는-영향</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-20_30-보더테리어의-식이-반응성-전신-호산구증가-1례</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-20_31-개-췌장-초음파-검사-관찰자-간-결과-차이-커</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-20_32-강아지고양이-기생충-진화하는-위협을-대비하라</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-20_33-저장용-MRI-개-뇌-영상에서-기존-15T와-유사한-해부학적-시각화-가능</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-20_34-개고양이-흉부-Xray에서-인공지능으로-폐렴-진단하기</loc></url>
   <url><loc>https://news.vetmanlab.com/article/2026-07-20_35-경미한-심근병증-소변관-우회술-예후에-영향-없어</loc></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-17_1-웨일스-동물병원-통증-제로-인증-획득</loc><lastmod>2026-07-17T11:51:27.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-17_2-플루니키신-송아지-플루오로퀴놀론-약물동태에-미치는-영향</loc><lastmod>2026-07-17T11:51:27.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-17_3-로미피딘이-말-인두-기능-등급에-미치는-영향-연구</loc><lastmod>2026-07-17T11:51:27.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-17_4-수의사의-애완동물-말하기-보호자-재방문-의향-높여</loc><lastmod>2026-07-17T11:51:27.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-17_5-벨기에-고양이-사료-급이량-권장-에너지-초과-가능</loc><lastmod>2026-07-17T11:51:27.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-17_6-전자건강기록으로-가축-질병-감시한다영국-연구의-시사점</loc><lastmod>2026-07-17T11:51:27.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-15_1-레몬-프로스트-게코-자연-종양-연구-모델로-급부상</loc><lastmod>2026-07-15T13:47:30.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-12_1-개구충-위험-북상-예방-미흡한-반려동물-증가-우려</loc><lastmod>2026-07-11T18:11:45.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-09_1-개-경추-추간판-질환-통합-재활치료-사례-외과와-한의학-협업의-가능성</loc><lastmod>2026-07-09T13:00:14.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-09_2-개고양이-치주낭-치료제를-위한-이식재-활용-가이드</loc><lastmod>2026-07-08T17:59:59.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-09_3-고양이-삶의-질-평가-도구-FelQoL-개발</loc><lastmod>2026-07-08T15:32:50.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-09_4-빈혈-검사-MCHC만으로는-부족하다CHCM의-임상적-가치</loc><lastmod>2026-07-08T18:23:23.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-09_5-수의백신-개발-단계와-근거기반-가이드라인의-현재-동향</loc><lastmod>2026-07-09T11:03:13.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-09_6-원격진료-플랫폼-Dutch의-위험성-수의학적-안전장치-해체-우려</loc><lastmod>2026-07-09T04:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-08_1-수의-AI-필기-도구-사용법과-한계-살펴보기</loc><lastmod>2026-07-07T20:54:21.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-08_2-동물병원-채용-실패-루프를-끊는-9가지-HR-도구</loc><lastmod>2026-07-07T20:49:17.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-08_3-수의사-영양-상담-실제로-얼마나-이루어질까</loc><lastmod>2026-07-07T19:54:45.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-08_4-동물병원-소프트웨어-감사-90분-안에-자가-점검하는-법</loc><lastmod>2026-07-07T20:51:12.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-08_5-24시간-동물병원-개축-시-임상-운영-연속성-유지-사례</loc><lastmod>2026-07-08T14:52:17.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-08_6-개방형-API가-동물-병원-소프트웨어의-미래를-바꾼다</loc><lastmod>2026-07-07T20:56:23.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-08_7-동물병원-수익성-강화-위한-4가지-핵심-KPI-관리법</loc><lastmod>2026-07-07T20:48:31.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-08_8-수의-리더십의-새로운-시대-기업-동물병원-운영의-핵심</loc><lastmod>2026-07-07T20:42:52.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-07_1-고양이-스트레스성-비뇨기-질환-관리-통합치료-7가지-접근법</loc><lastmod>2026-07-07T14:30:07.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-06_1-수중-운동으로-관절염-개-낮추기-운동-어려웠던-강아지-9kg-감량</loc><lastmod>2026-07-05T22:52:43.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-03_1-이글-병원-방문-원인-5가지-가장-흔한-관리-실수</loc><lastmod>2026-07-03T10:00:25.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-03_2-미국-여름철-반려동물-클레임-증가-열사병-266독사-물림-145-상승</loc><lastmod>2026-07-02T19:59:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-02_1-폭죽-공포증-전화-상담-수의사가-지금-바로-확인해야-할-대응법</loc><lastmod>2026-07-02T04:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-02_2-동물병원-PIMS-제대로-활용하고-계신가요</loc><lastmod>2026-07-01T17:26:23.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-01_1-개-관절염-치료-새로운-선택지관절-내-방사성동위원소-주사</loc><lastmod>2026-06-30T20:21:56.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-01_2-개-자가면역-피부질환에-사용되는-허브-3가지</loc><lastmod>2026-07-01T13:00:34.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-07-01_3-수의-의료에-사회복지사-도입-호주-18개월-Pilot-진행</loc><lastmod>2026-06-30T23:13:35.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-30_1-개-전십자-인대-질환에서-ADSC-Enriched-Secretome의-T</loc><lastmod>2026-06-30T13:00:20.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-29_1-수의사-커리어-경로의-새로운-가능성</loc><lastmod>2026-06-29T03:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-29_2-개고양이-유방종양-식물-화학물질-연구-동향</loc><lastmod>2026-06-29T13:00:19.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-26_1-고양이-배설-장애-수의사를-위한-실용적-접근법</loc><lastmod>2026-06-26T10:00:55.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-26_3-말-정맥-카테터-삽입-완벽-가이드-합병증-예방을-위한-실천적-단계</loc><lastmod>2026-06-25T19:03:16.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-25_1-중증-외상-고양이-환자-안정화가-먼저입니다</loc><lastmod>2026-06-25T05:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-23_1-고양이-식이-칼륨-보충-요로결석-위험-낮추는-효과-확인</loc><lastmod>2026-06-23T13:00:49.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-23_2-H5N1-소-유선에서만-심한-감염-보이는-이유-규명</loc><lastmod>2026-06-23T14:31:51.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-22_1-개와-고양이-소음-민감증-삼중-접근법으로-관리하기</loc><lastmod>2026-06-22T13:00:25.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-19_1-고양이-만성질환에서-장유래-독소-관리와-영양-전략</loc><lastmod>2026-06-18T18:54:55.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-19_2-개의-단백질-손실-장염-조기-진단이-생사를-가른다</loc><lastmod>2026-06-18T18:54:09.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-19_3-고양이-배변-문제-예방은-대화에서-시작된다</loc><lastmod>2026-06-19T10:00:33.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-19_4-개의당뇨병-관리에서-연속혈당측정기-활용-최신-동향</loc><lastmod>2026-06-18T18:55:30.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-19_5-개-폐충감염의-진단과-치료-임상에서-반드시-고려해야-할-원인</loc><lastmod>2026-06-18T18:55:19.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-19_6-통조림-Dressing에서-생명-구하는-해독제로-정맥-내-지방-유제-치료</loc><lastmod>2026-06-18T18:56:10.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-19_7-애완동물-환각버섯-중독-증가수의사-주목-필요</loc><lastmod>2026-06-18T18:55:42.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-17_1-신입수의사경력-수의기사-협업-가이드</loc><lastmod>2026-06-16T18:13:32.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-12_1-개고양이-기관튜브-선택과-삽관-깊이-관리-핵심</loc><lastmod>2026-06-12T10:00:36.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-11_1-수의사가-사용해선-안-되는-비판적-표현-3가지</loc><lastmod>2026-06-11T05:00:00.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-11_2-미국-태평양-북서부에서-폐활성-조충-발견너구리-37-감염</loc><lastmod>2026-06-11T13:31:42.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-05_1-기관내관-풍선-적절한-팽창-왜-중요한가</loc><lastmod>2026-06-05T10:00:26.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-05_2-수의학에서-일반수의의-역할-전문의보다-중요하다</loc><lastmod>2026-06-04T19:38:26.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-06-04_1-수의학에서-듣는-나쁜-조언-사례-공개</loc><lastmod>2026-06-03T22:10:25.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-05-29_1-수의-PIMS와-AI-워크플로우-병원-운영의-미래</loc><lastmod>2026-05-28T22:51:05.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-05-22_1-수의사-생산성-보상-진짜-문제점은-무엇인가</loc><lastmod>2026-05-21T17:40:39.000Z</lastmod></url>
-  <url><loc>https://news.vetmanlab.com/article/2026-05-21_1-수의-마취에서-우리가-잘못-생각하는-것들</loc><lastmod>2026-05-21T05:00:00.000Z</lastmod></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-17_2-플루니키신-송아지-플루오로퀴놀론-약물동태에-미치는-영향</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-17_3-로미피딘이-말-인두-기능-등급에-미치는-영향-연구</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-17_4-수의사의-애완동물-말하기-보호자-재방문-의향-높여</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-17_6-전자건강기록으로-가축-질병-감시한다영국-연구의-시사점</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-12_1-개구충-위험-북상-예방-미흡한-반려동물-증가-우려</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-09_1-개-경추-추간판-질환-통합-재활치료-사례-외과와-한의학-협업의-가능성</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-09_2-개고양이-치주낭-치료제를-위한-이식재-활용-가이드</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-09_4-빈혈-검사-MCHC만으로는-부족하다CHCM의-임상적-가치</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-09_6-원격진료-플랫폼-Dutch의-위험성-수의학적-안전장치-해체-우려</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-08_1-수의-AI-필기-도구-사용법과-한계-살펴보기</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-08_2-동물병원-채용-실패-루프를-끊는-9가지-HR-도구</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-08_3-수의사-영양-상담-실제로-얼마나-이루어질까</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-08_4-동물병원-소프트웨어-감사-90분-안에-자가-점검하는-법</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-08_5-24시간-동물병원-개축-시-임상-운영-연속성-유지-사례</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-08_8-수의-리더십의-새로운-시대-기업-동물병원-운영의-핵심</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-07_1-고양이-스트레스성-비뇨기-질환-관리-통합치료-7가지-접근법</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-06_1-수중-운동으로-관절염-개-낮추기-운동-어려웠던-강아지-9kg-감량</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-03_2-미국-여름철-반려동물-클레임-증가-열사병-266독사-물림-145-상승</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-02_1-폭죽-공포증-전화-상담-수의사가-지금-바로-확인해야-할-대응법</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-02_2-동물병원-PIMS-제대로-활용하고-계신가요</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-01_1-개-관절염-치료-새로운-선택지관절-내-방사성동위원소-주사</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-01_2-개-자가면역-피부질환에-사용되는-허브-3가지</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-07-01_3-수의-의료에-사회복지사-도입-호주-18개월-Pilot-진행</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-30_1-개-전십자-인대-질환에서-ADSC-Enriched-Secretome의-T</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-29_1-수의사-커리어-경로의-새로운-가능성</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-29_2-개고양이-유방종양-식물-화학물질-연구-동향</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-26_1-고양이-배설-장애-수의사를-위한-실용적-접근법</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-26_3-말-정맥-카테터-삽입-완벽-가이드-합병증-예방을-위한-실천적-단계</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-23_1-고양이-식이-칼륨-보충-요로결석-위험-낮추는-효과-확인</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-23_2-H5N1-소-유선에서만-심한-감염-보이는-이유-규명</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-22_1-개와-고양이-소음-민감증-삼중-접근법으로-관리하기</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-19_1-고양이-만성질환에서-장유래-독소-관리와-영양-전략</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-19_2-개의-단백질-손실-장염-조기-진단이-생사를-가른다</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-19_5-개-폐충감염의-진단과-치료-임상에서-반드시-고려해야-할-원인</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-19_7-애완동물-환각버섯-중독-증가수의사-주목-필요</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-17_1-신입수의사경력-수의기사-협업-가이드</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-12_1-개고양이-기관튜브-선택과-삽관-깊이-관리-핵심</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-11_1-수의사가-사용해선-안-되는-비판적-표현-3가지</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-11_2-미국-태평양-북서부에서-폐활성-조충-발견너구리-37-감염</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-05_1-기관내관-풍선-적절한-팽창-왜-중요한가</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-06-05_2-수의학에서-일반수의의-역할-전문의보다-중요하다</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-05-22_1-수의사-생산성-보상-진짜-문제점은-무엇인가</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/2026-05-21_1-수의-마취에서-우리가-잘못-생각하는-것들</loc></url>
 </urlset>

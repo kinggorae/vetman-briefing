@@ -14,7 +14,7 @@ import { enrichItems } from "./enrich.js";
 import { addStories } from "./gossip.js";
 import { mapPool } from "./pool.js";
 import { addSourceKeys, sourceKeys, stableItemId, titleKey } from "./identity.js";
-import { markQuality, publishQualityIssues } from "./quality.js";
+import { markQuality, normalizeContentTier, publishQualityIssues } from "./quality.js";
 import { removeRepeatedImages } from "./images.js";
 
 const noPapers = process.argv.includes("--no-papers");
@@ -317,7 +317,7 @@ async function main() {
     const before = newItems.length;
     newItems = newItems.filter((it) => {
       if (it.category === "watercooler") return true; // 별도 섹션 — 레이더 대상 아님
-      if (it.tier === "brief") return true; // 브리프 — 짧은 게 정상, 색인 안 함(게이트 예외)
+      if (normalizeContentTier(it) === "brief") return true; // 브리프 — 짧은 게 정상, 색인 안 함(게이트 예외)
       const r = it.radar || {};
       const hasValue = r.clinical || r.owner || r.evidence;
       const len = (it.bodyKo || []).join("").length;
