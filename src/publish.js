@@ -24,11 +24,12 @@ if (!fs.existsSync(draftPath)) {
 const issue = JSON.parse(fs.readFileSync(draftPath, "utf8"));
 const blockers = [];
 for (const [index, item] of (issue.items || []).entries()) {
-  const contract = articleContractIssues(item).filter((issueName) => issueName !== "workflowStatus-missing");
+  const contract = articleContractIssues(item).filter((issueName) => !["workflowStatus-missing", "publishedAt-missing"].includes(issueName));
   const quality = publishQualityIssues(item);
   if (item.workflowStatus !== "approved") blockers.push(`${index + 1}: workflowStatus=${item.workflowStatus || "missing"} (approved 필요)`);
   if (contract.length) blockers.push(`${index + 1}: 계약 위반 ${contract.join(", ")}`);
   if (quality.length) blockers.push(`${index + 1}: 품질 게이트 ${quality.join(", ")}`);
+  if (item.scheduledAt && !Number.isNaN(new Date(item.scheduledAt).getTime()) && new Date(item.scheduledAt).getTime() > Date.now()) blockers.push(`${index + 1}: scheduledAt이 미래입니다 (${item.scheduledAt})`);
 }
 if (blockers.length) {
   console.error("발행이 차단되었습니다. review CLI로 승인한 뒤 다시 시도하세요.");
@@ -36,8 +37,14 @@ if (blockers.length) {
   process.exit(1);
 }
 issue.status = "published";
-issue.publishedAt = new Date().toISOString();
-issue.items = (issue.items || []).map((item) => ({ ...item, workflowStatus: "published" }));
+const publishedNow = new Date().toISOString();
+issue.publishedAt = issue.publishedAt || publishedNow;
+issue.items = (issue.items || []).map((item) => ({
+  ...item,
+  workflowStatus: "published",
+  firstPublishedAt: item.firstPublishedAt || item.publishedAt || publishedNow,
+  publishedAt: item.publishedAt || publishedNow,
+}));
 
 const tempPath = `${finalPath}.tmp-${process.pid}`;
 fs.writeFileSync(tempPath, JSON.stringify(issue, null, 2) + "\n");

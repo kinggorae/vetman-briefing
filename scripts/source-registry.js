@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { fetchArticleMetadata, normalizeSource, safeSourceUrl } from "../src/lib/source-first.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES = path.join(ROOT, "data", "issues");
@@ -21,6 +22,7 @@ function sourceRows() {
   return rows;
 }
 function host(url) { try { return new URL(url).hostname.toLowerCase().replace(/^www\./, ""); } catch { return ""; } }
+function sourceId(label) { return `src-${String(label || "source").normalize("NFKC").toLowerCase().replace(/[^a-z0-9가-힣]+/gi, "-").replace(/^-+|-+$/g, "").slice(0, 56) || crypto.createHash("sha1").update(String(label)).digest("hex").slice(0, 10)}`; }
 function safeArticleUrl(url) { try { const value = new URL(url); return value.protocol === "https:" && !/(?:google\.|search|tag|category|login|subscribe|author)/i.test(`${value.hostname}${value.pathname}`); } catch { return false; } }
 function similarity(a, b) { const left = new Set(String(a || "").toLowerCase().replace(/[^a-z0-9가-힣]+/gi, " ").split(/\s+/).filter((x) => x.length > 1)); const right = new Set(String(b || "").toLowerCase().replace(/[^a-z0-9가-힣]+/gi, " ").split(/\s+/).filter((x) => x.length > 1)); if (!left.size || !right.size) return 0; return [...left].filter((x) => right.has(x)).length / Math.max(left.size, right.size); }
 function buildRegistry() {
@@ -31,7 +33,20 @@ function buildRegistry() {
     const configured = mapping[label] || {};
     const directHosts = [...new Set(rows.filter(({ item }) => item.sourceLabel === label).map(({ item }) => item.sourceUrlRaw || item.sourceUrl).filter((url) => url && !RELAY.test(url)).map(host).filter((value) => value && !NON_PUBLISHER_HOSTS.has(value)))];
     const domains = [...new Set([...(configured.domains || []), ...directHosts])];
-    return { label, officialName: label, domains, rssUrls: configured.feeds || [], archiveUrl: configured.archiveUrl || null, searchUrlTemplate: configured.searchUrlTemplate || null, country: configured.country || null, language: configured.language || "en", sourceType: configured.sourceType || "publisher", active: Boolean(domains.length), lastCheckedAt: configured.lastCheckedAt || null, evidence: [Object.prototype.hasOwnProperty.call(mapping, label) ? "data/source-publishers.json" : "existing-direct-source-url"] };
+    const rssUrls = configured.rssUrls || configured.feeds || [];
+    const enabled = configured.enabled ?? configured.active ?? Boolean(domains.length);
+    return {
+      id: configured.id || sourceId(label), label, officialName: configured.officialName || label,
+      domains, officialDomains: domains, rssUrls, atomUrls: configured.atomUrls || [], sitemapUrls: configured.sitemapUrls || [],
+      fetchStrategy: configured.fetchStrategy || (rssUrls.length ? "rss" : "manual"),
+      archiveUrl: configured.archiveUrl || null, searchUrlTemplate: configured.searchUrlTemplate || null,
+      country: configured.country || null, language: configured.language || "en", timezone: configured.timezone || "UTC",
+      sourceType: configured.sourceType || "publisher", rateLimitMs: Number(configured.rateLimitMs) || 1000,
+      timeoutMs: Number(configured.timeoutMs) || 12000, enabled: Boolean(enabled), priority: Number(configured.priority) || (enabled ? 50 : 0),
+      active: Boolean(enabled), lastSuccessAt: configured.lastSuccessAt || null, lastFailureAt: configured.lastFailureAt || null,
+      consecutiveFailures: Number(configured.consecutiveFailures) || 0, healthStatus: configured.healthStatus || (enabled ? "unknown" : "disabled"),
+      notes: configured.notes || null, evidence: configured.evidence || [Object.prototype.hasOwnProperty.call(mapping, label) ? "data/source-publishers.json" : "existing-direct-source-url"],
+    };
   });
 }
 function stats() {
@@ -54,7 +69,7 @@ function show(id) {
   if (!row) throw new Error(`출처 검수 항목을 찾을 수 없습니다: ${id}`);
   console.log(JSON.stringify(row, null, 2));
 }
-function decision(id, url, status, apply) {
+async function decision(id, url, status, apply) {
   const decisionsPath = path.join(ROOT, "data", "source-resolution-decisions.json");
   const decisions = readJson(decisionsPath, {});
   if (status === "manually-approved") {
@@ -62,7 +77,14 @@ function decision(id, url, status, apply) {
     const row = (report.rows || []).find((candidate) => candidate.articleId === id);
     const source = (readJson(REGISTRY, { sources: [] }).sources || []).find((candidate) => candidate.label === row?.sourceLabel);
     if (!row || !safeArticleUrl(url) || !source?.domains?.some((domain) => host(url) === domain || host(url).endsWith(`.${domain}`))) throw new Error("승인 URL은 HTTPS 개별 기사이고 해당 매체의 등록 도메인이어야 합니다.");
-    if (similarity(row.sourceTitle || row.titleKo, row.candidates?.[0]?.title || row.titleKo) < 0.62 && !process.argv.includes("--force-reviewed")) throw new Error("후보 제목 근거가 부족합니다. 원문을 사람이 확인한 뒤 --force-reviewed를 명시하세요.");
+    const metadata = await fetchArticleMetadata(normalizeSource(source), url, { useCache: false });
+    const canonical = metadata.canonicalUrl && safeSourceUrl(metadata.canonicalUrl) ? metadata.canonicalUrl : null;
+    if (!canonical || host(canonical) !== host(url)) throw new Error("원문 canonical을 확인하지 못했거나 승인 URL과 다른 도메인입니다.");
+    if (similarity(row.sourceTitle || row.titleKo, metadata.title || "") < 0.75) throw new Error("원문 제목 유사도가 부족합니다. 제목이 일치하는 공식 개별 기사만 승인할 수 있습니다.");
+    if (row.publishedAt && metadata.publishedAt) {
+      const delta = Math.abs(new Date(row.publishedAt).getTime() - new Date(metadata.publishedAt).getTime());
+      if (Number.isFinite(delta) && delta > 4 * 86400000) throw new Error("원문 발행일이 relay 기사와 4일 이상 다릅니다.");
+    }
   }
   const plan = { articleId: id, status, ...(url ? { url } : {}), decidedAt: new Date().toISOString(), apply: Boolean(apply) };
   console.log(JSON.stringify(plan, null, 2));
@@ -93,9 +115,9 @@ try {
   if (command === "stats") stats();
   else if (command === "next") next();
   else if (command === "show") show(positional[0]);
-  else if (command === "approve") decision(positional[0], positional[1], "manually-approved", apply);
-  else if (command === "reject") decision(positional[0], null, "rejected", apply);
+  else if (command === "approve") await decision(positional[0], positional[1], "manually-approved", apply);
+  else if (command === "reject") await decision(positional[0], null, "rejected", apply);
   else if (command === "registry:audit") audit();
-  else if (command === "registry:generate") { atomic(REGISTRY, JSON.stringify({ version: 1, generatedAt: new Date().toISOString(), sources: buildRegistry() }, null, 2) + "\n"); console.log(`레지스트리 생성: ${REGISTRY}`); }
+  else if (command === "registry:generate") { atomic(REGISTRY, JSON.stringify({ version: 2, generatedAt: new Date().toISOString(), sources: buildRegistry() }, null, 2) + "\n"); console.log(`레지스트리 생성: ${REGISTRY}`); }
   else throw new Error("사용법: stats | next | show ID | approve ID URL [--apply] | reject ID [--apply] | registry:audit | registry:generate");
 } catch (error) { console.error(error.message); process.exit(1); }

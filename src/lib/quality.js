@@ -122,7 +122,7 @@ export function qualityIssues(item = {}) {
   if (paragraphs.some((paragraph) => !hasKoreanSentence(paragraph))) issues.push("body-not-korean-sentence");
   if (titleBodyMismatch(title, body)) issues.push("title-body-mismatch");
   if (!String(item.sourceUrl || item.finalUrl || item.sourceUrlRaw || "").trim()) issues.push("source-missing");
-  if (GOOGLE_NEWS_RELAY.test(String(item.sourceUrl || ""))) issues.push("source-relay");
+  if (GOOGLE_NEWS_RELAY.test(String(item.sourceUrl || item.finalUrl || item.sourceUrlRaw || ""))) issues.push("source-relay");
   if (!(item.radar?.clinical || item.radar?.owner || item.radar?.evidence)) issues.push("radar-missing");
   return [...new Set(issues)];
 }

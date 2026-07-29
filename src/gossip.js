@@ -83,6 +83,11 @@ export async function addStories(items, seen, limit = GOSSIP_PER_ISSUE) {
         ...generated,
         id: generated.id || stableItemId({ ...post, ...generated }, `story-${post.id || post.url}`),
         sourceUrlRaw: generated.sourceUrlRaw || post.url || null,
+        sourceUrl: null,
+        sourceStatus: "unresolved",
+        discoverySource: "google-news-discovery",
+        editorialStatus: "editor-review-required",
+        workflowStatus: "draft",
       });
       if (storyItem.needsReview) {
         console.warn(`  ⚠ 가십 품질 게이트 탈락 — ${(storyItem.titleKo || "").slice(0, 34)}`);

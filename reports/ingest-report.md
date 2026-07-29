@@ -1,0 +1,68 @@
+# Source-first 수집 보고서
+
+- 실행 시각: 2026-07-29T16:51:35.725Z
+- 모드: dry-run
+- 소스/피드: 27/13
+- 수집 항목: 677
+- 고유 후보: 569
+- exact duplicate: 33
+- 기존 기사 업데이트 후보: 75
+- 관련성 제외: 121
+- draft 후보: 50
+- canonical 확인 시도: 50
+- 공식 canonical 확보: 50
+- unresolved source: 0
+- relay sourceUrl: 0
+
+## draft 후보
+
+- v1_88e7bde7826c5eaf · src-dr-andy-roark · verified · unique · Cult of the Holy Bedtime
+- v1_8977cdecc20db74b · src-dr-andy-roark · verified · unique · Improving Animal Welfare at Commercial Dog Breeding Kennels
+- v1_66712dc60cebbebc · src-dr-andy-roark · verified · unique · That&#8217;s Bad Advice
+- v1_ecdd9715ae5b33aa · src-dr-andy-roark · verified · unique · Life Stages and Large Breeds in Canine Nutrition
+- v1_5f01b0b4f48babba · src-dr-andy-roark · verified · unique · Do You Like Being a Veterinarian on Thursdays?
+- v1_f0efeb482c512335 · src-dr-andy-roark · verified · unique · Where Are the Greatest Opportunities for Access to Care?
+- v1_015e528dc92fe205 · src-dr-andy-roark · verified · unique · We Desperately Need Maverick GPs
+- v1_dfab869009cacc1d · src-dr-andy-roark · verified · unique · This Could Be the Last Time
+- v1_f4e1789482af70a7 · src-dr-andy-roark · verified · unique · Should Business Leaders Have Mandatory Clinic Time?
+- v1_6be1d8c5a79f604d · src-dr-andy-roark · verified · unique · HDYTT: The Atopic Dog &#8211; From Puppy to Senior
+- v1_d1ece76710d46dd7 · src-dr-andy-roark · verified · unique · State of the Veterinary Front Desk
+- v1_5e79b0eb6efbac68 · src-dr-andy-roark · verified · unique · I&#8217;m Devastated
+- v1_632f817d38e1640a · src-dr-andy-roark · verified · unique · Making Vet Clinics Greener
+- v1_5ed0ce1ffe7661d1 · src-dr-andy-roark · verified · unique · Introducing Change as a Recent Grad
+- v1_a3087f97fcbd8faa · src-dr-andy-roark · verified · unique · Be Careful What You Make Important
+- v1_000c0774cffcb69e · src-dr-andy-roark · verified · unique · Independent Practice Owners Strike Back!
+- v1_6cb9a2c41af342f1 · src-dr-andy-roark · verified · unique · How NOT to Talk to Veterinarians About Access to Care
+- v1_5a8b1d1fc86addb7 · src-dr-andy-roark · verified · unique · We Can&#8217;t All Be &#8220;High Quality Medicine&#8221;
+- v1_26c3b11a5bca68db · src-dr-andy-roark · verified · unique · Are We Morally Breaking Our Technicians?
+- v1_f4c47c39349be41a · src-dr-andy-roark · verified · unique · HDYTT: Quick Sedation in Dogs and Cats
+- v1_326ba63a860c6dc8 · src-dr-andy-roark · verified · unique · The Enshittification of Vet Medicine
+- v1_1e2651ab5b7de355 · src-dr-andy-roark · verified · unique · The Secret, Dirt-Cheap, Good-Outcome Treatment Your Vet Isn’t Telling You About Doesn’t Exist
+- v1_5e84fdc2ca0848f7 · src-dr-andy-roark · verified · unique · Why Veterinary Client Trust Feels Different in 2026
+- v1_174577d6efe88d58 · src-dr-andy-roark · verified · unique · Tucker, Dutch, and Private Equity
+- v1_6f1159579ed79925 · src-dr-andy-roark · verified · unique · New Mother, Same Tech? How to Support Pregnancy and Parental Leave
+- v1_c8a1dfb2b6e491af · src-dr-andy-roark · verified · unique · The Most Important Thing to Know About How the Veterinary Industry Works
+- v1_4e1960f5492f96a4 · src-dr-andy-roark · verified · unique · Is A.I. Making Vet Clinic Websites Obsolete?
+- v1_6730c1a49ed0e14c · src-dr-andy-roark · verified · unique · Access to Vet Care
+- v1_6369d7b8e2b67768 · src-dr-andy-roark · verified · unique · Everything Is Gross and They&#8217;re Doing It Wrong
+- v1_b28850d4be6ffb54 · src-dr-andy-roark · verified · unique · Treating Feline Osteoarthritis (HDYTT)
+- v1_da6e9cdd2126f3f5 · src-dr-andy-roark · verified · unique · Is It Time to Let Your Relief Vet Go? The Veterinary Recession is Here
+- v1_19ecfad4fc33b9f7 · src-dr-andy-roark · verified · unique · What Will Veterinarians Put Up With?
+- v1_637d7663c6260dc9 · src-dr-andy-roark · verified · unique · Training Veterinarians to Do More with Less
+- v1_c75ac055bf36dc84 · src-dr-andy-roark · verified · unique · Best of Dr. Andy Roark 2025
+- v1_af8ba2e7e09e09b6 · src-dr-andy-roark · verified · unique · 2025 Post Mortem &#038; Predicting 2026
+- v1_d53d44d41d076de8 · src-dr-andy-roark · verified · unique · Making Clients Happy Is Not Our Top Priority
+- v1_573643f8a808d4e0 · src-dr-andy-roark · verified · unique · Love and Endings: On Heavy Holidays in Vet Med
+- v1_bac5c1b71916edbb · src-dr-andy-roark · verified · unique · Avoiding Board Complaints with Informed Consent
+- v1_eff27ff041c0d32b · src-dr-andy-roark · verified · unique · The Rise of the Distributive Model for Veterinary Education
+- v1_33366e97950c6f9c · src-dr-andy-roark · verified · unique · Building a Veterinary Career That Truly Fits You
+- v1_7566da4bd1e4ad50 · src-dr-andy-roark · verified · unique · Unleashing the Bond
+- v1_847917a16f748b25 · src-dr-andy-roark · verified · unique · The Pace of Practice
+- v1_a411f825fd21a009 · src-dr-andy-roark · verified · unique · Do We Really Need More Veterinarians?
+- v1_54118d55c6aa0d9c · src-dr-andy-roark · verified · unique · A Center for Canine Victims of Abuse and Neglect
+- v1_7e16941be496b67c · src-dr-andy-roark · verified · unique · How to Know a Person
+- v1_75da3a3b01f5dd1d · src-dr-andy-roark · verified · unique · What’s Next After Years in Practice?
+- v1_8bf21da46fadebd4 · src-dr-andy-roark · verified · unique · Fear and Honesty in Vet Medicine
+- v1_83879875f4b4619e · src-dr-andy-roark · verified · unique · What it Really Means to Be a Veterinarian
+- v1_86d61a473b4a1217 · src-dr-andy-roark · verified · unique · What Technicians Mean to Us
+- v1_d69fcb73f885e465 · src-dr-andy-roark · verified · unique · New Cat is Stressing the Old Cat (HDYTT)

@@ -378,3 +378,72 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - production 확인: 홈페이지·robots.txt·sitemap.xml·news-sitemap.xml·rss.xml·주제 허브 HTTP 200, `npm run monitor:production` 5/5 OK·critical 0·warnings 0, sitemap 212개와 news sitemap 11개 유지
 - 운영 기사 HTML에서 4차 신뢰·연구 메타데이터 UI를 확인했습니다. Cloudflare 배포 ID와 GitHub deployment status는 Pages 연동이 노출하지 않아 기록하지 않았습니다.
 - Cloudflare PR preview: branch/commit preview endpoint가 `Deployment Not Found`를 반환했고 GitHub deployment status도 없었습니다. 이 제한은 숨기지 않고 기록하며, 로컬 Playwright·Lighthouse와 merge 후 production smoke로 대체 검증했습니다.
+
+## 13. 5차 고도화: source-first newsroom·검수 운영·예약 편성
+
+작성 브랜치: `codex/source-first-newsroom`
+기준: `origin/main` 최신 production 반영본
+배포 원칙: 신규 수집 결과는 사람이 승인하기 전까지 `draft`이며, 기존 463개 기사는 마이그레이션하지 않았습니다.
+
+### 핵심 설계
+
+- `data/sources/registry.json`을 실제 수집 설정으로 확장했습니다. 199개 매체 중 설정된 활성 매체 27개, 공식 RSS/Atom 피드 13개를 보존하고 fetch 전략·속도 제한·타임아웃·상태·실패 누적 필드를 추가했습니다. `sources:list`, `sources:health`, `sources:check`, `sources:discover-feeds`, `sources:disable`, `sources:report`를 제공합니다.
+- `src/lib/source-first.js`는 RSS/Atom XML을 메타데이터만 파싱하고, feed URL·GUID·DOI·제목 유사도로 중복을 분류합니다. 공식 기사 페이지는 robots.txt 확인 후 canonical·제목·발행일만 제한적으로 확인하며, 본문 전체를 캐시하지 않습니다. `.source-cache/`는 Git에서 제외됩니다.
+- `scripts/ingest.js`는 공식 RSS/Atom을 기본 수집원으로 사용하고 Google News는 이 경로에 포함하지 않습니다. `sourceUrlRaw`, `sourceUrl`, `sourceStatus`, `discoverySource`, `canonicalUrl`, `contentHash`, `metadataHash`, source evidence, AI provenance를 저장하며, 자동 published로 전환하지 않습니다. `--generate`가 없으면 LLM을 호출하지 않습니다.
+- 기존 `src/run.js`도 공식 registry 피드를 우선 사용하도록 변경했고 Google News는 `--discover-google-news`를 명시한 발견 신호로만 처리합니다. relay URL은 신규 최종 `sourceUrl`이 될 수 없고, papers-only 경로도 `.draft.json`으로만 저장합니다.
+- `src/build.js`는 날짜 형식의 published issue만 공개 build에 포함하고 `.draft.json`과 미래 `scheduledAt`을 제외합니다. relay raw URL은 `sourceUrlRaw`로만 보존하고 화면 링크·`isBasedOn`·citation URL에 재사용하지 않습니다. 기존 URL은 유지됩니다.
+- `scripts/generate-review-packets.js`가 index 상태 high 75·medium 93건을 원문·연구 메타데이터·수치 경고·체크리스트와 함께 패킷화합니다. 기존 187개 unresolved relay 기사는 sourceLabel 빈도순 145개 매체 배치, 총 187건으로 `reports/source-review-batches/`에 생성했습니다.
+- `scripts/source-registry.js`의 수동 승인도 HTTPS·공식 레지스트리 도메인·HTTP 응답·robots·canonical·원문 제목 유사도·발행일 근접성을 확인합니다. `sourceUrlRaw`와 결정 로그를 보존하며 기본은 dry-run입니다.
+- `scripts/schedule.js`와 `schedule:plan/set/cancel`을 추가했습니다. approved 상태와 위험도별 검수 조건을 통과한 문서만 예약 가능하고, 기본은 dry-run입니다. `data/editorial/schedule.jsonl`에 예약·취소 이력을 기록하며 자동 발행은 수행하지 않습니다. 현재 legacy-published만 존재하므로 자동 편성 후보는 0건입니다.
+- `docs/SEARCH_CONSOLE_RUNBOOK.md`, GSC·네이버 CSV 헤더 템플릿, `docs/CLOUDFLARE_PREVIEW.md`를 추가했습니다. 실제 인증정보·성과 데이터는 만들지 않았습니다. Branch preview는 현재 branch가 아직 원격에 배포되지 않은 상태에서 기존 alias가 404/Deployment Not Found였고, 공개 GitHub API에서 Pages deployment status도 확인되지 않아 우회 배포하지 않았습니다.
+- `.github/workflows/daily.yml`은 source health와 draft 수집·보고서 artifact만 수행하며 `data/issues/*.json`, `site/`를 자동 발행하지 않습니다. quality CI에도 source health·ingest dry-run·검수 패킷을 추가했습니다.
+
+### 5차 통계
+
+| 항목 | 결과 |
+|---|---:|
+| 기사 / index / noindex | 463 / 170 / 293 |
+| source registry / 활성 매체 / 공식 피드 | 199 / 27 / 13 |
+| source health 매체 상태 | healthy 0 · stale 3 · degraded 9 · failing 1 · disabled 186 |
+| dry-run 피드 항목 / 고유 후보 | 677 / 569 |
+| exact duplicate / update-of-existing | 33 / 75 |
+| 관련성 제외 / draft 후보 | 121 / 50 |
+| canonical 확인 / verified canonical | 50 / 50 |
+| 신규 draft relay sourceUrl | 0 |
+| 기존 relay 검수 큐 | 187건 · unresolved 187 |
+| source-review 배치 | 145개 매체 그룹 · 187건 |
+| 임상 검수 패킷 | 168건 · high 75 · medium 93 |
+| 자동 편성 후보 / 예약 발행 | 0 / 0 |
+| GSC·네이버 실제 import 행 | 0 / 0 (빈 상태 유지) |
+
+### 5차 검증 결과
+
+- `npm ci`: 성공. 설치 전체 audit에는 dev dependency 경고가 있었으나 `npm audit --omit=dev`: production vulnerabilities 0건.
+- `npm test`: 성공, 기존 테스트를 삭제·완화하지 않고 18개 통과.
+- `npm run check`: 성공. build·validate 포함. source-first draft 파일과 미래 scheduledAt이 공개 build에 섞이지 않는 경계를 적용했습니다.
+- `npm run seo:audit`: 성공, 170 index·293 noindex·sitemap 212·치명 0·경고 0.
+- `npm run sources:health`: 성공적으로 리포트를 생성했습니다. 13개 피드 중 1개 네트워크 실패와 stale/degraded 상태는 warning으로 기록했으며 레지스트리·production을 자동 수정하지 않았습니다.
+- `npm run ingest:dry`: 성공. 677개 수집 항목·569 unique·33 exact duplicate·75 update 후보·50 draft 후보를 기록했으며 canonical 50건을 확인했습니다. relay 최종 sourceUrl은 0건입니다.
+- `npm run review:stats`, `npm run source:stats`, `npm run source:registry:audit`, `npm run review:packets`, `npm run source:review:batches`, `npm run schedule:plan`: 성공. 기존 463건은 모두 legacy-published로 유지되고 실제 reviewed·approved 상태는 생성되지 않았습니다.
+- JSON-LD 1,264개 파싱 오류 0, sitemap/news sitemap/RSS XML 파싱 오류 0, sitemap canonical 212개 일치, sitemap 내 noindex 0, 내부 링크 누락 0을 확인했습니다.
+- `npm run test:browser`: 390×844·768×1024·1440×1000에서 12/12 통과. 콘솔 오류·로컬 요청 실패·깨진 이미지·axe critical 오류 0.
+- `npm run lighthouse`: 3 URL×3회 중앙값 저장. Performance 100, Accessibility 95~96, Best Practices 100, SEO 100, warning 0, 최대 CLS 약 0.028, 최대 LCP 약 1.91초.
+- `git diff --check`: 통과. secret 값·API key·Cloudflare token을 코드·로그·보고서에 출력하지 않았습니다.
+
+### 사람이 처리할 우선 작업
+
+1. `reports/source-review-batches/001-dvm360.md`부터 공식 사이트의 개별 기사·canonical·제목·발행일을 대조하고 `npm run source:approve -- ARTICLE_ID URL --apply`를 한 건씩 수행합니다.
+2. `reports/clinical-review-packets.json`의 high 75건을 먼저 원문과 대조합니다. 표본 수·대상 종·연구 유형·약물/단위·상관/인과·한계·국내 적용 문구를 체크하고 실제 수의사만 vet reviewer로 등록합니다.
+3. medium 93건은 임상 행동 권고 여부에 따라 editor 또는 vet 검수 경로를 선택합니다. 기존 기사를 자동 approved로 변경하지 않습니다.
+4. `reports/source-health.md`의 Veterinary Evidence failing 피드와 stale/degraded 피드의 공식 RSS URL·robots·이용약관을 사람이 확인합니다.
+5. GSC·네이버 실제 CSV를 보안 경로에서 내려받은 뒤 import하여 CTR·5~20위·색인 제외·News/Discover를 비교합니다.
+
+### 5차 배포 체크리스트
+
+- source health 실패가 단순 네트워크 warning인지 공식 피드 변경인지 확인
+- PR CI에서 `npm ci`, 전체 테스트, SEO audit, source health, ingest dry-run, Playwright, Lighthouse를 재실행
+- `data/drafts`와 `.draft.json` 외에 신규 published/index 문서가 생기지 않았는지 확인
+- 기존 170/293, sitemap 212/11, canonical, 주요 URL, 이미지 170/170을 비교
+- Cloudflare Pages 기존 `vetman-briefing` preview가 실제 commit을 가리키는지 확인하고, preview가 없으면 production을 대체 경로로 사용하지 않기
+- merge 전 임상·원출처·이미지 권리 사람이 승인하지 않은 상태가 reviewed/approved로 바뀌지 않았는지 확인
+- production 배포 후 홈페이지·대표 기사·주제·archive·weekly·RSS·sitemap·robots smoke test와 Search Console·네이버 수집 상태 확인

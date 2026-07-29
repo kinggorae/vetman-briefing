@@ -1,0 +1,1044 @@
+{
+  "generatedAt": "2026-07-29T16:50:53.742Z",
+  "total": 187,
+  "batchCount": 145,
+  "batches": [
+    {
+      "label": "DVM360",
+      "count": 10,
+      "file": "reports/source-review-batches/001-dvm360.md",
+      "officialDomains": [
+        "dvm360.com"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "CBS News",
+      "count": 6,
+      "file": "reports/source-review-batches/002-cbs-news.md",
+      "officialDomains": [
+        "cbsnews.com"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "MSN",
+      "count": 5,
+      "file": "reports/source-review-batches/003-msn.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "New York Post",
+      "count": 5,
+      "file": "reports/source-review-batches/004-new-york-post.md",
+      "officialDomains": [
+        "nypost.com"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "Yahoo Creators",
+      "count": 4,
+      "file": "reports/source-review-batches/005-yahoo-creators.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Purdue University College of Veterinary Medicine",
+      "count": 3,
+      "file": "reports/source-review-batches/006-purdue-university-college-of-veterinary-medicine.md",
+      "officialDomains": [
+        "vet.purdue.edu"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "MyNorthwest.com",
+      "count": 2,
+      "file": "reports/source-review-batches/007-mynorthwest-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Vet Times",
+      "count": 2,
+      "file": "reports/source-review-batches/008-vet-times.md",
+      "officialDomains": [
+        "vettimes.co.uk"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "Forbes",
+      "count": 2,
+      "file": "reports/source-review-batches/009-forbes.md",
+      "officialDomains": [
+        "forbes.com"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "Pet Food Processing",
+      "count": 2,
+      "file": "reports/source-review-batches/010-pet-food-processing.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "NC State University",
+      "count": 2,
+      "file": "reports/source-review-batches/011-nc-state-university.md",
+      "officialDomains": [
+        "cvm.ncsu.edu"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "aphis.usda.gov",
+      "count": 2,
+      "file": "reports/source-review-batches/012-aphis-usda-gov.md",
+      "officialDomains": [
+        "aphis.usda.gov"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "American Animal Hospital Association - AAHA",
+      "count": 2,
+      "file": "reports/source-review-batches/013-american-animal-hospital-association-aaha.md",
+      "officialDomains": [
+        "aaha.org"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "FOX5 Vegas",
+      "count": 2,
+      "file": "reports/source-review-batches/014-fox5-vegas.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "FOX 13 Tampa Bay",
+      "count": 2,
+      "file": "reports/source-review-batches/015-fox-13-tampa-bay.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "PetfoodIndustry",
+      "count": 2,
+      "file": "reports/source-review-batches/016-petfoodindustry.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "ABC15 Arizona",
+      "count": 2,
+      "file": "reports/source-review-batches/017-abc15-arizona.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Spherical Insights",
+      "count": 2,
+      "file": "reports/source-review-batches/018-spherical-insights.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "ニコニコニュース",
+      "count": 2,
+      "file": "reports/source-review-batches/019-source.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "avinews.com",
+      "count": 2,
+      "file": "reports/source-review-batches/020-avinews-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "USA Today",
+      "count": 2,
+      "file": "reports/source-review-batches/021-usa-today.md",
+      "officialDomains": [
+        "usatoday.com"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "Cureus",
+      "count": 1,
+      "file": "reports/source-review-batches/022-cureus.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Indiana Public Media",
+      "count": 1,
+      "file": "reports/source-review-batches/023-indiana-public-media.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "CNBC",
+      "count": 1,
+      "file": "reports/source-review-batches/024-cnbc.md",
+      "officialDomains": [
+        "cnbc.com"
+      ],
+      "feedUrls": []
+    },
+    {
+      "label": "tag24.com",
+      "count": 1,
+      "file": "reports/source-review-batches/025-tag24-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "The New York Times",
+      "count": 1,
+      "file": "reports/source-review-batches/026-the-new-york-times.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Phys.org",
+      "count": 1,
+      "file": "reports/source-review-batches/027-phys-org.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Region Canberra",
+      "count": 1,
+      "file": "reports/source-review-batches/028-region-canberra.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Rising Kashmir",
+      "count": 1,
+      "file": "reports/source-review-batches/029-rising-kashmir.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "The Irish Times",
+      "count": 1,
+      "file": "reports/source-review-batches/030-the-irish-times.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "TAPinto",
+      "count": 1,
+      "file": "reports/source-review-batches/031-tapinto.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "ColoradoBiz",
+      "count": 1,
+      "file": "reports/source-review-batches/032-coloradobiz.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "aviglianonews.it",
+      "count": 1,
+      "file": "reports/source-review-batches/033-aviglianonews-it.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "NerdWallet",
+      "count": 1,
+      "file": "reports/source-review-batches/034-nerdwallet.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Fortune",
+      "count": 1,
+      "file": "reports/source-review-batches/035-fortune.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "DogTime",
+      "count": 1,
+      "file": "reports/source-review-batches/036-dogtime.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "AOL.com",
+      "count": 1,
+      "file": "reports/source-review-batches/037-aol-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "ABC Columbia",
+      "count": 1,
+      "file": "reports/source-review-batches/038-abc-columbia.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Peoples Gazette Nigeria",
+      "count": 1,
+      "file": "reports/source-review-batches/039-peoples-gazette-nigeria.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WNYT.com",
+      "count": 1,
+      "file": "reports/source-review-batches/040-wnyt-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Bovine Veterinarian",
+      "count": 1,
+      "file": "reports/source-review-batches/041-bovine-veterinarian.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "nwitimes.com",
+      "count": 1,
+      "file": "reports/source-review-batches/042-nwitimes-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Winchester Sun",
+      "count": 1,
+      "file": "reports/source-review-batches/043-winchester-sun.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Ohio House of Representatives (.gov)",
+      "count": 1,
+      "file": "reports/source-review-batches/044-ohio-house-of-representatives-gov.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WTMJ",
+      "count": 1,
+      "file": "reports/source-review-batches/045-wtmj.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "KRDO",
+      "count": 1,
+      "file": "reports/source-review-batches/046-krdo.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Wamiz.co.uk",
+      "count": 1,
+      "file": "reports/source-review-batches/047-wamiz-co-uk.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Dogster",
+      "count": 1,
+      "file": "reports/source-review-batches/048-dogster.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "HOLA",
+      "count": 1,
+      "file": "reports/source-review-batches/049-hola.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "NBC 5 Dallas-Fort Worth",
+      "count": 1,
+      "file": "reports/source-review-batches/050-nbc-5-dallas-fort-worth.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Tamarac Talk",
+      "count": 1,
+      "file": "reports/source-review-batches/051-tamarac-talk.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Your Observer",
+      "count": 1,
+      "file": "reports/source-review-batches/052-your-observer.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Tampa Bay 28",
+      "count": 1,
+      "file": "reports/source-review-batches/053-tampa-bay-28.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Virginia Tech News",
+      "count": 1,
+      "file": "reports/source-review-batches/054-virginia-tech-news.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Michigan State University",
+      "count": 1,
+      "file": "reports/source-review-batches/055-michigan-state-university.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "VOCM",
+      "count": 1,
+      "file": "reports/source-review-batches/056-vocm.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "thesenior.com.au",
+      "count": 1,
+      "file": "reports/source-review-batches/057-thesenior-com-au.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "PerthNow",
+      "count": 1,
+      "file": "reports/source-review-batches/058-perthnow.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "The Tribune",
+      "count": 1,
+      "file": "reports/source-review-batches/059-the-tribune.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "KalingaTV",
+      "count": 1,
+      "file": "reports/source-review-batches/060-kalingatv.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "San Antonio Express-News",
+      "count": 1,
+      "file": "reports/source-review-batches/061-san-antonio-express-news.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "MoneyMagpie",
+      "count": 1,
+      "file": "reports/source-review-batches/062-moneymagpie.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Newsweek",
+      "count": 1,
+      "file": "reports/source-review-batches/063-newsweek.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "qz.com",
+      "count": 1,
+      "file": "reports/source-review-batches/064-qz-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Houston Public Media",
+      "count": 1,
+      "file": "reports/source-review-batches/065-houston-public-media.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Pan American Health Organization (PAHO)",
+      "count": 1,
+      "file": "reports/source-review-batches/066-pan-american-health-organization-paho.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Farms.com",
+      "count": 1,
+      "file": "reports/source-review-batches/067-farms-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Indiana Public Radio",
+      "count": 1,
+      "file": "reports/source-review-batches/068-indiana-public-radio.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "The Providence Journal",
+      "count": 1,
+      "file": "reports/source-review-batches/069-the-providence-journal.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Seaside Signal",
+      "count": 1,
+      "file": "reports/source-review-batches/070-seaside-signal.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Morningstar",
+      "count": 1,
+      "file": "reports/source-review-batches/071-morningstar.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "citybiz",
+      "count": 1,
+      "file": "reports/source-review-batches/072-citybiz.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Anne Arundel County Health Department",
+      "count": 1,
+      "file": "reports/source-review-batches/073-anne-arundel-county-health-department.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "IndexBox",
+      "count": 1,
+      "file": "reports/source-review-batches/074-indexbox.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "cbs19.tv",
+      "count": 1,
+      "file": "reports/source-review-batches/075-cbs19-tv.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Turkmenportal.com",
+      "count": 1,
+      "file": "reports/source-review-batches/076-turkmenportal-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Audacy",
+      "count": 1,
+      "file": "reports/source-review-batches/077-audacy.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "EquiManagement",
+      "count": 1,
+      "file": "reports/source-review-batches/078-equimanagement.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Gainesville Sun",
+      "count": 1,
+      "file": "reports/source-review-batches/079-gainesville-sun.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Mshale",
+      "count": 1,
+      "file": "reports/source-review-batches/080-mshale.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "edge1021.com.au",
+      "count": 1,
+      "file": "reports/source-review-batches/081-edge1021-com-au.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "KOMO",
+      "count": 1,
+      "file": "reports/source-review-batches/082-komo.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "ecommercenews.com.au",
+      "count": 1,
+      "file": "reports/source-review-batches/083-ecommercenews-com-au.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Mahoning Matters",
+      "count": 1,
+      "file": "reports/source-review-batches/084-mahoning-matters.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "아시아경제",
+      "count": 1,
+      "file": "reports/source-review-batches/085-아시아경제.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Colorado State University",
+      "count": 1,
+      "file": "reports/source-review-batches/086-colorado-state-university.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "THISDAYLIVE",
+      "count": 1,
+      "file": "reports/source-review-batches/087-thisdaylive.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Bryan Times",
+      "count": 1,
+      "file": "reports/source-review-batches/088-bryan-times.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Vietnam.vn",
+      "count": 1,
+      "file": "reports/source-review-batches/089-vietnam-vn.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "crossroadstoday.com",
+      "count": 1,
+      "file": "reports/source-review-batches/090-crossroadstoday-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Eye On Annapolis",
+      "count": 1,
+      "file": "reports/source-review-batches/091-eye-on-annapolis.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "MPR News",
+      "count": 1,
+      "file": "reports/source-review-batches/092-mpr-news.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "1News",
+      "count": 1,
+      "file": "reports/source-review-batches/093-1news.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "El Informador",
+      "count": 1,
+      "file": "reports/source-review-batches/094-el-informador.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Your Oregon News",
+      "count": 1,
+      "file": "reports/source-review-batches/095-your-oregon-news.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WPSD Local 6",
+      "count": 1,
+      "file": "reports/source-review-batches/096-wpsd-local-6.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Encyclopedia Britannica",
+      "count": 1,
+      "file": "reports/source-review-batches/097-encyclopedia-britannica.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Spectrum News",
+      "count": 1,
+      "file": "reports/source-review-batches/098-spectrum-news.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Infectious Disease Advisor",
+      "count": 1,
+      "file": "reports/source-review-batches/099-infectious-disease-advisor.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "TV Jaguari",
+      "count": 1,
+      "file": "reports/source-review-batches/100-tv-jaguari.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Nutrition Insight",
+      "count": 1,
+      "file": "reports/source-review-batches/101-nutrition-insight.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "NonStop Local Billings",
+      "count": 1,
+      "file": "reports/source-review-batches/102-nonstop-local-billings.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WILX",
+      "count": 1,
+      "file": "reports/source-review-batches/103-wilx.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Volksstimme",
+      "count": 1,
+      "file": "reports/source-review-batches/104-volksstimme.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WGRZ",
+      "count": 1,
+      "file": "reports/source-review-batches/105-wgrz.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "ABC News & Headlines – Australian Broadcasting Corporation",
+      "count": 1,
+      "file": "reports/source-review-batches/106-abc-news-headlines-australian-broadcasting-corporation.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "KRGV",
+      "count": 1,
+      "file": "reports/source-review-batches/107-krgv.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "INFO.FR",
+      "count": 1,
+      "file": "reports/source-review-batches/108-info-fr.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "thestokesnews.com",
+      "count": 1,
+      "file": "reports/source-review-batches/109-thestokesnews-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "NorthEscambia.com",
+      "count": 1,
+      "file": "reports/source-review-batches/110-northescambia-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "DairyReporter.com",
+      "count": 1,
+      "file": "reports/source-review-batches/111-dairyreporter-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Veterinaria Atual",
+      "count": 1,
+      "file": "reports/source-review-batches/112-veterinaria-atual.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WPR",
+      "count": 1,
+      "file": "reports/source-review-batches/113-wpr.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Bioengineer.org",
+      "count": 1,
+      "file": "reports/source-review-batches/114-bioengineer-org.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Pioneer Press",
+      "count": 1,
+      "file": "reports/source-review-batches/115-pioneer-press.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "KHGI",
+      "count": 1,
+      "file": "reports/source-review-batches/116-khgi.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Modern Healthcare",
+      "count": 1,
+      "file": "reports/source-review-batches/117-modern-healthcare.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "myfoxzone.com",
+      "count": 1,
+      "file": "reports/source-review-batches/118-myfoxzone-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Coverager",
+      "count": 1,
+      "file": "reports/source-review-batches/119-coverager.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "The Straits Times",
+      "count": 1,
+      "file": "reports/source-review-batches/120-the-straits-times.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "KOAT",
+      "count": 1,
+      "file": "reports/source-review-batches/121-koat.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "porciNews",
+      "count": 1,
+      "file": "reports/source-review-batches/122-porcinews.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "1851 Franchise",
+      "count": 1,
+      "file": "reports/source-review-batches/123-1851-franchise.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WKTV",
+      "count": 1,
+      "file": "reports/source-review-batches/124-wktv.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "companionlife.co.uk",
+      "count": 1,
+      "file": "reports/source-review-batches/125-companionlife-co-uk.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WSAZ",
+      "count": 1,
+      "file": "reports/source-review-batches/126-wsaz.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "ide.go.jp",
+      "count": 1,
+      "file": "reports/source-review-batches/127-ide-go-jp.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Raleigh News & Observer",
+      "count": 1,
+      "file": "reports/source-review-batches/128-raleigh-news-observer.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "inkl",
+      "count": 1,
+      "file": "reports/source-review-batches/129-inkl.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "kens5.com",
+      "count": 1,
+      "file": "reports/source-review-batches/130-kens5-com.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Illinois News Bureau",
+      "count": 1,
+      "file": "reports/source-review-batches/131-illinois-news-bureau.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Nature",
+      "count": 1,
+      "file": "reports/source-review-batches/132-nature.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Panay News",
+      "count": 1,
+      "file": "reports/source-review-batches/133-panay-news.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "The Cool Down",
+      "count": 1,
+      "file": "reports/source-review-batches/134-the-cool-down.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Yahoo",
+      "count": 1,
+      "file": "reports/source-review-batches/135-yahoo.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Yahoo Finance",
+      "count": 1,
+      "file": "reports/source-review-batches/136-yahoo-finance.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Central Oregon Daily",
+      "count": 1,
+      "file": "reports/source-review-batches/137-central-oregon-daily.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Boehringer Ingelheim",
+      "count": 1,
+      "file": "reports/source-review-batches/138-boehringer-ingelheim.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Trinidad Guardian",
+      "count": 1,
+      "file": "reports/source-review-batches/139-trinidad-guardian.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Arkansas Money & Politics",
+      "count": 1,
+      "file": "reports/source-review-batches/140-arkansas-money-politics.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "The Age",
+      "count": 1,
+      "file": "reports/source-review-batches/141-the-age.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WSU Insider",
+      "count": 1,
+      "file": "reports/source-review-batches/142-wsu-insider.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "WHRO",
+      "count": 1,
+      "file": "reports/source-review-batches/143-whro.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "Business Insider",
+      "count": 1,
+      "file": "reports/source-review-batches/144-business-insider.md",
+      "officialDomains": [],
+      "feedUrls": []
+    },
+    {
+      "label": "The Atlantic",
+      "count": 1,
+      "file": "reports/source-review-batches/145-the-atlantic.md",
+      "officialDomains": [],
+      "feedUrls": []
+    }
+  ]
+}

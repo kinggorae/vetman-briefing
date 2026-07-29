@@ -1,0 +1,20 @@
+# Tampa Bay 28 원출처 검수 배치
+
+- 공식 도메인: 레지스트리 미확정
+- 공식 RSS: 없음
+- 검색 템플릿: 없음
+- 승인 예시: `npm run source:approve -- ARTICLE_ID https://official.example/article`
+
+> 후보 URL은 사람이 제목·발행일·canonical·개별 기사 페이지를 확인한 뒤 승인해야 합니다.
+
+## 1. 폴크 카운티, 광견병 확인에 무료 예방접종 및 마이크로칩 시술EVENT 개최
+
+- 기사 ID: `2026-07-23_16`
+- 원문 제목: Recent rabies case prompts free rabies vaccination, microchipping event in Polk County
+- 발행일: 2026-07-22T22:39:21.000Z
+- relay URL: https://news.google.com/rss/articles/CBMi4wFBVV95cUxQX3F3d2Q1OFVpZWpwcUJPX2FVMlZwaU5HeWRacllyME9WOFkzcFpWLXV6dEp5dld2S0VJRFJHS2dXQmljNzFQS2lhbmlvdGFDUVlGY1cwZlNkN2VjblNoMHJCOVU3QlpQWFBhd0JzYlRjdTY1SjN2LTJEb0t4bnFjVkoySWNBRkd5Qm5FX09BY1NLUWY3QUhHb1UxNXQ3dnVLZ0d6cGM5MFM5TGMyQmNtc29aMnNPRlhvRlVObjVZeEQxU1ExcDlCQXpxRXJINV94bXl5b3U2RGhvMmNaX1V2SVJ2QQ?oc=5
+- 공식 도메인: 미매핑
+- 후보: 없음
+- 검색 후보: Recent rabies case prompts free rabies vaccination, microchipping event in Polk County | 폴크 카운티, 광견병 확인에 무료 예방접종 및 마이크로칩 시술EVENT 개최 | Tampa Bay 28 폴크 카운티, 광견병 확인에 무료 예방접종 및 마이크로칩 시술EVENT 개최
+- 상태: unresolved · 사유: publisher-domain-not-mapped
+- 승인 명령: `npm run source:approve -- 2026-07-23_16 <확인한-공식-URL>`

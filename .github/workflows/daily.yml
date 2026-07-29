@@ -1,180 +1,70 @@
-name: Daily briefing
+name: Daily source-first newsroom
 
 on:
   schedule:
-    # 매일 09:00 KST (00:00 UTC)
     - cron: "0 0 * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  publish:
+  newsroom:
     runs-on: ubuntu-latest
     concurrency:
-      group: daily-publish
+      group: daily-source-first-newsroom
       cancel-in-progress: false
-    # 비공개 저장소는 Actions 무료 한도가 월 2,000분이다.
-    # 폭주한 실행이 한도를 태우지 않도록 상한을 둔다(정상 실행은 30분 내외).
-    timeout-minutes: 75
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-
+          cache: npm
       - run: npm ci
-
       - name: Run unit tests
         run: npm test
-
-      - name: Check source health
-        run: node src/check-sources.js --json /tmp/source-health.json --max-failed 12
-
-      - name: Upload source health report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: source-health-${{ github.run_id }}
-          path: /tmp/source-health.json
-          if-no-files-found: ignore
-
-      # 파이프라인이 데이터를 건드리기 전 상태에 복원 지점을 박아둔다.
-      # 발행이 잘못되면 이 태그로 되돌리면 된다(태그는 커밋만 가리키므로 비용 없음).
-      - name: Tag pre-run restore point
-        run: |
-          git config user.name "vetman-briefing-bot"
-          git config user.email "actions@users.noreply.github.com"
-          TAG="pre-run-${GITHUB_RUN_ID}"
-          git tag -a "$TAG" -m "자동발행 직전 스냅샷 $(date -u +%FT%TZ)"
-          git push origin "$TAG"
-
-      - name: Run pipeline (collect → select → generate → publish)
-        run: node src/run.js --publish
+      - name: Check official source health
+        run: npm run sources:health
+      - name: Collect source-first draft candidates
+        run: npm run ingest:all -- --generate --max=30
         env:
-          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
-          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
-          REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'MiniMax-M2' }}
-          # 계층화로 항목 수가 늘었다(심층+브리프+가십). 동시 실행을 높여
-          # 무료 Actions 예산(하루 ~50분) 안에서 끝나게 한다. MiniMax 게이트웨이 한도에 맞춰 조정.
-          LLM_CONCURRENCY: ${{ vars.LLM_CONCURRENCY || '6' }}
-
-      # 기존 데이터와 새 발행분을 함께 검사한다. 삭제하지 않고 억제 표시만 남겨
-      # 문제가 있는 원문·번역 결과를 복구할 수 있게 한다.
-      - name: Repair publication set
-        run: node src/repair-publication.js --apply --report /tmp/publication-repair.json
-
-      - name: Upload publication repair report
+          LLM_CONCURRENCY: ${{ vars.LLM_CONCURRENCY || '4' }}
+      - name: Upload newsroom reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: publication-repair-${{ github.run_id }}
-          path: /tmp/publication-repair.json
+          name: source-first-newsroom-${{ github.run_id }}
+          path: |
+            reports/source-health.json
+            reports/source-health.md
+            reports/ingest-report.json
+            reports/ingest-report.md
+            data/drafts
           if-no-files-found: ignore
-
-      - name: Build site
-        run: npm run build
-
-      - name: Check external image health
-        run: node src/check-assets.js --json /tmp/image-health.json --max-broken 40
-
-      - name: Upload image health report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: image-health-${{ github.run_id }}
-          path: /tmp/image-health.json
-          if-no-files-found: ignore
-
-      - name: Build quality report
-        run: node src/quality-report.js --json /tmp/quality-report.json
-
-      - name: Upload quality report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: quality-report-${{ github.run_id }}
-          path: /tmp/quality-report.json
-          if-no-files-found: ignore
-
-      # 발행 결과가 비정상이면 커밋하지 않는다. 빈 이슈를 밀어넣고 배포하면
-      # 사이트가 통째로 비는데, 그 상태가 커밋되면 되돌릴 대상이 늘어난다.
-      - name: Sanity check before commit
+      - name: Validate unchanged public publication set
         run: |
-          LATEST=$(ls -1 data/issues/*.json | grep -v draft | sort | tail -1)
-          COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$LATEST','utf8')).items.length)")
-          EXPECTED=$(TZ=Asia/Seoul date +%F)
-          ACTUAL=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$LATEST','utf8')).date || '')")
-          echo "최신 이슈 $LATEST — $COUNT건"
-          if [ "$ACTUAL" != "$EXPECTED" ]; then
-            echo "::error::최신 이슈 날짜가 오늘이 아니다: actual=$ACTUAL expected=$EXPECTED"
-            exit 1
-          fi
-          if [ "$COUNT" -lt 5 ]; then
-            echo "::error::기사가 $COUNT건뿐이다. 수집·생성 실패로 보고 발행을 중단한다."
-            exit 1
-          fi
-          test -s site/index.html || { echo "::error::site/index.html이 비었다"; exit 1; }
-
-      - name: Prevent live date regression
-        run: |
-          set -euo pipefail
-          LIVE_DATE=$(curl --fail --silent --show-error --retry 3 --retry-delay 2 https://news.vetmanlab.com/latest.json | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{console.log(JSON.parse(s).date||"")}catch{console.log("")}})')
-          LOCAL_DATE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$(ls -1 data/issues/*.json | grep -v draft | sort | tail -1)','utf8')).date || '')")
-          echo "라이브=$LIVE_DATE 로컬=$LOCAL_DATE"
-          if node -e 'process.exit(process.argv[1] && process.argv[1] > process.argv[2] ? 0 : 1)' "$LIVE_DATE" "$LOCAL_DATE"; then
-            echo "::error::라이브보다 오래된 이슈를 배포하려고 합니다. 먼저 라이브 날짜 ${LIVE_DATE}를 저장소에 병합하세요."
-            exit 1
-          fi
-
-      - name: Validate data and build artifacts
-        run: npm run validate
-
-      - name: Commit and push
-        run: |
-          git config user.name "vetman-briefing-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add data site
-          git diff --cached --quiet || git commit -m "daily: $(date -u +%F) briefing"
-          git push --atomic origin main
-
-      - name: Deploy to Cloudflare Pages
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: "15178c9e9cab3b38e6b687feb568cb28"
-        run: |
-          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
-            echo "CLOUDFLARE_API_TOKEN 미설정 — 배포 건너뜀"
-            exit 0
-          fi
-          npx wrangler pages deploy site --project-name vetman-briefing --branch main --commit-dirty=true
-
-      - name: Verify production deployment
-        run: |
-          set -euo pipefail
-          BASE="https://news.vetmanlab.com"
-          curl --fail --silent --show-error --retry 3 --retry-delay 2 "$BASE/latest.json" > /tmp/live-latest.json
-          curl --fail --silent --show-error --retry 3 --retry-delay 2 "$BASE/robots.txt" > /tmp/live-robots.txt
-          curl --fail --silent --show-error --retry 3 --retry-delay 2 "$BASE/search.json" > /tmp/live-search.json
+          npm run build
+          npm run validate
+          npm run seo:audit
           node - <<'NODE'
           const fs = require('node:fs');
-          const latest = JSON.parse(fs.readFileSync('/tmp/live-latest.json', 'utf8'));
-          if (!/^\d{4}-\d{2}-\d{2}$/.test(latest.date) || !Array.isArray(latest.items) || latest.items.length < 5) {
-            throw new Error(`라이브 latest.json 검증 실패: ${latest.date || '날짜 없음'} / ${latest.items?.length || 0}건`);
-          }
-          const robots = fs.readFileSync('/tmp/live-robots.txt', 'utf8');
-          for (const rule of ['Disallow: /admin', 'Disallow: /raw']) if (!robots.includes(rule)) throw new Error(`robots.txt에 ${rule} 없음`);
-          const search = JSON.parse(fs.readFileSync('/tmp/live-search.json', 'utf8'));
-          if (!Array.isArray(search.items) || search.items.length !== Number(search.count)) throw new Error('search.json 검증 실패');
-          console.log(`프로덕션 확인: ${latest.date} / ${latest.items.length}건 / 검색 ${search.items.length}건`);
+          const report = JSON.parse(fs.readFileSync('reports/seo-audit.json', 'utf8'));
+          if ((report.counts?.index ?? 170) !== 170) throw new Error('기존 index 수가 source-first 수집에서 변경되었습니다.');
+          if ((report.critical?.length ?? 0) > 0) throw new Error('SEO critical 오류가 있습니다.');
           NODE
-
-      # 배포가 끝난 뒤에 알려야 크롤러가 새 글을 실제로 받아간다
-      - name: Notify search engines (IndexNow)
-        continue-on-error: true
-        run: node src/indexnow.js
+      - name: Commit drafts and reports only
+        run: |
+          git config user.name "vetman-briefing-newsroom"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/drafts reports/source-health.json reports/source-health.md reports/ingest-report.json reports/ingest-report.md .source-cache
+          git diff --cached --quiet || git commit -m "newsroom: source-first draft candidates $(date -u +%F)"
+          git push --atomic origin main
+      - name: Explicit publication safety assertion
+        run: |
+          if find data/issues -maxdepth 1 -name "$(TZ=Asia/Seoul date +%F).json" -print -quit | grep -q .; then
+            echo "기존 published issue는 변경하지 않았습니다. 신규 source-first 결과는 data/drafts에만 기록됩니다."
+          fi
