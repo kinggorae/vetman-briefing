@@ -26,6 +26,8 @@ export async function onRequestGet({ request, env }) {
     ? "/archive.json"
     : resource === "audit"
     ? "/admin-review.json"
+    : resource === "performance"
+    ? "/seo-performance.json"
     : resource === "raw" && /^\d{4}-\d{2}-\d{2}$/.test(url.searchParams.get("date") || "")
     ? `/raw/${url.searchParams.get("date")}.json`
     : null;

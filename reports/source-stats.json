@@ -1,0 +1,438 @@
+{
+  "generatedAt": "2026-07-29T15:40:07.421Z",
+  "totalArticles": 463,
+  "relayArticles": 187,
+  "registrySources": 199,
+  "activeSources": 27,
+  "sourceCounts": {
+    "Frontiers in Veterinary Science": 49,
+    "Veterinary Practice News": 20,
+    "Journal of veterinary internal medicine": 16,
+    "Dr. Andy Roark": 15,
+    "IVC Journal": 15,
+    "Veterinary Record": 14,
+    "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association": 14,
+    "Today's Veterinary Business": 11,
+    "Vet Practice Magazine": 10,
+    "Veterinary medicine and science": 10,
+    "DVM360": 10,
+    "Vet Candy": 10,
+    "Today's Veterinary Practice": 9,
+    "VetGirl": 8,
+    "Veterinary ophthalmology": 7,
+    "Veterinary research communications": 7,
+    "CBS News": 6,
+    "MSN": 5,
+    "Veterinary Sciences": 5,
+    "New York Post": 5,
+    "ScienceDaily": 4,
+    "Yahoo Creators": 4,
+    "Veterinary Evidence": 4,
+    "Journal of the American Animal Hospital Association": 3,
+    "PloS one": 3,
+    "Veterinary anaesthesia and analgesia": 3,
+    "Journal of feline medicine and surgery": 3,
+    "Purdue University College of Veterinary Medicine": 3,
+    "The Canadian veterinary journal = La revue veterinaire canadienne": 2,
+    "MyNorthwest.com": 2,
+    "Vet Times": 2,
+    "Forbes": 2,
+    "Pet Food Processing": 2,
+    "NC State University": 2,
+    "aphis.usda.gov": 2,
+    "American Animal Hospital Association - AAHA": 2,
+    "Reproduction in domestic animals = Zuchthygiene": 2,
+    "Proceedings of the National Academy of Sciences of the United States of America": 2,
+    "Anatomia, histologia, embryologia": 2,
+    "FOX5 Vegas": 2,
+    "FOX 13 Tampa Bay": 2,
+    "PetfoodIndustry": 2,
+    "ABC15 Arizona": 2,
+    "Spherical Insights": 2,
+    "ニコニコニュース": 2,
+    "avinews.com": 2,
+    "USA Today": 2,
+    "Today's Veterinary Nurse": 1,
+    "Cureus": 1,
+    "Indiana Public Media": 1,
+    "CNBC": 1,
+    "Canadian journal of veterinary research = Revue canadienne de recherche veterinaire": 1,
+    "International journal of molecular sciences": 1,
+    "Trends in parasitology": 1,
+    "The veterinary quarterly": 1,
+    "tag24.com": 1,
+    "The New York Times": 1,
+    "PLoS neglected tropical diseases": 1,
+    "Phys.org": 1,
+    "Region Canberra": 1,
+    "Acta parasitologica": 1,
+    "Medical mycology": 1,
+    "Rising Kashmir": 1,
+    "The Irish Times": 1,
+    "TAPinto": 1,
+    "ColoradoBiz": 1,
+    "aviglianonews.it": 1,
+    "NerdWallet": 1,
+    "Fortune": 1,
+    "DogTime": 1,
+    "AOL.com": 1,
+    "ABC Columbia": 1,
+    "Peoples Gazette Nigeria": 1,
+    "WNYT.com": 1,
+    "Bovine Veterinarian": 1,
+    "nwitimes.com": 1,
+    "Winchester Sun": 1,
+    "Ohio House of Representatives (.gov)": 1,
+    "WTMJ": 1,
+    "KRDO": 1,
+    "Molecular biology reports": 1,
+    "Archives of microbiology": 1,
+    "Veterinary immunology and immunopathology": 1,
+    "Wamiz.co.uk": 1,
+    "Dogster": 1,
+    "HOLA": 1,
+    "NBC 5 Dallas-Fort Worth": 1,
+    "Tamarac Talk": 1,
+    "Your Observer": 1,
+    "Tampa Bay 28": 1,
+    "Virginia Tech News": 1,
+    "Michigan State University": 1,
+    "Journal of molecular modeling": 1,
+    "VOCM": 1,
+    "thesenior.com.au": 1,
+    "PerthNow": 1,
+    "The Tribune": 1,
+    "KalingaTV": 1,
+    "San Antonio Express-News": 1,
+    "Journal of veterinary pharmacology and therapeutics": 1,
+    "MoneyMagpie": 1,
+    "Newsweek": 1,
+    "qz.com": 1,
+    "Houston Public Media": 1,
+    "Veterinary microbiology": 1,
+    "Research in veterinary science": 1,
+    "Pan American Health Organization (PAHO)": 1,
+    "Farms.com": 1,
+    "Indiana Public Radio": 1,
+    "The Providence Journal": 1,
+    "Seaside Signal": 1,
+    "Morningstar": 1,
+    "citybiz": 1,
+    "Anne Arundel County Health Department": 1,
+    "IndexBox": 1,
+    "cbs19.tv": 1,
+    "Turkmenportal.com": 1,
+    "Audacy": 1,
+    "EquiManagement": 1,
+    "Gainesville Sun": 1,
+    "Mshale": 1,
+    "edge1021.com.au": 1,
+    "KOMO": 1,
+    "ecommercenews.com.au": 1,
+    "Mahoning Matters": 1,
+    "아시아경제": 1,
+    "American journal of veterinary research": 1,
+    "Colorado State University": 1,
+    "THISDAYLIVE": 1,
+    "Bryan Times": 1,
+    "Journal of comparative pathology": 1,
+    "American journal of physiology. Endocrinology and metabolism": 1,
+    "BMC veterinary research": 1,
+    "Comparative immunology, microbiology and infectious diseases": 1,
+    "Vietnam.vn": 1,
+    "The journals of gerontology. Series A, Biological sciences and medical sciences": 1,
+    "crossroadstoday.com": 1,
+    "Eye On Annapolis": 1,
+    "MPR News": 1,
+    "1News": 1,
+    "El Informador": 1,
+    "Your Oregon News": 1,
+    "WPSD Local 6": 1,
+    "Encyclopedia Britannica": 1,
+    "Spectrum News": 1,
+    "Infectious Disease Advisor": 1,
+    "TV Jaguari": 1,
+    "Nutrition Insight": 1,
+    "NonStop Local Billings": 1,
+    "WILX": 1,
+    "Frontiers in cellular and infection microbiology": 1,
+    "Volksstimme": 1,
+    "WGRZ": 1,
+    "Scientific reports": 1,
+    "ABC News & Headlines – Australian Broadcasting Corporation": 1,
+    "KRGV": 1,
+    "INFO.FR": 1,
+    "thestokesnews.com": 1,
+    "NorthEscambia.com": 1,
+    "DairyReporter.com": 1,
+    "Veterinaria Atual": 1,
+    "WPR": 1,
+    "Bioengineer.org": 1,
+    "Pioneer Press": 1,
+    "KHGI": 1,
+    "Modern Healthcare": 1,
+    "myfoxzone.com": 1,
+    "Coverager": 1,
+    "The Straits Times": 1,
+    "KOAT": 1,
+    "Brazilian journal of microbiology : [publication of the Brazilian Society for Microbiology]": 1,
+    "BMC oral health": 1,
+    "The Journal of parasitology": 1,
+    "Clinical oral implants research": 1,
+    "Experimental parasitology": 1,
+    "porciNews": 1,
+    "1851 Franchise": 1,
+    "WKTV": 1,
+    "companionlife.co.uk": 1,
+    "WSAZ": 1,
+    "ide.go.jp": 1,
+    "Raleigh News & Observer": 1,
+    "inkl": 1,
+    "kens5.com": 1,
+    "Illinois News Bureau": 1,
+    "Nature": 1,
+    "Panay News": 1,
+    "The Cool Down": 1,
+    "Yahoo": 1,
+    "Yahoo Finance": 1,
+    "Central Oregon Daily": 1,
+    "Boehringer Ingelheim": 1,
+    "Trinidad Guardian": 1,
+    "Arkansas Money & Politics": 1,
+    "The Age": 1,
+    "WSU Insider": 1,
+    "WHRO": 1,
+    "Business Insider": 1,
+    "The Atlantic": 1
+  },
+  "top10": [
+    {
+      "label": "Frontiers in Veterinary Science",
+      "count": 49,
+      "registry": {
+        "label": "Frontiers in Veterinary Science",
+        "officialName": "Frontiers in Veterinary Science",
+        "domains": [
+          "frontiersin.org"
+        ],
+        "rssUrls": [
+          "https://www.frontiersin.org/journals/veterinary-science/rss"
+        ],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": true,
+        "lastCheckedAt": null,
+        "evidence": [
+          "data/source-publishers.json"
+        ]
+      }
+    },
+    {
+      "label": "Veterinary Practice News",
+      "count": 20,
+      "registry": {
+        "label": "Veterinary Practice News",
+        "officialName": "Veterinary Practice News",
+        "domains": [
+          "veterinarypracticenews.com"
+        ],
+        "rssUrls": [
+          "https://www.veterinarypracticenews.com/feed/"
+        ],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": true,
+        "lastCheckedAt": null,
+        "evidence": [
+          "data/source-publishers.json"
+        ]
+      }
+    },
+    {
+      "label": "Journal of veterinary internal medicine",
+      "count": 16,
+      "registry": {
+        "label": "Journal of veterinary internal medicine",
+        "officialName": "Journal of veterinary internal medicine",
+        "domains": [],
+        "rssUrls": [],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": false,
+        "lastCheckedAt": null,
+        "evidence": [
+          "existing-direct-source-url"
+        ]
+      }
+    },
+    {
+      "label": "Dr. Andy Roark",
+      "count": 15,
+      "registry": {
+        "label": "Dr. Andy Roark",
+        "officialName": "Dr. Andy Roark",
+        "domains": [
+          "drandyroark.com"
+        ],
+        "rssUrls": [
+          "https://drandyroark.com/feed/"
+        ],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": true,
+        "lastCheckedAt": null,
+        "evidence": [
+          "data/source-publishers.json"
+        ]
+      }
+    },
+    {
+      "label": "IVC Journal",
+      "count": 15,
+      "registry": {
+        "label": "IVC Journal",
+        "officialName": "IVC Journal",
+        "domains": [
+          "ivcjournal.com"
+        ],
+        "rssUrls": [
+          "https://ivcjournal.com/feed/"
+        ],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": true,
+        "lastCheckedAt": null,
+        "evidence": [
+          "data/source-publishers.json"
+        ]
+      }
+    },
+    {
+      "label": "Veterinary Record",
+      "count": 14,
+      "registry": {
+        "label": "Veterinary Record",
+        "officialName": "Veterinary Record",
+        "domains": [
+          "bvajournals.onlinelibrary.wiley.com"
+        ],
+        "rssUrls": [
+          "https://bvajournals.onlinelibrary.wiley.com/feed/20427670/most-recent"
+        ],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": true,
+        "lastCheckedAt": null,
+        "evidence": [
+          "data/source-publishers.json"
+        ]
+      }
+    },
+    {
+      "label": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
+      "count": 14,
+      "registry": {
+        "label": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
+        "officialName": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
+        "domains": [],
+        "rssUrls": [],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": false,
+        "lastCheckedAt": null,
+        "evidence": [
+          "existing-direct-source-url"
+        ]
+      }
+    },
+    {
+      "label": "Today's Veterinary Business",
+      "count": 11,
+      "registry": {
+        "label": "Today's Veterinary Business",
+        "officialName": "Today's Veterinary Business",
+        "domains": [
+          "todaysveterinarybusiness.com"
+        ],
+        "rssUrls": [
+          "https://todaysveterinarybusiness.com/feed/"
+        ],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": true,
+        "lastCheckedAt": null,
+        "evidence": [
+          "data/source-publishers.json"
+        ]
+      }
+    },
+    {
+      "label": "Vet Practice Magazine",
+      "count": 10,
+      "registry": {
+        "label": "Vet Practice Magazine",
+        "officialName": "Vet Practice Magazine",
+        "domains": [
+          "vetpracticemag.com.au"
+        ],
+        "rssUrls": [
+          "https://vetpracticemag.com.au/feed/"
+        ],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": true,
+        "lastCheckedAt": null,
+        "evidence": [
+          "data/source-publishers.json"
+        ]
+      }
+    },
+    {
+      "label": "Veterinary medicine and science",
+      "count": 10,
+      "registry": {
+        "label": "Veterinary medicine and science",
+        "officialName": "Veterinary medicine and science",
+        "domains": [],
+        "rssUrls": [],
+        "archiveUrl": null,
+        "searchUrlTemplate": null,
+        "country": null,
+        "language": "en",
+        "sourceType": "publisher",
+        "active": false,
+        "lastCheckedAt": null,
+        "evidence": [
+          "existing-direct-source-url"
+        ]
+      }
+    }
+  ]
+}

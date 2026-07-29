@@ -280,3 +280,90 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - Cloudflare Pages: 기존 `vetman-briefing` 프로젝트 `main` 배포 `a9cc129d` 완료. 새 프로젝트는 만들지 않았습니다.
 - PR quality CI: 최초 Playwright 캐시 경로 불일치를 수정한 뒤 npm test/build/validate/seo audit, Playwright 12건, Lighthouse 3 URL×3회 모두 성공.
 - preview 및 production smoke: 홈페이지, index/noindex 기사, 주제, archive, weekly, robots, sitemap, news sitemap, RSS, 대표 편집 카드 모두 HTTP 200.
+
+## 12. 4차 고도화: editorial operations·source registry·search performance
+
+작성 브랜치: `codex/editorial-operations-growth`
+기준: `origin/main` 최신 production 반영본
+현재 상태: 로컬 구현·검증 완료, 사람 승인과 PR/production 배포 전 단계
+
+### 핵심 설계
+
+- `src/lib/editorial-operations.js`에 `draft → automated → editor-review-required → vet-review-required → approved → published`와 `correction-required`, `archived`, `legacy-published` 상태를 명시했습니다. 기존 463개 기사는 파일을 변경하지 않고 읽기 시 `legacy-published`로만 호환합니다.
+- `scripts/review-cli.js`는 기본 dry-run이며, 등록된 `data/editorial/people.json`의 reviewerId, 역할, 직접 원출처 URL, 전체 체크리스트를 확인해야 `--apply`가 가능합니다. 원자적 저장과 `data/editorial/reviews.jsonl` 감사 로그를 사용하고, contentHash/sourceHash가 달라지면 재검수 큐에 표시합니다. 현재 people.json은 빈 배열이며 가짜 reviewed 상태는 0건입니다.
+- `src/publish.js`는 draft를 바로 published로 바꾸지 않습니다. 계약·품질·승인 상태를 모두 확인하고, high-risk는 vet 역할 승인 없이는 발행하지 않습니다. `src/run.js --publish`도 기존 호출 호환만 유지하고 draft로 저장합니다.
+- `data/sources/registry.json`은 기존 매체 설정·저장소 내 직접 URL만 근거로 생성합니다. 추측 도메인은 확정하지 않으며, 상위 매체 RSS/Atom 후보는 캐시·제목 유사도·날짜·공식 도메인 검사를 거쳐 후보로만 제시합니다. `source:approve --apply`도 HTTPS·등록 도메인·개별 기사·제목 근거를 검증하고 sourceUrlRaw와 변경 이력을 보존합니다.
+- `src/lib/evidence.js`와 기사 템플릿은 원문에서 확인된 연구 유형·대상 종·표본 수·중재·비교군·주요 결과·근거 수준·한계·저널·DOI·기관·연구비·이해상충만 표시합니다. 숫자 불일치는 자동 수정하지 않고 warning 큐로 남깁니다.
+- `data/topic-intent.json`에 검색 의도와 사람이 관리하는 10개 핵심 허브를 분리했습니다. 기존 15개 URL은 유지하며 5개 이상 index 기사와 고유 intro 조건을 계속 적용합니다.
+- `scripts/seo-performance.js`는 GSC와 네이버 CSV를 로컬에 가져오고, 관리자 화면에는 실제 데이터가 없을 때 빈 상태만 보여 줍니다. `.env.example`에는 선택적 API 변수명만 기록하고 secret은 저장하지 않았습니다.
+- 관리자 검수 센터는 기존 Bearer 인증·noindex를 유지하며 상태 변경 API를 공개하지 않습니다. Git CLI를 통한 변경만 허용하고 검색 성과는 읽기 전용으로 제공합니다.
+
+### 4차 통계
+
+| 항목 | 결과 |
+|---|---:|
+| 기사 / index / noindex | 463 / 170 / 293 |
+| 검수 상태 | legacy-published 463 · 신규 명시 상태 0 |
+| index 상태 high-risk 검수 대기 | 75 |
+| index 상태 medium-risk 검수 대기 | 93 |
+| contentTier 추론 | analysis 147 · evidence 101 · brief 215 |
+| 원출처 중계 기사 | 187 |
+| source 후보 / resolved / unresolved / rejected / manually-approved | 0 / 0 / 187 / 0 / 0 |
+| 매체 레지스트리 / 활성 매체 / RSS 설정 | 199 / 27 / 13 |
+| 연구 메타데이터가 있는 기사 | 101 |
+| 수치 경고 기사 | 64 (warning, 자동 수정·자동 noindex 없음) |
+| GSC/네이버 가져온 행 | 0 / 0 (빈 상태 정상) |
+| 대표 이미지 / sitemap / news sitemap | 170/170 / 212 / 11 |
+
+### 4차 검증 결과
+
+- `npm ci`: 성공. 설치 과정에서 dev dependency의 npm 경고가 있었으나 `npm audit --omit=dev`: 0 vulnerabilities.
+- `npm test`: 성공, 16개 통과(기존 테스트 삭제·완화 없음).
+- `npm run check`: 성공. build와 validate 포함.
+- `npm run seo:audit`: 성공, 170 index·293 noindex·sitemap 212·news sitemap 11·치명 0·경고 0.
+- `npm run review:stats`, `npm run review:next`, `npm run source:stats`, `npm run source:registry:audit`: 성공. 187개 중계 URL이 모두 검수 큐에 기록됨.
+- `npm run test:browser`: 390×844·768×1024·1440×1000에서 12/12 통과. axe critical·콘솔/요청 실패·깨진 이미지·canonical/robots/H1 회귀 0.
+- `npm run lighthouse`: 홈·대표 기사·감염·백신 허브를 3회씩 실행. 중앙값 Performance 100, Accessibility 95~96, Best Practices 100, SEO 100, 최대 CLS 0.028, 최대 LCP 약 1.9초, warning 0.
+- JSON-LD·sitemap/news sitemap/RSS XML·내부 링크·index/noindex 일치: 0 오류.
+- 인앱 브라우저 런타임은 제공되지 않아 별도 브라우저 연결은 수행하지 못했으나, 로컬 HTTP와 저장소 Playwright가 동일 대표 페이지·세 viewport에서 통과했습니다.
+
+### 사람이 당장 처리할 상위 20개 기사
+
+검수 우선순위는 위험도·index 상태·기존 발행 여부를 합산한 큐이며, 아래는 현재 index 상태에서 먼저 확인할 기사입니다.
+
+1. `v1_5a9fbdf10a1f09c8` — 중환자 개에서 전신 면역염증 지표의 예후 예측 가치
+2. `v1_2688f13fc6d2660b` — 노령 고양이 근감소증과 악액질, 노쇠: 메커니즘·진단·치료 총론
+3. `v1_b1565da63f8497f3` — 개 치경부 결손 재생을 위한 신규 삼중 수화물 Gel 개발
+4. `v1_122239e469ae8bb6` — 곰팡이와 박하화합물 병용으로 진드기 사멸 효과 입증
+5. `v1_a7b57667e01fa858` — 고양이 유전성 메틸말론산혈증 사례: 임상·MRI·병리 소견
+6. `v1_592f1d8e702ec6a0` — 양계장 Biosecurity 실패가 내성 대장균 확산을 주도
+7. `v1_a8c8d0ced9731d44` — 쿠싱증후군·프레드니솔론 치료 동반 개에서 혈액응고 과다
+8. `v1_97407f7b28526af0` — 퇴원 처방 개선과 환자 결과
+9. `v1_9996059839065d8b` — 개 정형외과술 후 비외상성 부신출혈 1례
+10. `v1_c3cdce99920a1017` — 소태반 추출물과 노령견 인지 기능 연구
+11. `v1_2b0fbe31bd7499f6` — 필리핀 북부 강아지의 인체감염성 요충 연구
+12. `v1_06ce49c95607933d` — 개에서 opiranserin 정맥 지속 주입의 진통 효과
+13. `v1_cc752d4547496da4` — 개 반척추절제술의 국소 진통 연구
+14. `v1_67badcee51a08493` — 젖소 유방염의 음파펄스·냉레이저 요법
+15. `v1_94e3799cebd31d4b` — 아키타 수 puppies의 수영 강아지 증후군 사례
+16. `2026-07-25_20` — 개 고등급 수막내 희소돌기아교종 사례
+17. `2026-07-25_21` — 개 두개골 골화성 섬유종 영상·수술 사례
+18. `2026-07-25_22` — 개 진행성 치주염의 세균·엑소솜 연구
+19. `2026-07-25_23` — 개 각막 손상 HA 기반 광경화 접착제 사례
+20. `2026-07-25_27` — 말 경추 추간공 해부학 연구
+
+### Search Console·네이버에서 내려받을 CSV
+
+- Google Search Console: Performance → Search results → 기간별 Queries, Pages, Countries, Devices CSV. 가능하면 날짜·검색어·페이지·노출·클릭·CTR·평균 게재순위가 포함된 원본을 보존합니다.
+- 네이버 서치어드바이저: 검색 유입/검색어·페이지·기간·노출·클릭·CTR·평균 순위 CSV. 실제 UI의 한국어 헤더를 그대로 가져오면 importer가 매핑합니다.
+- 가져온 뒤 `npm run seo:import:gsc -- <csv>`, `npm run seo:import:naver -- <csv>`, `npm run seo:performance`를 실행합니다. 성과는 색인·임상 품질 게이트를 자동 완화하지 않습니다.
+
+### 4차 배포 전 체크리스트
+
+- 실제 사람을 `data/editorial/people.json`에 등록하기 전에 이름·역할·자격·프로필 URL을 확인하고, 승인 시 reviewerId를 명시할 것
+- `review:approve`의 dry-run 출력과 Git diff를 먼저 확인하고 high-risk에는 vet 역할을 사용할 것
+- `reports/source-resolution.json`의 187개 원문 후보를 매체 공식 페이지의 제목·날짜·canonical과 대조한 뒤 하나씩 승인할 것
+- 외부 이미지 87개의 사용 권한을 확인하기 전에는 `licensed`·credit·license를 채우거나 자체 호스팅하지 않을 것
+- `reports/seo-performance.json`은 실제 GSC·네이버 CSV를 가져온 뒤에만 성과를 해석할 것
+- PR CI와 Cloudflare preview에서 전체 테스트·Playwright·Lighthouse를 재실행하고 기존 170/293·212/11·주요 URL을 비교할 것
+- 승인 전에는 production push, merge, Cloudflare Pages 배포를 수행하지 않을 것

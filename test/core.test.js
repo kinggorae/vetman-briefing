@@ -13,6 +13,8 @@ import { cleanImageUrl, removeRepeatedImages } from "../src/images.js";
 import { cardAssetPath, cardRelativePath, generatedImageMeta } from "../src/editorial-cards.js";
 import { imageCanRender, normalizeImageOwnership } from "../src/lib/image-rights.js";
 import { clinicalReviewIssues, inferClinicalRisk, normalizeEditorialStatus } from "../src/lib/editorial-review.js";
+import { CHECKLIST_KEYS, articleContractIssues, contentHash, normalizedChecklist, requiredReviewRole, sourceHash } from "../src/lib/editorial-operations.js";
+import { evidenceMetadata, numericEvidenceIssues } from "../src/lib/evidence.js";
 import {
   FEEDS,
   CANDIDATES_MAX,
@@ -172,4 +174,20 @@ test("clinical review policy is conservative and does not retroactively block le
   assert.equal(inferClinicalRisk({ titleKo: "약물 용량과 응급 대응", bodyKo: [] }), "high");
   assert.deepEqual(clinicalReviewIssues({ titleKo: "약물 용량", bodyKo: [], publishedAt: "2026-07-29T00:00:00Z" }, { issueDate: "2026-07-29" }), []);
   assert.ok(clinicalReviewIssues({ titleKo: "약물 용량", bodyKo: [], publishedAt: "2026-07-30T00:00:00Z" }, { issueDate: "2026-07-30" }).includes("high-risk-not-vet-reviewed"));
+});
+
+test("editorial workflow requires explicit schema, roles, checklist, and stable hashes", () => {
+  const item = { id: "new-1", titleKo: "약물 용량 연구", leadKo: "연구 결과를 설명합니다.", bodyKo: ["첫 문단", "둘째 문단", "셋째 문단"], sourceLabel: "공식 매체", sourceUrl: "https://example.com/article", publishedAt: "2026-07-30", contentTier: "evidence", clinicalRisk: "high", workflowStatus: "draft" };
+  assert.equal(requiredReviewRole(item), "vet");
+  assert.deepEqual(Object.keys(normalizedChecklist({})), CHECKLIST_KEYS);
+  assert.ok(articleContractIssues(item).includes("workflowStatus-missing") === false);
+  assert.equal(contentHash(item), contentHash({ ...item }));
+  assert.notEqual(contentHash(item), contentHash({ ...item, leadKo: "수정된 리드입니다." }));
+  assert.equal(sourceHash(item), sourceHash({ ...item }));
+});
+
+test("evidence metadata is explicit and numeric conflicts are warnings only", () => {
+  const item = { studyType: "case-report", sampleSize: 3, leadKo: "표본 수는 3마리입니다.", bodyKo: ["본문에서는 4마리로 보고했습니다."] };
+  assert.deepEqual(evidenceMetadata(item), { studyType: "case-report", sampleSize: 3 });
+  assert.ok(numericEvidenceIssues(item).includes("numeric-lead-body-mismatch"));
 });
