@@ -395,7 +395,7 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - `scripts/generate-review-packets.js`가 index 상태 high 75·medium 93건을 원문·연구 메타데이터·수치 경고·체크리스트와 함께 패킷화합니다. 기존 187개 unresolved relay 기사는 sourceLabel 빈도순 145개 매체 배치, 총 187건으로 `reports/source-review-batches/`에 생성했습니다.
 - `scripts/source-registry.js`의 수동 승인도 HTTPS·공식 레지스트리 도메인·HTTP 응답·robots·canonical·원문 제목 유사도·발행일 근접성을 확인합니다. `sourceUrlRaw`와 결정 로그를 보존하며 기본은 dry-run입니다.
 - `scripts/schedule.js`와 `schedule:plan/set/cancel`을 추가했습니다. approved 상태와 위험도별 검수 조건을 통과한 문서만 예약 가능하고, 기본은 dry-run입니다. `data/editorial/schedule.jsonl`에 예약·취소 이력을 기록하며 자동 발행은 수행하지 않습니다. 현재 legacy-published만 존재하므로 자동 편성 후보는 0건입니다.
-- `docs/SEARCH_CONSOLE_RUNBOOK.md`, GSC·네이버 CSV 헤더 템플릿, `docs/CLOUDFLARE_PREVIEW.md`를 추가했습니다. 실제 인증정보·성과 데이터는 만들지 않았습니다. Branch preview는 현재 branch가 아직 원격에 배포되지 않은 상태에서 기존 alias가 404/Deployment Not Found였고, 공개 GitHub API에서 Pages deployment status도 확인되지 않아 우회 배포하지 않았습니다.
+- `docs/SEARCH_CONSOLE_RUNBOOK.md`, GSC·네이버 CSV 헤더 템플릿, `docs/CLOUDFLARE_PREVIEW.md`를 추가했습니다. 실제 인증정보·성과 데이터는 만들지 않았습니다. Branch preview alias는 `codex-source-first-newsroom.vetman-briefing.pages.dev`와 짧은 별칭 모두 404/Deployment Not Found였고, Pages 프로젝트가 Git provider 없이 운영되어 main merge만으로 자동 배포되지 않았습니다. 기존 프로젝트에 Wrangler로 production 배포했습니다.
 - `.github/workflows/daily.yml`은 source health와 draft 수집·보고서 artifact만 수행하며 `data/issues/*.json`, `site/`를 자동 발행하지 않습니다. quality CI에도 source health·ingest dry-run·검수 패킷을 추가했습니다.
 
 ### 5차 통계
@@ -419,7 +419,7 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 ### 5차 검증 결과
 
 - `npm ci`: 성공. 설치 전체 audit에는 dev dependency 경고가 있었으나 `npm audit --omit=dev`: production vulnerabilities 0건.
-- `npm test`: 성공, 기존 테스트를 삭제·완화하지 않고 18개 통과.
+- `npm test`: 성공, 기존 테스트를 삭제·완화하지 않고 19개 통과.
 - `npm run check`: 성공. build·validate 포함. source-first draft 파일과 미래 scheduledAt이 공개 build에 섞이지 않는 경계를 적용했습니다.
 - `npm run seo:audit`: 성공, 170 index·293 noindex·sitemap 212·치명 0·경고 0.
 - `npm run sources:health`: 성공적으로 리포트를 생성했습니다. 13개 피드 중 1개 네트워크 실패와 stale/degraded 상태는 warning으로 기록했으며 레지스트리·production을 자동 수정하지 않았습니다.
@@ -447,3 +447,14 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - Cloudflare Pages 기존 `vetman-briefing` preview가 실제 commit을 가리키는지 확인하고, preview가 없으면 production을 대체 경로로 사용하지 않기
 - merge 전 임상·원출처·이미지 권리 사람이 승인하지 않은 상태가 reviewed/approved로 바뀌지 않았는지 확인
 - production 배포 후 홈페이지·대표 기사·주제·archive·weekly·RSS·sitemap·robots smoke test와 Search Console·네이버 수집 상태 확인
+
+### 5차 최종 배포 결과
+
+- feature commit: `02ac82a94b81b4adf19be3be04487f101993f449` (`feat: build source-first newsroom ingestion pipeline`)
+- PR: [#8](https://github.com/kinggorae/vetman-briefing/pull/8)
+- merge commit: `6bc8686604f858f209627a99a519417de84e102f`
+- production deployment: 기존 Cloudflare Pages 프로젝트 `vetman-briefing`에 `main` 환경으로 배포 완료. deployment URL은 `https://75986d5a.vetman-briefing.pages.dev`이며 custom domain `https://news.vetmanlab.com/`에 반영되었습니다. 새 프로젝트는 만들지 않았습니다.
+- production smoke: 홈페이지·robots.txt·sitemap.xml·news-sitemap.xml·rss.xml·대표 기사 모두 HTTP 200. production sitemap 212개, news sitemap 11개, RSS 50개 item과 전체 본문 `content:encoded`을 확인했습니다.
+- 배포 직후 production 홈페이지가 로컬 `site/index.html`과 158,089 bytes 및 SHA-256으로 일치함을 확인했습니다.
+- PR CI: `quality` workflow 성공. `npm ci`, test/build/validate, SEO audit, source health, ingest dry-run, review/source stats, Playwright, Lighthouse를 모두 통과했습니다.
+- 남은 운영 작업: 기존 unresolved relay 187건과 index high/medium 임상 검수 75/93건은 사람 승인 전까지 자동 변경하지 않습니다. 공식 피드 health의 stale 3·degraded 9·failing 1 상태도 계속 모니터링합니다.
