@@ -120,6 +120,8 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
   koreanizeItem(item); // 남은 영어 잔여물 교정(학명·약물명은 보존)
   return {
     ...(needsReview ? { needsReview: true } : {}),
+    contentTier: "analysis",
+    aiAssisted: true,
     ...item,
     sourceType: post.sourceType,
     sourceLabel: post.sourceLabel,
@@ -175,7 +177,9 @@ export async function generateBrief(post, attempt = 1) {
     item.summaryKo = item.summaryKo.replace(/[一-鿿぀-ヿЀ-ӿ]+/g, "").replace(/\s{2,}/g, " ").trim();
   }
   return {
+    contentTier: "brief",
     tier: "brief",
+    aiAssisted: true,
     category: "brief",
     titleKo: item.titleKo,
     leadKo: item.summaryKo,
@@ -241,6 +245,8 @@ async function generatePaper(post, attempt = 1, prevFeedback = null) {
   koreanizeItem(item); // 남은 영어 잔여물 교정(학명·약물명은 보존)
   return {
     ...(needsReview ? { needsReview: true } : {}),
+    contentTier: "evidence",
+    aiAssisted: true,
     ...item,
     sourceType: "paper",
     sourceLabel: post.sourceLabel,
@@ -352,6 +358,8 @@ async function generateStory(post, attempt = 1, prevFeedback = null) {
   koreanizeItem(item); // 남은 영어 잔여물 교정(학명·약물명은 보존)
   return {
     ...(needsReview ? { needsReview: true } : {}),
+    contentTier: "brief",
+    aiAssisted: true,
     ...item,
     keyPointsKo: [],
     angleKo: "", // 가십 섹션은 블로그 글감 없음

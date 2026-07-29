@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { normalizeSourceUrl, sourceKeys } from "./identity.js";
-import { publishQualityIssues, qualityIssues } from "./quality.js";
+import { normalizeContentTier, publishQualityIssues, qualityIssues } from "./quality.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DATA_DIR = path.join(ROOT, "data", "issues");
@@ -50,7 +50,7 @@ function main() {
         increment(byFlag, flag);
         increment(dateReport.flags, flag);
       }
-      const tier = item.tier || (item.category === "watercooler" ? "watercooler" : "deep");
+      const tier = item.category === "watercooler" ? "brief" : normalizeContentTier(item);
       increment(byCategory, item.category || "other");
       increment(byTier, tier);
       increment(byMarket, item.market || "미지정");
