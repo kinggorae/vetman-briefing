@@ -1,12 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { XMLParser } from "fast-xml-parser";
 import { normalizeSourceUrl } from "./identity.js";
-import { publishQualityIssues, qualityIssues } from "./quality.js";
+import { isCardRenderable, qualityIssues } from "./quality.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DATA_DIR = path.join(ROOT, "data", "issues");
 const SITE_DIR = path.join(ROOT, "site");
+const SITE_ORIGIN = "https://news.vetmanlab.com";
 
 function fail(message) {
   console.error(`검증 실패: ${message}`);
@@ -55,10 +57,8 @@ for (const issue of issues) {
       urls.add(sourceUrl);
       allUrls.set(sourceUrl, issue.date);
     }
-    const blockers = publishQualityIssues(item);
-    if (blockers.length) fail(`${issue.date} #${index + 1}: 공개 차단 품질 플래그 ${blockers.join(", ")}`);
-    const warnings = qualityIssues(item).filter((flag) => !blockers.includes(flag));
-    if (warnings.length) console.warn(`경고: ${issue.date} #${index + 1}: 품질 플래그 ${warnings.join(", ")}`);
+    const flags = qualityIssues(item);
+    if (flags.length) console.warn(`경고: ${issue.date} #${index + 1}: 품질 플래그 ${flags.join(", ")} (기사 페이지는 색인 게이트에서 제외)`);
   }
 }
 
@@ -96,8 +96,7 @@ if (fs.existsSync(latestFile)) {
   const latestUrls = new Set();
   for (const [index, item] of (latestPublic?.items || []).entries()) {
     if (item.visibility === "suppressed") fail(`site/latest.json #${index + 1}: 억제 항목이 공개 JSON에 남아 있습니다.`);
-    const blockers = publishQualityIssues(item);
-    if (blockers.length) fail(`site/latest.json #${index + 1}: 공개 차단 품질 플래그 ${blockers.join(", ")}`);
+    if (!isCardRenderable(item)) fail(`site/latest.json #${index + 1}: 카드 렌더링 차단 품질 플래그가 남아 있습니다.`);
     const sourceUrl = normalizeSourceUrl(item.sourceUrl);
     if (sourceUrl && latestUrls.has(sourceUrl)) fail(`site/latest.json 중복 sourceUrl ${sourceUrl}`);
     if (sourceUrl) latestUrls.add(sourceUrl);
@@ -131,6 +130,84 @@ const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 if (new Set(locs).size !== locs.length) fail("sitemap.xml에 중복 URL이 있습니다.");
 if (!sitemap.includes("<urlset")) fail("sitemap.xml 형식 이상");
 
+function htmlFiles(dir = SITE_DIR) {
+  const out = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...htmlFiles(full));
+    else if (entry.name.endsWith(".html")) out.push(full);
+  }
+  return out;
+}
+
+function canonicalOf(html) {
+  return html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)/i)?.[1] || null;
+}
+
+function robotsOf(html) {
+  return html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)/i)?.[1].toLowerCase() || "";
+}
+
+function titleOf(html) {
+  return html.match(/<title>([\s\S]*?)<\/title>/i)?.[1].trim() || null;
+}
+
+function descriptionOf(html) {
+  return html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)/i)?.[1] || null;
+}
+
+function fileForUrl(url) {
+  if (!url.startsWith(`${SITE_ORIGIN}/`)) return null;
+  const pathname = decodeURIComponent(new URL(url).pathname);
+  if (pathname === "/") return path.join(SITE_DIR, "index.html");
+  const clean = pathname.replace(/^\//, "").replace(/\/$/, "");
+  const asset = path.join(SITE_DIR, clean);
+  if (fs.existsSync(asset) && fs.statSync(asset).isFile()) return asset;
+  const direct = path.join(SITE_DIR, `${clean}.html`);
+  if (fs.existsSync(direct)) return direct;
+  return path.join(SITE_DIR, clean, "index.html");
+}
+
+const pageFiles = htmlFiles();
+const pageMeta = new Map();
+const titles = new Map();
+const descriptions = new Map();
+const canonicals = new Map();
+for (const file of pageFiles) {
+  const html = fs.readFileSync(file, "utf8");
+  for (const match of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try { JSON.parse(match[1].trim()); } catch (error) { fail(`${path.relative(SITE_DIR, file)} JSON-LD 파싱 실패: ${error.message}`); }
+  }
+  const title = titleOf(html);
+  const description = descriptionOf(html);
+  const canonical = canonicalOf(html);
+  const robots = robotsOf(html);
+  if (title) { if (titles.has(title)) fail(`중복 title: ${title}`); else titles.set(title, file); }
+  if (description) { if (descriptions.has(description)) fail(`중복 description: ${description}`); else descriptions.set(description, file); }
+  if (canonical) { if (canonicals.has(canonical)) fail(`중복 canonical: ${canonical}`); else canonicals.set(canonical, file); }
+  pageMeta.set(file, { canonical, robots });
+  for (const match of html.matchAll(/<a\b[^>]+href=["']([^"']+)["']/gi)) {
+    const href = match[1];
+    if (!href.startsWith("/") || href.startsWith("//") || href.startsWith("/api/") || href.startsWith("/search")) continue;
+    const target = href.split("#")[0].split("?")[0];
+    const targetFile = fileForUrl(`${SITE_ORIGIN}${target || "/"}`);
+    if (targetFile && !fs.existsSync(targetFile)) fail(`${path.relative(SITE_DIR, file)} 내부 링크 대상 없음: ${href}`);
+  }
+}
+
+const homeMeta = pageMeta.get(path.join(SITE_DIR, "index.html"));
+if (!homeMeta || homeMeta.robots.includes("noindex")) fail("홈페이지가 noindex입니다.");
+for (const loc of locs) {
+  const file = fileForUrl(loc);
+  if (!file || !fs.existsSync(file)) fail(`sitemap URL의 생성 파일 없음: ${loc}`);
+  const meta = file ? pageMeta.get(file) : null;
+  if (meta?.robots.includes("noindex")) fail(`noindex URL이 sitemap에 포함됨: ${loc}`);
+  if (meta?.canonical !== loc) fail(`sitemap/canonical 불일치: ${loc} / ${meta?.canonical || "없음"}`);
+}
+for (const [file, meta] of pageMeta) {
+  if (meta.robots.includes("noindex") && meta.canonical && locs.includes(meta.canonical)) fail(`noindex 페이지가 sitemap에 포함됨: ${meta.canonical}`);
+}
+
 const newsSitemap = fs.existsSync(path.join(SITE_DIR, "news-sitemap.xml"))
   ? fs.readFileSync(path.join(SITE_DIR, "news-sitemap.xml"), "utf8")
   : "";
@@ -143,6 +220,22 @@ if (newsLocs.some((url) => !url.startsWith("https://news.vetmanlab.com/article/"
   fail("news-sitemap.xml에 잘못된 기사 URL이 있습니다.");
 }
 if (new Set(newsLocs).size !== newsLocs.length) fail("news-sitemap.xml에 중복 URL이 있습니다.");
+for (const loc of newsLocs) {
+  const file = fileForUrl(loc);
+  const meta = file ? pageMeta.get(file) : null;
+  if (!file || !fs.existsSync(file) || meta?.robots.includes("noindex")) fail(`news sitemap에 색인 불가 URL: ${loc}`);
+}
+
+for (const [file, meta] of pageMeta) {
+  if (meta.canonical && !meta.canonical.startsWith(`${SITE_ORIGIN}/`) && meta.canonical !== SITE_ORIGIN) fail(`canonical origin 이상: ${file}`);
+}
+try {
+  new XMLParser({ ignoreAttributes: false }).parse(fs.readFileSync(path.join(SITE_DIR, "sitemap.xml"), "utf8"));
+  new XMLParser({ ignoreAttributes: false }).parse(fs.readFileSync(path.join(SITE_DIR, "news-sitemap.xml"), "utf8"));
+  new XMLParser({ ignoreAttributes: false }).parse(fs.readFileSync(path.join(SITE_DIR, "rss.xml"), "utf8"));
+} catch (error) {
+  fail(`XML 파싱 실패: ${error.message}`);
+}
 
 const home = fs.existsSync(path.join(SITE_DIR, "index.html")) ? fs.readFileSync(path.join(SITE_DIR, "index.html"), "utf8") : "";
 if (home.includes("#202") && home.includes('"@type":"NewsArticle"')) fail("홈 JSON-LD에 legacy hash 기사 URL이 남아 있습니다.");

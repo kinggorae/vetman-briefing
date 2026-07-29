@@ -4,7 +4,13 @@ import { fileURLToPath } from "node:url";
 import { SITE, LEGAL, SPONSOR, TOPICS } from "../config.js";
 import { normalizeSourceUrl } from "./identity.js";
 import { cleanImageUrl, removeRepeatedImages } from "./images.js";
-import { publishQualityIssues } from "./quality.js";
+import { jsonLdScript } from "./lib/schema.js";
+import {
+  isCardRenderable,
+  isProfessionallyIndexable,
+  normalizeContentTier,
+  publishQualityIssues,
+} from "./quality.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -70,8 +76,19 @@ const PUBLISHER_LD = {
   logo: { "@type": "ImageObject", url: `${SITE.baseUrl}/og.png`, width: 1200, height: 630 },
 };
 const AUTHOR_LD = { "@type": "Organization", name: `${SITE.brandKo} 편집팀`, url: `${SITE.baseUrl}/about` };
-// 이미지 없는 기사도 image를 채워 경고를 없앤다(OG 대표 이미지로 폴백).
+function authorLd(a = {}) {
+  return a.author
+    ? { "@type": "Person", name: a.author, ...(a.authorUrl ? { url: a.authorUrl } : {}) }
+    : AUTHOR_LD;
+}
+function validIsoDate(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+// 이미지 없는 기사도 공유·구조화 데이터는 og.png로 안전하게 폴백한다.
 const articleImage = (a) => a.image || `${SITE.baseUrl}/og.png`;
+const articleImages = (a) => a.images?.length ? a.images : [articleImage(a)];
 
 function loadIssues() {
   if (!fs.existsSync(ISSUES_DIR)) return [];
@@ -106,13 +123,17 @@ function usableImage(url) {
   return cleanImageUrl(url);
 }
 
-function toArticle(item, i, issueDate) {
+function toArticle(item, i, issueDate, issuePublishedAt = null) {
   const body = item.bodyKo?.length ? item.bodyKo : item.summaryKo ? [item.summaryKo] : [];
   // 리드가 빈 생성물이 있어 카드가 휑해진다 — 본문 첫 문단으로 대체
   const dek = trimDek(item.leadKo || item.summaryKo || body[0] || "");
   const chars = (item.titleKo || "").length + dek.length + body.join("").length;
   const readMin = Math.max(1, Math.round(chars / 500));
-  const candidatePub = item.publishedAt ? new Date(item.publishedAt) : null;
+  // 개별 원문 발행 시각이 없는 레거시 항목은 이슈에 기록된 실제 발행 시각을
+  // 사용한다. 빌드 시각(Date.now())이나 날짜 자정을 새 발행일로 가장하지 않는다.
+  const candidatePub = item.sourcePublishedAt || item.publishedAt || issuePublishedAt
+    ? new Date(item.sourcePublishedAt || item.publishedAt || issuePublishedAt)
+    : null;
   const pub = candidatePub && !Number.isNaN(candidatePub.getTime()) ? candidatePub : null;
   // 발행일이 없는 기사도 있어 날짜가 통째로 비던 문제 → 이슈 날짜로 대체
   const fallbackIssueDate = /^\d{4}-\d{2}-\d{2}$/.test(issueDate)
@@ -124,14 +145,17 @@ function toArticle(item, i, issueDate) {
   const shownParts = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(shown);
   const shownMap = Object.fromEntries(shownParts.map((p) => [p.type, p.value]));
   const dateStr = `${shownMap.month}.${shownMap.day}`;
+  const dateLong = `${shownMap.year}.${shownMap.month}.${shownMap.day}`;
   const isToday = pub ? new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(pub) === issueDate : false;
   // 기존 기사에는 legacy ID를 유지해 이미 색인된 URL을 깨지 않는다. 새 파이프라인
   // 아이템은 run.js가 source URL 기반 id를 저장하므로 재발행해도 주소가 유지된다.
-  const id = item.id || `${issueDate}_${i + 1}`;
+  const sourceDay = item._day || issueDate;
+  const sourceIndex = Number.isInteger(item._index) ? item._index : i;
+  const id = item.id || `${sourceDay}_${sourceIndex + 1}`;
   const article = {
     id,
     legacySlug: item.legacySlug || null,
-    day: issueDate,
+    day: sourceDay,
     ts: pub ? pub.getTime() : shown.getTime(),
     publishedAt: pub ? pub.toISOString() : null,
     cat: item.category || "other",
@@ -146,16 +170,40 @@ function toArticle(item, i, issueDate) {
     read: `${readMin}분 읽기`,
     plate: shortSource(item.sourceLabel) || "출처",
     image: usableImage(item.imageUrl),
-    sourceUrl: item.sourceUrl || "#",
+    images: [item.imageUrl, ...(Array.isArray(item.imageUrls) ? item.imageUrls : []), item.imageSquareUrl, item.imageLandscapeUrl, item.imageWideUrl]
+      .map(usableImage)
+      .filter(Boolean)
+      .filter((url, index, urls) => urls.indexOf(url) === index),
+    imageAlt: item.imageAlt || null,
+    imageCaption: item.imageCaption || null,
+    imageCredit: item.imageCredit || null,
+    imageLicense: item.imageLicense || null,
+    sourceUrlRaw: item.sourceUrlRaw || item.sourceUrl || null,
+    sourceUrl: normalizeSourceUrl(item.finalUrl || item.sourceUrl || item.sourceUrlRaw || ""),
+    finalUrl: item.finalUrl || null,
+    sourceAuthor: item.sourceAuthor || null,
+    sourcePublishedAt: validIsoDate(item.sourcePublishedAt || item.publishedAt),
+    doi: item.doi || null,
+    journal: item.journal || null,
+    author: item.author || null,
+    authorUrl: item.authorUrl || null,
+    reviewer: item.reviewer || null,
+    reviewerUrl: item.reviewerUrl || null,
+    reviewedAt: validIsoDate(item.reviewedAt),
+    updatedAt: validIsoDate(item.updatedAt),
+    aiAssisted: typeof item.aiAssisted === "boolean" ? item.aiAssisted : null,
+    correctionNote: item.correctionNote || null,
+    dateLong,
     body,
     blog: item.angleKo || "",
     blogAngle: item.keyPointsKo?.length ? item.keyPointsKo : [],
     radar: item.radar || null,
     tag: item.tagKo || "",
-    tier: item.tier || "deep", // "brief" = 간추린 소식(개별 페이지 없음, 색인 X)
+    contentTier: normalizeContentTier(item),
+    tier: item.tier || (normalizeContentTier(item) === "brief" ? "brief" : "deep"),
     ...(item.visibility ? { visibility: item.visibility, suppressedReason: item.suppressedReason || [] } : {}),
   };
-  article.href = article.tier === "brief" ? `/issues/${issueDate}#${article.id}` : articlePath(article);
+  article.href = article.contentTier === "brief" ? `/issues/${sourceDay}#${article.id}` : articlePath(article);
   return article;
 }
 
@@ -164,16 +212,12 @@ function buildIssueData(issue) {
   // 생성 실패로 제목·본문이 빈 항목은 절대 지면에 올리지 않는다(빈 카드 방지)
   const all = issue.items
     .map((it, i) => ({ it, i }))
-    .filter(({ it }) => {
-      // 원본 JSON에는 보존하되, 명시적으로 억제했거나 공개 발행 차단 플래그가
-      // 남은 항목은 홈·검색·사이트맵·개별 기사에서 모두 제외한다.
-      return it.visibility !== "suppressed" && publishQualityIssues(it).length === 0;
-    })
-    .map(({ it, i }) => toArticle(it, i, date))
+    .filter(({ it }) => isCardRenderable(it))
+    .map(({ it, i }) => toArticle(it, i, date, issue.generatedAt || issue.publishedAt))
     .filter((a) => a.title.trim() && a.body.length);
   // 신뢰 뉴스(심층) / 브리프(간추린 소식) / 진료실 밖 이야기(가십) 3분할
-  const articles = all.filter((a) => a.cat !== "watercooler" && a.tier !== "brief");
-  const briefs = all.filter((a) => a.tier === "brief");
+  const articles = all.filter((a) => a.cat !== "watercooler" && a.contentTier !== "brief");
+  const briefs = all.filter((a) => a.contentTier === "brief");
   const stories = all.filter((a) => a.cat === "watercooler");
   const cats = CAT_ORDER.filter((c) => articles.some((a) => a.cat === c)).map((c) => ({ key: c, label: CATEGORY_LABELS[c] }));
   if (issue.weekly) {
@@ -236,7 +280,7 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
     name: title,
     description: SITE.description,
     url: canonical,
-    itemListElement: data.articles.map((a, idx) => ({
+    itemListElement: data.articles.filter(isIndexable).map((a, idx) => ({
       "@type": "ListItem",
       position: idx + 1,
       item: {
@@ -244,11 +288,10 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
         headline: a.title,
         description: a.dek,
         url: `${SITE.baseUrl}${articlePath(a)}`,
-        image: articleImage(a),
-        ...(a.ts
-          ? { datePublished: new Date(a.ts).toISOString(), dateModified: new Date(a.ts).toISOString() }
-          : {}),
-        author: AUTHOR_LD,
+        image: articleImages(a),
+        ...(a.ts ? { datePublished: new Date(a.ts).toISOString() } : {}),
+        ...(a.updatedAt ? { dateModified: a.updatedAt } : {}),
+        author: authorLd(a),
         publisher: PUBLISHER_LD,
         isBasedOn: a.sourceUrl,
         inLanguage: "ko",
@@ -928,10 +971,11 @@ const APP_JS = String.raw`
 
   function homeView(){
     var includeIssueBriefs=!S.query.trim()&&S.cat==='all'&&!S.unreadOnly;
-    var arr=includeIssueBriefs
+    var allArr=includeIssueBriefs
       ? (DATA.articles||[]).concat(DATA.briefs||[],DATA.stories||[])
       : activeList();
-    if(includeIssueBriefs&&DATA.recentPromoted) arr=arr.concat(DATA.recent||[]);
+    if(includeIssueBriefs&&DATA.recentPromoted) allArr=allArr.concat(DATA.recent||[]);
+    var arr=S.showAll?allArr:allArr.slice(0,24);
     if(S.sort==='latest'&&!S.query.trim()) arr.sort(function(x,y){return y.ts-x.ts;});
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
     // 기사가 적은 필터에서는 2단을 쓰지 않는다. 오른쪽 단(카드 4 + TOP 5)이
@@ -960,7 +1004,7 @@ const APP_JS = String.raw`
     var feat=arr[i++];
     var bandAll=arr.slice(i);
     var band=S.showAll?bandAll:bandAll.slice(0,12);
-    var top5=arr.slice(0,5), more=bandAll.length-band.length;
+    var top5=arr.slice(0,5), more=bandAll.length-band.length, clipped=allArr.length-arr.length;
 
     var h='<div>'
     // ① 폴드 — 3단 비대칭
@@ -986,7 +1030,7 @@ const APP_JS = String.raw`
     if(bandAll.length){
       h+='<div style="padding:16px 0 13px;border-bottom:1px solid var(--color-line-normal);"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">오늘의 다른 소식</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">메인 기사와 겹치지 않는 오늘의 후속 소식</span></div>'
       +bandGrid(band);
-      if(more>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+more+'건 더 보기</button></div>'; }
+      if(more>0||clipped>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+Math.max(more,clipped)+'건 더 보기</button></div>'; }
     }
     h+=qaColumn(arr);
     h+=briefsBoard();
@@ -1106,7 +1150,7 @@ const APP_JS = String.raw`
     +'<p style="font-size:calc(17px*var(--fs));line-height:1.75;color:var(--color-label-normal);margin:0 0 18px;font-weight:500;">'+e(a.dek)+'</p>'
     +body
     +radarBlock(a)
-    +'<div style="margin:26px 0 4px;padding:16px 18px;background:var(--color-background-alternative);border-radius:12px;"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">원문 출처</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;"><div style="font-size:14px;color:var(--color-label-neutral);"><b style="color:var(--color-label-strong);font-weight:700;">'+e(a.source)+'</b>'+(a.country?' · '+e(a.country):'')+(a.date?' · '+e(a.date):'')+'</div><a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener nofollow" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">원문 사이트로 이동 '+EXT+'</a></div><p style="margin:10px 0 0;font-size:11.5px;line-height:1.5;color:var(--color-label-alternative);">해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></div>'
+    +'<div style="margin:26px 0 4px;padding:16px 18px;background:var(--color-background-alternative);border-radius:12px;"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">원문 출처</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;"><div style="font-size:14px;color:var(--color-label-neutral);"><b style="color:var(--color-label-strong);font-weight:700;">'+e(a.source)+'</b>'+(a.country?' · '+e(a.country):'')+(a.date?' · '+e(a.date):'')+'</div><a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">원문 사이트로 이동 '+EXT+'</a></div><p style="margin:10px 0 0;font-size:11.5px;line-height:1.5;color:var(--color-label-alternative);">해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></div>'
     + (a.blog ? '<div style="margin:26px 0;padding-top:18px;border-top:1px solid var(--color-line-normal);">'
       +'<div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:10px;">블로그 글감</div>'
       +'<p style="font-family:var(--font-display);font-size:calc(18px*var(--fs));line-height:1.45;font-weight:700;color:var(--color-label-strong);margin:0 0 '+(angle?'12px':'14px')+';text-wrap:pretty;">'+e(a.blog)+'</p>'
@@ -1124,7 +1168,7 @@ const APP_JS = String.raw`
     // footer
     +'<div style="padding:12px 20px;border-top:1px solid var(--color-line-normal);display:flex;gap:8px;align-items:center;">'
     +'<button data-act="prev" '+(prev?'':'disabled')+' style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:'+(prev?'var(--color-label-normal)':'var(--color-label-assistive)')+';cursor:'+(prev?'pointer':'default')+';font-family:inherit;font-size:14px;font-weight:700;padding:12px 16px;border-radius:10px;">'+ARL+' 이전</button>'
-    +'<a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener nofollow" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;padding:12px 14px;border-radius:10px;">원문 '+EXT+'</a>'
+    +'<a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;padding:12px 14px;border-radius:10px;">원문 '+EXT+'</a>'
     +'<button data-act="next" '+(next?'':'disabled')+' style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:'+(next?'var(--color-primary-normal)':'var(--color-material-base)')+';color:'+(next?'#fff':'var(--color-label-assistive)')+';border:0;cursor:'+(next?'pointer':'default')+';font-family:inherit;font-size:14px;font-weight:700;padding:12px 18px;border-radius:10px;">다음 기사 '+ARR+'</button>'
     +'</div></div>';
   }
@@ -1365,7 +1409,7 @@ function recentArticles(current, allIssues, limit = 6) {
   const curLabel = labelOf(current);
   const preferredCats = new Set(
     (current.items || [])
-      .filter((item) => item.visibility !== "suppressed" && item.category !== "watercooler" && publishQualityIssues(item).length === 0)
+      .filter((item) => isCardRenderable(item) && item.category !== "watercooler")
       .map((item) => item.category)
       .filter(Boolean)
   );
@@ -1377,11 +1421,11 @@ function recentArticles(current, allIssues, limit = 6) {
     if (d === curLabel || iss.weekly) continue;
     // 원본 인덱스를 유지해야 날짜별 페이지와 id가 일치한다.
     for (const a of (iss.items || [])
-      .map((it, i) => ({ raw: it, article: toArticle(it, i, d) }))
+      .map((it, i) => ({ raw: it, article: toArticle(it, i, d, iss.generatedAt || iss.publishedAt) }))
       .filter(({ raw, article: a }) => {
         const key = normalizeSourceUrl(a.sourceUrl);
         // 품질 게이트는 변환된 표시 객체가 아니라 원본 발행 항목에 적용한다.
-        if (raw.tier === "brief" || raw.category === "watercooler" || publishQualityIssues(raw).length) return false;
+        if (normalizeContentTier(raw) === "brief" || raw.category === "watercooler" || !isCardRenderable(raw)) return false;
         if (key && seen.has(key)) return false;
         if (key) seen.add(key);
         return true;
@@ -1413,7 +1457,7 @@ function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) 
       total += (iss.items || []).filter((it) =>
         it.visibility !== "suppressed" &&
         it.category !== "watercooler" &&
-        publishQualityIssues(it).length === 0
+        isCardRenderable(it)
       ).length;
     }
     data.totalArticles = total;
@@ -1481,7 +1525,7 @@ const MANIFEST = JSON.stringify({
   icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any maskable" }],
 });
 
-const SW_JS = `const C='vmcache-v4';
+const SW_JS = `const C='vmcache-v5';
 const SHELL=['/','/latest.json','/archive.json','/icon.svg','/manifest.webmanifest'];
 const OFFLINE='<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 없음</title><style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:#fff;color:#171719}@media(prefers-color-scheme:dark){body{background:#171719;color:#f7f7f8}}.b{max-width:420px;text-align:center}h1{font-size:24px;font-weight:800;margin:0 0 10px}p{margin:0 0 22px;font-size:15px;line-height:1.7;opacity:.7}a{display:inline-block;background:#0066ff;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}</style></head><body><div class="b"><h1>연결이 끊겼습니다</h1><p>이 페이지는 아직 받아두지 않았습니다.<br>연결을 확인한 뒤 다시 시도해 주세요.</p><a href="/">오늘의 브리핑 보기</a></div></body></html>';
 self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(SHELL);}).then(function(){return self.skipWaiting();}));});
@@ -1515,17 +1559,18 @@ function buildWeeklies(issues) {
   const weeks = {};
   for (const issue of issues) {
     const wk = isoWeek(labelOf(issue));
-    (weeks[wk] = weeks[wk] || []).push(...issue.items.map((it) => ({ ...it, _day: labelOf(issue) })));
+    (weeks[wk] = weeks[wk] || []).push(...issue.items.map((it, index) => ({ ...it, _day: labelOf(issue), _index: index })));
   }
   return Object.entries(weeks)
     .map(([wk, items]) => {
       const top = items
         .filter((it) =>
           it.visibility !== "suppressed" &&
-          it.tier !== "brief" &&
           it.category !== "research" &&
           it.category !== "watercooler" &&
-          publishQualityIssues(it).length === 0
+          // 주간 아카이브는 기존 URL과 카드 표시를 보존한다. 전문 색인은
+          // renderPage/buildSitemap의 별도 게이트가 결정하므로 brief도 포함할 수 있다.
+          isCardRenderable(it)
         )
         .sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0))
         .slice(0, 12);
@@ -1658,15 +1703,15 @@ function issueIndexable(data) {
 // 남는 건 해외 기사의 한국어 요약뿐이다. 사이트에는 남기되 색인 대상에서는 뺀다 —
 // 이런 페이지가 쌓이면 사이트 전체가 재작성 콘텐츠로 평가된다.
 function isIndexable(a) {
-  if (a.visibility === "suppressed") return false;
-  if (a.duplicateSource) return false;
-  const r = a.radar || {};
-  return !!(r.clinical || r.owner || r.evidence);
+  return isProfessionallyIndexable(
+    { ...a, titleKo: a.titleKo || a.title, leadKo: a.leadKo || a.dek, bodyKo: a.bodyKo || a.body },
+    { duplicate: Boolean(a.duplicateSource) }
+  );
 }
 
 function renderSuppressedArticlePage(a) {
   const canonical = `${SITE.baseUrl}${articlePath(a)}`;
-  const title = `${a.title} | ${SITE.name}`;
+  const title = `${a.pageTitle || `${a.title} · ${a.dateLong || a.day}`} | ${SITE.name}`;
   return `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
@@ -1677,11 +1722,25 @@ function renderSuppressedArticlePage(a) {
 ${gaSnippet()}</head><body><div class="wrap"><header><a href="/">${esc(SITE.name)}</a><a href="/topic/">주제별 보기</a></header><main><div style="font-size:12px;font-weight:800;letter-spacing:.08em;color:#0066ff;margin-bottom:12px;">편집 검수 안내</div><h1>${esc(a.title)}</h1><p>이 기사는 현재 편집 검수 및 출처 확인 중이라 공개 지면에서 잠시 제외되어 있습니다. 최신 브리핑에서 검수된 기사만 확인해 주세요.</p><a class="button" href="/">최신 브리핑 보기</a></main><footer><a href="/about">서비스 소개</a><a href="/privacy">개인정보처리방침</a><a href="/terms">이용약관</a></footer></div></body></html>`;
 }
 
-function renderArticlePage(a, data, prev, next) {
+function relatedArticles(current, all = []) {
+  const currentTopics = new Set(topicsOf(current).map((topic) => topic.slug));
+  return all
+    .filter((candidate) => candidate.id !== current.id && isIndexable(candidate))
+    .map((candidate) => ({
+      candidate,
+      score: topicsOf(candidate).filter((topic) => currentTopics.has(topic.slug)).length * 10 +
+        (candidate.cat === current.cat ? 3 : 0),
+    }))
+    .sort((a, b) => b.score - a.score || (b.candidate.ts || 0) - (a.candidate.ts || 0))
+    .slice(0, 5)
+    .map(({ candidate }) => candidate);
+}
+
+function renderArticlePage(a, data, prev, next, related = []) {
   if (a.visibility === "suppressed") return renderSuppressedArticlePage(a);
   const canonical = `${SITE.baseUrl}${articlePath(a)}`;
   const brand = `${SITE.brandKo}(${SITE.brandEn})`;
-  const title = `${a.title} | ${SITE.name} · ${SITE.brandKo}`;
+  const title = `${a.pageTitle || `${a.title} · ${a.dateLong || a.day}`} | ${SITE.name} · ${SITE.brandKo}`;
   const desc = `${a.dek}`.slice(0, 200);
   const ev = a.radar?.evidence;
   const para = (t) => `<p>${esc(t)}</p>`;
@@ -1693,13 +1752,11 @@ function renderArticlePage(a, data, prev, next) {
     url: canonical,
     inLanguage: "ko",
     isAccessibleForFree: true,
-    image: articleImage(a),
+    image: articleImages(a),
     ...(a.ts ? { datePublished: new Date(a.ts).toISOString() } : {}),
-    // 뉴스는 수정 시각 신호가 중요하다. 별도 수정 이력이 없으면 발행 시각과 동일하게 둔다.
-    ...(a.ts ? { dateModified: new Date(a.ts).toISOString() } : {}),
-    // 저자 명시는 Google E-E-A-T의 핵심. 편집 주체를 개체로 밝힌다(발행처와 별개 필드).
-    author: AUTHOR_LD,
-    isBasedOn: a.sourceUrl,
+    ...(a.updatedAt ? { dateModified: a.updatedAt } : {}),
+    author: authorLd(a),
+    ...(a.sourceUrl ? { isBasedOn: { "@type": "CreativeWork", url: a.sourceUrl, ...(a.sourceTitle ? { name: a.sourceTitle } : {}), ...(a.sourceAuthor ? { author: { "@type": "Person", name: a.sourceAuthor } } : {}), ...(a.sourcePublishedAt ? { datePublished: a.sourcePublishedAt } : {}) } } : {}),
     articleSection: a.kicker,
     // 주제어 — 검색/AI가 이 기사를 어떤 질의에 매칭할지 판단하는 신호
     keywords: [a.tag, a.kicker, ...topicsOf(a).map((t) => t.name)].filter(Boolean).join(", "),
@@ -1707,6 +1764,11 @@ function renderArticlePage(a, data, prev, next) {
     speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".lead"] },
     publisher: PUBLISHER_LD,
     mainEntityOfPage: canonical,
+    ...(a.reviewer ? { reviewedBy: { "@type": "Person", name: a.reviewer, ...(a.reviewerUrl ? { url: a.reviewerUrl } : {}) } } : {}),
+    ...(a.correctionNote ? { correction: a.correctionNote } : {}),
+    ...((a.aiAssisted !== null && a.aiAssisted !== undefined) || a.correctionNote
+      ? { additionalProperty: [{ "@type": "PropertyValue", propertyID: "aiAssisted", value: a.aiAssisted === true }, ...(a.correctionNote ? [{ "@type": "PropertyValue", propertyID: "correctionNote", value: a.correctionNote }] : [])] }
+      : {}),
     // 원문 요약이 아니라 '한국 동물병원 관점의 편집물'임을 구조화 데이터로도 밝힌다.
     // 번역 요약은 isBasedOn(원문)으로, 우리가 만든 판단은 아래 필드로 구분된다.
     ...(a.radar?.clinical ? { abstract: a.radar.clinical } : {}),
@@ -1716,18 +1778,8 @@ function renderArticlePage(a, data, prev, next) {
           mentions: { "@type": "Question", name: a.radar.owner.q },
         }
       : {}),
-    ...(ev
-      ? {
-          // 근거 등급은 우리가 부여한 평가다. Review로 표현해야 성격이 정확하다
-          review: {
-            "@type": "Review",
-            reviewBody: [ev.design, ev.n, ev.note].filter(Boolean).join(" · "),
-            reviewRating: { "@type": "Rating", ratingValue: ev.stars, bestRating: 4, worstRating: 1 },
-            author: { "@type": "Organization", name: SITE.brandKo },
-          },
-        }
-      : {}),
-    ...(a.source ? { citation: { "@type": "CreativeWork", name: a.source, url: a.sourceUrl } } : {}),
+    ...(a.source ? { citation: { "@type": "CreativeWork", name: a.journal || a.source, url: a.doi ? `https://doi.org/${a.doi}` : a.sourceUrl } } : {}),
+    ...(a.doi ? { identifier: { "@type": "PropertyValue", propertyID: "DOI", value: a.doi } } : {}),
   };
   // 보호자 문답은 검색 질의와 직접 겹치는 자산이다. FAQPage를 따로 내보내면
   // 리치 결과·AI 개요 인용 대상이 된다(NewsArticle 안에 묻히면 잡히지 않는다).
@@ -1770,9 +1822,8 @@ function renderArticlePage(a, data, prev, next) {
     SITE.verification?.google ? `\n<meta name="google-site-verification" content="${esc(SITE.verification.google)}">` : ""
   }${SITE.verification?.naver ? `\n<meta name="naver-site-verification" content="${esc(SITE.verification.naver)}">` : ""}
 <meta property="og:type" content="article">${
-    // 뉴스 검색의 신선도 신호. JSON-LD의 datePublished만으로는 잡지 않는 크롤러가 있다
-    a.ts ? `\n<meta property="article:published_time" content="${new Date(a.ts).toISOString()}">\n<meta property="article:modified_time" content="${new Date(a.ts).toISOString()}">` : ""
-  }${a.kicker ? `\n<meta property="article:section" content="${esc(a.kicker)}">` : ""}
+    a.ts ? `\n<meta property="article:published_time" content="${new Date(a.ts).toISOString()}">` : ""
+  }${a.updatedAt ? `\n<meta property="article:modified_time" content="${a.updatedAt}">` : ""}${a.kicker ? `\n<meta property="article:section" content="${esc(a.kicker)}">` : ""}
 <meta property="og:title" content="${esc(a.title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${esc(canonical)}">
@@ -1780,13 +1831,14 @@ function renderArticlePage(a, data, prev, next) {
 <meta property="og:locale" content="ko_KR">${
     // 이미지 없는 기사가 절반이다. 폴백이 없으면 카톡·페북 공유 시 썸네일 없는
     // 맨 링크로 나가 클릭률이 떨어진다
-    `\n<meta property="og:image" content="${esc(a.image || `${SITE.baseUrl}/og.png`)}">` +
+    `\n<meta property="og:image" content="${esc(articleImage(a))}">\n<meta property="og:image:alt" content="${esc(a.imageAlt || a.title)}">` +
     (a.image ? "" : `\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">`)
   }
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(a.title)}">
 <meta name="twitter:description" content="${esc(desc)}">
-<meta name="twitter:image" content="${esc(a.image || `${SITE.baseUrl}/og.png`)}">
+<meta name="twitter:image" content="${esc(articleImage(a))}">
+<meta name="twitter:image:alt" content="${esc(a.imageAlt || a.title)}">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -1809,6 +1861,8 @@ h1{font-size:33px;line-height:1.25;letter-spacing:-.025em;margin:12px 0 14px;fon
 .by{font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.02em;padding-bottom:18px;border-bottom:1px solid var(--line)}
 .ev{margin-top:8px;font-style:italic;text-transform:none;letter-spacing:0}
 .lead{font-size:17.5px;font-weight:500;margin:20px 0 18px}
+.hero-image{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin:20px 0 22px;background:#eef0f3}
+.image-credit{font-size:11px;color:var(--sub);margin:-14px 0 20px}
 p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .note{margin:26px 0;padding:2px 0 2px 18px;border-left:2px solid var(--ink)}
 .note .lb,.qa .lb{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-bottom:5px}
@@ -1825,6 +1879,8 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
 .nav a{flex:1;min-width:200px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
 .nav .l{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pri)}
 .nav .t{font-size:15px;font-weight:700;margin-top:4px;line-height:1.4}
+.related{margin-top:38px;padding-top:24px;border-top:1px solid var(--line)}
+.related h2{font-size:18px;margin:0 0 12px}.related ul{list-style:none;padding:0;margin:0}.related li{border-bottom:1px solid var(--line);padding:11px 0}.related a{display:flex;justify-content:space-between;gap:14px;color:var(--ink);text-decoration:none}.related strong{font-size:14px;line-height:1.45}.related span{color:var(--sub);font-size:11px;white-space:nowrap}
 .home{display:inline-block;margin-top:26px;background:var(--pri);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}
 /* 사이트 헤더/푸터 — 검색으로 기사에 바로 들어온 방문자가 사이트를 둘러볼 통로.
    모든 기사 페이지에서 주요 페이지로 링크가 나가 내부 링크 구조도 강해진다. */
@@ -1859,10 +1915,10 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
   .site-f-grid>section:first-child{grid-column:auto}
 }
 </style>
-<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
-<script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>${
+${jsonLdScript(jsonLd)}
+${jsonLdScript(breadcrumbLd)}${
     faqLd ? `
-<script type="application/ld+json">${JSON.stringify(faqLd)}</script>` : ""
+${jsonLdScript(faqLd)}` : ""
   }${gaSnippet()}
 </head><body>
 <header class="site-h"><div class="in"><a class="b" href="/">${esc(SITE.name)}</a><nav><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/about">서비스 소개</a></nav></div></header>
@@ -1875,11 +1931,13 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
   } <span aria-hidden="true">›</span> <span class="cur" aria-current="page">${esc(a.title)}</span></nav>
 <div class="kick">${esc(a.kicker)}</div>
 <h1>${esc(a.title)}</h1>
-<div class="by"><a href="/about" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(SITE.brandKo)} 편집팀</a> 재작성 · ${[a.date, a.read].filter(Boolean).map(esc).join(" · ")}${
+<div class="by">${a.author ? `<a href="${esc(a.authorUrl || "/about")}" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(a.author)}</a>` : `<a href="/about" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(SITE.brandKo)} 편집팀</a>`} · ${esc(a.contentTier === "evidence" ? "근거 기반 해설" : a.contentTier === "analysis" ? "전문 해설" : "간추린 소식")} · 발행 ${esc(a.dateLong || a.date)}${a.updatedAt ? ` · 수정 ${esc(a.updatedAt.slice(0, 10).replace(/-/g, "."))}` : ""}${a.read ? ` · ${esc(a.read)}` : ""}${a.reviewer ? ` · 감수 ${a.reviewerUrl ? `<a href="${esc(a.reviewerUrl)}" rel="noopener noreferrer" style="color:inherit;">${esc(a.reviewer)}</a>` : esc(a.reviewer)}${a.reviewedAt ? ` (${esc(a.reviewedAt.slice(0, 10).replace(/-/g, "."))})` : ""}` : ""}${a.aiAssisted === true ? " · AI 보조 후 편집" : ""}${
     ev ? `<div class="ev">근거 · ${[ev.design, ev.n].filter(Boolean).map(esc).join(" · ")}${ev.note ? ` — ${esc(ev.note)}` : ""}</div>` : ""
   }</div>
+${a.image ? `<figure><img class="hero-image" src="${esc(a.image)}" alt="${esc(a.imageAlt || a.title)}" width="1200" height="675" loading="eager" decoding="async">${a.imageCaption || a.imageCredit ? `<figcaption class="image-credit">${esc(a.imageCaption || "")}${a.imageCredit ? `${a.imageCaption ? " · " : ""}이미지: ${esc(a.imageCredit)}` : ""}</figcaption>` : ""}</figure>` : ""}
 <div class="lead">${esc(a.dek)}</div>
 ${(a.body || []).map(para).join("\n")}
+${a.correctionNote ? `<div class="note"><div class="lb">정정·편집 메모</div><div class="tx">${esc(a.correctionNote)}</div></div>` : ""}
 ${a.radar?.clinical ? `<div class="note"><div class="lb">임상 메모</div><div class="tx">${esc(a.radar.clinical)}</div></div>` : ""}
 ${
     a.radar?.owner && (a.radar.owner.q || a.radar.owner.script)
@@ -1900,12 +1958,13 @@ ${
         : "";
     })()
   }
-<div class="src"><b>원문 출처</b> · ${esc(a.source)}${a.country ? ` · ${esc(a.country)}` : ""}<br>
-<a href="${esc(a.sourceUrl)}" target="_blank" rel="noopener nofollow">원문 사이트로 이동 ↗</a>
+<div class="src"><b>원문 출처</b> · ${esc(a.source)}${a.country ? ` · ${esc(a.country)}` : ""}${a.sourceAuthor ? ` · ${esc(a.sourceAuthor)}` : ""}${a.sourcePublishedAt ? ` · 원문 발행 ${esc(a.sourcePublishedAt.slice(0, 10).replace(/-/g, "."))}` : ""}<br>
+<a href="${esc(a.sourceUrl || "#")}" target="_blank" rel="noopener noreferrer">원문 사이트로 이동 ↗</a>${a.doi ? ` · <a href="https://doi.org/${esc(a.doi)}" target="_blank" rel="noopener noreferrer">DOI ${esc(a.doi)}</a>` : ""}${a.journal ? `<div class="dis">저널: ${esc(a.journal)}</div>` : ""}
 <div class="dis">${esc(brand)}이 해외 공개 자료를 요약·번역한 콘텐츠이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</div></div>
 <div class="nav">${
     prev ? `<a href="${esc(articlePath(prev))}"><div class="l">이전 기사</div><div class="t">${esc(prev.title)}</div></a>` : ""
   }${next ? `<a href="${esc(articlePath(next))}"><div class="l">다음 기사</div><div class="t">${esc(next.title)}</div></a>` : ""}</div>
+${related.length ? `<section class="related" aria-labelledby="related-title"><h2 id="related-title">같은 주제의 관련 기사</h2><ul>${related.map((item) => `<li><a href="${esc(articlePath(item))}"><strong>${esc(item.title)}</strong><span>${esc([item.kicker, item.dateLong || item.date].filter(Boolean).join(" · "))}</span></a></li>`).join("")}</ul></section>` : ""}
 <a class="home" href="/">${esc(data.dateLabel || data.date)} 브리핑 전체 보기 →</a>
 <footer class="site-f">
 <div class="site-f-grid">
@@ -2236,6 +2295,16 @@ const ABOUT_BODY = `
 <h3>4. 발행</h3>
 <p>모든 기사에 원문 매체·발행일·원문 링크를 표기합니다. 원문을 전재하지 않습니다.</p>
 
+<h2>출처 선정 기준</h2>
+<p>수의 전문 매체, 동료심사 저널, PubMed 등 서지정보를 확인할 수 있는 학술 자료와
+공식 기관의 공개 발표를 우선합니다. 출처의 발행 주체와 원문 URL을 확인할 수 없거나,
+제품 홍보만을 목적으로 하는 자료는 전문 해설의 근거로 사용하지 않습니다.</p>
+
+<h2>사실 확인 절차</h2>
+<p>자동화 단계에서 제목·본문·출처·문단 수·한국어 품질을 검사합니다. 편집 단계에서는
+원문과 기사 내용을 대조하고, 연구 설계·표본·한계를 확인한 뒤 진료 포인트를 원문에 없는
+새 사실처럼 확장하지 않습니다. 확인되지 않은 작성자·감수자·자격 정보는 표시하지 않습니다.</p>
+
 <h2>인공지능 사용에 대하여</h2>
 <p>번역과 요약 과정에 인공지능 언어모델을 사용합니다. 이를 숨기지 않고 밝히는 이유는,
 독자가 정보의 성격을 알고 판단해야 한다고 보기 때문입니다.
@@ -2244,7 +2313,13 @@ const ABOUT_BODY = `
 
 <h2>정정과 삭제 요청</h2>
 <p>사실관계 오류, 오역, 원문 권리자의 게재 중단 요청은 아래 문의처로 접수합니다.
-확인 후 지체 없이 조치하고 그 사실을 기사에 표기합니다.</p>
+확인 후 지체 없이 조치하고, 수정 시각과 정정 내용을 해당 기사에 표기합니다. 정정 전후의
+차이가 임상 판단에 영향을 줄 수 있으면 기사 색인을 일시 중지할 수 있습니다.</p>
+
+<h2>임상 정보 면책</h2>
+<p>기사의 진료 포인트와 보호자 설명은 참고용 편집 정보입니다. 진단·처방·용량 결정은
+담당 수의사가 최신 원문과 국내 허가·지침을 확인한 뒤 환자별로 판단해야 합니다.
+자세한 면책은 <a href="/terms">이용약관의 임상 정보 조항</a>에 안내합니다.</p>
 
 <h2>업무제휴·광고 문의</h2>
 <p>동물약품·진단장비·펫보험 등 한국 동물병원을 대상으로 하는 브랜드의 스폰서십과
@@ -2313,6 +2388,7 @@ function dedupeBy(arr, keyFn, limit) {
 function renderTopicPage(topic, arts) {
   const canonical = `${SITE.baseUrl}${topicPath(topic)}`;
   const brand = `${SITE.brandKo}(${SITE.brandEn})`;
+  const indexable = arts.length >= 3;
   const title = `${topic.name} — 해외 수의 소식 모음 | ${SITE.name} · ${SITE.brandKo}`;
   const desc = `${topic.lede} ${brand}이 정리한 ${arts.length}건.`.slice(0, 200);
 
@@ -2390,7 +2466,7 @@ function renderTopicPage(topic, arts) {
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:site_name" content="${esc(SITE.name)}">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="robots" content="${indexable ? "index" : "noindex"}, follow, max-image-preview:large, max-snippet:-1">
 <style>
   :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;--tint:#f5f6f8;color-scheme:light dark}
   @media (prefers-color-scheme:dark){:root{--bg:#171719;--ink:#f7f7f8;--dim:#a0a0a8;--line:#2e2e33;--tint:#1f1f23}}
@@ -2510,6 +2586,7 @@ ${sec(
 
 function renderTopicIndex(counts) {
   const canonical = `${SITE.baseUrl}/topic/`;
+  const hasTopics = Object.keys(counts || {}).length > 0;
   const rows = TOPICS.filter((t) => counts[t.slug])
     .sort((a, b) => counts[b.slug] - counts[a.slug])
     .map(
@@ -2531,7 +2608,7 @@ function renderTopicIndex(counts) {
 <meta property="og:description" content="${esc(SITE.brandKo)}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${SITE.baseUrl}/og.png">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="robots" content="${hasTopics ? "index" : "noindex"}, follow, max-image-preview:large, max-snippet:-1">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="주제별 보기 | ${esc(SITE.name)}">
 <meta name="twitter:description" content="${esc(SITE.brandKo)}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.">
@@ -2717,18 +2794,19 @@ function renderSourcesIndex(searchEntries) {
 }
 
 function buildSitemap(issues, weeklies = [], extraEntries = [], extraTopics = []) {
-  // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다
-  const today = issues[0] ? `${labelOf(issues[0])}T00:00:00.000Z` : null;
+  // 확장자 없는 주소로 — .html은 308 리다이렉트라 색인 신호가 분산된다.
+  // 날짜 문자열을 가짜 수정일로 쓰지 않고 데이터에 실제로 기록된 시각만 사용한다.
+  const issueLastmod = (issue) => issue.updatedAt || issue.publishedAt || issue.generatedAt || null;
+  const latestLastmod = issues[0] ? issueLastmod(issues[0]) : null;
   const staticUrls = [
-    { loc: `${SITE.baseUrl}/`, lastmod: today },
-    ...issues.filter((i) => issueIndexable(buildIssueData(i))).map((i) => ({ loc: `${SITE.baseUrl}/issues/${labelOf(i)}`, lastmod: `${labelOf(i)}T00:00:00.000Z` })),
-    // 주간 다이제스트가 색인에서 통째로 빠져 있었다
+    { loc: `${SITE.baseUrl}/`, lastmod: latestLastmod },
+    ...issues.filter((i) => issueIndexable(buildIssueData(i))).map((i) => ({ loc: `${SITE.baseUrl}/issues/${labelOf(i)}`, lastmod: issueLastmod(i) })),
     ...weeklies.filter((w) => issueIndexable(buildIssueData(w))).map((w) => ({ loc: `${SITE.baseUrl}/weekly/${labelOf(w)}`, lastmod: null })),
     ...LEGAL_PAGES.map((p) => ({ loc: `${SITE.baseUrl}/${p.slug}`, lastmod: null })),
-    { loc: `${SITE.baseUrl}/topic/`, lastmod: today },
-    { loc: `${SITE.baseUrl}/archive/`, lastmod: today },
-    { loc: `${SITE.baseUrl}/sources/`, lastmod: today },
-    ...(extraTopics || []).map((u) => ({ loc: u, lastmod: today })),
+    ...(extraTopics?.length ? [{ loc: `${SITE.baseUrl}/topic/`, lastmod: latestLastmod }] : []),
+    { loc: `${SITE.baseUrl}/archive/`, lastmod: latestLastmod },
+    { loc: `${SITE.baseUrl}/sources/`, lastmod: latestLastmod },
+    ...(extraTopics || []).map((u) => ({ loc: u, lastmod: latestLastmod })),
   ];
   // 기사 URL은 발행일을 lastmod로 — 크롤러가 신선도를 판단하는 신호가 된다
   const entries = [
@@ -2777,9 +2855,8 @@ function buildRss(issues) {
   const recent = [];
   for (const issue of issues) {
     for (const [index, item] of (issue.items || []).entries()) {
-      if (item.visibility === "suppressed" || item.tier === "brief" || item.category === "watercooler") continue;
-      if (publishQualityIssues(item).length) continue;
-      const article = toArticle(item, index, labelOf(issue));
+      if (item.visibility === "suppressed" || normalizeContentTier(item) === "brief" || item.category === "watercooler") continue;
+      const article = toArticle(item, index, labelOf(issue), issue.generatedAt || issue.publishedAt);
       if (!isIndexable(article)) continue;
       const sourceKey = normalizeSourceUrl(article.sourceUrl);
       if (sourceKey && seen.has(sourceKey)) continue;
@@ -2793,6 +2870,7 @@ function buildRss(issues) {
     .map((article) => {
       const url = `${SITE.baseUrl}${article.href}`;
       const published = article.publishedAt || `${article.day}T00:00:00+09:00`;
+      const content = `<p>${esc(article.dek)}</p>${(article.body || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join("")}`;
       return `  <item>
     <title>${esc(article.title)}</title>
     <link>${url}</link>
@@ -2800,11 +2878,14 @@ function buildRss(issues) {
     <pubDate>${new Date(published).toUTCString()}</pubDate>
     <category>${esc(article.kicker)}</category>
     <description>${esc(article.dek)}</description>
+    <content:encoded><![CDATA[${content.replace(/]]>/g, "]]]]><![CDATA[>")}]]></content:encoded>${article.sourceAuthor ? `
+    <dc:creator>${esc(article.sourceAuthor)}</dc:creator>` : ""}${article.sourceUrl ? `
+    <source url="${esc(article.sourceUrl)}">${esc(article.source)}</source>` : ""}
   </item>`;
     })
     .join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel>
   <title>${esc(SITE.name)}</title>
   <link>${SITE.baseUrl}</link>
   <description>${esc(SITE.description)}</description>
@@ -2819,7 +2900,7 @@ function buildLlmsTxt(issues) {
   // 심층 기사만 요약에 싣는다(브리프는 짧은 단신이라 제외) — AI가 신뢰 인용할 알맹이 위주로.
   const deepItems = (latest.items || []).filter((it) =>
     it.visibility !== "suppressed" &&
-    it.tier !== "brief" &&
+    normalizeContentTier(it) !== "brief" &&
     it.category !== "watercooler" &&
     publishQualityIssues(it).length === 0
   );
@@ -2880,6 +2961,14 @@ function build() {
   const topicBuckets = {};
   const indexedSources = new Set();
   const searchChunks = {};
+  const pageTitleCounts = new Map();
+  for (const issue of issues) {
+    for (const [index, item] of (issue.items || []).entries()) {
+      const article = toArticle(item, index, labelOf(issue), issue.generatedAt || issue.publishedAt);
+      const key = `${article.title} · ${article.dateLong || article.day}`;
+      pageTitleCounts.set(key, (pageTitleCounts.get(key) || 0) + 1);
+    }
+  }
   fs.mkdirSync(path.join(SITE_DIR, "article"), { recursive: true });
   for (const issue of issues) {
     const data = buildIssueData(issue);
@@ -2891,24 +2980,27 @@ function build() {
     // 기사별 개별 페이지 — 색인 면적을 날짜 단위에서 기사 단위로 넓힌다
     // 공개 지면에는 넣지 않지만, 이미 색인됐을 수 있는 억제 항목의 URL은
     // noindex, follow 페이지로 유지해 외부 링크를 404로 만들지 않는다.
-    const suppressed = (issue.items || [])
-      .map((item, index) => toArticle(item, index, labelOf(issue)))
-      .filter((article) => article.visibility === "suppressed");
-    const all = [...data.articles, ...(data.stories || []), ...suppressed];
+    // 카드에서 제외된 얇은/검수 대기 기사도 기존 URL 보존을 위해 독립 HTML을 만든다.
+    // 페이지 자체에는 noindex,follow가 붙고, sitemap·검색·허브에는 들어가지 않는다.
+    const all = (issue.items || [])
+      .map((item, index) => toArticle(item, index, labelOf(issue), issue.generatedAt || issue.publishedAt))
+      .filter((article) => article.title.trim() && article.body.length);
     all.forEach((a, i) => {
       // 여러 날짜에 같은 원문이 재수록되면 가장 최신본만 색인한다.
       // 이전 페이지는 URL을 보존하되 noindex로 남겨 기존 링크를 깨지 않는다.
       const sourceKey = normalizeSourceUrl(a.sourceUrl);
       a.duplicateSource = Boolean(sourceKey && indexedSources.has(sourceKey));
+      const pageTitleKey = `${a.title} · ${a.dateLong || a.day}`;
+      if ((pageTitleCounts.get(pageTitleKey) || 0) > 1) a.pageTitle = `${pageTitleKey} · ${a.id}`;
       if (sourceKey) indexedSources.add(sourceKey);
       fs.writeFileSync(
         path.join(SITE_DIR, "article", `${articleSlug(a)}.html`),
-        renderArticlePage(a, data, all[i - 1] || null, all[i + 1] || null)
+        renderArticlePage(a, data, all[i - 1] || null, all[i + 1] || null, relatedArticles(a, all))
       );
       if (isIndexable(a)) {
         const u = `${SITE.baseUrl}${articlePath(a)}`;
         articleUrls.push(u);
-        articleEntries.push({ url: u, ts: a.ts || null, publishedAt: a.publishedAt || null, modifiedAt: a.publishedAt || null, title: a.title, section: a.kicker });
+        articleEntries.push({ url: u, ts: a.ts || null, publishedAt: a.publishedAt || null, modifiedAt: a.updatedAt || a.publishedAt || null, title: a.title, section: a.kicker });
         // 검색은 최신 지면에만 갇히면 과거 기사 유입을 놓친다. 상세 화면에
         // 필요한 필드까지 포함한 검색 전용 색인을 별도 파일로 제공한다.
         const searchItem = { ...a, url: u };
@@ -2928,12 +3020,10 @@ function build() {
   const topicUrls = [];
   for (const t of TOPICS) {
     const arts = topicBuckets[t.slug] || [];
-    // 3건 미만이면 페이지를 만들지 않는다. 얇은 허브는 그 자체가 저품질 신호다
-    if (arts.length < 3) continue;
     arts.sort((a, b) => (b.ts ?? 0) - (a.ts ?? 0));
-    topicCounts[t.slug] = arts.length;
+    if (arts.length >= 3) topicCounts[t.slug] = arts.length;
     fs.writeFileSync(path.join(SITE_DIR, "topic", `${t.slug}.html`), renderTopicPage(t, arts));
-    topicUrls.push(`${SITE.baseUrl}${topicPath(t)}`);
+    if (arts.length >= 3) topicUrls.push(`${SITE.baseUrl}${topicPath(t)}`);
   }
   fs.writeFileSync(path.join(SITE_DIR, "topic", "index.html"), renderTopicIndex(topicCounts));
   console.log(`  주제 허브 ${topicUrls.length}개 생성`);
@@ -2972,7 +3062,7 @@ function build() {
   fs.writeFileSync(path.join(SITE_DIR, "search-manifest.json"), JSON.stringify(searchManifest));
   const publicLatest = {
     ...latest,
-    items: (latest.items || []).filter((item) => item.visibility !== "suppressed" && publishQualityIssues(item).length === 0),
+    items: (latest.items || []).filter((item) => isCardRenderable(item)),
   };
   fs.writeFileSync(path.join(SITE_DIR, "latest.json"), JSON.stringify(publicLatest, null, 2));
   fs.writeFileSync(path.join(SITE_DIR, "sitemap.xml"), buildSitemap(issues, weeklies, articleEntries, topicUrls));

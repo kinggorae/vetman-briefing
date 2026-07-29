@@ -608,10 +608,11 @@ a:hover{color:var(--color-primary-strong);}
 
   function homeView(){
     var includeIssueBriefs=!S.query.trim()&&S.cat==='all'&&!S.unreadOnly;
-    var arr=includeIssueBriefs
+    var allArr=includeIssueBriefs
       ? (DATA.articles||[]).concat(DATA.briefs||[],DATA.stories||[])
       : activeList();
-    if(includeIssueBriefs&&DATA.recentPromoted) arr=arr.concat(DATA.recent||[]);
+    if(includeIssueBriefs&&DATA.recentPromoted) allArr=allArr.concat(DATA.recent||[]);
+    var arr=S.showAll?allArr:allArr.slice(0,24);
     if(S.sort==='latest'&&!S.query.trim()) arr.sort(function(x,y){return y.ts-x.ts;});
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
     // 기사가 적은 필터에서는 2단을 쓰지 않는다. 오른쪽 단(카드 4 + TOP 5)이
@@ -640,7 +641,7 @@ a:hover{color:var(--color-primary-strong);}
     var feat=arr[i++];
     var bandAll=arr.slice(i);
     var band=S.showAll?bandAll:bandAll.slice(0,12);
-    var top5=arr.slice(0,5), more=bandAll.length-band.length;
+    var top5=arr.slice(0,5), more=bandAll.length-band.length, clipped=allArr.length-arr.length;
 
     var h='<div>'
     // ① 폴드 — 3단 비대칭
@@ -666,7 +667,7 @@ a:hover{color:var(--color-primary-strong);}
     if(bandAll.length){
       h+='<div style="padding:16px 0 13px;border-bottom:1px solid var(--color-line-normal);"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">오늘의 다른 소식</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">메인 기사와 겹치지 않는 오늘의 후속 소식</span></div>'
       +bandGrid(band);
-      if(more>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+more+'건 더 보기</button></div>'; }
+      if(more>0||clipped>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+Math.max(more,clipped)+'건 더 보기</button></div>'; }
     }
     h+=qaColumn(arr);
     h+=briefsBoard();
@@ -786,7 +787,7 @@ a:hover{color:var(--color-primary-strong);}
     +'<p style="font-size:calc(17px*var(--fs));line-height:1.75;color:var(--color-label-normal);margin:0 0 18px;font-weight:500;">'+e(a.dek)+'</p>'
     +body
     +radarBlock(a)
-    +'<div style="margin:26px 0 4px;padding:16px 18px;background:var(--color-background-alternative);border-radius:12px;"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">원문 출처</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;"><div style="font-size:14px;color:var(--color-label-neutral);"><b style="color:var(--color-label-strong);font-weight:700;">'+e(a.source)+'</b>'+(a.country?' · '+e(a.country):'')+(a.date?' · '+e(a.date):'')+'</div><a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener nofollow" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">원문 사이트로 이동 '+EXT+'</a></div><p style="margin:10px 0 0;font-size:11.5px;line-height:1.5;color:var(--color-label-alternative);">해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></div>'
+    +'<div style="margin:26px 0 4px;padding:16px 18px;background:var(--color-background-alternative);border-radius:12px;"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">원문 출처</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;"><div style="font-size:14px;color:var(--color-label-neutral);"><b style="color:var(--color-label-strong);font-weight:700;">'+e(a.source)+'</b>'+(a.country?' · '+e(a.country):'')+(a.date?' · '+e(a.date):'')+'</div><a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--color-primary-normal);">원문 사이트로 이동 '+EXT+'</a></div><p style="margin:10px 0 0;font-size:11.5px;line-height:1.5;color:var(--color-label-alternative);">해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></div>'
     + (a.blog ? '<div style="margin:26px 0;padding-top:18px;border-top:1px solid var(--color-line-normal);">'
       +'<div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:10px;">블로그 글감</div>'
       +'<p style="font-family:var(--font-display);font-size:calc(18px*var(--fs));line-height:1.45;font-weight:700;color:var(--color-label-strong);margin:0 0 '+(angle?'12px':'14px')+';text-wrap:pretty;">'+e(a.blog)+'</p>'
@@ -804,7 +805,7 @@ a:hover{color:var(--color-primary-strong);}
     // footer
     +'<div style="padding:12px 20px;border-top:1px solid var(--color-line-normal);display:flex;gap:8px;align-items:center;">'
     +'<button data-act="prev" '+(prev?'':'disabled')+' style="display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:'+(prev?'var(--color-label-normal)':'var(--color-label-assistive)')+';cursor:'+(prev?'pointer':'default')+';font-family:inherit;font-size:14px;font-weight:700;padding:12px 16px;border-radius:10px;">'+ARL+' 이전</button>'
-    +'<a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener nofollow" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;padding:12px 14px;border-radius:10px;">원문 '+EXT+'</a>'
+    +'<a href="'+e(a.sourceUrl)+'" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;padding:12px 14px;border-radius:10px;">원문 '+EXT+'</a>'
     +'<button data-act="next" '+(next?'':'disabled')+' style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:'+(next?'var(--color-primary-normal)':'var(--color-material-base)')+';color:'+(next?'#fff':'var(--color-label-assistive)')+';border:0;cursor:'+(next?'pointer':'default')+';font-family:inherit;font-size:14px;font-weight:700;padding:12px 18px;border-radius:10px;">다음 기사 '+ARR+'</button>'
     +'</div></div>';
   }
