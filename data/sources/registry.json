@@ -1,0 +1,3270 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-29T15:18:33.665Z",
+  "sources": [
+    {
+      "label": "1851 Franchise",
+      "officialName": "1851 Franchise",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "1News",
+      "officialName": "1News",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "ABC Columbia",
+      "officialName": "ABC Columbia",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "ABC News & Headlines – Australian Broadcasting Corporation",
+      "officialName": "ABC News & Headlines – Australian Broadcasting Corporation",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "ABC15 Arizona",
+      "officialName": "ABC15 Arizona",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "AOL.com",
+      "officialName": "AOL.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Acta parasitologica",
+      "officialName": "Acta parasitologica",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "American Animal Hospital Association - AAHA",
+      "officialName": "American Animal Hospital Association - AAHA",
+      "domains": [
+        "aaha.org"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "American journal of physiology. Endocrinology and metabolism",
+      "officialName": "American journal of physiology. Endocrinology and metabolism",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "American journal of veterinary research",
+      "officialName": "American journal of veterinary research",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Anatomia, histologia, embryologia",
+      "officialName": "Anatomia, histologia, embryologia",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Anne Arundel County Health Department",
+      "officialName": "Anne Arundel County Health Department",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Archives of microbiology",
+      "officialName": "Archives of microbiology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Arkansas Money & Politics",
+      "officialName": "Arkansas Money & Politics",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Audacy",
+      "officialName": "Audacy",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "BMC oral health",
+      "officialName": "BMC oral health",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "BMC veterinary research",
+      "officialName": "BMC veterinary research",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Bioengineer.org",
+      "officialName": "Bioengineer.org",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Boehringer Ingelheim",
+      "officialName": "Boehringer Ingelheim",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Bovine Veterinarian",
+      "officialName": "Bovine Veterinarian",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Brazilian journal of microbiology : [publication of the Brazilian Society for Microbiology]",
+      "officialName": "Brazilian journal of microbiology : [publication of the Brazilian Society for Microbiology]",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Bryan Times",
+      "officialName": "Bryan Times",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Business Insider",
+      "officialName": "Business Insider",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "CBS News",
+      "officialName": "CBS News",
+      "domains": [
+        "cbsnews.com"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "CNBC",
+      "officialName": "CNBC",
+      "domains": [
+        "cnbc.com"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Canadian journal of veterinary research = Revue canadienne de recherche veterinaire",
+      "officialName": "Canadian journal of veterinary research = Revue canadienne de recherche veterinaire",
+      "domains": [
+        "pubmed.ncbi.nlm.nih.gov"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Central Oregon Daily",
+      "officialName": "Central Oregon Daily",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Clinical oral implants research",
+      "officialName": "Clinical oral implants research",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Colorado State University",
+      "officialName": "Colorado State University",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "ColoradoBiz",
+      "officialName": "ColoradoBiz",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Comparative immunology, microbiology and infectious diseases",
+      "officialName": "Comparative immunology, microbiology and infectious diseases",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Coverager",
+      "officialName": "Coverager",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Cureus",
+      "officialName": "Cureus",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "DVM360",
+      "officialName": "DVM360",
+      "domains": [
+        "dvm360.com"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "DairyReporter.com",
+      "officialName": "DairyReporter.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "DogTime",
+      "officialName": "DogTime",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Dogster",
+      "officialName": "Dogster",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Dr. Andy Roark",
+      "officialName": "Dr. Andy Roark",
+      "domains": [
+        "drandyroark.com"
+      ],
+      "rssUrls": [
+        "https://drandyroark.com/feed/"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "El Informador",
+      "officialName": "El Informador",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Encyclopedia Britannica",
+      "officialName": "Encyclopedia Britannica",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "EquiManagement",
+      "officialName": "EquiManagement",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Experimental parasitology",
+      "officialName": "Experimental parasitology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Eye On Annapolis",
+      "officialName": "Eye On Annapolis",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "FOX 13 Tampa Bay",
+      "officialName": "FOX 13 Tampa Bay",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "FOX5 Vegas",
+      "officialName": "FOX5 Vegas",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Farms.com",
+      "officialName": "Farms.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Forbes",
+      "officialName": "Forbes",
+      "domains": [
+        "forbes.com"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Fortune",
+      "officialName": "Fortune",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Frontiers in Veterinary Science",
+      "officialName": "Frontiers in Veterinary Science",
+      "domains": [
+        "frontiersin.org"
+      ],
+      "rssUrls": [
+        "https://www.frontiersin.org/journals/veterinary-science/rss"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Frontiers in cellular and infection microbiology",
+      "officialName": "Frontiers in cellular and infection microbiology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Gainesville Sun",
+      "officialName": "Gainesville Sun",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "HOLA",
+      "officialName": "HOLA",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Houston Public Media",
+      "officialName": "Houston Public Media",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "INFO.FR",
+      "officialName": "INFO.FR",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "IVC Journal",
+      "officialName": "IVC Journal",
+      "domains": [
+        "ivcjournal.com"
+      ],
+      "rssUrls": [
+        "https://ivcjournal.com/feed/"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Illinois News Bureau",
+      "officialName": "Illinois News Bureau",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "IndexBox",
+      "officialName": "IndexBox",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Indiana Public Media",
+      "officialName": "Indiana Public Media",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Indiana Public Radio",
+      "officialName": "Indiana Public Radio",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Infectious Disease Advisor",
+      "officialName": "Infectious Disease Advisor",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "International journal of molecular sciences",
+      "officialName": "International journal of molecular sciences",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Journal of comparative pathology",
+      "officialName": "Journal of comparative pathology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Journal of feline medicine and surgery",
+      "officialName": "Journal of feline medicine and surgery",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Journal of molecular modeling",
+      "officialName": "Journal of molecular modeling",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Journal of the American Animal Hospital Association",
+      "officialName": "Journal of the American Animal Hospital Association",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Journal of veterinary internal medicine",
+      "officialName": "Journal of veterinary internal medicine",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Journal of veterinary pharmacology and therapeutics",
+      "officialName": "Journal of veterinary pharmacology and therapeutics",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "KHGI",
+      "officialName": "KHGI",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "KOAT",
+      "officialName": "KOAT",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "KOMO",
+      "officialName": "KOMO",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "KRDO",
+      "officialName": "KRDO",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "KRGV",
+      "officialName": "KRGV",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "KalingaTV",
+      "officialName": "KalingaTV",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "MPR News",
+      "officialName": "MPR News",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "MSN",
+      "officialName": "MSN",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Mahoning Matters",
+      "officialName": "Mahoning Matters",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Medical mycology",
+      "officialName": "Medical mycology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Michigan State University",
+      "officialName": "Michigan State University",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Modern Healthcare",
+      "officialName": "Modern Healthcare",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Molecular biology reports",
+      "officialName": "Molecular biology reports",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "MoneyMagpie",
+      "officialName": "MoneyMagpie",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Morningstar",
+      "officialName": "Morningstar",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Mshale",
+      "officialName": "Mshale",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "MyNorthwest.com",
+      "officialName": "MyNorthwest.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "NBC 5 Dallas-Fort Worth",
+      "officialName": "NBC 5 Dallas-Fort Worth",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "NC State University",
+      "officialName": "NC State University",
+      "domains": [
+        "cvm.ncsu.edu"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Nature",
+      "officialName": "Nature",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "NerdWallet",
+      "officialName": "NerdWallet",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "New York Post",
+      "officialName": "New York Post",
+      "domains": [
+        "nypost.com"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Newsweek",
+      "officialName": "Newsweek",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "NonStop Local Billings",
+      "officialName": "NonStop Local Billings",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "NorthEscambia.com",
+      "officialName": "NorthEscambia.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Nutrition Insight",
+      "officialName": "Nutrition Insight",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Ohio House of Representatives (.gov)",
+      "officialName": "Ohio House of Representatives (.gov)",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "PLoS neglected tropical diseases",
+      "officialName": "PLoS neglected tropical diseases",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Pan American Health Organization (PAHO)",
+      "officialName": "Pan American Health Organization (PAHO)",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Panay News",
+      "officialName": "Panay News",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Peoples Gazette Nigeria",
+      "officialName": "Peoples Gazette Nigeria",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "PerthNow",
+      "officialName": "PerthNow",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Pet Food Processing",
+      "officialName": "Pet Food Processing",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "PetfoodIndustry",
+      "officialName": "PetfoodIndustry",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Phys.org",
+      "officialName": "Phys.org",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Pioneer Press",
+      "officialName": "Pioneer Press",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "PloS one",
+      "officialName": "PloS one",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Proceedings of the National Academy of Sciences of the United States of America",
+      "officialName": "Proceedings of the National Academy of Sciences of the United States of America",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Purdue University College of Veterinary Medicine",
+      "officialName": "Purdue University College of Veterinary Medicine",
+      "domains": [
+        "vet.purdue.edu"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Raleigh News & Observer",
+      "officialName": "Raleigh News & Observer",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Region Canberra",
+      "officialName": "Region Canberra",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Reproduction in domestic animals = Zuchthygiene",
+      "officialName": "Reproduction in domestic animals = Zuchthygiene",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Research in veterinary science",
+      "officialName": "Research in veterinary science",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Rising Kashmir",
+      "officialName": "Rising Kashmir",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "San Antonio Express-News",
+      "officialName": "San Antonio Express-News",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "ScienceDaily",
+      "officialName": "ScienceDaily",
+      "domains": [
+        "sciencedaily.com"
+      ],
+      "rssUrls": [
+        "https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Scientific reports",
+      "officialName": "Scientific reports",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Seaside Signal",
+      "officialName": "Seaside Signal",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Spectrum News",
+      "officialName": "Spectrum News",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Spherical Insights",
+      "officialName": "Spherical Insights",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "TAPinto",
+      "officialName": "TAPinto",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "THISDAYLIVE",
+      "officialName": "THISDAYLIVE",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "TV Jaguari",
+      "officialName": "TV Jaguari",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Tamarac Talk",
+      "officialName": "Tamarac Talk",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Tampa Bay 28",
+      "officialName": "Tampa Bay 28",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The Age",
+      "officialName": "The Age",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The Atlantic",
+      "officialName": "The Atlantic",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The Canadian veterinary journal = La revue veterinaire canadienne",
+      "officialName": "The Canadian veterinary journal = La revue veterinaire canadienne",
+      "domains": [
+        "pubmed.ncbi.nlm.nih.gov"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The Cool Down",
+      "officialName": "The Cool Down",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The Irish Times",
+      "officialName": "The Irish Times",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The Journal of parasitology",
+      "officialName": "The Journal of parasitology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The New York Times",
+      "officialName": "The New York Times",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The Providence Journal",
+      "officialName": "The Providence Journal",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The Straits Times",
+      "officialName": "The Straits Times",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The Tribune",
+      "officialName": "The Tribune",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The journals of gerontology. Series A, Biological sciences and medical sciences",
+      "officialName": "The journals of gerontology. Series A, Biological sciences and medical sciences",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "The veterinary quarterly",
+      "officialName": "The veterinary quarterly",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Today's Veterinary Business",
+      "officialName": "Today's Veterinary Business",
+      "domains": [
+        "todaysveterinarybusiness.com"
+      ],
+      "rssUrls": [
+        "https://todaysveterinarybusiness.com/feed/"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Today's Veterinary Nurse",
+      "officialName": "Today's Veterinary Nurse",
+      "domains": [
+        "todaysveterinarynurse.com"
+      ],
+      "rssUrls": [
+        "https://todaysveterinarynurse.com/feed/"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Today's Veterinary Practice",
+      "officialName": "Today's Veterinary Practice",
+      "domains": [
+        "todaysveterinarypractice.com"
+      ],
+      "rssUrls": [
+        "https://todaysveterinarypractice.com/feed/"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Trends in parasitology",
+      "officialName": "Trends in parasitology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Trinidad Guardian",
+      "officialName": "Trinidad Guardian",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Turkmenportal.com",
+      "officialName": "Turkmenportal.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "USA Today",
+      "officialName": "USA Today",
+      "domains": [
+        "usatoday.com"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "VOCM",
+      "officialName": "VOCM",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Vet Candy",
+      "officialName": "Vet Candy",
+      "domains": [
+        "myvetcandy.com"
+      ],
+      "rssUrls": [
+        "https://www.myvetcandy.com/news?format=rss"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Vet Practice Magazine",
+      "officialName": "Vet Practice Magazine",
+      "domains": [
+        "vetpracticemag.com.au"
+      ],
+      "rssUrls": [
+        "https://vetpracticemag.com.au/feed/"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Vet Times",
+      "officialName": "Vet Times",
+      "domains": [
+        "vettimes.co.uk"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "VetGirl",
+      "officialName": "VetGirl",
+      "domains": [
+        "vetgirlontherun.com"
+      ],
+      "rssUrls": [
+        "https://vetgirlontherun.com/feed/"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Veterinaria Atual",
+      "officialName": "Veterinaria Atual",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Veterinary Evidence",
+      "officialName": "Veterinary Evidence",
+      "domains": [
+        "veterinaryevidence.org"
+      ],
+      "rssUrls": [
+        "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Veterinary Practice News",
+      "officialName": "Veterinary Practice News",
+      "domains": [
+        "veterinarypracticenews.com"
+      ],
+      "rssUrls": [
+        "https://www.veterinarypracticenews.com/feed/"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Veterinary Record",
+      "officialName": "Veterinary Record",
+      "domains": [
+        "bvajournals.onlinelibrary.wiley.com"
+      ],
+      "rssUrls": [
+        "https://bvajournals.onlinelibrary.wiley.com/feed/20427670/most-recent"
+      ],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "Veterinary Sciences",
+      "officialName": "Veterinary Sciences",
+      "domains": [
+        "mdpi.com"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Veterinary anaesthesia and analgesia",
+      "officialName": "Veterinary anaesthesia and analgesia",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Veterinary immunology and immunopathology",
+      "officialName": "Veterinary immunology and immunopathology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Veterinary medicine and science",
+      "officialName": "Veterinary medicine and science",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Veterinary microbiology",
+      "officialName": "Veterinary microbiology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Veterinary ophthalmology",
+      "officialName": "Veterinary ophthalmology",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
+      "officialName": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Veterinary research communications",
+      "officialName": "Veterinary research communications",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Vietnam.vn",
+      "officialName": "Vietnam.vn",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Virginia Tech News",
+      "officialName": "Virginia Tech News",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Volksstimme",
+      "officialName": "Volksstimme",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WGRZ",
+      "officialName": "WGRZ",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WHRO",
+      "officialName": "WHRO",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WILX",
+      "officialName": "WILX",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WKTV",
+      "officialName": "WKTV",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WNYT.com",
+      "officialName": "WNYT.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WPR",
+      "officialName": "WPR",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WPSD Local 6",
+      "officialName": "WPSD Local 6",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WSAZ",
+      "officialName": "WSAZ",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WSU Insider",
+      "officialName": "WSU Insider",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "WTMJ",
+      "officialName": "WTMJ",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Wamiz.co.uk",
+      "officialName": "Wamiz.co.uk",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Winchester Sun",
+      "officialName": "Winchester Sun",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Yahoo",
+      "officialName": "Yahoo",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Yahoo Creators",
+      "officialName": "Yahoo Creators",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Yahoo Finance",
+      "officialName": "Yahoo Finance",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Your Observer",
+      "officialName": "Your Observer",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "Your Oregon News",
+      "officialName": "Your Oregon News",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "aphis.usda.gov",
+      "officialName": "aphis.usda.gov",
+      "domains": [
+        "aphis.usda.gov"
+      ],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": true,
+      "lastCheckedAt": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "label": "aviglianonews.it",
+      "officialName": "aviglianonews.it",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "avinews.com",
+      "officialName": "avinews.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "cbs19.tv",
+      "officialName": "cbs19.tv",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "citybiz",
+      "officialName": "citybiz",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "companionlife.co.uk",
+      "officialName": "companionlife.co.uk",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "crossroadstoday.com",
+      "officialName": "crossroadstoday.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "ecommercenews.com.au",
+      "officialName": "ecommercenews.com.au",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "edge1021.com.au",
+      "officialName": "edge1021.com.au",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "ide.go.jp",
+      "officialName": "ide.go.jp",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "inkl",
+      "officialName": "inkl",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "kens5.com",
+      "officialName": "kens5.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "myfoxzone.com",
+      "officialName": "myfoxzone.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "nwitimes.com",
+      "officialName": "nwitimes.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "porciNews",
+      "officialName": "porciNews",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "qz.com",
+      "officialName": "qz.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "tag24.com",
+      "officialName": "tag24.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "thesenior.com.au",
+      "officialName": "thesenior.com.au",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "thestokesnews.com",
+      "officialName": "thestokesnews.com",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "ニコニコニュース",
+      "officialName": "ニコニコニュース",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    },
+    {
+      "label": "아시아경제",
+      "officialName": "아시아경제",
+      "domains": [],
+      "rssUrls": [],
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "sourceType": "publisher",
+      "active": false,
+      "lastCheckedAt": null,
+      "evidence": [
+        "existing-direct-source-url"
+      ]
+    }
+  ]
+}

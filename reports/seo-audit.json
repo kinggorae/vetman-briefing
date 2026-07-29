@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T14:41:21.723Z",
+  "generatedAt": "2026-07-29T15:40:07.127Z",
   "status": "passed",
   "counts": {
     "htmlPages": 537,
@@ -36,7 +36,7 @@
         "bytes": 133553
       }
     ],
-    "articleBytes": 9227040,
+    "articleBytes": 9221411,
     "searchFirstRequestBytes": 133553
   },
   "duplicate": {
@@ -2638,6 +2638,429 @@
       "high": 141
     },
     "explicitReviewFields": 0
+  },
+  "workflow": {
+    "explicitItems": 0,
+    "statusCounts": {},
+    "correctionRequired": 0,
+    "highRiskIndexWaiting": 0
+  },
+  "evidence": {
+    "articlesWithExplicitMetadata": 101,
+    "numericWarnings": 64,
+    "samples": [
+      {
+        "id": "v1_e174695d8cae4128",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_6ce376c377ed20e8",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_b99763eee88e8c91",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_d3bfda3b23b4ffbb",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_a4deff1b3d5e111c",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_fdca693310cedee2",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_1521d654a62580a6",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_a5b554217652df94",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_6b3c3101574c9e89",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_8d4b6dd70a1c07e5",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_cc752d4547496da4",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_103ba30adfca986c",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_9ed50c819180f566",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_6d2bb92c68fd6eef",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_20a9351a0caea64a",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_d1fbaef3e76d80d3",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-25_1",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-25_7",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-25_15",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-25_16",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-24_3",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-24_14",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-24_15",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-24_18",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-24_23",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-23_1",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-23_15",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-23_19",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-23_20",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-23_25",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-23_27",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-23_29",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-22_1",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-22_3",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-22_5",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-22_9",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-22_14",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-22_19",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-22_23",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-22_25",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-22_30",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-21_5",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-21_6",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-21_23",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-21_24",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-21_26",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-21_28",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-21_29",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-21_31",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-20_1",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-20_4",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-20_22",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-20_34",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-20_35",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-12_1",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-08_3",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-08_5",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-06_1",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-07-02_2",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-06-19_2",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-06-19_5",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-06-19_7",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-06-11_2",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "2026-06-05_1",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      }
+    ]
+  },
+  "searchPerformance": {
+    "importedRows": 0,
+    "providers": {
+      "gsc": 0,
+      "naver": 0
+    }
   },
   "favicon": [
     {

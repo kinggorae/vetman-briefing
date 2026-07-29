@@ -1,0 +1,102 @@
+# 검수 큐
+
+- 55 · v1_714583787982c8de · legacy-published · 강아지와 야생 버섯 중독 위험…비 온 뒤 버섯 주의
+- 55 · v1_b57ff7397629a2d4 · legacy-published · 진드기 방지제별 검은다리진드기(Blacklegged Tick) 사멸 속도 연구 비교
+- 55 · v1_5a9fbdf10a1f09c8 · legacy-published · 중환자 개에서 전신 면역염증 지표의 예후 예측 가치
+- 55 · v1_6ce376c377ed20e8 · legacy-published · 지난 10년 개·고양이 진료 혁신...수의학 주요 발견 총정리
+- 55 · v1_0dd20409706debd4 · legacy-published · 텍사스 카운티, 가족 마당서 발견된 스컹크서 rabies 7번째 사례 확인
+- 55 · v1_a501789c4aa37005 · legacy-published · 애완동물 아시아극동분들 중증 기생충 위협 증가
+- 55 · v1_5f4a47374d84fda1 · legacy-published · 새 동물보험 가입, 비용 대비 가장 현명한 첫걸음
+- 55 · v1_fb6f7d5f583a1c58 · legacy-published · 영양 보충제, 개와 고양이의 경미한 위장관 문제 개선에 도움
+- 55 · v1_e512900435561c51 · legacy-published · 미국 주, 미사용 약 기증 법 제정…필요한 동물에 약 지원
+- 55 · v1_8cb1cced241aa789 · legacy-published · 미국 동물병원, Cherry 할부 금융 서비스 도입
+- 55 · v1_d3bfda3b23b4ffbb · legacy-published · 피셔 카운티에서 광견병 1건 확인
+- 55 · v1_a4deff1b3d5e111c · legacy-published · 2026년 애완동물 양육비 현실 — 소유주들이 알아야 할 사실
+- 55 · v1_5e7c4dedbecefc8f · legacy-published · 미국 하원, 불법 자일라진 규제 법안 추진 가속화
+- 55 · v1_2688f13fc6d2660b · legacy-published · 노령 고양이 근감소증과 악액질, 노쇠: 메커니즘·진단·치료 총론
+- 55 · v1_b1565da63f8497f3 · legacy-published · 개 치경부 결손 재생을 위한 신규 삼중 수화물 Gel 개발
+- 55 · v1_0074ee65a7214423 · legacy-published · 말원선충의 서식지 분할: 전복결장 중앙점유와 주변 공간 회피
+- 55 · v1_122239e469ae8bb6 · legacy-published · 곰팡이와 박하화합물 병용으로 진드기 사멸 효과 입증
+- 55 · v1_a7b57667e01fa858 · legacy-published · 고양이 유전성 메틸말론산혈증 사례: 임상·MRI·병리 소견
+- 55 · v1_592f1d8e702ec6a0 · legacy-published · 양계장 Biosecurity 실패가 내성 대장균 확산을 주도; 은나노입자-과산화수소 복합제가 유망한 결과 보여
+- 55 · v1_a8c8d0ced9731d44 · legacy-published · 쿠싱증후군·프레드니솔론 치료 동반 개에서 혈액응고 과다
+- 55 · v1_97407f7b28526af0 · legacy-published · 퇴원 처방 개선, 그 순간부터 환자 결과가 달라집니다
+- 55 · v1_6b3c3101574c9e89 · legacy-published · 뉴월드 스크류웜 발생 — 미국 수의사 대응 가이드
+- 55 · v1_9996059839065d8b · legacy-published · 개 정형외과술 후 발생한 비외상성 부신출혈 1례
+- 55 · v1_5817bc9f0a0c5732 · legacy-published · 나이지리아 수도 지역서 광견병 발생으로 2명 사망
+- 55 · v1_c3cdce99920a1017 · legacy-published · 소태반 추출물, 노령견 인지 기능 개선 효과 확인
+- 55 · v1_8d4b6dd70a1c07e5 · legacy-published · 피오글리타존, 개에서 고지방 식이 유발 인슐린 저항성 예방에 효과
+- 55 · v1_2b0fbe31bd7499f6 · legacy-published · 필리핀 북부 강아지에서 인체감염성 요충 A. ceylanicum 가장 흔해
+- 55 · v1_06ce49c95607933d · legacy-published · 개에서 opiranserin 정맥 지속 주입의 진통 효과 확인
+- 55 · v1_cc752d4547496da4 · legacy-published · 개 반척추절제술에서 로피바카인-립소omal 부피바카인 진통 효과 무차별
+- 55 · v1_9ed50c819180f566 · legacy-published · 영국 양농가의 질 탈출 관리 실태 조사
+- 55 · v1_67badcee51a08493 · legacy-published · 유기축산 젖소 유방염, 음파펄스·냉레이저 요법 효과 연구
+- 55 · v1_94e3799cebd31d4b · legacy-published · 아키타 수 puppies에서 수영 강아지 증후군과 흉부 기형 치료 성과
+- 55 · v1_c18c32de15e25116 · legacy-published · 돼지 콜레라균 감시 훈련면역과 불활성화백신 병용 효과
+- 55 · 2026-07-25_2 · legacy-published · 개 만성 재발성 회음부 탈장 외과적 치료 사례
+- 55 · 2026-07-25_5 · legacy-published · 개 열치료, 이 6가지 상황에 효과적
+- 55 · 2026-07-25_6 · legacy-published · 유기축산 우유 소 아 임상적 유방염에 대한 음파펄스와 냉각레이저 요법 비교 평가
+- 55 · 2026-07-25_7 · legacy-published · 강아지가 리콜 사료 먹었을 때 수의사가 알려주는 대처법
+- 55 · 2026-07-25_8 · legacy-published · 개의 음식 중독 위험, 예상치 못한 25가지 식품
+- 55 · 2026-07-25_20 · legacy-published · 개의 고등급 수막내 희소돌기아교종 2년간 비정상적으로 느린 진행
+- 55 · 2026-07-25_21 · legacy-published · 개 두개골 골화성 섬유종의 영상 소견 및 수술·방사선 치료 사례
+- 55 · 2026-07-25_22 · legacy-published · 개의 진행성 치주염에서 특이적으로 증가하는 세균과 엑소솜 치료 가능성
+- 55 · 2026-07-25_23 · legacy-published · 개 각막 손상에 대한 HA 기반 광경화 접착제 적용 사례
+- 55 · 2026-07-25_24 · legacy-published · 개 인슐린종 수술 후 영양 치료로 혈당 개선
+- 55 · 2026-07-25_26 · legacy-published · 개 경추 정맥총 이상에 따른 만성 통증, 초음파 유도 코르티코스테로이드 주사로 호전
+- 55 · 2026-07-25_27 · legacy-published · 말 경추 추간공의 해부학적 특성 규명
+- 55 · 2026-07-25_29 · legacy-published · 애완동물 응급진료비 3천 달러! 주인의 긴급 결단
+- 55 · 2026-07-25_37 · legacy-published · CVS, 애완동물 처방전 조제 서비스 시작
+- 55 · 2026-07-25_58 · legacy-published · 미네소타, 남은 동물용 약 기부 허용 법안 통과
+- 55 · 2026-07-24_4 · legacy-published · 염소백시균 불활화 백신, 돼지 살모넬라 choleraesuis 감염 예방 효과
+- 55 · 2026-07-24_6 · legacy-published · 신대륙 파리유충 미국 확산... 동물병원 경고
+- 55 · 2026-07-24_14 · legacy-published · 임신 말기 암컷 개에서 아디슨 위기로 오인된 응급 상황
+- 55 · 2026-07-24_16 · legacy-published · 고양이 의인성 고혈칼슘증 및 급성 신장 손상, 혈액투석으로 성공적 치료
+- 55 · 2026-07-24_17 · legacy-published · 건강 고양이에서 베ξagliflozin 약동학, 경구 생체이용률 78%로 하루 1회 투여 적합
+- 55 · 2026-07-24_18 · legacy-published · GnRH 차단Vaccine Improvac, 고양이 피임 효과 확인
+- 55 · 2026-07-24_19 · legacy-published · elastin 분해 산물 저해로 노화된 마우스·개·인간 모델에서 관절 변성 완화
+- 55 · 2026-07-24_23 · legacy-published · 개 안면신경장애의 안과적 특징—중두개견에서 각막염 더 빈번
+- 55 · 2026-07-24_24 · legacy-published · 반려동물 진료비, 알고 보면 놀라운 사실들
+- 55 · 2026-07-24_25 · legacy-published · 반려동물 진료비 5천만원?...'반려동물 부채 위기' 속보
+- 55 · 2026-07-23_7 · legacy-published · 수의 인력 분석 플랫폼 출시, 리프스태핑 성과 데이터로 확인한다
+- 55 · 2026-07-23_8 · legacy-published · 개 고양이 영양 검사, 미량영양소 결핍 확인 가능
+- 55 · 2026-07-23_9 · legacy-published · 개에게 유해한 5가지 음식, 주의가 필요한 이유
+- 55 · 2026-07-23_10 · legacy-published · 비영리단체, 외과 멘토링 센터 개소로 수의사 부족 해결 도전
+- 55 · 2026-07-23_11 · legacy-published · 소형 개·고양이 위한 비시멘트 고관절 치환술 도입
+- 55 · 2026-07-23_13 · legacy-published · 고양이 갑상선기능항진증 치료제 세계 최초.제네릭 출시
+- 55 · 2026-07-23_14 · legacy-published · 어린 가축 건강 관리의 새로운 추세: 뽕나무잎 플라보노이드, 항생제 대안으로 부상
+- 55 · 2026-07-23_18 · legacy-published · MSU 수의사, 아프리카 페인티드 도그 긴급 수술 성공
+- 55 · 2026-07-23_19 · legacy-published · 고양이 비대성 심근증에서 심혈관 생체표지자의 임상적 유용성: 10년 간 체계적 고찰
+- 55 · 2026-07-23_23 · legacy-published · 반려동물 뇌장 건강.axis: 미생물군 기반 신경·행동장애 치료 전략
+- 55 · 2026-07-23_24 · legacy-published · 전산기법으로 발견한 고양이 심장병 후보 치료제
+- 55 · 2026-07-23_25 · legacy-published · 개 호중구성 염증성 장염 27례 임상 분석
+- 55 · 2026-07-23_26 · legacy-published · 식도 이물이 유발한 개 유미흉 1례
+- 55 · 2026-07-23_27 · legacy-published · 고양이 비종양 CT 소견: 악성과 유사한 종양양 성장
+- 55 · 2026-07-23_29 · legacy-published · 재발성 요도 폐쇄 수고양이, 초기 발병보다 질소혈증 발생 위험 낮아
+- 55 · 2026-07-22_2 · legacy-published · 응급수의과 전문수의사의 중환자관리 Q&A
+- 55 · 2026-07-22_4 · legacy-published · 심장사상충 새로운주로 확산… 개·고양이 위험 증가 경고
+- 55 · 2026-07-22_5 · legacy-published · 반려동물과 가족을 위한 광견병 예방 가이드
+- 55 · 2026-07-22_6 · legacy-published · 나이지리아 광역수도, 광견병 사망자 발생에 전문가들 촉구
+- 55 · 2026-07-22_7 · legacy-published · 뉴욕주 광견병 위험 증가…애완동물과 가족을 지키는 예방 방법
+- 55 · 2026-07-22_14 · legacy-published · 인도 일차 진료수의사의 개 특발성 간질 관리 실태 조사
+- 55 · 2026-07-22_17 · legacy-published · 콜로라도수의사, 약물·음주 위반으로 면허 포기
+- 55 · 2026-07-22_18 · legacy-published · 개 역사세포육종, 독립적 클론 원인 최대 45%
+- 55 · 2026-07-22_22 · legacy-published · 커큐민, 고양이 만성콩팥병에서 신장 보호 효과 확인
+- 55 · 2026-07-22_24 · legacy-published · 개 뇌과립세포종 최초 SRT 치료 사례 – 종양 용적 56.8% 감소
+- 55 · 2026-07-22_27 · legacy-published · 개 무릎수술에서 FLAGS 차단, 운동마비 감소 확인
+- 55 · 2026-07-22_31 · legacy-published · 연기 피해를 입은 비둘기, 소장관에게 도움 요청
+- 55 · 2026-07-21_1 · legacy-published · 고양이 소화선 종양 연관 급성 근무력증 1례
+- 55 · 2026-07-21_4 · legacy-published · 개·고양이 난치성 감염각막염에서 Rose Bengal 광동력치료의 임상 성과
+- 55 · 2026-07-21_5 · legacy-published · 개의 가스트린종, 반복 수술과 혈청 가스트린 모니터링으로 장기 생존 사례
+- 55 · 2026-07-21_6 · legacy-published · 개의 안와 종양 4례 분석: 수술적 치료와 보존적 치료 비교
+- 55 · 2026-07-21_10 · legacy-published · 개 직장 근수막외 형질세포종으로 간 전이 사례 – 멜팔란 치료 프로토콜 수정
+- 55 · 2026-07-21_14 · legacy-published · 고양이 호산구성 각막염, 약물 종류에 따른 치료 성적 비교
+- 55 · 2026-07-21_15 · legacy-published · 말 MEED와 개 골종양 원인 규명 단서를 발견한 4학년 수의학생들
+- 55 · 2026-07-21_24 · legacy-published · 개 유방암 수술에서 CBD/THC 유지류 유분의 진정 및 마약절감 효과
+- 55 · 2026-07-21_29 · legacy-published · 수의사가 강조하는 고양이 건강 관리의 7가지 핵심
+- 55 · 2026-07-21_30 · legacy-published · 수의 원격 진료와 디지털 접근성 확대
+- 55 · 2026-07-21_32 · legacy-published · 레드팜유와 천연추출물 복합 펫샴푸의 항균·항진균·항염 효과 연구
+- 55 · 2026-07-21_33 · legacy-published · 소 Liver Abscess, 초기 항생제 투여가 장기 위험에 영향
+- 55 · 2026-07-21_38 · legacy-published · 반려동물 보험의 진짜 가치: 진료비 부담 줄이기
+- 55 · 2026-07-21_42 · legacy-published · 애완동물 응급진료비 800만 원... 미국인들 '생사결정' 불안
+- 55 · 2026-07-20_1 · legacy-published · 고령 동물 관절염 통증, 약물+비약물 복합 관리의 실제

@@ -6,6 +6,8 @@ import { normalizeContentTier, qualityIssues } from "../src/lib/quality.js";
 import { normalizeSourceUrl } from "../src/identity.js";
 import { clinicalReviewIssues, inferClinicalRisk } from "../src/lib/editorial-review.js";
 import { imageRightsIssues } from "../src/lib/image-rights.js";
+import { articleContractIssues, normalizeWorkflowStatus, requiredReviewRole, workflowReviewIssues } from "../src/lib/editorial-operations.js";
+import { numericEvidenceIssues, evidenceMetadata } from "../src/lib/evidence.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const SITE = path.join(ROOT, "site");
@@ -137,6 +139,30 @@ function main() {
   const rightsReport = fs.existsSync(path.join(ROOT, "reports", "image-rights-audit.json")) ? JSON.parse(read(path.join(ROOT, "reports", "image-rights-audit.json"))) : null;
   const favicon = [48, 192, 512].map((size) => ({ size, exists: fs.existsSync(path.join(SITE, `icon-${size}.png`)), bytes: fs.existsSync(path.join(SITE, `icon-${size}.png`)) ? fs.statSync(path.join(SITE, `icon-${size}.png`)).size : 0 }));
   if (favicon.some((item) => !item.exists)) addCritical("favicon-missing", favicon);
+  const peopleData = fs.existsSync(path.join(ROOT, "data/editorial/people.json")) ? JSON.parse(read(path.join(ROOT, "data/editorial/people.json"))) : { people: [] };
+  const people = new Set((Array.isArray(peopleData) ? peopleData : peopleData.people || []).map((person) => person.id || person.slug));
+  const workflowRows = [];
+  const numericWarnings = [];
+  const evidenceRows = [];
+  for (const file of dataFiles) {
+    const data = JSON.parse(read(file));
+    for (const [index, item] of (data.items || []).entries()) {
+      const explicit = Boolean(item.workflowStatus || item.dataSchemaVersion || item.reviewPolicyVersion);
+      const status = normalizeWorkflowStatus(item.workflowStatus || item.editorialStatus, { legacy: !explicit && data.status === "published" });
+      if (explicit) {
+        const workflowIssues = workflowReviewIssues(item);
+        const contract = articleContractIssues(item);
+        workflowRows.push({ id: item.id || `${data.date}_${index + 1}`, status, risk: item.clinicalRisk || inferClinicalRisk(item), workflowIssues, contractIssues: contract, reviewerExists: !item.reviewerId || people.has(item.reviewerId) || people.has(item.reviewedBy), requiredRole: requiredReviewRole(item) });
+        if (item.reviewerId && !people.has(item.reviewerId)) addCritical("reviewer-profile-missing", { id: item.id, reviewerId: item.reviewerId });
+        if (["approved", "published"].includes(status) && workflowIssues.length) addCritical("workflow-gate-failed", { id: item.id, workflowIssues });
+        if (["approved", "published"].includes(status) && item.clinicalRisk === "high" && !item.vetReviewedAt) addCritical("high-risk-not-vet-reviewed", item.id);
+      }
+      const numeric = numericEvidenceIssues(item); if (numeric.length) numericWarnings.push({ id: item.id || `${data.date}_${index + 1}`, issues: numeric });
+      if (Object.keys(evidenceMetadata(item)).length) evidenceRows.push(item.id || `${data.date}_${index + 1}`);
+    }
+  }
+  const workflowStatusCounts = Object.fromEntries([...new Set(workflowRows.map((row) => row.status))].sort().map((status) => [status, workflowRows.filter((row) => row.status === status).length]));
+  const performance = fs.existsSync(path.join(ROOT, "data/seo/performance.json")) ? JSON.parse(read(path.join(ROOT, "data/seo/performance.json"))) : { rows: [] };
   const audit = {
     generatedAt: new Date().toISOString(),
     status: critical.length ? "failed" : "passed",
@@ -148,6 +174,9 @@ function main() {
     images: { indexImageRows, report: rightsReport ? { indexImages: rightsReport.indexImages, indexEditorialCards: rightsReport.indexEditorialCards, unknownRawExternal: rightsReport.unknownRawExternal, unclassifiedEffectiveIndex: rightsReport.unclassifiedEffectiveIndex } : null },
     sourceResolution: sourceReport ? { counts: sourceReport.counts, total: sourceReport.totalRelayArticles } : null,
     clinical: { riskCounts: Object.fromEntries(["low", "medium", "high"].map((risk) => [risk, policyRows.filter((row) => row.clinicalRisk === risk).length])), explicitReviewFields: dataFiles.reduce((sum, file) => sum + (JSON.parse(read(file)).items || []).filter((item) => item.editorialStatus || item.vetReviewer || item.reviewedBy).length, 0) },
+    workflow: { explicitItems: workflowRows.length, statusCounts: workflowStatusCounts, correctionRequired: workflowRows.filter((row) => row.status === "correction-required").length, highRiskIndexWaiting: workflowRows.filter((row) => row.risk === "high" && ["draft", "automated", "editor-review-required", "vet-review-required"].includes(row.status)).length },
+    evidence: { articlesWithExplicitMetadata: evidenceRows.length, numericWarnings: numericWarnings.length, samples: numericWarnings.slice(0, 100) },
+    searchPerformance: { importedRows: (performance.rows || []).length, providers: Object.fromEntries(Object.entries(performance.providers || {}).map(([provider, rows]) => [provider, rows.length])) },
     favicon,
     xmlError,
     warnings,

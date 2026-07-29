@@ -19,11 +19,16 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      # GitHub-hosted Ubuntu already provides Playwright's system libraries;
+      # install only the pinned browser binary to keep CI deterministic.
+      - run: npx playwright install chromium
       - run: npm test
       - run: npm run build
       - run: npm run validate
       - run: npm run seo:audit
+      - run: npm run review:stats
+      - run: npm run source:stats
+      - run: npm run source:registry:audit
       - run: npm run test:browser
       - run: npm run lighthouse
       - name: Upload QA artifacts
@@ -33,6 +38,11 @@ jobs:
           name: seo-browser-qa-${{ github.run_id }}
           path: |
             reports/seo-audit.json
+            reports/review-stats.json
+            reports/review-queue.json
+            reports/source-stats.json
+            reports/source-registry-audit.json
+            reports/seo-performance.json
             reports/playwright.json
             reports/lighthouse
             test-results

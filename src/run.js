@@ -14,7 +14,9 @@ import { enrichItems } from "./enrich.js";
 import { addStories } from "./gossip.js";
 import { mapPool } from "./pool.js";
 import { addSourceKeys, sourceKeys, stableItemId, titleKey } from "./identity.js";
-import { markQuality, normalizeContentTier, publishQualityIssues } from "./quality.js";
+import { markQuality, normalizeContentTier, publishQualityIssues, qualityIssues } from "./quality.js";
+import { inferClinicalRisk } from "./lib/editorial-review.js";
+import { SCHEMA_VERSION } from "./lib/editorial-operations.js";
 import { removeRepeatedImages } from "./images.js";
 
 const noPapers = process.argv.includes("--no-papers");
@@ -23,7 +25,12 @@ const papersOnly = process.argv.includes("--papers-only"); // 오늘 이슈에 �
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const collectOnly = process.argv.includes("--collect-only");
 const noWebsearch = process.argv.includes("--no-websearch");
-const autoPublish = process.argv.includes("--publish"); // draft 없이 바로 발행
+const requestedDirectPublish = process.argv.includes("--publish");
+// 4차부터 수집기는 어떤 플래그에서도 published 파일을 만들지 않는다. 기존
+// 자동화 호출과의 호환성을 위해 --publish는 허용하되, draft를 만든 뒤
+// 사람이 review CLI와 src/publish.js로 명시적으로 승인해야 한다.
+const autoPublish = false;
+if (requestedDirectPublish) console.warn("[workflow] --publish는 더 이상 직접 발행하지 않습니다. draft로 저장합니다.");
 const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 
 const hasRedditCreds = !!(process.env.REDDIT_CLIENT_ID && process.env.REDDIT_CLIENT_SECRET);
@@ -58,6 +65,11 @@ function saveSeen(seen) {
 function withIdentity(item, post, fallback = "item") {
   return markQuality({
     ...item,
+    dataSchemaVersion: Number(item.dataSchemaVersion) || SCHEMA_VERSION,
+    workflowStatus: item.workflowStatus || "draft",
+    reviewPolicyVersion: item.reviewPolicyVersion || "2026-07-30",
+    clinicalRisk: item.clinicalRisk || inferClinicalRisk(item),
+    editorialStatus: item.editorialStatus || "automated",
     market: item.market || post.market || null,
     id: item.id || stableItemId({ ...post, ...item }, fallback),
     sourceUrl: item.sourceUrl || post.finalUrl || post.url,
@@ -155,7 +167,10 @@ async function papersOnlyRun() {
   const made = (
     await mapPool(top, async (post) => {
       const paper = withIdentity(await generatePaper(post), post, `paper-${post.id || post.url}`);
-      if (publishQualityIssues(paper).length) return null;
+      // 신규 논문은 draft로 저장하되, 자동 품질 오류가 있는 후보만 제외한다.
+      // workflow-not-approved는 사람이 검수하기 전까지 정상 상태이므로 여기서
+      // 자동 탈락시키지 않는다.
+      if (qualityIssues(paper).length) return null;
       console.log(`  ✓ [논문] ${paper.titleKo}`);
       return paper;
     })

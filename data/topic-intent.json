@@ -1,0 +1,12 @@
+{
+  "감염-백신": {"core": true, "searchIntent": "감염병 유행·예방접종·진료실 감염관리 정보를 확인하려는 검색", "updatedBy": "editorial-config"},
+  "항생제-내성": {"core": true, "searchIntent": "항균제 선택과 내성 관리의 근거를 찾는 임상 검색", "updatedBy": "editorial-config"},
+  "신장-비뇨": {"core": true, "searchIntent": "개·고양이 신장 및 비뇨기 질환의 검사·관리 정보를 찾는 검색", "updatedBy": "editorial-config"},
+  "피부-귀": {"core": true, "searchIntent": "피부염·외이염의 감별과 치료 연구를 찾는 검색", "updatedBy": "editorial-config"},
+  "종양": {"core": true, "searchIntent": "수의 종양 진단·예후·치료 근거를 찾는 검색", "updatedBy": "editorial-config"},
+  "응급-중환자": {"core": true, "searchIntent": "응급 환자 평가와 중환자 진료 근거를 찾는 검색", "updatedBy": "editorial-config"},
+  "병원경영": {"core": true, "searchIntent": "동물병원 인력·운영·환자 경험 개선 정보를 찾는 검색", "updatedBy": "editorial-config"},
+  "영양-비만": {"core": true, "searchIntent": "반려동물 영양·체중 관리와 처방식 정보를 찾는 검색", "updatedBy": "editorial-config"},
+  "마취-통증": {"core": true, "searchIntent": "수의마취·진통 프로토콜과 환자 안전 근거를 찾는 검색", "updatedBy": "editorial-config"},
+  "정형-관절": {"core": true, "searchIntent": "관절·정형외과 수술과 재활 근거를 찾는 검색", "updatedBy": "editorial-config"}
+}

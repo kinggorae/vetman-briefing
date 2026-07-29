@@ -29,6 +29,14 @@ import {
   normalizeEditorialStatus,
   reviewLabel,
 } from "./lib/editorial-review.js";
+import {
+  contentHash,
+  normalizeWorkflowStatus,
+  reviewPriority,
+  sourceHash,
+  workflowLabel,
+} from "./lib/editorial-operations.js";
+import { evidenceMetadata, numericEvidenceIssues, studyTypeLabel } from "./lib/evidence.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -46,6 +54,9 @@ function loadJsonFile(name, fallback = []) {
 
 const AUTHOR_PROFILES = loadJsonFile("authors.json", []);
 const REVIEWER_PROFILES = loadJsonFile("reviewers.json", []);
+const EDITORIAL_PEOPLE = loadJsonFile("editorial/people.json", { people: [] });
+const SEO_PERFORMANCE = loadJsonFile("seo/performance.json", { version: 1, rows: [] });
+const TOPIC_INTENT = loadJsonFile("topic-intent.json", {});
 
 const CATEGORY_LABELS = {
   research: "최신 연구",
@@ -244,13 +255,35 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     correctionNote: item.correctionNote || null,
     correctionHistory: Array.isArray(item.correctionHistory) ? item.correctionHistory : [],
     editorialStatus: normalizeEditorialStatus(item.editorialStatus),
-    _reviewPolicyExplicit: ["editorialStatus", "clinicalRisk", "reviewPolicyVersion", "reviewNotes"].some((key) => Object.prototype.hasOwnProperty.call(item, key)),
+    workflowStatus: normalizeWorkflowStatus(item.workflowStatus || item.editorialStatus, { legacy: !item.workflowStatus && !item.editorialStatus }),
+    dataSchemaVersion: Number(item.dataSchemaVersion) || null,
+    reviewPolicyVersion: item.reviewPolicyVersion || null,
+    _workflowExplicit: ["workflowStatus", "dataSchemaVersion", "reviewPolicyVersion"].some((key) => Object.prototype.hasOwnProperty.call(item, key)),
+    reviewerId: item.reviewerId || item.reviewedBy || null,
+    reviewerRole: item.reviewerRole || null,
+    vetReviewerId: item.vetReviewerId || item.vetReviewer || null,
+    reviewChecklist: item.reviewChecklist || null,
+    contentHash: item.contentHash || null,
+    sourceHash: item.sourceHash || null,
+    _reviewPolicyExplicit: ["editorialStatus", "workflowStatus", "dataSchemaVersion", "clinicalRisk", "reviewPolicyVersion", "reviewNotes"].some((key) => Object.prototype.hasOwnProperty.call(item, key)),
     reviewedBy: item.reviewedBy || null,
     vetReviewer: item.vetReviewer || null,
     vetReviewerUrl: item.vetReviewerUrl || null,
     vetReviewedAt: validIsoDate(item.vetReviewedAt),
     clinicalRisk: inferClinicalRisk(item),
     reviewNotes: item.reviewNotes || null,
+    evidence: evidenceMetadata(item),
+    studyType: item.studyType || null,
+    speciesStudied: item.speciesStudied || null,
+    sampleSize: item.sampleSize ?? null,
+    intervention: item.intervention || null,
+    comparator: item.comparator || null,
+    primaryOutcome: item.primaryOutcome || null,
+    evidenceLevel: item.evidenceLevel || null,
+    limitations: item.limitations || null,
+    institution: item.institution || null,
+    funding: item.funding || null,
+    conflictOfInterest: item.conflictOfInterest || null,
     species: Array.isArray(item.species) ? item.species.filter(Boolean) : item.species ? [String(item.species)] : [],
     conditions: Array.isArray(item.conditions) ? item.conditions.filter(Boolean) : item.conditions ? [String(item.conditions)] : [],
     specialty: item.specialty || null,
@@ -1778,6 +1811,7 @@ var TOKEN=sessionStorage.getItem('vm_admin_token')||'';
 var app=document.getElementById('app');
 var ISSUE=null, EX={};
 var AUDIT=null;
+var PERFORMANCE=null;
 function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function foreign(it){var m=JSON.stringify([it.titleKo,it.leadKo,it.bodyKo,it.keyPointsKo,it.angleKo]).match(/[一-鿿぀-ヿЀ-ӿ]+/g);return m?m.join(','):null;}
 function flags(it){
@@ -1797,9 +1831,11 @@ function gate(){
 function authFetch(url){return fetch(url,{headers:{Authorization:'Bearer '+TOKEN}}).then(function(r){if(r.status===401){TOKEN='';sessionStorage.removeItem('vm_admin_token');gate();throw new Error('unauthorized');}if(!r.ok)throw new Error('request failed');return r;});}
 window.tryPw=function(){var v=document.getElementById('pw').value.trim();if(!v)return;TOKEN=v;sessionStorage.setItem('vm_admin_token',v);boot();};
 function loadAudit(){return authFetch('/api/admin?resource=audit').then(function(r){return r.json();}).then(function(d){AUDIT=d;}).catch(function(){});}
+function loadPerformance(){return authFetch('/api/admin?resource=performance').then(function(r){return r.json();}).then(function(d){PERFORMANCE=d;}).catch(function(){});}
 function auditRows(){return (AUDIT&&AUDIT.rows)||[];}
 function filteredAudit(){var tier=document.getElementById('af-tier')?.value||'';var status=document.getElementById('af-status')?.value||'';var risk=document.getElementById('af-risk')?.value||'';var editorial=document.getElementById('af-editorial')?.value||'';var issue=document.getElementById('af-issue')?.value||'';return auditRows().filter(function(row){return (!tier||row.contentTier===tier)&&(!status||status===(row.indexable?'index':'noindex'))&&(!risk||row.clinicalRisk===risk)&&(!editorial||row.editorialStatus===editorial)&&(!issue||JSON.stringify(row).toLowerCase().indexOf(issue.toLowerCase())>=0);});}
-window.showAudit=function(){if(!AUDIT){loadAudit().then(showAudit);return;}var rows=filteredAudit();var h='<h1>SEO·편집 검수</h1><div class="sub">인증된 관리자에게만 제공되는 색인·출처·이미지·임상 검수 큐입니다. 관리자 인증과 원본 데이터 보호는 그대로 유지됩니다.</div><div class="metrics"><div class="metric"><b>'+AUDIT.summary.total+'</b><span>전체 기사</span></div><div class="metric"><b>'+AUDIT.summary.index+'</b><span>index</span></div><div class="metric"><b>'+AUDIT.summary.relayUrl+'</b><span>중계 URL</span></div><div class="metric"><b>'+AUDIT.summary.reviewerNeeded+'</b><span>사람 검수 대기</span></div></div><div class="bar"><select id="af-status" onchange="showAudit()"><option value="">전체 색인 상태</option><option value="index">index</option><option value="noindex">noindex</option></select><select id="af-tier" onchange="showAudit()"><option value="">전체 등급</option><option value="analysis">analysis</option><option value="evidence">evidence</option><option value="brief">brief</option></select><select id="af-risk" onchange="showAudit()"><option value="">전체 임상 위험도</option><option value="high">high</option><option value="medium">medium</option><option value="low">low</option></select><select id="af-editorial" onchange="showAudit()"><option value="">전체 검수 상태</option><option value="automated">automated</option><option value="editor-reviewed">editor-reviewed</option><option value="vet-reviewed">vet-reviewed</option><option value="correction-required">correction-required</option></select><input id="af-issue" placeholder="문제·기사·출처 검색" value="'+e(document.getElementById('af-issue')?.value||'')+'" onkeydown="if(event.key===\'Enter\')showAudit()"><button class="ghost" onclick="downloadAudit(\'json\')">JSON 다운로드</button><button class="ghost" onclick="downloadAudit(\'csv\')">CSV 다운로드</button><button class="ghost" onclick="render()">오늘 원본 검수</button><span class="stat">'+rows.length+'건 표시</span></div><div class="audit-list">'+rows.map(function(row){var fl=(row.qualityIssues||[]).map(function(x){return '<span class="flag f-red">'+e(x)+'</span>';}).join('');if(row.relayUrl)fl+='<span class="flag f-amb">중계 URL</span>';if(row.imageSourceMissing)fl+='<span class="flag f-amb">이미지 권리·출처 확인</span>';if(row.imageOwnership==='unknown')fl+='<span class="flag f-amb">권리 unknown</span>';if(row.clinicalRisk==='high')fl+='<span class="flag f-red">임상 high</span>';if(row.editorialStatus==='automated')fl+='<span class="flag f-amb">사람 검수 대기</span>';return '<div class="item"><div class="cat">우선순위 '+row.priority+' · '+e(row.date)+' · '+e(row.contentTier)+' · '+(row.indexable?'index':'noindex')+'</div><div class="ttl">'+e(row.title)+'</div><div class="src">'+e(row.source||'출처 없음')+' · '+e(row.id)+' · '+e(row.dataFile)+'</div><div class="flags">'+(fl||'<span class="flag f-grn">이상없음</span>')+'</div><div class="src" style="margin-top:8px"><a href="'+e(row.generatedUrl)+'" target="_blank">생성 기사</a> · '+(row.sourceUrl?'<a href="'+e(row.sourceUrl)+'" target="_blank" rel="noopener noreferrer">원문</a>':'원문 없음')+' · '+e(row.reviewerStatus)+' · 임상 '+e(row.clinicalRisk||'미분류')+'</div></div>';}).join('')+'</div>';app.innerHTML=h;};
+window.showAudit=function(){if(!AUDIT){loadAudit().then(showAudit);return;}var rows=filteredAudit();var h='<h1>SEO·편집 검수</h1><div class="sub">인증된 관리자에게만 제공되는 읽기 전용 검수 큐입니다. 상태 변경은 review CLI와 Git 기록으로만 수행합니다.</div><div class="metrics"><div class="metric"><b>'+AUDIT.summary.total+'</b><span>전체 기사</span></div><div class="metric"><b>'+AUDIT.summary.index+'</b><span>index</span></div><div class="metric"><b>'+AUDIT.summary.relayUrl+'</b><span>중계 URL</span></div><div class="metric"><b>'+AUDIT.summary.reviewerNeeded+'</b><span>사람 검수 대기</span></div></div><div class="bar"><select id="af-status" onchange="showAudit()"><option value="">전체 색인 상태</option><option value="index">index</option><option value="noindex">noindex</option></select><select id="af-risk" onchange="showAudit()"><option value="">전체 임상 위험도</option><option value="high">high</option><option value="medium">medium</option><option value="low">low</option></select><input id="af-issue" placeholder="문제·기사·출처 검색" value="'+e(document.getElementById('af-issue')?.value||'')+'" onkeydown="if(event.key===\'Enter\')showAudit()"><button class="ghost" onclick="showPerformance()">검색 성과</button><button class="ghost" onclick="render()">날짜별 검수</button><span class="stat">'+rows.length+'건 표시</span></div><div class="audit-list">'+rows.slice(0,100).map(function(row){var fl=(row.qualityIssues||[]).map(function(x){return '<span class="flag f-red">'+e(x)+'</span>';}).join('');if(row.relayUrl)fl+='<span class="flag f-amb">중계 URL</span>';if(row.clinicalRisk==='high')fl+='<span class="flag f-red">임상 high</span>';if(row.reReviewRequired)fl+='<span class="flag f-amb">재검수</span>';return '<div class="item"><div class="cat">우선순위 '+row.priority+' · '+e(row.date)+' · '+e(row.workflowStatus||row.editorialStatus||'')+' · '+(row.indexable?'index':'noindex')+'</div><div class="ttl">'+e(row.title)+'</div><div class="src">'+e(row.source||'출처 없음')+' · '+e(row.id)+' · '+e(row.dataFile)+'</div><div class="flags">'+(fl||'<span class="flag f-grn">이상없음</span>')+'</div><div class="src" style="margin-top:8px"><a href="'+e(row.generatedUrl)+'" target="_blank">생성 기사</a> · '+(row.sourceUrl?'<a href="'+e(row.sourceUrl)+'" target="_blank" rel="noopener noreferrer">원문</a>':'원문 없음')+' · '+e(row.reviewerStatus||'')+' · 임상 '+e(row.clinicalRisk||'미분류')+'</div></div>';}).join('')+'</div>';app.innerHTML=h;};
+window.showPerformance=function(){if(!PERFORMANCE){loadPerformance().then(showPerformance);return;}var rows=PERFORMANCE.rows||[];app.innerHTML='<h1>검색 성과</h1><div class="sub">인증된 관리자 전용 읽기 화면입니다. 실제 GSC·네이버 CSV를 가져오기 전에는 샘플을 만들지 않습니다.</div>'+(rows.length?'<div class="metrics"><div class="metric"><b>'+rows.length+'</b><span>가져온 행</span></div><div class="metric"><b>'+((PERFORMANCE.providers&&PERFORMANCE.providers.gsc||[]).length)+'</b><span>GSC</span></div><div class="metric"><b>'+((PERFORMANCE.providers&&PERFORMANCE.providers.naver||[]).length)+'</b><span>네이버</span></div></div><p>CSV 분석은 로컬 CLI <code>npm run seo:performance</code>로 갱신합니다.</p>':'<div class="item"><div class="ttl">아직 가져온 검색 성과 데이터가 없습니다.</div><div class="src">GSC Search results와 네이버 서치어드바이저 검색 유입 CSV를 각각 내려받아 <code>npm run seo:import:gsc -- 파일.csv</code> 또는 <code>npm run seo:import:naver -- 파일.csv</code>로 가져오세요.</div></div>')+'<button class="ghost" onclick="showAudit()">검수 큐로 돌아가기</button>';};
 window.downloadAudit=function(kind){var rows=filteredAudit();if(kind==='json'){var blob=new Blob([JSON.stringify(rows,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vetman-seo-review.json';a.click();return;}var cols=['id','date','title','source','indexable','contentTier','priority','qualityIssues','sourceUrl','generatedUrl','dataFile','image','relayUrl','reviewerStatus'];var csv=[cols.join(',')].concat(rows.map(function(row){return cols.map(function(col){var val=Array.isArray(row[col])?row[col].join('|'):row[col];return '"'+String(val==null?'':val).replace(/"/g,'""')+'"';}).join(',');})).join('\n');var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vetman-seo-review.csv';a.click();};
 function load(date){
   authFetch('/api/admin?resource=raw&date='+encodeURIComponent(date)).then(function(r){return r.json();}).then(function(d){ISSUE=d;EX={};render();}).catch(function(){});
@@ -1827,7 +1863,7 @@ window.toggleEx=function(i){EX[i]=!EX[i];render();};
 window.tg=function(i){document.getElementById('it'+i).classList.toggle('open');event.target.textContent=document.getElementById('it'+i).classList.contains('open')?'본문 접기 ▴':'본문 펼치기 ▾';};
 window.copyClean=function(){var out=Object.assign({},ISSUE);out.items=ISSUE.items.filter(function(it,i){return !EX[i];});navigator.clipboard.writeText(JSON.stringify(out,null,2));alert('제외 반영 JSON을 복사했습니다.\n\ndata/issues/'+ISSUE.date+'.json 에 붙여넣고 재배포하세요.');};
 window.copyAll=function(){navigator.clipboard.writeText(JSON.stringify(ISSUE,null,2));alert('전체 JSON 복사됨');};
-function boot(){Promise.all([authFetch('/api/admin?resource=archive').then(function(r){return r.json();}),loadAudit()]).then(function(results){var a=results[0];var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';}).catch(function(){gate();});}
+function boot(){Promise.all([authFetch('/api/admin?resource=archive').then(function(r){return r.json();}),loadAudit(),loadPerformance()]).then(function(results){var a=results[0];var d=(a.issues&&a.issues[0])?a.issues[0].date:null;if(d)load(d);else app.innerHTML='<p>이슈가 없습니다.</p>';}).catch(function(){gate();});}
 if(TOKEN) boot(); else gate();
 </script><script src="https://cardkit.vetmanlab.com/switcher.js" defer></script></body></html>`;
 
@@ -1918,6 +1954,25 @@ function relatedArticles(current, all = []) {
     .sort((a, b) => b.score - a.score || (b.candidate.ts || 0) - (a.candidate.ts || 0))
     .slice(0, 5)
     .map(({ candidate }) => candidate);
+}
+
+function renderEvidencePanel(a) {
+  const e = a.evidence || {};
+  const rows = [
+    ["연구 유형", e.studyType ? studyTypeLabel(e.studyType) : null],
+    ["대상 종", e.speciesStudied],
+    ["표본 수", e.sampleSize],
+    ["중재·노출", e.intervention],
+    ["비교군", e.comparator],
+    ["핵심 결과", e.primaryOutcome],
+    ["근거 수준", e.evidenceLevel],
+    ["한계", e.limitations],
+    ["기관", e.institution],
+    ["연구비", e.funding],
+    ["이해상충", e.conflictOfInterest],
+  ].filter(([, value]) => value !== undefined && value !== null && String(value).trim() !== "");
+  if (!rows.length) return "";
+  return `<section class="evidence-panel trust-panel" aria-labelledby="evidence-title"><h2 id="evidence-title">연구 한눈에 보기</h2><dl>${rows.map(([label, value]) => `<dt>${esc(label)}</dt><dd>${esc(value)}</dd>`).join("")}</dl><p class="disclaimer">원문에서 확인된 정보만 표시합니다. 증례 보고나 관찰 연구의 결과를 모든 환자에게 일반화하지 마세요.</p></section>`;
 }
 
 function renderArticlePage(a, data, prev, next, related = []) {
@@ -2142,6 +2197,7 @@ ${a.image ? `<figure><img class="hero-image" src="${esc(a.image)}" alt="${esc(a.
 <dt>원문</dt><dd>${esc(a.source)}${a.sourcePublishedAt ? ` · ${esc(a.sourcePublishedAt.slice(0, 10).replace(/-/g, "."))}` : ""}</dd>
 ${a.updatedAt ? `<dt>최종 수정</dt><dd>${esc(a.updatedAt.slice(0, 10).replace(/-/g, "."))}</dd>` : ""}
 ${a.correctionNote ? `<dt>정정 이력</dt><dd>${esc(a.correctionNote)}</dd>` : ""}</dl><p class="disclaimer">임상 정보는 교육·참고용입니다. 환자 적용 전 원문과 최신 문헌, 국내 지침을 확인하고 담당 수의사가 판단해야 합니다.</p></section>
+${renderEvidencePanel(a)}
 <div class="lead">${esc(a.dek)}</div>
 ${(a.body || []).map(para).join("\n")}
 ${a.correctionNote ? `<div class="note"><div class="lb">정정·편집 메모</div><div class="tx">${esc(a.correctionNote)}</div></div>` : ""}
@@ -2730,6 +2786,7 @@ function renderTopicPage(topic, arts) {
 <nav class="crumb" aria-label="breadcrumb"><a href="/">홈</a> <span aria-hidden="true">›</span> <a href="/topic/">주제별 보기</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(topic.name)}</span></nav>
 <h1>${esc(topic.name)}</h1>
 <p class="lede">${esc(topic.intro || topic.lede)}</p>
+${topic.searchIntent ? `<p class="meta">검색 의도: ${esc(topic.searchIntent)}</p>` : ""}
 ${topic.synonyms?.length ? `<p class="meta">함께 찾는 말: ${topic.synonyms.map((term) => esc(term)).join(" · ")}</p>` : ""}
 <p class="meta">기사 ${arts.length}건${papers.length ? ` · 근거 있는 연구 ${papers.length}건` : ""}${
     qas.length ? ` · 보호자 문답 ${qas.length}건` : ""
@@ -3265,7 +3322,9 @@ function build() {
       const hasImage = Boolean(a.image);
       const rawImageMissing = a.imageOrigin === "editorial-card" || !hasImage;
       const imageSourceMissing = Boolean(hasImage && a.imageOrigin !== "editorial-card" && (!a.imageCredit || (!a.imageLicense && !a.imageLicenseUrl)));
-      const priority = (isIndexable(a) ? 2 : 0) + (flags.length * 4) + (relay ? 3 : 0) + (rawImageMissing ? 2 : 0) + (imageSourceMissing ? 1 : 0) + (a.clinicalRisk === "high" ? 4 : a.clinicalRisk === "medium" ? 2 : 0) + (a.editorialStatus === "automated" ? 1 : 0);
+      const reReviewRequired = Boolean(a.contentHash && contentHash(qualityView(a)) !== a.contentHash);
+      const numericFlags = numericEvidenceIssues(qualityView(a));
+      const priority = reviewPriority(a, { legacyIndex: a.workflowStatus === "legacy-published" && isIndexable(a), reReview: reReviewRequired }) + (isIndexable(a) ? 2 : 0) + (flags.length * 4) + (relay ? 3 : 0) + (rawImageMissing ? 2 : 0) + (imageSourceMissing ? 1 : 0) + (numericFlags.length ? 3 : 0);
       reviewRows.push({
         id: a.id,
         date: a.day,
@@ -3292,6 +3351,16 @@ function build() {
         reviewerNeeded: !a.reviewer,
         reviewerStatus: reviewStatus(a),
         editorialStatus: a.editorialStatus,
+        workflowStatus: a.workflowStatus,
+        workflowLabel: workflowLabel(a.workflowStatus),
+        reviewerId: a.reviewerId || null,
+        reviewerRole: a.reviewerRole || null,
+        reviewChecklist: a.reviewChecklist || null,
+        dataSchemaVersion: a.dataSchemaVersion || null,
+        contentHash: a.contentHash || null,
+        sourceHash: a.sourceHash || null,
+        reReviewRequired,
+        numericEvidenceIssues: numericFlags,
         clinicalRisk: a.clinicalRisk,
         reviewNotes: a.reviewNotes || null,
         vetReviewer: a.vetReviewer || null,
@@ -3342,11 +3411,12 @@ function build() {
   const topicCounts = {};
   const topicUrls = [];
   for (const t of TOPICS) {
-    const arts = topicBuckets[t.slug] || [];
+    const topic = { ...t, ...(TOPIC_INTENT[t.slug] || {}) };
+    const arts = topicBuckets[topic.slug] || [];
     arts.sort((a, b) => (b.ts ?? 0) - (a.ts ?? 0));
-    if (arts.length >= Number(t.minIndexArticles || 5) && t.intro) topicCounts[t.slug] = arts.length;
-    fs.writeFileSync(path.join(SITE_DIR, "topic", `${t.slug}.html`), renderTopicPage(t, arts));
-    if (arts.length >= Number(t.minIndexArticles || 5) && t.intro) topicUrls.push(`${SITE.baseUrl}${topicPath(t)}`);
+    if (arts.length >= Number(topic.minIndexArticles || 5) && topic.intro) topicCounts[topic.slug] = arts.length;
+    fs.writeFileSync(path.join(SITE_DIR, "topic", `${topic.slug}.html`), renderTopicPage(topic, arts));
+    if (arts.length >= Number(topic.minIndexArticles || 5) && topic.intro) topicUrls.push(`${SITE.baseUrl}${topicPath(topic)}`);
   }
   fs.writeFileSync(path.join(SITE_DIR, "topic", "index.html"), renderTopicIndex(topicCounts));
   console.log(`  주제 허브 ${topicUrls.length}개 생성`);
@@ -3384,6 +3454,7 @@ function build() {
   }
   const auditRows = reviewRows.sort((a, b) => b.priority - a.priority || String(b.date).localeCompare(String(a.date)));
   fs.writeFileSync(path.join(SITE_DIR, "admin-review.json"), JSON.stringify({ generatedAt: new Date().toISOString(), noindex: true, summary: { total: auditRows.length, index: auditRows.filter((row) => row.indexable).length, noindex: auditRows.filter((row) => !row.indexable).length, missingImage: auditRows.filter((row) => row.indexable && row.rawImageMissing).length, relayUrl: auditRows.filter((row) => row.relayUrl).length, reviewerNeeded: auditRows.filter((row) => row.reviewerNeeded).length }, rows: auditRows }, null, 2));
+  fs.writeFileSync(path.join(SITE_DIR, "seo-performance.json"), JSON.stringify({ ...SEO_PERFORMANCE, noindex: true, generatedAt: new Date().toISOString() }, null, 2));
   fs.writeFileSync(
     path.join(SITE_DIR, "search.json"),
     JSON.stringify({ generatedAt: new Date().toISOString(), count: searchEntries.length, items: searchEntries })
