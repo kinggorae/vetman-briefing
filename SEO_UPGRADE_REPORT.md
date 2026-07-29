@@ -285,7 +285,7 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 
 작성 브랜치: `codex/editorial-operations-growth`
 기준: `origin/main` 최신 production 반영본
-현재 상태: 로컬 구현·검증 완료, 사람 승인과 PR/production 배포 전 단계
+현재 상태: PR #6 merge 및 기존 `vetman-briefing` production smoke 확인 완료
 
 ### 핵심 설계
 
@@ -366,4 +366,15 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - 외부 이미지 87개의 사용 권한을 확인하기 전에는 `licensed`·credit·license를 채우거나 자체 호스팅하지 않을 것
 - `reports/seo-performance.json`은 실제 GSC·네이버 CSV를 가져온 뒤에만 성과를 해석할 것
 - PR CI와 Cloudflare preview에서 전체 테스트·Playwright·Lighthouse를 재실행하고 기존 170/293·212/11·주요 URL을 비교할 것
-- 승인 전에는 production push, merge, Cloudflare Pages 배포를 수행하지 않을 것
+- PR #6 merge 후 production smoke에서 홈페이지·robots·sitemap·news sitemap·RSS·주제 허브 5/5 HTTP 200과 critical 0을 확인할 것
+
+### 4차 최종 배포 결과
+
+- feature commit: `181b15bf311b9bcfad2a85cdb3605110958b2f52` (`feat: add editorial operations and search performance workflow`)
+- CI 보정 commit: `df80141` (`fix: avoid redundant Playwright system dependency install`)
+- PR: [#6](https://github.com/kinggorae/vetman-briefing/pull/6)
+- merge commit: `88b9d10497c2a3f01404dd76f26e56ec27cc44e6`
+- production: 기존 Cloudflare Pages 프로젝트 `vetman-briefing`의 `https://news.vetmanlab.com/`에서 운영 smoke 확인 완료. 새 프로젝트는 만들지 않았습니다.
+- production 확인: 홈페이지·robots.txt·sitemap.xml·news-sitemap.xml·rss.xml·주제 허브 HTTP 200, `npm run monitor:production` 5/5 OK·critical 0·warnings 0, sitemap 212개와 news sitemap 11개 유지
+- 운영 기사 HTML에서 4차 신뢰·연구 메타데이터 UI를 확인했습니다. Cloudflare 배포 ID와 GitHub deployment status는 Pages 연동이 노출하지 않아 기록하지 않았습니다.
+- Cloudflare PR preview: branch/commit preview endpoint가 `Deployment Not Found`를 반환했고 GitHub deployment status도 없었습니다. 이 제한은 숨기지 않고 기록하며, 로컬 Playwright·Lighthouse와 merge 후 production smoke로 대체 검증했습니다.
