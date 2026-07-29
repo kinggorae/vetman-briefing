@@ -3,7 +3,9 @@
 작성일: 2026-07-29  
 작업 브랜치: `codex/seo-hardening`  
 기준 커밋: `origin/main` 최신본  
-배포·push·PR: 수행하지 않음
+최종 커밋: `00cdf52`  
+PR: [#2](https://github.com/kinggorae/vetman-briefing/pull/2)  
+Production 배포: Cloudflare Pages `vetman-briefing`, production deployment `e25ec16a`
 
 ## 1. 변경한 파일
 
@@ -92,6 +94,7 @@
 - RSS 기사: 50개, `content:encoded` 전체 본문 포함
 - Lighthouse 모바일: 실행하지 않음(로컬 정적 검증까지 수행)
 - 기존 주간 URL `weekly/2026-W23` 보존 및 내부 링크 검증: 통과
+- production live smoke test: homepage/article/sitemap/news sitemap/RSS 응답 및 핵심 robots 상태 통과
 
 ## 7. 남은 수동 검수 항목
 
