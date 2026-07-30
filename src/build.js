@@ -1623,7 +1623,7 @@ function recentArticles(current, allIssues, limit = 6) {
   return [...preferred, ...fallback].slice(0, limit);
 }
 
-function compactClientArticle(a) {
+function compactClientArticle(a, { lead = false } = {}) {
   return {
     id: a.id,
     href: a.href,
@@ -1641,6 +1641,11 @@ function compactClientArticle(a) {
     contentTier: a.contentTier,
     tier: a.tier,
     tag: a.tag,
+    // The first-fold lead article is the visual anchor of the homepage. Keep
+    // its first three paragraphs in the initial payload so the newspaper fold
+    // is filled on first load; the remaining articles stay compact and hydrate
+    // only when opened.
+    ...(lead ? { body: Array.isArray(a.body) ? a.body.slice(0, 3) : [] } : {}),
     // 상세 Q&A와 근거 블록은 기사 JSON을 hydrate한 뒤 표시한다. 초기 HTML에는
     // 카드와 탐색에 필요한 필드만 넣어 첫 화면의 전송량을 제한한다.
     radar: null,
@@ -1649,7 +1654,7 @@ function compactClientArticle(a) {
 }
 
 function compactClientData(data) {
-  const articles = (data.articles || []).slice(0, 24).map(compactClientArticle);
+  const articles = (data.articles || []).slice(0, 24).map((a, i) => compactClientArticle(a, { lead: i === 0 }));
   const briefs = (data.briefs || []).slice(0, 12).map(compactClientArticle);
   const stories = (data.stories || []).slice(0, 8).map(compactClientArticle);
   const recent = (data.recent || []).slice(0, 6).map(compactClientArticle);

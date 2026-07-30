@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T04:43:57.117Z",
+  "generatedAt": "2026-07-30T05:52:18.926Z",
   "noindex": true,
   "summary": {
     "total": 463,
@@ -39372,7 +39372,7 @@
   },
   "firstReleaseQa": {
     "version": 1,
-    "generatedAt": "2026-07-30T03:34:53.673Z",
+    "generatedAt": "2026-07-30T05:51:13.326Z",
     "candidates": [
       {
         "id": "v1_88e7bde7826c5eaf",
