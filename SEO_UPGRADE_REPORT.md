@@ -599,7 +599,7 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 ### 8차 검증 결과
 
 - `npm ci`: 성공. 설치 전체 audit에는 dev dependency 경고가 있었으나 `npm audit --omit=dev`: production vulnerabilities 0건.
-- `npm test`: 성공, 28개 통과. 언어·주장 전체 분류, people CLI placeholder/수의사 필수 필드, legacy noindex 안정성, reviewer 없는 첫 발행 보류 회귀를 포함합니다.
+- `npm test`: 성공, 29개 통과. 언어·주장 전체 분류, people CLI placeholder/수의사 필수 필드, legacy noindex 안정성, reviewer 없는 첫 발행 보류 회귀를 포함합니다.
 - `npm run check`: 성공. build/validate 포함. index/noindex 170/293과 기존 canonical을 유지했습니다.
 - `npm run seo:audit`: 성공. sitemap 211, news sitemap 11, JSON-LD/XML/internal link critical 0, noindex sitemap 충돌 0, index 이미지 170/170입니다.
 - `npm run sources:diagnose`, `npm run sources:health`, `npm run ingest:dry`, `npm run updates:stats`, `npm run language:audit`, `npm run terminology:audit`, `npm run claims:audit`, `npm run editorial:review`, `npm run shadow:run`, `npm run people:list`, `npm run people:validate`, `npm run publish:validate`: 성공. shadow 실행은 public false/published 0이며 로컬 실행에서 feed-history를 변경하지 않았습니다.
@@ -617,7 +617,10 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 
 ### 8차 배포 상태
 
-- feature commit: 배포 전 생성 예정
-- PR: 배포 전 생성 예정
-- production: 모든 검증과 PR CI가 통과한 뒤 기존 Cloudflare Pages `vetman-briefing`에만 반영합니다. 새 프로젝트는 만들지 않습니다.
-- 배포 전 불변 조건: index/noindex 170/293, canonical 변경 0, reviewer 0, 자동 published 0, draft 공개 0, production secret 출력 0.
+- feature commit: `6694b6b608384695d76378b24d5acadf8d6ee9de`
+- PR: [#14](https://github.com/kinggorae/vetman-briefing/pull/14) — `feat: add editorial language and claim verification workflow`
+- merge commit: `b135f9410c8e6260da65e15f83883a7eeed42ec9`
+- production: 기존 Cloudflare Pages 프로젝트 `vetman-briefing`의 `main` 환경에 반영했습니다. Deployment URL은 `https://767b6eea.vetman-briefing.pages.dev`이며 custom domain `https://news.vetmanlab.com/`에 smoke test로 확인했습니다. 새 프로젝트는 만들지 않았습니다.
+- production smoke: `/`, `robots.txt`, `sitemap.xml`, `news-sitemap.xml`, `rss.xml`, 대표 기사 모두 HTTP 200. sitemap 211·news sitemap 11·RSS 50 item/50 full `content:encoded`를 확인했습니다. 직접 `/admin-review.json`과 인증 없는 `/api/admin?resource=audit`는 HTTP 401입니다.
+- 최종 불변 조건: index/noindex 170/293, canonical 변경 0, reviewer 0, 자동 published 0, draft 공개 0, sitemap/noindex 충돌 0, production secret 출력 0.
+- PR CI: `quality` 성공. production 취약점 0건, Playwright 12/12, Lighthouse warning 0입니다.
