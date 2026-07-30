@@ -552,3 +552,12 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - GSC sitemap 처리 상태, 대표 URL 검사, News/Discover 노출을 확인합니다.
 - 네이버 서치어드바이저의 검색 유입·페이지·수집 오류·sitemap/RSS 상태 CSV를 내려받습니다.
 - 인증정보를 저장소나 로그에 넣지 않고 `npm run seo:import:gsc -- <csv>`, `npm run seo:import:naver -- <csv>`로 로컬/보안 환경에서만 가져옵니다.
+
+### 7차 배포 결과
+
+- feature commit: `8b8d8b7485705379717cc6948206ae203bc3031f` (`feat: add shadow newsroom and controlled publishing`)
+- PR: [#12](https://github.com/kinggorae/vetman-briefing/pull/12), CI `quality` 성공 후 merge
+- merge commit: `f5f7814d3c171d57acde99a7b3848eb51876aec9`
+- production deployment: 기존 Cloudflare Pages 프로젝트 `vetman-briefing`의 `main` 환경에 배포 완료. deployment URL은 `https://e452210f.vetman-briefing.pages.dev`이며 custom domain `https://news.vetmanlab.com/`에 반영했습니다. 새 프로젝트는 만들지 않았습니다.
+- production smoke: `/`, `robots.txt`, `sitemap.xml`, `news-sitemap.xml`, `rss.xml`, `admin-ui.html` HTTP 200. sitemap 211·news sitemap 11·RSS 50 item/50 full `content:encoded`를 확인했습니다. 직접 `/admin-review.json`과 인증 없는 `/api/admin?resource=audit`는 HTTP 401입니다.
+- 최종 상태: index/noindex 170/293, 공식 피드 stale 1·degraded 11·failing 1, 복구 후보 needs-human-review 5, shadow 자동 published 0, 실제 reviewer 0명입니다. 기존 high/medium-risk 검수 대기와 unresolved 원출처는 사람이 확인하기 전 변경하지 않았습니다.
