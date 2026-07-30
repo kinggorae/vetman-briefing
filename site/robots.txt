@@ -10,6 +10,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -25,6 +26,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -40,6 +42,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -55,6 +58,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -70,6 +74,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -85,6 +90,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -100,6 +106,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -115,6 +122,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -130,6 +138,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -145,6 +154,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -160,6 +170,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -175,6 +186,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -190,6 +202,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -205,6 +218,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -220,6 +234,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -235,6 +250,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -250,6 +266,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html
@@ -265,6 +282,7 @@ Disallow: /data/
 Disallow: /search/
 Disallow: /search.json
 Disallow: /search-manifest.json
+Disallow: /brief-rss.xml
 Disallow: /latest.json
 Disallow: /archive.json
 Disallow: /design.html

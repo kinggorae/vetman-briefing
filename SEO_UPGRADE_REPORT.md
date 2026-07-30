@@ -624,3 +624,48 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - production smoke: `/`, `robots.txt`, `sitemap.xml`, `news-sitemap.xml`, `rss.xml`, 대표 기사 모두 HTTP 200. sitemap 211·news sitemap 11·RSS 50 item/50 full `content:encoded`를 확인했습니다. 직접 `/admin-review.json`과 인증 없는 `/api/admin?resource=audit`는 HTTP 401입니다.
 - 최종 불변 조건: index/noindex 170/293, canonical 변경 0, reviewer 0, 자동 published 0, draft 공개 0, sitemap/noindex 충돌 0, production secret 출력 0.
 - PR CI: `quality` 성공. production 취약점 0건, Playwright 12/12, Lighthouse warning 0입니다.
+
+## 17. 9차 고도화: no-reviewer-safe publishing
+
+작성 브랜치: `codex/no-reviewer-safe-publishing`
+기준: 8차 production 반영 후 `origin/main` 최신본
+운영 전제: 실제 등록 reviewer 0명, 수의사 감수자 0명. 이번 단계에서도 신규 기사를 발행하거나 승인 상태로 바꾸지 않았습니다.
+
+### 운영 모드와 공개 정책
+
+- `data/editorial/settings.json`에 `editorialMode: organization-only`, `veterinaryReviewerAvailable: false`와 실제 조직명·About URL을 명시했습니다.
+- 신규 high-risk는 `blocked-clinical`, 신규 medium-risk는 `internal-draft` 또는 `public-brief(noindex)`, 신규 low-risk는 모든 자동 검사 통과 시에만 `public-brief(noindex)` 대상입니다. 신규 `index-analysis`는 사람 편집 검수 기록 없이는 색인될 수 없습니다.
+- public brief 미리보기·발행 전 패키지는 작성 주체를 `베트맨랩` Organization으로 표시하고 reviewer를 `null`로 유지합니다. sitemap·news sitemap·기본 RSS에는 포함하지 않습니다. 이번 실행에서 public brief release와 자동 published는 모두 0건입니다.
+- 기존 legacy-published 463개는 일괄 상태 변경하지 않았고 index/noindex 170/293을 유지했습니다. 기존 기사에는 작성 주체, AI 사용 기록, 사람 편집 검수 기록, 수의사 감수자 없음, 임상 정보 면책을 신뢰 패널로 표시합니다.
+- 관리자 화면은 reviewer 0명 상태, 등록 절차, high-risk 차단 사유를 표시하며 기존 인증·읽기 전용 경계를 유지합니다. `people:add`·기존 publish workflow는 실제 사람 등록 시 활성화할 수 있도록 보존했습니다.
+
+### 언어·주장 검수
+
+- `reports/language-review.json/md`의 경고 20건을 모두 분류했습니다: 미번역 조각 11, false positive 5, ambiguous 2, typo 1, terminology 1. 원문 근거가 없는 약물·용량·종·결론은 자동 수정하지 않았습니다.
+- `reports/claim-review.json/md`의 임상 주장 경고 64건은 missing-context 63건과 unit-mismatch 1건입니다. missing-context는 species context 31, human population context 21, source detail 11로 세분화했고 나머지 분류는 0건입니다.
+- unit-mismatch 후보 `2026-07-21_24`는 [PubMed 초록](https://pubmed.ncbi.nlm.nih.gov/42348039/) 및 [저널 메타데이터](https://link.springer.com/article/10.1007/s11259-026-11367-1)와 대조한 결과 2.33 mg/kg, 5.98 mg/kg, 약 61% 감소가 일치했습니다. 단위 변환·정정·`updatedAt` 변경은 하지 않았습니다.
+- 기존 463개 기사 중 안전하지 않은 임상 명령 표현 6건은 legacy 검수 큐로 보냈고, 검증된 critical 0건이므로 기존 index 170개를 일괄 차단하지 않았습니다.
+- 감수자 없는 콘텐츠에서 `반드시 투여`, `권장 용량`, `치료해야 한다`, `안전하다`, `효과가 입증됐다`, `완치`, `즉시 약물 사용`, `진단할 수 있다`, `예방할 수 있다` 등의 표현을 public brief 품질 게이트에서 차단합니다.
+
+### Low-risk 첫 후보와 CLI
+
+- 기존 low-risk 후보 5개는 모두 `needs-language-fix`입니다. 안전하게 작성된 한국어 title/lead/body와 권리 확인 이미지를 확인할 수 있는 후보가 없어 `ready-public-brief` 0건으로 유지했습니다.
+- `reports/no-reviewer-low-risk-candidates.md`와 `reports/briefs/`에 dry-run 패키지를 생성했습니다. `brief:prepare`, `brief:validate`, `brief:preview`, `brief:release --apply`를 제공하지만 현재 후보의 validate는 한국어 본문·이미지 부재로 의도적으로 실패합니다.
+- `people:list`와 `people:validate` 결과는 people 0명·유효성 통과입니다. 실제 입력 없이 사람을 생성하지 않았고, placeholder·빈 이름·수의사 credentials/profile URL 없는 등록을 거부합니다.
+
+### 검증 결과
+
+- `npm ci`: 성공. 설치 시 dev dependency deprecated/vulnerability 안내가 있었으나 `npm audit --omit=dev`: production vulnerability 0건.
+- `npm test`: 33개 통과. reviewer 없음 정책, Organization 작성자, public brief noindex, 임상 명령 차단, low-risk 후보 보류, 기존 legacy 보호를 회귀 테스트했습니다.
+- `npm run check`: 성공. build/validate 포함, index/noindex 170/293, sitemap 211, noindex 충돌 0.
+- `npm run seo:audit`: 성공. critical 0, sitemap noindex 0, broken internal links 0, index image 170/170.
+- `npm run language:audit`, `npm run claims:audit`, `npm run people:list`, `npm run people:validate`, `npm run brief:prepare`: 성공. `brief:validate`는 후보 차단 사유를 반환하며 의도된 fail-closed 결과입니다.
+- `npm run shadow:run`: 성공, 수집 677·unique 569·duplicate 33·update 75·draft 50·검수 패킷 10·자동 published 0. 로컬 실행 전후 운영 shadow history는 2회로 동일했습니다. 예약 workflow에서만 `RECORD_FEED_HISTORY=1` 및 `RECORD_SHADOW_HISTORY=1`을 사용합니다.
+- Playwright: 390×844, 768×1024, 1440×1000에서 12/12 통과. 콘솔·요청 실패·깨진 이미지·axe critical 0.
+- Lighthouse CI: 3 URL×3회 중앙값, Performance 100, Accessibility 95~96, Best Practices 100, SEO 100, CLS 최대 0.028, 기사 LCP 1.72초. warning 0건입니다.
+- 기사 HTML 463개 canonical 463/463, index 170·noindex 293, JSON-LD 파싱 오류 0. stale `VetManLab 편집팀` 작성자 문자열은 생성 결과에서 0건입니다.
+
+### 배포 상태
+
+- feature commit / PR / merge / production deployment는 검증·CI·사람의 최종 확인 후 아래에 갱신합니다.
+- 현재 9차 작업의 자동 published 0건, reviewer 0명, 신규 index-analysis 0건을 유지합니다.

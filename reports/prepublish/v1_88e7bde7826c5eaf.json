@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T23:45:11.511Z",
+  "generatedAt": "2026-07-30T03:28:16.189Z",
   "previewOnly": true,
   "eligibleForPublish": false,
   "reason": "실제 reviewerId와 사람 승인 기록이 없습니다",
@@ -22,7 +22,11 @@
     "ownership": "unknown",
     "alt": null
   },
-  "author": null,
+  "author": {
+    "@type": "Organization",
+    "name": "베트맨랩",
+    "url": "https://news.vetmanlab.com/about"
+  },
   "reviewer": null,
   "relatedArticles": [],
   "jsonLd": {
@@ -36,7 +40,8 @@
     },
     "author": {
       "@type": "Organization",
-      "name": "VetManLab 편집팀"
+      "name": "베트맨랩",
+      "url": "https://news.vetmanlab.com/about"
     }
   },
   "rss": {

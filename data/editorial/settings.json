@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "editorialMode": "organization-only",
+  "veterinaryReviewerAvailable": false,
+  "organization": {
+    "name": "베트맨랩",
+    "url": "https://news.vetmanlab.com/about"
+  },
+  "transparency": {
+    "noReviewerLabel": "현재 등록된 수의사 감수자가 없습니다.",
+    "clinicalDisclaimer": "임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하고 담당 수의사가 판단해야 합니다."
+  }
+}

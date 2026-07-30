@@ -126,16 +126,44 @@ function claimClass(row, article) {
   if (/numeric/i.test(warningText)) return { classification: "missing-context", confidence: 0.95, requiresHumanReview: true, disposition: "compare-with-source" };
   return { classification: "unverifiable", confidence: 0.8, requiresHumanReview: true, disposition: "review-queue" };
 }
+function claimContextClass(row, article) {
+  const claim = row.claim || {};
+  const warningText = (row.warnings || []).join(",");
+  if (!claim.sourceEvidence?.url || /google\.com\/rss\/articles/i.test(String(claim.sourceEvidence?.url || ""))) return { classification: "source-detail-missing", missing: ["official-canonical"] };
+  if (!claim.evidenceType || claim.evidenceType === "not-available") return { classification: "study-type-missing", missing: ["evidenceType"] };
+  if (!claim.number?.length && /numeric/i.test(warningText)) return { classification: "sample-size-missing", missing: ["sampleSize-or-numeric-context"] };
+  const text = [article?.titleKo, article?.leadKo, ...(article?.bodyKo || []), claim.claim].filter(Boolean).join(" ");
+  if (/사람|인간|보호자|소유주|소유자|반려인/.test(text) && !claim.population) return { classification: "human-population-context-missing", missing: ["population"] };
+  if (!claim.species?.length && /개|고양이|말|조류|동물|반려/.test(text)) return { classification: "species-context-missing", missing: ["species"] };
+  if ((claim.evidenceType === "paper-metadata" || article?.doi) && !article?.limitations) return { classification: "limitation-missing", missing: ["limitations"] };
+  if (/국내|한국|적용|임상/.test(text)) return { classification: "domestic-applicability-missing", missing: ["domesticApplicability"] };
+  return { classification: "acceptable-brief", missing: [] };
+}
+const VERIFIED_UNIT_CHECKS = {
+  "2026-07-21_24": {
+    status: "source-supported",
+    officialReferenceUrl: "https://pubmed.ncbi.nlm.nih.gov/42348039/",
+    sourceObserved: ["2.33 mg/kg", "5.98 mg/kg", "61% anesthetic-sparing effect"],
+    articleObserved: ["2.33 mg/kg", "5.98 mg/kg", "약 61% 감소"],
+    affectedField: "keyPointsKo",
+    correctionApplied: false,
+    note: "공식 초록·저널 메타데이터의 수치와 현재 기사 수치가 일치합니다. 단위 변환 또는 정정은 하지 않았습니다.",
+  },
+};
+const CONTEXT_CLASSES = ["study-type-missing", "sample-size-missing", "species-context-missing", "human-population-context-missing", "limitation-missing", "domestic-applicability-missing", "source-detail-missing", "acceptable-brief"];
 function claimReport() {
   const audit = readJson(CLAIM_AUDIT, { rows: [] });
   const rows = issueRows();
   const items = (audit.rows || []).map((row) => {
     const article = findArticle(row, rows); const cls = claimClass(row, article); const claim = row.claim || {};
-    return { articleId: stableId(article || { _date: row.date, _index: 0 }), url: article ? articleUrl(article) : null, title: row.title || article?.titleKo || null, indexable: Boolean(article?.workflowStatus === "published" || article?.workflowStatus === "legacy-published"), warnings: row.warnings || [], classification: cls.classification, confidence: cls.confidence, requiresHumanReview: cls.requiresHumanReview, disposition: cls.disposition, claim: { claim: claim.claim || null, sourceEvidence: claim.sourceEvidence ? { url: claim.sourceEvidence.url || null, title: claim.sourceEvidence.title || null } : null, evidenceType: claim.evidenceType || null, species: claim.species || [], population: claim.population || null, number: claim.number || [], unit: claim.unit || [] }, sourceUrl: article?.sourceUrl || article?.sourceUrlRaw || null, shortEvidence: (row.warnings || []).join(", ") };
+    const context = cls.classification === "missing-context" ? claimContextClass(row, article) : null;
+    const sourceCheck = cls.classification === "unit-mismatch" ? (VERIFIED_UNIT_CHECKS[stableId(article || { _date: row.date, _index: 0 })] || { status: "unverifiable", correctionApplied: false, note: "공식 원문 대조 기록이 없습니다." }) : null;
+    return { articleId: stableId(article || { _date: row.date, _index: 0 }), url: article ? articleUrl(article) : null, title: row.title || article?.titleKo || null, indexable: Boolean(article?.workflowStatus === "published" || article?.workflowStatus === "legacy-published"), warnings: row.warnings || [], classification: cls.classification, confidence: cls.confidence, requiresHumanReview: cls.requiresHumanReview, disposition: sourceCheck?.status === "source-supported" ? "source-supported-no-correction" : cls.disposition, verificationStatus: sourceCheck?.status || (context?.classification === "acceptable-brief" ? "acceptable-brief" : "unverifiable"), contextClassification: context?.classification || null, contextFieldsMissing: context?.missing || [], claim: { claim: claim.claim || null, sourceEvidence: claim.sourceEvidence ? { url: claim.sourceEvidence.url || null, title: claim.sourceEvidence.title || null } : null, evidenceType: claim.evidenceType || null, species: claim.species || [], population: claim.population || null, number: claim.number || [], unit: claim.unit || [] }, sourceUrl: article?.sourceUrl || article?.sourceUrlRaw || null, shortEvidence: (row.warnings || []).join(", "), sourceCheck };
   });
   const counts = Object.fromEntries([...new Set(items.map((x) => x.classification))].sort().map((key) => [key, items.filter((x) => x.classification === key).length]));
-  const data = { version: 1, generatedAt: new Date().toISOString(), warningCount: items.length, counts, critical: items.filter((x) => x.classification === "critical").length, items, note: "수치·단위는 원문과 대조하기 전 자동 수정하지 않습니다. 원문 전체 대신 URL, 제목, 구조화된 수치와 짧은 경고 근거만 저장합니다." };
-  const md = `# 임상 주장 검수 분류\n\n- 경고: ${data.warningCount}\n- critical: ${data.critical}\n\n${Object.entries(counts).map(([k, v]) => `- ${k}: ${v}`).join("\n")}\n\n| 기사 | 분류 | 원문 | 경고 | 처리 |\n|---|---|---|---|---|\n${items.map((x) => `| ${x.articleId} | ${x.classification} | ${x.sourceUrl ? `[원문](${x.sourceUrl})` : "없음"} | ${x.warnings.join(", ")} | ${x.disposition} |`).join("\n")}\n`;
+  const contextCounts = Object.fromEntries(CONTEXT_CLASSES.map((key) => [key, items.filter((x) => x.contextClassification === key).length]));
+  const data = { version: 2, generatedAt: new Date().toISOString(), warningCount: items.length, counts, contextCounts, critical: items.filter((x) => x.classification === "critical").length, sourceChecks: items.filter((x) => x.sourceCheck).map((x) => ({ articleId: x.articleId, ...x.sourceCheck })), items, note: "수치·단위는 원문과 대조하기 전 자동 수정하지 않습니다. 원문 전체 대신 URL, 제목, 구조화된 수치와 짧은 경고 근거만 저장합니다." };
+  const md = `# 임상 주장 검수 분류\n\n- 경고: ${data.warningCount}\n- critical: ${data.critical}\n\n## 검수 상태\n\n${Object.entries(counts).map(([k, v]) => `- ${k}: ${v}`).join("\n")}\n\n## missing-context 세분화\n\n${Object.entries(contextCounts).map(([k, v]) => `- ${k}: ${v}`).join("\n") || "없음"}\n\n| 기사 | 분류 | 세부 상태 | 원문 | 경고 | 처리 |\n|---|---|---|---|---|---|\n${items.map((x) => `| ${x.articleId} | ${x.classification} | ${x.contextClassification || x.verificationStatus || "-"} | ${x.sourceUrl ? `[원문](${x.sourceUrl})` : "없음"} | ${x.warnings.join(", ")} | ${x.disposition} |`).join("\n")}\n\n## unit-mismatch 대조\n\n${data.sourceChecks.map((x) => `- ${x.articleId}: ${x.status} · ${x.note}`).join("\n") || "없음"}\n`;
   atomicWrite(path.join(ROOT, "reports", "claim-review.json"), JSON.stringify(data, null, 2) + "\n");
   atomicWrite(path.join(ROOT, "reports", "claim-review.md"), md);
   return data;

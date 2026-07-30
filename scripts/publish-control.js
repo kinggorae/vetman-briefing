@@ -8,6 +8,7 @@ import { publishQualityIssues } from "../src/quality.js";
 import { imageCanRender } from "../src/lib/image-rights.js";
 import { isOfficialUrl, isRelayUrl, loadRegistry, readJson, atomicWrite, safeSourceUrl } from "../src/lib/source-first.js";
 import { writePackage } from "./prepublish-package.js";
+import { isVeterinaryReviewerAvailable, organizationAuthor } from "../src/lib/editorial-policy.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES = path.join(ROOT, "data", "issues");
@@ -36,8 +37,10 @@ function validate(item, person = null) {
   if (!person) blockers.push(`등록된 ${role} reviewer 필요`); else if (!new Set(["admin", role]).has(person.role)) blockers.push(`${role} 역할 reviewer 필요`);
   if (!item.reviewChecklist || !checklistComplete(item.reviewChecklist)) blockers.push("완료된 검수 체크리스트 필요");
   if (risk === "high" && (!person || !["vet", "admin"].includes(person.role))) blockers.push("high-risk는 vet 역할 필요");
+  if (risk === "high" && !isVeterinaryReviewerAvailable()) blockers.push("현재 등록된 수의사 감수자가 없어 high-risk 승인을 차단했습니다");
+  if (person?.role === "vet" && !isVeterinaryReviewerAvailable()) blockers.push("editorialMode=organization-only: veterinaryReviewerAvailable=false");
   if (item.workflowStatus && !["draft", "editor-review-required", "vet-review-required"].includes(item.workflowStatus)) warnings.push(`현재 workflowStatus=${item.workflowStatus}`);
-  const jsonLd = { "@context": "https://schema.org", "@type": "NewsArticle", headline: item.titleKo || item.sourceTitle || "", description: item.leadKo || "", author: { "@type": "Organization", name: "VetManLab 편집팀" }, ...(item.sourceUrl ? { isBasedOn: { "@type": "CreativeWork", url: item.sourceUrl } } : {}) }; try { JSON.parse(JSON.stringify(jsonLd)); } catch { blockers.push("JSON-LD 파싱 실패"); }
+  const jsonLd = { "@context": "https://schema.org", "@type": "NewsArticle", headline: item.titleKo || item.sourceTitle || "", description: item.leadKo || "", author: organizationAuthor(), ...(item.sourceUrl ? { isBasedOn: { "@type": "CreativeWork", url: item.sourceUrl } } : {}) }; try { JSON.parse(JSON.stringify(jsonLd)); } catch { blockers.push("JSON-LD 파싱 실패"); }
   return { id: item.id, risk, requiredRole: role, source: source?.id || null, currentContentHash: currentHash(item), currentSourceHash: sourceHash(item), blockers: [...new Set(blockers)], warnings, expected: { sitemap: false, rss: false, index: false }, jsonLd };
 }
 function print(plan) { console.log(JSON.stringify(plan, null, 2)); }

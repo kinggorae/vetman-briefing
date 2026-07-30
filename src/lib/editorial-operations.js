@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import { normalizePublicationStatus, publicationPolicy } from "./editorial-policy.js";
 
 export const WORKFLOW_STATUSES = new Set([
   "draft", "automated", "editor-review-required", "vet-review-required",
@@ -10,6 +11,7 @@ export const WORKFLOW_STATUSES = new Set([
 export const REVIEW_ROLES = new Set(["editor", "vet", "admin"]);
 export const SCHEMA_VERSION = 2;
 export const CHECKLIST_KEYS = ["sourceConfirmed", "titleLeadBodyChecked", "numbersChecked", "speciesAndStudyChecked", "limitationsChecked", "clinicalLanguageChecked"];
+export { normalizePublicationStatus, publicationPolicy };
 
 export function normalizeWorkflowStatus(value, { legacy = false, draft = false } = {}) {
   const status = String(value || "").trim().toLowerCase();
@@ -64,6 +66,7 @@ export function articleContractIssues(item = {}) {
   if (!["brief", "analysis", "evidence"].includes(String(item.contentTier || ""))) issues.push("contentTier-missing");
   if (!["low", "medium", "high"].includes(String(item.clinicalRisk || ""))) issues.push("clinicalRisk-missing");
   if (!WORKFLOW_STATUSES.has(String(item.workflowStatus || ""))) issues.push("workflowStatus-missing");
+  if (item.publicationStatus && !normalizePublicationStatus(item.publicationStatus)) issues.push("publicationStatus-invalid");
   return [...new Set(issues)];
 }
 export function isNewWorkflowItem(item = {}) { return item._workflowExplicit === true || Boolean(item.dataSchemaVersion || item.reviewPolicyVersion); }

@@ -36,6 +36,13 @@ import {
   sourceHash,
   workflowLabel,
 } from "./lib/editorial-operations.js";
+import {
+  isVeterinaryReviewerAvailable,
+  loadEditorialSettings,
+  normalizePublicationStatus,
+  organizationAuthor,
+  publicationPolicy,
+} from "./lib/editorial-policy.js";
 import { evidenceMetadata, numericEvidenceIssues, studyTypeLabel } from "./lib/evidence.js";
 import { isRelayUrl } from "./lib/source-first.js";
 
@@ -72,6 +79,7 @@ function loadLatestShadow() {
 const AUTHOR_PROFILES = loadJsonFile("authors.json", []);
 const REVIEWER_PROFILES = loadJsonFile("reviewers.json", []);
 const EDITORIAL_PEOPLE = loadJsonFile("editorial/people.json", { people: [] });
+const EDITORIAL_SETTINGS = loadEditorialSettings();
 const SEO_PERFORMANCE = loadJsonFile("seo/performance.json", { version: 1, rows: [] });
 const TOPIC_INTENT = loadJsonFile("topic-intent.json", {});
 
@@ -134,10 +142,10 @@ const PUBLISHER_LD = {
   url: SITE.baseUrl,
   logo: { "@type": "ImageObject", url: `${SITE.baseUrl}/og.png`, width: 1200, height: 630 },
 };
-const AUTHOR_LD = { "@type": "Organization", name: `${SITE.brandKo} 편집팀`, url: `${SITE.baseUrl}/about` };
+const AUTHOR_LD = organizationAuthor(EDITORIAL_SETTINGS);
 function authorLd(a = {}) {
   const profile = profileFor(AUTHOR_PROFILES, a.author);
-  return a.author
+  return a.author && profile
     ? {
         "@type": "Person",
         name: a.author,
@@ -288,6 +296,7 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     correctionHistory: Array.isArray(item.correctionHistory) ? item.correctionHistory : [],
     editorialStatus: normalizeEditorialStatus(item.editorialStatus),
     workflowStatus: normalizeWorkflowStatus(item.workflowStatus || item.editorialStatus, { legacy: !item.workflowStatus && !item.editorialStatus }),
+    publicationStatus: normalizePublicationStatus(item.publicationStatus) || publicationPolicy(item),
     dataSchemaVersion: Number(item.dataSchemaVersion) || null,
     reviewPolicyVersion: item.reviewPolicyVersion || null,
     _workflowExplicit: ["workflowStatus", "dataSchemaVersion", "reviewPolicyVersion"].some((key) => Object.prototype.hasOwnProperty.call(item, key)),
@@ -1815,7 +1824,7 @@ const ADMIN_HTML = String.raw`<!doctype html><html lang="ko"><head><meta charset
 :root{--bg:#f4f5f7;--card:#fff;--ink:#1b1c1e;--mut:#6b7280;--line:#e2e4e8;--blue:#0066ff;--red:#e52222;--amb:#d47800;--grn:#009632}
 *{box-sizing:border-box}body{margin:0;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
 .wrap{max-width:960px;margin:0 auto;padding:24px 18px 80px}
-body[data-reviewers="0"]::before{content:"실제 편집자 등록 필요 · 승인·발행은 등록된 사람과 Git 검수 기록 없이는 사용할 수 없습니다 · npm run people:add -- --id <id> --name <name> --role <role>";display:block;background:#fff4d6;color:#6b4d00;border-bottom:1px solid #e8c96b;padding:10px 18px;font-size:12px;line-height:1.5}
+body[data-reviewers="0"]::before{content:"현재 등록된 수의사 감수자가 없습니다 · 신규 high-risk 발행은 차단됩니다 · 실제 편집자 등록 필요: npm run people:add -- --id <id> --name <name> --role <role>";display:block;background:#fff4d6;color:#6b4d00;border-bottom:1px solid #e8c96b;padding:10px 18px;font-size:12px;line-height:1.5}
 h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);font-size:13px;margin-bottom:18px}
 .bar{position:sticky;top:0;background:var(--bg);padding:12px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);z-index:5}
 select,button,input{font-family:inherit;font-size:14px}
@@ -2226,18 +2235,20 @@ ${jsonLdScript(faqLd)}` : ""
   } <span aria-hidden="true">›</span> <span class="cur" aria-current="page">${esc(a.title)}</span></nav>
 <div class="kick">${esc(a.kicker)}</div>
 <h1>${esc(a.title)}</h1>
-<div class="by">${a.author ? `<a href="${esc(a.authorUrl || "/about")}" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(a.author)}</a>` : `<a href="/about" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(SITE.brandKo)} 편집팀</a>`} · ${esc(a.contentTier === "evidence" ? "근거 기반 해설" : a.contentTier === "analysis" ? "전문 해설" : "간추린 소식")} · 발행 ${esc(a.dateLong || a.date)}${a.updatedAt ? ` · 수정 ${esc(a.updatedAt.slice(0, 10).replace(/-/g, "."))}` : ""}${a.read ? ` · ${esc(a.read)}` : ""}${a.reviewer ? ` · 감수 ${a.reviewerUrl ? `<a href="${esc(a.reviewerUrl)}" rel="noopener noreferrer" style="color:inherit;">${esc(a.reviewer)}</a>` : esc(a.reviewer)}${a.reviewedAt ? ` (${esc(a.reviewedAt.slice(0, 10).replace(/-/g, "."))})` : ""}` : ""}${a.aiAssisted === true ? " · AI 보조 후 편집" : ""} · ${esc(reviewStatus(a))}${
+<div class="by">${a.author && profileFor(AUTHOR_PROFILES, a.author) ? `<a href="${esc(a.authorUrl || profileFor(AUTHOR_PROFILES, a.author).profileUrl || "/about")}" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(a.author)}</a>` : `<a href="/about" rel="author" style="color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;">${esc(EDITORIAL_SETTINGS.organization.name)} 브리핑 시스템</a>`} · ${esc(a.contentTier === "evidence" ? "근거 기반 해설" : a.contentTier === "analysis" ? "전문 해설" : "간추린 소식")} · 발행 ${esc(a.dateLong || a.date)}${a.updatedAt ? ` · 수정 ${esc(a.updatedAt.slice(0, 10).replace(/-/g, "."))}` : ""}${a.read ? ` · ${esc(a.read)}` : ""}${a.reviewer ? ` · 감수 ${a.reviewerUrl ? `<a href="${esc(a.reviewerUrl)}" rel="noopener noreferrer" style="color:inherit;">${esc(a.reviewer)}</a>` : esc(a.reviewer)}${a.reviewedAt ? ` (${esc(a.reviewedAt.slice(0, 10).replace(/-/g, "."))})` : ""}` : ""}${a.aiAssisted === true ? " · AI 보조 후 편집" : ""} · ${esc(reviewStatus(a))}${
     ev ? `<div class="ev">근거 · ${[ev.design, ev.n].filter(Boolean).map(esc).join(" · ")}${ev.note ? ` — ${esc(ev.note)}` : ""}</div>` : ""
   }</div>
 ${a.image ? `<figure><img class="hero-image" src="${esc(a.image)}" alt="${esc(a.imageAlt || a.title)}" width="${a.imageWidth || 1200}" height="${a.imageHeight || 675}" style="aspect-ratio:${a.imageWidth || 1200}/${a.imageHeight || 675}" loading="eager" decoding="async" fetchpriority="high">${a.imageCaption || a.imageCredit || a.imageLicense ? `<figcaption class="image-credit">${esc(a.imageCaption || "")}${a.imageCredit ? `${a.imageCaption ? " · " : ""}이미지: ${esc(a.imageCredit)}` : ""}${a.imageLicense ? `${a.imageCaption || a.imageCredit ? " · " : ""}라이선스: ${esc(a.imageLicense)}` : ""}${a.imageLicenseUrl ? ` · <a href="${esc(a.imageLicenseUrl)}" target="_blank" rel="noopener noreferrer">라이선스 확인</a>` : ""}</figcaption>` : ""}</figure>` : ""}
 <section class="trust-panel" aria-labelledby="trust-title"><h2 id="trust-title">편집·검수 정보</h2><dl>
 <dt>콘텐츠 유형</dt><dd>${esc(a.contentTier === "evidence" ? "근거 기반 해설" : a.contentTier === "analysis" ? "전문 해설" : "간추린 소식")}</dd>
-<dt>작성·자동화</dt><dd>${a.author ? esc(a.author) : `${esc(SITE.brandKo)} 편집팀`}${a.aiAssisted === true ? " · AI 보조 번역·요약" : ""}</dd>
+<dt>작성 주체</dt><dd>${a.author && profileFor(AUTHOR_PROFILES, a.author) ? esc(a.author) : `${esc(EDITORIAL_SETTINGS.organization.name)} 브리핑 시스템`}${a.aiAssisted === true ? " · AI 보조 번역·요약" : a.aiAssisted === false ? " · AI 보조 없음" : " · AI 사용 여부 기록 없음"}</dd>
 <dt>편집 상태</dt><dd>${esc(reviewStatus(a))}</dd>
+<dt>사람 편집 검수</dt><dd>${a.reviewedAt && a.reviewedBy ? `기록 있음 · ${esc(a.reviewedAt.slice(0, 10).replace(/-/g, "."))}` : "확인된 기록 없음"}</dd>
+<dt>수의사 감수</dt><dd>${isVeterinaryReviewerAvailable(EDITORIAL_SETTINGS) && a.vetReviewedAt && a.vetReviewer ? `감수 기록 있음 · ${esc(a.vetReviewedAt.slice(0, 10).replace(/-/g, "."))}` : esc(EDITORIAL_SETTINGS.transparency.noReviewerLabel)}</dd>
 <dt>임상 위험도</dt><dd>${esc({ high: "높음", medium: "중간", low: "낮음" }[a.clinicalRisk] || a.clinicalRisk)}</dd>
 <dt>원문</dt><dd>${esc(a.source)}${a.sourcePublishedAt ? ` · ${esc(a.sourcePublishedAt.slice(0, 10).replace(/-/g, "."))}` : ""}</dd>
 ${a.updatedAt ? `<dt>최종 수정</dt><dd>${esc(a.updatedAt.slice(0, 10).replace(/-/g, "."))}</dd>` : ""}
-${a.correctionNote ? `<dt>정정 이력</dt><dd>${esc(a.correctionNote)}</dd>` : ""}</dl><p class="disclaimer">임상 정보는 교육·참고용입니다. 환자 적용 전 원문과 최신 문헌, 국내 지침을 확인하고 담당 수의사가 판단해야 합니다.</p></section>
+${a.correctionNote ? `<dt>정정 이력</dt><dd>${esc(a.correctionNote)}</dd>` : ""}</dl><p class="disclaimer">${esc(EDITORIAL_SETTINGS.transparency.clinicalDisclaimer)}</p></section>
 ${renderEvidencePanel(a)}
 <div class="lead">${esc(a.dek)}</div>
 ${(a.body || []).map(para).join("\n")}
@@ -2612,8 +2623,9 @@ const ABOUT_BODY = `
 <h2>인공지능 사용에 대하여</h2>
 <p>번역과 요약 과정에 인공지능 언어모델을 사용합니다. 이를 숨기지 않고 밝히는 이유는,
 독자가 정보의 성격을 알고 판단해야 한다고 보기 때문입니다.
-자동 검증(외국어 혼입·문체·용어 검사)과 편집자 검수를 거치지만
-오역이나 축약이 있을 수 있으므로, 임상 판단에 사용하실 내용은 반드시 원문을 확인해 주십시오.</p>
+자동 검증(외국어 혼입·문체·용어 검사)을 거치지만, 현재 등록된 수의사 감수자와
+사람 편집 검수 기록이 없는 콘텐츠는 감수 완료로 표시하지 않습니다. 오역이나 축약이 있을 수 있으므로,
+임상 판단에 사용하실 내용은 반드시 원문과 최신 문헌을 확인해 주십시오.</p>
 
 <h2>정정과 삭제 요청</h2>
 <p>사실관계 오류, 오역, 원문 권리자의 게재 중단 요청은 아래 문의처로 접수합니다.
@@ -2621,7 +2633,10 @@ const ABOUT_BODY = `
 차이가 임상 판단에 영향을 줄 수 있으면 기사 색인을 일시 중지할 수 있습니다.</p>
 
 <h2>편집 상태와 검수 구분</h2>
-<p>기사 화면의 작성자·감수 표기는 실제 데이터가 확인된 경우에만 표시합니다. “AI 보조 번역·요약”은 자동화가 사용되었다는 뜻이며, “사람 검수”와 “수의사 감수”는 서로 다른 상태입니다. 수의사 감수는 공개 프로필과 감수일이 확인된 경우에만 표시하고, 정보가 없으면 감수 대기로 남깁니다.</p>
+<p>기사 화면의 작성자·감수 표기는 실제 데이터가 확인된 경우에만 표시합니다. 현재 운영 모드는
+<strong>organization-only</strong>이며 등록된 수의사 감수자는 없습니다. “AI 보조 번역·요약”, “사람 편집 검수”,
+“수의사 감수”는 서로 다른 상태이고, 확인되지 않은 사람이나 자격을 만들지 않습니다. 향후 실제 검수자가 등록되기 전까지
+신규 high-risk 콘텐츠는 차단하고, 신규 public-brief는 noindex로만 다룹니다.</p>
 
 <h2>이미지 사용 원칙</h2>
 <p>권리와 출처가 확인되지 않은 이미지를 내려받아 재배포하지 않습니다. 기사별 이미지에는 확인된 경우에만 캡션·크레딧·라이선스를 표시합니다. 원본 이미지가 없는 색인 기사에는 실제 환자나 검사 결과로 오인되지 않는 자체 제작 편집 카드를 사용하며, 고유 이미지가 없다는 사실을 숨기지 않습니다.</p>
@@ -3250,6 +3265,30 @@ ${items}
 </channel></rss>`;
 }
 
+function buildBriefRss(issues) {
+  const seen = new Set();
+  const briefs = [];
+  for (const issue of issues) {
+    for (const [index, item] of (issue.items || []).entries()) {
+      if (item.visibility === "suppressed" || item.publicationStatus !== "public-brief") continue;
+      const article = toArticle(item, index, labelOf(issue), issue.generatedAt || issue.publishedAt);
+      const sourceKey = normalizeSourceUrl(article.sourceUrl);
+      if (sourceKey && seen.has(sourceKey)) continue;
+      if (sourceKey) seen.add(sourceKey);
+      briefs.push(article);
+      if (briefs.length >= 50) break;
+    }
+    if (briefs.length >= 50) break;
+  }
+  const items = briefs.map((article) => {
+    const url = `${SITE.baseUrl}${articlePath(article)}`;
+    const published = article.publishedAt || `${article.day}T00:00:00+09:00`;
+    const content = `<p>${esc(article.dek)}</p>${(article.body || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join("")}`;
+    return `  <item>\n    <title>${esc(article.title)}</title>\n    <link>${url}</link>\n    <guid isPermaLink="true">${url}</guid>\n    <pubDate>${new Date(published).toUTCString()}</pubDate>\n    <category>자동 브리프</category>\n    <description>${esc(article.dek)}</description>\n    <content:encoded><![CDATA[${content.replace(/]]>/g, "]]]]><![CDATA[>")}]]></content:encoded>\n  </item>`;
+  }).join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel>\n  <title>${esc(SITE.name)} · public brief</title>\n  <link>${SITE.baseUrl}</link>\n  <description>자동 수집·요약 브리프. 사람 및 수의사 감수 없음.</description>\n  <language>ko</language>\n  <atom:link href="${SITE.baseUrl}/brief-rss.xml" rel="self" type="application/rss+xml"/>\n${items}\n</channel></rss>`;
+}
+
 function buildLlmsTxt(issues) {
   const latest = issues[0];
   // 심층 기사만 요약에 싣는다(브리프는 짧은 단신이라 제외) — AI가 신뢰 인용할 알맹이 위주로.
@@ -3504,7 +3543,7 @@ function build() {
   const updateCandidates = loadReportFile("update-candidates.json", { rows: [], counts: {} });
   const shadow = loadLatestShadow();
   const peopleData = EDITORIAL_PEOPLE.people || [];
-  const adminReport = { generatedAt: new Date().toISOString(), noindex: true, summary: { total: auditRows.length, index: auditRows.filter((row) => row.indexable).length, noindex: auditRows.filter((row) => !row.indexable).length, missingImage: auditRows.filter((row) => row.indexable && row.rawImageMissing).length, relayUrl: auditRows.filter((row) => row.relayUrl).length, reviewerNeeded: auditRows.filter((row) => row.reviewerNeeded).length, newsroom: newsroom.summary || {} }, rows: auditRows, drafts: newsroom.drafts || [], queue: newsroom.queue || [], feedDiagnostics, updates: updateCandidates, feedRepairValidation: loadReportFile("feed-repair-validation.json", { candidates: [], counts: {} }), shadow, shadowTrend: loadReportFile("shadow/trend.json", { runs: [], runCount: 0, trendAvailable: false }), firstPublishCandidates: loadReportFile("first-publish-candidates.json", { candidates: [], counts: {} }), languageReview: loadReportFile("language-review.json", { items: [], warningCount: 0 }), claimReview: loadReportFile("claim-review.json", { items: [], warningCount: 0 }), firstReleaseQa: loadReportFile("first-release-candidates-qa.json", { candidates: [], counts: {} }), peopleStatus: { count: peopleData.filter((person) => person.active !== false).length, reviewerCount: peopleData.filter((person) => person.active !== false && ["editor", "vet", "admin"].includes(person.role)).length, approvalAvailable: peopleData.some((person) => person.active !== false), message: peopleData.length ? "등록된 사람만 승인에 사용할 수 있습니다." : "실제 편집자 등록 필요", addCommand: "npm run people:add -- --id <id> --name <name> --role <role>", requirements: { editor: "확인된 이름과 역할", veterinaryReviewer: "확인된 credentials와 HTTPS profileUrl", administrator: "확인된 이름과 관리자 권한" } }, gscNaverChecklist: { importedRows: (SEO_PERFORMANCE.rows || []).length, gscCommand: "npm run seo:import:gsc -- <csv>", naverCommand: "npm run seo:import:naver -- <csv>", requiredFiles: ["Google Search Console 검색 실적 CSV", "Google 페이지 색인 보고서", "Google News 실적", "네이버 콘텐츠 노출·클릭 CSV", "네이버 수집·색인 오류"], note: "실제 CSV가 없으면 성과 데이터를 생성하지 않습니다." } };
+  const adminReport = { generatedAt: new Date().toISOString(), noindex: true, summary: { total: auditRows.length, index: auditRows.filter((row) => row.indexable).length, noindex: auditRows.filter((row) => !row.indexable).length, missingImage: auditRows.filter((row) => row.indexable && row.rawImageMissing).length, relayUrl: auditRows.filter((row) => row.relayUrl).length, reviewerNeeded: auditRows.filter((row) => row.reviewerNeeded).length, newsroom: newsroom.summary || {} }, rows: auditRows, drafts: newsroom.drafts || [], queue: newsroom.queue || [], feedDiagnostics, updates: updateCandidates, feedRepairValidation: loadReportFile("feed-repair-validation.json", { candidates: [], counts: {} }), shadow, shadowTrend: loadReportFile("shadow/trend.json", { runs: [], runCount: 0, trendAvailable: false }), firstPublishCandidates: loadReportFile("first-publish-candidates.json", { candidates: [], counts: {} }), languageReview: loadReportFile("language-review.json", { items: [], warningCount: 0 }), claimReview: loadReportFile("claim-review.json", { items: [], warningCount: 0 }), firstReleaseQa: loadReportFile("first-release-candidates-qa.json", { candidates: [], counts: {} }), editorialPolicy: { mode: EDITORIAL_SETTINGS.editorialMode, veterinaryReviewerAvailable: EDITORIAL_SETTINGS.veterinaryReviewerAvailable, organization: EDITORIAL_SETTINGS.organization, message: EDITORIAL_SETTINGS.transparency.noReviewerLabel, newContent: { high: "blocked-clinical", medium: "internal-draft 또는 public-brief(noindex)", low: "자동 검사 통과 시 public-brief(noindex)" }, briefCommands: ["npm run brief:prepare -- <draft-id>", "npm run brief:validate -- <draft-id>", "npm run brief:preview -- <draft-id>", "npm run brief:release -- <draft-id> --apply"] }, peopleStatus: { count: peopleData.filter((person) => person.active !== false).length, reviewerCount: peopleData.filter((person) => person.active !== false && ["editor", "vet", "admin"].includes(person.role)).length, veterinaryReviewerAvailable: EDITORIAL_SETTINGS.veterinaryReviewerAvailable === true, approvalAvailable: peopleData.some((person) => person.active !== false), message: peopleData.length ? "등록된 사람만 승인에 사용할 수 있습니다." : "실제 편집자 등록 필요", addCommand: "npm run people:add -- --id <id> --name <name> --role <role>", requirements: { editor: "확인된 이름과 역할", veterinaryReviewer: "확인된 credentials와 HTTPS profileUrl 및 운영 설정 활성화", administrator: "확인된 이름과 관리자 권한" } }, gscNaverChecklist: { importedRows: (SEO_PERFORMANCE.rows || []).length, gscCommand: "npm run seo:import:gsc -- <csv>", naverCommand: "npm run seo:import:naver -- <csv>", requiredFiles: ["Google Search Console 검색 실적 CSV", "Google 페이지 색인 보고서", "Google News 실적", "네이버 콘텐츠 노출·클릭 CSV", "네이버 수집·색인 오류"], note: "실제 CSV가 없으면 성과 데이터를 생성하지 않습니다." } };
   fs.writeFileSync(path.join(SITE_DIR, "admin-review.json"), JSON.stringify(adminReport, null, 2));
   fs.writeFileSync(path.join(SITE_DIR, "seo-performance.json"), JSON.stringify({ ...SEO_PERFORMANCE, noindex: true, generatedAt: new Date().toISOString() }, null, 2));
   fs.writeFileSync(
@@ -3548,6 +3587,7 @@ function build() {
     "Disallow: /search/",
     "Disallow: /search.json",
     "Disallow: /search-manifest.json",
+    "Disallow: /brief-rss.xml",
     "Disallow: /latest.json",
     "Disallow: /archive.json",
     "Disallow: /design.html",
@@ -3643,11 +3683,18 @@ function build() {
 /search-manifest.json
   X-Robots-Tag: noindex, nofollow, noarchive
 
+/brief-rss.xml
+  X-Robots-Tag: noindex, nofollow, noarchive
+
 /admin-review.json
   X-Robots-Tag: noindex, nofollow, noarchive
 `
   );
   fs.writeFileSync(path.join(SITE_DIR, "rss.xml"), buildRss(issues));
+  const briefRss = buildBriefRss(issues);
+  const briefRssPath = path.join(SITE_DIR, "brief-rss.xml");
+  if (briefRss.match(/<item>/g)?.length) fs.writeFileSync(briefRssPath, briefRss);
+  else if (fs.existsSync(briefRssPath)) fs.unlinkSync(briefRssPath);
   fs.writeFileSync(path.join(SITE_DIR, "llms.txt"), buildLlmsTxt(issues));
 
   // PWA

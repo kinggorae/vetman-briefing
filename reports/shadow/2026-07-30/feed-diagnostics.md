@@ -1,6 +1,6 @@
 # 공식 피드 진단 보고서
 
-- 검사 시각: 2026-07-30T01:09:03.671Z
+- 검사 시각: 2026-07-30T03:40:52.154Z
 - 매체 상태: {"healthy":0,"quiet":0,"stale":1,"degraded":11,"failing":1,"retired":0,"disabled":186}
 - 피드: 13개
 
@@ -26,3 +26,4 @@
 - IVC Journal · https://ivcjournal.com/feed/ · official alternate/sitemap link
 - ScienceDaily · https://www.sciencedaily.com/rss/all.xml · official alternate/sitemap link
 - Vet Practice Magazine · https://www.vetpracticemag.com.au/feed/ · official alternate/sitemap link
+- Veterinary Practice News · https://www.veterinarypracticenews.com/feed/ · official alternate/sitemap link

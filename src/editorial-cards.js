@@ -97,7 +97,7 @@ export function generatedImageMeta(id, title) {
     image: `${"https://news.vetmanlab.com"}${cardRelativePath(id, "webp")}`,
     imageAlt: `VetManLab 편집용 정보 카드: ${title}. 실제 환자나 검사 사진이 아닌 기사 주제 안내 그래픽입니다.`,
     imageCaption: "VetManLab 편집용 정보 카드입니다. 실제 환자·검사 사진이 아닙니다.",
-    imageCredit: "VetManLab 편집팀 자체 제작",
+    imageCredit: "베트맨랩 자체 제작",
     imageLicense: "VetManLab 자체 제작",
     imageLicenseUrl: null,
     imageWidth: EDITORIAL_CARD_WIDTH,
