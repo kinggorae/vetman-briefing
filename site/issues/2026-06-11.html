@@ -964,10 +964,22 @@ a:hover{color:var(--color-primary-strong);}
     if(typeof gtag!=='function') return;
     try{ gtag('event','section_view',{section:cat||'all',issue_date:DATA.date}); }catch(e){}
   }
+  var issueRequests={};
+  function fetchIssue(date){
+    if(issueRequests[date]) return issueRequests[date];
+    issueRequests[date]=fetch('/data/'+encodeURIComponent(date)+'.json').then(function(r){if(!r.ok)throw new Error('issue-data');return r.json();}).catch(function(err){ delete issueRequests[date]; throw err; });
+    return issueRequests[date];
+  }
+  function prefetchIssue(date){
+    if(!DATA._compact) return;
+    var run=function(){ fetchIssue(date).catch(function(){}); };
+    if('requestIdleCallback' in window) window.requestIdleCallback(run,{timeout:1200});
+    else window.setTimeout(run,300);
+  }
   function hydrateArticle(id){
     var compact=byId[id], date=(compact&&compact.day)||DATA.date;
     if(!compact||!compact._compact) return Promise.resolve(compact);
-    return fetch('/data/'+encodeURIComponent(date)+'.json').then(function(r){if(!r.ok)throw new Error('article-data');return r.json();}).then(function(full){
+    return fetchIssue(date).then(function(full){
       var list=(full.articles||[]).concat(full.briefs||[],full.stories||[]), found=list.find(function(a){return a.id===id;});
       if(!found) throw new Error('article-not-found');
       byId[id]=found;
@@ -977,14 +989,18 @@ a:hover{color:var(--color-primary-strong);}
   }
   function hydrateCurrent(){
     if(!DATA._compact) return Promise.resolve(DATA);
-    return fetch('/data/'+encodeURIComponent(DATA.date)+'.json').then(function(r){if(!r.ok)throw new Error('issue-data');return r.json();}).then(function(full){
+    return fetchIssue(DATA.date).then(function(full){
       DATA.articles=full.articles||[]; DATA.briefs=full.briefs||[]; DATA.stories=full.stories||[]; DATA._compact=false; DATA.hasMore=false; indexDay(); render(); return DATA;
     });
   }
   function openArticle(id, hydrated){
     if(byId[id]&&!hydrated&&byId[id]._compact){
-      toast('기사 본문을 불러오는 중…');
-      hydrateArticle(id).then(function(){openArticle(id,true);}).catch(function(){toast('기사 본문을 불러오지 못했습니다');});
+      var compact=byId[id], db;
+      // 상세 패널은 요약으로 즉시 열고, 전체 본문은 같은 요청으로 뒤에서 채운다.
+      // 첫 화면 직후의 prefetch가 끝났다면 이 Promise는 거의 즉시 완료된다.
+      S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(compact); render();
+      db=document.getElementById('vm-db'); if(db) db.scrollTop=0;
+      hydrateArticle(id).then(function(){ if(S.openId===id) render(); }).catch(function(){ if(S.openId===id) toast('기사 본문을 불러오지 못했습니다'); });
       return;
     }
     if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
@@ -1075,6 +1091,7 @@ a:hover{color:var(--color-primary-strong);}
   });
   if(location.hash && byId[location.hash.slice(1)]){ S.openId=location.hash.slice(1); markRead(S.openId); }
   render();
+  prefetchIssue(DATA.date);
 })();</script>
 <script>if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}</script>
 <script src="https://cardkit.vetmanlab.com/switcher.js" defer></script>
