@@ -1,6 +1,6 @@
 # Update 후보
 
-- 실행 시각: 2026-07-29T23:10:31.565Z
+- 실행 시각: 2026-07-29T23:52:43.841Z
 - 분포: {"duplicate":71,"minor-update":0,"substantive-update":0,"correction":0,"separate-story":0,"unresolved":4}
 
 - duplicate · https://drandyroark.com/?p=25079 · A Cry For Help From the Pathology Department

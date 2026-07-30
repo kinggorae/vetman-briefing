@@ -8,6 +8,7 @@ import {
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const REPORT_JSON = path.join(ROOT, "reports", "feed-diagnostics.json");
 const REPORT_MD = path.join(ROOT, "reports", "feed-diagnostics.md");
+const HISTORY_PATH = path.join(ROOT, "reports", "feed-history.json");
 const HEALTH_MD = path.join(ROOT, "reports", "source-health.md");
 const REGISTRY_PATH = path.join(ROOT, "data", "sources", "registry.json");
 const USER_AGENT = "VetManLab-SourceFirst/6.0 (+https://news.vetmanlab.com/about)";
@@ -59,10 +60,32 @@ async function diagnoseFeed(source, url) {
   } catch (error) { return { sourceId: source.id, sourceLabel: source.label, feedUrl: url, checkedAt, status: "failing", ok: false, xmlParsed: false, error: error.message, recentError: error.message, consecutiveFailures: Number(source.consecutiveFailures || 0) + 1, robots, alternatives: await discoverAlternatives(source, url) }; }
 }
 function sourceStatus(rows, source) { if (source.healthStatus === "retired" || source.retired) return "retired"; if (!source.enabled || !feedsFor(source).length) return "disabled"; const states = new Set(rows.map((r) => r.status)); if (states.has("failing")) return "failing"; if (states.has("degraded")) return "degraded"; if (states.has("stale")) return "stale"; if (states.has("quiet")) return "quiet"; return rows.length ? "healthy" : "degraded"; }
+function historyKey(row) { return `${row.sourceId}|${row.feedUrl}`; }
+function updateHistory(rows) {
+  const previous = readJson(HISTORY_PATH, { version: 1, runs: [] });
+  const priorRuns = Array.isArray(previous.runs) ? previous.runs : [];
+  const byKey = new Map();
+  for (const run of priorRuns.slice(-20)) for (const row of run.feeds || []) byKey.set(historyKey(row), row);
+  const successful = (row) => Boolean(row.ok && row.xmlParsed && [200, 304].includes(Number(row.httpStatus)) && !row.error && !row.lastError);
+  const enriched = rows.map((row) => {
+    const old = byKey.get(historyKey(row));
+    const priorCount = old?.successful ? Number(old.consecutiveSuccesses || 0) : 0;
+    const count = successful(row) ? priorCount + 1 : 0;
+    return { ...row, successful: successful(row), consecutiveSuccesses: Math.min(count, 20), historyKey: historyKey(row) };
+  });
+  const run = { checkedAt: new Date().toISOString(), feeds: enriched.map((row) => ({ sourceId: row.sourceId, feedUrl: row.feedUrl, status: row.status, successful: row.successful, consecutiveSuccesses: row.consecutiveSuccesses, httpStatus: row.httpStatus || null, latencyMs: row.elapsedMs || null, itemCount: row.itemCount || 0, newestItemAt: row.latestPublishedAt || null, error: row.error || row.lastError || null, canonicalRate: row.canonicalCoverage ?? null, relayRate: row.relayRatio ?? null })) };
+  const next = { version: 1, generatedAt: run.checkedAt, runs: [...priorRuns, run].slice(-30) };
+  atomicWrite(HISTORY_PATH, JSON.stringify(next, null, 2) + "\n");
+  return enriched;
+}
 async function diagnose(sourceFilter = null) {
   const registry = loadRegistry(); const sources = registry.sources.filter((s) => s.enabled && feedsFor(s).length && (!sourceFilter || s.id === sourceFilter || s.label === sourceFilter)); const rows = [];
   for (const source of sources) for (const url of feedsFor(source)) rows.push(await diagnoseFeed(source, url));
-  const sourceRows = registry.sources.map((source) => { const checks = rows.filter((r) => r.sourceId === source.id); return { id: source.id, label: source.label, enabled: source.enabled, status: sourceStatus(checks, source), feedCount: feedsFor(source).length, checkedFeedCount: checks.length, consecutiveFailures: source.consecutiveFailures, lastSuccessAt: source.lastSuccessAt || null, lastFailureAt: source.lastFailureAt || null }; });
+  let sourceRows = registry.sources.map((source) => { const checks = rows.filter((r) => r.sourceId === source.id); return { id: source.id, label: source.label, enabled: source.enabled, status: sourceStatus(checks, source), feedCount: feedsFor(source).length, checkedFeedCount: checks.length, consecutiveFailures: source.consecutiveFailures, lastSuccessAt: source.lastSuccessAt || null, lastFailureAt: source.lastFailureAt || null }; });
+  const historicalRows = updateHistory(rows);
+  const historyMap = new Map(historicalRows.map((row) => [historyKey(row), row]));
+  rows.splice(0, rows.length, ...rows.map((row) => ({ ...row, consecutiveSuccesses: historyMap.get(historyKey(row))?.consecutiveSuccesses || 0, status: row.status === "healthy" && (historyMap.get(historyKey(row))?.consecutiveSuccesses || 0) < 3 ? "degraded" : row.status })));
+  sourceRows = registry.sources.map((source) => { const checks = rows.filter((r) => r.sourceId === source.id); return { id: source.id, label: source.label, enabled: source.enabled, status: sourceStatus(checks, source), feedCount: feedsFor(source).length, checkedFeedCount: checks.length, consecutiveFailures: source.consecutiveFailures, lastSuccessAt: source.lastSuccessAt || null, lastFailureAt: source.lastFailureAt || null }; });
   const counts = Object.fromEntries(STATES.map((s) => [s, sourceRows.filter((r) => r.status === s).length])); const alternatives = rows.flatMap((r) => (r.alternatives || []).map((a) => ({ ...a, sourceId: r.sourceId, sourceLabel: r.sourceLabel, currentFeedUrl: r.feedUrl })));
   const report = { generatedAt: new Date().toISOString(), registryVersion: registry.version, counts, sources: sourceRows, feeds: rows, alternativeCandidates: [...new Map(alternatives.map((a) => [`${a.sourceId}|${a.url}`, a])).values()], note: "대체 피드는 공식 도메인에서 발견한 후보만 기록하며 자동 레지스트리 반영하지 않습니다." };
   atomicWrite(REPORT_JSON, JSON.stringify(report, null, 2) + "\n"); atomicWrite(REPORT_MD, `# 공식 피드 진단 보고서\n\n- 검사 시각: ${report.generatedAt}\n- 매체 상태: ${JSON.stringify(counts)}\n- 피드: ${rows.length}개\n\n| 매체 | 상태 | 최신 게시 | 평균 간격(일) | canonical | ETag | Last-Modified |\n|---|---|---|---:|---:|---|---|\n${rows.map((r) => `| ${r.sourceLabel} | ${r.status} | ${r.latestPublishedAt || "-"} | ${r.averageIntervalDays ?? "-"} | ${r.canonicalCoverage ?? "-"} | ${r.etag || "-"} | ${r.lastModified || "-"} |`).join("\n")}\n\n## 대체 공식 피드 후보\n\n${report.alternativeCandidates.map((r) => `- ${r.sourceLabel} · ${r.url} · ${r.reason}`).join("\n") || "없음"}\n`); return report;

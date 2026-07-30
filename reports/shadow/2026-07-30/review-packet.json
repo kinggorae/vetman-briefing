@@ -1,0 +1,570 @@
+{
+  "generatedAt": "2026-07-29T23:50:05.508Z",
+  "maxCandidates": 10,
+  "candidates": [
+    {
+      "id": "2026-05-21_1",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "수의 마취에서 우리가 잘못 생각하는 것들",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/wrong-in-anesthesia/",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "수의 마취에서 우리가 잘못 생각하는 것들",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://drandyroark.com/wrong-in-anesthesia/"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-05-21_1",
+        "approve": "npm run publish:approve -- 2026-05-21_1 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-05-21_1"
+      }
+    },
+    {
+      "id": "2026-06-05_1",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "기관내관 풍선 적절한 팽창, 왜 중요한가",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "VetGirl",
+      "sourceUrl": "https://vetgirlontherun.com/how-to-inflate-an-endotracheal-tube-cuff-to-minimize-risks-maximize-benefit-vetgirl-veterinary-continuing-education-blogs/",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "기관내관 풍선 적절한 팽창, 왜 중요한가",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://vetgirlontherun.com/how-to-inflate-an-endotracheal-tube-cuff-to-minimize-risks-maximize-benefit-vetgirl-veterinary-continuing-education-blogs/"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-06-05_1",
+        "approve": "npm run publish:approve -- 2026-06-05_1 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-06-05_1"
+      }
+    },
+    {
+      "id": "2026-06-11_2",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "미국 태평양 북서부에서 폐활성 조충 발견…너구리 37% 감염",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "ScienceDaily",
+      "sourceUrl": "https://www.sciencedaily.com/releases/2026/06/260611024610.htm",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "미국 태평양 북서부에서 폐활성 조충 발견…너구리 37% 감염",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://www.sciencedaily.com/releases/2026/06/260611024610.htm"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-06-11_2",
+        "approve": "npm run publish:approve -- 2026-06-11_2 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-06-11_2"
+      }
+    },
+    {
+      "id": "2026-06-19_5",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "개 폐충감염의 진단과 치료: 임상에서 반드시 고려해야 할 원인",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "Today's Veterinary Practice",
+      "sourceUrl": "https://todaysveterinarypractice.com/parasitology/diagnosis-and-treatment-of-lungworms-in-dogs/",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "개 폐충감염의 진단과 치료: 임상에서 반드시 고려해야 할 원인",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://todaysveterinarypractice.com/parasitology/diagnosis-and-treatment-of-lungworms-in-dogs/"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-06-19_5",
+        "approve": "npm run publish:approve -- 2026-06-19_5 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-06-19_5"
+      }
+    },
+    {
+      "id": "2026-06-19_7",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "애완동물 환각버섯 중독 증가...수의사 주목 필요",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "Today's Veterinary Practice",
+      "sourceUrl": "https://todaysveterinarypractice.com/toxicology/hallucinogenic-mushroom-intoxications-are-getting-higher/",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "애완동물 환각버섯 중독 증가...수의사 주목 필요",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://todaysveterinarypractice.com/toxicology/hallucinogenic-mushroom-intoxications-are-getting-higher/"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-06-19_7",
+        "approve": "npm run publish:approve -- 2026-06-19_7 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-06-19_7"
+      }
+    },
+    {
+      "id": "2026-06-22_1",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "개와 고양이 소음 민감증, 삼중 접근법으로 관리하기",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "IVC Journal",
+      "sourceUrl": "https://ivcjournal.com/three-pronged-approach-to-sound-sensitivity-in-dogs-and-cats/",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "개와 고양이 소음 민감증, 삼중 접근법으로 관리하기",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://ivcjournal.com/three-pronged-approach-to-sound-sensitivity-in-dogs-and-cats/"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-06-22_1",
+        "approve": "npm run publish:approve -- 2026-06-22_1 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-06-22_1"
+      }
+    },
+    {
+      "id": "2026-06-23_1",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "고양이 식이 칼륨 보충, 요로결석 위험 낮추는 효과 확인",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "IVC Journal",
+      "sourceUrl": "https://ivcjournal.com/dietary-potassium-supplementation-in-cats-a-safe-strategy-to-reduce-urinary-stone-risk/",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "고양이 식이 칼륨 보충, 요로결석 위험 낮추는 효과 확인",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://ivcjournal.com/dietary-potassium-supplementation-in-cats-a-safe-strategy-to-reduce-urinary-stone-risk/"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-06-23_1",
+        "approve": "npm run publish:approve -- 2026-06-23_1 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-06-23_1"
+      }
+    },
+    {
+      "id": "2026-06-26_1",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "고양이 배설 장애: 수의사를 위한 실용적 접근법",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "VetGirl",
+      "sourceUrl": "https://vetgirlontherun.com/feline-elimination-disorders-a-practical-approach-for-veterinarians-vetgirl-veterinary-continuing-education-blog/",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "고양이 배설 장애: 수의사를 위한 실용적 접근법",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://vetgirlontherun.com/feline-elimination-disorders-a-practical-approach-for-veterinarians-vetgirl-veterinary-continuing-education-blog/"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-06-26_1",
+        "approve": "npm run publish:approve -- 2026-06-26_1 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-06-26_1"
+      }
+    },
+    {
+      "id": "2026-06-26_3",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "말 정맥 카테터 삽입 완벽 가이드: 합병증 예방을 위한 실천적 단계",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "Today's Veterinary Nurse",
+      "sourceUrl": "https://todaysveterinarynurse.com/equine-medicine/a-step-by-step-guide-to-intravenous-catheter-placement-in-the-equine-patient/",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "말 정맥 카테터 삽입 완벽 가이드: 합병증 예방을 위한 실천적 단계",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://todaysveterinarynurse.com/equine-medicine/a-step-by-step-guide-to-intravenous-catheter-placement-in-the-equine-patient/"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-06-26_3",
+        "approve": "npm run publish:approve -- 2026-06-26_3 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-06-26_3"
+      }
+    },
+    {
+      "id": "2026-06-29_2",
+      "type": "high-risk-index",
+      "priority": 110,
+      "priorityReason": "기존 high-risk index 검수 대기",
+      "title": "개·고양이 유방종양, 식물 화학물질 연구 동향",
+      "titleKo": null,
+      "leadKo": null,
+      "bodyKo": null,
+      "sourceTitle": null,
+      "sourceLabel": "IVC Journal",
+      "sourceUrl": "https://ivcjournal.com/phytochemicals-and-plant-extracts-in-canine-and-feline-mammary-tumors-emerging-insights-for-veterinary-oncology/",
+      "sourceUrlRaw": null,
+      "sourcePublishedAt": null,
+      "sourceStatus": null,
+      "clinicalRisk": "high",
+      "studyType": null,
+      "species": [],
+      "sampleSize": null,
+      "numbers": [],
+      "medications": [],
+      "warnings": [],
+      "duplicateStatus": null,
+      "updateClassification": null,
+      "image": {
+        "url": null,
+        "ownership": "unknown",
+        "alt": null
+      },
+      "jsonLd": {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": "개·고양이 유방종양, 식물 화학물질 연구 동향",
+        "isBasedOn": {
+          "@type": "CreativeWork",
+          "url": "https://ivcjournal.com/phytochemicals-and-plant-extracts-in-canine-and-feline-mammary-tumors-emerging-insights-for-veterinary-oncology/"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "VetManLab 편집팀"
+        }
+      },
+      "checklist": [
+        "sourceConfirmed",
+        "titleLeadBodyChecked",
+        "numbersChecked",
+        "speciesAndStudyChecked",
+        "limitationsChecked",
+        "clinicalLanguageChecked"
+      ],
+      "commands": {
+        "validate": "npm run publish:validate -- 2026-06-29_2",
+        "approve": "npm run publish:approve -- 2026-06-29_2 --reviewer <id>",
+        "release": "npm run publish:release -- 2026-06-29_2"
+      }
+    }
+  ],
+  "public": false,
+  "sitemap": false,
+  "rss": false,
+  "note": "관리자·CI artifact 전용 검수 자료"
+}

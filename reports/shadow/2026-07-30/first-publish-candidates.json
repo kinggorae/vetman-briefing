@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-07-29T23:50:05.462Z",
+  "candidates": [
+    {
+      "id": "v1_88e7bde7826c5eaf",
+      "title": "Cult of the Holy Bedtime",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/cult-of-the-holy-bedtime",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 제목·리드·본문 초안 없음",
+        "llm-generation-not-requested",
+        "title-missing",
+        "body-missing",
+        "brief-title-too-short",
+        "brief-too-short",
+        "workflow-not-approved"
+      ],
+      "reviewerRequired": true,
+      "published": false
+    },
+    {
+      "id": "v1_8977cdecc20db74b",
+      "title": "Improving Animal Welfare at Commercial Dog Breeding Kennels",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/commercial-dog-breeding-kennels",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 제목·리드·본문 초안 없음",
+        "llm-generation-not-requested",
+        "title-missing",
+        "body-missing",
+        "brief-title-too-short",
+        "brief-too-short",
+        "workflow-not-approved"
+      ],
+      "reviewerRequired": true,
+      "published": false
+    },
+    {
+      "id": "v1_66712dc60cebbebc",
+      "title": "That&#8217;s Bad Advice",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/thats-bad-advice",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 제목·리드·본문 초안 없음",
+        "llm-generation-not-requested",
+        "title-missing",
+        "body-missing",
+        "brief-title-too-short",
+        "brief-too-short",
+        "workflow-not-approved"
+      ],
+      "reviewerRequired": true,
+      "published": false
+    },
+    {
+      "id": "v1_ecdd9715ae5b33aa",
+      "title": "Life Stages and Large Breeds in Canine Nutrition",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/large-breeds-in-canine-nutrition",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 제목·리드·본문 초안 없음",
+        "llm-generation-not-requested",
+        "title-missing",
+        "body-missing",
+        "brief-title-too-short",
+        "brief-too-short",
+        "workflow-not-approved"
+      ],
+      "reviewerRequired": true,
+      "published": false
+    },
+    {
+      "id": "v1_5f01b0b4f48babba",
+      "title": "Do You Like Being a Veterinarian on Thursdays?",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/being-a-vet-on-thursdays",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 제목·리드·본문 초안 없음",
+        "llm-generation-not-requested",
+        "title-missing",
+        "body-missing",
+        "brief-title-too-short",
+        "brief-too-short",
+        "workflow-not-approved"
+      ],
+      "reviewerRequired": true,
+      "published": false
+    }
+  ],
+  "counts": {
+    "ready-for-editor": 0,
+    "needs-source-fix": 0,
+    "needs-language-fix": 5,
+    "duplicate": 0,
+    "rejected": 0
+  },
+  "note": "사람 reviewer가 없으므로 이 보고서는 published 상태를 만들지 않습니다."
+}
