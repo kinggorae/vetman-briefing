@@ -667,5 +667,10 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 
 ### 배포 상태
 
-- feature commit / PR / merge / production deployment는 검증·CI·사람의 최종 확인 후 아래에 갱신합니다.
-- 현재 9차 작업의 자동 published 0건, reviewer 0명, 신규 index-analysis 0건을 유지합니다.
+- feature commit: `2933668e44982d5ce89364ff15b42c5008d4e33d` (`feat: support transparent publishing without veterinary reviewers`)
+- PR: [#16](https://github.com/kinggorae/vetman-briefing/pull/16), `quality` CI 성공 후 merge
+- merge commit: `c447917d7b318562e42b9eafe452ebcbf7a2e5e5`
+- production: 기존 Cloudflare Pages 프로젝트 `vetman-briefing`의 `main` 환경에 배포 완료. Deployment URL은 `https://4b05594b.vetman-briefing.pages.dev`이며 custom domain `https://news.vetmanlab.com/`에 반영했습니다. 새 프로젝트는 만들지 않았습니다.
+- production smoke: `/`, `/robots.txt`, `/sitemap.xml`, `/news-sitemap.xml`, `/rss.xml`, `/about`, 대표 기사 HTTP 200. sitemap 211·news sitemap 3·RSS 50 item/50 full `content:encoded`를 확인했습니다. `/admin-review.json`과 인증 없는 `/api/admin?resource=audit`는 HTTP 401입니다.
+- production 대표 기사 JSON-LD author는 `베트맨랩` Organization이며 “현재 등록된 수의사 감수자가 없습니다”를 표시합니다. public brief·brief RSS·신규 published는 0건입니다.
+- 최종 불변 조건: index/noindex 170/293, reviewer 0명, 자동 published 0건, 신규 index-analysis 0건, sitemap/noindex 충돌 0건, production secret 출력 0건.
