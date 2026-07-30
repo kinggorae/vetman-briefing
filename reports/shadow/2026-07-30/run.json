@@ -1,32 +1,32 @@
 {
-  "runId": "2026-07-30-1785373801870",
+  "runId": "2026-07-30-1785382931700",
   "date": "2026-07-30",
-  "startedAt": "2026-07-30T00:52:45.703Z",
-  "completedAt": "2026-07-30T01:10:01.870Z",
+  "startedAt": "2026-07-30T03:39:04.578Z",
+  "completedAt": "2026-07-30T03:42:11.700Z",
   "ok": true,
   "steps": [
     {
       "command": "sources.js",
       "ok": true,
-      "elapsedMs": 977986,
+      "elapsedMs": 107598,
       "error": null
     },
     {
       "command": "validate-feed-candidates.js",
       "ok": true,
-      "elapsedMs": 4107,
+      "elapsedMs": 6602,
       "error": null
     },
     {
       "command": "sources.js",
       "ok": true,
-      "elapsedMs": 41,
+      "elapsedMs": 43,
       "error": null
     },
     {
       "command": "ingest.js",
       "ok": true,
-      "elapsedMs": 53654,
+      "elapsedMs": 72501,
       "error": null
     },
     {
@@ -38,7 +38,7 @@
     {
       "command": "editorial-audits.js",
       "ok": true,
-      "elapsedMs": 47,
+      "elapsedMs": 49,
       "error": null
     },
     {
@@ -62,7 +62,7 @@
     {
       "command": "newsroom-review.js",
       "ok": true,
-      "elapsedMs": 44,
+      "elapsedMs": 41,
       "error": null
     }
   ],

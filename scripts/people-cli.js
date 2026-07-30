@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { atomicWrite, readJson } from "../src/lib/source-first.js";
+import { loadEditorialSettings } from "../src/lib/editorial-policy.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const FILE = path.join(ROOT, "data", "editorial", "people.json");
@@ -27,7 +28,7 @@ function validatePerson(person, { allowDisabled = true } = {}) {
 }
 function redact(person) { const copy = { ...person }; if (copy.licenseNumber) copy.licenseNumber = "[redacted]"; return copy; }
 function output(value) { console.log(JSON.stringify(value, null, 2)); }
-function list() { const data = load(); output({ people: data.people.map(redact), count: data.people.filter((p) => p.active !== false).length, reviewerCount: data.people.filter((p) => p.active !== false && ["editor", "vet", "admin"].includes(p.role)).length, note: data.people.length ? "등록 정보만 표시합니다. 사람 등록으로 기사 승인 상태는 자동 변경되지 않습니다." : "실제 편집자 등록 필요: npm run people:add -- --id <id> --name <name> --role <role>" }); }
+function list() { const data = load(); const settings = loadEditorialSettings(); output({ people: data.people.map(redact), count: data.people.filter((p) => p.active !== false).length, reviewerCount: data.people.filter((p) => p.active !== false && ["editor", "vet", "admin"].includes(p.role)).length, veterinaryReviewerAvailable: settings.veterinaryReviewerAvailable === true, editorialMode: settings.editorialMode, note: data.people.length ? "등록 정보만 표시합니다. 사람 등록으로 기사 승인 상태는 자동 변경되지 않습니다." : "실제 편집자 등록 필요: npm run people:add -- --id <id> --name <name> --role <role>" }); }
 function validate() { const data = load(); const errors = data.people.flatMap((person) => validatePerson({ ...person, inputRole: person.role === "vet" ? "veterinary-reviewer" : person.role === "admin" ? "administrator" : person.role }, { allowDisabled: true }).map((error) => `${person.id || "(unknown)"}: ${error}`)); output({ valid: errors.length === 0, people: data.people.length, errors }); if (errors.length) process.exitCode = 1; }
 function add(flags) {
   const required = ["id", "name", "role"]; const missing = required.filter((key) => !String(flags[key] || "").trim()); if (missing.length) throw new Error(`필수 인자 누락: ${missing.map((x) => `--${x}`).join(", ")}`);

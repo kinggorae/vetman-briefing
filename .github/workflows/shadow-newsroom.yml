@@ -28,6 +28,7 @@ jobs:
         run: npm run shadow:run
         env:
           RECORD_FEED_HISTORY: "1"
+          RECORD_SHADOW_HISTORY: "1"
       - name: Write seven-run trend
         if: always()
         run: npm run shadow:trend

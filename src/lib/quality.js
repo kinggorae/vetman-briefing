@@ -2,6 +2,7 @@
 // 420자는 검색엔진 권장량이 아니라 이 프로젝트의 최소 편집 검수 기준이다.
 import { clinicalReviewIssues } from "./editorial-review.js";
 import { workflowReviewIssues, isNewWorkflowItem } from "./editorial-operations.js";
+import { clinicalSafetyIssues, normalizePublicationStatus } from "./editorial-policy.js";
 
 export const CONTENT_TIERS = new Set(["brief", "analysis", "evidence"]);
 export const CARD_BLOCKERS = new Set([
@@ -133,6 +134,7 @@ export function publishQualityIssues(item = {}, { duplicate = false } = {}) {
   if (duplicate && !issues.includes("duplicate-source")) issues.push("duplicate-source");
   issues.push(...clinicalReviewIssues(item, { issueDate: item._day || item.day || item.publishedAt }));
   if (isNewWorkflowItem(item)) issues.push(...workflowReviewIssues(item));
+  if (normalizePublicationStatus(item.publicationStatus) === "public-brief") issues.push(...clinicalSafetyIssues(item).map(() => "unsafe-clinical-command"));
   return [...new Set(issues)];
 }
 
@@ -142,7 +144,10 @@ export function isCardRenderable(item = {}) {
 
 export function isProfessionallyIndexable(item = {}, { duplicate = false } = {}) {
   const tier = normalizeContentTier(item);
+  const publicationStatus = normalizePublicationStatus(item.publicationStatus);
   if (item.visibility === "suppressed" || item.indexPolicy === "legacy-noindex" || duplicate || item.duplicateSource) return false;
+  if (publicationStatus && publicationStatus !== "index-analysis") return false;
+  if (publicationStatus === "index-analysis" && (!item.reviewedAt || !(item.reviewedBy || item.reviewerId))) return false;
   if (!item.sourceUrl && !item.finalUrl && !item.sourceUrlRaw) return false;
   if (!(tier === "analysis" || tier === "evidence")) return false;
   return publishQualityIssues(item).length === 0;

@@ -1,12 +1,42 @@
 {
-  "version": 1,
-  "generatedAt": "2026-07-30T00:52:38.784Z",
+  "version": 2,
+  "generatedAt": "2026-07-30T03:25:07.035Z",
   "warningCount": 64,
   "counts": {
     "missing-context": 63,
     "unit-mismatch": 1
   },
+  "contextCounts": {
+    "study-type-missing": 0,
+    "sample-size-missing": 0,
+    "species-context-missing": 31,
+    "human-population-context-missing": 21,
+    "limitation-missing": 0,
+    "domestic-applicability-missing": 0,
+    "source-detail-missing": 11,
+    "acceptable-brief": 0
+  },
   "critical": 0,
+  "sourceChecks": [
+    {
+      "articleId": "2026-07-21_24",
+      "status": "source-supported",
+      "officialReferenceUrl": "https://pubmed.ncbi.nlm.nih.gov/42348039/",
+      "sourceObserved": [
+        "2.33 mg/kg",
+        "5.98 mg/kg",
+        "61% anesthetic-sparing effect"
+      ],
+      "articleObserved": [
+        "2.33 mg/kg",
+        "5.98 mg/kg",
+        "약 61% 감소"
+      ],
+      "affectedField": "keyPointsKo",
+      "correctionApplied": false,
+      "note": "공식 초록·저널 메타데이터의 수치와 현재 기사 수치가 일치합니다. 단위 변환 또는 정정은 하지 않았습니다."
+    }
+  ],
   "items": [
     {
       "articleId": "2026-06-05_1",
@@ -21,6 +51,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "마취 프로토콜에 기관내관 풍선 팽창 표준 절차를 추가하고, 풍선 압력 측정 장비(압력 측정 주사기 또는 캡노그램) 도입을 점검하라",
         "sourceEvidence": {
@@ -50,7 +85,8 @@
         ]
       },
       "sourceUrl": "https://vetgirlontherun.com/how-to-inflate-an-endotracheal-tube-cuff-to-minimize-risks-maximize-benefit-vetgirl-veterinary-continuing-education-blogs/",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-06-11_2",
@@ -65,6 +101,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "개·고양이 기생충 예방 프로그램에서 이 조충(E. ) 검사 및 예방 약물 포함 여부 재점검",
         "sourceEvidence": {
@@ -106,7 +147,8 @@
         ]
       },
       "sourceUrl": "https://www.sciencedaily.com/releases/2026/06/260611024610.htm",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-06-19_2",
@@ -120,6 +162,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "만성 위장관 징후(구토, 설사, 체중감소)를 보이는 개에서 저알부민혈증 소견 시 PLE 가능성을 반드시 고려하고, 비위장관 원인(신장, 간, 부신피질기능저하증) 배제를 위한 체계적 검진이 필요함",
         "sourceEvidence": {
@@ -137,7 +184,8 @@
         ]
       },
       "sourceUrl": "https://todaysveterinarypractice.com/gastroenterology/decoding-canine-protein-losing-enteropathy/",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-06-19_5",
@@ -151,6 +199,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "만성 기침을 보이는 개에서 폐충을 감별 진단 목록에 포함시키고, 특히 해외 여행 이력이 있거나 북미 여행 후 증상이 나타난 환자에서 원심 분변 부유 검사 및 검사를 고려할 것",
         "sourceEvidence": {
@@ -174,7 +227,8 @@
         ]
       },
       "sourceUrl": "https://todaysveterinarypractice.com/parasitology/diagnosis-and-treatment-of-lungworms-in-dogs/",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-06-19_7",
@@ -188,6 +242,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "환각버섯이 든 제품을 먹인 환자가 내원했을 때 원인 파악을 위해 병력 조사 시 환각버섯 노출 여부를 확인하고,, 등 주요 성분 검사를 고려하세요.",
         "sourceEvidence": {
@@ -221,7 +280,8 @@
         ]
       },
       "sourceUrl": "https://todaysveterinarypractice.com/toxicology/hallucinogenic-mushroom-intoxications-are-getting-higher/",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-02_2",
@@ -236,6 +296,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "현재 사용 중인 PIMS 시스템의 전체 기능을 점검하고, AI 스크라이브나 자동화 도구 등 미활용 기능을 활성화하여 운영 효율성을 높여볼 것",
         "sourceEvidence": {
@@ -255,7 +320,8 @@
         ]
       },
       "sourceUrl": "https://www.veterinarypracticenews.com/the-abcs-best-pims/",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-06_1",
@@ -270,6 +336,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "관절염이나 비만으로 운동이 어려운 개 환자들에게 수중 치료 도입을 검토하고, 필요시 수중 트레드밀 장비 설비 투자나 동물재활 전문가 협업 가능성을 점검해 보세요.",
         "sourceEvidence": {
@@ -291,7 +362,8 @@
         ]
       },
       "sourceUrl": "https://www.vetpracticemag.com.au/treating-dogs-with-hydrotherapy/",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-08_3",
@@ -306,6 +378,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "영양 상담 프로토콜을 점검하고 영양사가 상담을 시작하거나 주도할 수 있도록 팀 교육을 강화하며, 같은 무료 영양 데이터베이스 활용을 검토하세요.",
         "sourceEvidence": {
@@ -337,7 +414,8 @@
         ]
       },
       "sourceUrl": "https://todaysveterinarypractice.com/personal-professional-development/breaking-the-barriers-to-positive-in-clinic-nutrition-conversations/",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-08_5",
@@ -352,6 +430,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "병원 개축·리노베이션 시 기존 진료 인프라(수술실, 영상 진단실) 연속성 확보 방안을 사전에 수립하고, 단계적 전환 프로토콜을 마련할 것",
         "sourceEvidence": {
@@ -405,7 +488,8 @@
         ]
       },
       "sourceUrl": "https://www.veterinarypracticenews.com/maintaining-continuity-during-renovation/",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-12_1",
@@ -419,6 +503,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "자영업 진료 시 심장사상충 예방 약 처방 여부를 확인하고, 특히 어린 개에서 예방 중요성을 보호자에게 안내하는 체크리스트를 활용할 것",
         "sourceEvidence": {
@@ -466,7 +555,8 @@
         ]
       },
       "sourceUrl": "https://todaysveterinarybusiness.com/pet-owners-underestimate-heartworm-risk/",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-20_1",
@@ -480,6 +570,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "고령 관절염 환자에게 NSAID 기본 처방 외에 비약물 치료(레이저, 펄스 전자기장, 수중 트레드밀) 옵션 상담 및 처방 고려",
         "sourceEvidence": {
@@ -519,7 +614,8 @@
         ]
       },
       "sourceUrl": "https://www.veterinarypracticenews.com/palliative-approaches-chronic-pain/",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-20_4",
@@ -533,6 +629,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "고양이 당뇨병 환자에게 SGLT2 억제제 치료를 고려하기 전, 인슐린 생산 능력 평가와 함께 케톤 모니터링 프로토콜을 수립하고 를 통한 혈당 조절 평가 일정을 계획한다.",
         "sourceEvidence": {
@@ -582,7 +683,8 @@
         ]
       },
       "sourceUrl": "https://vetgirlontherun.com/whats-new-in-diabetes-management-vetgirl-veterinary-continuing-education-blogs/",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-20_22",
@@ -596,6 +698,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "일차진료과와 신경과에서 다제내성균 검출율이 높으므로, 해당 진료과 환자의 피부 감염 치료 시 배양 검사 시행을 더욱 고려해야 한다.",
         "sourceEvidence": {
@@ -691,7 +798,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.5326/JAAHA-MS-7554",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-20_34",
@@ -705,6 +813,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "자 동물원에서 흉부 X- 판독 시 AI 보조 도구 활용을 고려하되, 다양한 환경에서의 전향적 검증이 충분치 않은 상태이므로 기존 판독 프로토콜을 유지하고 결과의 이중 확인을 병행할 것",
         "sourceEvidence": {
@@ -748,7 +861,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1111/vru.70170",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-20_35",
@@ -762,6 +876,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "SUB 시술 전 심초음파에서 경미한 심근병증이 발견되더라도 시술 금기로 고려하지 말고, 입원 시 체액 상태와 크레아티닌 수치를 예후 예측의 주요 지표로 모니터링할 것",
         "sourceEvidence": {
@@ -859,7 +978,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag127",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-21_5",
@@ -873,6 +993,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "개의 가스트린종 의심 시 혈청 가스트린 농도 검사 가능성을 점검하고, 영상 추적 및 반복 수술 계획 수립을 사전에 검토하세요.",
         "sourceEvidence": {
@@ -902,7 +1027,8 @@
         ]
       },
       "sourceUrl": "https://www.mdpi.com/2306-7381/13/7/715",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-21_6",
@@ -916,6 +1042,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "안와 종양 의심 환자에게 CT 영상 분석을 포함한 정밀 검진과 함께 종양 유형별 예후 차이를 반드시 설명하고, 수술 가능성과 한계에 대한 현실적 기대치를 설정할 것",
         "sourceEvidence": {
@@ -983,7 +1114,8 @@
         ]
       },
       "sourceUrl": "https://www.mdpi.com/2306-7381/13/7/714",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-21_23",
@@ -997,6 +1129,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "임상증상이 있는 고양이 진료 시 톡소플라즈마와 FIV 선별 검사를 함께 고려하고, 특히 길고양이나 면역력이 약한 고양이에서 우선적으로 검진한다.",
         "sourceEvidence": {
@@ -1048,7 +1185,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1007/s11686-026-01334-w",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-21_24",
@@ -1061,7 +1199,10 @@
       "classification": "unit-mismatch",
       "confidence": 0.68,
       "requiresHumanReview": true,
-      "disposition": "do-not-auto-correct",
+      "disposition": "source-supported-no-correction",
+      "verificationStatus": "source-supported",
+      "contextClassification": null,
+      "contextFieldsMissing": [],
       "claim": {
         "claim": "마취 프로토콜에 카나비노이드 보조 사용 가능성을 점검하되, 현 시점에서는 신중하게 접근하고 향후 더 큰 규모의 연구 결과를 확인하는 것이 좋습니다.",
         "sourceEvidence": {
@@ -1155,7 +1296,24 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1007/s11259-026-11367-1",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": {
+        "status": "source-supported",
+        "officialReferenceUrl": "https://pubmed.ncbi.nlm.nih.gov/42348039/",
+        "sourceObserved": [
+          "2.33 mg/kg",
+          "5.98 mg/kg",
+          "61% anesthetic-sparing effect"
+        ],
+        "articleObserved": [
+          "2.33 mg/kg",
+          "5.98 mg/kg",
+          "약 61% 감소"
+        ],
+        "affectedField": "keyPointsKo",
+        "correctionApplied": false,
+        "note": "공식 초록·저널 메타데이터의 수치와 현재 기사 수치가 일치합니다. 단위 변환 또는 정정은 하지 않았습니다."
+      }
     },
     {
       "articleId": "2026-07-21_26",
@@ -1169,6 +1327,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "피부병 환자의 동물 동반자 진찰 시 인수공통균 감별 진단 항목에 포함시킬 것",
         "sourceEvidence": {
@@ -1234,7 +1397,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1093/mmy/myag066",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-21_28",
@@ -1248,6 +1412,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "카발리에 킹 찰스 스파니엘 진료 시 무릎뼈 탈구 문진을 기본으로하고, 중성화·체중·털색 등의 위험인자 존재 시 영상의학 검사 고려",
         "sourceEvidence": {
@@ -1325,7 +1494,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1002/vms3.71026",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-21_29",
@@ -1339,6 +1509,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "고양이 환자의 정기검진 시 비만도·구강건강·수분 섭취 상태를 점검하고, 중고령 고양이에서는 만성 신장병·갑상선기능항진증·당뇨병 스크리닝을 강화한다",
         "sourceEvidence": {
@@ -1378,7 +1553,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNYmVoY3RTTmp1ZDd3RGplRmc4TV9HNGpJVmh5UHQxRzBwSV9ucW9WaEt5eG5TSGxCU0NYcFV2emwxU0FLQzRYUWpCcGU5bnlSNWhpY2diVXFaeWFtdjZEWU5xN2hhWDhqQTNrbGk1TDVGWERBRGpYSEJjV1Rua2NfQWcyVld6SHVoM040MS1tb1F3YUU4czBjbU9aYUJBN1pqT1ZDaGhIVnhkSTFaRlFlMC1WUlc?oc=5",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-21_31",
@@ -1392,6 +1568,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "국내 수의대생 대상 국제 장학금 프로그램 정보 파악 및 우수 인력 확보를 위한 인턴십 연계 가능성 점검",
         "sourceEvidence": {
@@ -1431,7 +1612,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOUU1EeG5KOUMtMXFjdjROalZiUzJqcGg3NU42SU9rWDAwQW1sUFI4TVJOYkpNOE9XQXBjZ1RGVTlIcVRXSTVGQ0M3TDlXdDJ0MG9TUnJqdmRYalF2alA2My1nZmNWXzZONDlRbEk4eWtLRlNuNGZjZUliSWsyZnQ0X3dBSnlER2pfN19oOFpGQ3pnbXZFcFhDbzRiME9nZjJzd1Q4NHpEQnpLVG9yT09MNnhXMTVoaHMtb1BnQ3IxaU15dw?oc=5",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-22_1",
@@ -1446,6 +1628,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "비용 관련 보호자 상담 시 치료 옵션별 예상 비용을 투명하게 안내하고, 필요시 분할 결제나 병원 내 지원 프로그램 정보 함께 제공하기",
         "sourceEvidence": {
@@ -1505,7 +1692,8 @@
         ]
       },
       "sourceUrl": "https://www.veterinarypracticenews.com/report-highlights-financial-barriers-shaping-veterinary-care-decisions/",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-22_3",
@@ -1519,6 +1707,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "신경학적 증상(후지 마비, 비정상 보행)을 보이는 개에서 영상소견과 뇌척수액 소견이 비특이적일 때, 원인 불명의 수막척수염 감별진단에 진균 감염을 포함시켜 조직검사를 통한 최종 진단을 고려할 것",
         "sourceEvidence": {
@@ -1550,7 +1743,8 @@
         ]
       },
       "sourceUrl": "https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1882308/full",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-22_5",
@@ -1564,6 +1758,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "반려동물 예방접종 기록에서 광견병 예방접종력을 정기적으로 확인하고, 미접종 동물에 대해 보호자에게 안내",
         "sourceEvidence": {
@@ -1581,7 +1780,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYm5jLVh6UmN4Y1hDR1hFZDFZQkg1MFZ4cDVLbWdKOHJqazJRRXRGR09XakNpcWVjOTBVbVUtSnVUTDVzSDFwenIwNHVJS1JEd1hHaTZQcml4QjVqdy00aEVaWWRBZEgtMmpnRkVGTzAyYlhqNXZ0YktUbEJKQVpDVWlfdzlNVmlmYnBYbXJYRDFvVTBUVlJ0RmN6cU8xOFVTT1NJ?oc=5",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-22_9",
@@ -1595,6 +1795,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "개 장 건강 보충제·프로바이오틱스 처방 시 사람용이 아닌 개 전용 제품을 선택하고, 해당 제품의 연구 근거를 점검하는 것이 좋습니다.",
         "sourceEvidence": {
@@ -1612,7 +1817,8 @@
         ]
       },
       "sourceUrl": "https://ivcjournal.com/unlocking-the-canine-gut-a-new-era-in-dog-microbiome-research/",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-22_14",
@@ -1626,6 +1832,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "개 간질 환자에서 페노바르비탈 등 항간질제 혈중 농도 정기 측정 여부와 간질 관리 자신감을 점검하고, 보호자에게 장기 관리 계획과 약물 부작용 가능성을 충분히 안내하는지 자문해 보세요.",
         "sourceEvidence": {
@@ -1689,7 +1900,8 @@
         ]
       },
       "sourceUrl": "https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1868929/full",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-22_19",
@@ -1704,6 +1916,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "본 연구는 임상 적용 전 단계로 파악하고, 기존 유방종양 검사 프로토콜(촉진·영상)을 유지하되, 향후 혈청 생물표지자 연구 동향을 지속적으로 모니터링한다.",
         "sourceEvidence": {
@@ -1757,7 +1974,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1007/s11033-026-12368-8",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-22_23",
@@ -1771,6 +1989,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "레프토스피라증 의심 증상이 있는 동물에서 새로운 ELISA 검사법의 활용 가능성을 점검하되, 효과로 인한 위음성 가능성을 고려하여 결과 해석에 주의한다.",
         "sourceEvidence": {
@@ -1826,7 +2049,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1007/s00203-026-05072-5",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-22_25",
@@ -1840,6 +2064,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "추간판 수술 후 환자 대해 수중 트레드밀 재활 프로토콜 도입 검토",
         "sourceEvidence": {
@@ -1927,7 +2156,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag134",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-22_30",
@@ -1941,6 +2171,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "미국에서 공개된 2026년 동물건강 통계가 화제가 되고 있습니다.",
         "sourceEvidence": {
@@ -1958,7 +2193,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBSRHk1S0dOUEFuM2Uyb180X0lGZ29jb3pVVEFpNkZ4WlNDNk82YU8tdTlnN054RXlibDA5R2VRbTI0OERnMnBVc1g4Z19ta0tHYUx4cEVid0JYblpFdmZxcExQV0pWb3gtQkpxVEkyWlVTUmJh?oc=5",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-23_1",
@@ -1972,6 +2208,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "자신의 병원 수술실 동선, 장비 배치, 준비공간-수술실-회복실 연결성을 점검하고 개선할 점을 점검하시오.",
         "sourceEvidence": {
@@ -1989,7 +2230,8 @@
         ]
       },
       "sourceUrl": "https://www.veterinarypracticenews.com/space-final-frontier-surgical-efficiency/",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-23_15",
@@ -2004,6 +2246,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "신규 환자 문진 시 광견병 예방접종력 확인하고 미접종 시 상담 제공",
         "sourceEvidence": {
@@ -2023,7 +2270,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQMHZXTmRCbEVIR051cENoX1hLTWNLeHZodEZSdWlRazF0U2t3cm14dlY0MEV6TGg2dmc2cDAxckp3aDRrbTFRUEZOd0ZsaUpFNHRsaWstX2FaVXJrR3F6QUNLdjg2ajlfR2tmOEZUM3lYWFd2akR0ZXkxdUtfWFlOVjRod3ZOM2lpRkliYw?oc=5",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-23_19",
@@ -2037,6 +2285,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "고양이 HCM이 의심될 때 NT-와 검사를 보조적으로 고려하되, 심초음파 금표준을 우선시할 것",
         "sourceEvidence": {
@@ -2072,7 +2325,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1007/s11259-026-11408-9",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-23_20",
@@ -2086,6 +2340,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "개의 흉부 종양 방사선 치료 시 종양 크기와 위치에 따른 종양 움직임 범위를 고려하여 모션 마진을 개별화된 치료 계획에 반영할 것",
         "sourceEvidence": {
@@ -2139,7 +2398,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1111/vru.70212",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-23_25",
@@ -2153,6 +2413,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "개의 만성 설사·구토·체중 감소 진료 시 말초 호중구증, 저알부민혈증, 저코발라민혈증 등 검사소견 이상 여부를 함께 확인하고, NIE 가능성을 고려한 조직학적 검사를 검토할 것",
         "sourceEvidence": {
@@ -2256,7 +2521,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1093/jvimsj/aalag130",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-23_27",
@@ -2270,6 +2536,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "비종양 가능성을 고려하여 비강 CT 소견에서 '뇌형 패턴' 유무 및 광물 감쇄 여부를 점검하고, 악성 종양 진단 전 조직 확인을 권고하는 진료 흐름 점검",
         "sourceEvidence": {
@@ -2321,7 +2592,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1111/vru.70185",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-23_29",
@@ -2335,6 +2607,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "요도 폐쇄 고양이 진료 시 과거 발병력 여부를 반드시 확인하고, 재발성 고양이는 상대적으로 질소혈증 위험이 낮다는 점은 보호자 안심에 활용하되, 질소혈증인 고양이는 카테터 유지·입원 기간 연장을 예상하여 치료 계획을 세우시오.",
         "sourceEvidence": {
@@ -2422,7 +2699,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1177/1098612X261457846",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-24_3",
@@ -2437,6 +2715,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "고양이 환자가 동물병원에서 진료 환경(냄새, 소음, 대기 공간)을 점검하고, 고양이 스트레스를 줄이는 환경 조성 가능성을 검토",
         "sourceEvidence": {
@@ -2474,7 +2757,8 @@
         ]
       },
       "sourceUrl": "https://www.veterinarypracticenews.com/new-feline-only-organizations-aims-close-gap-veterinary-care/",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-24_14",
@@ -2488,6 +2772,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "임신 말기 암컷에서 아디슨 유사 증상 감별 시 수액·스테로이드 투여로 인한 조기 출산 가능성을 고려하고, 신생아 폐 성숙 유도에 의존하지 않도록 한다.",
         "sourceEvidence": {
@@ -2537,7 +2826,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1002/vms3.71078",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-24_15",
@@ -2551,6 +2841,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "고양이 요로감염 환축에서 경험적 항생제 사용 전 소변 배양 및 감수성 검사 실시 여부를 진료 프로토콜에 점검하고, 중증·재발 사례에서는 배양검사를 우선 고려합니다.",
         "sourceEvidence": {
@@ -2626,7 +2921,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1007/s11259-026-11415-w",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-24_18",
@@ -2640,6 +2936,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "표본수가 9마리로 너무 적으므로, 현재로서는 의 고양이 피임 치료 도입은 보류하고 기존 난소자궁적출술을 표준 치료로 유지하는 것이 적절합니다.",
         "sourceEvidence": {
@@ -2707,7 +3008,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1111/rda.70268",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-24_23",
@@ -2721,6 +3023,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "안면신경장애 환자에서 매 방문 시 각막 민감도, 눈물량, 각막 상태를 체계적으로 점검하고, 중두개견에서는 특히 예방적 안구 관리 프로토콜 적용을 검토할 것",
         "sourceEvidence": {
@@ -2796,7 +3103,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1111/vop.70219",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-25_1",
@@ -2811,6 +3119,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "개 아토피 피부염 환자에서 JAK 억제제 선택 시 와 의 차이점을 숙지하고, 적응증 외 사용 시에는 적응증과 부작용을 충분히 설명하고 문서화할 것",
         "sourceEvidence": {
@@ -2858,7 +3171,8 @@
         ]
       },
       "sourceUrl": "https://www.veterinarypracticenews.com/vet-dermatologist-perspective-on-jak-inhibitors-2/",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-25_7",
@@ -2872,6 +3186,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "리콜 사료 섭취 관련 응급 진료 프로토콜을 사전에 준비하고, 리콜 정보 실시간 확인 체계를 구축할 것",
         "sourceEvidence": {
@@ -2889,7 +3208,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQZ0RnRkNaeGJqTW43VFIwRlZFS0M2dV9ia2plTDB1NW13RkpfVTdEU0FVQ3JhdU9XR3NIX21oRTA5WS1uTmZ6VkpMZm5aNE1iZFJFRXkybXI2V0RGX1dfNG52MGt2VjdnRjdYWloyeXZEWnZZblRtVEE4WHBaYXdjNXNBTG9wTElORzNVbWx5QU1wTUNxdUt1S0pqRWU?oc=5",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-25_15",
@@ -2904,6 +3224,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "말 관절경 시술 시 소유자 이동 거리가 전체 탄소 배출의 상당 부분을 차지하므로, 원격 진료나 지역사회 협력 진료 활성화 가능성을 점검해 볼 수 있습니다.",
         "sourceEvidence": {
@@ -2965,7 +3290,8 @@
         ]
       },
       "sourceUrl": "https://bvajournals.onlinelibrary.wiley.com/doi/10.1002/vetr.70981?af=R",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "2026-07-25_16",
@@ -2980,6 +3306,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "미국 플로리다 대학교 연구팀이 20년 이상의 고래 좌초 기록을 분석해 환형고래(Kogia breviceps)에서 이전에 알려지지 않은 헬리코박터균 3종을 발견했습니다. 이 세균은 고래의 위장염과 위궤양과 연관되어 있어 해양포유류 건강에 대한 새로운 의문을 제기합니다.",
         "sourceEvidence": {
@@ -3033,7 +3364,8 @@
         ]
       },
       "sourceUrl": "https://www.sciencedaily.com/releases/2026/07/260721000847.htm",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_a5b554217652df94",
@@ -3047,6 +3379,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "FATE 의심 고양이에서 치료 결정 시 예상되는 결과와 갑작스러운 사망 위험을 반드시 설명하고, 치료 중 집중적인 모니터링이 필요합니다",
         "sourceEvidence": {
@@ -3128,7 +3465,8 @@
         ]
       },
       "sourceUrl": "https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1845133/full",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_6b3c3101574c9e89",
@@ -3143,6 +3481,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "미국 여행 이력이나 수입 동물에서 비정상 상처 발견 시 뉴월드 스크류웜을 의심하고 농림축산식품부에 긴급 신고할 수 있도록 검안 및 보고 프로토콜을 점검하세요.",
         "sourceEvidence": {
@@ -3174,7 +3517,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxORTdTeUVPR2hmZ0o5ODRhQlR0d1YwNm8wTHNNcnJxRFo5QTVvQ0FfVHgtcWdYQUlxMWRwZXZ1bUstbFBjdktmT2RwQXNaOUo5N0JWMThlQ2xvSkhrNkhId3NleEhoMFhOcW83b3FrcmRIbzZOUjVlbndmZnBFM0hRdjMxcW53NVdQdGlZWWJPam9BOGhpZ1RFY21VUUJrX2JJdm5GM0h6ZmFHRHc5Mnd6cmZTNzZmdkJ6YnNsVE9jRkI?oc=5",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_8d4b6dd70a1c07e5",
@@ -3188,6 +3532,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "개의 비만·대사질환 문진 시 인슐린 저항성 위험 요인 체크리스트에 이 연구 결과 참고",
         "sourceEvidence": {
@@ -3221,7 +3570,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1152/ajpendo.00515.2025",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_cc752d4547496da4",
@@ -3235,6 +3585,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "ESP 블록 사용 시 로피바카인과 립소소말 부피바카인 중 비용이 저렴하거나 구하기 쉬운 것을 선택 가능",
         "sourceEvidence": {
@@ -3304,7 +3659,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1016/j.vaa.2026.101252",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_103ba30adfca986c",
@@ -3318,6 +3674,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "외출 고양이 문진 시 외상 과거력 및 외출 환경(도로 접근성, 교통량) 상세 파악",
         "sourceEvidence": {
@@ -3387,7 +3748,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1186/s12917-026-05733-z",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_9ed50c819180f566",
@@ -3402,6 +3764,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "대규모 축산 농가에서 활동하는 수의사는 질병 치료 시 항생제 사용 적절성과 마취/통증 관리 프로토콜을 점검하고, 필요시 농장 경영자에게 올바른 처치법을 안내할 것",
         "sourceEvidence": {
@@ -3451,7 +3818,8 @@
         ]
       },
       "sourceUrl": "https://bvajournals.onlinelibrary.wiley.com/doi/10.1002/vetr.70967?af=R",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_6d2bb92c68fd6eef",
@@ -3466,6 +3834,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "만성 질 출혈 환축에서 내시경 검사 및 전기소작술 가능 여부 점검, 특히 재발성 병변이나 수술 어려울 경우 고려",
         "sourceEvidence": {
@@ -3503,7 +3876,8 @@
         ]
       },
       "sourceUrl": "https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1875395/full",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_20a9351a0caea64a",
@@ -3517,6 +3891,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "외부로 나가거나 유기된 고양이를 진료할 때 원인충, 십이지장충, 등의 인수공통기생충 감안을 위해 문진에 기생충 노출 위험 요소 추가",
         "sourceEvidence": {
@@ -3600,7 +3979,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1371/journal.pone.0351437",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_d1fbaef3e76d80d3",
@@ -3614,6 +3994,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "노령 환자 문진 시 출산 경험 여부 및 횟수를 기록하고, 이 연구 결과를 참고하되 일반화는 삼가하는 자세로 상담",
         "sourceEvidence": {
@@ -3667,7 +4052,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1093/gerona/glag163",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_1521d654a62580a6",
@@ -3682,6 +4068,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "봄·가을철 박쥐 활동 시기엔 개·고양이의 야외 활동 후 이상징후 문진 강화, 박쥐 접촉력 확인 체크리스트 비치",
         "sourceEvidence": {
@@ -3711,7 +4102,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNV3FRMUx5eDYtaVdBbWhZc19VODk2N0dCdV9WcDJfTWR1VWJ3alhzSmRfRnZ4TmxWNGluOHdlUkpwUVdzck02RUQ5TkN5OXQ3Z0Y3X3R2VWZvOUpGTkJiQmIwVFdEWmd4elcwWU9jQUQxbUVSZ0hEZmJyTDFrUy1RQXdQa19KTHhFVUxXMjExNmp1MjlHVE1LMWxZUUYtMnZ3RklBNHJfaDl4VHNrbTR3QVJGZjlydw?oc=5",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_b99763eee88e8c91",
@@ -3726,6 +4118,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "오번 대학 연구팀이 탐지견의 훈련 성공을 예측하는 새로운 지표를 개발했습니다. 304마리의 개를 대상으로 11개 하위 테스트로 행동 평가를 실시한 결과, 12개월령의 종합 적합성 점수가 훈련 결과를 예측하는 데 74.3%의 정확도를 보였습니다.",
         "sourceEvidence": {
@@ -3787,7 +4184,8 @@
         ]
       },
       "sourceUrl": "https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1887925/full",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_d3bfda3b23b4ffbb",
@@ -3802,6 +4200,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "야외 활동 후 동물에서 신경학적 증상이 나타나면 광견병 의심 검안하고 보건당국에 신고하는 프로토콜을 점검하세요.",
         "sourceEvidence": {
@@ -3827,7 +4230,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQUlk0ckFmQlVYcWRXdFJZYWxyclk1Nld6M2dNMUFiUW1mUzY4NTNwMlFyRHB3UjNieDFmNmw2eFhlMzJlb3hEaktwbGlVUzNWNXNmQWFoWTlWWFNTcmNkY1BhZGEzd2ptSDF3ZVpJb3VLX0N1c3gtSmVmRk91bzd6dGlHMWdpcnBSWDctTmc1R1hDZXg5ZDhldmVPNUJwUlVnZkRrVFNjNXYwSXRfazNHOWdvRUc5SDJwS1VVQUlQa2QtX2RDMWpkZ1BBOEZ5cUQ1SzE0NA?oc=5",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_a4deff1b3d5e111c",
@@ -3842,6 +4246,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "비용 상담 프로토콜을 강화하여, 보호자에게 진료비 예산 계획과 동물 건강검진의 중요성을 사전에 안내하도록 점검",
         "sourceEvidence": {
@@ -3863,7 +4272,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5VVVZPM2RkVVNEXzF6MFlGYll5dHQ3ZUpiUlA0TFNxWkZwOXJMOFh4SzM2UlpVR0MtR1M1MWx3cjhtQmh2R1Bza0VkVlZ1bVNhLWh5MWl5di02QWwzSEJUVnBIVUtMc192R3Nvd25DTndjbWx6Qk1J?oc=5",
-      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch, numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_fdca693310cedee2",
@@ -3877,6 +4287,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "species-context-missing",
+      "contextFieldsMissing": [
+        "species"
+      ],
       "claim": {
         "claim": "개의 치과 임플란트 시술은 임상에서 극히 드물고, 이 연구는 동물 실험 단계이므로 현재 임상 적용은 시기 상조입니다.",
         "sourceEvidence": {
@@ -3962,7 +4377,8 @@
         ]
       },
       "sourceUrl": "https://doi.org/10.1111/clr.70126",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_e174695d8cae4128",
@@ -3976,6 +4392,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "human-population-context-missing",
+      "contextFieldsMissing": [
+        "population"
+      ],
       "claim": {
         "claim": "문진 시 보호자의 고양이 긁힘 이력을 반드시 확인하고, 고령이거나 기저질환이 있는 보호자에서 동물 접촉 후 발열이나 신경정신 증상이 있으면 검사를 포함한 적절한 검사를 고려하도록 안내한다.",
         "sourceEvidence": {
@@ -4019,7 +4440,8 @@
         ]
       },
       "sourceUrl": "https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1810698/full",
-      "shortEvidence": "numeric-keypoints-body-mismatch"
+      "shortEvidence": "numeric-keypoints-body-mismatch",
+      "sourceCheck": null
     },
     {
       "articleId": "v1_6ce376c377ed20e8",
@@ -4033,6 +4455,11 @@
       "confidence": 0.95,
       "requiresHumanReview": true,
       "disposition": "compare-with-source",
+      "verificationStatus": "unverifiable",
+      "contextClassification": "source-detail-missing",
+      "contextFieldsMissing": [
+        "official-canonical"
+      ],
       "claim": {
         "claim": "고령 동물 검진 시 만성콩팥병 스크리닝 강화, 종양 진단 시 면역치료제 옵션 고려, 당뇨병 고양이 SGLT2 억제제 도입 가능성 점검",
         "sourceEvidence": {
@@ -4056,7 +4483,8 @@
         ]
       },
       "sourceUrl": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNWkd5V3JXV3JlWXppNFJZNkwwRmVIQnhacXllejIwWHg5NnN5NWRrck9KOVRjbkRZSXpSRlBNNk1IWHZUYmU3dVNpc0ZaYzhSRFNqVlA0c04yZ3dyN3dOOXA2LWd3bmk2UEUwSFk4R3V6WHU2UmlGVk5CbHBuaEhUOU1zX1FJQmdEWGo0NUd5Um5kd1p2ZldJNEluTjhyY2VxRHVtYkZxeUhBeXZE?oc=5",
-      "shortEvidence": "numeric-lead-body-mismatch"
+      "shortEvidence": "numeric-lead-body-mismatch",
+      "sourceCheck": null
     }
   ],
   "note": "수치·단위는 원문과 대조하기 전 자동 수정하지 않습니다. 원문 전체 대신 URL, 제목, 구조화된 수치와 짧은 경고 근거만 저장합니다."

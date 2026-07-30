@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-30T01:09:07.783Z",
+  "generatedAt": "2026-07-30T03:40:58.764Z",
   "counts": {
     "approved-candidate": 0,
-    "needs-human-review": 4,
+    "needs-human-review": 5,
     "rejected": 0,
     "retired-source": 0
   },
@@ -15,7 +15,7 @@
       "currentFeedUrl": "https://drandyroark.com/feed/",
       "officialDomain": true,
       "currentFeed": true,
-      "checkedAt": "2026-07-30T01:09:03.730Z",
+      "checkedAt": "2026-07-30T03:40:52.212Z",
       "patch": null,
       "httpStatus": 304,
       "finalUrl": "https://drandyroark.com/feed/",
@@ -44,7 +44,7 @@
       "currentFeedUrl": "https://ivcjournal.com/feed/",
       "officialDomain": true,
       "currentFeed": true,
-      "checkedAt": "2026-07-30T01:09:04.755Z",
+      "checkedAt": "2026-07-30T03:40:52.478Z",
       "patch": null,
       "httpStatus": 304,
       "finalUrl": "https://ivcjournal.com/feed/",
@@ -73,12 +73,12 @@
       "currentFeedUrl": "https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml",
       "officialDomain": true,
       "currentFeed": false,
-      "checkedAt": "2026-07-30T01:09:05.766Z",
+      "checkedAt": "2026-07-30T03:40:53.708Z",
       "patch": null,
       "httpStatus": 304,
       "finalUrl": "https://www.sciencedaily.com/rss/all.xml",
       "itemCount": 60,
-      "newestItemAt": "2026-07-29T12:35:36.000Z",
+      "newestItemAt": "2026-07-29T23:44:16.000Z",
       "checks": {
         "http200": true,
         "xmlParsed": true,
@@ -90,7 +90,7 @@
         "officialDomain": true,
         "consecutiveSuccessfulRuns": 0
       },
-      "latencyMs": 973,
+      "latencyMs": 933,
       "error": null,
       "classification": "needs-human-review"
     },
@@ -102,7 +102,7 @@
       "currentFeedUrl": "https://vetpracticemag.com.au/feed/",
       "officialDomain": true,
       "currentFeed": false,
-      "checkedAt": "2026-07-30T01:09:06.774Z",
+      "checkedAt": "2026-07-30T03:40:54.352Z",
       "patch": null,
       "httpStatus": 304,
       "finalUrl": "https://www.vetpracticemag.com.au/feed/",
@@ -120,6 +120,35 @@
         "consecutiveSuccessfulRuns": 0
       },
       "latencyMs": 1711,
+      "error": null,
+      "classification": "needs-human-review"
+    },
+    {
+      "url": "https://www.veterinarypracticenews.com/feed/",
+      "reason": "현재 레지스트리에 이미 등록된 공식 피드이며 안정성 확인 중입니다",
+      "sourceId": "src-veterinary-practice-news",
+      "sourceLabel": "Veterinary Practice News",
+      "currentFeedUrl": "https://www.veterinarypracticenews.com/feed/",
+      "officialDomain": true,
+      "currentFeed": true,
+      "checkedAt": "2026-07-30T03:40:55.997Z",
+      "patch": null,
+      "httpStatus": 200,
+      "finalUrl": "https://www.veterinarypracticenews.com/feed/",
+      "itemCount": 20,
+      "newestItemAt": "2026-07-29T19:52:54.000Z",
+      "checks": {
+        "http200": true,
+        "xmlParsed": true,
+        "recentItems": true,
+        "canonicalRate": 0,
+        "relayRate": 0,
+        "stableGuid": true,
+        "robotsAllowed": true,
+        "officialDomain": true,
+        "consecutiveSuccessfulRuns": 2
+      },
+      "latencyMs": 2764,
       "error": null,
       "classification": "needs-human-review"
     }

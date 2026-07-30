@@ -15,6 +15,8 @@ test("8차 언어·주장 검수 리포트는 전체 기존 경고를 분류한�
   assert.ok(language.items.every((item) => item.articleId && item.classification && typeof item.requiresHumanReview === "boolean"));
   assert.ok(claims.items.every((item) => item.articleId && item.classification && item.claim));
   assert.equal(claims.critical, 0);
+  for (const key of ["study-type-missing", "sample-size-missing", "species-context-missing", "human-population-context-missing", "limitation-missing", "domestic-applicability-missing", "source-detail-missing", "acceptable-brief"]) assert.ok(Object.hasOwn(claims.contextCounts, key));
+  assert.equal(claims.sourceChecks[0].status, "source-supported");
 });
 
 test("사람 등록 CLI는 빈 people.json에서 정상 동작하고 placeholder를 거부한다", () => {

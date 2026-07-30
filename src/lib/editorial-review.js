@@ -13,6 +13,7 @@ export const EDITORIAL_STATUSES = new Set([
 ]);
 export const CLINICAL_RISKS = new Set(["low", "medium", "high"]);
 export const REVIEW_POLICY_DATE = "2026-07-29";
+import { isNewPublication, isVeterinaryReviewerAvailable } from "./editorial-policy.js";
 
 const HIGH_RISK = /약물|용량|투여|처치|치료 선택|응급|진단 지침|예후|dose|dosage|emergency|prognos|treatment recommendation/i;
 const MEDIUM_RISK = /임상|질환|증례|검사|보호자|환자|연구|clinical|disease|patient|study/i;
@@ -36,7 +37,7 @@ export function isPolicyNew(item = {}, issueDate = "") {
   const date = String(item.createdAt || item.publishedAt || item._day || issueDate || "").slice(0, 10);
   // 기존 1·2차 기사에는 날짜만으로 소급 적용하지 않는다. 새 파이프라인은
   // reviewPolicyVersion/검수 필드로 명시하거나 시행일 다음 날짜부터 적용한다.
-  const explicit = item._reviewPolicyExplicit || item.reviewPolicyVersion;
+  const explicit = item._reviewPolicyExplicit || item.reviewPolicyVersion || isNewPublication(item);
   return Boolean(explicit) || (/^\d{4}-\d{2}-\d{2}$/.test(date) && date > REVIEW_POLICY_DATE);
 }
 
@@ -49,9 +50,11 @@ export function clinicalReviewIssues(item = {}, { issueDate = "", existingIndex 
   // 1·2차 기존 색인 기사는 일괄 차단하지 않는다. 정책 시행일 이후의 새 기사에만
   // 검수 게이트를 적용하고, 기존 기사는 관리자 우선순위 큐에서 사람 검수를 기다린다.
   if (!existingIndex && isPolicyNew(item, issueDate)) {
+    if (risk === "high" && !isVeterinaryReviewerAvailable()) issues.push("high-risk-vet-review-unavailable");
     if (risk === "high" && status !== "vet-reviewed" && !(item.vetReviewedAt && (item.vetReviewer || item.vetReviewerId))) issues.push("high-risk-not-vet-reviewed");
     if (risk === "medium" && !["editor-reviewed", "vet-reviewed"].includes(status) && !(item.reviewedAt || item.vetReviewedAt)) issues.push("medium-risk-not-editor-reviewed");
   }
+  if (status === "vet-reviewed" && !isVeterinaryReviewerAvailable()) issues.push("vet-reviewer-unavailable");
   return [...new Set(issues)];
 }
 

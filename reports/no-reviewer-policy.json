@@ -1,0 +1,333 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-30T04:44:19.754Z",
+  "settings": {
+    "editorialMode": "organization-only",
+    "veterinaryReviewerAvailable": false,
+    "organization": {
+      "name": "베트맨랩",
+      "url": "https://news.vetmanlab.com/about"
+    }
+  },
+  "policy": {
+    "high": "blocked-clinical",
+    "medium": "internal-draft-or-public-brief-noindex",
+    "low": "public-brief-noindex-after-all-automated-checks"
+  },
+  "candidates": [
+    {
+      "id": "v1_88e7bde7826c5eaf",
+      "title": "Cult of the Holy Bedtime",
+      "source": {
+        "label": "Dr. Andy Roark",
+        "url": "https://drandyroark.com/cult-of-the-holy-bedtime",
+        "rawUrl": "https://drandyroark.com/cult-of-the-holy-bedtime",
+        "status": "verified",
+        "publishedAt": "2026-07-03T22:10:03.000Z"
+      },
+      "clinicalRisk": "low",
+      "duplicateStatus": "unique",
+      "status": "needs-language-fix",
+      "blockers": [
+        "한국어 titleKo·leadKo·bodyKo 필요",
+        "titleKo/leadKo/bodyKo-missing",
+        "권리 확인된 대표 이미지 필요"
+      ],
+      "languageWarnings": [],
+      "claimWarnings": [],
+      "clinicalSafetyIssues": [],
+      "image": {
+        "url": null,
+        "ownership": null,
+        "confirmed": false
+      },
+      "publication": {
+        "status": "public-brief",
+        "robots": "noindex,follow",
+        "sitemap": false,
+        "newsSitemap": false,
+        "rss": false
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "베트맨랩",
+        "url": "https://news.vetmanlab.com/about"
+      },
+      "reviewer": null,
+      "noReviewer": true,
+      "generatedTextPresent": false
+    },
+    {
+      "id": "v1_8977cdecc20db74b",
+      "title": "Improving Animal Welfare at Commercial Dog Breeding Kennels",
+      "source": {
+        "label": "Dr. Andy Roark",
+        "url": "https://drandyroark.com/commercial-dog-breeding-kennels",
+        "rawUrl": "https://drandyroark.com/commercial-dog-breeding-kennels",
+        "status": "verified",
+        "publishedAt": "2026-06-18T05:00:00.000Z"
+      },
+      "clinicalRisk": "low",
+      "duplicateStatus": "unique",
+      "status": "needs-language-fix",
+      "blockers": [
+        "한국어 titleKo·leadKo·bodyKo 필요",
+        "titleKo/leadKo/bodyKo-missing",
+        "권리 확인된 대표 이미지 필요"
+      ],
+      "languageWarnings": [],
+      "claimWarnings": [],
+      "clinicalSafetyIssues": [],
+      "image": {
+        "url": null,
+        "ownership": null,
+        "confirmed": false
+      },
+      "publication": {
+        "status": "public-brief",
+        "robots": "noindex,follow",
+        "sitemap": false,
+        "newsSitemap": false,
+        "rss": false
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "베트맨랩",
+        "url": "https://news.vetmanlab.com/about"
+      },
+      "reviewer": null,
+      "noReviewer": true,
+      "generatedTextPresent": false
+    },
+    {
+      "id": "v1_66712dc60cebbebc",
+      "title": "That&#8217;s Bad Advice",
+      "source": {
+        "label": "Dr. Andy Roark",
+        "url": "https://drandyroark.com/thats-bad-advice",
+        "rawUrl": "https://drandyroark.com/thats-bad-advice",
+        "status": "verified",
+        "publishedAt": "2026-06-03T22:10:25.000Z"
+      },
+      "clinicalRisk": "low",
+      "duplicateStatus": "unique",
+      "status": "needs-language-fix",
+      "blockers": [
+        "한국어 titleKo·leadKo·bodyKo 필요",
+        "titleKo/leadKo/bodyKo-missing",
+        "권리 확인된 대표 이미지 필요"
+      ],
+      "languageWarnings": [],
+      "claimWarnings": [],
+      "clinicalSafetyIssues": [],
+      "image": {
+        "url": null,
+        "ownership": null,
+        "confirmed": false
+      },
+      "publication": {
+        "status": "public-brief",
+        "robots": "noindex,follow",
+        "sitemap": false,
+        "newsSitemap": false,
+        "rss": false
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "베트맨랩",
+        "url": "https://news.vetmanlab.com/about"
+      },
+      "reviewer": null,
+      "noReviewer": true,
+      "generatedTextPresent": false
+    },
+    {
+      "id": "v1_ecdd9715ae5b33aa",
+      "title": "Life Stages and Large Breeds in Canine Nutrition",
+      "source": {
+        "label": "Dr. Andy Roark",
+        "url": "https://drandyroark.com/large-breeds-in-canine-nutrition",
+        "rawUrl": "https://drandyroark.com/large-breeds-in-canine-nutrition",
+        "status": "verified",
+        "publishedAt": "2026-05-18T05:00:00.000Z"
+      },
+      "clinicalRisk": "low",
+      "duplicateStatus": "unique",
+      "status": "needs-language-fix",
+      "blockers": [
+        "한국어 titleKo·leadKo·bodyKo 필요",
+        "titleKo/leadKo/bodyKo-missing",
+        "권리 확인된 대표 이미지 필요"
+      ],
+      "languageWarnings": [],
+      "claimWarnings": [],
+      "clinicalSafetyIssues": [],
+      "image": {
+        "url": null,
+        "ownership": null,
+        "confirmed": false
+      },
+      "publication": {
+        "status": "public-brief",
+        "robots": "noindex,follow",
+        "sitemap": false,
+        "newsSitemap": false,
+        "rss": false
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "베트맨랩",
+        "url": "https://news.vetmanlab.com/about"
+      },
+      "reviewer": null,
+      "noReviewer": true,
+      "generatedTextPresent": false
+    },
+    {
+      "id": "v1_5f01b0b4f48babba",
+      "title": "Do You Like Being a Veterinarian on Thursdays?",
+      "source": {
+        "label": "Dr. Andy Roark",
+        "url": "https://drandyroark.com/being-a-vet-on-thursdays",
+        "rawUrl": "https://drandyroark.com/being-a-vet-on-thursdays",
+        "status": "verified",
+        "publishedAt": "2026-05-14T18:34:34.000Z"
+      },
+      "clinicalRisk": "low",
+      "duplicateStatus": "unique",
+      "status": "needs-language-fix",
+      "blockers": [
+        "한국어 titleKo·leadKo·bodyKo 필요",
+        "titleKo/leadKo/bodyKo-missing",
+        "권리 확인된 대표 이미지 필요"
+      ],
+      "languageWarnings": [],
+      "claimWarnings": [],
+      "clinicalSafetyIssues": [],
+      "image": {
+        "url": null,
+        "ownership": null,
+        "confirmed": false
+      },
+      "publication": {
+        "status": "public-brief",
+        "robots": "noindex,follow",
+        "sitemap": false,
+        "newsSitemap": false,
+        "rss": false
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "베트맨랩",
+        "url": "https://news.vetmanlab.com/about"
+      },
+      "reviewer": null,
+      "noReviewer": true,
+      "generatedTextPresent": false
+    }
+  ],
+  "candidateCounts": {
+    "ready-public-brief": 0,
+    "needs-source-fix": 0,
+    "needs-claim-fix": 0,
+    "needs-language-fix": 5,
+    "duplicate": 0,
+    "rejected": 0
+  },
+  "legacyRiskAudit": {
+    "scanned": 463,
+    "unsafeCount": 6,
+    "criticalCount": 0,
+    "rows": [
+      {
+        "articleId": "2026-07-01_2",
+        "title": "개 자가면역 피부질환에 사용되는 허브 3가지",
+        "indexable": true,
+        "clinicalRisk": "high",
+        "sourceStatus": null,
+        "sourceUrl": "https://ivcjournal.com/3-promising-herbs-for-canine-autoimmune-skin-conditions/",
+        "unsafeExpressions": [
+          "완치"
+        ],
+        "qualityWarnings": [],
+        "disposition": "legacy-review-queue",
+        "critical": false
+      },
+      {
+        "articleId": "2026-07-20_1",
+        "title": "고령 동물 관절염 통증, 약물+비약물 복합 관리의 실제",
+        "indexable": true,
+        "clinicalRisk": "high",
+        "sourceStatus": null,
+        "sourceUrl": "https://www.veterinarypracticenews.com/palliative-approaches-chronic-pain/",
+        "unsafeExpressions": [
+          "완치"
+        ],
+        "qualityWarnings": [],
+        "disposition": "legacy-review-queue",
+        "critical": false
+      },
+      {
+        "articleId": "2026-07-21_5",
+        "title": "개의 가스트린종, 반복 수술과 혈청 가스트린 모니터링으로 장기 생존 사례",
+        "indexable": true,
+        "clinicalRisk": "high",
+        "sourceStatus": null,
+        "sourceUrl": "https://www.mdpi.com/2306-7381/13/7/715",
+        "unsafeExpressions": [
+          "완치"
+        ],
+        "qualityWarnings": [],
+        "disposition": "legacy-review-queue",
+        "critical": false
+      },
+      {
+        "articleId": "2026-07-21_12",
+        "title": "똑똑한 사회화 훈련으로 자신감 있는 강아지 키우기",
+        "indexable": false,
+        "clinicalRisk": "medium",
+        "sourceStatus": null,
+        "sourceUrl": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOS19taHgtdlV4S2Y4TC1ra01zemhhbmtpclNVVFJmZmswYk1EdVFnRmVHMVR0ZU5PM3h6bXR1SEhTVUtkTDJSQWk4Q2hDaURfWFBxUWgxMmdpVmZLemZBWG9wUDA2UDRXc0pFU2xSMEo2blN5QWtoclZiQmthWFdjX01raEJzQ3VwVHBYTVhoYjhQTE5ISUFNS1E3TlRlMU9wXzdnbTBYaVNrNGIyNGwtM29iZw?oc=5",
+        "unsafeExpressions": [
+          "예방할\\s*수\\s*있다"
+        ],
+        "qualityWarnings": [],
+        "disposition": "legacy-review-queue",
+        "critical": false
+      },
+      {
+        "articleId": "2026-07-25_12",
+        "title": "미국 Galveston, 벼룩 매개 티푸스 재출현 연구의 중심지로",
+        "indexable": false,
+        "clinicalRisk": "medium",
+        "sourceStatus": null,
+        "sourceUrl": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOYlU2U0VDYWdLUE55d0lzeWJjUTU2RndJMkhLSTRYTFVDbmZHa05ON3RpVVV6RHBiZGtBXzNzTUJFeElpMDloOThhWlJDNkZPV0RNbWV3ZGc4eXJmY0lsRU5LV19JbG9SUWl6RVVMaFFzQldxbWVhd1JhSVdjZXNjWHJseDZaWWttcFRxSkV5cVF2bVJhUmdWeWRFWm1ZSmtNTl9RVWRYZUMxSC1rOFdyeTg0TlFvR1RlSGZpb9IBvAFBVV95cUxOYlU2U0VDYWdLUE55d0lzeWJjUTU2RndJMkhLSTRYTFVDbmZHa05ON3RpVVV6RHBiZGtBXzNzTUJFeElpMDloOThhWlJDNkZPV0RNbWV3ZGc4eXJmY0lsRU5LV19JbG9SUWl6RVVMaFFzQldxbWVhd1JhSVdjZXNjWHJseDZaWWttcFRxSkV5cVF2bVJhUmdWeWRFWm1ZSmtNTl9RVWRYZUMxSC1rOFdyeTg0TlFvR1RlSGZpbw?oc=5",
+        "unsafeExpressions": [
+          "완치"
+        ],
+        "qualityWarnings": [
+          "source-relay"
+        ],
+        "disposition": "legacy-review-queue",
+        "critical": false
+      },
+      {
+        "articleId": "v1_b57ff7397629a2d4",
+        "title": "진드기 방지제별 검은다리진드기(Blacklegged Tick) 사멸 속도 연구 비교",
+        "indexable": false,
+        "clinicalRisk": "high",
+        "sourceStatus": null,
+        "sourceUrl": "https://www.myvetcandy.com/news/2026/7/27/new-study-compares-how-quickly-popular-tick-preventives-kill-blacklegged-ticks",
+        "unsafeExpressions": [
+          "권장\\s*용량"
+        ],
+        "qualityWarnings": [],
+        "disposition": "legacy-review-queue",
+        "critical": false
+      }
+    ]
+  },
+  "automaticPublished": 0,
+  "reviewerCount": 0,
+  "note": "현재 실제 수의사 감수자가 없으므로 새 index-analysis·approved·vet-reviewed·published 상태를 생성하지 않습니다."
+}

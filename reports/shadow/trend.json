@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-29T23:52:49.838Z",
-  "runCount": 1,
+  "generatedAt": "2026-07-30T03:44:44.968Z",
+  "runCount": 2,
   "runs": [
     {
       "runId": "2026-07-30-1785369005514",
@@ -97,8 +97,104 @@
       "packetCount": 10,
       "published": 0,
       "public": false
+    },
+    {
+      "runId": "2026-07-30-1785373801870",
+      "date": "2026-07-30",
+      "startedAt": "2026-07-30T00:52:45.703Z",
+      "completedAt": "2026-07-30T01:10:01.870Z",
+      "ok": true,
+      "steps": [
+        {
+          "command": "sources.js",
+          "ok": true,
+          "elapsedMs": 977986,
+          "error": null
+        },
+        {
+          "command": "validate-feed-candidates.js",
+          "ok": true,
+          "elapsedMs": 4107,
+          "error": null
+        },
+        {
+          "command": "sources.js",
+          "ok": true,
+          "elapsedMs": 41,
+          "error": null
+        },
+        {
+          "command": "ingest.js",
+          "ok": true,
+          "elapsedMs": 53654,
+          "error": null
+        },
+        {
+          "command": "updates.js",
+          "ok": true,
+          "elapsedMs": 160,
+          "error": null
+        },
+        {
+          "command": "editorial-audits.js",
+          "ok": true,
+          "elapsedMs": 47,
+          "error": null
+        },
+        {
+          "command": "editorial-audits.js",
+          "ok": true,
+          "elapsedMs": 46,
+          "error": null
+        },
+        {
+          "command": "editorial-audits.js",
+          "ok": true,
+          "elapsedMs": 45,
+          "error": null
+        },
+        {
+          "command": "first-publish-candidates.js",
+          "ok": true,
+          "elapsedMs": 37,
+          "error": null
+        },
+        {
+          "command": "newsroom-review.js",
+          "ok": true,
+          "elapsedMs": 44,
+          "error": null
+        }
+      ],
+      "stats": {
+        "collected": 677,
+        "unique": 569,
+        "duplicate": 33,
+        "update": 75,
+        "draft": 50,
+        "canonicalRate": 1,
+        "relayRate": 0,
+        "low": 38,
+        "medium": 9,
+        "high": 3,
+        "languageWarnings": 17,
+        "claimWarnings": 64,
+        "sourceFailures": 1,
+        "sourceCounts": {
+          "healthy": 0,
+          "quiet": 0,
+          "stale": 1,
+          "degraded": 11,
+          "failing": 1,
+          "retired": 0,
+          "disabled": 186
+        }
+      },
+      "packetCount": 10,
+      "published": 0,
+      "public": false
     }
   ],
-  "trendAvailable": false,
-  "note": "실제 실행 이력이 2회 미만이라 추세를 계산하지 않습니다."
+  "trendAvailable": true,
+  "note": "최근 실제 실행 결과만으로 계산합니다."
 }

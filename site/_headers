@@ -51,5 +51,8 @@
 /search-manifest.json
   X-Robots-Tag: noindex, nofollow, noarchive
 
+/brief-rss.xml
+  X-Robots-Tag: noindex, nofollow, noarchive
+
 /admin-review.json
   X-Robots-Tag: noindex, nofollow, noarchive

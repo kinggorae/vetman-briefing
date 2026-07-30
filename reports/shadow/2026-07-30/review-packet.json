@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T01:10:01.862Z",
+  "generatedAt": "2026-07-30T03:42:11.692Z",
   "maxCandidates": 10,
   "candidates": [
     {
@@ -41,7 +41,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [
@@ -97,7 +98,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [
@@ -153,7 +155,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [
@@ -209,7 +212,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [
@@ -265,7 +269,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [
@@ -321,7 +326,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [
@@ -377,7 +383,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [
@@ -433,7 +440,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [
@@ -489,7 +497,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [
@@ -545,7 +554,8 @@
         },
         "author": {
           "@type": "Organization",
-          "name": "VetManLab 편집팀"
+          "name": "베트맨랩",
+          "url": "https://news.vetmanlab.com/about"
         }
       },
       "checklist": [

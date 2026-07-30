@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-30T03:35:30.568Z",
+  "previewOnly": true,
+  "eligibleForRelease": false,
+  "evaluation": {
+    "id": "v1_88e7bde7826c5eaf",
+    "title": "Cult of the Holy Bedtime",
+    "source": {
+      "label": "Dr. Andy Roark",
+      "url": "https://drandyroark.com/cult-of-the-holy-bedtime",
+      "rawUrl": "https://drandyroark.com/cult-of-the-holy-bedtime",
+      "status": "verified",
+      "publishedAt": "2026-07-03T22:10:03.000Z"
+    },
+    "clinicalRisk": "low",
+    "duplicateStatus": "unique",
+    "status": "needs-language-fix",
+    "blockers": [
+      "한국어 titleKo·leadKo·bodyKo 필요",
+      "titleKo/leadKo/bodyKo-missing",
+      "권리 확인된 대표 이미지 필요"
+    ],
+    "languageWarnings": [],
+    "claimWarnings": [],
+    "clinicalSafetyIssues": [],
+    "image": {
+      "url": null,
+      "ownership": null,
+      "confirmed": false
+    },
+    "publication": {
+      "status": "public-brief",
+      "robots": "noindex,follow",
+      "sitemap": false,
+      "newsSitemap": false,
+      "rss": false
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "베트맨랩",
+      "url": "https://news.vetmanlab.com/about"
+    },
+    "reviewer": null,
+    "noReviewer": true,
+    "generatedTextPresent": false
+  },
+  "sourceEvidence": {
+    "title": "Cult of the Holy Bedtime",
+    "description": "Happy Scare-The-Crap-Out-Of-Your-Dog Day! There are three kinds of people in America: those who want fireworks on the 4th of July, those who want light-up drone displays, and those who want to go to sleep. I am a card-carrying member of the latter group.&#160; When I was growing up, I had a friend whose mother said... Read More The post Cult of the Holy Bedtime appeared first on DrAndyRoark.com .",
+    "canonical": "https://drandyroark.com/cult-of-the-holy-bedtime"
+  },
+  "article": {
+    "titleKo": null,
+    "leadKo": null,
+    "bodyKo": [],
+    "keyPointsKo": [],
+    "angleKo": null
+  },
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Cult of the Holy Bedtime",
+    "description": "Happy Scare-The-Crap-Out-Of-Your-Dog Day! There are three kinds of people in America: those who want fireworks on the 4th of July, those who want light-up drone displays, and those who want to go to sleep. I am a card-carrying member of the latter group.&#160; When I was growing up, I had a friend whose mother said... Read More The post Cult of the Holy Bedtime appeared first on DrAndyRoark.com .",
+    "author": {
+      "@type": "Organization",
+      "name": "베트맨랩",
+      "url": "https://news.vetmanlab.com/about"
+    },
+    "isBasedOn": {
+      "@type": "CreativeWork",
+      "url": "https://drandyroark.com/cult-of-the-holy-bedtime"
+    }
+  },
+  "note": "실제 reviewer가 없으므로 approved/published/index 상태를 만들지 않습니다."
+}
