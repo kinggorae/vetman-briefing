@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "hospital-experience-corruption",
+      "pattern": "병원ugeom",
+      "replacement": "병원 경험",
+      "classification": "typo",
+      "requiresSourceConfirmation": true,
+      "meaningPreserved": true
+    },
+    {
+      "id": "birding-community-corruption",
+      "pattern": "조객 참여",
+      "replacement": "조류 관찰자 참여",
+      "classification": "terminology",
+      "requiresSourceConfirmation": true,
+      "meaningPreserved": true
+    },
+    {
+      "id": "county-spacing",
+      "pattern": "라신County",
+      "replacement": "라신 카운티",
+      "classification": "spacing",
+      "requiresSourceConfirmation": true,
+      "meaningPreserved": true
+    }
+  ],
+  "policy": "자동 적용은 등록된 규칙 중 의미 보존이 확인된 표기에만 허용하며, 약물·용량·질환·종·연구 결론은 자동 수정하지 않는다."
+}

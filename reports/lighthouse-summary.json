@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T23:55:05.528Z",
+  "generatedAt": "2026-07-30T01:18:32.996Z",
   "runsPerUrl": 3,
   "urls": [
     {
@@ -9,18 +9,18 @@
       "accessibility": 0.96,
       "bestPractices": 1,
       "seo": 1,
-      "cls": 0.0008210881929759308,
-      "lcp": 2063.5944
+      "cls": 0.0008384856894414521,
+      "lcp": 906.9848
     },
     {
       "url": "http://127.0.0.1:8788/article/v1_e174695d8cae4128",
       "runs": 3,
-      "performance": 1,
+      "performance": 0.95,
       "accessibility": 0.96,
       "bestPractices": 1,
       "seo": 1,
       "cls": 0,
-      "lcp": 1743.3434999999997
+      "lcp": 2933.40225
     },
     {
       "url": "http://127.0.0.1:8788/topic/%EA%B0%90%EC%97%BC-%EB%B0%B1%EC%8B%A0",
@@ -30,8 +30,15 @@
       "bestPractices": 1,
       "seo": 1,
       "cls": 0.02788467347119762,
-      "lcp": 631.53235
+      "lcp": 631.86215
     }
   ],
-  "warnings": []
+  "warnings": [
+    {
+      "url": "http://127.0.0.1:8788/article/v1_e174695d8cae4128",
+      "performance": 0.95,
+      "cls": 0,
+      "lcp": 2933.40225
+    }
+  ]
 }

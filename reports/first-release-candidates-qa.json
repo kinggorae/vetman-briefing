@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-30T01:18:21.822Z",
+  "candidates": [
+    {
+      "id": "v1_88e7bde7826c5eaf",
+      "title": "Cult of the Holy Bedtime",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/cult-of-the-holy-bedtime",
+      "publishedAt": "2026-07-03T22:10:03.000Z",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 titleKo·leadKo·bodyKo 초안이 없고 generationWarnings=llm-generation-not-requested입니다.",
+        "원문 설명만으로 기사 본문을 생성하면 의미·저작권·임상 표현을 검증할 수 없어 자동 보완하지 않았습니다."
+      ],
+      "editorPacket": {
+        "sourceTitle": "Cult of the Holy Bedtime",
+        "sourceDescription": "Happy Scare-The-Crap-Out-Of-Your-Dog Day! There are three kinds of people in America: those who want fireworks on the 4th of July, those who want light-up drone displays, and those who want to go to sleep. I am a card-carrying member of the latter group.&#160; When I was growing up, I had a friend whose mother said... Read More The post Cult of the Holy Bedtime appeared first on DrAndyRoark.com .",
+        "canonical": "https://drandyroark.com/cult-of-the-holy-bedtime",
+        "generatedText": null,
+        "reviewerRequired": true,
+        "published": false
+      }
+    },
+    {
+      "id": "v1_8977cdecc20db74b",
+      "title": "Improving Animal Welfare at Commercial Dog Breeding Kennels",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/commercial-dog-breeding-kennels",
+      "publishedAt": "2026-06-18T05:00:00.000Z",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 titleKo·leadKo·bodyKo 초안이 없고 generationWarnings=llm-generation-not-requested입니다.",
+        "원문 설명만으로 기사 본문을 생성하면 의미·저작권·임상 표현을 검증할 수 없어 자동 보완하지 않았습니다."
+      ],
+      "editorPacket": {
+        "sourceTitle": "Improving Animal Welfare at Commercial Dog Breeding Kennels",
+        "sourceDescription": "Dr. Theresa (Tess) House, DVM, MPH, dives into a topic that can spark strong opinions: commercial dog breeding kennels. If you&#8217;ve ever wondered what veterinarians can do to improve animal welfare in these facilities, or what standards, oversight, and welfare programs actually look like behind the scenes, this episode breaks it all down in a... Read More The post Improving Animal Welfare at Commercial Dog Breeding Kennels appeared first on DrAndyRoark.com .",
+        "canonical": "https://drandyroark.com/commercial-dog-breeding-kennels",
+        "generatedText": null,
+        "reviewerRequired": true,
+        "published": false
+      }
+    },
+    {
+      "id": "v1_66712dc60cebbebc",
+      "title": "That&#8217;s Bad Advice",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/thats-bad-advice",
+      "publishedAt": "2026-06-03T22:10:25.000Z",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 titleKo·leadKo·bodyKo 초안이 없고 generationWarnings=llm-generation-not-requested입니다.",
+        "원문 설명만으로 기사 본문을 생성하면 의미·저작권·임상 표현을 검증할 수 없어 자동 보완하지 않았습니다."
+      ],
+      "editorPacket": {
+        "sourceTitle": "That&#8217;s Bad Advice",
+        "sourceDescription": "Dr. Sarah Boston, DVM, DVSc, DACVS-SA, joins Dr. Andy Roark for a hilarious and surprisingly thoughtful conversation about the worst advice they&#8217;ve heard in veterinary medicine. From &#8220;if you love what you do, you&#8217;ll never work a day in your life&#8221; to &#8220;just let them simmer&#8221; when clients are upset, they unpack the well-intentioned wisdom... Read More The post That&#8217;s Bad Advice appeared first on DrAndyRoark.com .",
+        "canonical": "https://drandyroark.com/thats-bad-advice",
+        "generatedText": null,
+        "reviewerRequired": true,
+        "published": false
+      }
+    },
+    {
+      "id": "v1_ecdd9715ae5b33aa",
+      "title": "Life Stages and Large Breeds in Canine Nutrition",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/large-breeds-in-canine-nutrition",
+      "publishedAt": "2026-05-18T05:00:00.000Z",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 titleKo·leadKo·bodyKo 초안이 없고 generationWarnings=llm-generation-not-requested입니다.",
+        "원문 설명만으로 기사 본문을 생성하면 의미·저작권·임상 표현을 검증할 수 없어 자동 보완하지 않았습니다."
+      ],
+      "editorPacket": {
+        "sourceTitle": "Life Stages and Large Breeds in Canine Nutrition",
+        "sourceDescription": "Dr. Flavia Vedova, DVM, MBA, DACVIM (Nutrition), jumps into one of the most confusing parts of pet nutrition, figuring out when to switch diets, what “all life stages” actually means, and whether your large breed dog really needs a large breed formula. If you’ve ever stared at a pet food bag wondering if you’re helping... Read More The post Life Stages and Large Breeds in Canine Nutrition appeared first on DrAndyRoark.com .",
+        "canonical": "https://drandyroark.com/large-breeds-in-canine-nutrition",
+        "generatedText": null,
+        "reviewerRequired": true,
+        "published": false
+      }
+    },
+    {
+      "id": "v1_5f01b0b4f48babba",
+      "title": "Do You Like Being a Veterinarian on Thursdays?",
+      "sourceLabel": "Dr. Andy Roark",
+      "sourceUrl": "https://drandyroark.com/being-a-vet-on-thursdays",
+      "publishedAt": "2026-05-14T18:34:34.000Z",
+      "sourceStatus": "verified",
+      "duplicateStatus": "unique",
+      "clinicalRisk": "low",
+      "status": "needs-language-fix",
+      "reasons": [
+        "한국어 titleKo·leadKo·bodyKo 초안이 없고 generationWarnings=llm-generation-not-requested입니다.",
+        "원문 설명만으로 기사 본문을 생성하면 의미·저작권·임상 표현을 검증할 수 없어 자동 보완하지 않았습니다."
+      ],
+      "editorPacket": {
+        "sourceTitle": "Do You Like Being a Veterinarian on Thursdays?",
+        "sourceDescription": "Today was a good Thursday. I saw a litter of kittens that have clearly been well loved and taken care of. I had a bunch of appointments for diarrhea (diarrhea… it comes in waves) and they were all fine. I had to stay a little bit late because my last appointment was a dog having... Read More The post Do You Like Being a Veterinarian on Thursdays? appeared first on DrAndyRoark.com .",
+        "canonical": "https://drandyroark.com/being-a-vet-on-thursdays",
+        "generatedText": null,
+        "reviewerRequired": true,
+        "published": false
+      }
+    }
+  ],
+  "counts": {
+    "ready-for-editor": 0,
+    "needs-source-fix": 0,
+    "needs-language-fix": 5,
+    "duplicate": 0,
+    "rejected": 0
+  },
+  "note": "5개 모두 사람 편집자가 원문을 직접 확인해 한국어 초안을 작성해야 합니다. reviewer 0명이므로 approved/published로 전환하지 않습니다."
+}

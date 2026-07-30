@@ -61,7 +61,7 @@ async function diagnoseFeed(source, url) {
 }
 function sourceStatus(rows, source) { if (source.healthStatus === "retired" || source.retired) return "retired"; if (!source.enabled || !feedsFor(source).length) return "disabled"; const states = new Set(rows.map((r) => r.status)); if (states.has("failing")) return "failing"; if (states.has("degraded")) return "degraded"; if (states.has("stale")) return "stale"; if (states.has("quiet")) return "quiet"; return rows.length ? "healthy" : "degraded"; }
 function historyKey(row) { return `${row.sourceId}|${row.feedUrl}`; }
-function updateHistory(rows) {
+function updateHistory(rows, persist = false) {
   const previous = readJson(HISTORY_PATH, { version: 1, runs: [] });
   const priorRuns = Array.isArray(previous.runs) ? previous.runs : [];
   const byKey = new Map();
@@ -75,14 +75,16 @@ function updateHistory(rows) {
   });
   const run = { checkedAt: new Date().toISOString(), feeds: enriched.map((row) => ({ sourceId: row.sourceId, feedUrl: row.feedUrl, status: row.status, successful: row.successful, consecutiveSuccesses: row.consecutiveSuccesses, httpStatus: row.httpStatus || null, latencyMs: row.elapsedMs || null, itemCount: row.itemCount || 0, newestItemAt: row.latestPublishedAt || null, error: row.error || row.lastError || null, canonicalRate: row.canonicalCoverage ?? null, relayRate: row.relayRatio ?? null })) };
   const next = { version: 1, generatedAt: run.checkedAt, runs: [...priorRuns, run].slice(-30) };
-  atomicWrite(HISTORY_PATH, JSON.stringify(next, null, 2) + "\n");
+  if (persist) atomicWrite(HISTORY_PATH, JSON.stringify(next, null, 2) + "\n");
   return enriched;
 }
 async function diagnose(sourceFilter = null) {
   const registry = loadRegistry(); const sources = registry.sources.filter((s) => s.enabled && feedsFor(s).length && (!sourceFilter || s.id === sourceFilter || s.label === sourceFilter)); const rows = [];
   for (const source of sources) for (const url of feedsFor(source)) rows.push(await diagnoseFeed(source, url));
   let sourceRows = registry.sources.map((source) => { const checks = rows.filter((r) => r.sourceId === source.id); return { id: source.id, label: source.label, enabled: source.enabled, status: sourceStatus(checks, source), feedCount: feedsFor(source).length, checkedFeedCount: checks.length, consecutiveFailures: source.consecutiveFailures, lastSuccessAt: source.lastSuccessAt || null, lastFailureAt: source.lastFailureAt || null }; });
-  const historicalRows = updateHistory(rows);
+  // 운영 shadow 예약 실행만 feed-history를 누적한다. 로컬·PR 감사는
+  // 기존 이력을 읽어 상태를 계산하되, 성공 횟수를 조작하지 않는다.
+  const historicalRows = updateHistory(rows, process.env.RECORD_FEED_HISTORY === "1");
   const historyMap = new Map(historicalRows.map((row) => [historyKey(row), row]));
   rows.splice(0, rows.length, ...rows.map((row) => ({ ...row, consecutiveSuccesses: historyMap.get(historyKey(row))?.consecutiveSuccesses || 0, status: row.status === "healthy" && (historyMap.get(historyKey(row))?.consecutiveSuccesses || 0) < 3 ? "degraded" : row.status })));
   sourceRows = registry.sources.map((source) => { const checks = rows.filter((r) => r.sourceId === source.id); return { id: source.id, label: source.label, enabled: source.enabled, status: sourceStatus(checks, source), feedCount: feedsFor(source).length, checkedFeedCount: checks.length, consecutiveFailures: source.consecutiveFailures, lastSuccessAt: source.lastSuccessAt || null, lastFailureAt: source.lastFailureAt || null }; });

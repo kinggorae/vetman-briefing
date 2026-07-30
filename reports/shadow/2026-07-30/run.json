@@ -1,68 +1,68 @@
 {
-  "runId": "2026-07-30-1785369005514",
+  "runId": "2026-07-30-1785373801870",
   "date": "2026-07-30",
-  "startedAt": "2026-07-29T23:47:15.242Z",
-  "completedAt": "2026-07-29T23:50:05.514Z",
+  "startedAt": "2026-07-30T00:52:45.703Z",
+  "completedAt": "2026-07-30T01:10:01.870Z",
   "ok": true,
   "steps": [
     {
       "command": "sources.js",
       "ok": true,
-      "elapsedMs": 87881,
+      "elapsedMs": 977986,
       "error": null
     },
     {
       "command": "validate-feed-candidates.js",
       "ok": true,
-      "elapsedMs": 9505,
+      "elapsedMs": 4107,
       "error": null
     },
     {
       "command": "sources.js",
       "ok": true,
-      "elapsedMs": 42,
+      "elapsedMs": 41,
       "error": null
     },
     {
       "command": "ingest.js",
       "ok": true,
-      "elapsedMs": 72476,
+      "elapsedMs": 53654,
       "error": null
     },
     {
       "command": "updates.js",
       "ok": true,
-      "elapsedMs": 156,
+      "elapsedMs": 160,
       "error": null
     },
     {
       "command": "editorial-audits.js",
       "ok": true,
-      "elapsedMs": 49,
+      "elapsedMs": 47,
       "error": null
     },
     {
       "command": "editorial-audits.js",
       "ok": true,
-      "elapsedMs": 44,
+      "elapsedMs": 46,
       "error": null
     },
     {
       "command": "editorial-audits.js",
       "ok": true,
-      "elapsedMs": 42,
+      "elapsedMs": 45,
       "error": null
     },
     {
       "command": "first-publish-candidates.js",
       "ok": true,
-      "elapsedMs": 35,
+      "elapsedMs": 37,
       "error": null
     },
     {
       "command": "newsroom-review.js",
       "ok": true,
-      "elapsedMs": 42,
+      "elapsedMs": 44,
       "error": null
     }
   ],
@@ -77,7 +77,7 @@
     "low": 38,
     "medium": 9,
     "high": 3,
-    "languageWarnings": 20,
+    "languageWarnings": 17,
     "claimWarnings": 64,
     "sourceFailures": 1,
     "sourceCounts": {
