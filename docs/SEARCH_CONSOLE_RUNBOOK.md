@@ -15,6 +15,14 @@
 
 ## 가져오기와 해석
 
+현재 저장소에는 실제 검색 성과 CSV가 없으므로 import 행은 0건이다. 다음 파일을 사람이 내려받아야 한다.
+
+- Google Search Console 검색 실적 CSV
+- Google 페이지 색인 보고서
+- Google News 실적과 Discover 실적(제공되는 경우)
+- 네이버 콘텐츠 노출·클릭 CSV
+- 네이버 수집·색인 오류 보고서
+
 ```sh
 npm run seo:import:gsc -- /secure/path/gsc.csv
 npm run seo:import:naver -- /secure/path/naver.csv

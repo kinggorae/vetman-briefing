@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T00:07:08.638Z",
+  "generatedAt": "2026-07-30T01:16:57.463Z",
   "status": "passed",
   "counts": {
     "htmlPages": 537,
@@ -17,7 +17,7 @@
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 158089,
+    "homepageBytes": 159151,
     "searchSizes": [
       {
         "file": "search.json",
@@ -36,7 +36,7 @@
         "bytes": 133553
       }
     ],
-    "articleBytes": 9038803,
+    "articleBytes": 9038946,
     "searchFirstRequestBytes": 133553
   },
   "duplicate": {
@@ -50,17 +50,18 @@
     "currentNoindex": 293,
     "delta": -148,
     "reasonCounts": {
-      "banned-term": 11,
-      "internal-ascii": 19,
-      "body-not-korean-sentence": 7,
+      "build-policy": 1,
       "brief-tier": 215,
       "brief-too-short": 49,
       "source-relay": 39,
+      "internal-ascii": 17,
       "title-not-korean-sentence": 3,
       "lead-not-korean-sentence": 4,
+      "body-not-korean-sentence": 6,
       "body-too-short": 19,
       "suppressed": 30,
       "duplicate-source": 8,
+      "banned-term": 9,
       "garbled-text": 5,
       "repeated-word": 4,
       "paragraph-too-short": 1
@@ -297,15 +298,9 @@
           "tier": "analysis",
           "clinicalRisk": "medium",
           "paragraphs": 3,
-          "qualityIssues": [
-            "banned-term",
-            "internal-ascii",
-            "body-not-korean-sentence"
-          ],
+          "qualityIssues": [],
           "reasons": [
-            "banned-term",
-            "internal-ascii",
-            "body-not-korean-sentence"
+            "build-policy"
           ]
         },
         {
@@ -555,17 +550,14 @@
         {
           "date": "2026-07-29",
           "id": "v1_aa6becfdbbcbbfdd",
-          "title": "사우스오스트레일리아, 조객 참여 조류인플루엔자 대응 훈련 프로그램 추진",
+          "title": "사우스오스트레일리아, 조류 관찰자 참여 조류인플루엔자 대응 훈련 프로그램 추진",
           "indexable": false,
           "tier": "brief",
           "clinicalRisk": "low",
           "paragraphs": 1,
-          "qualityIssues": [
-            "banned-term"
-          ],
+          "qualityIssues": [],
           "reasons": [
-            "brief-tier",
-            "banned-term"
+            "brief-tier"
           ]
         },
         {
@@ -731,7 +723,7 @@
     },
     {
       "file": "data/issues/2026-07-22.json",
-      "title": "라신County 박쥐에서 광견병 양성 확인...주의 필요"
+      "title": "라신 카운티 박쥐에서 광견병 양성 확인...주의 필요"
     },
     {
       "file": "data/issues/2026-07-22.json",
@@ -747,7 +739,7 @@
     },
     {
       "file": "data/issues/2026-07-22.json",
-      "title": "연기 피해를 입은 비둘기, 소장관에게 도움 요청"
+      "title": "연기 피해를 입은 비둘기, 소방관에게 도움 요청"
     },
     {
       "file": "data/issues/2026-07-22.json",

@@ -561,3 +561,63 @@ Production smoke: `https://news.vetmanlab.com/`, article, sitemap, news sitemap,
 - production deployment: 기존 Cloudflare Pages 프로젝트 `vetman-briefing`의 `main` 환경에 배포 완료. deployment URL은 `https://e452210f.vetman-briefing.pages.dev`이며 custom domain `https://news.vetmanlab.com/`에 반영했습니다. 새 프로젝트는 만들지 않았습니다.
 - production smoke: `/`, `robots.txt`, `sitemap.xml`, `news-sitemap.xml`, `rss.xml`, `admin-ui.html` HTTP 200. sitemap 211·news sitemap 11·RSS 50 item/50 full `content:encoded`를 확인했습니다. 직접 `/admin-review.json`과 인증 없는 `/api/admin?resource=audit`는 HTTP 401입니다.
 - 최종 상태: index/noindex 170/293, 공식 피드 stale 1·degraded 11·failing 1, 복구 후보 needs-human-review 5, shadow 자동 published 0, 실제 reviewer 0명입니다. 기존 high/medium-risk 검수 대기와 unresolved 원출처는 사람이 확인하기 전 변경하지 않았습니다.
+
+## 16. 8차 고도화: editorial QA·first release workflow
+
+작성 브랜치: `codex/editorial-qa-first-release`
+기준: 7차 production 반영 후 `origin/main` 최신본
+배포 원칙: 기존 170/293 색인 정책과 canonical을 유지하고, 실제 reviewer 0명 상태에서 승인·발행을 생성하지 않았습니다.
+
+### 구현 내용
+
+- `scripts/editorial-qa.js`와 `reports/language-review.json/md`를 추가했습니다. 7차 기준 언어 경고 20건을 `typo`, `terminology`, `untranslated-fragment`, `ambiguous`, `false-positive`로 분류하고 원문 URL·sourceTitle·필드·짧은 근거·신뢰도·의미 변경 여부·사람 검수 필요 여부를 기록합니다. 원문 전체는 저장하지 않습니다.
+- `data/editorial/language-rules.json`과 `docs/KOREAN_EDITORIAL_STYLE.md`를 추가했습니다. 약물·용량·질환·종·연구 결론은 자동 교정하지 않고, 등록된 의미 보존 규칙만 안전한 수정 후보로 취급합니다.
+- 원문 맥락이 명확한 `병원ugeom→병원 경험`, `조객 참여→조류 관찰자 참여`, `라신County→라신 카운티`, `소장관→소방관`을 수정했습니다. 문법 교정은 `dateModified`를 만들지 않았고 기존 legacy URL은 `legacySlug`로 보존했습니다. 오류 수정으로 기존 noindex 기사 1건이 새로 index되지 않도록 `indexPolicy: legacy-noindex`를 명시했습니다.
+- `reports/claim-review.json/md`를 추가해 임상 주장 경고 64건을 `missing-context` 63건, `unit-mismatch` 1건으로 분류했습니다. 원문과 직접 대조하기 전에는 수치·단위·약물·종·연구 결론을 자동 수정하지 않으며, 이번 실행에서 확인된 `critical`은 0건입니다.
+- 기존 low-risk 첫 발행 후보 5건은 공식 canonical·unique·low-risk 상태를 유지하지만 한국어 title/lead/body 초안이 없고 LLM 생성이 요청되지 않았으므로 모두 `needs-language-fix`로 보류했습니다. `reports/first-release-candidates-qa.json/md`에 원문 메타데이터와 사람이 작성해야 할 편집 패킷을 남겼으며 ready-for-editor 0, 자동 published 0입니다.
+- `scripts/people-cli.js`와 `people:list/validate/add/disable`를 추가했습니다. 실제 입력·명시적 역할·placeholder 차단·수의사 credentials/profile URL 검증·dry-run·원자적 저장을 제공하며, 사람 등록만으로 기존 기사를 승인하지 않습니다. 현재 people 0명입니다.
+- 관리자 `admin-review.json`에 언어·주장·첫 발행·people 상태와 GSC/네이버 필수 파일 목록을 연결했습니다. 인증된 관리자 화면은 reviewer 0명일 때 “실제 편집자 등록 필요”를 표시하고 승인·발행을 CLI/Git 검수 기록으로만 제한합니다. 관리자 데이터는 noindex이고 공개 sitemap/RSS에 포함되지 않습니다.
+- 피드 진단에서 로컬·PR 테스트가 운영 성공 이력을 조작하지 않도록 `RECORD_FEED_HISTORY=1`일 때만 `feed-history.json`을 누적하게 했습니다. 예약 shadow workflow에만 이 환경변수를 설정했습니다.
+
+### 8차 통계
+
+| 항목 | 결과 |
+|---|---:|
+| 기사 / index / noindex | 463 / 170 / 293 |
+| 언어 경고 기준 / 현재 감사 | 20 / 17 |
+| 언어 분류 | untranslated-fragment 11 · false-positive 5 · ambiguous 2 · typo 1 · terminology 1 |
+| 안전한 기존 데이터 교정 | 4건 · 의미 변경 0 · dateModified 변경 0 |
+| 임상 주장 경고 / critical | 64 / 0 |
+| 주장 분류 | missing-context 63 · unit-mismatch 1 |
+| first-release 후보 | 5건 · ready-for-editor 0 · needs-language-fix 5 |
+| 공식 피드 상태 | healthy 0 · quiet 0 · stale 1 · degraded 11 · failing 1 |
+| shadow 실행 | 성공 · 검수 패킷 10 · 자동 published 0 |
+| shadow 수집 | 677 · unique 569 · duplicate 33 · update 75 · draft 50 |
+| 등록 reviewer | 0명 |
+| GSC·네이버 import | 0행 · 실제 CSV 없음 |
+
+### 8차 검증 결과
+
+- `npm ci`: 성공. 설치 전체 audit에는 dev dependency 경고가 있었으나 `npm audit --omit=dev`: production vulnerabilities 0건.
+- `npm test`: 성공, 28개 통과. 언어·주장 전체 분류, people CLI placeholder/수의사 필수 필드, legacy noindex 안정성, reviewer 없는 첫 발행 보류 회귀를 포함합니다.
+- `npm run check`: 성공. build/validate 포함. index/noindex 170/293과 기존 canonical을 유지했습니다.
+- `npm run seo:audit`: 성공. sitemap 211, news sitemap 11, JSON-LD/XML/internal link critical 0, noindex sitemap 충돌 0, index 이미지 170/170입니다.
+- `npm run sources:diagnose`, `npm run sources:health`, `npm run ingest:dry`, `npm run updates:stats`, `npm run language:audit`, `npm run terminology:audit`, `npm run claims:audit`, `npm run editorial:review`, `npm run shadow:run`, `npm run people:list`, `npm run people:validate`, `npm run publish:validate`: 성공. shadow 실행은 public false/published 0이며 로컬 실행에서 feed-history를 변경하지 않았습니다.
+- Playwright: 모바일 390×844, 태블릿 768×1024, 데스크톱 1440×1000에서 12/12 통과. 콘솔·요청 실패, 깨진 이미지, axe critical 0입니다.
+- Lighthouse CI: 3 URL×3회 중앙값. Performance 0.99~1.00, Accessibility 0.95~0.96, Best Practices 1.00, SEO 1.00, 최대 CLS 0.028, 최대 LCP 약 2.06초, warning 0입니다.
+- JSON-LD 1,264개 파싱, sitemap/news sitemap/RSS XML 파싱, canonical 회귀 0, 기존 index ID 누락 0, 신규 published 0, `git diff --check`를 확인했습니다.
+
+### 사람이 처리할 정확한 다음 절차
+
+1. 실제 편집자 또는 수의사 확인 정보를 확보한 뒤 `npm run people:add -- --id <id> --name <name> --role <role>`를 dry-run으로 검토합니다. veterinary-reviewer는 확인된 credentials와 HTTPS profile URL 없이는 등록할 수 없습니다.
+2. `reports/language-review.md`의 13개 사람 검수 대기 항목과 `reports/claim-review.md`의 64개 항목을 원문에서 대조합니다. 약물·용량·종·사람/동물 연구·결론은 자동 수정하지 않습니다.
+3. 첫 발행 후보 5건은 원문을 직접 읽어 한국어 title/lead/body와 권리 확인 이미지를 작성한 뒤 `npm run publish:prepare`, `npm run publish:validate`를 실행합니다.
+4. 체크리스트를 실제로 완료한 reviewer만 `npm run publish:approve -- <draft-id> --reviewer <id> --checklist=all --apply`를 실행할 수 있습니다. high-risk는 vet/admin 역할이 아니면 차단됩니다.
+5. 승인 후 contentHash를 다시 확인하고 별도 diff 검토 후 `npm run publish:release -- <draft-id> --apply`를 실행합니다. 승인 후 본문이 바뀌면 release는 실패합니다.
+
+### 8차 배포 상태
+
+- feature commit: 배포 전 생성 예정
+- PR: 배포 전 생성 예정
+- production: 모든 검증과 PR CI가 통과한 뒤 기존 Cloudflare Pages `vetman-briefing`에만 반영합니다. 새 프로젝트는 만들지 않습니다.
+- 배포 전 불변 조건: index/noindex 170/293, canonical 변경 0, reviewer 0, 자동 published 0, draft 공개 0, production secret 출력 0.

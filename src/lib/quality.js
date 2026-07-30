@@ -142,7 +142,7 @@ export function isCardRenderable(item = {}) {
 
 export function isProfessionallyIndexable(item = {}, { duplicate = false } = {}) {
   const tier = normalizeContentTier(item);
-  if (item.visibility === "suppressed" || duplicate || item.duplicateSource) return false;
+  if (item.visibility === "suppressed" || item.indexPolicy === "legacy-noindex" || duplicate || item.duplicateSource) return false;
   if (!item.sourceUrl && !item.finalUrl && !item.sourceUrlRaw) return false;
   if (!(tier === "analysis" || tier === "evidence")) return false;
   return publishQualityIssues(item).length === 0;

@@ -26,6 +26,8 @@ jobs:
       - run: npm ci
       - name: Run shadow newsroom
         run: npm run shadow:run
+        env:
+          RECORD_FEED_HISTORY: "1"
       - name: Write seven-run trend
         if: always()
         run: npm run shadow:trend

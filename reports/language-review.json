@@ -1,0 +1,421 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-30T00:52:38.776Z",
+  "baselineWarningCount": 20,
+  "warningCount": 20,
+  "autoApplied": 2,
+  "humanReview": 13,
+  "items": [
+    {
+      "articleId": "2026-07-08_7",
+      "url": "https://news.vetmanlab.com/article/2026-07-08_7-%EB%8F%99%EB%AC%BC%EB%B3%91%EC%9B%90-%EC%88%98%EC%9D%B5%EC%84%B1-%EA%B0%95%ED%99%94-%EC%9C%84%ED%95%9C-4%EA%B0%80%EC%A7%80-%ED%95%B5%EC%8B%AC-KPI-%EA%B4%80%EB%A6%AC%EB%B2%95",
+      "field": "bodyKo[0]",
+      "originalText": "최근 2년간 동물병원 매출 증가율이 소비자물가지수(CPI) 상승률을 밑돌고 있습니다. 2025년 CPI는 2.7% 상승했지만 동물병원 평균 매출 증가율은 2.1%에 그쳤으며, 2026년 들어 이 격차가 더 벌어지고 있습니다. 동시에 상품 원가와 인건비 상승폭이 CPI보다 높아 수익 마진이 압박받고 있는 상황입니다. 이러한 환경에서 병원 경영자는 네 가지 핵심 성과지표(KPI)를Monthly로 추출하고 연도별 추이를 비교 분석해야 합니다.",
+      "sourceText": "Measure, Monitor, and Manage KPIs to Increase Clinic Revenue",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://todaysveterinarybusiness.com/measure-monitor-and-manage-kpis-to-increase-clinic-revenue/",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-21_44",
+      "url": "https://news.vetmanlab.com/article/2026-07-21_44-%EA%B0%9C%EC%99%80-%EA%B3%A0%EC%96%91%EC%9D%B4%EA%B0%80-%EB%8D%94%EC%9A%B4%EB%8D%B0%EB%8F%84-%ED%95%B4%EB%B0%94%EB%9D%BC%EA%B8%B0-%ED%95%98%EB%8A%94-%EC%A7%84%EC%A7%9C-%EC%9D%B4%EC%9C%A0",
+      "field": "bodyKo[0]",
+      "originalText": "최근 이상고온이 이어지는 가운데, 많은 주인이 불안한 표정으로 개와 고양이가 무더운데도 창가에서 해바라기하는 모습을 목격한다고 합니다. '오늘 이렇게 더운데 왜 나가 앉아있을까'라는 질문이SNS에 많이 올라오고 있죠. 수의사에 따르면 이것은 수천 년 동안 형성된 강아지와 고양이의 본능적 행동이라고 합니다.",
+      "sourceText": "Dogs and Cats Keep Sunbathing During Heatwaves Despite the Danger, and a Vet Reveals the Surprising Reason Why",
+      "suggestedText": null,
+      "classification": "false-positive",
+      "confidence": 0.98,
+      "changesMeaning": false,
+      "requiresHumanReview": false,
+      "resolution": "allowlisted-acronym",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOWGFFRVhWWkdrYVFsRVZfWmFRWU9nNkt6Sm9aR2hDbkdLZG5sT3ltWjdVeU9XejhDaHJTQTI0SERmMHpnQ1c4SDB0N2VpNFdUeEh4V2VYRFlhUDBRN1drYi1Jb3VrcVpoQU5SS05sNFVudVR2cFlzVmtwWWg5VXF0X1RR?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-22_2",
+      "url": "https://news.vetmanlab.com/article/2026-07-22_2-%EC%9D%91%EA%B8%89%EC%88%98%EC%9D%98%EA%B3%BC-%EC%A0%84%EB%AC%B8%EC%88%98%EC%9D%98%EC%82%AC%EC%9D%98-%EC%A4%91%ED%99%98%EC%9E%90%EA%B4%80%EB%A6%AC-QA",
+      "field": "bodyKo[0]",
+      "originalText": "응급수의 진료에서는 환자의 상태를 빠르게 평가하고 중증도를 정확히 판단하는 것이 무엇보다 중요합니다. 전문 응급수의는 응급실에 내원하는 많은 동물들이 초기 상담에서 예상보다 훨씬 심각한 상태인 경우가 많다고ointerview에서 밝혔습니다. 이는 예방의학적 접근의 필요성을 강조하며, 평소 건강검진의 중요성을 뒷받침하는 사례입니다.",
+      "sourceText": "Q&A with an emergency veterinarian on critical care and common ER misconceptions",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNN2ZyTjFfaWRwQ1RTOWdCOFhSRXkxb2xQTzZ5OEEwanVTalYzUHBDdGRBSXJ0aDhLWVJHbTh4VmRMX3hQQTdicjFSQV80S2h3TTdIRmR4Tks1clNyQmNzUVl1U2pHQWFuQWRPNnZ0THVkdmFvNmFPcWlRM0ZNc0lWa0c2ei1lNmxqTUdrWGtGWU12YTFhbVpUemtzd0REU0ljUjVOSzVudUJUaThJ?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-22_5",
+      "url": "https://news.vetmanlab.com/article/2026-07-22_5-%EB%B0%98%EB%A0%A4%EB%8F%99%EB%AC%BC%EA%B3%BC-%EA%B0%80%EC%A1%B1%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B4%91%EA%B2%AC%EB%B3%91-%EC%98%88%EB%B0%A9-%EA%B0%80%EC%9D%B4%EB%93%9C",
+      "field": "bodyKo[0]",
+      "originalText": "광견병은 라비바이러스에 의해 발생하는 질환으로, 감염된 동물에 물리거나 할푼arker에 노출될 때 전파됩니다. 현재까지 치료법이 없어 예방이 유일한 방어 수단입니다.",
+      "sourceText": "Rabies — how to protect your pets and loved ones from the virus",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYm5jLVh6UmN4Y1hDR1hFZDFZQkg1MFZ4cDVLbWdKOHJqazJRRXRGR09XakNpcWVjOTBVbVUtSnVUTDVzSDFwenIwNHVJS1JEd1hHaTZQcml4QjVqdy00aEVaWWRBZEgtMmpnRkVGTzAyYlhqNXZ0YktUbEJKQVpDVWlfdzlNVmlmYnBYbXJYRDFvVTBUVlJ0RmN6cU8xOFVTT1NJ?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-22_20",
+      "url": "https://news.vetmanlab.com/article/2026-07-22_20-%EA%B3%A0%EC%96%91%EC%9D%B4-%EC%95%88%EC%99%80-%EB%B0%8F-%ED%8F%90-%EC%9E%84%ED%8C%8C%EC%A2%85%EC%9D%98-%EC%A0%9C%ED%95%9C-%ED%99%95%EC%82%B0-%EC%86%8C%EA%B2%AC-%EC%B2%AB-%EB%B3%B4%EA%B3%A0",
+      "field": "leadKo",
+      "originalText": "고양이 안와 임파종과 추정 폐 임파종에서 확산강조MRI의 제한 확산을 처음으로 보고하며, 이 영상기법이 임파종 감별에 유용할 수 있음을 확인했습니다.",
+      "sourceText": "Restricted Diffusion on Diffusion-Weighted MRI in a Cat With Orbital Lymphoma and Presumptive Pulmonary Lymphoma.",
+      "suggestedText": null,
+      "classification": "false-positive",
+      "confidence": 0.98,
+      "changesMeaning": false,
+      "requiresHumanReview": false,
+      "resolution": "allowlisted-acronym",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://doi.org/10.1111/vru.70218",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-22_31",
+      "url": "https://news.vetmanlab.com/article/2026-07-22_31-%EC%97%B0%EA%B8%B0-%ED%94%BC%ED%95%B4%EB%A5%BC-%EC%9E%85%EC%9D%80-%EB%B9%84%EB%91%98%EA%B8%B0-%EC%86%8C%EB%B0%A9%EA%B4%80%EC%97%90%EA%B2%8C-%EB%8F%84%EC%9B%80-%EC%9A%94%EC%B2%AD",
+      "field": "bodyKo[1]",
+      "originalText": "비둘기는 약간의 연기 노출 증상을 보였으나 빠른 대응으로 회복세를 보인 것으로 전해졌습니다. 진료실 밖에서도 아플 때 도움이 필요한 생명들이 우리에게SOS를 보내곤 하죠.",
+      "sourceText": "Smoke-injured pigeon seeks help from firefighters in heartwarming viral rescue",
+      "suggestedText": null,
+      "classification": "false-positive",
+      "confidence": 0.98,
+      "changesMeaning": false,
+      "requiresHumanReview": false,
+      "resolution": "allowlisted-acronym",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPSGI5dmxoZEU5NFN4bm9RRkJRNWwwOHpMVXNEN1JRUmppbkRMMlJfR2c4YnVOeGN4SDY2di0yeDd5NVpybmpaekNJT1R1WTNUbjJoTzFablJpU2g0SkRtM1A5dXFaNkJqMFlRUkFXRlhaRnpWd0JDSm12enlwbXZncXpUOXVyT3c1Mnc?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-23_20",
+      "url": "https://news.vetmanlab.com/article/2026-07-23_20-%EA%B0%9C%EC%9D%98-%ED%9D%89%EB%B6%80-%EC%A2%85%EC%96%91-%ED%98%B8%ED%9D%A1%EC%97%90-%EB%94%B0%EB%9D%BC-3%EC%B0%A8%EC%9B%90-%EC%9C%84%EC%B9%98-%EB%B3%80%ED%99%94-%EA%B4%80%EC%B0%B0",
+      "field": "bodyKo[0]",
+      "originalText": "본 연구는 개의 흉부 종양이 호흡Cycle에서 어떻게 움직이는지를 평가하기 위해 수행되었습니다. 14마리의 개를 대상으로 inspiratory와 expiratory breath hold를 시행한 흉부 CT를 전향적으로 촬영하고, 각 시상의 종양 부피(GTV)와 정상 조직을 delineation한 후 3차원적 위치 변화를 분석했습니다.",
+      "sourceText": "Clinically Relevant Motion of Canine Thoracic Tumors Is Seen Between Inspiratory and Expiratory Breath Holds on Computed Tomography Performed for Radiation Treatment Planning.",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://doi.org/10.1111/vru.70212",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-24_6",
+      "url": "https://news.vetmanlab.com/article/2026-07-24_6-%EC%8B%A0%EB%8C%80%EB%A5%99-%ED%8C%8C%EB%A6%AC%EC%9C%A0%EC%B6%A9-%EB%AF%B8%EA%B5%AD-%ED%99%95%EC%82%B0-%EB%8F%99%EB%AC%BC%EB%B3%91%EC%9B%90-%EA%B2%BD%EA%B3%A0",
+      "field": "leadKo",
+      "originalText": "미국 농무부APHIS가 신대륙 파리유충(NWS) 대유행 확산에 따른 긴급 경고를 발령했습니다. 이 기생 파리는 온혈동물의 상처에 알을 낳아 유충이 조직을 파고드는 치명적 질환입니다.",
+      "sourceText": "New World Screwworm | Animal and Plant Health Inspection Service",
+      "suggestedText": null,
+      "classification": "false-positive",
+      "confidence": 0.98,
+      "changesMeaning": false,
+      "requiresHumanReview": false,
+      "resolution": "allowlisted-acronym",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNcnp4eEc5X1JGV3llb18xS1hMekV6bXNSWjhDWjhIb2d0ZnlEaExqalh6WTAwMV9xYzJSNFZoeDJFZmdOYmJ2WGt3RXBrbkZKYmc1ckF1aVFBNjRNX2Jpbm0taWRLeGR3MWN1czFiQVg2UXA1ZnhnWWIwTm5sZDFjeA?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-24_15",
+      "url": "https://news.vetmanlab.com/article/2026-07-24_15-%EA%B3%A0%EC%96%91%EC%9D%B4-%EC%9A%94%EB%A1%9C%EA%B0%90%EC%97%BC-%EC%9B%90%EC%9D%B8%EA%B7%A0%EC%9D%98-%EB%8B%A4%EC%A0%9C%EB%82%B4%EC%84%B1-%EC%8B%A4%ED%83%9C",
+      "field": "bodyKo[1]",
+      "originalText": "주요 분리균은 대장균(45.1%), 프로테우스속(16.3%), 클레bsiella속(12.5%)이었습니다.ISCAID 가이드라인에서 1차 선택약으로 권장되는 항생제에 대한 내성이 높아서, 대장균의 경우 트리메토프림-설파메톡사조르(57.2%), 세팔렉신(52.5%), 아목시실린-클라불산(43.9%)에서 높은 내성률을 보였습니다.베테리나리 플루오로퀴놀론(에노록사신 28.5%, 마보플록사신 20.9%)은 중간 수준의 내성이었으며, 니트로푸란토인 내성은 37.7%였습니다.3세대 세팔로스포린과 카바페넴은 가장 높은 활성을 유지했습니다(세프타지딤 13.2%; 메로페넴 0%).전체 균주의 55.8%에서 다제내성이 관찰되었으며, 프로테우스속(79.5%)과 대장균(57.9%)에서 가장 높았습니다.",
+      "sourceText": "Antimicrobial resistance profiles of bacterial pathogens from feline urinary tract infections in Rio de Janeiro, Brazil.",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://doi.org/10.1007/s11259-026-11415-w",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-25_5",
+      "url": "https://news.vetmanlab.com/article/2026-07-25_5-%EA%B0%9C-%EC%97%B4%EC%B9%98%EB%A3%8C-%EC%9D%B4-6%EA%B0%80%EC%A7%80-%EC%83%81%ED%99%A9%EC%97%90-%ED%9A%A8%EA%B3%BC%EC%A0%81",
+      "field": "titleKo",
+      "originalText": "개 열치료, 이 6가지 상황에 효과적",
+      "sourceText": "6 Canine Conditions That Benefit From Heat Therapy",
+      "suggestedText": null,
+      "classification": "ambiguous",
+      "confidence": 0.6,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://ivcjournal.com/6-canine-conditions-that-can-benefit-from-heat-therapy/",
+      "indexable": false
+    },
+    {
+      "articleId": "v1_91b82787350716ae",
+      "url": "https://news.vetmanlab.com/article/v1_91b82787350716ae-%EB%A9%95%EC%8B%9C%EC%BD%94-%EA%B0%95%EC%95%84%EC%A7%80-%EB%A1%9C%ED%82%A4-%EC%9C%A0%EA%B8%B0-%EC%82%AC%EA%B1%B4-%EC%97%AC%EC%84%B1-%EA%B8%B0%EC%86%8C-%EC%A0%88%EC%B0%A8-%EC%A7%84%ED%96%89",
+      "field": "leadKo",
+      "originalText": "멕시코 Saltillo에서 강아지 Rocky를 유기·학대한 혐의로 Liliana라는 여성에게 기소 절차가 진행되고 있습니다. 이 사건은 동물 복지 법 위반으로Investigators의 수사를 거쳐 기소되었습니다.",
+      "sourceText": "Quién es Liliana \"N\", vinculada a proceso por caso de perrito \"Rocky\" en Saltillo",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPS0xlSVozWjBGUkplUG02bml3R1o3M1F3RlFHMVFfdzVMR2JKTjBaZEhkMTc2eWtUbGhxUTU2NmJ6aWhFbmlPbW1xdldIaVpjRW5EM1VfeGV0QlJybFpIVjZnQmJOZXFSdmY3OFNSamwwekhxeDN2WThQb2NKLWlhb1BHeWJ0RlRPMEJnX2ViaGJrNUNBbm5DbGdpdkIzY0Z1blVsZEgwUUFEWG01c1UxV1d0X3B4TWdncGJHOXRPVWxSU0dweUpr0gHMAUFVX3lxTE5kOTRLbUdwelZkXzFRcVkyLTk5U1laUU5XSW9KcEZ6M0tkTzNDbzNEdWxOSmxnejcxM1FwaHlXb3dEblNaTEdvSkJSOHdZQVplanlfVkVjT3oxV3ZQQ3V6SEVnbGlSbmdPcFBGTUJrVm9OZ1ZocFhnTXBaRlZ6RmtYeGs2dmliT2lfNXU2eHJzTDNRdHJ5Mzl1dmc0eldQQ1pPMmpLUU9ZTUk1SHU3QlJmdm9IUVNDQ2xDUVVJanV3THF1N3BjQU1UNFBPXw?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "v1_37858ada0a9b4a9e",
+      "url": "https://news.vetmanlab.com/article/v1_37858ada0a9b4a9e-%ED%81%B4%EB%9E%98%EC%B8%A0%EC%8B%AD-%EC%B9%B4%EC%9A%B4%ED%8B%B0-%EC%88%98%EC%9D%98%EC%82%AC-%EB%B6%80%EC%A1%B1-%EC%8B%A4%ED%83%9C-%ED%8C%8C%EC%95%85",
+      "field": "leadKo",
+      "originalText": "오regon주 클래츠십 카운티에서 수의사 부족 현상이 있는지 지역 언론이 확인하고 있습니다. 동물 의료 접근성에 대한 우려가 제기되는 가운데 지역 의료 현황이 조명되고 있습니다.",
+      "sourceText": "Is there a veterinary shortage in Clatsop County?",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQdDNmUDFnTGVtZDZ2bmEzUDFqR0U1dUtMU0Z4ckhVaU1kdzhMWjkwT2hFd25HNDJ2R2VhM2UwOWNZU3ZzWnVCajc0di1QMXJhaDNTeWdvTndOeUhmbDNZVGM3aXFuU1h2bld2UTQzR3JVLXZ3cDhBSkNVWS1jM1NNZl9EN3VIWF9ZUkFqSGFlWkE?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "v1_8cb1cced241aa789",
+      "url": "https://news.vetmanlab.com/article/v1_8cb1cced241aa789-%EB%AF%B8%EA%B5%AD-%EB%8F%99%EB%AC%BC%EB%B3%91%EC%9B%90-Cherry-%ED%95%A0%EB%B6%80-%EA%B8%88%EC%9C%B5-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%8F%84%EC%9E%85",
+      "field": "leadKo",
+      "originalText": "미국의 동물병원들이Cherry이라는 결제 플랫폼을 통해 동물 의료비 할부 결제를 제공하고 있습니다. 고비용 진료 시 보호자들의 부담을 줄이고 진료 접근성을 높이려는 목적입니다.",
+      "sourceText": "Pet Doc: Cherry financing for veterinary services",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNa29oeEVWUUs1cDFpOEdsa3BxaFg2U0laOE10dmktU2FGUWdLYlNPWEhfYWdwcEtoUXItUnVweERla0VpaUF2LUdmN2RJdXhFU1NkMWY3bWZpZk1jMlVDcHhBNXFNYkZERXRMTWtWd1BZTU9naXkzQmlTT0ZMYWF2ZWhtMTZtekhlSWZhdnY1NXo0eVkta1hCVWxjUm9aZ3Ff?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "v1_0074ee65a7214423",
+      "url": "https://news.vetmanlab.com/article/v1_0074ee65a7214423-%EB%A7%90%EC%9B%90%EC%84%A0%EC%B6%A9%EC%9D%98-%EC%84%9C%EC%8B%9D%EC%A7%80-%EB%B6%84%ED%95%A0-%EC%A0%84%EB%B3%B5%EA%B2%B0%EC%9E%A5-%EC%A4%91%EC%95%99%EC%A0%90%EC%9C%A0%EC%99%80-%EC%A3%BC%EB%B3%80-%EA%B3%B5%EA%B0%84-%ED%9A%8C%ED%94%BC",
+      "field": "leadKo",
+      "originalText": "말속 동물 원선충은 동일한 한 개체 내에서 서로 다른 공간적 위치를 점유함으로써 공생합니다. 5마리의 셰틀랜드 조랑이를 이용한 실험이 우세종과 희귀종 간의 미세한 공간 경쟁 메커니즘을reveal했습니다.",
+      "sourceText": "SURVIVAL ON THE MARGINS: NICHE PARTITIONING AND DENSITY-DEPENDENT SPATIAL DISTRIBUTION OF EQUINE CYATHOSTOMINS.",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://doi.org/10.1645/26-35",
+      "indexable": false
+    },
+    {
+      "articleId": "v1_fdca693310cedee2",
+      "url": "https://news.vetmanlab.com/article/v1_fdca693310cedee2-%EA%B0%9C%EB%AA%A8%EB%8D%B8%EC%97%90%EC%84%9C-%EC%9E%84%ED%94%8C%EB%9E%80%ED%8A%B8-%EC%A3%BC%EC%9C%84%EC%97%BC-%EC%B9%98%EB%A3%8C%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%B3%B5%ED%95%A9-%EC%86%8C%EB%8F%85%EB%B2%95%EA%B3%BC-BMP2-%ED%95%A8%EC%9C%A0-%EC%9E%AC%EC%9E%AC",
+      "field": "bodyKo[1]",
+      "originalText": "소독 후 2주째 기계적 소파+클로르헥시딘+광역동치료 병용군이 mSBI, PPD, PISF, IL-1β, IL-8 모두 가장 낮은 수치를 보였습니다. 이후 대조군, 탈단백 소 고환성 광물질(DBBM), BMP-2 함유 생체모방 인산칼슘 세 군으로 구분하여GBR수술을 시행하고 8주 후 micro-CT와 조직형태학 분석을 실시했습니다. BMP-2 함유 재재료는 골 용적 분율, trabecular 두께,trabecular 수, 골밀도가 유의미하게 높았고 trabecular 분리가 유의미하게 낮았으며, 2, 4, 6주차 형광 강도와 8주차 임플란트-골 접촉율, 신생골 높이도 모두 대조군과 DBBM보다 높았습니다.",
+      "sourceText": "The Efficacy of Three Combinatory Decontamination Protocols and BMP-2-Incorporated BioCaP-Based Regenerative Material in Treating Implants With Peri-Implantitis In&#xa0;Vivo.",
+      "suggestedText": null,
+      "classification": "false-positive",
+      "confidence": 0.98,
+      "changesMeaning": false,
+      "requiresHumanReview": false,
+      "resolution": "allowlisted-acronym",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://doi.org/10.1111/clr.70126",
+      "indexable": false
+    },
+    {
+      "articleId": "v1_48316054f235a5b4",
+      "url": "https://news.vetmanlab.com/article/v1_48316054f235a5b4-Fear-FreeExubrion-Therapeutics-%EC%9E%84%EC%9B%90-%EC%9D%B8%EC%82%AC",
+      "field": "leadKo",
+      "originalText": "반려동물 공포 완화 선도 기관 Fear Free가 수의학 총괄director를 신규 임명했다. Exubrion Therapeutics도 상업 총괄director를 영입하며 인력 확대를 이어가고 있다.",
+      "sourceText": "Paws and profits: Fear Free names chief veterinary officer, Exubrion Therapeutics announces new chief commercial officer, and more updates",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQaERHLVRXdXA3SXBUangzN2daYmtLbmk0U2RvdjcyRkktNzdHMjdSZHdaaDBlV3BFQ2k1NjNRWnptS0pSZ0NzWFRnYmtUdHQxRnRDc1JaSU92ZGE3Z1RWXzBtcGJBZURZdDJMS09wN0JFdUROT1Z4MG9lZy0wdUNlblFBSDlJbERiczBhR3N2RDhiRGNTM3pOdnlrTnk5ZHp4U3JjbkZ0bWgycW1SMEpHUTlRWTlUZ0labnhCRWV4OURHN1loaURUdWQ3ckhJemhPV19fY1hXUWZVTWhOZEtCbnlBRDlTYUQ2aWxtVDUzX0QyTW5ZUVE?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "v1_98a932034c9ef0cd",
+      "url": "https://news.vetmanlab.com/article/v1_98a932034c9ef0cd-%EA%B5%AD%EB%82%B4%EB%A7%90-%EC%8B%9C%EA%B0%81%EC%A0%81-%ED%8F%AC%EC%8B%9D%EC%9E%90cue%EB%A7%8C%EC%9C%BC%EB%A1%9C-%EC%83%9D%EB%A6%AC%EC%A0%81-%EA%B2%BD%EA%B3%84-%EB%B0%98%EC%9D%91-%EB%B3%B4%EC%9D%B8%EB%8B%A4",
+      "field": "titleKo",
+      "originalText": "국내말, 시각적 포식자cue만으로 생리적 경계 반응 보인다",
+      "sourceText": "Recognition of unfamiliar predators in domestic horses through only visual predator cues.",
+      "suggestedText": null,
+      "classification": "untranslated-fragment",
+      "confidence": 0.86,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://doi.org/10.1371/journal.pone.0349298",
+      "indexable": false
+    },
+    {
+      "articleId": "2026-07-22_16",
+      "url": "https://news.vetmanlab.com/article/2026-07-22_16-%EB%9D%BC%EC%8B%A0-%EC%B9%B4%EC%9A%B4%ED%8B%B0-%EB%B0%95%EC%A5%90%EC%97%90%EC%84%9C-%EA%B4%91%EA%B2%AC%EB%B3%91-%EC%96%91%EC%84%B1-%ED%99%95%EC%9D%B8%EC%A3%BC%EC%9D%98-%ED%95%84%EC%9A%94",
+      "field": "titleKo",
+      "originalText": "라신 카운티 박쥐에서 광견병 양성 확인...주의 필요",
+      "sourceText": "Racine County reports bat tests positive for rabies",
+      "suggestedText": null,
+      "classification": "ambiguous",
+      "confidence": 0.6,
+      "changesMeaning": true,
+      "requiresHumanReview": true,
+      "resolution": "review-queue",
+      "warnings": [
+        "korean-internal-ascii"
+      ],
+      "sourceUrl": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPMDNSQ3RhREhMTkswMDY3OV9UUkxjdmJqc2N0YjFRdG5PUnBqMWFrWTMwMFBXSF83MzFOSFJodlpXSVRZalFEM0FndGxtcXhya3lxekxDLUMxUWZnT0g3ZTY0UC00ODYyaVd6a29faHp3OTRvUGxBZkxaamF0MU95RGczdFZlYno2ODM4SXh3?oc=5",
+      "indexable": false
+    },
+    {
+      "articleId": "v1_5ef792dba5c1c590",
+      "url": "https://news.vetmanlab.com/article/v1_5ef792dba5c1c590-%EC%88%98%EC%9D%98-%EC%9E%84%EC%83%81-%EC%9D%B8%EB%A0%A5-%EC%B1%84%EC%9A%A9%EC%9C%A0%EC%A7%80-%EC%A0%84%EB%9E%B5",
+      "field": "titleKo",
+      "originalText": "병원ugeom",
+      "sourceText": "Best practices to attract and keep top talent",
+      "suggestedText": "병원 경험",
+      "classification": "typo",
+      "confidence": 0.99,
+      "changesMeaning": false,
+      "requiresHumanReview": false,
+      "resolution": "auto-applied",
+      "warnings": [
+        "korean-internal-ascii",
+        "known-error:병원ugeom"
+      ],
+      "sourceUrl": "https://www.veterinarypracticenews.com/best-practices-attracting-keeping-top-talent/",
+      "indexable": false
+    },
+    {
+      "articleId": "v1_aa6becfdbbcbbfdd",
+      "url": "https://news.vetmanlab.com/article/v1_aa6becfdbbcbbfdd-%EC%82%AC%EC%9A%B0%EC%8A%A4%EC%98%A4%EC%8A%A4%ED%8A%B8%EB%A0%88%EC%9D%BC%EB%A6%AC%EC%95%84-%EC%A1%B0%EB%A5%98-%EA%B4%80%EC%B0%B0%EC%9E%90-%EC%B0%B8%EC%97%AC-%EC%A1%B0%EB%A5%98%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%97%94%EC%9E%90-%EB%8C%80%EC%9D%91-%ED%9B%88%EB%A0%A8-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8",
+      "field": "titleKo",
+      "originalText": "조객 참여",
+      "sourceText": "SA birding community answers call to form nation-leading bird flu response collaboration",
+      "suggestedText": "조류 관찰자 참여",
+      "classification": "terminology",
+      "confidence": 0.97,
+      "changesMeaning": false,
+      "requiresHumanReview": false,
+      "resolution": "auto-applied",
+      "warnings": [
+        "known-error:조객 참여"
+      ],
+      "sourceUrl": "https://www.vetpracticemag.com.au/sa-birding-community-answers-call-to-form-nation-leading-bird-flu-response-collaboration/",
+      "indexable": false
+    }
+  ],
+  "appliedCorrections": [
+    {
+      "articleId": "v1_5ef792dba5c1c590",
+      "url": "https://news.vetmanlab.com/article/v1_5ef792dba5c1c590-%EC%88%98%EC%9D%98-%EC%9E%84%EC%83%81-%EC%9D%B8%EB%A0%A5-%EC%B1%84%EC%9A%A9%EC%9C%A0%EC%A7%80-%EC%A0%84%EB%9E%B5",
+      "from": "병원ugeom",
+      "to": "병원 경험",
+      "meaningChanged": false,
+      "dateModifiedChanged": false
+    },
+    {
+      "articleId": "v1_aa6becfdbbcbbfdd",
+      "url": "https://news.vetmanlab.com/article/v1_aa6becfdbbcbbfdd-%EC%82%AC%EC%9A%B0%EC%8A%A4%EC%98%A4%EC%8A%A4%ED%8A%B8%EB%A0%88%EC%9D%BC%EB%A6%AC%EC%95%84-%EC%A1%B0%EB%A5%98-%EA%B4%80%EC%B0%B0%EC%9E%90-%EC%B0%B8%EC%97%AC-%EC%A1%B0%EB%A5%98%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%97%94%EC%9E%90-%EB%8C%80%EC%9D%91-%ED%9B%88%EB%A0%A8-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8",
+      "from": "조객 참여",
+      "to": "조류 관찰자 참여",
+      "meaningChanged": false,
+      "dateModifiedChanged": false
+    },
+    {
+      "articleId": "2026-07-22_16",
+      "url": "https://news.vetmanlab.com/article/2026-07-22_16-%EB%9D%BC%EC%8B%A0-%EC%B9%B4%EC%9A%B4%ED%8B%B0-%EB%B0%95%EC%A5%90%EC%97%90%EC%84%9C-%EA%B4%91%EA%B2%AC%EB%B3%91-%EC%96%91%EC%84%B1-%ED%99%95%EC%9D%B8%EC%A3%BC%EC%9D%98-%ED%95%84%EC%9A%94",
+      "from": "라신County",
+      "to": "라신 카운티",
+      "meaningChanged": false,
+      "dateModifiedChanged": false
+    },
+    {
+      "articleId": "2026-07-22_31",
+      "url": "https://news.vetmanlab.com/article/2026-07-22_31-%EC%97%B0%EA%B8%B0-%ED%94%BC%ED%95%B4%EB%A5%BC-%EC%9E%85%EC%9D%80-%EB%B9%84%EB%91%98%EA%B8%B0-%EC%86%8C%EB%B0%A9%EA%B4%80%EC%97%90%EA%B2%8C-%EB%8F%84%EC%9B%80-%EC%9A%94%EC%B2%AD",
+      "from": "소장관",
+      "to": "소방관",
+      "meaningChanged": false,
+      "dateModifiedChanged": false
+    }
+  ],
+  "knownErrorReaudit": {
+    "terms": [
+      "병원ugeom",
+      "강아지 주인의 위한",
+      "무뎌지",
+      "원-health",
+      "조객 참여",
+      "백식",
+      "백석",
+      "각제",
+      "수아지"
+    ],
+    "hits": [],
+    "unresolved": 0
+  },
+  "note": "원문 전체를 저장하지 않고 sourceTitle/sourceUrl과 짧은 텍스트 근거만 보존합니다. 자동 수정은 의미가 보존되는 명백한 표기에 한정합니다."
+}

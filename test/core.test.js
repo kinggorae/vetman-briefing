@@ -117,6 +117,11 @@ test("professional index gate requires three paragraphs, 420 chars, radar, and s
   assert.ok(qualityIssues({ ...base, sourceUrl: "" }).includes("source-missing"));
 });
 
+test("explicit legacy noindex remains stable after a safe language correction", () => {
+  const item = { titleKo: "병원 경험을 설명합니다.", leadKo: "충분한 설명입니다.", bodyKo: ["첫 문단입니다.".repeat(150), "둘째 문단입니다.".repeat(150), "셋째 문단입니다.".repeat(150)], contentTier: "analysis", radar: { clinical: "병원 운영 관점의 추가 가치" }, sourceUrl: "https://example.com/article", indexPolicy: "legacy-noindex" };
+  assert.equal(isProfessionallyIndexable(item), false);
+});
+
 test("legacy tier inference never upgrades thin content to analysis", () => {
   assert.equal(normalizeContentTier({ tier: "brief", bodyKo: ["짧은 소식입니다."] }), "brief");
   assert.equal(normalizeContentTier({ tier: "deep", bodyKo: ["짧은 문단"], radar: { clinical: "메모" } }), "brief");
