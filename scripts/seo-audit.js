@@ -6,6 +6,7 @@ import { normalizeContentTier, qualityIssues } from "../src/lib/quality.js";
 import { normalizeSourceUrl } from "../src/identity.js";
 import { clinicalReviewIssues, inferClinicalRisk } from "../src/lib/editorial-review.js";
 import { imageRightsIssues } from "../src/lib/image-rights.js";
+import { normalizePublicationStatus } from "../src/lib/editorial-policy.js";
 import { articleContractIssues, normalizeWorkflowStatus, requiredReviewRole, workflowReviewIssues } from "../src/lib/editorial-operations.js";
 import { numericEvidenceIssues, evidenceMetadata } from "../src/lib/evidence.js";
 
@@ -154,7 +155,12 @@ function main() {
         const contract = articleContractIssues(item);
         workflowRows.push({ id: item.id || `${data.date}_${index + 1}`, status, risk: item.clinicalRisk || inferClinicalRisk(item), workflowIssues, contractIssues: contract, reviewerExists: !item.reviewerId || people.has(item.reviewerId) || people.has(item.reviewedBy), requiredRole: requiredReviewRole(item) });
         if (item.reviewerId && !people.has(item.reviewerId)) addCritical("reviewer-profile-missing", { id: item.id, reviewerId: item.reviewerId });
-        if (["approved", "published"].includes(status) && workflowIssues.length) addCritical("workflow-gate-failed", { id: item.id, workflowIssues });
+        // public-brief는 감수자를 주장하지 않고 noindex·sitemap/RSS 제외로 나가는 등급이다
+        // (isProfessionallyIndexable이 색인에서 이미 배제한다). 감수 게이트는 편집 권위를
+        // 주장하는 색인 대상 기사를 지키기 위한 장치라 public-brief에는 적용하지 않는다.
+        // 아래 high-risk 미감수 차단은 등급과 무관하게 그대로 유지한다.
+        const publicBrief = normalizePublicationStatus(item.publicationStatus) === "public-brief";
+        if (["approved", "published"].includes(status) && workflowIssues.length && !publicBrief) addCritical("workflow-gate-failed", { id: item.id, workflowIssues });
         if (["approved", "published"].includes(status) && item.clinicalRisk === "high" && !item.vetReviewedAt) addCritical("high-risk-not-vet-reviewed", item.id);
       }
       const numeric = numericEvidenceIssues(item); if (numeric.length) numericWarnings.push({ id: item.id || `${data.date}_${index + 1}`, issues: numeric });

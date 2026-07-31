@@ -1,36 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_e174695d8cae4128</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-29T01:28:00.508Z</news:publication_date>
-      <news:title>고양이 긁기병으로 인한 비정상적 고열 및 신경정신 증상 1례 보고</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_5a9fbdf10a1f09c8</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-29T01:28:00.508Z</news:publication_date>
-      <news:title>중환자 개에서 전신 면역염증 지표의 예후 예측 가치</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_fcbd7aa64148ba95</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-29T01:28:00.508Z</news:publication_date>
-      <news:title>개 적외선 열화상 검사, 체부 위치와 털 길이에 따라 온도차 발견</news:title>
-    </news:news>
-  </url>
+
 </urlset>

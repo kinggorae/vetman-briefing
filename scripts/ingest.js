@@ -6,6 +6,8 @@ import { MODEL } from "../config.js";
 import { inferClinicalRisk } from "../src/lib/editorial-review.js";
 import { articleContractIssues, SCHEMA_VERSION } from "../src/lib/editorial-operations.js";
 import { publishQualityIssues } from "../src/quality.js";
+import { bodyCharCount } from "../src/lib/quality.js";
+import { enrichItems } from "../src/enrich.js";
 import { stableItemId, sourceKeys } from "../src/identity.js";
 import {
   atomicWrite, contentHash as sourceContentHash, dedupeFeedEntries, fetchArticleMetadata, fetchFeed, isOfficialUrl, isRelayUrl,
@@ -18,6 +20,8 @@ const DRAFT_DIR = path.join(ROOT, "data", "drafts");
 const REPORT_JSON = path.join(ROOT, "reports", "ingest-report.json");
 const REPORT_MD = path.join(ROOT, "reports", "ingest-report.md");
 const RELAY = /^https?:\/\/(?:news\.)?google\.[^/]+\/rss\/articles\//i;
+// src/lib/quality.js가 analysis 티어에 요구하는 본문 최소 길이와 같아야 한다.
+const ANALYSIS_MIN_CHARS = 420;
 const VET_TERMS = /veterin|animal health|animal hospital|pet health|dog|cat|canine|feline|equine|veterinary|zoon|rabies|parasit|antimicrobial|clinical|journal|medicine|병원|동물|수의|반려|질환|감염|백신|논문|임상/i;
 
 function args() {
@@ -107,6 +111,14 @@ async function collect(id, flags) {
   const entries = fetched.flatMap((row) => (row.result?.entries || []).map((entry) => ({ ...entry, sourceId: row.source.id, sourceLabel: row.source.label })));
   const deduped = dedupeFeedEntries(entries, existing); let draftEntries = deduped.filter((entry) => relevance(entry) === "relevant" && entry.duplicateStatus === "unique").slice(0, Math.max(1, Number(flags.max) || 50)); draftEntries = await confirmCanonicals(draftEntries, sources, flags); const drafts = [];
   for (const entry of draftEntries) drafts.push(await generateDraft(draftFor(entry, sources.find((source) => source.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel }), flags), entry, flags));
+  const generated = drafts.filter((draft) => draft.titleKo && draft.bodyKo?.length);
+  // generate.js는 source-first 경로에서 본문 길이와 무관하게 analysis로 찍는다.
+  // analysis는 본문 420자를 요구하므로(src/lib/quality.js) 짧은 글이 통째로
+  // body-too-short로 탈락했다. 짧은 글은 사이트가 이미 쓰는 brief 티어로 낸다.
+  for (const draft of generated) if (bodyCharCount(draft) < ANALYSIS_MIN_CHARS) draft.contentTier = "brief";
+  // radar는 발행 게이트의 필수 항목인데 source-first 수집에는 채우는 단계가
+  // 없었다(run.js만 enrich했다). 생성을 요청한 실행에서만 함께 채운다.
+  if (flags.generate && generated.length) await enrichItems(generated);
   const report = {
     generatedAt: new Date().toISOString(), mode: flags.dry ? "dry-run" : "write-draft", sources: sources.map((source) => ({ id: source.id, label: source.label, feeds: feedUrls(source) })),
     feeds: fetched.map((row) => ({ sourceId: row.source.id, sourceLabel: row.source.label, url: row.url, itemCount: row.result?.entries?.length || 0, fromCache: row.result?.fromCache || false, error: row.error })),

@@ -96,7 +96,8 @@
     "repair-images": "node src/repair-images.js",
     "check-assets": "node src/check-assets.js",
     "check-sources": "node src/check-sources.js",
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "brief:release-ready": "node scripts/brief-publishing.js release-ready"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",

@@ -39,7 +39,7 @@
         "주인은 강아지가 평온하게 휴식할 수 있는 조용하고 안전한 공간을 마련해줘야 합니다",
         "소음 공포가 심각한 경우 수의사와 상담하여 적절한 관리 방법을 논의해야 합니다"
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "low",
       "generation": {
         "model": "MiniMax-M2",
@@ -77,7 +77,16 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 불꽃놀이 소리에 너무 두려워하는데, 어떻게 안정시켜줄 수 있나요?",
+          "script": "불꽃놀이 소리에 불안해하는 강아지에게는 안전하고 조용한 공간을 마련해주시고, 필요하면 수의사와 상담하여 불안 관리 방법을 논의해보세요."
+        },
+        "clinical": "소음 민감성 강아지 문진 시 불안 관리 방안 안내 여부 점검",
+        "evidence": null
+      }
     },
     {
       "id": "v1_8977cdecc20db74b",
@@ -116,7 +125,7 @@
         "시설 내부 감사 시스템과 자발적 복지 프로그램이 현장의 실질적 변화를 가져올 수 있습니다.",
         "사육 농장 출신 강아지의 건강 사정 시 행동 발달과 사회화 부족 여부를 함께 평가하는 것이 중요합니다."
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -154,7 +163,16 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "우리 강아지가 사육 농장에서 왔는데 건강 문제가 있을까요? 사회화는 어떻게 해야 하나요?",
+          "script": "사육 농장 환경에 따라 강아지의 건강과 행동 발달에 차이가 있을 수 있습니다. 초기 사회화 경험이 부족한 경우 새로운 환경에 적응하는 데 시간이 걸릴 수 있고, 불안이나 두려움을 보일 수도 있습니다. 천천히 긍정적인 경험을 쌓어가며 인내심 있게 훈련하시고, 문제가 지속되면 행동 전문의와 상담을 받으세요."
+        },
+        "clinical": "농장 출신 강아지 초진 시 사회화 부족 여부와 행동 평가 항목을 문진에 포함하고, 보호자에게 사회화 가이드 제공",
+        "evidence": null
+      }
     },
     {
       "id": "v1_66712dc60cebbebc",
@@ -193,7 +211,7 @@
         "수의사들도 휴식과 경계 설정이 필요하며, 헌신은 무한정이 아닙니다.",
         "적절한 소통 전략과 갈등 관리는 치료 효과와 병원 평판에 직결됩니다."
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -231,7 +249,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "직원 번아웃 예방을 위한 업무량 모니터링 및 고객 응대 교육 프로그램 도입을 점검할 것",
+        "evidence": null
+      }
     },
     {
       "id": "v1_ecdd9715ae5b33aa",
@@ -270,7 +293,7 @@
         "사료 선택 시 보호자들은 단순한 마케팅 용어가 아닌 실제 영양 성분표를 확인해야 합니다",
         "개 영양 상담은 생애단계와 품종 특성을 고려한 개별화된 접근이 필요합니다"
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -308,7 +331,16 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "사료에 '전 생애주기용'이라고 적혀 있으면 우리 강아지에게 맞는 건가요? 대형견이라서 성장기 사료를 더 오래 먹여도 될까요?",
+          "script": "'전 생애주기용' 표시는 모든 생애주기 요구량을 충족한다는 게 아니라, 여러 단계에서 사용할 수 있다는 의미예요. 대형견은 성장 속도가 빠르고 관절 부담이 크기 때문에, 성장기에 대형견 전용 사료를 주는 게 중요해요. 성장기가 끝나면 관절 건강을 위해 성체용으로 바꿔주는 게 좋고, 사료 선택은 항상 현재 몸상태와 생애단계를 확인해서 하세요."
+        },
+        "clinical": "대형견 보호자 상담 시 사료 패키지의 '전 생애주기용' 표기 의미와 대형견 전용 사료의 필요성을 반드시 설명하고, 성장기에서 성체기로의 전환 시점을 함께 점검하자.",
+        "evidence": null
+      }
     },
     {
       "id": "v1_5f01b0b4f48babba",
@@ -347,7 +379,7 @@
         "마지막 환자까지 책임감 있게 진료하는 것이 전문성의 표현입니다",
         "일상 업무에서 작은 기쁨을 발견하는 것이 직업 만족도의 핵심입니다"
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "high",
       "generation": {
         "model": "MiniMax-M2",
@@ -385,7 +417,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "우리 병원 팀원들이 일상 업무에서 작은 성취를 인정받고 만족감을 느끼는지 주기적으로 점검하고, 긍정적인 근무 환경 조성에 노력한다.",
+        "evidence": null
+      }
     },
     {
       "id": "v1_f0efeb482c512335",
@@ -462,7 +499,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "자영업 동물병원 대상으로 비용 구조 분석 및 고객 계층화 전략 수립을 위한 내부 교육 실시",
+        "evidence": null
+      }
     },
     {
       "id": "v1_015e528dc92fe205",
@@ -501,7 +543,7 @@
         "일반수의사(GP)들도 긴급 상황에서 전문의 없이 기본적인 초기 대응과 판단 역량을 갖추어야 합니다.",
         "한국 동물병원에서는 야간·주말 등 전문의 파견이 어려운 시간대에도 안정적인 초기 대응이 가능한 시스템 구축이 필요합니다."
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "high",
       "generation": {
         "model": "MiniMax-M2",
@@ -539,7 +581,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "응급 문진 체크리스트에 이물 섭취 의심 시 영상의학 검사 요청 기준 재점검",
+        "evidence": null
+      }
     },
     {
       "id": "v1_dfab869009cacc1d",
@@ -578,7 +625,7 @@
         "딸의 '마음의 준비' 요청은 우리 모두의 마음처럼 사랑하는 존재와의 이별을 두려워하는 마음입니다.",
         "동물병원에서는 키워주시는 분들과 함께 이 소중한 시간을 될 수 있도록 안내하는 것이 중요합니다."
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "low",
       "generation": {
         "model": "MiniMax-M2",
@@ -616,7 +663,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "내원 시 보호자들에게 급사 가능성에 대한 안내와 함께 남은 시간을 함께 보내는 것의 소중함을 전하는 환자 교육 자료를 검토하거나 팜플렛 배치를 검토",
+        "evidence": null
+      }
     },
     {
       "id": "v1_f4e1789482af70a7",
@@ -693,7 +745,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "비임상 배경 운영 리더를 위한 병원 현장 온보딩 프로그램을 점검하고, 팀 소통과 서비스 품질에 미치는 영향을 평가할 것",
+        "evidence": null
+      }
     },
     {
       "id": "v1_6be1d8c5a79f604d",
@@ -770,7 +827,16 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "강아지가 계속 긁어서 식품 알레르기인 줄 알았는데 환경 알레르기도 있을 수 있나요?",
+          "script": "강아지 가려움증은 식품 알레르기뿐 아니라 집먼지진드기, 꽃가루 같은 환경 알레르기가 원인일 수 있어요. 정확한 원인 파악을 위해 진찰과 검사가 필요하며, 약물만으로는 완전히 조절하기 어렵고 피부 장벽 관리와 환경 개선도 함께해야 합니다."
+        },
+        "clinical": "아토피 피부염 환축 진료 시 식품 알레르기 감별 진단과 환경 알레르기 가능성을 함께 고려하고, 보호자에게 복합적 관리 접근의 필요성을 설명하겠습니다.",
+        "evidence": null
+      }
     },
     {
       "id": "v1_d1ece76710d46dd7",
@@ -847,7 +913,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "접수 직원 커뮤니케이션 교육 프로그램 점검 및 디지털 전환 현황 점검",
+        "evidence": null
+      }
     },
     {
       "id": "v1_5e79b0eb6efbac68",
@@ -924,7 +995,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "우리 병원 직원들의 정신건강 상태를 정기적으로 점검하고, 어려울 때 도움을 요청할 수 있는 환경인지 점검한다.",
+        "evidence": null
+      }
     },
     {
       "id": "v1_632f817d38e1640a",
@@ -1001,7 +1077,16 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "선생님, 이 병원은 환경 보호에 노력을 하고 계신가요?",
+          "script": "네, 우리 병원도 에너지 효율 개선과 재활용 프로그램 도입 등 환경 보호 노력을 하고 있습니다. 최근에는 일회용품 사용을 줄이고 의료 폐기물 관리 체계도 강화하고 있답니다. 앞으로 더 좋은 환경 친화적인 진료 환경을 만들어 가려고 합니다."
+        },
+        "clinical": "에너지 효율 개선과 의료 폐기물 관리 체계를 점검하고, 보호자들에게 환경 친화적 병원 운영 노력을 소통하는 방안 고려",
+        "evidence": null
+      }
     },
     {
       "id": "v1_5ed0ce1ffe7661d1",
@@ -1078,7 +1163,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "신입 직원들이 개선 아이디어를 제안하기 좋은 환경을 만들어 팀 내 소통을 촉진하세요",
+        "evidence": null
+      }
     },
     {
       "id": "v1_a3087f97fcbd8faa",
@@ -1117,7 +1207,7 @@
         "수의사의 진정한 가치는 직함이 아닌 임상 역량과 전문성에 있습니다",
         "이직 시 관리자의 멘토링과 심리적 지원이 적응에 도움을 줍니다"
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -1155,7 +1245,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "신규 합류 수의사들을 위한 멘토링 프로그램과 정기적인 심리적 지원 체계를 구축하여 이직 초기 적응 부담을 완화하세요.",
+        "evidence": null
+      }
     },
     {
       "id": "v1_000c0774cffcb69e",
@@ -1194,7 +1289,7 @@
         "개인 병원 수의사는 진료뿐 아니라 병원 문화와 팀 관계를 직접 형성할 수 있습니다.",
         "한국 동물병원 시장에서 개인 병원의 경쟁력은 전문성과 환자 중심 진료에서 발견될 수 있습니다."
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -1232,7 +1327,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "기업 동물병원 확대 추세에서 개인 병원의 경쟁력 확보를 위해 전문성 및 환자 중심 진료 강화 여부 점검",
+        "evidence": null
+      }
     },
     {
       "id": "v1_6cb9a2c41af342f1",
@@ -1271,7 +1371,7 @@
         "Dr. Andy Roark는 발표자와 작가들이 흔히 저지르는 실수와 이를 개선하는 방법을 제시했습니다.",
         "한국 동물병원에서도 의료비 문제와 환자 감소라는 동일한 도전에 직면해 있으며, 원문의 소통 전략이 참고가 됩니다."
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -1309,7 +1409,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "접근진료 관련 환자 상담 시 보호자의 경제적 부담과 진료를 지속할 수 있는 옵션을 함께 논의하는 진료 환경을 점검",
+        "evidence": null
+      }
     },
     {
       "id": "v1_5a8b1d1fc86addb7",
@@ -1386,7 +1491,16 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "의사선생님, 오늘 진찰 시간이 짧았는데 그래도 충분히 검사를 해주신 거 맞죠?",
+          "script": "진료 시간에는 한정이 있지만, 오늘 경우는 필수적인 검사를 다 했고 이상이 없었습니다. 더 자세한 검사가 필요하다고 느끼시면 말씀해 주세요."
+        },
+        "clinical": "자원의 한계를 인식하고 증거 기반 진료를 가능한 범위 내에서 실천하는 병원 운영 체계 점검",
+        "evidence": null
+      }
     },
     {
       "id": "v1_26c3b11a5bca68db",
@@ -1463,7 +1577,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "의료적 무용성 상황에서 팀 내 열린 논의 문화를 형성하고, 임종·완화 치료 결정 시 전체 팀이 함께 상의하는 프로세스를 점검해 보세요.",
+        "evidence": null
+      }
     },
     {
       "id": "v1_f4c47c39349be41a",
@@ -1541,7 +1660,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "진정 프로토콜 도입 전 병원 내 표준화 문서화 및 팀 교육 진행",
+        "evidence": null
+      }
     },
     {
       "id": "v1_326ba63a860c6dc8",
@@ -1580,7 +1704,7 @@
         "동물 의료 전문가들의 이직률 상승은 궁극적으로 동물 복지에도 악영향을 미칩니다",
         "한국 동물병원들도 환자 돌봄과 팀 역량 강화에 다시 집중할 필요가 있습니다"
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -1619,7 +1743,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": null,
+        "evidence": null
+      }
     },
     {
       "id": "v1_1e2651ab5b7de355",
@@ -1696,7 +1825,16 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "의사님, 비싼 치료는 못 받는데 저렴하게라도 방법은 없나요?",
+          "script": "저렴하면서 효과가 좋은 비밀 같은 치료법은 실제로 없습니다. 하지만 비용에 대한 부담이 있으시다면 말씀해 주세요. 동물 상태와 상황에서 함께 방법을 찾아보겠습니다."
+        },
+        "clinical": "비용 관련 보호자 문진을 적극적으로 받고, 저비용 대안의 효과와 안전성을 점검하여 열린 소통을 실천한다.",
+        "evidence": null
+      }
     },
     {
       "id": "v1_5e84fdc2ca0848f7",
@@ -1773,7 +1911,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "고객 신뢰 구축을 위해 진료실 소통 방식과 장기 관계 형성 프로토콜을 점검하고 강화할 것을 고려한다.",
+        "evidence": null
+      }
     },
     {
       "id": "v1_174577d6efe88d58",
@@ -1850,7 +1993,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "비용 상승에 대한 보호자 민감성이 높아지고 있음을 인식하고, 진료비 구성 요소를 투명하게 설명하는 커뮤니케이션 준비를 점검할 것",
+        "evidence": null
+      }
     },
     {
       "id": "v1_6f1159579ed79925",
@@ -1889,7 +2037,7 @@
         "산후 지원과 복귀 후 적응을 위한 명확한 커뮤니케이션이 필수적입니다",
         "한국 동물병원에서도 직원 복지를 위한 유사한 제도의 도입을 고려할 수 있습니다"
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -1927,7 +2075,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "자원의 출산·육아 휴가 정책과 복귀 지원 프로그램 도입 여부 점검",
+        "evidence": null
+      }
     },
     {
       "id": "v1_c8a1dfb2b6e491af",
@@ -1966,7 +2119,7 @@
         "성공적인 수의업계 리더십에는 개인 전문성과 업계 구조적 통찰력의 균형이 필요합니다",
         "한국 동물병원 원장들도 임상 실력 이상의 경영적 시야를 갖추는 것이 중요합니다"
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -2005,7 +2158,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "업계 구조 이해와 의사결정 간 균형점을 점검하고, 개인 전문성과 경영 통찰력을 결합하는 방식 점검",
+        "evidence": null
+      }
     },
     {
       "id": "v1_4e1960f5492f96a4",
@@ -2082,7 +2240,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "AI 검색 최적화를 위해 병원 홈페이지를 최신 정보로 유지하고, FAQ나 블로그 콘텐츠에 구조화된 데이터 적용 여부 점검",
+        "evidence": null
+      }
     },
     {
       "id": "v1_6730c1a49ed0e14c",
@@ -2159,7 +2322,16 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "동물병원 예약을 잡으려는데 계속 어려운데 왜 이렇게 접근이 안 되나요?",
+          "script": "보호자분이 예약이 힘드셨다니 정말 번거로우셨겠습니다. 최근 수의사 인력 부족과 진료 수요 증가로 많은 병원이 예약 대기 시간이 길어지고 있는 상황입니다. 당원은 최대한 빠른 시일 내에 진료 받으실 수 있도록 노력하고 있으니, 담당자와 상담하셔서 지금 가능한 시간대를 확인해 보세요."
+        },
+        "clinical": "자병원 전화접수 대기시간과 예약 가능 여부를 자체 점검하여 보호자 접근성 저해 요인 파악",
+        "evidence": null
+      }
     },
     {
       "id": "v1_6369d7b8e2b67768",
@@ -2236,7 +2408,12 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": null,
+        "clinical": "업계 전반의 시스템 문제에 대한 인식은 중요하나, 개인 병원 운영에는 직접 적용하기 어려운 사항입니다.",
+        "evidence": null
+      }
     },
     {
       "id": "v1_b28850d4be6ffb54",
@@ -2275,7 +2452,7 @@
         "치료는 체중 관리, 환경 조정, 적절한 진통제를 결합한 복합 접근이 필요합니다",
         "한국 동물병원에서는 보호자의 인식 개선과 예방적 접근이 중요합니다"
       ],
-      "contentTier": "analysis",
+      "contentTier": "brief",
       "clinicalRisk": "medium",
       "generation": {
         "model": "MiniMax-M2",
@@ -2314,7 +2491,16 @@
       "sourceType": "rss",
       "upvotes": null,
       "numComments": null,
-      "imageUrl": null
+      "imageUrl": null,
+      "radar": {
+        "owner": {
+          "soon": true,
+          "q": "고양이가 그냥 나이가 들어서 느려진 건지, 관절염인지 어떻게 구분해요?",
+          "script": "고양이 관절염은 증상이 잘 드러나지 않아서 진단이 어렵습니다. 노화와 관절염의 구별은 진찰과 영상 검사로 가능하니 진료에서 확인해 보시는 게 정확합니다. 또한 집에서 뛰기 싫어함, 높은 곳 안 오르기, 변비 같이 평소와 다른 행동 변화를 지켜보시는 것도 도움이 됩니다."
+        },
+        "clinical": "12세 이상 고양이 내진 시 관절염 가능성 고려하여 사지 관절 검진 강화",
+        "evidence": null
+      }
     }
   ],
   "generatedAt": "2026-07-30T01:51:29.172Z"

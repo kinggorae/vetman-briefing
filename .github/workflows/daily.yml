@@ -14,7 +14,8 @@ jobs:
     concurrency:
       group: daily-source-first-newsroom
       cancel-in-progress: false
-    timeout-minutes: 45
+    # source-first 수집(약 40분)에 발행·빌드·배포가 다시 붙었다. 45분으로는 모자란다.
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -55,7 +56,29 @@ jobs:
             reports/end-to-end-drafts.md
             data/drafts
           if-no-files-found: ignore
-      - name: Validate unchanged public publication set
+      # 파이프라인이 데이터를 건드리기 전 복원 지점. 발행이 잘못되면 이 태그로 되돌린다.
+      - name: Tag pre-publish restore point
+        run: |
+          git config user.name "vetman-briefing-newsroom"
+          git config user.email "actions@users.noreply.github.com"
+          TAG="pre-run-${GITHUB_RUN_ID}"
+          git tag -a "$TAG" -m "자동발행 직전 스냅샷 $(date -u +%FT%TZ)"
+          git push origin "$TAG"
+
+      # ready-public-brief만 발행한다. high-risk 임상 기사와 언어·주장 경고가 있는
+      # 초안은 여기서 걸러져 data/drafts에 남는다. 발행분은 감수자를 주장하지 않는
+      # public-brief 등급이라 noindex·sitemap/RSS 제외로 나간다.
+      - name: Release ready public briefs
+        id: release
+        run: |
+          npm run brief:release-ready -- --apply
+          DATE=$(TZ=Asia/Seoul date +%F)
+          COUNT=$(node -e 'const fs=require("node:fs");const p="data/issues/"+process.argv[1]+".json";console.log(fs.existsSync(p)?(JSON.parse(fs.readFileSync(p,"utf8")).items||[]).length:0)' "$DATE")
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "오늘($DATE) 발행 $COUNT건"
+
+      - name: Build and validate publication set
         run: |
           npm run build
           npm run validate
@@ -63,19 +86,48 @@ jobs:
           node - <<'NODE'
           const fs = require('node:fs');
           const report = JSON.parse(fs.readFileSync('reports/seo-audit.json', 'utf8'));
-          if ((report.counts?.index ?? 170) !== 170) throw new Error('기존 index 수가 source-first 수집에서 변경되었습니다.');
           if ((report.critical?.length ?? 0) > 0) throw new Error('SEO critical 오류가 있습니다.');
           NODE
-      - name: Commit drafts and reports only
+
+      - name: Commit publication set, drafts and reports
         run: |
           git config user.name "vetman-briefing-newsroom"
           git config user.email "actions@users.noreply.github.com"
           # .source-cache는 .gitignore 대상이라 git add에 넣으면 exit 1로 잡 전체가 죽는다. 넣지 않는다.
-          git add data/drafts reports/source-health.json reports/source-health.md reports/feed-diagnostics.json reports/feed-diagnostics.md reports/ingest-report.json reports/ingest-report.md reports/update-candidates.json reports/draft-newsroom.json reports/language-audit.json reports/terminology-audit.json reports/claims-audit.json reports/end-to-end-drafts.md
-          git diff --cached --quiet || git commit -m "newsroom: source-first draft candidates $(date -u +%F)"
+          git add data site reports
+          git diff --cached --quiet || git commit -m "daily: $(date -u +%F) briefing (${{ steps.release.outputs.count }}건)"
           git push --atomic origin main
-      - name: Explicit publication safety assertion
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.release.outputs.count != '0'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: "15178c9e9cab3b38e6b687feb568cb28"
         run: |
-          if find data/issues -maxdepth 1 -name "$(TZ=Asia/Seoul date +%F).json" -print -quit | grep -q .; then
-            echo "기존 published issue는 변경하지 않았습니다. 신규 source-first 결과는 data/drafts에만 기록됩니다."
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "CLOUDFLARE_API_TOKEN 미설정 — 배포 건너뜀"
+            exit 0
           fi
+          npx wrangler pages deploy site --project-name vetman-briefing --branch main --commit-dirty=true
+
+      - name: Verify production deployment
+        if: steps.release.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          BASE="https://news.vetmanlab.com"
+          curl --fail --silent --show-error --retry 3 --retry-delay 2 "$BASE/latest.json" > /tmp/live-latest.json
+          curl --fail --silent --show-error --retry 3 --retry-delay 2 "$BASE/robots.txt" > /tmp/live-robots.txt
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const latest = JSON.parse(fs.readFileSync('/tmp/live-latest.json', 'utf8'));
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(latest.date)) throw new Error(`라이브 latest.json 날짜 형식 오류: ${latest.date || '없음'}`);
+          const robots = fs.readFileSync('/tmp/live-robots.txt', 'utf8');
+          for (const rule of ['Disallow: /admin', 'Disallow: /raw']) if (!robots.includes(rule)) throw new Error(`robots.txt에 ${rule} 없음`);
+          console.log(`프로덕션 확인: ${latest.date} / ${latest.items?.length ?? 0}건`);
+          NODE
+
+      # 배포가 끝난 뒤에 알려야 크롤러가 새 글을 실제로 받아간다
+      - name: Notify search engines (IndexNow)
+        if: steps.release.outputs.count != '0'
+        continue-on-error: true
+        run: node src/indexnow.js
