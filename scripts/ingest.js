@@ -26,35 +26,56 @@ const RELAY = /^https?:\/\/(?:news\.)?google\.[^/]+\/rss\/articles\//i;
 // src/lib/quality.js가 analysis 티어에 요구하는 본문 최소 길이와 같아야 한다.
 const ANALYSIS_MIN_CHARS = 420;
 const VET_TERMS = /veterin|animal health|animal hospital|pet health|dog|cat|canine|feline|equine|veterinary|zoon|rabies|parasit|antimicrobial|clinical|journal|medicine|병원|동물|수의|반려|질환|감염|백신|논문|임상/i;
+// 관련도를 통과/탈락이 아니라 매칭 개수로 재기 위한 전역 판.
+const VET_TERMS_GLOBAL = new RegExp(VET_TERMS.source, "gi");
 
 function args() {
   const raw = process.argv.slice(2); const command = raw.shift() || "dry";
   return { command, positional: raw.filter((x) => !x.startsWith("--")), flags: Object.fromEntries(raw.filter((x) => x.startsWith("--")).map((x) => { const [key, ...rest] = x.slice(2).split("="); return [key, rest.length ? rest.join("=") : true]; })) };
 }
 function today() { return new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(new Date()); }
-// 후보를 피드 순서대로 앞에서 자르면 항목이 많은 소스가 전부 차지한다.
-// (Dr. Andy Roark 90건, Vet Candy 300건 식으로 편차가 크다.) 소스별로 돌아가며
-// 한 건씩 집어 균형을 맞추고, --per-source로 소스당 상한을 둘 수 있다.
-function balancedPick(entries, limit, perSource) {
-  const groups = new Map();
-  for (const entry of entries) {
-    const key = entry.sourceId || entry.sourceLabel || "unknown";
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(entry);
-  }
-  const queues = [...groups.values()];
+// 후보 점수. 선정은 LLM 생성 전에 일어나므로 피드 메타데이터만 쓴다.
+// 예전에는 피드 순서대로 앞에서 잘라, 항목이 많은 소스와 아카이브를 통째로
+// 내주는 피드가 하루치를 차지했다(2월·4월 글이 그렇게 발행됐다).
+// 점수로 뽑으면 출처와 무관하게 좋은 후보가 이긴다.
+function scoreEntry(entry, source) {
+  // 최신성. 아카이브 글이 순서상 앞이라는 이유로 뽑히던 문제를 직접 겨냥한다.
+  const ms = Date.parse(entry.publishedAt || "");
+  const ageDays = Number.isFinite(ms) ? (Date.now() - ms) / 86400000 : null;
+  const recency = ageDays == null ? 0.15 : Math.max(0, 1 - Math.max(0, ageDays) / 30);
+
+  // 생성 재료. description이 짧으면 본문이 짧게 나와 body-too-short로 탈락한다
+  // (실측 중앙값 403자, 최소 29자, 30건 중 14건이 이 사유로 걸렸다).
+  const substance = Math.min(1, (entry.description || "").length / 600);
+
+  // 수의 관련도. 통과/탈락 이분법 대신 매칭된 고유 용어 수로 깊이를 본다.
+  const matched = new Set((`${entry.title} ${entry.description}`.match(VET_TERMS_GLOBAL) || []).map((x) => x.toLowerCase()));
+  const relevance = Math.min(1, matched.size / 4);
+
+  // canonical이 이미 잡힌 항목은 sourceStatus=verified가 될 가능성이 높다.
+  const canonical = entry.canonicalUrl ? 1 : 0;
+
+  // 레지스트리 priority(기본 50). 지금은 전 소스가 같지만, 매체별로 조정하면
+  // 여기로 바로 반영된다.
+  const trust = Math.min(1, (Number(source?.priority) || 50) / 100);
+
+  return 0.40 * recency + 0.25 * substance + 0.20 * relevance + 0.10 * canonical + 0.05 * trust;
+}
+function rankedPick(entries, limit, perSource, sources) {
+  const byId = new Map((sources || []).map((source) => [source.id, source]));
+  const scored = entries
+    .map((entry) => ({ entry, score: scoreEntry(entry, byId.get(entry.sourceId)) }))
+    .sort((a, b) => b.score - a.score);
   const cap = perSource > 0 ? perSource : Infinity;
-  const counts = new Array(queues.length).fill(0);
+  const counts = new Map();
   const picked = [];
-  let moved = true;
-  while (picked.length < limit && moved) {
-    moved = false;
-    for (let i = 0; i < queues.length && picked.length < limit; i += 1) {
-      if (counts[i] >= cap || !queues[i].length) continue;
-      picked.push(queues[i].shift());
-      counts[i] += 1;
-      moved = true;
-    }
+  for (const { entry, score } of scored) {
+    if (picked.length >= limit) break;
+    const key = entry.sourceId || entry.sourceLabel || "unknown";
+    const taken = counts.get(key) || 0;
+    if (taken >= cap) continue;
+    counts.set(key, taken + 1);
+    picked.push({ ...entry, selectionScore: Number(score.toFixed(4)) });
   }
   return picked;
 }
@@ -114,7 +135,7 @@ function draftFor(entry, source, flags) {
     generation: { model: null, promptVersion: null, generatedAt: null, inputSourceIds: [source.id], inputHash, outputHash: null, generationWarnings: ["llm-generation-not-requested"] },
     duplicateStatus: entry.duplicateStatus, duplicateOf: entry.duplicateOf || null,
     sourceEvidence: { title: entry.title, sourceLabel: source.label, publishedAt: entry.publishedAt, canonicalUrl: entry.canonicalUrl || null, description: entry.description || null, pageMetadata: entry.pageMetadata || null, fetchedAt: new Date().toISOString(), responseHeaders: null, hash: inputHash },
-    relevance: relevance(entry), generationRequested: Boolean(flags.generate),
+    relevance: relevance(entry), selectionScore: entry.selectionScore ?? null, generationRequested: Boolean(flags.generate),
   };
   return draft;
 }
@@ -154,7 +175,7 @@ async function collect(id, flags) {
   const seen = flags["ignore-seen"] ? new Set() : loadSeen();
   const relevant = deduped.filter((entry) => relevance(entry) === "relevant" && entry.duplicateStatus === "unique");
   const fresh = relevant.filter((entry) => !sourceKeys(entry).some((key) => seen.has(key)));
-  let draftEntries = balancedPick(fresh, Math.max(1, Number(flags.max) || 50), Number(flags["per-source"]) || 0);
+  let draftEntries = rankedPick(fresh, Math.max(1, Number(flags.max) || 50), Number(flags["per-source"]) || 0, sources);
   draftEntries = await confirmCanonicals(draftEntries, sources, flags); const drafts = [];
   for (const entry of draftEntries) drafts.push(await generateDraft(draftFor(entry, sources.find((source) => source.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel }), flags), entry, flags));
   const generated = drafts.filter((draft) => draft.titleKo && draft.bodyKo?.length);
@@ -174,6 +195,7 @@ async function collect(id, flags) {
     feeds: fetched.map((row) => ({ sourceId: row.source.id, sourceLabel: row.source.label, url: row.url, itemCount: row.result?.entries?.length || 0, fromCache: row.result?.fromCache || false, error: row.error })),
     counts: { sources: sources.length, feeds: fetched.length, feedFailures: fetched.filter((row) => row.error).length, fetchedEntries: entries.length, unique: deduped.filter((entry) => entry.duplicateStatus === "unique").length, exactDuplicate: deduped.filter((entry) => entry.duplicateStatus === "exact-duplicate").length, updateOfExisting: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").length, excludedIrrelevant: deduped.filter((entry) => relevance(entry) === "excluded").length, relevantUnique: relevant.length, seenSkipped: relevant.length - fresh.length, freshAvailable: fresh.length, drafts: drafts.length, canonicalChecked: draftEntries.filter((entry) => entry.pageMetadata).length, verifiedCanonical: drafts.filter((draft) => draft.sourceStatus === "verified").length, unresolved: drafts.filter((draft) => draft.sourceStatus === "unresolved").length, relaySourceUrl: drafts.filter((draft) => RELAY.test(draft.sourceUrl || "")).length, draftSources: new Set(drafts.map((draft) => draft.sourceId)).size },
     sourceMix: Object.fromEntries(Object.entries(drafts.reduce((acc, draft) => { const key = draft.sourceLabel || draft.sourceId || "?"; acc[key] = (acc[key] || 0) + 1; return acc; }, {})).sort((a, b) => b[1] - a[1])),
+    selection: (() => { const s = drafts.map((d) => d.selectionScore).filter((x) => typeof x === "number").sort((a, b) => b - a); const ages = drafts.map((d) => Date.parse(d.sourcePublishedAt || "")).filter(Number.isFinite).map((ms) => Math.round((Date.now() - ms) / 86400000)).sort((a, b) => a - b); return { scoreTop: s[0] ?? null, scoreMedian: s.length ? s[Math.floor(s.length / 2)] : null, scoreMin: s.at(-1) ?? null, ageDaysMedian: ages.length ? ages[Math.floor(ages.length / 2)] : null, ageDaysMax: ages.at(-1) ?? null, within7Days: ages.filter((x) => x <= 7).length }; })(),
     drafts: drafts.map((draft) => ({ ...draft, title: draft.sourceTitle, publishedAt: draft.sourcePublishedAt, provenance: draft.generation })),
     updateCandidates: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").map((entry) => ({ id: entry.guid, title: entry.title, sourceId: entry.sourceId, sourceLabel: entry.sourceLabel, sourceStatus: sourceStatus(entry, sources.find((s) => s.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel })), sourceUrl: entry.canonicalUrl || entry.url, sourceUrlRaw: entry.url, publishedAt: entry.publishedAt, duplicateStatus: entry.duplicateStatus, sourceContentHash: sourceContentHash(`${entry.title}\n${entry.description}`) })),
     note: "수집 결과는 자동 published로 전환되지 않으며, 공식 canonical·중복·임상 검수 후에만 다음 단계로 이동할 수 있습니다.",
