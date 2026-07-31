@@ -58,14 +58,11 @@ jobs:
             reports/end-to-end-drafts.md
             data/drafts
           if-no-files-found: ignore
-      # 파이프라인이 데이터를 건드리기 전 복원 지점. 발행이 잘못되면 이 태그로 되돌린다.
-      - name: Tag pre-publish restore point
-        run: |
-          git config user.name "vetman-briefing-newsroom"
-          git config user.email "actions@users.noreply.github.com"
-          TAG="pre-run-${GITHUB_RUN_ID}"
-          git tag -a "$TAG" -m "자동발행 직전 스냅샷 $(date -u +%FT%TZ)"
-          git push origin "$TAG"
+      # 복원 지점용 태그는 두지 않는다. GITHUB_TOKEN은 워크플로 파일이 얽힌 ref를
+      # 푸시할 수 없어(refusing to allow a GitHub App to ... without `workflows`
+      # permission) 태그 푸시가 거부되고, 그 뒤 발행 단계가 통째로 건너뛰어진다.
+      # 발행 커밋 자체가 되돌릴 수 있는 지점이고, publish-control은 별도로
+      # .editorial-backups에 이전 이슈를 남긴다.
 
       # ready-public-brief만 발행한다. high-risk 임상 기사와 언어·주장 경고가 있는
       # 초안은 여기서 걸러져 data/drafts에 남는다. 발행분은 감수자를 주장하지 않는
@@ -96,9 +93,13 @@ jobs:
           git config user.name "vetman-briefing-newsroom"
           git config user.email "actions@users.noreply.github.com"
           # .source-cache는 .gitignore 대상이라 git add에 넣으면 exit 1로 잡 전체가 죽는다. 넣지 않는다.
+          # .github는 담지 않는다. GITHUB_TOKEN은 워크플로 파일을 푸시할 수 없다.
           git add data site reports
-          git diff --cached --quiet || git commit -m "daily: $(date -u +%F) briefing (${{ steps.release.outputs.count }}건)"
-          git push --atomic origin main
+          git diff --cached --quiet && { echo "커밋할 변경 없음"; exit 0; }
+          git commit -m "daily: $(date -u +%F) briefing (${{ steps.release.outputs.count }}건)"
+          # 40분 실행 중 main이 앞서갔을 수 있다. 리베이스 후 올린다.
+          git pull --rebase origin main
+          git push origin main
 
       - name: Deploy to Cloudflare Pages
         if: steps.release.outputs.count != '0'

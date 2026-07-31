@@ -1,15 +1,15 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-07-31T13:00:48.881Z
+- 실행 시각: 2026-07-31T13:29:20.887Z
 - 모드: dry-run
 - 소스/피드: 27/13
 - 수집 항목: 697
-- 고유 후보: 590
+- 고유 후보: 591
 - exact duplicate: 32
-- 기존 기사 업데이트 후보: 75
-- 관련성 제외: 124
-- 기수집(seen) 제외: 12
-- 신규 가용 후보: 466
+- 기존 기사 업데이트 후보: 74
+- 관련성 제외: 126
+- 기수집(seen) 제외: 42
+- 신규 가용 후보: 435
 - draft 후보: 60
 - canonical 확인 시도: 60
 - 공식 canonical 확보: 60
@@ -18,36 +18,6 @@
 
 ## draft 후보
 
-- v1_325c53b92b24e022 · src-dr-andy-roark · verified · unique · How to Build Confident, Competent Early Career Vets
-- v1_88e7bde7826c5eaf · src-dr-andy-roark · verified · unique · Cult of the Holy Bedtime
-- v1_8977cdecc20db74b · src-dr-andy-roark · verified · unique · Improving Animal Welfare at Commercial Dog Breeding Kennels
-- v1_ecdd9715ae5b33aa · src-dr-andy-roark · verified · unique · Life Stages and Large Breeds in Canine Nutrition
-- v1_5f01b0b4f48babba · src-dr-andy-roark · verified · unique · Do You Like Being a Veterinarian on Thursdays?
-- v1_f0efeb482c512335 · src-dr-andy-roark · verified · unique · Where Are the Greatest Opportunities for Access to Care?
-- v1_015e528dc92fe205 · src-dr-andy-roark · verified · unique · We Desperately Need Maverick GPs
-- v1_dfab869009cacc1d · src-dr-andy-roark · verified · unique · This Could Be the Last Time
-- v1_f4e1789482af70a7 · src-dr-andy-roark · verified · unique · Should Business Leaders Have Mandatory Clinic Time?
-- v1_6be1d8c5a79f604d · src-dr-andy-roark · verified · unique · HDYTT: The Atopic Dog &#8211; From Puppy to Senior
-- v1_d1ece76710d46dd7 · src-dr-andy-roark · verified · unique · State of the Veterinary Front Desk
-- v1_5e79b0eb6efbac68 · src-dr-andy-roark · verified · unique · I&#8217;m Devastated
-- v1_632f817d38e1640a · src-dr-andy-roark · verified · unique · Making Vet Clinics Greener
-- v1_5ed0ce1ffe7661d1 · src-dr-andy-roark · verified · unique · Introducing Change as a Recent Grad
-- v1_a3087f97fcbd8faa · src-dr-andy-roark · verified · unique · Be Careful What You Make Important
-- v1_000c0774cffcb69e · src-dr-andy-roark · verified · unique · Independent Practice Owners Strike Back!
-- v1_6cb9a2c41af342f1 · src-dr-andy-roark · verified · unique · How NOT to Talk to Veterinarians About Access to Care
-- v1_5a8b1d1fc86addb7 · src-dr-andy-roark · verified · unique · We Can&#8217;t All Be &#8220;High Quality Medicine&#8221;
-- v1_26c3b11a5bca68db · src-dr-andy-roark · verified · unique · Are We Morally Breaking Our Technicians?
-- v1_f4c47c39349be41a · src-dr-andy-roark · verified · unique · HDYTT: Quick Sedation in Dogs and Cats
-- v1_326ba63a860c6dc8 · src-dr-andy-roark · verified · unique · The Enshittification of Vet Medicine
-- v1_1e2651ab5b7de355 · src-dr-andy-roark · verified · unique · The Secret, Dirt-Cheap, Good-Outcome Treatment Your Vet Isn’t Telling You About Doesn’t Exist
-- v1_5e84fdc2ca0848f7 · src-dr-andy-roark · verified · unique · Why Veterinary Client Trust Feels Different in 2026
-- v1_174577d6efe88d58 · src-dr-andy-roark · verified · unique · Tucker, Dutch, and Private Equity
-- v1_6f1159579ed79925 · src-dr-andy-roark · verified · unique · New Mother, Same Tech? How to Support Pregnancy and Parental Leave
-- v1_c8a1dfb2b6e491af · src-dr-andy-roark · verified · unique · The Most Important Thing to Know About How the Veterinary Industry Works
-- v1_4e1960f5492f96a4 · src-dr-andy-roark · verified · unique · Is A.I. Making Vet Clinic Websites Obsolete?
-- v1_6730c1a49ed0e14c · src-dr-andy-roark · verified · unique · Access to Vet Care
-- v1_6369d7b8e2b67768 · src-dr-andy-roark · verified · unique · Everything Is Gross and They&#8217;re Doing It Wrong
-- v1_b28850d4be6ffb54 · src-dr-andy-roark · verified · unique · Treating Feline Osteoarthritis (HDYTT)
 - v1_da6e9cdd2126f3f5 · src-dr-andy-roark · verified · unique · Is It Time to Let Your Relief Vet Go? The Veterinary Recession is Here
 - v1_19ecfad4fc33b9f7 · src-dr-andy-roark · verified · unique · What Will Veterinarians Put Up With?
 - v1_637d7663c6260dc9 · src-dr-andy-roark · verified · unique · Training Veterinarians to Do More with Less
@@ -76,5 +46,35 @@
 - v1_ebde304d1aec6972 · src-dr-andy-roark · verified · unique · On Pulling Against a Divided Nation
 - v1_1348ac7c75cff356 · src-dr-andy-roark · verified · unique · Poop Transplants: Going Beyond Parvo and Chronic Diarrheas (HDYTT)
 - v1_ca99a4580afd1024 · src-dr-andy-roark · verified · unique · Falling Job Satisfaction and Rising Salaries in Vet Techs
-- v1_b099bebd72705477 · src-frontiers-in-veterinary-science · verified · unique · Baicalin potentiates cefquinome against animal-origin ESBL-Escherichia coli by attenuating resistance-associated phenotypes and intestinal injury
+- v1_826de09db61d39b3 · src-frontiers-in-veterinary-science · verified · unique · Dietary urea levels induce morphological damage of cells, lipid metabolism disorders, and ammonia accumulation in subcutaneous fat in Tibetan sheep
+- v1_85a47306d477a584 · src-frontiers-in-veterinary-science · verified · unique · Epidemiological study of Toxocara canis infection in dogs in selected regions of Egypt
+- v1_514e67ea8b5fda4c · src-frontiers-in-veterinary-science · verified · unique · Co-circulation of Crimean–Congo hemorrhagic fever virus and spotted fever group Rickettsia in cattle and ticks from cattle in Kosovo
 - v1_dfc95935c3bcb2d4 · src-frontiers-in-veterinary-science · verified · unique · Canine paroxysmal dyskinesia: distribution of etiological subtypes and structural and reactive causes in a retrospective tertiary care cohort
+- v1_b099bebd72705477 · src-frontiers-in-veterinary-science · verified · unique · Baicalin potentiates cefquinome against animal-origin ESBL-Escherichia coli by attenuating resistance-associated phenotypes and intestinal injury
+- v1_9e4a9ff870671b0b · src-frontiers-in-veterinary-science · verified · unique · Breaking professional silos to combat brucellosis: a pilot feasibility and proof-of-concept study of interprofessional education to strengthen healthcare capacity in Côte d'Ivoire
+- v1_1baa3a90d6be2ab8 · src-frontiers-in-veterinary-science · verified · unique · AI applications in veterinary digital health: a systematic survey
+- v1_ba555ae451c75c7d · src-frontiers-in-veterinary-science · verified · unique · Simultaneous detection of classic and natural recombinant myxoma virus strains in European brown hare population in West Hungary
+- v1_308876d469770654 · src-frontiers-in-veterinary-science · verified · unique · Physiological predictors of hematological tier outcomes in canine platelet-rich plasma: a prospective observational study
+- v1_6394e3474c0c5575 · src-frontiers-in-veterinary-science · verified · unique · Gold nanoparticles improve motility, functional integrity, and antioxidant status of boar spermatozoa during liquid storage
+- v1_14552c98b78f87e9 · src-frontiers-in-veterinary-science · verified · unique · CT-based optimization of hindlimb muscle measurement levels and development of a hindlimb muscle condition score in dogs
+- v1_6756516b1b4cc435 · src-frontiers-in-veterinary-science · verified · unique · Single-isolate genomic characterization and cgMLST allelic comparison of a bovine mastitis-associated Staphylococcus aureus ST151 isolate from Kazakhstan
+- v1_c3c151c5d7bc49f3 · src-frontiers-in-veterinary-science · verified · unique · Dogs and cats with acute-on-chronic kidney disease have worse outcomes than those with acute kidney injury following renal replacement therapy
+- v1_933afc4562e9ecaf · src-ivc-journal · verified · unique · Chrononutrition for Dogs and Cats
+- v1_c1e250a008f6cd12 · src-ivc-journal · verified · unique · What Pathways are Activated by Nutrient Sensing in Companion Animals?
+- v1_cd4eda55bea666b3 · src-ivc-journal · verified · unique · Going Green: How Veterinary Clinics Can Embrace Sustainable Healthcare
+- v1_f5b0b4a70a07b16f · src-sciencedaily · verified · unique · 5,000-year-old wolves found on remote island rewrite what we know about domestication
+- v1_c96244ac853fbf49 · src-sciencedaily · verified · unique · Deadly fungus and lung parasites are hammering wild rattlesnakes
+- v1_702d33aa6e49fc30 · src-sciencedaily · verified · unique · Scientists say house cats could help unlock new cancer treatments for humans
+- v1_aa90e70b223f8345 · src-sciencedaily · verified · unique · What caffeine does to ants could change pest control
+- v1_ea72aa5e3eedca04 · src-sciencedaily · verified · unique · Scientists discover tiny ocean fungus that kills toxic algae
+- v1_94700dade2811fbc · src-sciencedaily · verified · unique · What snow monkeys’ steamy baths are really doing to their bodies
+- v1_1fead79785902c91 · src-sciencedaily · verified · unique · Flea and tick treatments for dogs and cats may be harming wildlife
+- v1_a305cc102707a16f · src-sciencedaily · verified · unique · Triceratops had a giant nose that may have cooled its massive head
+- v1_8bbe93b9ae306e29 · src-sciencedaily · verified · unique · Giant virus discovery could rewrite the origin of complex life
+- v1_b9a1d22585a7cb1c · src-sciencedaily · verified · unique · Scientists discover pets are helping an invasive flatworm spread
+- v1_7a26d93261a99432 · src-sciencedaily · verified · unique · Your cat’s purr says more than you think
+- v1_cab93fa52258ce86 · src-sciencedaily · verified · unique · This spider’s “pearl necklace” was living parasites
+- v1_8e702a82516abf91 · src-sciencedaily · verified · unique · Decoding the perfect steak: The hidden DNA behind Wagyu’s legendary marbling
+- v1_4642cc441caecc02 · src-sciencedaily · verified · unique · 11,000-year-old dog skulls reveal a hidden origin story
+- v1_769268e94f2dbb5a · src-sciencedaily · verified · unique · Ancient wolves could only have reached this island by boat
+- v1_c7e1550298d14e3d · src-sciencedaily · verified · unique · This “mushroom” is not a fungus, it’s a bizarre plant that breaks all the rules
