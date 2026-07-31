@@ -70,7 +70,8 @@ jobs:
         run: |
           git config user.name "vetman-briefing-newsroom"
           git config user.email "actions@users.noreply.github.com"
-          git add data/drafts reports/source-health.json reports/source-health.md reports/feed-diagnostics.json reports/feed-diagnostics.md reports/ingest-report.json reports/ingest-report.md reports/update-candidates.json reports/draft-newsroom.json reports/language-audit.json reports/terminology-audit.json reports/claims-audit.json reports/end-to-end-drafts.md .source-cache
+          # .source-cache는 .gitignore 대상이라 git add에 넣으면 exit 1로 잡 전체가 죽는다. 넣지 않는다.
+          git add data/drafts reports/source-health.json reports/source-health.md reports/feed-diagnostics.json reports/feed-diagnostics.md reports/ingest-report.json reports/ingest-report.md reports/update-candidates.json reports/draft-newsroom.json reports/language-audit.json reports/terminology-audit.json reports/claims-audit.json reports/end-to-end-drafts.md
           git diff --cached --quiet || git commit -m "newsroom: source-first draft candidates $(date -u +%F)"
           git push --atomic origin main
       - name: Explicit publication safety assertion
