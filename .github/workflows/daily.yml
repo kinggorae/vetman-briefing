@@ -33,7 +33,9 @@ jobs:
       - name: Collect source-first draft candidates
         # 고유 후보가 하루 400건 넘게 쌓이는데 30건만 쓰고 있었다. 동시 실행을
         # 8로 올려 확보한 여유만큼 후보 수를 늘린다(생성 시간은 비슷하게 유지).
-        run: npm run ingest:all -- --generate --max=60
+        # per-source는 소스별 라운드로빈 위에 두는 안전장치다. 소스가 몇 개로
+        # 줄어드는 날 한 매체가 하루치를 통째로 차지하는 것을 막는다.
+        run: npm run ingest:all -- --generate --max=60 --per-source=10
         env:
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
