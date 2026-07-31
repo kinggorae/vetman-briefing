@@ -65,13 +65,24 @@ function loadQueue() {
     const status = item.workflowStatus || (row.published ? "legacy-published" : "draft");
     if (!QUEUE_STATUSES.has(status)) continue;
     const risk = item.clinicalRisk || inferClinicalRisk(item);
+    const role = requiredReviewRole({ ...item, clinicalRisk: risk });
+    const url = item.sourceUrl || item.sourceUrlRaw || null;
+    const tier = normalizeContentTier(item);
+    // 승인이 막히는 이유를 미리 계산한다. 체크리스트를 다 켠 뒤에야 CLI가
+    // 거부하면 검수 시간을 통째로 버리게 된다(큐의 60%가 Google 중계 URL이었다).
+    const blockReason = !url ? "원문 URL이 없습니다"
+      : /^https?:\/\/(?:news\.)?google\./i.test(url) ? "Google News 중계 URL — 원문 복원 불가"
+      : role === "vet" ? "수의사 검수가 필요합니다"
+      : null;
     out.push({
       id: item.id || `${row.date}_${row.index + 1}`, date: row.date,
       status, statusLabel: workflowLabel(status), risk,
-      requiredRole: requiredReviewRole({ ...item, clinicalRisk: risk }),
-      tier: normalizeContentTier(item),
+      requiredRole: role, blockReason,
+      // brief 티어는 승인해도 계속 noindex다. 색인이 목적이면 볼 필요가 없다.
+      indexEligible: tier === "analysis" || tier === "evidence",
+      tier,
       priority: reviewPriority({ ...item, clinicalRisk: risk, workflowStatus: status }, { legacyIndex: status === "legacy-published" }),
-      sourceLabel: item.sourceLabel || "", sourceUrl: item.sourceUrl || item.sourceUrlRaw || null,
+      sourceLabel: item.sourceLabel || "", sourceUrl: url,
       titleKo: item.titleKo || "", leadKo: item.leadKo || "",
       bodyKo: Array.isArray(item.bodyKo) ? item.bodyKo : [],
       keyPointsKo: Array.isArray(item.keyPointsKo) ? item.keyPointsKo : [],
@@ -179,6 +190,7 @@ body{font:14px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-s
 #list{border-right:1px solid #8884;overflow:auto}
 #list .row{padding:8px 11px;border-bottom:1px solid #8882;cursor:pointer;font-size:12.5px}
 #list .row.on{background:#7772}
+#list .row.blocked{opacity:.45}
 #mid,#right{overflow:auto;padding:18px 22px}
 #right{border-left:1px solid #8884;background:#8881}
 h2{margin:.2em 0 .5em;font-size:18px;line-height:1.4}
@@ -203,32 +215,38 @@ a{color:inherit}
 <div id=list></div><div id=mid>불러오는 중…</div><div id=right></div><div id=msg></div>
 <script>
 const CHECKS=${JSON.stringify(CHECK_LABELS)};
-let all=[],rows=[],cur=0,me="",mineOnly=true,ana=null;
+let all=[],rows=[],cur=0,me="",mode=0,ana=null;
+// 0 승인+색인 가능 · 1 승인 가능 전체 · 2 전체
+const MODES=[
+ {t:"승인·색인 가능",f:r=>!r.blockReason&&r.indexEligible},
+ {t:"승인 가능 전체",f:r=>!r.blockReason},
+ {t:"전체(승인 불가 포함)",f:()=>true}];
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function toast(t){const m=$("#msg");m.textContent=t;m.style.display="block";clearTimeout(m._t);m._t=setTimeout(()=>m.style.display="none",3500)}
 async function load(){const j=await(await fetch("/api/queue")).json();all=j.rows;me=j.reviewerId||"";
  if(!me){$("#mid").innerHTML="<p>등록된 editor가 없습니다.</p>";return}
  apply()}
-function apply(){rows=mineOnly?all.filter(r=>r.requiredRole==="editor"):all;
+function apply(){rows=all.filter(MODES[mode].f);
  cur=Math.min(cur,Math.max(0,rows.length-1));draw()}
-function toggle(){mineOnly=!mineOnly;cur=0;apply()}
+function toggle(){mode=(mode+1)%MODES.length;cur=0;apply()}
 function draw(){
- const n=all.filter(r=>r.requiredRole==="editor").length;
- $("#list").innerHTML='<div class=row style="opacity:.8" onclick="toggle()">'+
-  (mineOnly?"▣ 승인 가능한 것만 ("+n+")":"▢ 전체 ("+all.length+")")+'</div>'+
-  rows.map((r,i)=>'<div class="row'+(i===cur?" on":"")+'" onclick="cur='+i+';draw()">'+
-   '<b>'+r.risk+'</b> · '+r.date+'<br>'+esc(r.titleKo||r.sourceTitle).slice(0,44)+'</div>').join("");
- if(!rows.length){$("#mid").innerHTML="<p>승인 가능한 기사가 없습니다.</p>";$("#right").innerHTML="";return}
+ const n=MODES.map(m=>all.filter(m.f).length);
+ $("#list").innerHTML='<div class=row style="opacity:.85" onclick="toggle()">▣ '+
+  MODES[mode].t+' ('+n[mode]+')<br><span style="font-size:11px;opacity:.7">클릭해 전환 · 승인가능 '+n[1]+' · 전체 '+n[2]+'</span></div>'+
+  rows.map((r,i)=>'<div class="row'+(i===cur?" on":"")+(r.blockReason?" blocked":"")+'" onclick="cur='+i+';draw()">'+
+   '<b>'+r.risk+'</b> · '+r.tier+' · '+r.date+'<br>'+esc(r.titleKo||r.sourceTitle).slice(0,42)+'</div>').join("");
+ if(!rows.length){$("#mid").innerHTML="<p>이 조건에 맞는 기사가 없습니다.</p>";$("#right").innerHTML="";return}
  const r=rows[cur];
  $("#mid").innerHTML='<div class=meta><span class=badge>'+r.risk+'</span><span class=badge>'+r.tier+'</span>'+
   '<span class=badge>'+esc(r.statusLabel)+'</span>'+esc(r.sourceLabel)+' · '+r.date+'</div>'+
   '<h2>'+esc(r.titleKo)+'</h2>'+
-  (r.sourceUrl?'<p><a href="'+esc(r.sourceUrl)+'" target="_blank" rel="noopener">원문 열기 ↗</a></p>':'<p class=warn>원문 URL이 없어 승인할 수 없습니다.</p>')+
+  (r.sourceUrl?'<p><a href="'+esc(r.sourceUrl)+'" target="_blank" rel="noopener">원문 열기 ↗</a></p>':'')+
+  (r.blockReason?'<p class=warn><b>승인 불가</b> — '+esc(r.blockReason)+'. 검수해도 승인되지 않으니 건너뛰세요.</p>':'')+
+  (!r.blockReason&&!r.indexEligible?'<p class=warn>'+esc(r.tier)+' 티어는 승인해도 색인되지 않습니다(analysis·evidence만 색인). 독자용으로만 의미가 있습니다.</p>':'')+
   '<p class=lead>'+esc(r.leadKo)+'</p>'+
   r.bodyKo.map(p=>'<p class=body>'+esc(p)+'</p>').join("")+
   (r.keyPointsKo.length?'<ul>'+r.keyPointsKo.map(k=>'<li>'+esc(k)+'</li>').join("")+'</ul>':'')+
-  (r.requiredRole==="vet"?'<p class=warn>수의사 감수가 필요한 기사입니다. editor 권한으로는 승인할 수 없습니다.</p>':'')+
   '<h3>확인 항목</h3>'+Object.entries(CHECKS).map(([k,l],i)=>
     '<label id="lb-'+k+'"><input type=checkbox class=ck data-k="'+k+'" onchange="sync()"> <b>'+(i+1)+'.</b> '+esc(l)+'</label>').join("")+
   '<div class=acts><button id=ok onclick="act(\\'approve\\')" disabled>승인 (a)</button>'+
@@ -250,8 +268,8 @@ function paint(){const a=ana;if(!a)return;
   box("원문에 없는 고유명사",a.latin,t=>'<div class=f><b>'+esc(t)+'</b></div>',"라틴 문자 표기가 모두 원문에 있습니다",true)+
   '<h3>원문 본문 '+(a.sourceChars?'('+a.sourceChars+'자)':'')+'</h3><pre>'+esc(a.sourceText||"(없음)")+'</pre>';
  for(const [k,hit] of Object.entries(a.flag||{})){const el=document.getElementById("lb-"+k);if(el)el.classList.toggle("hit",!!hit)}}
-function sync(){const r=rows[cur];const all=[...document.querySelectorAll(".ck")].every(c=>c.checked);
- const b=$("#ok");if(b)b.disabled=!all||r.requiredRole==="vet"||!r.sourceUrl}
+function sync(){const r=rows[cur];const done=[...document.querySelectorAll(".ck")].every(c=>c.checked);
+ const b=$("#ok");if(b)b.disabled=!done||!!r.blockReason}
 async function act(cmd){const r=rows[cur];
  const checks=[...document.querySelectorAll(".ck")].filter(c=>c.checked).map(c=>c.dataset.k);
  let notes=null;
