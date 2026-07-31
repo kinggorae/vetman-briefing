@@ -37,7 +37,26 @@
         "owner": null,
         "clinical": "한국에서도 지역 수의과대학·수의간호학과와의 협력 가능성을 탐색하고, 학생 인턴십 및 체험 프로그램 도입을 통해 향후 인력 확보를 준비할 수 있습니다.",
         "evidence": null
-      }
+      },
+      "workflowStatus": "approved",
+      "dataSchemaVersion": 2,
+      "reviewPolicyVersion": "2026-07-30",
+      "reviewChecklist": {
+        "sourceConfirmed": true,
+        "titleLeadBodyChecked": true,
+        "numbersChecked": true,
+        "speciesAndStudyChecked": true,
+        "limitationsChecked": true,
+        "clinicalLanguageChecked": true
+      },
+      "reviewNotes": null,
+      "editorialStatus": "editor-reviewed",
+      "reviewerId": "shin-hyun-kyu",
+      "reviewerRole": "editor",
+      "reviewedBy": "SHIN HYUN KYU",
+      "reviewedAt": "2026-07-31T16:04:14.655Z",
+      "contentHash": "36ffe7ddfef66cd7704723c9a366cea9b36794f3f495ff4480257dbc8617965c",
+      "sourceHash": "97e42d6cc64e22aeabad06bf2229839486c26c68d633c12a8f76d413319e2f0c"
     },
     {
       "titleKo": "고양이 긁기병으로 인한 비정상적 고열 및 신경정신 증상 1례 보고",
