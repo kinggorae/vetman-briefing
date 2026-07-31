@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-07-29T16:46:42.316Z",
+  "generatedAt": "2026-07-31T14:52:26.456Z",
   "sources": [
     {
       "id": "src-1851-franchise",
@@ -2604,7 +2604,9 @@
       "officialDomains": [
         "cvm.ncsu.edu"
       ],
-      "rssUrls": [],
+      "rssUrls": [
+        "https://cvm.ncsu.edu/feed/"
+      ],
       "atomUrls": [],
       "sitemapUrls": [],
       "fetchStrategy": "manual",

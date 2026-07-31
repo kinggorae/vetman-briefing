@@ -1,80 +1,80 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-07-31T13:29:20.887Z
+- 실행 시각: 2026-07-31T14:55:27.255Z
 - 모드: dry-run
-- 소스/피드: 27/13
-- 수집 항목: 697
-- 고유 후보: 591
-- exact duplicate: 32
-- 기존 기사 업데이트 후보: 74
-- 관련성 제외: 126
-- 기수집(seen) 제외: 42
-- 신규 가용 후보: 435
+- 소스/피드: 27/14
+- 수집 항목: 747
+- 고유 후보: 581
+- exact duplicate: 88
+- 기존 기사 업데이트 후보: 78
+- 관련성 제외: 132
+- 기수집(seen) 제외: 23
+- 신규 가용 후보: 439
 - draft 후보: 60
-- canonical 확인 시도: 60
-- 공식 canonical 확보: 60
-- unresolved source: 0
+- canonical 확인 시도: 58
+- 공식 canonical 확보: 58
+- unresolved source: 2
 - relay sourceUrl: 0
 
 ## draft 후보
 
 - v1_da6e9cdd2126f3f5 · src-dr-andy-roark · verified · unique · Is It Time to Let Your Relief Vet Go? The Veterinary Recession is Here
-- v1_19ecfad4fc33b9f7 · src-dr-andy-roark · verified · unique · What Will Veterinarians Put Up With?
-- v1_637d7663c6260dc9 · src-dr-andy-roark · verified · unique · Training Veterinarians to Do More with Less
 - v1_c75ac055bf36dc84 · src-dr-andy-roark · verified · unique · Best of Dr. Andy Roark 2025
 - v1_af8ba2e7e09e09b6 · src-dr-andy-roark · verified · unique · 2025 Post Mortem &#038; Predicting 2026
-- v1_d53d44d41d076de8 · src-dr-andy-roark · verified · unique · Making Clients Happy Is Not Our Top Priority
-- v1_573643f8a808d4e0 · src-dr-andy-roark · verified · unique · Love and Endings: On Heavy Holidays in Vet Med
-- v1_bac5c1b71916edbb · src-dr-andy-roark · verified · unique · Avoiding Board Complaints with Informed Consent
-- v1_eff27ff041c0d32b · src-dr-andy-roark · verified · unique · The Rise of the Distributive Model for Veterinary Education
-- v1_33366e97950c6f9c · src-dr-andy-roark · verified · unique · Building a Veterinary Career That Truly Fits You
 - v1_7566da4bd1e4ad50 · src-dr-andy-roark · verified · unique · Unleashing the Bond
-- v1_847917a16f748b25 · src-dr-andy-roark · verified · unique · The Pace of Practice
-- v1_a411f825fd21a009 · src-dr-andy-roark · verified · unique · Do We Really Need More Veterinarians?
-- v1_54118d55c6aa0d9c · src-dr-andy-roark · verified · unique · A Center for Canine Victims of Abuse and Neglect
-- v1_7e16941be496b67c · src-dr-andy-roark · verified · unique · How to Know a Person
-- v1_75da3a3b01f5dd1d · src-dr-andy-roark · verified · unique · What’s Next After Years in Practice?
 - v1_8bf21da46fadebd4 · src-dr-andy-roark · verified · unique · Fear and Honesty in Vet Medicine
 - v1_83879875f4b4619e · src-dr-andy-roark · verified · unique · What it Really Means to Be a Veterinarian
 - v1_86d61a473b4a1217 · src-dr-andy-roark · verified · unique · What Technicians Mean to Us
 - v1_d69fcb73f885e465 · src-dr-andy-roark · verified · unique · New Cat is Stressing the Old Cat (HDYTT)
 - v1_4dd78d0ded82864d · src-dr-andy-roark · verified · unique · The Evolving Vet Tech Profession
 - v1_d6302c3cb03d8952 · src-dr-andy-roark · verified · unique · Why Education Won’t Get You There
-- v1_3c872b693cebffdb · src-dr-andy-roark · verified · unique · Fear of the Unknown
 - v1_2c3bbc0c8d4f1bb7 · src-dr-andy-roark · verified · unique · The Last One Standing
-- v1_65faae94026c9b88 · src-dr-andy-roark · verified · unique · Judge Awards Emotional Damages for Dog Death
-- v1_ebde304d1aec6972 · src-dr-andy-roark · verified · unique · On Pulling Against a Divided Nation
-- v1_1348ac7c75cff356 · src-dr-andy-roark · verified · unique · Poop Transplants: Going Beyond Parvo and Chronic Diarrheas (HDYTT)
-- v1_ca99a4580afd1024 · src-dr-andy-roark · verified · unique · Falling Job Satisfaction and Rising Salaries in Vet Techs
-- v1_826de09db61d39b3 · src-frontiers-in-veterinary-science · verified · unique · Dietary urea levels induce morphological damage of cells, lipid metabolism disorders, and ammonia accumulation in subcutaneous fat in Tibetan sheep
-- v1_85a47306d477a584 · src-frontiers-in-veterinary-science · verified · unique · Epidemiological study of Toxocara canis infection in dogs in selected regions of Egypt
-- v1_514e67ea8b5fda4c · src-frontiers-in-veterinary-science · verified · unique · Co-circulation of Crimean–Congo hemorrhagic fever virus and spotted fever group Rickettsia in cattle and ticks from cattle in Kosovo
-- v1_dfc95935c3bcb2d4 · src-frontiers-in-veterinary-science · verified · unique · Canine paroxysmal dyskinesia: distribution of etiological subtypes and structural and reactive causes in a retrospective tertiary care cohort
 - v1_b099bebd72705477 · src-frontiers-in-veterinary-science · verified · unique · Baicalin potentiates cefquinome against animal-origin ESBL-Escherichia coli by attenuating resistance-associated phenotypes and intestinal injury
-- v1_9e4a9ff870671b0b · src-frontiers-in-veterinary-science · verified · unique · Breaking professional silos to combat brucellosis: a pilot feasibility and proof-of-concept study of interprofessional education to strengthen healthcare capacity in Côte d'Ivoire
-- v1_1baa3a90d6be2ab8 · src-frontiers-in-veterinary-science · verified · unique · AI applications in veterinary digital health: a systematic survey
-- v1_ba555ae451c75c7d · src-frontiers-in-veterinary-science · verified · unique · Simultaneous detection of classic and natural recombinant myxoma virus strains in European brown hare population in West Hungary
-- v1_308876d469770654 · src-frontiers-in-veterinary-science · verified · unique · Physiological predictors of hematological tier outcomes in canine platelet-rich plasma: a prospective observational study
 - v1_6394e3474c0c5575 · src-frontiers-in-veterinary-science · verified · unique · Gold nanoparticles improve motility, functional integrity, and antioxidant status of boar spermatozoa during liquid storage
-- v1_14552c98b78f87e9 · src-frontiers-in-veterinary-science · verified · unique · CT-based optimization of hindlimb muscle measurement levels and development of a hindlimb muscle condition score in dogs
-- v1_6756516b1b4cc435 · src-frontiers-in-veterinary-science · verified · unique · Single-isolate genomic characterization and cgMLST allelic comparison of a bovine mastitis-associated Staphylococcus aureus ST151 isolate from Kazakhstan
+- v1_308876d469770654 · src-frontiers-in-veterinary-science · verified · unique · Physiological predictors of hematological tier outcomes in canine platelet-rich plasma: a prospective observational study
 - v1_c3c151c5d7bc49f3 · src-frontiers-in-veterinary-science · verified · unique · Dogs and cats with acute-on-chronic kidney disease have worse outcomes than those with acute kidney injury following renal replacement therapy
-- v1_933afc4562e9ecaf · src-ivc-journal · verified · unique · Chrononutrition for Dogs and Cats
-- v1_c1e250a008f6cd12 · src-ivc-journal · verified · unique · What Pathways are Activated by Nutrient Sensing in Companion Animals?
+- v1_6756516b1b4cc435 · src-frontiers-in-veterinary-science · verified · unique · Single-isolate genomic characterization and cgMLST allelic comparison of a bovine mastitis-associated Staphylococcus aureus ST151 isolate from Kazakhstan
+- v1_14ba87aa9e979563 · src-frontiers-in-veterinary-science · verified · unique · Commentary: QRS complex configurations in 12-lead electrocardiograms of dogs with monomorphic ventricular tachycardia or complete bundle branch block
 - v1_cd4eda55bea666b3 · src-ivc-journal · verified · unique · Going Green: How Veterinary Clinics Can Embrace Sustainable Healthcare
+- v1_74be8b65675f913d · src-nc-state-university · verified · unique · Learning the Rural Ropes: Across NC, Veterinary Students Lock In
+- v1_5b51cfca9fc4824b · src-nc-state-university · verified · unique · Advancing Pain Research and Alleviation: Inside NC&#160;State&#8217;s Comparative Pain Research and Education Center
+- v1_0a82a1e5a31b029f · src-nc-state-university · verified · unique · Record Number of NC&#160;State Veterinary Students Engage in Summer Research
+- v1_7db36899bbb0a6f2 · src-nc-state-university · verified · unique · From the Veterinary Scholars Program, Kristen Folk Reports
+- v1_35ba035031079e5b · src-nc-state-university · unresolved · unique · Researchers Identify Useful Tool for Diagnosing Endocrine Dysfunction in Sick Foals
+- v1_33b9202a8b539728 · src-nc-state-university · verified · unique · Put NC&#160;State’s Pilot VetRISE Program for High Schoolers in the Win Column
+- v1_1c90e61133a4fdc1 · src-nc-state-university · verified · unique · Swine-Focused NC&#160;State Professor Wins 2026 AVMA Animal Welfare Award
+- v1_60890dc7c2ff9d41 · src-nc-state-university · verified · unique · AVMA Honors Vaden with its 2026 Clinical Research Award
+- v1_97058eb5b259f509 · src-nc-state-university · verified · unique · Stride Length is Marker for Cognitive Decline in Dogs
+- v1_f6825a751271fc9b · src-nc-state-university · verified · unique · Screwworm Outbreak No Surprise to Nation’s Veterinary Parasitologists
+- v1_237e21c46bd19900 · src-nc-state-university · verified · unique · From the USDA Zoonotic and Emerging Diseases Research Unit, Madison Henderson Reports
+- v1_970468a493dc8c21 · src-nc-state-university · verified · unique · Celebrating Dog 100 as Study on Canine Aging Continues to Break Ground
+- v1_eccbd7c6dfa6e3d1 · src-nc-state-university · verified · unique · New World Screwworm in the U.S.: What It Means for North Carolina
+- v1_f9659abb2c55cdc7 · src-nc-state-university · verified · unique · NC&#160;State CVM Offers High Schoolers Summer Research Stint
+- v1_7be7542678c93728 · src-nc-state-university · unresolved · unique · Ammonia Levels in Urine Could Serve as Marker for Chronic Kidney Disease in Dogs
+- v1_b30e67d124756349 · src-nc-state-university · verified · unique · A Sister Denied Leads to a Legacy Created and Dreams Supported
+- v1_aa30a23bc6bd0bc8 · src-nc-state-university · verified · unique · Inaugural Cat Camp Research Grants go to Four Feline-Focused Participants
+- v1_029fb9b4d69a57f5 · src-nc-state-university · verified · unique · ‘We Conquered Everything’: 108 New Veterinarians Take on the World
+- v1_d49660660f0f8da2 · src-nc-state-university · verified · unique · Class of 2026: From Nerves to NAVLE, Four Years of Questions Finally Answered
+- v1_61705203f25d73ff · src-nc-state-university · verified · unique · Class of 2026: So Grateful My Parents Made Their Ceiling My Floor
+- v1_f8bb90fa08927cfd · src-nc-state-university · verified · unique · Class of 2026: Homesickness, Culture Shock, Then a Purpose Realized
+- v1_3bbea7f36cdff068 · src-nc-state-university · verified · unique · Here’s Why Your Face Doesn’t Perceive Itchiness the Same Way Your Body Does
+- v1_fdef9caff01cfaa4 · src-nc-state-university · verified · unique · Class of 2026: The Pressure Dims When You Let Others Shine
+- v1_90f05f73038c8af9 · src-nc-state-university · verified · unique · Annual CVM Awards Ceremony Celebrates Faculty and Staff Excellence
+- v1_601b114ac14b738c · src-nc-state-university · verified · unique · CVM Celebrates Outstanding Student Achievements at Annual Awards Banquet
+- v1_9a429255bf53757b · src-nc-state-university · verified · unique · CVM Cancer Researcher Wins NC&#160;State University Outstanding Teacher Award
+- v1_0e6cf449d8e21487 · src-nc-state-university · verified · unique · CVM Offers Undergraduate Researchers Chance to Practice, Compete
+- v1_c572dc551e8494ee · src-nc-state-university · verified · unique · ‘A Sigh of Relief’: Grateful DVM Students Get Chance to Thank Scholarship Starters
+- v1_94fb5469f5291735 · src-nc-state-university · verified · unique · Katie Sheats Honored With 2026 UNC Board of Governors Award for Excellence in Teaching
+- v1_0b23cc6d7300e0b7 · src-nc-state-university · verified · unique · For ‘Revolutionary’ Work on Pain, Lascelles Wins AAVMC Excellence in Research Award
+- v1_481e373fde0ddd9b · src-nc-state-university · verified · unique · NC&#160;State Oath and Hooding Ceremony Set for May 8
+- v1_76711aa0953d0c12 · src-nc-state-university · verified · unique · The Rescued &#8216;Rebel&#8217; that Inspired an Unending Scientific Legacy
+- v1_11ea34d6c79bc9a8 · src-nc-state-university · verified · unique · NC&#160;State Announces Creation of Distinguished Chair in Feline Health Research
+- v1_5b1242de6231bfcc · src-nc-state-university · verified · unique · Researchers Identify Potential Disease Marker, Therapeutic Target for Cats with Osteoarthritis
+- v1_b8265ca9be3dd06e · src-nc-state-university · verified · unique · Open House Draws Thousands to CVM Campus for Discoveries and Delights
+- v1_7269d03792e4d04d · src-nc-state-university · verified · unique · Care from NC&#160;State Veterinary Orthopedist Spurs Couple to Honor His Passion
+- v1_24b93e5196d8799a · src-nc-state-university · verified · unique · After a Grape Ingestion, Going the Extra Miles for Daddy&#8217;s Dog
+- v1_5e69333d3052d7cf · src-nc-state-university · verified · unique · USDA Awards Avian-Flu-Fighting Challenge Grants to NC&#160;State Researchers
+- v1_1ee74f09d80d8228 · src-nc-state-university · verified · unique · Academic of the Year, New President: NC&#160;State Shines at AASV Meeting
 - v1_f5b0b4a70a07b16f · src-sciencedaily · verified · unique · 5,000-year-old wolves found on remote island rewrite what we know about domestication
-- v1_c96244ac853fbf49 · src-sciencedaily · verified · unique · Deadly fungus and lung parasites are hammering wild rattlesnakes
-- v1_702d33aa6e49fc30 · src-sciencedaily · verified · unique · Scientists say house cats could help unlock new cancer treatments for humans
-- v1_aa90e70b223f8345 · src-sciencedaily · verified · unique · What caffeine does to ants could change pest control
-- v1_ea72aa5e3eedca04 · src-sciencedaily · verified · unique · Scientists discover tiny ocean fungus that kills toxic algae
-- v1_94700dade2811fbc · src-sciencedaily · verified · unique · What snow monkeys’ steamy baths are really doing to their bodies
 - v1_1fead79785902c91 · src-sciencedaily · verified · unique · Flea and tick treatments for dogs and cats may be harming wildlife
 - v1_a305cc102707a16f · src-sciencedaily · verified · unique · Triceratops had a giant nose that may have cooled its massive head
-- v1_8bbe93b9ae306e29 · src-sciencedaily · verified · unique · Giant virus discovery could rewrite the origin of complex life
-- v1_b9a1d22585a7cb1c · src-sciencedaily · verified · unique · Scientists discover pets are helping an invasive flatworm spread
-- v1_7a26d93261a99432 · src-sciencedaily · verified · unique · Your cat’s purr says more than you think
-- v1_cab93fa52258ce86 · src-sciencedaily · verified · unique · This spider’s “pearl necklace” was living parasites
-- v1_8e702a82516abf91 · src-sciencedaily · verified · unique · Decoding the perfect steak: The hidden DNA behind Wagyu’s legendary marbling
-- v1_4642cc441caecc02 · src-sciencedaily · verified · unique · 11,000-year-old dog skulls reveal a hidden origin story
-- v1_769268e94f2dbb5a · src-sciencedaily · verified · unique · Ancient wolves could only have reached this island by boat
-- v1_c7e1550298d14e3d · src-sciencedaily · verified · unique · This “mushroom” is not a fungus, it’s a bizarre plant that breaks all the rules
