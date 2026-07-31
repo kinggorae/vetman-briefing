@@ -8,7 +8,7 @@ import { articleContractIssues, SCHEMA_VERSION } from "../src/lib/editorial-oper
 import { publishQualityIssues } from "../src/quality.js";
 import { bodyCharCount } from "../src/lib/quality.js";
 import { enrichItems } from "../src/enrich.js";
-import { stableItemId, sourceKeys } from "../src/identity.js";
+import { stableItemId, sourceKeys, addSourceKeys } from "../src/identity.js";
 import {
   atomicWrite, contentHash as sourceContentHash, dedupeFeedEntries, fetchArticleMetadata, fetchFeed, isOfficialUrl, isRelayUrl,
   loadRegistry, metadataHash, normalizeSource, readJson, safeSourceUrl, sourceStatusFor,
@@ -17,6 +17,9 @@ import {
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES = path.join(ROOT, "data", "issues");
 const DRAFT_DIR = path.join(ROOT, "data", "drafts");
+// run.js와 같은 파일을 공유한다. 초안 단계에도 기억이 있어야 어제 뽑은 원문을
+// 오늘 다시 집지 않는다. 이게 없으면 후보 목록 앞에서 매일 같은 30건을 자른다.
+const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 const REPORT_JSON = path.join(ROOT, "reports", "ingest-report.json");
 const REPORT_MD = path.join(ROOT, "reports", "ingest-report.md");
 const RELAY = /^https?:\/\/(?:news\.)?google\.[^/]+\/rss\/articles\//i;
@@ -29,6 +32,16 @@ function args() {
   return { command, positional: raw.filter((x) => !x.startsWith("--")), flags: Object.fromEntries(raw.filter((x) => x.startsWith("--")).map((x) => { const [key, ...rest] = x.slice(2).split("="); return [key, rest.length ? rest.join("=") : true]; })) };
 }
 function today() { return new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(new Date()); }
+function loadSeen() {
+  const set = new Set();
+  for (const url of readJson(SEEN_PATH, { urls: [] }).urls || []) addSourceKeys(set, url);
+  return set;
+}
+function saveSeen(seen) {
+  // run.js와 동일한 보존 폭. 권역별 피드가 하루 수백 건을 공급해 좁게 잡으면
+  // 며칠 전 기사가 다른 국가판을 통해 다시 들어온다.
+  atomicWrite(SEEN_PATH, JSON.stringify({ urls: [...seen].slice(-20000) }, null, 2) + "\n");
+}
 function allExisting() {
   const rows = [];
   if (!fs.existsSync(ISSUES)) return rows;
@@ -109,7 +122,13 @@ async function confirmCanonicals(entries, sources, flags) {
 async function collect(id, flags) {
   const sources = sourcesFor(id); const fetched = await sourceRows(sources, flags); const existing = allExisting();
   const entries = fetched.flatMap((row) => (row.result?.entries || []).map((entry) => ({ ...entry, sourceId: row.source.id, sourceLabel: row.source.label })));
-  const deduped = dedupeFeedEntries(entries, existing); let draftEntries = deduped.filter((entry) => relevance(entry) === "relevant" && entry.duplicateStatus === "unique").slice(0, Math.max(1, Number(flags.max) || 50)); draftEntries = await confirmCanonicals(draftEntries, sources, flags); const drafts = [];
+  const deduped = dedupeFeedEntries(entries, existing);
+  // 발행 여부와 무관하게 "한 번 초안으로 뽑은 원문"을 기억한다. 발행에 실패한
+  // 후보를 매일 다시 생성하면 LLM 시간을 같은 기사에 계속 쓰게 된다.
+  const seen = flags["ignore-seen"] ? new Set() : loadSeen();
+  const relevant = deduped.filter((entry) => relevance(entry) === "relevant" && entry.duplicateStatus === "unique");
+  const fresh = relevant.filter((entry) => !sourceKeys(entry).some((key) => seen.has(key)));
+  let draftEntries = fresh.slice(0, Math.max(1, Number(flags.max) || 50)); draftEntries = await confirmCanonicals(draftEntries, sources, flags); const drafts = [];
   for (const entry of draftEntries) drafts.push(await generateDraft(draftFor(entry, sources.find((source) => source.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel }), flags), entry, flags));
   const generated = drafts.filter((draft) => draft.titleKo && draft.bodyKo?.length);
   // generate.js는 source-first 경로에서 본문 길이와 무관하게 analysis로 찍는다.
@@ -119,10 +138,14 @@ async function collect(id, flags) {
   // radar는 발행 게이트의 필수 항목인데 source-first 수집에는 채우는 단계가
   // 없었다(run.js만 enrich했다). 생성을 요청한 실행에서만 함께 채운다.
   if (flags.generate && generated.length) await enrichItems(generated);
+  if (!flags.dry && drafts.length) {
+    for (const draft of drafts) addSourceKeys(seen, draft.sourceUrl || draft.sourceUrlRaw || "");
+    saveSeen(seen);
+  }
   const report = {
     generatedAt: new Date().toISOString(), mode: flags.dry ? "dry-run" : "write-draft", sources: sources.map((source) => ({ id: source.id, label: source.label, feeds: feedUrls(source) })),
     feeds: fetched.map((row) => ({ sourceId: row.source.id, sourceLabel: row.source.label, url: row.url, itemCount: row.result?.entries?.length || 0, fromCache: row.result?.fromCache || false, error: row.error })),
-    counts: { sources: sources.length, feeds: fetched.length, feedFailures: fetched.filter((row) => row.error).length, fetchedEntries: entries.length, unique: deduped.filter((entry) => entry.duplicateStatus === "unique").length, exactDuplicate: deduped.filter((entry) => entry.duplicateStatus === "exact-duplicate").length, updateOfExisting: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").length, excludedIrrelevant: deduped.filter((entry) => relevance(entry) === "excluded").length, drafts: drafts.length, canonicalChecked: draftEntries.filter((entry) => entry.pageMetadata).length, verifiedCanonical: drafts.filter((draft) => draft.sourceStatus === "verified").length, unresolved: drafts.filter((draft) => draft.sourceStatus === "unresolved").length, relaySourceUrl: drafts.filter((draft) => RELAY.test(draft.sourceUrl || "")).length },
+    counts: { sources: sources.length, feeds: fetched.length, feedFailures: fetched.filter((row) => row.error).length, fetchedEntries: entries.length, unique: deduped.filter((entry) => entry.duplicateStatus === "unique").length, exactDuplicate: deduped.filter((entry) => entry.duplicateStatus === "exact-duplicate").length, updateOfExisting: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").length, excludedIrrelevant: deduped.filter((entry) => relevance(entry) === "excluded").length, relevantUnique: relevant.length, seenSkipped: relevant.length - fresh.length, freshAvailable: fresh.length, drafts: drafts.length, canonicalChecked: draftEntries.filter((entry) => entry.pageMetadata).length, verifiedCanonical: drafts.filter((draft) => draft.sourceStatus === "verified").length, unresolved: drafts.filter((draft) => draft.sourceStatus === "unresolved").length, relaySourceUrl: drafts.filter((draft) => RELAY.test(draft.sourceUrl || "")).length },
     drafts: drafts.map((draft) => ({ ...draft, title: draft.sourceTitle, publishedAt: draft.sourcePublishedAt, provenance: draft.generation })),
     updateCandidates: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").map((entry) => ({ id: entry.guid, title: entry.title, sourceId: entry.sourceId, sourceLabel: entry.sourceLabel, sourceStatus: sourceStatus(entry, sources.find((s) => s.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel })), sourceUrl: entry.canonicalUrl || entry.url, sourceUrlRaw: entry.url, publishedAt: entry.publishedAt, duplicateStatus: entry.duplicateStatus, sourceContentHash: sourceContentHash(`${entry.title}\n${entry.description}`) })),
     note: "수집 결과는 자동 published로 전환되지 않으며, 공식 canonical·중복·임상 검수 후에만 다음 단계로 이동할 수 있습니다.",
@@ -131,7 +154,7 @@ async function collect(id, flags) {
 }
 function writeReport(report) {
   atomicWrite(REPORT_JSON, JSON.stringify(report, null, 2) + "\n");
-  atomicWrite(REPORT_MD, `# Source-first 수집 보고서\n\n- 실행 시각: ${report.generatedAt}\n- 모드: ${report.mode}\n- 소스/피드: ${report.counts.sources}/${report.counts.feeds}\n- 수집 항목: ${report.counts.fetchedEntries}\n- 고유 후보: ${report.counts.unique}\n- exact duplicate: ${report.counts.exactDuplicate}\n- 기존 기사 업데이트 후보: ${report.counts.updateOfExisting}\n- 관련성 제외: ${report.counts.excludedIrrelevant}\n- draft 후보: ${report.counts.drafts}\n- canonical 확인 시도: ${report.counts.canonicalChecked}\n- 공식 canonical 확보: ${report.counts.verifiedCanonical}\n- unresolved source: ${report.counts.unresolved}\n- relay sourceUrl: ${report.counts.relaySourceUrl}\n\n## draft 후보\n\n${report.drafts.map((row) => `- ${row.id} · ${row.sourceId} · ${row.sourceStatus} · ${row.duplicateStatus} · ${row.title}`).join("\n") || "없음"}\n`);
+  atomicWrite(REPORT_MD, `# Source-first 수집 보고서\n\n- 실행 시각: ${report.generatedAt}\n- 모드: ${report.mode}\n- 소스/피드: ${report.counts.sources}/${report.counts.feeds}\n- 수집 항목: ${report.counts.fetchedEntries}\n- 고유 후보: ${report.counts.unique}\n- exact duplicate: ${report.counts.exactDuplicate}\n- 기존 기사 업데이트 후보: ${report.counts.updateOfExisting}\n- 관련성 제외: ${report.counts.excludedIrrelevant}\n- 기수집(seen) 제외: ${report.counts.seenSkipped}\n- 신규 가용 후보: ${report.counts.freshAvailable}\n- draft 후보: ${report.counts.drafts}\n- canonical 확인 시도: ${report.counts.canonicalChecked}\n- 공식 canonical 확보: ${report.counts.verifiedCanonical}\n- unresolved source: ${report.counts.unresolved}\n- relay sourceUrl: ${report.counts.relaySourceUrl}\n\n## draft 후보\n\n${report.drafts.map((row) => `- ${row.id} · ${row.sourceId} · ${row.sourceStatus} · ${row.duplicateStatus} · ${row.title}`).join("\n") || "없음"}\n`);
 }
 function writeDraftFile(drafts, date = today()) {
   if (!drafts.length) return null;

@@ -1,24 +1,26 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-07-30T03:42:11.300Z
+- 실행 시각: 2026-07-31T13:00:48.881Z
 - 모드: dry-run
 - 소스/피드: 27/13
-- 수집 항목: 677
-- 고유 후보: 569
-- exact duplicate: 33
+- 수집 항목: 697
+- 고유 후보: 590
+- exact duplicate: 32
 - 기존 기사 업데이트 후보: 75
-- 관련성 제외: 122
-- draft 후보: 50
-- canonical 확인 시도: 50
-- 공식 canonical 확보: 50
+- 관련성 제외: 124
+- 기수집(seen) 제외: 12
+- 신규 가용 후보: 466
+- draft 후보: 60
+- canonical 확인 시도: 60
+- 공식 canonical 확보: 60
 - unresolved source: 0
 - relay sourceUrl: 0
 
 ## draft 후보
 
+- v1_325c53b92b24e022 · src-dr-andy-roark · verified · unique · How to Build Confident, Competent Early Career Vets
 - v1_88e7bde7826c5eaf · src-dr-andy-roark · verified · unique · Cult of the Holy Bedtime
 - v1_8977cdecc20db74b · src-dr-andy-roark · verified · unique · Improving Animal Welfare at Commercial Dog Breeding Kennels
-- v1_66712dc60cebbebc · src-dr-andy-roark · verified · unique · That&#8217;s Bad Advice
 - v1_ecdd9715ae5b33aa · src-dr-andy-roark · verified · unique · Life Stages and Large Breeds in Canine Nutrition
 - v1_5f01b0b4f48babba · src-dr-andy-roark · verified · unique · Do You Like Being a Veterinarian on Thursdays?
 - v1_f0efeb482c512335 · src-dr-andy-roark · verified · unique · Where Are the Greatest Opportunities for Access to Care?
@@ -66,3 +68,13 @@
 - v1_83879875f4b4619e · src-dr-andy-roark · verified · unique · What it Really Means to Be a Veterinarian
 - v1_86d61a473b4a1217 · src-dr-andy-roark · verified · unique · What Technicians Mean to Us
 - v1_d69fcb73f885e465 · src-dr-andy-roark · verified · unique · New Cat is Stressing the Old Cat (HDYTT)
+- v1_4dd78d0ded82864d · src-dr-andy-roark · verified · unique · The Evolving Vet Tech Profession
+- v1_d6302c3cb03d8952 · src-dr-andy-roark · verified · unique · Why Education Won’t Get You There
+- v1_3c872b693cebffdb · src-dr-andy-roark · verified · unique · Fear of the Unknown
+- v1_2c3bbc0c8d4f1bb7 · src-dr-andy-roark · verified · unique · The Last One Standing
+- v1_65faae94026c9b88 · src-dr-andy-roark · verified · unique · Judge Awards Emotional Damages for Dog Death
+- v1_ebde304d1aec6972 · src-dr-andy-roark · verified · unique · On Pulling Against a Divided Nation
+- v1_1348ac7c75cff356 · src-dr-andy-roark · verified · unique · Poop Transplants: Going Beyond Parvo and Chronic Diarrheas (HDYTT)
+- v1_ca99a4580afd1024 · src-dr-andy-roark · verified · unique · Falling Job Satisfaction and Rising Salaries in Vet Techs
+- v1_b099bebd72705477 · src-frontiers-in-veterinary-science · verified · unique · Baicalin potentiates cefquinome against animal-origin ESBL-Escherichia coli by attenuating resistance-associated phenotypes and intestinal injury
+- v1_dfc95935c3bcb2d4 · src-frontiers-in-veterinary-science · verified · unique · Canine paroxysmal dyskinesia: distribution of etiological subtypes and structural and reactive causes in a retrospective tertiary care cohort

@@ -30,7 +30,9 @@ jobs:
       - name: Diagnose official feeds without changing registry
         run: npm run sources:diagnose
       - name: Collect source-first draft candidates
-        run: npm run ingest:all -- --generate --max=30
+        # 고유 후보가 하루 400건 넘게 쌓이는데 30건만 쓰고 있었다. 동시 실행을
+        # 8로 올려 확보한 여유만큼 후보 수를 늘린다(생성 시간은 비슷하게 유지).
+        run: npm run ingest:all -- --generate --max=60
         env:
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
