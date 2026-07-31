@@ -354,7 +354,21 @@
           "stars": 2,
           "note": "단일 기관 분석으로 표본 수와 대표성에 한계가 있어 일반화에 주의가 필요함"
         }
-      }
+      },
+      "workflowStatus": "correction-required",
+      "dataSchemaVersion": 2,
+      "reviewPolicyVersion": "2026-07-30",
+      "reviewChecklist": {
+        "sourceConfirmed": false,
+        "titleLeadBodyChecked": false,
+        "numbersChecked": false,
+        "speciesAndStudyChecked": false,
+        "limitationsChecked": false,
+        "clinicalLanguageChecked": false
+      },
+      "reviewNotes": "내용틀림",
+      "editorialStatus": "correction-required",
+      "correctionNote": "내용틀림"
     },
     {
       "tier": "brief",

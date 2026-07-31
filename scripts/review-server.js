@@ -70,7 +70,11 @@ function loadQueue() {
     const tier = normalizeContentTier(item);
     // 승인이 막히는 이유를 미리 계산한다. 체크리스트를 다 켠 뒤에야 CLI가
     // 거부하면 검수 시간을 통째로 버리게 된다(큐의 60%가 Google 중계 URL이었다).
-    const blockReason = !url ? "원문 URL이 없습니다"
+    // 이미 처리한 것은 기본 목록에서 빼야 한다. reviewPriority가 correction-required에
+    // +40을 주기 때문에, 빼지 않으면 방금 반려한 기사가 목록 맨 위로 돌아온다.
+    const blockReason = status === "correction-required" ? "정정 필요로 표시됨 — 내용 수정 후 재검수"
+      : status === "vet-review-required" ? "수의사에게 넘김"
+      : !url ? "원문 URL이 없습니다"
       : /^https?:\/\/(?:news\.)?google\./i.test(url) ? "Google News 중계 URL — 원문 복원 불가"
       : role === "vet" ? "수의사 검수가 필요합니다"
       : null;
@@ -252,6 +256,8 @@ function draw(){
   '<div class=acts><button id=ok onclick="act(\\'approve\\')" disabled>승인 (a)</button>'+
   '<button onclick="act(\\'request-vet\\')">수의사에게 (v)</button>'+
   '<button onclick="act(\\'reject\\')">반려 (r)</button></div>';
+ // 기사를 옮길 때 스크롤을 위로 되돌린다. 남아 있으면 다음 기사가 빈 화면처럼 보인다.
+ $("#mid").scrollTop=0;$("#right").scrollTop=0;
  $("#right").innerHTML="<p>원문 불러오는 중…</p>";ana=null;sync();
  fetch("/api/analyze?id="+encodeURIComponent(r.id)).then(x=>x.json()).then(a=>{if(rows[cur].id!==r.id)return;ana=a;paint()})}
 function paint(){const a=ana;if(!a)return;

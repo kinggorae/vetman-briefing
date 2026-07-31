@@ -820,7 +820,26 @@
           "stars": 2,
           "note": "배양 세포 실험이라 실제 임상에서의 바이러스 적응력과 차이가 있을 수 있음"
         }
-      }
+      },
+      "workflowStatus": "approved",
+      "dataSchemaVersion": 2,
+      "reviewPolicyVersion": "2026-07-30",
+      "reviewChecklist": {
+        "sourceConfirmed": true,
+        "titleLeadBodyChecked": true,
+        "numbersChecked": true,
+        "speciesAndStudyChecked": true,
+        "limitationsChecked": true,
+        "clinicalLanguageChecked": true
+      },
+      "reviewNotes": null,
+      "editorialStatus": "editor-reviewed",
+      "reviewerId": "shin-hyun-kyu",
+      "reviewerRole": "editor",
+      "reviewedBy": "SHIN HYUN KYU",
+      "reviewedAt": "2026-07-31T16:35:58.694Z",
+      "contentHash": "d823200a3ce5339f943a64882c2774495198de7c8b694d24e5af7f33e88d43f0",
+      "sourceHash": "157ef9628fec30c6448c25188d6b2f136eebf889b89d84c418ea4193b07fe0df"
     },
     {
       "titleKo": "고양이와 개의 무릎관절에도 인대 존재 확인",
@@ -861,7 +880,26 @@
           "stars": 2,
           "note": "단일기관 연구이며 신선 표본이 다수여서 LM 확인률이 실제보다 높게 나타날 수 있음"
         }
-      }
+      },
+      "workflowStatus": "approved",
+      "dataSchemaVersion": 2,
+      "reviewPolicyVersion": "2026-07-30",
+      "reviewChecklist": {
+        "sourceConfirmed": true,
+        "titleLeadBodyChecked": true,
+        "numbersChecked": true,
+        "speciesAndStudyChecked": true,
+        "limitationsChecked": true,
+        "clinicalLanguageChecked": true
+      },
+      "reviewNotes": null,
+      "editorialStatus": "editor-reviewed",
+      "reviewerId": "shin-hyun-kyu",
+      "reviewerRole": "editor",
+      "reviewedBy": "SHIN HYUN KYU",
+      "reviewedAt": "2026-07-31T16:36:31.654Z",
+      "contentHash": "35a2fc25d0972c41fe9c4500de035b176239c2611bcb5f018135505e277f925b",
+      "sourceHash": "fca52121a5825428d72de2efc02b1238801c47fb8291ea75f6e7d2b7324eba03"
     },
     {
       "titleKo": "잠비아 닭에서 사육 방식과 무관한 ESBL 대장균 높은 검출률",
@@ -902,7 +940,26 @@
           "stars": 2,
           "note": "잠비아 단일 지역 연구로 한국 농가 환경과 사육 체계가 상이하여 직접 적용 주의"
         }
-      }
+      },
+      "workflowStatus": "approved",
+      "dataSchemaVersion": 2,
+      "reviewPolicyVersion": "2026-07-30",
+      "reviewChecklist": {
+        "sourceConfirmed": true,
+        "titleLeadBodyChecked": true,
+        "numbersChecked": true,
+        "speciesAndStudyChecked": true,
+        "limitationsChecked": true,
+        "clinicalLanguageChecked": true
+      },
+      "reviewNotes": null,
+      "editorialStatus": "editor-reviewed",
+      "reviewerId": "shin-hyun-kyu",
+      "reviewerRole": "editor",
+      "reviewedBy": "SHIN HYUN KYU",
+      "reviewedAt": "2026-07-31T16:36:51.352Z",
+      "contentHash": "fc94b9f0f9ef55d03a6c999f561ea9e73d0382257472a26ad837ccc0a7fb9d07",
+      "sourceHash": "df59f4362fdeba33fc96d7e76ca87ec50089f05b5444a39b728a9d934b165b3c"
     },
     {
       "titleKo": "개 치경부 결손 재생을 위한 신규 삼중 수화물 Gel 개발",
