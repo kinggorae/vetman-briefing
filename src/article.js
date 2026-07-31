@@ -87,3 +87,28 @@ export async function fetchArticleMeta(url) {
     return {};
   }
 }
+
+// <p> 수집이 기사 본문 대신 내비게이션 목록이나 인라인 스크립트를 긁어오는
+// 사이트가 있다. 그 텍스트를 생성기에 넘기면 엉뚱한 기사가 나오고, 검수
+// 화면에서는 대조하지 않은 것을 대조한 것처럼 보여준다. 둘 다 막는다.
+export function articleTextQuality(text, sourceTitle = "") {
+  if (!text || text.length < 400) return { ok: false, reason: "too-short" };
+  // 코드 조각: 중괄호·세미콜론·연산자 밀도가 산문보다 훨씬 높다
+  if ((text.match(/[{};=<>|&$]/g) || []).length / text.length > 0.012) return { ok: false, reason: "looks-like-code" };
+  // 내비게이션: 메뉴 항목은 Title Case라 대문자로 시작하는 단어 비율이 높다.
+  // 실측(원문 11곳) — 정상 본문 9~23%, 내비 섞인 본문 25~28%, 순수 내비 53%.
+  // 문장 길이만으로는 갈리지 않는다(내비 189자 vs 본문 95~161자).
+  const words = text.match(/[A-Za-z][A-Za-z'-]*/g) || [];
+  if (words.length >= 40 && words.filter((w) => /^[A-Z]/.test(w)).length / words.length > 0.4) {
+    return { ok: false, reason: "looks-like-navigation" };
+  }
+  const sentences = (text.match(/[.!?]["')\]]?(?:\s|$)/g) || []).length;
+  if ((sentences ? text.length / sentences : Infinity) > 300) return { ok: false, reason: "looks-like-navigation" };
+  // 기사 본문이면 원문 제목의 주요 단어가 어딘가에 나온다
+  const titleWords = [...new Set(String(sourceTitle).toLowerCase().match(/[a-z]{5,}/g) || [])];
+  if (titleWords.length >= 3) {
+    const hit = titleWords.filter((w) => text.toLowerCase().includes(w)).length;
+    if (hit / titleWords.length < 0.34) return { ok: false, reason: "title-mismatch" };
+  }
+  return { ok: true, reason: "ok" };
+}

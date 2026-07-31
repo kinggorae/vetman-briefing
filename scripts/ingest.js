@@ -8,7 +8,7 @@ import { articleContractIssues, SCHEMA_VERSION } from "../src/lib/editorial-oper
 import { publishQualityIssues } from "../src/quality.js";
 import { bodyCharCount } from "../src/lib/quality.js";
 import { enrichItems } from "../src/enrich.js";
-import { fetchArticleMeta } from "../src/article.js";
+import { fetchArticleMeta, articleTextQuality } from "../src/article.js";
 import { stableItemId, sourceKeys, addSourceKeys } from "../src/identity.js";
 import {
   atomicWrite, contentHash as sourceContentHash, dedupeFeedEntries, fetchArticleMetadata, fetchFeed, isOfficialUrl, isRelayUrl,
@@ -186,9 +186,13 @@ async function attachFullText(entries, sources, flags) {
     if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait));
     lastRequest.set(entry.sourceId, Date.now());
     const meta = await fetchArticleMeta(url);
+    // 추출 결과가 내비게이션이나 스크립트면 쓰지 않는다. 그걸 생성기에 넘기면
+    // 원문과 무관한 기사가 나온다. 이때는 RSS 요약문으로 물러선다.
+    const quality = articleTextQuality(meta.fullText, entry.title);
+    if (meta.fullText && !quality.ok) console.warn(`  ⚠ 원문 추출 무시(${quality.reason}) — ${String(entry.title).slice(0, 40)}`);
     // imageUrl도 함께 오지만 붙이지 않는다. 권리 확인 정보 없이 이미지를 달면
     // brief-publishing의 "대표 이미지 권리 확인 필요" 차단에 걸려 발행이 막힌다.
-    out.push({ ...entry, fullText: meta.fullText || null });
+    out.push({ ...entry, fullText: quality.ok ? meta.fullText : null, fullTextReason: quality.reason });
   }
   return out;
 }

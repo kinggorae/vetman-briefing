@@ -89,6 +89,13 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
   if (!String(item?.titleKo || "").trim() || !(Array.isArray(item?.bodyKo) && item.bodyKo.length)) {
     throw new Error("생성 결과가 비어 있음(제목/본문 누락)");
   }
+  // 리드와 첫 문단이 같은 문장인 경우가 있다(기존 520건 중 112건). 화면에
+  // 같은 문장이 두 번 보이고, 실질 본문도 한 문단 줄어 짧아진다. 재생성한다.
+  const norm = (v) => String(v || "").replace(/\s/g, "");
+  if (item.leadKo && norm(item.bodyKo[0]) === norm(item.leadKo) && attempt < 3) {
+    return generateItem(post, comments, attempt + 1, "리드와 본문 첫 문단이 같은 문장입니다. 첫 문단은 리드를 반복하지 말고 배경과 맥락을 새로 쓰세요.");
+  }
+
   const bodyChars = item.bodyKo.map(String).join("").length;
   if (bodyChars < 500 && attempt < 3) {
     return generateItem(

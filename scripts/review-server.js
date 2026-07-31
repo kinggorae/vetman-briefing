@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 import { CHECKLIST_KEYS, requiredReviewRole, reviewPriority, workflowLabel } from "../src/lib/editorial-operations.js";
 import { inferClinicalRisk } from "../src/lib/editorial-review.js";
 import { normalizeContentTier } from "../src/lib/quality.js";
-import { fetchArticleMeta } from "../src/article.js";
+import { fetchArticleMeta, articleTextQuality } from "../src/article.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES = path.join(ROOT, "data", "issues");
@@ -136,18 +136,30 @@ function latinFindings(korean, source) {
   return out.slice(0, 10);
 }
 
+const REASON_NOTE = {
+  "too-short": "원문 본문을 가져오지 못했습니다(차단 또는 짧은 페이지).",
+  "looks-like-code": "추출된 것이 기사 본문이 아니라 스크립트입니다.",
+  "looks-like-navigation": "추출된 것이 기사 본문이 아니라 사이트 메뉴입니다.",
+  "title-mismatch": "추출된 텍스트가 이 기사와 맞지 않습니다(다른 페이지일 수 있음).",
+};
 const sourceCache = new Map();
-async function sourceTextFor(url) {
+async function sourceTextFor(url, title) {
   if (!url) return { text: "", note: "원문 URL이 없습니다" };
-  if (sourceCache.has(url)) return sourceCache.get(url);
+  const key = `${url}`;
+  if (sourceCache.has(key)) return sourceCache.get(key);
   let result;
   try {
     const meta = await fetchArticleMeta(url);
-    result = meta.fullText ? { text: meta.fullText, note: "" } : { text: "", note: "원문 본문을 가져오지 못했습니다(차단 또는 짧은 페이지). 링크를 직접 열어 확인하세요." };
+    const quality = articleTextQuality(meta.fullText, title);
+    // 엉뚱한 텍스트를 원문이라 내놓고 대조하면, 대조하지 않은 것을 통과한 것처럼
+    // 보여주게 된다. 품질 판정에 걸리면 원문 없음으로 처리한다.
+    result = quality.ok
+      ? { text: meta.fullText, note: "" }
+      : { text: "", note: `${REASON_NOTE[quality.reason] || "원문을 확인할 수 없습니다."} 링크를 직접 열어 확인하세요.` };
   } catch (e) {
     result = { text: "", note: `원문 가져오기 실패: ${String(e.message).slice(0, 60)}` };
   }
-  sourceCache.set(url, result);
+  sourceCache.set(key, result);
   return result;
 }
 
@@ -276,7 +288,7 @@ const server = http.createServer(async (req, res) => {
     if (!row) return json({ note: "기사를 찾을 수 없습니다", numbers: [], species: [], directives: [], latin: [] });
     const item = row.item;
     const korean = [item.titleKo, item.leadKo, ...(item.bodyKo || []), ...(item.keyPointsKo || [])].filter(Boolean).join("\n");
-    const { text, note } = await sourceTextFor(item.sourceUrl || item.sourceUrlRaw);
+    const { text, note } = await sourceTextFor(item.sourceUrl || item.sourceUrlRaw, item.sourceTitle || "");
     const numbers = text ? numberFindings(korean, text) : [];
     const species = text ? speciesFindings(korean, text) : [];
     const directives = directiveFindings(korean);

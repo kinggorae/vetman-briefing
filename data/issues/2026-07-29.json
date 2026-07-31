@@ -580,7 +580,26 @@
           "stars": 2,
           "note": "18마리 소규모 단일 기관 연구로 일반화에 한계가 있으며, 후속 연구가 필요하다"
         }
-      }
+      },
+      "workflowStatus": "approved",
+      "dataSchemaVersion": 2,
+      "reviewPolicyVersion": "2026-07-30",
+      "reviewChecklist": {
+        "sourceConfirmed": true,
+        "titleLeadBodyChecked": true,
+        "numbersChecked": true,
+        "speciesAndStudyChecked": true,
+        "limitationsChecked": true,
+        "clinicalLanguageChecked": true
+      },
+      "reviewNotes": null,
+      "editorialStatus": "editor-reviewed",
+      "reviewerId": "shin-hyun-kyu",
+      "reviewerRole": "editor",
+      "reviewedBy": "SHIN HYUN KYU",
+      "reviewedAt": "2026-07-31T16:14:33.407Z",
+      "contentHash": "1a833ad5d8c87c737404962b617598a147cdac0e58a57f891ada728cec569783",
+      "sourceHash": "b550d12e05383b0e36c116ee30454d9908cad5ac7c52ee3a6ca27c1156b594a8"
     },
     {
       "tier": "brief",
