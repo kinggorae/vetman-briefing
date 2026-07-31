@@ -8,6 +8,7 @@ import { articleContractIssues, SCHEMA_VERSION } from "../src/lib/editorial-oper
 import { publishQualityIssues } from "../src/quality.js";
 import { bodyCharCount } from "../src/lib/quality.js";
 import { enrichItems } from "../src/enrich.js";
+import { fetchArticleMeta } from "../src/article.js";
 import { stableItemId, sourceKeys, addSourceKeys } from "../src/identity.js";
 import {
   atomicWrite, contentHash as sourceContentHash, dedupeFeedEntries, fetchArticleMetadata, fetchFeed, isOfficialUrl, isRelayUrl,
@@ -112,7 +113,9 @@ async function generateDraft(draft, entry, flags) {
   if (!(process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY)) return { ...draft, generation: { ...draft.generation, generationWarnings: ["llm-key-not-configured"] } };
   try {
     const { generateItem } = await import("../src/generate.js");
-    const generated = await generateItem({ ...entry, sourceType: "rss", finalUrl: draft.sourceUrl, url: draft.sourceUrlRaw, fullText: entry.description, body: entry.description, sourceLabel: draft.sourceLabel, publishedAt: draft.sourcePublishedAt });
+    // 원문 본문이 있으면 그것을 쓰고, 없을 때만 RSS 요약문으로 물러선다.
+    const content = entry.fullText || entry.description;
+    const generated = await generateItem({ ...entry, sourceType: "rss", finalUrl: draft.sourceUrl, url: draft.sourceUrlRaw, fullText: content, body: content, sourceLabel: draft.sourceLabel, publishedAt: draft.sourcePublishedAt });
     const outputHash = sourceContentHash(JSON.stringify({ titleKo: generated.titleKo, leadKo: generated.leadKo, bodyKo: generated.bodyKo, keyPointsKo: generated.keyPointsKo }));
     return { ...draft, ...generated, id: draft.id, sourceUrl: draft.sourceUrl, sourceUrlRaw: draft.sourceUrlRaw, sourceStatus: draft.sourceStatus, sourceEvidence: draft.sourceEvidence, workflowStatus: "draft", editorialStatus: "editor-review-required", generation: { model: MODEL, promptVersion: "source-first-v1", generatedAt: new Date().toISOString(), inputSourceIds: [draft.sourceId], inputHash: draft.generation.inputHash, outputHash, generationWarnings: [] }, contentHash: outputHash, metadataHash: draft.metadataHash, clinicalRisk: inferClinicalRisk(generated) };
   } catch (error) {
@@ -166,6 +169,29 @@ async function confirmCanonicals(entries, sources, flags) {
   }
   return checked;
 }
+// 생성기에 RSS 요약문만 넘기고 있었다(길이 중앙값 403자). 400자짜리 영문
+// 티저로 500~800자 한국어 심층 기사를 요구하니 본문이 짧게 나오고, 짧으면
+// brief 티어로 떨어져 색인 대상에서 빠졌다(미색인 350건 중 195건이 brief).
+// run.js와 같이 원문 본문을 가져와 넘긴다. 소스별 rateLimit을 지킨다.
+async function attachFullText(entries, sources, flags) {
+  if (flags["no-fulltext"]) return entries;
+  const lastRequest = new Map();
+  const out = [];
+  for (const entry of entries) {
+    const url = entry.canonicalUrl || entry.url;
+    if (!url || isRelayUrl(url)) { out.push(entry); continue; }
+    const source = sources.find((candidate) => candidate.id === entry.sourceId);
+    const rateLimitMs = Math.max(0, Number(source?.rateLimitMs) || 1000);
+    const wait = rateLimitMs - (Date.now() - (lastRequest.get(entry.sourceId) || 0));
+    if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait));
+    lastRequest.set(entry.sourceId, Date.now());
+    const meta = await fetchArticleMeta(url);
+    // imageUrl도 함께 오지만 붙이지 않는다. 권리 확인 정보 없이 이미지를 달면
+    // brief-publishing의 "대표 이미지 권리 확인 필요" 차단에 걸려 발행이 막힌다.
+    out.push({ ...entry, fullText: meta.fullText || null });
+  }
+  return out;
+}
 async function collect(id, flags) {
   const sources = sourcesFor(id); const fetched = await sourceRows(sources, flags); const existing = allExisting();
   const entries = fetched.flatMap((row) => (row.result?.entries || []).map((entry) => ({ ...entry, sourceId: row.source.id, sourceLabel: row.source.label })));
@@ -176,7 +202,9 @@ async function collect(id, flags) {
   const relevant = deduped.filter((entry) => relevance(entry) === "relevant" && entry.duplicateStatus === "unique");
   const fresh = relevant.filter((entry) => !sourceKeys(entry).some((key) => seen.has(key)));
   let draftEntries = rankedPick(fresh, Math.max(1, Number(flags.max) || 50), Number(flags["per-source"]) || 0, sources);
-  draftEntries = await confirmCanonicals(draftEntries, sources, flags); const drafts = [];
+  draftEntries = await confirmCanonicals(draftEntries, sources, flags);
+  if (flags.generate) draftEntries = await attachFullText(draftEntries, sources, flags);
+  const drafts = [];
   for (const entry of draftEntries) drafts.push(await generateDraft(draftFor(entry, sources.find((source) => source.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel }), flags), entry, flags));
   const generated = drafts.filter((draft) => draft.titleKo && draft.bodyKo?.length);
   // generate.js는 source-first 경로에서 본문 길이와 무관하게 analysis로 찍는다.
