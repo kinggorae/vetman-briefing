@@ -152,6 +152,14 @@ function transition(command, id, flags) {
     if (reviewer.role === "vet") { updated.vetReviewerId = reviewer.id; updated.vetReviewer = reviewer.name; updated.vetReviewedAt = updated.reviewedAt; }
     updated.contentHash = hashes.contentHash;
     updated.sourceHash = hashes.sourceHash;
+    // public-brief는 "감수자 없이 나간 글이니 색인하지 말라"는 표시다. 사람이
+    // 검수해 승인한 순간 그 전제가 사라지므로 도장을 푼다. 다만 brief 티어는
+    // 짧은 요약이라 검수 여부와 무관하게 색인 대상이 아니므로 그대로 둔다.
+    const tier = normalizeContentTier(updated);
+    if (updated.publicationStatus === "public-brief" && (tier === "analysis" || tier === "evidence")) {
+      delete updated.publicationStatus;
+      console.log("  public-brief 해제 — 검수 완료로 색인 대상이 됩니다");
+    }
   }
   if (command === "request-vet") updated.editorialStatus = "editor-review-required";
   if (command === "reject" || command === "correct") { updated.editorialStatus = "correction-required"; updated.correctionNote = flags.reason || flags.notes || "편집 검수에서 수정이 필요합니다."; }
