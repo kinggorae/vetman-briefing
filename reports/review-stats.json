@@ -1,17 +1,18 @@
 {
-  "generatedAt": "2026-07-29T22:58:13.272Z",
-  "total": 463,
+  "generatedAt": "2026-07-31T15:38:45.349Z",
+  "total": 520,
   "status": {
-    "legacy-published": 463
+    "legacy-published": 463,
+    "published": 57
   },
   "clinicalRisk": {
     "high": 141,
-    "low": 111,
-    "medium": 211
+    "low": 124,
+    "medium": 255
   },
   "contentTier": {
-    "analysis": 147,
-    "brief": 215,
+    "analysis": 179,
+    "brief": 240,
     "evidence": 101
   },
   "queue": 463,

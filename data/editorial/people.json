@@ -1,4 +1,14 @@
 {
   "version": 1,
-  "people": []
+  "people": [
+    {
+      "id": "shin-hyun-kyu",
+      "name": "SHIN HYUN KYU",
+      "role": "editor",
+      "active": true,
+      "profileUrl": null,
+      "credentials": null,
+      "specialties": []
+    }
+  ]
 }
