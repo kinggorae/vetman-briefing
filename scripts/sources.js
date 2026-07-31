@@ -43,12 +43,25 @@ function alternativeLinks(html, baseUrl, source) {
   }
   return [...new Map(links.map((x) => [x.url, x])).values()];
 }
-async function discoverAlternatives(source, feedUrl) {
-  const roots = new Set(); try { const u = new URL(feedUrl); roots.add(`${u.protocol}//${u.host}/`); } catch {}
+// errors: 호출부가 배열을 넘기면 실패 사유를 담아준다. 예전에는 fetch 실패를
+// 통째로 삼켜서 봇 차단(403)과 "피드 링크 없음"이 결과상 똑같이 후보 0개로
+// 보였고, 왜 못 찾았는지 알 방법이 없었다.
+async function discoverAlternatives(source, feedUrl, errors = []) {
+  const roots = new Set();
+  try { const u = new URL(feedUrl); roots.add(`${u.protocol}//${u.host}/`); } catch (error) { errors.push({ root: feedUrl, reason: `URL 파싱 실패: ${error.message}` }); }
   for (const domain of source.officialDomains || []) roots.add(`https://${domain}/`);
   const found = [];
   for (const root of roots) {
-    try { const response = await fetch(root, { headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/xhtml+xml" }, redirect: "follow", signal: AbortSignal.timeout(source.timeoutMs) }); const contentType = response.headers.get("content-type") || ""; if (!response.ok || !/html|xml/i.test(contentType)) continue; const body = (await response.text()).slice(0, 400000); found.push(...alternativeLinks(body, response.url || root, source)); } catch {}
+    try {
+      const response = await fetch(root, { headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/xhtml+xml" }, redirect: "follow", signal: AbortSignal.timeout(source.timeoutMs) });
+      const contentType = response.headers.get("content-type") || "";
+      if (!response.ok) { errors.push({ root, reason: `HTTP ${response.status}` }); continue; }
+      if (!/html|xml/i.test(contentType)) { errors.push({ root, reason: `content-type ${contentType.split(";")[0] || "불명"}` }); continue; }
+      const body = (await response.text()).slice(0, 400000);
+      found.push(...alternativeLinks(body, response.url || root, source));
+    } catch (error) {
+      errors.push({ root, reason: String(error?.message || error).slice(0, 120) });
+    }
   }
   return [...new Map(found.map((x) => [x.url, x])).values()];
 }
@@ -93,7 +106,14 @@ async function diagnose(sourceFilter = null) {
   atomicWrite(REPORT_JSON, JSON.stringify(report, null, 2) + "\n"); atomicWrite(REPORT_MD, `# 공식 피드 진단 보고서\n\n- 검사 시각: ${report.generatedAt}\n- 매체 상태: ${JSON.stringify(counts)}\n- 피드: ${rows.length}개\n\n| 매체 | 상태 | 최신 게시 | 평균 간격(일) | canonical | ETag | Last-Modified |\n|---|---|---|---:|---:|---|---|\n${rows.map((r) => `| ${r.sourceLabel} | ${r.status} | ${r.latestPublishedAt || "-"} | ${r.averageIntervalDays ?? "-"} | ${r.canonicalCoverage ?? "-"} | ${r.etag || "-"} | ${r.lastModified || "-"} |`).join("\n")}\n\n## 대체 공식 피드 후보\n\n${report.alternativeCandidates.map((r) => `- ${r.sourceLabel} · ${r.url} · ${r.reason}`).join("\n") || "없음"}\n`); return report;
 }
 async function health() { const diagnostic = readJson(REPORT_JSON, null); const report = diagnostic?.feeds ? diagnostic : await diagnose(); const sourceHealth = { generatedAt: report.generatedAt, registryVersion: report.registryVersion, counts: report.counts, sources: report.sources, feeds: report.feeds, note: "건강 검사 결과는 레지스트리·production 데이터를 자동 수정하지 않습니다." }; atomicWrite(SOURCE_HEALTH_PATH, JSON.stringify(sourceHealth, null, 2) + "\n"); atomicWrite(HEALTH_MD, `# 공식 소스 건강 보고서\n\n- 검사 시각: ${report.generatedAt}\n- 소스 상태: ${JSON.stringify(report.counts)}\n- 피드 검사: ${(report.feeds || []).length}개\n\n| 매체 | 상태 | 피드 | 실패 누적 | 최근 성공 |\n|---|---|---:|---:|---|\n${report.sources.map((row) => `| ${row.label} | ${row.status} | ${row.checkedFeedCount}/${row.feedCount} | ${row.consecutiveFailures} | ${row.lastSuccessAt || "-"} |`).join("\\n")}\n\n## 피드 상세\n\n${report.feeds.map((row) => `- ${row.status} · ${row.sourceLabel} · ${row.feedUrl} · HTTP ${row.httpStatus || "-"} · 항목 ${row.itemCount || 0} · canonical ${row.canonicalCoverage ?? "-"} · relay ${row.relayRatio ?? "-"} · ETag ${row.etag || "-"} · Last-Modified ${row.lastModified || "-"} · ${row.error || row.lastError || "정상"}`).join("\\n")}\n`); console.log(JSON.stringify({ generatedAt: report.generatedAt, counts: report.counts, feeds: report.feeds.length }, null, 2)); return sourceHealth; }
-async function discover(domain) { if (!domain) throw new Error("공식 도메인이 필요합니다"); const source = normalizeSource({ label: domain, officialDomains: [domain], timeoutMs: 12000 }); console.log(JSON.stringify({ domain, candidates: await discoverAlternatives(source, `https://${domain.replace(/^https?:\/\//, "")}/`), note: "발견 결과는 사람이 레지스트리에 승인해 넣어야 합니다." }, null, 2)); }
+async function discover(domain) {
+  if (!domain) throw new Error("공식 도메인이 필요합니다");
+  const source = normalizeSource({ label: domain, officialDomains: [domain], timeoutMs: 12000 });
+  const errors = [];
+  const candidates = await discoverAlternatives(source, `https://${domain.replace(/^https?:\/\//, "")}/`, errors);
+  // 후보 0개일 때 errors를 봐야 "피드가 없는 것"과 "차단당한 것"을 구분할 수 있다
+  console.log(JSON.stringify({ domain, candidates, errors, note: "발견 결과는 사람이 레지스트리에 승인해 넣어야 합니다." }, null, 2));
+}
 function list() { const registry = loadRegistry(); console.log(registry.sources.map((s) => `${s.id}\t${s.enabled ? "enabled" : "disabled"}\t${s.healthStatus}\t${s.label}\t${feedsFor(s).length} feed`).join("\n")); }
 function report() { console.log(JSON.stringify(readJson(REPORT_JSON, readJson(SOURCE_HEALTH_PATH, { counts: {}, sources: [], feeds: [] })), null, 2)); }
 function disable(id, flags) { const registry = loadRegistry(); const source = registry.sources.find((r) => r.id === id || r.label === id); if (!source) throw new Error(`소스를 찾을 수 없습니다: ${id}`); const plan = { id: source.id, label: source.label, previousEnabled: source.enabled, enabled: false, reason: flags.reason || "manual disable", dryRun: !flags.apply }; console.log(JSON.stringify(plan, null, 2)); if (!flags.apply) return; source.enabled = false; source.active = false; source.healthStatus = "disabled"; source.notes = flags.reason || source.notes || "manual disable"; atomicWrite(REGISTRY_PATH, JSON.stringify({ ...registry, generatedAt: new Date().toISOString(), sources: registry.sources }, null, 2) + "\n"); }

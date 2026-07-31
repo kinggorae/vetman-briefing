@@ -178,10 +178,22 @@ async function sourceTextFor(url, title) {
   return result;
 }
 
+// 브라우저가 보내는 값이 그대로 CLI 인자가 된다. 셸을 거치지 않아 셸 주입은
+// 없지만, "--"로 시작하는 값은 CLI 파서가 플래그로 읽어 의도치 않은 동작을
+// 만든다. 명령은 허용 목록으로, 나머지는 형식으로 막는다.
+const ALLOWED_COMMANDS = new Set(["approve", "reject", "request-vet"]);
+// 첫 글자를 영숫자로 못박는다. "-"를 허용하면 "--apply" 같은 값이 통과해
+// CLI 파서가 플래그로 읽고, 기사 인자가 통째로 사라진다.
+const ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,119}$/;
+
 function runCli(command, id, reviewerId, checks, notes) {
+  if (!ALLOWED_COMMANDS.has(command)) return { ok: false, out: `허용되지 않은 명령: ${command}` };
+  if (!ID_PATTERN.test(String(id || ""))) return { ok: false, out: "기사 id 형식이 올바르지 않습니다" };
   const args = [path.join(ROOT, "scripts", "review-cli.js"), command, id, `--reviewer-id=${reviewerId}`, "--apply"];
   if (command === "approve") args.push(`--checklist=${checks.join(",")}`);
-  if (notes) args.push(`--notes=${notes}`);
+  // 줄바꿈과 선행 "--"를 제거해 인자 경계를 넘지 못하게 한다
+  const safeNotes = String(notes || "").replace(/[\r\n]+/g, " ").replace(/^-+/, "").slice(0, 500).trim();
+  if (safeNotes) args.push(`--notes=${safeNotes}`);
   const res = spawnSync(process.execPath, args, { cwd: ROOT, encoding: "utf8" });
   return { ok: res.status === 0, out: `${res.stdout || ""}${res.stderr || ""}`.trim() };
 }
