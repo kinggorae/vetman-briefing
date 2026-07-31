@@ -29,9 +29,12 @@ function newsroom() { return readJson(DRAFT_REPORT, { drafts: [] }); }
 function qa() { return readJson(QA_REPORT, { candidates: [] }); }
 // data/drafts의 생성본을 먼저 본다. draft-newsroom.json은 본문 없는 후보 목록이라
 // 거기만 보면 생성된 한국어 본문을 못 찾아 전 항목이 "한국어 필요"로 탈락한다.
+// 같은 원문이 여러 날 수집되면 같은 id가 여러 파일에 들어간다. 최신 파일이
+// 먼저 오게 정렬해, id로 찾을 때 가장 최근 사본이 잡히도록 한다.
 function draftFiles() {
   if (!fs.existsSync(DRAFT_DIR)) return [];
-  return fs.readdirSync(DRAFT_DIR).filter((name) => name.endsWith(".json")).map((name) => path.join(DRAFT_DIR, name));
+  return fs.readdirSync(DRAFT_DIR).filter((name) => name.endsWith(".json")).sort().reverse()
+    .map((name) => path.join(DRAFT_DIR, name));
 }
 function find(id) {
   for (const file of draftFiles()) {
@@ -112,8 +115,11 @@ function writePreview(row, evaluation) {
 function prepare(id) { const row = find(id); const evaluation = evaluate(row); const packageData = writePreview(row, evaluation); console.log(JSON.stringify({ id, previewOnly: true, status: evaluation.status, package: packageData }, null, 2)); }
 function validate(id) { const row = find(id); const evaluation = evaluate(row); console.log(JSON.stringify(evaluation, null, 2)); if (evaluation.blockers.length) throw new Error(`public-brief 검증 차단:\n- ${evaluation.blockers.join("\n- ")}`); }
 function preview(id) { prepare(id); }
-function release(id, flags) {
-  const row = find(id); const evaluation = evaluate(row); console.log(JSON.stringify({ id, action: "release", dryRun: !flags.apply, evaluation }, null, 2));
+// preRow: 호출부가 이미 평가한 항목을 그대로 넘긴다. id로 다시 찾으면 같은 id가
+// 여러 draft 파일에 있을 때 다른 사본이 잡혀, 평가는 통과했는데 release가
+// 차단되는 어긋남이 생긴다(2026-07-31 실행이 이걸로 실패했다).
+function release(id, flags, preRow = null) {
+  const row = preRow || find(id); const evaluation = evaluate(row); console.log(JSON.stringify({ id, action: "release", dryRun: !flags.apply, evaluation }, null, 2));
   if (evaluation.blockers.length) throw new Error(`release 차단:\n- ${evaluation.blockers.join("\n- ")}`);
   if (!flags.apply) { console.log("dry-run: --apply 없이는 public-brief issue를 저장하지 않습니다."); return; }
   const date = flags.date || new Date().toISOString().slice(0, 10);
@@ -152,7 +158,7 @@ function releaseReady(flags) {
     try { evaluation = evaluate(row); } catch { bump("평가 실패"); continue; }
     if (evaluation.status !== "ready-public-brief") { bump(evaluation.status); continue; }
     if (!flags.apply) { summary.released += 1; summary.ids.push(row.id); if (url) published.add(url); continue; }
-    release(row.id, { ...flags, date, apply: true });
+    release(row.id, { ...flags, date, apply: true }, row);
     summary.released += 1;
     summary.ids.push(row.id);
     if (url) published.add(url);

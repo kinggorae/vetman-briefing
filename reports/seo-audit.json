@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-31T12:36:18.640Z",
+  "generatedAt": "2026-07-31T14:39:24.257Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 537,
-    "articles": 463,
+    "htmlPages": 593,
+    "articles": 518,
     "index": 170,
-    "noindex": 293,
+    "noindex": 348,
     "sitemap": 211,
     "newsSitemap": 0,
     "rssItems": 50,
@@ -17,7 +17,7 @@
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 159121,
+    "homepageBytes": 165371,
     "searchSizes": [
       {
         "file": "search.json",
@@ -36,7 +36,7 @@
         "bytes": 133553
       }
     ],
-    "articleBytes": 9107036,
+    "articleBytes": 10191859,
     "searchFirstRequestBytes": 133553
   },
   "duplicate": {
@@ -47,11 +47,11 @@
   "indexPolicy": {
     "previousIndex": 318,
     "currentIndex": 170,
-    "currentNoindex": 293,
+    "currentNoindex": 348,
     "delta": -148,
     "reasonCounts": {
-      "build-policy": 1,
-      "brief-tier": 215,
+      "brief-tier": 240,
+      "build-policy": 31,
       "brief-too-short": 49,
       "source-relay": 39,
       "internal-ascii": 17,
@@ -291,9 +291,35 @@
       ],
       "noindex": [
         {
-          "date": "2026-07-29",
-          "id": "v1_5ef792dba5c1c590",
-          "title": "수의 임상 인력 채용·유지 전략",
+          "date": "2026-07-31",
+          "id": "v1_325c53b92b24e022",
+          "title": "신입수의사 자신감과 역량 구축 멘토링 전략",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_8977cdecc20db74b",
+          "title": "상업적 강아지 번식 농장의 동물 복지 개선 방안",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_ecdd9715ae5b33aa",
+          "title": "강아지 수명주기별 영양관리와 대형 견 사료 진짜 필요성",
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",
@@ -304,270 +330,221 @@
           ]
         },
         {
-          "date": "2026-07-29",
-          "id": "v1_20469be4391ba0b5",
-          "title": "중국 코로나19 이후 야생동물 규제 변화, '원헬스' 접근 약화된 이유는",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_714583787982c8de",
-          "title": "강아지와 야생 버섯 중독 위험…비 온 뒤 버섯 주의",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [
-            "brief-too-short"
-          ],
-          "reasons": [
-            "brief-tier",
-            "brief-too-short"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_b57ff7397629a2d4",
-          "title": "진드기 방지제별 검은다리진드기(Blacklegged Tick) 사멸 속도 연구 비교",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_6ce376c377ed20e8",
-          "title": "지난 10년 개·고양이 진료 혁신...수의학 주요 발견 총정리",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [
-            "source-relay"
-          ],
-          "reasons": [
-            "source-relay"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_0dd20409706debd4",
-          "title": "텍사스 카운티, 가족 마당서 발견된 스컹크서 rabies 7번째 사례 확인",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [
-            "source-relay"
-          ],
-          "reasons": [
-            "source-relay"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_a501789c4aa37005",
-          "title": "애완동물 아시아극동분들 중증 기생충 위협 증가",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [
-            "source-relay"
-          ],
-          "reasons": [
-            "source-relay"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_8a4f25e0108529ad",
-          "title": "PET 리포터 리간드로 뇌 유전자 발현 정량 영상화",
+          "date": "2026-07-31",
+          "id": "v1_f0efeb482c512335",
+          "title": "수의학 분야, 진료 접근성 확대의 최대 도전과제는?",
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",
           "paragraphs": 3,
-          "qualityIssues": [
-            "source-relay"
-          ],
+          "qualityIssues": [],
           "reasons": [
-            "source-relay"
+            "build-policy"
           ]
         },
         {
-          "date": "2026-07-29",
-          "id": "v1_5f4a47374d84fda1",
-          "title": "새 동물보험 가입, 비용 대비 가장 현명한 첫걸음",
+          "date": "2026-07-31",
+          "id": "v1_dfab869009cacc1d",
+          "title": "마지막 순간을 모르는 우리에게 남겨진 시간",
           "indexable": false,
           "tier": "analysis",
-          "clinicalRisk": "high",
+          "clinicalRisk": "medium",
           "paragraphs": 3,
-          "qualityIssues": [
-            "source-relay"
-          ],
+          "qualityIssues": [],
           "reasons": [
-            "source-relay"
+            "build-policy"
           ]
         },
         {
-          "date": "2026-07-29",
-          "id": "v1_687b4b98c979ad9f",
-          "title": "미접종·미등록 동물, 소유주에게 과태료 부과 가능",
+          "date": "2026-07-31",
+          "id": "v1_f4e1789482af70a7",
+          "title": "비의학 경영 리더에게 임상 경험이 필수적인가",
           "indexable": false,
           "tier": "brief",
           "clinicalRisk": "medium",
           "paragraphs": 3,
-          "qualityIssues": [
-            "brief-too-short"
-          ],
+          "qualityIssues": [],
           "reasons": [
-            "brief-tier",
-            "brief-too-short"
+            "brief-tier"
           ]
         },
         {
-          "date": "2026-07-29",
-          "id": "v1_cf59fd26eb360f13",
-          "title": "수의사 기술, 정책 활동과 옹호로 이어지는 길",
+          "date": "2026-07-31",
+          "id": "v1_5e79b0eb6efbac68",
+          "title": "수의사 자살 소식으로 충격…수의계 정신건강 경고",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_632f817d38e1640a",
+          "title": "수의병원의 녹색 전환: 환경 영향 줄이기",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_5ed0ce1ffe7661d1",
+          "title": "신입수의사, 병원 내 변화 이끌어내기",
           "indexable": false,
           "tier": "brief",
           "clinicalRisk": "medium",
           "paragraphs": 3,
-          "qualityIssues": [
-            "brief-too-short"
-          ],
+          "qualityIssues": [],
           "reasons": [
-            "brief-tier",
-            "brief-too-short"
+            "brief-tier"
           ]
         },
         {
-          "date": "2026-07-29",
-          "id": "v1_98a932034c9ef0cd",
-          "title": "국내말, 시각적 포식자cue만으로 생리적 경계 반응 보인다",
+          "date": "2026-07-31",
+          "id": "v1_a3087f97fcbd8faa",
+          "title": "수의사 직급 변화, '중요함'의 무게",
           "indexable": false,
-          "tier": "evidence",
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_000c0774cffcb69e",
+          "title": "독립 동물병원 소유 열풍：수의사들의 새로운 선택",
+          "indexable": false,
+          "tier": "analysis",
           "clinicalRisk": "medium",
-          "paragraphs": 4,
-          "qualityIssues": [
-            "internal-ascii",
-            "title-not-korean-sentence"
-          ],
-          "reasons": [
-            "internal-ascii",
-            "title-not-korean-sentence"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_a1cb75d3fc1c8328",
-          "title": "아픈 망아지(말 새끼)의 생명을 위협하는 호르몬 기능장애 진단 테스트 개발",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
+          "paragraphs": 3,
           "qualityIssues": [],
           "reasons": [
-            "brief-tier"
+            "build-policy"
           ]
         },
         {
-          "date": "2026-07-29",
-          "id": "v1_f1921b33d4439071",
-          "title": "식물 항균제 가금 생산 내성 유전자 확산 방지 효과",
+          "date": "2026-07-31",
+          "id": "v1_6cb9a2c41af342f1",
+          "title": "수의 의료비 상승과 접근성 문제, 전문가들의 소통 방법",
           "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_a8f29b32764cd2d8",
-          "title": "미국 사료 리콜 10건...반려동물 주인의 신속 대응법",
-          "indexable": false,
-          "tier": "brief",
+          "tier": "analysis",
           "clinicalRisk": "low",
-          "paragraphs": 1,
+          "paragraphs": 3,
           "qualityIssues": [],
           "reasons": [
-            "brief-tier"
+            "build-policy"
           ]
         },
         {
-          "date": "2026-07-29",
-          "id": "v1_761887efcc6d349b",
-          "title": "미국 의회, 식량안보 위해 사료·수의 업무 역할 강조",
+          "date": "2026-07-31",
+          "id": "v1_5a8b1d1fc86addb7",
+          "title": "\"고품질 진료\"의 딜레마, 모든 병원에게 적용 가능한가",
           "indexable": false,
-          "tier": "brief",
+          "tier": "analysis",
           "clinicalRisk": "low",
-          "paragraphs": 1,
+          "paragraphs": 3,
           "qualityIssues": [],
           "reasons": [
-            "brief-tier"
+            "build-policy"
           ]
         },
         {
-          "date": "2026-07-29",
-          "id": "v1_267897d027711e99",
-          "title": "미국 폴크 카운티, 무료 마이크로칩·광견병 예방접종 제공",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_8937a8decbfb76ec",
-          "title": "미국 CVS 9000개 약국, 개·고양이 처방약 조제 시작",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_aa6becfdbbcbbfdd",
-          "title": "사우스오스트레일리아, 조류 관찰자 참여 조류인플루엔자 대응 훈련 프로그램 추진",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-07-29",
-          "id": "v1_ff6854e77a08ce51",
-          "title": "카자흐스탄 뉴캐슬병바이러스 유전체 분석",
+          "date": "2026-07-31",
+          "id": "v1_1e2651ab5b7de355",
+          "title": "수의학서 '저렴하고 좋은 치료법' 비밀이 없다는 내용의 분석",
           "indexable": false,
           "tier": "brief",
           "clinicalRisk": "medium",
-          "paragraphs": 1,
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_174577d6efe88d58",
+          "title": "수의사와 기업 구조, 텔레메디신 사이의 비용 논쟁",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_6f1159579ed79925",
+          "title": "수의 의료에서 임신·육아 휴가 지원의 현실",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_c8a1dfb2b6e491af",
+          "title": "수의업계 리더가 반드시 알아야 할 가장 중요한 사실",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_4e1960f5492f96a4",
+          "title": "AI 검색 확산 동물병원 웹사이트 영향력 감소 전망",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_6369d7b8e2b67768",
+          "title": "수의학 시스템에 대한 전문의들의 좌절고백",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_19ecfad4fc33b9f7",
+          "title": "사립 자본 동물병원 '추출 모델' 확산 우려",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
           "qualityIssues": [],
           "reasons": [
             "brief-tier"
@@ -2625,22 +2602,37 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 111,
-      "medium": 211,
+      "low": 123,
+      "medium": 254,
       "high": 141
     },
-    "explicitReviewFields": 0
+    "explicitReviewFields": 55
   },
   "workflow": {
-    "explicitItems": 0,
-    "statusCounts": {},
+    "explicitItems": 55,
+    "statusCounts": {
+      "published": 55
+    },
     "correctionRequired": 0,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
     "articlesWithExplicitMetadata": 101,
-    "numericWarnings": 64,
+    "numericWarnings": 66,
     "samples": [
+      {
+        "id": "v1_ca99a4580afd1024",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_1baa3a90d6be2ab8",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
       {
         "id": "v1_e174695d8cae4128",
         "issues": [

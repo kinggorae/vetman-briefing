@@ -14,8 +14,9 @@ jobs:
     concurrency:
       group: daily-source-first-newsroom
       cancel-in-progress: false
-    # source-first 수집(약 40분)에 발행·빌드·배포가 다시 붙었다. 45분으로는 모자란다.
-    timeout-minutes: 75
+    # 실측: 후보 60건 수집·생성에 63분(radar 포함), 발행·빌드·배포에 3분.
+    # 동시 실행 8이 기대만큼 병렬을 주지 않아 75분은 여유가 9분뿐이라 90으로 둔다.
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
