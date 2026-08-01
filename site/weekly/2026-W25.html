@@ -558,32 +558,6 @@ a:hover{color:var(--color-primary-strong);}
     +'<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:2px;"><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">반려동물 화제</span><span style="font-size:12.5px;color:var(--color-label-alternative);">출처가 확인된 해외 화제 이야기</span></div>'
     +'<div>'+rows+'</div></div>';
   }
-  // 오늘의 병원 블로그 글감 — 그날 기사를 실제 보호자 검색어와 묶어 보여준다.
-  // 이 사이트가 검색 유입을 직접 노리기는 어렵다(수의사 대상 검색 수요가 거의
-  // 없다). 대신 원장이 자기 병원 블로그로 그 수요를 가져가도록 재료를 넘긴다.
-  function blogKitBoard(){
-    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
-    var list=DATA.blogKit||[]; if(!list.length) return '';
-    var rows=list.map(function(k){
-      return '<div style="padding:15px 0;border-bottom:1px solid var(--color-line-normal);">'
-        +'<div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:6px;">'
-          +'<span style="font-family:var(--font-display);font-size:16px;font-weight:800;color:var(--color-label-strong);">'+e(k.keyword)+'</span>'
-          +'<span style="font-size:12px;color:var(--color-primary-normal);font-weight:700;">월 '+Number(k.volume).toLocaleString()+'회 검색</span>'
-          +(k.competition?'<span style="font-size:11.5px;color:var(--color-label-alternative);">경쟁 '+e(k.competition)+'</span>':'')
-        +'</div>'
-        +(k.angle?'<p style="margin:0 0 6px;font-size:14px;line-height:1.65;color:var(--color-label-neutral);">'+e(k.angle)+'</p>':'')
-        +(k.ownerQ?'<p style="margin:0 0 4px;font-size:13px;color:var(--color-label-alternative);">보호자 질문 — '+e(k.ownerQ)+'</p>':'')
-        +(k.href?'<a href="'+e(k.href)+'" style="font-size:12.5px;color:var(--color-primary-normal);text-decoration:none;">근거 기사: '+e(k.title)+' →</a>':'')
-      +'</div>';
-    }).join('');
-    return '<div style="margin-top:34px;padding-top:20px;border-top:2px solid var(--color-label-strong);">'
-      +'<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px;">'
-        +'<span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">오늘의 병원 블로그 글감</span>'
-        +'<span style="font-size:12.5px;color:var(--color-label-alternative);">보호자가 실제로 검색하는 말과 묶었습니다</span>'
-      +'</div>'
-      +'<p style="margin:0 0 8px;font-size:12.5px;color:var(--color-label-alternative);">검색량은 네이버 검색광고 키워드도구 기준입니다.</p>'
-      +'<div>'+rows+'</div></div>';
-  }
   // 간추린 소식(브리프) — 본문이 짧은 단신은 기사 행이 아니라 카드로 보여준다.
   // 기본 12건만 노출하고, 나머지는 사용자가 요청할 때 펼친다.
   function briefsBoard(){
@@ -727,7 +701,6 @@ a:hover{color:var(--color-primary-strong);}
       if(more>0||clipped>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+Math.max(more,clipped)+'건 더 보기</button></div>'; }
     }
     h+=qaColumn(arr);
-    h+=blogKitBoard();
     h+=briefsBoard();
     h+=recentSection();
     h+=storyBoard();
