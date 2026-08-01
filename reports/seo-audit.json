@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-01T04:51:38.671Z",
+  "generatedAt": "2026-08-01T05:32:46.933Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 618,
+    "htmlPages": 620,
     "articles": 541,
     "index": 172,
     "noindex": 369,
-    "sitemap": 213,
+    "sitemap": 215,
     "newsSitemap": 1,
     "rssItems": 50,
     "rssIncomplete": 0,
@@ -21,7 +21,7 @@
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 153354
+        "bytes": 153490
       },
       {
         "file": "search/2026-05.json",
@@ -29,19 +29,19 @@
       },
       {
         "file": "search/2026-06.json",
-        "bytes": 16354
+        "bytes": 16340
       },
       {
         "file": "search/2026-07.json",
-        "bytes": 134442
+        "bytes": 134592
       },
       {
         "file": "search/2026-08.json",
         "bytes": 925
       }
     ],
-    "articleBytes": 10706576,
-    "searchFirstRequestBytes": 134442
+    "articleBytes": 10701963,
+    "searchFirstRequestBytes": 134592
   },
   "duplicate": {
     "title": [],

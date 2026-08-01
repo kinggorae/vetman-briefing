@@ -2691,12 +2691,31 @@ const topicPath = (t) => `/topic/${t.slug}`;
 // 본문 전체를 매칭하면 오탐이 쏟아진다 — 광견병 예방접종 기사가 본문에 '급여'가
 // 한 번 나왔다고 영양 주제로 분류되는 식이다. 제목·리드·진료 포인트를 1차로 쓰고,
 // 거기서 하나도 안 걸린 기사만 본문으로 폴백하되 한 주제만 준다.
+// 본문에서 주제어가 한 번 스친 것만으로 분류하면 엉뚱한 주제 페이지에 실린다.
+// 실측(541건): 본문 폴백 90건 중 57건이 딱 1회 매칭이었고 그것들이
+// "노령견 치매 → 병원경영", "반려동물 보험 → 종양" 같은 오분류였다.
+const TOPIC_BODY_MIN_HITS = 2;
+function topicMatchCount(text, match) {
+  return (String(text).match(new RegExp(match.source, "gi")) || []).length;
+}
 function topicsOf(a) {
   const meta = [a.title, a.dek, a.radar?.clinical].filter(Boolean).join(" ");
-  const hit = TOPICS.filter((t) => t.match.test(meta));
-  if (hit.length) return hit.slice(0, 3);
   const body = (a.body || []).join(" ");
-  return TOPICS.filter((t) => t.match.test(body)).slice(0, 1);
+  // 제목·요약 일치는 강한 신호다. 예전에는 TOPICS 배열 순서대로 앞의 3개를
+  // 집어서, 가장 잘 맞는 주제가 아니라 배열에서 먼저 나오는 주제가 이겼다.
+  // 매칭 횟수로 정렬해 실제로 가까운 주제가 앞에 오게 한다.
+  const strong = TOPICS
+    .map((topic) => ({ topic, meta: topicMatchCount(meta, topic.match), body: topicMatchCount(body, topic.match) }))
+    .filter((row) => row.meta > 0)
+    .sort((x, y) => y.meta - x.meta || y.body - x.body);
+  if (strong.length) return strong.slice(0, 3).map((row) => row.topic);
+  // 본문에만 나오면 약한 신호다. 충분히 반복될 때만 인정하고 아니면 분류하지
+  // 않는다. 주제 없는 기사는 주제 페이지에 안 실릴 뿐 사이트에는 그대로 남는다.
+  const weak = TOPICS
+    .map((topic) => ({ topic, n: topicMatchCount(body, topic.match) }))
+    .filter((row) => row.n >= TOPIC_BODY_MIN_HITS)
+    .sort((x, y) => y.n - x.n);
+  return weak.length ? [weak[0].topic] : [];
 }
 
 // 같은 문장이 여러 기사에 반복되면 목록이 지저분해진다. 앞 24자로 중복을 거른다.
