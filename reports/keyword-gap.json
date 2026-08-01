@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-08-01T05:45:52.567Z",
+  "files": [
+    "/private/tmp/claude-501/-Users-shinhyunkyu-claude-project-skinmso/e3f47458-99e0-49e1-9fb8-630410efe62b/scratchpad/fake-keywords.csv"
+  ],
+  "counts": {
+    "keywords": 6,
+    "gaps": 3
+  },
+  "rows": [
+    {
+      "keyword": "강아지 슬개골 탈구",
+      "volume": 10000,
+      "competition": "높음",
+      "topic": "정형-관절",
+      "articles": 0
+    },
+    {
+      "keyword": "심장사상충 예방",
+      "volume": 6300,
+      "competition": "높음",
+      "topic": "심장",
+      "articles": 2
+    },
+    {
+      "keyword": "고양이 신장병",
+      "volume": 4800,
+      "competition": "중간",
+      "topic": "신장-비뇨",
+      "articles": 0
+    },
+    {
+      "keyword": "동물병원 경영",
+      "volume": 730,
+      "competition": "중간",
+      "topic": "병원경영",
+      "articles": 1
+    },
+    {
+      "keyword": "수의사 번아웃",
+      "volume": 140,
+      "competition": "낮음",
+      "topic": "병원경영",
+      "articles": 0
+    },
+    {
+      "keyword": "동물병원 PIMS",
+      "volume": 25,
+      "competition": "낮음",
+      "topic": "수의IT-AI",
+      "articles": 1
+    }
+  ]
+}

@@ -98,7 +98,8 @@
     "check-sources": "node src/check-sources.js",
     "test": "node --test test/*.test.js",
     "brief:release-ready": "node scripts/brief-publishing.js release-ready",
-    "review:ui": "node scripts/review-server.js"
+    "review:ui": "node scripts/review-server.js",
+    "keyword:gap": "node scripts/keyword-gap.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
