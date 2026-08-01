@@ -113,8 +113,11 @@ async function generateDraft(draft, entry, flags) {
   if (!(process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY)) return { ...draft, generation: { ...draft.generation, generationWarnings: ["llm-key-not-configured"] } };
   try {
     const { generateItem } = await import("../src/generate.js");
-    // 원문 본문이 있으면 그것을 쓰고, 없을 때만 RSS 요약문으로 물러선다.
-    const content = entry.fullText || entry.description;
+    // 원문 본문이 RSS 요약문보다 길 때만 쓴다. 짧은 칼럼은 추출 결과가 요약문보다
+    // 빈약해서, 무조건 원문을 쓰면 오히려 본문이 줄어든다(실측: 446자 → 296자로
+    // analysis에서 brief로 떨어진 사례가 있었다).
+    const description = entry.description || "";
+    const content = (entry.fullText || "").length > description.length ? entry.fullText : description;
     const generated = await generateItem({ ...entry, sourceType: "rss", finalUrl: draft.sourceUrl, url: draft.sourceUrlRaw, fullText: content, body: content, sourceLabel: draft.sourceLabel, publishedAt: draft.sourcePublishedAt });
     const outputHash = sourceContentHash(JSON.stringify({ titleKo: generated.titleKo, leadKo: generated.leadKo, bodyKo: generated.bodyKo, keyPointsKo: generated.keyPointsKo }));
     return { ...draft, ...generated, id: draft.id, sourceUrl: draft.sourceUrl, sourceUrlRaw: draft.sourceUrlRaw, sourceStatus: draft.sourceStatus, sourceEvidence: draft.sourceEvidence, workflowStatus: "draft", editorialStatus: "editor-review-required", generation: { model: MODEL, promptVersion: "source-first-v1", generatedAt: new Date().toISOString(), inputSourceIds: [draft.sourceId], inputHash: draft.generation.inputHash, outputHash, generationWarnings: [] }, contentHash: outputHash, metadataHash: draft.metadataHash, clinicalRisk: inferClinicalRisk(generated) };
