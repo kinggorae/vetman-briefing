@@ -1,0 +1,997 @@
+{
+  "updatedAt": "2026-08-01T07:22:21.379Z",
+  "source": "naver-searchad-keyword-tool",
+  "minVolume": 500,
+  "keywords": [
+    {
+      "keyword": "동물병원",
+      "volume": 120370,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지사료",
+      "volume": 43990,
+      "competition": "높음"
+    },
+    {
+      "keyword": "24시동물병원",
+      "volume": 18640,
+      "competition": "높음"
+    },
+    {
+      "keyword": "피부묘기증",
+      "volume": 16470,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지심장사상충약",
+      "volume": 15440,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지호텔",
+      "volume": 10540,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지가핥는이유",
+      "volume": 7760,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이심장사상충약",
+      "volume": 7610,
+      "competition": "높음"
+    },
+    {
+      "keyword": "근처동물병원",
+      "volume": 7550,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지인식표",
+      "volume": 6850,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지심장사상충",
+      "volume": 6560,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지진드기",
+      "volume": 5240,
+      "competition": "높음"
+    },
+    {
+      "keyword": "수의사",
+      "volume": 4990,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지피부병",
+      "volume": 4770,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지알러지사료",
+      "volume": 4740,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지진드기퇴치제",
+      "volume": 4490,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지발사탕",
+      "volume": 4400,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이중성화비용",
+      "volume": 4230,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지스케일링비용",
+      "volume": 4190,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지치석제거",
+      "volume": 4110,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지중성화비용",
+      "volume": 4010,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지귀염증",
+      "volume": 3740,
+      "competition": "높음"
+    },
+    {
+      "keyword": "수의테크니션",
+      "volume": 3690,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지예방접종",
+      "volume": 3550,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이목욕",
+      "volume": 3410,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이턱드름",
+      "volume": 3330,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지폐수종",
+      "volume": 2850,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지췌장염",
+      "volume": 2820,
+      "competition": "높음"
+    },
+    {
+      "keyword": "청주고려동물병원",
+      "volume": 2800,
+      "competition": "낮음"
+    },
+    {
+      "keyword": "강아지슬개골탈구",
+      "volume": 2660,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지구충제",
+      "volume": 2650,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지브라벡토",
+      "volume": 2640,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지건강검진비용",
+      "volume": 2530,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이구내염",
+      "volume": 2460,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지혈뇨",
+      "volume": 2450,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이샴푸",
+      "volume": 2370,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이설사",
+      "volume": 2360,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이눈꼽",
+      "volume": 2340,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지심장병",
+      "volume": 2150,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지슬개골",
+      "volume": 2130,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이피부병",
+      "volume": 2100,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지알러지검사",
+      "volume": 2080,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지자궁축농증",
+      "volume": 1950,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이예방접종",
+      "volume": 1880,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지유선종양",
+      "volume": 1870,
+      "competition": "높음"
+    },
+    {
+      "keyword": "서울대학교동물병원",
+      "volume": 1840,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지하트세이버",
+      "volume": 1840,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지유전자검사",
+      "volume": 1840,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지링웜",
+      "volume": 1800,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지피부염",
+      "volume": 1790,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지발바닥",
+      "volume": 1780,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지진드기목걸이",
+      "volume": 1760,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지알러지검사비용",
+      "volume": 1730,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지피부영양제",
+      "volume": 1720,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지아포퀠",
+      "volume": 1690,
+      "competition": "높음"
+    },
+    {
+      "keyword": "서울대동물병원",
+      "volume": 1640,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지피부딱지",
+      "volume": 1610,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지예방접종비용",
+      "volume": 1600,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지곰팡이성피부염",
+      "volume": 1590,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지슬개골수술비용",
+      "volume": 1590,
+      "competition": "높음"
+    },
+    {
+      "keyword": "장재영동물병원",
+      "volume": 1570,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지눈물",
+      "volume": 1560,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이복막염",
+      "volume": 1510,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지분리불안",
+      "volume": 1480,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이구토",
+      "volume": 1480,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지발습진",
+      "volume": 1460,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이중성화",
+      "volume": 1450,
+      "competition": "높음"
+    },
+    {
+      "keyword": "의정부동물병원",
+      "volume": 1450,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이신부전",
+      "volume": 1450,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지슬개골보호대",
+      "volume": 1430,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지귓병",
+      "volume": 1420,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지건강검진",
+      "volume": 1380,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지췌장염치료",
+      "volume": 1380,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지혈소판감소증",
+      "volume": 1380,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지중성화",
+      "volume": 1350,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지신부전",
+      "volume": 1350,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지습진",
+      "volume": 1350,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지오메가3추천",
+      "volume": 1350,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지십자인대파열",
+      "volume": 1350,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지곰팡이피부염",
+      "volume": 1330,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지코건조",
+      "volume": 1310,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이예방접종비용",
+      "volume": 1300,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지접종",
+      "volume": 1300,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지MRI비용",
+      "volume": 1240,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이췌장염",
+      "volume": 1220,
+      "competition": "높음"
+    },
+    {
+      "keyword": "부천동물병원",
+      "volume": 1220,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이알러지",
+      "volume": 1220,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지치주염",
+      "volume": 1220,
+      "competition": "높음"
+    },
+    {
+      "keyword": "피부묘기증치료",
+      "volume": 1210,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이방광염",
+      "volume": 1200,
+      "competition": "높음"
+    },
+    {
+      "keyword": "경기광주동물병원",
+      "volume": 1160,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지발작",
+      "volume": 1150,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이상처연고",
+      "volume": 1150,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지식분증",
+      "volume": 1140,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지슬개골탈구증상",
+      "volume": 1140,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지디스크증상",
+      "volume": 1140,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지훈련",
+      "volume": 1120,
+      "competition": "높음"
+    },
+    {
+      "keyword": "별내동물병원",
+      "volume": 1110,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지외이염",
+      "volume": 1080,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지뇌수막염",
+      "volume": 1050,
+      "competition": "높음"
+    },
+    {
+      "keyword": "인천스카이동물병원",
+      "volume": 1050,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지당뇨",
+      "volume": 1050,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지피부병종류",
+      "volume": 1030,
+      "competition": "높음"
+    },
+    {
+      "keyword": "광명동물병원",
+      "volume": 1020,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지동물병원",
+      "volume": 1010,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이비듬",
+      "volume": 1000,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지중성화수술",
+      "volume": 990,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지녹내장",
+      "volume": 990,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지중성화수술비용",
+      "volume": 980,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지안과전문병원",
+      "volume": 960,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지아토피",
+      "volume": 950,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지경련",
+      "volume": 950,
+      "competition": "높음"
+    },
+    {
+      "keyword": "서울대수의대",
+      "volume": 940,
+      "competition": "중간"
+    },
+    {
+      "keyword": "동물병원간호사",
+      "volume": 920,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지항생제",
+      "volume": 910,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지탈장",
+      "volume": 910,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지백내장안약",
+      "volume": 910,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지보습제",
+      "volume": 900,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지짐볼",
+      "volume": 900,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지신장영양제",
+      "volume": 880,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지알레르기검사",
+      "volume": 870,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지다이어트",
+      "volume": 870,
+      "competition": "높음"
+    },
+    {
+      "keyword": "암컷고양이중성화비용",
+      "volume": 860,
+      "competition": "높음"
+    },
+    {
+      "keyword": "다산동물병원",
+      "volume": 850,
+      "competition": "높음"
+    },
+    {
+      "keyword": "구래동동물병원",
+      "volume": 850,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지알러지약",
+      "volume": 850,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이턱드름관리",
+      "volume": 830,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지치석제거비용",
+      "volume": 820,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지알레르기",
+      "volume": 810,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지알러지",
+      "volume": 810,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지탈모",
+      "volume": 810,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지디스크",
+      "volume": 810,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지발바닥습진",
+      "volume": 800,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지털빠짐",
+      "volume": 800,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지진드기스프레이",
+      "volume": 790,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지슬개골수술",
+      "volume": 790,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이건강검진",
+      "volume": 790,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지신장에좋은음식",
+      "volume": 790,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이HCM",
+      "volume": 780,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이진드기약",
+      "volume": 780,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지호흡곤란",
+      "volume": 780,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지진드기기피제",
+      "volume": 760,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지각질",
+      "volume": 760,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지신장사료",
+      "volume": 750,
+      "competition": "높음"
+    },
+    {
+      "keyword": "구리동물병원",
+      "volume": 740,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이접종",
+      "volume": 720,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이종합백신",
+      "volume": 720,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강서구동물병원",
+      "volume": 720,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지종양",
+      "volume": 720,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지담낭점액종",
+      "volume": 710,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지피부사료",
+      "volume": 710,
+      "competition": "중간"
+    },
+    {
+      "keyword": "고양이스케일링",
+      "volume": 710,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지담낭",
+      "volume": 700,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지백내장수술",
+      "volume": 700,
+      "competition": "높음"
+    },
+    {
+      "keyword": "노원동물병원",
+      "volume": 680,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지다리절뚝",
+      "volume": 680,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이중성화수술",
+      "volume": 670,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지진통제",
+      "volume": 660,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이심장병",
+      "volume": 650,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지맡기는곳",
+      "volume": 650,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이수술",
+      "volume": 650,
+      "competition": "높음"
+    },
+    {
+      "keyword": "진접동물병원",
+      "volume": 640,
+      "competition": "중간"
+    },
+    {
+      "keyword": "고양이지각과민증후군",
+      "volume": 640,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이입냄새",
+      "volume": 640,
+      "competition": "높음"
+    },
+    {
+      "keyword": "용인동물병원",
+      "volume": 640,
+      "competition": "높음"
+    },
+    {
+      "keyword": "순천본동물병원",
+      "volume": 630,
+      "competition": "중간"
+    },
+    {
+      "keyword": "2차동물병원",
+      "volume": 630,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지빈혈",
+      "volume": 620,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지수면제",
+      "volume": 620,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지냄새",
+      "volume": 620,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이당뇨",
+      "volume": 610,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이턱드름연고",
+      "volume": 610,
+      "competition": "중간"
+    },
+    {
+      "keyword": "고양이안정제",
+      "volume": 610,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지고관절탈구",
+      "volume": 600,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이천식",
+      "volume": 590,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지요로결석",
+      "volume": 590,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지침치료",
+      "volume": 590,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지관절염",
+      "volume": 590,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이화식",
+      "volume": 590,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지방광결석",
+      "volume": 580,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이연고",
+      "volume": 570,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이발바닥털",
+      "volume": 570,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지피부",
+      "volume": 570,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지척수공동증",
+      "volume": 570,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지십자인대수술",
+      "volume": 570,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지결석",
+      "volume": 550,
+      "competition": "높음"
+    },
+    {
+      "keyword": "오아시스동물병원",
+      "volume": 540,
+      "competition": "낮음"
+    },
+    {
+      "keyword": "고양이브로드라인",
+      "volume": 540,
+      "competition": "중간"
+    },
+    {
+      "keyword": "강아지수술",
+      "volume": 540,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이감기약",
+      "volume": 530,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지산책알바",
+      "volume": 530,
+      "competition": "높음"
+    },
+    {
+      "keyword": "사료안먹는강아지",
+      "volume": 530,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지디스크치료",
+      "volume": 530,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지PSS",
+      "volume": 520,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지알레르기약",
+      "volume": 510,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이피부염",
+      "volume": 500,
+      "competition": "높음"
+    },
+    {
+      "keyword": "고양이진정제",
+      "volume": 500,
+      "competition": "높음"
+    },
+    {
+      "keyword": "강아지피부각질",
+      "volume": 500,
+      "competition": "높음"
+    }
+  ]
+}

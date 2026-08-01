@@ -147,4 +147,15 @@ for (const r of strong) {
 const out = path.join(ROOT, "reports", "keyword-gap.json");
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify({ generatedAt: new Date().toISOString(), files, counts: { keywords: analysed.length, gaps: gaps.length }, rows: analysed }, null, 2) + "\n");
-console.log(`\n저장: reports/keyword-gap.json`);
+
+// 빌드가 쓸 검색량 표를 data/에도 남긴다. reports/는 실행마다 갈아엎히는
+// 산출물이라 빌드가 의존하면 안 된다. 이 파일은 커밋해서 버전을 고정한다.
+const volumes = analysed
+  .filter((r) => r.volume >= 500)
+  .map((r) => ({ keyword: r.keyword, volume: r.volume, competition: r.competition || null }))
+  .sort((a, b) => b.volume - a.volume);
+const volumeFile = path.join(ROOT, "data", "seo", "keyword-volumes.json");
+fs.mkdirSync(path.dirname(volumeFile), { recursive: true });
+fs.writeFileSync(volumeFile, JSON.stringify({ updatedAt: new Date().toISOString(), source: "naver-searchad-keyword-tool", minVolume: 500, keywords: volumes }, null, 2) + "\n");
+
+console.log(`\n저장: reports/keyword-gap.json · data/seo/keyword-volumes.json (${volumes.length}개)`);

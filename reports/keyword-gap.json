@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-01T07:15:05.462Z",
+  "generatedAt": "2026-08-01T07:22:21.378Z",
   "files": [
-    "/private/tmp/claude-501/-Users-shinhyunkyu-claude-project-skinmso/e3f47458-99e0-49e1-9fb8-630410efe62b/scratchpad/kw/연관키워드_20260801_1609.csv",
-    "/private/tmp/claude-501/-Users-shinhyunkyu-claude-project-skinmso/e3f47458-99e0-49e1-9fb8-630410efe62b/scratchpad/kw/연관키워드_20260801_1610.csv",
-    "/private/tmp/claude-501/-Users-shinhyunkyu-claude-project-skinmso/e3f47458-99e0-49e1-9fb8-630410efe62b/scratchpad/kw/연관키워드_20260801_1610_(1).csv",
-    "/private/tmp/claude-501/-Users-shinhyunkyu-claude-project-skinmso/e3f47458-99e0-49e1-9fb8-630410efe62b/scratchpad/kw/연관키워드_20260801_1611.csv",
-    "/private/tmp/claude-501/-Users-shinhyunkyu-claude-project-skinmso/e3f47458-99e0-49e1-9fb8-630410efe62b/scratchpad/kw/연관키워드_20260801_1612.csv",
-    "/private/tmp/claude-501/-Users-shinhyunkyu-claude-project-skinmso/e3f47458-99e0-49e1-9fb8-630410efe62b/scratchpad/kw/연관키워드_20260801_1612_(1).csv"
+    "data/seo/keywords/연관키워드_20260801_1609.csv",
+    "data/seo/keywords/연관키워드_20260801_1610.csv",
+    "data/seo/keywords/연관키워드_20260801_1610_(1).csv",
+    "data/seo/keywords/연관키워드_20260801_1611.csv",
+    "data/seo/keywords/연관키워드_20260801_1612.csv",
+    "data/seo/keywords/연관키워드_20260801_1612_(1).csv"
   ],
   "counts": {
     "keywords": 639,

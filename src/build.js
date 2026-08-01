@@ -60,6 +60,10 @@ function loadJsonFile(name, fallback = []) {
   }
 }
 
+// 보호자 검색어 검색량. data/에 두고 커밋한다 — reports/는 실행마다 갈아엎히는
+// 산출물이라 빌드가 의존하면 안 된다. npm run keyword:gap이 갱신한다.
+const KEYWORD_VOLUMES = (loadJsonFile(path.join("seo", "keyword-volumes.json"), {}).keywords) || [];
+
 function loadReportFile(name, fallback = {}) {
   try { return JSON.parse(fs.readFileSync(path.join(ROOT, "reports", name), "utf8")) ?? fallback; } catch { return fallback; }
 }
@@ -403,7 +407,43 @@ function buildIssueData(issue) {
     articles,
     briefs,
     stories,
+    blogKit: blogKitFor(articles),
   };
+}
+
+// 원장이 자기 병원 블로그에 바로 쓸 수 있게, 그날 기사를 실제 보호자 검색어와
+// 묶어준다. 수의사 대상 검색 수요는 거의 없지만(동물병원경영 월 10회 미만)
+// 보호자 검색은 강아지사료 하나가 월 4.4만 회라, 유입은 원장 블로그가 가져간다.
+// 검색량 표는 data/seo/keyword-volumes.json — 네이버 검색광고 키워드도구 기준.
+const KEYWORD_TERMS = /(강아지|고양이|반려동물|반려견|반려묘|동물병원|수의사|사료|백신|예방접종|중성화|스케일링|치석|건강검진|심장사상충|슬개골|탈구|피부병|귀염증|알러지|알레르기|진드기|구충|췌장염|폐수종|신장|방광|결막|백내장|치매|비만|다이어트|호텔|미용|영양제|보험|비용|가격|사상충|기생충|중이염|관절)/g;
+const KEYWORD_CAT = /고양이|반려묘|냥/;
+const KEYWORD_DOG = /강아지|반려견|견/;
+function blogKitFor(articles) {
+  if (!KEYWORD_VOLUMES.length) return [];
+  const out = [];
+  for (const kw of KEYWORD_VOLUMES) {
+    const tokens = [...new Set(kw.keyword.match(KEYWORD_TERMS) || [])].filter((t) => t.length >= 2);
+    if (tokens.length < 2) continue; // 낱말 하나로는 너무 헐겁게 붙는다
+    for (const a of articles) {
+      // 종 판정은 원장에게 보여지는 부분으로 한다. 본문에 '고양이'가 한 번
+      // 스쳤다고 고양이 글감이 되지는 않는다.
+      const shown = [a.title, a.angle, a.radar?.owner?.q, a.radar?.owner?.script].filter(Boolean).join(" ");
+      if (!shown || (!a.angle && !a.radar?.owner?.q)) continue;
+      // 본문까지 훑으면 헐겁게 붙는다. 'AVMA 수상' 기사가 본문에 강아지·건강검진이
+      // 스쳤다고 '강아지건강검진' 글감이 되지는 않는다. 원장에게 보여지는
+      // 제목·글감·문답에 낱말이 다 있을 때만 붙인다.
+      if (!tokens.every((t) => shown.includes(t))) continue;
+      if (KEYWORD_CAT.test(kw.keyword) && !KEYWORD_CAT.test(shown)) continue;
+      if (KEYWORD_DOG.test(kw.keyword) && !KEYWORD_CAT.test(kw.keyword) && !KEYWORD_DOG.test(shown)) continue;
+      out.push({
+        keyword: kw.keyword, volume: kw.volume, competition: kw.competition || null,
+        title: a.title, href: a.href || null,
+        angle: a.angle || "", ownerQ: a.radar?.owner?.q || "", ownerScript: a.radar?.owner?.script || "",
+      });
+      break; // 키워드당 기사 하나면 충분하다
+    }
+  }
+  return out.sort((x, y) => y.volume - x.volume).slice(0, 6);
 }
 
 // GA4 gtag 스니펫. 측정 ID가 없으면 아무것도 내보내지 않아 로딩 비용이 0이다.
@@ -1052,6 +1092,32 @@ const APP_JS = String.raw`
     +'<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:2px;"><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">반려동물 화제</span><span style="font-size:12.5px;color:var(--color-label-alternative);">출처가 확인된 해외 화제 이야기</span></div>'
     +'<div>'+rows+'</div></div>';
   }
+  // 오늘의 병원 블로그 글감 — 그날 기사를 실제 보호자 검색어와 묶어 보여준다.
+  // 이 사이트가 검색 유입을 직접 노리기는 어렵다(수의사 대상 검색 수요가 거의
+  // 없다). 대신 원장이 자기 병원 블로그로 그 수요를 가져가도록 재료를 넘긴다.
+  function blogKitBoard(){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    var list=DATA.blogKit||[]; if(!list.length) return '';
+    var rows=list.map(function(k){
+      return '<div style="padding:15px 0;border-bottom:1px solid var(--color-line-normal);">'
+        +'<div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:6px;">'
+          +'<span style="font-family:var(--font-display);font-size:16px;font-weight:800;color:var(--color-label-strong);">'+e(k.keyword)+'</span>'
+          +'<span style="font-size:12px;color:var(--color-primary-normal);font-weight:700;">월 '+Number(k.volume).toLocaleString()+'회 검색</span>'
+          +(k.competition?'<span style="font-size:11.5px;color:var(--color-label-alternative);">경쟁 '+e(k.competition)+'</span>':'')
+        +'</div>'
+        +(k.angle?'<p style="margin:0 0 6px;font-size:14px;line-height:1.65;color:var(--color-label-neutral);">'+e(k.angle)+'</p>':'')
+        +(k.ownerQ?'<p style="margin:0 0 4px;font-size:13px;color:var(--color-label-alternative);">보호자 질문 — '+e(k.ownerQ)+'</p>':'')
+        +(k.href?'<a href="'+e(k.href)+'" style="font-size:12.5px;color:var(--color-primary-normal);text-decoration:none;">근거 기사: '+e(k.title)+' →</a>':'')
+      +'</div>';
+    }).join('');
+    return '<div style="margin-top:34px;padding-top:20px;border-top:2px solid var(--color-label-strong);">'
+      +'<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px;">'
+        +'<span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">오늘의 병원 블로그 글감</span>'
+        +'<span style="font-size:12.5px;color:var(--color-label-alternative);">보호자가 실제로 검색하는 말과 묶었습니다</span>'
+      +'</div>'
+      +'<p style="margin:0 0 8px;font-size:12.5px;color:var(--color-label-alternative);">검색량은 네이버 검색광고 키워드도구 기준입니다.</p>'
+      +'<div>'+rows+'</div></div>';
+  }
   // 간추린 소식(브리프) — 본문이 짧은 단신은 기사 행이 아니라 카드로 보여준다.
   // 기본 12건만 노출하고, 나머지는 사용자가 요청할 때 펼친다.
   function briefsBoard(){
@@ -1195,6 +1261,7 @@ const APP_JS = String.raw`
       if(more>0||clipped>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+Math.max(more,clipped)+'건 더 보기</button></div>'; }
     }
     h+=qaColumn(arr);
+    h+=blogKitBoard();
     h+=briefsBoard();
     h+=recentSection();
     h+=storyBoard();
