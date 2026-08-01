@@ -99,7 +99,8 @@
     "test": "node --test test/*.test.js",
     "brief:release-ready": "node scripts/brief-publishing.js release-ready",
     "review:ui": "node scripts/review-server.js",
-    "keyword:gap": "node scripts/keyword-gap.js"
+    "keyword:gap": "node scripts/keyword-gap.js",
+    "blog:kit": "node scripts/blog-kit.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.110.0",
