@@ -1,19 +1,19 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-07-31T15:11:22.058Z
-- 모드: dry-run
+- 실행 시각: 2026-08-01T03:31:46.316Z
+- 모드: write-draft
 - 소스/피드: 27/14
-- 수집 항목: 747
-- 고유 후보: 579
-- exact duplicate: 90
-- 기존 기사 업데이트 후보: 78
-- 관련성 제외: 133
-- 기수집(seen) 제외: 21
-- 신규 가용 후보: 438
+- 수집 항목: 575
+- 고유 후보: 455
+- exact duplicate: 76
+- 기존 기사 업데이트 후보: 44
+- 관련성 제외: 125
+- 기수집(seen) 제외: 18
+- 신규 가용 후보: 323
 - draft 후보: 60
-- canonical 확인 시도: 52
-- 공식 canonical 확보: 39
-- unresolved source: 21
+- canonical 확인 시도: 59
+- 공식 canonical 확보: 41
+- unresolved source: 19
 - relay sourceUrl: 0
 
 ## draft 후보
@@ -21,20 +21,16 @@
 - v1_2a13d6880defd2e1 · src-veterinary-practice-news · unresolved · unique · Neurologic cat or dog? Don&#039;t forget rabies
 - v1_e4df0fad5191eb66 · src-vet-candy · verified · unique · Review of more than 30 studies finds vegan dog and cat food generally well digested
 - v1_cd4eda55bea666b3 · src-ivc-journal · verified · unique · Going Green: How Veterinary Clinics Can Embrace Sustainable Healthcare
-- v1_8fcea5cc40e54018 · src-vetgirl · verified · unique · Behavior as a Diagnostic Tool: Identifying Pain in Cats and Dogs
 - v1_5b51cfca9fc4824b · src-nc-state-university · verified · unique · Advancing Pain Research and Alleviation: Inside NC&#160;State&#8217;s Comparative Pain Research and Education Center
-- v1_28994bec3bc3a0cb · src-vet-candy · verified · unique · Think Before You Reach for That Eye Ointment: New Study Highlights Rising Antibiotic Resistance in Veterinary Ophthalmology
 - v1_787e49a1b1aca60b · src-vet-candy · verified · unique · Miranda Lambert Is Coming to WVC Nashville. And She’s Not There to Perform.
+- v1_28994bec3bc3a0cb · src-vet-candy · verified · unique · Think Before You Reach for That Eye Ointment: New Study Highlights Rising Antibiotic Resistance in Veterinary Ophthalmology
 - v1_e4bb198ed4dcebaf · src-vet-candy · verified · unique · Generating red blood cell-like cells from canine iPSCs
-- v1_111faa59a5633e7b · src-vet-practice-magazine · verified · unique · Vet students left out of paid practice placements
 - v1_b9451903dd26ddf4 · src-veterinary-practice-news · unresolved · unique · August pet-related holidays -- from specific days to the whole month!
 - v1_a72536abeb8a446d · src-vet-candy · verified · unique · Arkansas State Is About to Make Veterinary History
 - v1_0a82a1e5a31b029f · src-nc-state-university · verified · unique · Record Number of NC&#160;State Veterinary Students Engage in Summer Research
-- v1_e5ee2e08934bba53 · src-vet-practice-magazine · verified · unique · Data shows biggest danger to wildlife is people, not cats
+- v1_475625188f647f84 · src-vet-candy · verified · unique · Massachusetts Just Passed One of the Biggest Animal Welfare Bills in Years. Here's What It Means for Veterinary Medicine.
 - v1_7db36899bbb0a6f2 · src-nc-state-university · verified · unique · From the Veterinary Scholars Program, Kristen Folk Reports
-- v1_de6dc5d94bcbec0b · src-veterinary-record · unresolved · unique · An evaluation of the Health Action Process Approach human behavioural change model to support the postoperative welfare of cats in Malaysian veterinary practices
 - v1_74be8b65675f913d · src-nc-state-university · verified · unique · Learning the Rural Ropes: Across NC, Veterinary Students Lock In
-- v1_cc14c5a80a676989 · src-veterinary-record · unresolved · unique · Determining the minimum deliberate practice time for fundoscopy proficiency on canine models
 - v1_8529ad2b9e483188 · src-vet-candy · verified · unique · Research on foul odors and open wounds targets flesh-eating screwworm
 - v1_6811e1699084e4c3 · src-vet-candy · verified · unique · Minnesota welcomed more than 20,000 dogs last year: some brought along a troubling disease
 - v1_ed83835e5cc0b537 · src-vet-candy · verified · unique · Emese Avdeyenkova Traded Combat Boots for a Stethoscope - and a Diaper Bag!
@@ -43,17 +39,16 @@
 - v1_318d1fa01fe14d5a · src-vet-candy · verified · unique · Escape NAVLE Just Got Bigger: Vet Candy Launches Two New Study Guides That Make Exam Prep a Whole Lot Less Miserable
 - v1_01aba413dd19f95e · src-vet-candy · verified · unique · Frailty tool in aging dogs digs up new data
 - v1_c6e3440d90951925 · src-vet-candy · verified · unique · High-resolution map reveals where veterinary antibiotics enter China’s environment
-- v1_35e30c43b5716d8a · src-veterinary-record · unresolved · unique · ‘We don't accept disrespectful behaviour’: Exploring the experience and management of workplace incivility across different contexts in the veterinary industry
+- v1_aae1f92f77700d57 · src-vet-candy · verified · unique · New ER Vet Hospital Lets Pet Parents Stay Overnight with Their Hospitalized Pets
+- v1_a79fbf2daf5e1b7a · src-vet-candy · verified · unique · Free Veterinary Checkups Now Available for Eligible Pet Owners in Nashville
 - v1_35ba035031079e5b · src-nc-state-university · unresolved · unique · Researchers Identify Useful Tool for Diagnosing Endocrine Dysfunction in Sick Foals
-- v1_95b44b39df58f423 · src-vet-practice-magazine · verified · unique · Australia’s rarest dog breeds wanted for Project Dogalogue™
 - v1_619389cccb2df386 · src-vet-candy · verified · unique · Cats, Cases, and Cutting-Edge Care: Cornell's Fred Scott Feline Symposium Returns This July
 - v1_6aa18cb420da19d4 · src-veterinary-practice-news · unresolved · unique · Thanking our 2026 Vet Box Sponsors!
 - v1_5b9c7a1643b9f0ca · src-veterinary-practice-news · verified · unique · WordRx: Your dose of veterinary wordplay
-- v1_9696943045391a43 · src-vet-candy · verified · unique · New Mexico’s $80,000 solution to the rural livestock vet shortage
-- v1_ac1a4d664414bf21 · src-vet-candy · verified · unique · Enovis Launches New Veterinary Laser Therapy System in the U.S.
 - v1_b099bebd72705477 · src-frontiers-in-veterinary-science · verified · unique · Baicalin potentiates cefquinome against animal-origin ESBL-Escherichia coli by attenuating resistance-associated phenotypes and intestinal injury
 - v1_308876d469770654 · src-frontiers-in-veterinary-science · verified · unique · Physiological predictors of hematological tier outcomes in canine platelet-rich plasma: a prospective observational study
-- v1_d4446a55e2bf62b0 · src-vetgirl · verified · unique · Not Only for the Birds: Implications of Highly Pathogenic Avian Influenza for Poultry and Other Animals
+- v1_9696943045391a43 · src-vet-candy · verified · unique · New Mexico’s $80,000 solution to the rural livestock vet shortage
+- v1_ac1a4d664414bf21 · src-vet-candy · verified · unique · Enovis Launches New Veterinary Laser Therapy System in the U.S.
 - v1_481616e60b897e81 · src-veterinary-evidence · unresolved · unique · Comparing postoperative complications of internal versus external fixation for closed diaphyseal tibial fractures in cats
 - v1_04a64ebd87e1e666 · src-veterinary-evidence · unresolved · unique · Comparison of single or two dose veterinarian-administered protocols and daily at-home prescription canine otitis externa treatments
 - v1_ff9d083945070b28 · src-veterinary-evidence · unresolved · unique · Does grapiprant reduce osteoarthritic pain in dogs?
@@ -65,16 +60,21 @@
 - v1_dc4d0a2c8a91cbfb · src-veterinary-evidence · unresolved · unique · In dogs does the use of bone morphogenetic proteins with internal fixation accelerates fracture healing?
 - v1_428712c2309515f8 · src-vet-candy · verified · unique · Feline fleas carry bacteria linked to human disease In South Texas, study finds
 - v1_f5395ed8bf463ba3 · src-veterinary-practice-news · unresolved · unique · Tech Talk: Intimidated by the vet tech-doctor hierarchy?
-- v1_70a63350d48b7d46 · src-vet-candy · verified · unique · Pet medications now available at CVS Pharmacy®
-- v1_f05dc7a35e2338a7 · src-veterinary-record · unresolved · unique · If dogs could talk
-- v1_25379ef80361431f · src-veterinary-record · unresolved · unique · Selected highlights from other journals
-- v1_09cdda566eaa85d5 · src-veterinary-record · unresolved · unique · Know an unsung equine hero?
 - v1_ccd734127ab5ba6d · src-vet-candy · verified · unique · More Than 84% of Dogs Show Signs of Fear or Anxiety. New Research Says We're Not Talking About It Enough.
-- v1_64b356af2d40528b · src-veterinary-record · unresolved · unique · Inter‐rater agreement of the canine modified Ashworth scale for assessment of limb tone in dogs presenting with acute myelopathic signs
+- v1_70a63350d48b7d46 · src-vet-candy · verified · unique · Pet medications now available at CVS Pharmacy®
 - v1_1c90e61133a4fdc1 · src-nc-state-university · verified · unique · Swine-Focused NC&#160;State Professor Wins 2026 AVMA Animal Welfare Award
-- v1_90372ba23665f182 · src-vet-practice-magazine · verified · unique · VR training tool transforming equine radiography
 - v1_caf88446596ff6bd · src-vet-candy · verified · unique · Your Cat's Brain Ages Like Yours. What That Means for Both of You.
 - v1_558d2850b397c27f · src-vet-candy · verified · unique · New CityVet Opens in Saratoga Springs, Utah.
 - v1_e704ac9ba87ce6b7 · src-vet-candy · verified · unique · The Guide Every First-Year Vet Student Needs (But Nobody Hands You)
 - v1_4ab5b139f594f526 · src-vet-candy · verified · unique · Why WVC Nashville Is the One Conference You Cannot Miss in 2026
 - v1_6756516b1b4cc435 · src-frontiers-in-veterinary-science · verified · unique · Single-isolate genomic characterization and cgMLST allelic comparison of a bovine mastitis-associated Staphylococcus aureus ST151 isolate from Kazakhstan
+- v1_c3c151c5d7bc49f3 · src-frontiers-in-veterinary-science · verified · unique · Dogs and cats with acute-on-chronic kidney disease have worse outcomes than those with acute kidney injury following renal replacement therapy
+- v1_763349dfec00bccd · src-veterinary-evidence · unresolved · unique · Barriers to the delivery of contextualised care in UK small animal veterinary practice
+- v1_84c6e6d7e46d7fcb · src-veterinary-evidence · unresolved · unique · Does a metoclopramide CRI reduce the risk of regurgitation associated with BOAS surgery in dogs?
+- v1_8e1936533d9164ab · src-veterinary-evidence · unresolved · unique · Can cytology accurately predict the malignancy of feline mammary gland tumours?
+- v1_62c215a205af8543 · src-veterinary-evidence · unresolved · unique · Pre-pyloric Enteral Nutrition versus Total Parenteral Nutrition on Survival in Dogs with Acute Pancreatitis
+- v1_7a0b6a9daa128d71 · src-veterinary-evidence · unresolved · unique · Appearance of post-induction respiratory apnoea in dogs following slow or fast administration of propofol
+- v1_60890dc7c2ff9d41 · src-nc-state-university · verified · unique · AVMA Honors Vaden with its 2026 Clinical Research Award
+- v1_18d639e8f8533f94 · src-vet-candy · verified · unique · When Shelter Outbreaks Force Closures: What Vets Need to Know About Parvovirus and Feline Distemper
+- v1_011ce3838600d21c · src-vet-candy · verified · unique · Boehringer Ingelheim and Eko Health Inc. launch new AI-based solution that detects heart murmurs in dogs
+- v1_7f4c2e0757b3127a · src-vet-candy · verified · unique · The USDA Is Launching the First National Equine Health Study in Over a Decade. Here's Why It Matters and How to Get Involved.
