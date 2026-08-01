@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-08-01T03:32:28.501Z",
+  "generatedAt": "2026-08-01T04:51:38.671Z",
   "status": "passed",
   "counts": {
     "htmlPages": 618,
     "articles": 541,
-    "index": 166,
-    "noindex": 375,
-    "sitemap": 206,
-    "newsSitemap": 0,
+    "index": 172,
+    "noindex": 369,
+    "sitemap": 213,
+    "newsSitemap": 1,
     "rssItems": 50,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 166,
+    "indexImages": 172,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 154517,
+    "homepageBytes": 155857,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 148423
+        "bytes": 153354
       },
       {
         "file": "search/2026-05.json",
@@ -33,11 +33,15 @@
       },
       {
         "file": "search/2026-07.json",
-        "bytes": 130374
+        "bytes": 134442
+      },
+      {
+        "file": "search/2026-08.json",
+        "bytes": 925
       }
     ],
-    "articleBytes": 10648385,
-    "searchFirstRequestBytes": 130374
+    "articleBytes": 10706576,
+    "searchFirstRequestBytes": 134442
   },
   "duplicate": {
     "title": [],
@@ -46,12 +50,12 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 166,
-    "currentNoindex": 375,
-    "delta": -152,
+    "currentIndex": 172,
+    "currentNoindex": 369,
+    "delta": -146,
     "reasonCounts": {
       "brief-tier": 252,
-      "build-policy": 46,
+      "build-policy": 40,
       "brief-too-short": 49,
       "source-relay": 39,
       "internal-ascii": 17,
@@ -68,6 +72,72 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-08-01",
+          "id": "v1_74be8b65675f913d",
+          "title": "미국 농촌수의 인력 부족 해결 위한 대학 프로그램 운영",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_a3087f97fcbd8faa",
+          "title": "수의사 직급 변화, '중요함'의 무게",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_6cb9a2c41af342f1",
+          "title": "수의 의료비 상승과 접근성 문제, 전문가들의 소통 방법",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_5a8b1d1fc86addb7",
+          "title": "\"고품질 진료\"의 딜레마, 모든 병원에게 적용 가능한가",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-31",
+          "id": "v1_3c872b693cebffdb",
+          "title": "수의 전문가 커리어 전환 불안, '알 수 없는 것'의 공포 극복법",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-07-30",
+          "id": "v1_d1ece76710d46dd7",
+          "title": "수의학 프론트 데스크 현황: 커뮤니케이션 변화와 AI 대응",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
         {
           "date": "2026-07-29",
           "id": "v1_e174695d8cae4128",
@@ -221,72 +291,6 @@
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
-        },
-        {
-          "date": "2026-07-26",
-          "id": "v1_6082eb09e4c7fb01",
-          "title": "고양이 홍채 melanoma 진단 도구로 AS-OCT 유용성 확인",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-26",
-          "id": "v1_97407f7b28526af0",
-          "title": "퇴원 처방 개선, 그 순간부터 환자 결과가 달라집니다",
-          "indexable": true,
-          "tier": "analysis",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-26",
-          "id": "v1_9996059839065d8b",
-          "title": "개 정형외과술 후 발생한 비외상성 부신출혈 1례",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-26",
-          "id": "v1_5c1783822aafadb2",
-          "title": "개의 구강 확장성골육종, 혈관육종과 감별법 확립",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-26",
-          "id": "v1_2458364d7ea09d4c",
-          "title": "뇌 MRI 검사 개에서 흔한 우연한 중이염, 프랑스 Bulldog서 더 자주",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-26",
-          "id": "v1_c3cdce99920a1017",
-          "title": "소태반 추출물, 노령견 인지 기능 개선 효과 확인",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
         }
       ],
       "noindex": [
@@ -362,19 +366,6 @@
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-01",
-          "id": "v1_74be8b65675f913d",
-          "title": "미국 농촌수의 인력 부족 해결 위한 대학 프로그램 운영",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "low",
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": [
@@ -548,6 +539,19 @@
           "qualityIssues": [],
           "reasons": [
             "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-01",
+          "id": "v1_7f4c2e0757b3127a",
+          "title": "미국, 10년 만에 전국 말 건강 조사 재개",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
           ]
         }
       ]
@@ -2373,6 +2377,13 @@
         "card": true
       },
       {
+        "file": "article/v1_3c872b693cebffdb.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_494886c6f4b5b089.html",
         "hero": true,
         "og": true,
@@ -2402,6 +2413,13 @@
       },
       {
         "file": "article/v1_592f1d8e702ec6a0.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_5a8b1d1fc86addb7.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -2443,6 +2461,13 @@
         "card": true
       },
       {
+        "file": "article/v1_6cb9a2c41af342f1.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_710e69cc91d80d88.html",
         "hero": true,
         "og": true,
@@ -2451,6 +2476,13 @@
       },
       {
         "file": "article/v1_717de352ac7865a6.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_74be8b65675f913d.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -2472,6 +2504,13 @@
       },
       {
         "file": "article/v1_9996059839065d8b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_a3087f97fcbd8faa.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -2528,6 +2567,13 @@
       },
       {
         "file": "article/v1_cc752d4547496da4.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_d1ece76710d46dd7.html",
         "hero": true,
         "og": true,
         "external": false,

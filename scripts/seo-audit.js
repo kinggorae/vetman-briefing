@@ -159,7 +159,9 @@ function main() {
         // (isProfessionallyIndexable이 색인에서 이미 배제한다). 감수 게이트는 편집 권위를
         // 주장하는 색인 대상 기사를 지키기 위한 장치라 public-brief에는 적용하지 않는다.
         // 아래 high-risk 미감수 차단은 등급과 무관하게 그대로 유지한다.
-        const publicBrief = normalizePublicationStatus(item.publicationStatus) === "public-brief";
+        const publication = normalizePublicationStatus(item.publicationStatus);
+        // index-low-risk도 감수자를 주장하지 않는 등급이라 감수 게이트 대상이 아니다.
+        const publicBrief = publication === "public-brief" || publication === "index-low-risk";
         if (["approved", "published"].includes(status) && workflowIssues.length && !publicBrief) addCritical("workflow-gate-failed", { id: item.id, workflowIssues });
         if (["approved", "published"].includes(status) && item.clinicalRisk === "high" && !item.vetReviewedAt) addCritical("high-risk-not-vet-reviewed", item.id);
       }

@@ -133,8 +133,17 @@ export function publishQualityIssues(item = {}, { duplicate = false } = {}) {
   const issues = qualityIssues(item);
   if (duplicate && !issues.includes("duplicate-source")) issues.push("duplicate-source");
   issues.push(...clinicalReviewIssues(item, { issueDate: item._day || item.day || item.publishedAt }));
-  if (isNewWorkflowItem(item)) issues.push(...workflowReviewIssues(item));
-  if (normalizePublicationStatus(item.publicationStatus) === "public-brief") issues.push(...clinicalSafetyIssues(item).map(() => "unsafe-clinical-command"));
+  const publication = normalizePublicationStatus(item.publicationStatus);
+  // index-low-risk는 감수자를 두지 않기로 정한 등급이라 감수 게이트를 적용하지
+  // 않는다. 대신 이 등급을 받는 조건이 low-risk + 무경고로 좁게 제한돼 있고,
+  // 아래 clinicalReviewIssues가 고위험 미감수는 등급과 무관하게 계속 막는다.
+  if (isNewWorkflowItem(item) && publication !== "index-low-risk") issues.push(...workflowReviewIssues(item));
+  if (publication === "public-brief") issues.push(...clinicalSafetyIssues(item).map(() => "unsafe-clinical-command"));
+  // 감수 없이 색인되는 등급이므로 임상 안전 표현은 public-brief보다 더 엄격히 본다
+  if (publication === "index-low-risk") {
+    if (String(item.clinicalRisk || "").toLowerCase() !== "low") issues.push("index-low-risk-requires-low");
+    issues.push(...clinicalSafetyIssues(item).map(() => "unsafe-clinical-command"));
+  }
   return [...new Set(issues)];
 }
 
@@ -146,7 +155,9 @@ export function isProfessionallyIndexable(item = {}, { duplicate = false } = {})
   const tier = normalizeContentTier(item);
   const publicationStatus = normalizePublicationStatus(item.publicationStatus);
   if (item.visibility === "suppressed" || item.indexPolicy === "legacy-noindex" || duplicate || item.duplicateSource) return false;
-  if (publicationStatus && publicationStatus !== "index-analysis") return false;
+  // index-low-risk는 감수자를 주장하지 않지만 색인 대상이다(정책 C). 이 등급은
+  // clinicalRisk=low이고 경고가 하나도 없는 글에만 붙는다 — brief-publishing 참조.
+  if (publicationStatus && publicationStatus !== "index-analysis" && publicationStatus !== "index-low-risk") return false;
   if (publicationStatus === "index-analysis" && (!item.reviewedAt || !(item.reviewedBy || item.reviewerId))) return false;
   if (!item.sourceUrl && !item.finalUrl && !item.sourceUrlRaw) return false;
   if (!(tier === "analysis" || tier === "evidence")) return false;

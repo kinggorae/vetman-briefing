@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { atomicWrite, isOfficialUrl, loadRegistry, readJson, safeSourceUrl } from "../src/lib/source-first.js";
 import { clinicalSafetyIssues, organizationAuthor } from "../src/lib/editorial-policy.js";
 import { imageCanRender, normalizeImageOwnership } from "../src/lib/image-rights.js";
-import { qualityIssues } from "../src/lib/quality.js";
+import { qualityIssues, normalizeContentTier } from "../src/lib/quality.js";
 import { normalizeSourceUrl } from "../src/identity.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
@@ -125,10 +125,23 @@ function release(id, flags, preRow = null) {
   const date = flags.date || new Date().toISOString().slice(0, 10);
   const target = path.join(ISSUE_DIR, `${date}.json`);
   const current = readJson(target, { date, status: "published", generatedAt: new Date().toISOString(), items: [] });
-  const published = { ...row, workflowStatus: "published", editorialStatus: "published", publicationStatus: "public-brief", author: null, authorUrl: null, reviewer: null, reviewerUrl: null, publishedAt: row.publishedAt || new Date().toISOString(), firstPublishedAt: row.firstPublishedAt || new Date().toISOString(), updatedAt: row.updatedAt || null };
+  // 정책 C — 임상 위험도 low이고 언어·주장·임상안전 경고가 하나도 없으며
+  // 색인 가능한 티어인 글만 index-low-risk로 내보낸다. 그 외에는 public-brief로
+  // 남아 noindex 상태로 검수를 기다린다. 감수자를 주장하지 않는 것은 양쪽 동일.
+  const tier = normalizeContentTier(row);
+  const grade = String(row.clinicalRisk || "").toLowerCase() === "low"
+    && !evaluation.languageWarnings.length
+    && !evaluation.claimWarnings.length
+    && !evaluation.clinicalSafetyIssues.length
+    && (tier === "analysis" || tier === "evidence")
+    ? "index-low-risk"
+    : "public-brief";
+  const published = { ...row, workflowStatus: "published", editorialStatus: "published", publicationStatus: grade, author: null, authorUrl: null, reviewer: null, reviewerUrl: null, publishedAt: row.publishedAt || new Date().toISOString(), firstPublishedAt: row.firstPublishedAt || new Date().toISOString(), updatedAt: row.updatedAt || null };
   if (!current.items.some((item) => item.id === id)) current.items.push(published);
   atomicWrite(target, JSON.stringify(current, null, 2) + "\n");
-  console.log(`public-brief 저장 완료: ${target} (noindex, sitemap/RSS 제외)`);
+  console.log(grade === "index-low-risk"
+    ? `index-low-risk 저장 완료: ${target} (색인·사이트맵 포함, 감수자 없음)`
+    : `public-brief 저장 완료: ${target} (noindex, sitemap/RSS 제외)`);
 }
 // 일간 자동발행용 일괄 릴리스. 해당 날짜 draft 중 ready-public-brief만 발행하고
 // 나머지는 사유와 함께 남긴다. 이미 다른 날짜에 나간 sourceUrl은 건너뛴다.

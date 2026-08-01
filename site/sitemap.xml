@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://news.vetmanlab.com/</loc></url>
+  <url><loc>https://news.vetmanlab.com/issues/2026-07-31</loc></url>
   <url><loc>https://news.vetmanlab.com/issues/2026-07-28</loc><lastmod>2026-07-28T01:29:12.542Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/issues/2026-07-26</loc><lastmod>2026-07-26T01:35:04.191Z</lastmod></url>
   <url><loc>https://news.vetmanlab.com/issues/2026-07-25</loc><lastmod>2026-07-25T01:37:13.400Z</lastmod></url>
@@ -40,6 +41,12 @@
   <url><loc>https://news.vetmanlab.com/topic/치과</loc></url>
   <url><loc>https://news.vetmanlab.com/topic/심장</loc></url>
   <url><loc>https://news.vetmanlab.com/topic/병원경영</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_74be8b65675f913d</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_a3087f97fcbd8faa</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_6cb9a2c41af342f1</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_5a8b1d1fc86addb7</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_3c872b693cebffdb</loc></url>
+  <url><loc>https://news.vetmanlab.com/article/v1_d1ece76710d46dd7</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_e174695d8cae4128</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_5a9fbdf10a1f09c8</loc></url>
   <url><loc>https://news.vetmanlab.com/article/v1_fcbd7aa64148ba95</loc></url>

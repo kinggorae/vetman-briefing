@@ -8,6 +8,11 @@ const SETTINGS_FILE = path.join(ROOT, "data", "editorial", "settings.json");
 export const PUBLICATION_STATUSES = new Set([
   "internal-draft",
   "public-brief",
+  // index-low-risk: 임상 위험도 low이고 언어·주장·임상안전 경고가 하나도 없는
+  // 글만 감수 없이 색인 대상으로 내보내는 등급. 조직 명의로 나가고 감수자를
+  // 주장하지 않는 점은 public-brief와 같지만 색인·사이트맵에는 포함된다.
+  // medium 이상은 이 등급을 받을 수 없고 public-brief로 남아 검수를 기다린다.
+  "index-low-risk",
   "index-analysis",
   "blocked-clinical",
 ]);
