@@ -80,11 +80,26 @@ export async function fetchArticleMeta(url) {
     const paragraphsIn = (fragment) => [...fragment.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)]
       .map((m) => stripHtml(m[1]))
       .filter((t) => t.length > 60);
-    const scope = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i)?.[1]
-      || html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1]
-      || null;
-    let paras = scope ? paragraphsIn(scope) : [];
-    if (paras.join("").length < 400) paras = paragraphsIn(html);
+    // 좁은 컨테이너부터 훑되, 본문이 충분히 잡힐 때만 채택한다.
+    // 가장 긴 것을 고르면 전체 문서가 늘 이겨서 사이트 공통 문구가 다시 섞인다
+    // (Vet Candy: <article> 6천자 vs 전체 14천자). 반대로 먼저 걸린 것을 그냥
+    // 쓰면 Frontiers처럼 <article>에 메타데이터만 있는 곳에서 빈손이 된다.
+    const scopes = [
+      html.match(/<article[^>]*>([\s\S]*?)<\/article>/i)?.[1],
+      html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1],
+      html,
+    ].filter(Boolean);
+    // 채택 기준 800자. 400자로 두면 Veterinary Practice News처럼 <article>에
+    // 앞부분 3문단(534자)만 있고 나머지가 밖에 있는 페이지에서 빈약한 조각을
+    // 받아들인다. 실측 7개 소스에서 400자 6/7 → 800자 7/7이었다.
+    const SCOPE_MIN_CHARS = 800;
+    let paras = [];
+    for (const scope of scopes) {
+      const found = paragraphsIn(scope);
+      if (found.join("").length >= SCOPE_MIN_CHARS) { paras = found; break; }
+    }
+    // 어느 후보도 기준에 못 미치면 그중 가장 많이 잡힌 것을 쓴다(짧은 기사)
+    if (!paras.length) paras = scopes.map(paragraphsIn).sort((a, b) => b.join("").length - a.join("").length)[0] || [];
     const fullText = paras.join("\n").slice(0, 7000);
 
     return {
