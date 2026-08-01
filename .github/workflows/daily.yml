@@ -100,8 +100,11 @@ jobs:
           git add data site reports
           git diff --cached --quiet && { echo "커밋할 변경 없음"; exit 0; }
           git commit -m "daily: $(date -u +%F) briefing (${{ steps.release.outputs.count }}건)"
-          # 40분 실행 중 main이 앞서갔을 수 있다. 리베이스 후 올린다.
-          git pull --rebase origin main
+          # 실행 중 main이 앞서갔을 수 있다. 리베이스 후 올린다.
+          # --autostash가 없으면 "cannot pull with rebase: You have unstaged
+          # changes"로 거부된다. data/site/reports만 스테이징하므로 빌드가
+          # 건드린 다른 파일이 항상 미스테이징으로 남는다.
+          git pull --rebase --autostash origin main
           git push origin main
 
       - name: Deploy to Cloudflare Pages
