@@ -55,12 +55,18 @@ function readTable(file) {
   // 키워드도구 파일은 앞에 안내 문구가 붙는 경우가 있어 헤더 줄을 찾아 시작한다
   const headerIndex = lines.findIndex((l) => COLUMNS.keyword.some((k) => l.includes(k)));
   if (headerIndex < 0) throw new Error(`키워드 컬럼을 찾지 못했습니다: ${path.basename(file)}`);
-  const header = splitCsvLine(lines[headerIndex]);
+  // 헤더가 두 줄인 판이 있다. 첫 줄은 '월간검색수'로 묶고 둘째 줄에
+  // '월간검색수(PC)' '월간검색수(모바일)'이 나뉘어 들어간다. 둘을 합쳐 쓴다.
+  const first = splitCsvLine(lines[headerIndex]);
+  const second = lines[headerIndex + 1] ? splitCsvLine(lines[headerIndex + 1]) : [];
+  const twoRow = second.some((c) => /\((PC|모바일)\)/.test(c));
+  const header = twoRow ? first.map((c, i) => (second[i] || "").trim() || c.trim()) : first.map((c) => c.trim());
+  const dataStart = headerIndex + (twoRow ? 2 : 1);
   const pick = (row, names) => {
     for (const n of names) { const i = header.indexOf(n); if (i >= 0) return row[i]; }
     return "";
   };
-  return lines.slice(headerIndex + 1).map(splitCsvLine).filter((r) => r.length > 1).map((r) => ({
+  return lines.slice(dataStart).map(splitCsvLine).filter((r) => r.length > 1).map((r) => ({
     keyword: String(pick(r, COLUMNS.keyword) || "").trim(),
     volume: toNumber(pick(r, COLUMNS.pc)) + toNumber(pick(r, COLUMNS.mobile)),
     competition: String(pick(r, COLUMNS.competition) || "").trim(),
@@ -85,7 +91,7 @@ function topicFor(keyword) {
   return hit.length ? hit[0].t : null;
 }
 
-const files = process.argv.slice(2);
+const files = process.argv.slice(2).filter((x) => !x.startsWith("--"));
 if (!files.length) {
   console.error("사용법: npm run keyword:gap -- <csv 경로> [...추가]");
   process.exit(1);
@@ -114,7 +120,14 @@ function covered(keyword) {
   return corpus.filter((text) => tokens.every((tk) => text.includes(tk))).length;
 }
 
-const analysed = rows.map((r) => ({ ...r, topic: topicFor(r.keyword)?.slug || null, articles: covered(r.keyword) }));
+// 네이버 연관키워드는 '동물병원 경영' 같은 씨앗에서도 이비인후과·대상포진 같은
+// 사람 의료 키워드로 뻗는다. 수의 맥락이 있는 것만 남긴다.
+const VET_CONTEXT = /강아지|고양이|반려|애완|동물병원|수의|펫|댕댕|냥이|견종|말티즈|푸들|포메|시츄|리트리버|비숑|치와와|진돗개|고냥|묘|犬/;
+const vetOnly = process.argv.includes("--all") ? rows : rows.filter((r) => VET_CONTEXT.test(r.keyword));
+if (vetOnly.length !== rows.length) {
+  console.log(`수의 맥락 키워드만 남김: ${rows.length} → ${vetOnly.length}개 (--all 로 전체 보기)\n`);
+}
+const analysed = vetOnly.map((r) => ({ ...r, topic: topicFor(r.keyword)?.slug || null, articles: covered(r.keyword) }));
 
 console.log(`키워드 ${analysed.length}개 · 기사 ${corpus.length}건과 대조\n`);
 
