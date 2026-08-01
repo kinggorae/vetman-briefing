@@ -72,10 +72,19 @@ export async function fetchArticleMeta(url) {
     // Google News 프록시·사이트 공통 배경·로고는 cleanImageUrl에서 제거한다.
     const imageUrl = imageCandidates.map((candidate) => cleanImageUrl(candidate, res.url || url)).find(Boolean) || null;
 
-    // 본문 추출: <p> 태그 중 실문장으로 보이는 것만 수집 (60자 이상)
-    const paras = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)]
+    // 본문 추출: <p> 태그 중 실문장으로 보이는 것만 수집 (60자 이상).
+    // 다만 문서 전체에서 긁으면 사이트 공통 문구(소개·푸터)가 앞을 차지해
+    // 7000자 제한에서 정작 기사가 밀려난다. Vet Candy가 그래서 모든 URL에
+    // "At Vet Candy, we are passionate about..."만 돌려주고 있었다.
+    // <article>/<main>이 있으면 그 안에서만 모으고, 너무 적게 잡히면 전체로 되돌린다.
+    const paragraphsIn = (fragment) => [...fragment.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)]
       .map((m) => stripHtml(m[1]))
       .filter((t) => t.length > 60);
+    const scope = html.match(/<article[^>]*>([\s\S]*?)<\/article>/i)?.[1]
+      || html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)?.[1]
+      || null;
+    let paras = scope ? paragraphsIn(scope) : [];
+    if (paras.join("").length < 400) paras = paragraphsIn(html);
     const fullText = paras.join("\n").slice(0, 7000);
 
     return {
