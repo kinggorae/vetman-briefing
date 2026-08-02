@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_74be8b65675f913d</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-07-30T11:15:00.000Z</news:publication_date>
-      <news:title>미국 농촌수의 인력 부족 해결 위한 대학 프로그램 운영</news:title>
-    </news:news>
-  </url>
+
 </urlset>
