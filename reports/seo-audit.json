@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-08-02T02:42:31.109Z",
+  "generatedAt": "2026-08-04T02:32:37.512Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 653,
-    "articles": 573,
-    "index": 176,
-    "noindex": 397,
-    "sitemap": 220,
+    "htmlPages": 678,
+    "articles": 596,
+    "index": 181,
+    "noindex": 415,
+    "sitemap": 226,
     "newsSitemap": 0,
     "rssItems": 50,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 176,
+    "indexImages": 181,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 165219,
+    "homepageBytes": 163341,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 156559
+        "bytes": 160650
       },
       {
         "file": "search/2026-05.json",
@@ -37,10 +37,10 @@
       },
       {
         "file": "search/2026-08.json",
-        "bytes": 3994
+        "bytes": 8086
       }
     ],
-    "articleBytes": 11390098,
+    "articleBytes": 11887912,
     "searchFirstRequestBytes": 134592
   },
   "duplicate": {
@@ -50,12 +50,12 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 176,
-    "currentNoindex": 397,
-    "delta": -142,
+    "currentIndex": 181,
+    "currentNoindex": 415,
+    "delta": -137,
     "reasonCounts": {
-      "build-policy": 64,
-      "brief-tier": 256,
+      "build-policy": 79,
+      "brief-tier": 259,
       "brief-too-short": 49,
       "source-relay": 39,
       "internal-ascii": 17,
@@ -72,6 +72,61 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-08-04",
+          "id": "v1_feb0b9e0f41ccb2a",
+          "title": "미시간 대축종 수의사 부족 실태... 생산자 55% \"수의사 이용 불가\" 경험",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_990b718ea8624665",
+          "title": "WVC 내슈빌 2026, 개막 임박...하계 전문의 학술대회 마지막 기회",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_d6302c3cb03d8952",
+          "title": "교육만으로는 충분하지 않다 - 수의사가 자신감을 갖춰야 하는 이유",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_af8ba2e7e09e09b6",
+          "title": "2025년 수의업계 대폭축과 2026년 전망",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_ddb3a564686b564e",
+          "title": "CityVet, Utah 진출 선언 – 수의사 직접 소유 모델의 가능성",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
         {
           "date": "2026-08-02",
           "id": "v1_1979ec64b467a7e8",
@@ -236,64 +291,243 @@
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
-        },
-        {
-          "date": "2026-07-28",
-          "id": "v1_2688f13fc6d2660b",
-          "title": "노령 고양이 근감소증과 악액질, 노쇠: 메커니즘·진단·치료 총론",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-28",
-          "id": "v1_b1565da63f8497f3",
-          "title": "개 치경부 결손 재생을 위한 신규 삼중 수화물 Gel 개발",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-28",
-          "id": "v1_122239e469ae8bb6",
-          "title": "곰팡이와 박하화합물 병용으로 진드기 사멸 효과 입증",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "high",
-          "paragraphs": 4,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-27",
-          "id": "v1_a7b57667e01fa858",
-          "title": "고양이 유전성 메틸말론산혈증 사례: 임상·MRI·병리 소견",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "high",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-27",
-          "id": "v1_c4f23daf8340112a",
-          "title": "개와 환자에서 발견된 리슈만편충 유전적 다양성과 잡종 형성",
-          "indexable": true,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
         }
       ],
       "noindex": [
+        {
+          "date": "2026-08-04",
+          "id": "v1_8e18894662bd3389",
+          "title": "말의 스트레스와 고정행동, 환경 개선이 관건",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_33cb21b1dd056ba8",
+          "title": "가축 기니피그의 인수공통질환 위험 – 안데스 지역 One Health 검토",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_09c195662ccca1fe",
+          "title": "고양이 보호자 번아웃, 수의사가 반드시 파악해야 할 문제",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_ba897878b7042dde",
+          "title": "개 소유와 수명 연장의 과학적 증거, 수의사가 알아야 할 연구 결과",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_a8fe57f29b40b9d2",
+          "title": "텍사스, 국경 스크류웜 방지 위해 전문 조사관 인력 확대 배치",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_6cb71b6278737f24",
+          "title": "개와 늑대 유전학: 대부분의 견종에 숨겨진 늑대 DNA 발견",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_e32287f82a281ba1",
+          "title": "미국 텍사스서 뉴월드 스크루웜 5번째 발생... 가축 확산 경고",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_e383dadb7758063e",
+          "title": "수의학 정신건강, 진짜 대화의 시작",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_3fa6232b04dc54ed",
+          "title": "미국에서 첫 보고된 고양이→인간 H5N1 전염 사례",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_0b23cc6d7300e0b7",
+          "title": "동물 통증 연구 권위자, AAVMC 연구상 수상",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_3e644a06f9939c34",
+          "title": "\"강아지는 결국 갖지 못했지만\"…그녀가 수의사가 되기 위해, 그 이들의 이야기",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_5b1242de6231bfcc",
+          "title": "고양이 관절염 새로운 생물학적 표지자 발견 - 혈액 검사 가능성 열려",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_18b6c8330b1353a2",
+          "title": "안면 편평견종의 호흡기 질환, 선발 번식으로 개선 기대",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_cf36095bef171b0c",
+          "title": "카렌 쉰오이 힐스 글로벌 수의총괄오피서 임명",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_e28ec6325d50aa21",
+          "title": "머레이주립대, 켄터키주 최초수의학대학 설립 추진",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_5e69333d3052d7cf",
+          "title": "미 USDA, 조류인플루엔자 극복 연구에 200만 달러 지원",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_260f6b912dc77e45",
+          "title": "Zoetis, 현장 혈액분석기 기능 확대... 참조 검사실 파라미터 첫 도입",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-04",
+          "id": "v1_43e4083574138037",
+          "title": "PetSmart Charities, 동물의료 접근성 확대에 1억 달러 투자",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
         {
           "date": "2026-08-02",
           "id": "v1_e5ee2e08934bba53",
@@ -318,240 +552,6 @@
           "qualityIssues": [],
           "reasons": [
             "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_90372ba23665f182",
-          "title": "말 방사선 촬영 VR 훈련 도구 등장, 수의 학생 안전하게 실습",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_05d61d1e20232bbb",
-          "title": "수의대 등록금 부담 심화…미국 수의학 인재 확보 위기",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_df967a298549f8da",
-          "title": "에볼라 17차 유행…수의학이 방어 최전선에 선 이유",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_410f78d5a183c829",
-          "title": "개의 치매 첫 표준화 진단 가이드라인 발표… DISHAA로 6개 영역 평가",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_8045e6b816ae0fa1",
-          "title": "100만 달러 기증으로 본 미국 말수의사 인력 위기",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_26599634918b9f25",
-          "title": "14년 수의학 현장에서 배우다…FIV 양성고양이와 새 심장약의 이야기",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_11ea34d6c79bc9a8",
-          "title": "고양이 심근병 연구에 기부금 전달…NC 주립대, 라파마이신 기반 치료제 임상 진행",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_0ccef482d0ffda71",
-          "title": "힐스, 고양이 비만·관절 건강 사료 출시",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_7566da4bd1e4ad50",
-          "title": "\"동물과의 유대가 치유를 이끈다\" 오하이오 주립대 수의과 원장 신간",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_62b778717d7dd79e",
-          "title": "개 요로결석의 영양관리와 예방, 수의사가 알아야 할 핵심",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_dc70c4ce628f1205",
-          "title": "개 TMJ 질환 진단 위한 나노관절경 도입 – UC Davis 최초 임상 적용",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_94fb5469f5291735",
-          "title": "미국 NC 주립대수의과대학 Katie Sheats 교수, 주립 대학평의회 교육 Excellence상 수상",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_24494c9cab832dce",
-          "title": "뉴월드 스크류웜 미국 재출현…한국 수의사 주의 필요",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_ab8b4446e4509ea2",
-          "title": "투프트스 대학, 수의학 임상 피드백을 자동 기록하는 AI 도구 개발",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_237e21c46bd19900",
-          "title": "페루 문화 체험한 수의학도의 에볼라 연구 인턴십",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_512b760352f98b4d",
-          "title": "디바 수의사 멀리 멀링스, 수의학의 벽을 깨다",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_7318e6fcb0979f16",
-          "title": "Mars·나스빌 도시 개발, 애완동물 건강에 미치는 영향",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-02",
-          "id": "v1_abd0a36fd77e5373",
-          "title": "닥스훈트 유전병 연구가 아이들을 구하다",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
           ]
         }
       ]
@@ -2517,6 +2517,13 @@
         "card": true
       },
       {
+        "file": "article/v1_990b718ea8624665.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_9996059839065d8b.html",
         "hero": true,
         "og": true,
@@ -2546,6 +2553,13 @@
       },
       {
         "file": "article/v1_a8c8d0ced9731d44.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_af8ba2e7e09e09b6.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -2608,6 +2622,20 @@
         "card": true
       },
       {
+        "file": "article/v1_d6302c3cb03d8952.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_ddb3a564686b564e.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_e174695d8cae4128.html",
         "hero": true,
         "og": true,
@@ -2623,6 +2651,13 @@
       },
       {
         "file": "article/v1_fcbd7aa64148ba95.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_feb0b9e0f41ccb2a.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -2648,26 +2683,80 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 134,
-      "medium": 298,
+      "low": 140,
+      "medium": 315,
       "high": 141
     },
-    "explicitReviewFields": 116
+    "explicitReviewFields": 139
   },
   "workflow": {
-    "explicitItems": 116,
+    "explicitItems": 139,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 110
+      "published": 133
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
     "articlesWithExplicitMetadata": 101,
-    "numericWarnings": 80,
+    "numericWarnings": 88,
     "samples": [
+      {
+        "id": "v1_feb0b9e0f41ccb2a",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_990b718ea8624665",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_e32287f82a281ba1",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_0b23cc6d7300e0b7",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_cf36095bef171b0c",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_e28ec6325d50aa21",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_5e69333d3052d7cf",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_af8ba2e7e09e09b6",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
       {
         "id": "v1_1979ec64b467a7e8",
         "issues": [
