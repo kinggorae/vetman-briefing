@@ -9,6 +9,7 @@ import { imageCanRender, normalizeImageOwnership } from "../src/lib/image-rights
 import {
   EDITORIAL_CARD_DIR,
   cardAssetPath,
+  cardContentHash,
   cardRelativePath,
   editorialCardSvg,
 } from "../src/editorial-cards.js";
@@ -56,18 +57,24 @@ async function main() {
     await fs.mkdir(ASSET_DIR, { recursive: true });
   }
   let generated = 0;
+  let sampleRelativePath = null;
   for (const target of targets) {
     const svg = editorialCardSvg(target);
+    // 파일명에 콘텐츠 해시를 넣는다 — 내용이 바뀌면(카테고리 재분류, 템플릿
+    // 수정 등) URL도 자동으로 바뀌어 /media/editorial/*의 1년 immutable
+    // 캐시에 예전 바이트가 갇히는 일이 없다.
+    const hash = cardContentHash(svg);
+    if (!sampleRelativePath) sampleRelativePath = cardRelativePath(target.id, "webp", hash);
     if (!DRY_RUN) {
-      await fs.writeFile(cardAssetPath(path.join(ROOT, "assets"), target.id, "svg"), svg);
+      await fs.writeFile(cardAssetPath(path.join(ROOT, "assets"), target.id, "svg", hash), svg);
       const input = Buffer.from(svg);
-      await sharp(input).png({ compressionLevel: 9, adaptiveFiltering: true }).toFile(cardAssetPath(path.join(ROOT, "assets"), target.id, "png"));
-      await sharp(input).webp({ quality: 86, effort: 6 }).toFile(cardAssetPath(path.join(ROOT, "assets"), target.id, "webp"));
+      await sharp(input).png({ compressionLevel: 9, adaptiveFiltering: true }).toFile(cardAssetPath(path.join(ROOT, "assets"), target.id, "png", hash));
+      await sharp(input).webp({ quality: 86, effort: 6 }).toFile(cardAssetPath(path.join(ROOT, "assets"), target.id, "webp", hash));
     }
     generated++;
   }
   const result = { generated, sourceDir: `assets/${EDITORIAL_CARD_DIR}`, filesPerCard: 3, dryRun: DRY_RUN };
-  console.log(`편집용 카드 ${DRY_RUN ? "예상" : "생성"}: ${generated}개 · SVG/WebP/PNG · ${cardRelativePath(targets[0]?.id || "sample")}`);
+  console.log(`편집용 카드 ${DRY_RUN ? "예상" : "생성"}: ${generated}개 · SVG/WebP/PNG · ${sampleRelativePath || "(없음)"}`);
   if (process.env.MEDIA_CARD_REPORT) await fs.writeFile(process.env.MEDIA_CARD_REPORT, JSON.stringify(result, null, 2) + "\n");
 }
 
