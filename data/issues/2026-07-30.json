@@ -88,7 +88,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_6730c1a49ed0e14c",
@@ -179,7 +180,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     }
   ]
 }

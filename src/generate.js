@@ -1,6 +1,12 @@
 import { jsonCall } from "./llm.js";
 import { koreanizeItem } from "./koreanize.js";
 
+// select.js의 舊 스코어링 단계(scoreBatch)가 쓰던 것과 같은 분류 체계.
+// research/watercooler는 여기 넣지 않는다 — 논문·화제글은 콘텐츠 "타입"으로
+// 이미 정해지고(generatePaper/generateStory가 끝에서 하드코딩), LLM이 고를
+// 여지를 주면 일반 기사가 이 두 값으로 오분류될 수 있다.
+const CATEGORY_ENUM = ["clinical", "practice_management", "career", "client_communication", "industry", "other"];
+
 const ITEM_SCHEMA = {
   type: "object",
   properties: {
@@ -9,6 +15,7 @@ const ITEM_SCHEMA = {
     bodyKo: { type: "array", items: { type: "string" } },
     keyPointsKo: { type: "array", items: { type: "string" } },
     angleKo: { type: "string" },
+    category: { type: "string", enum: CATEGORY_ENUM },
   },
   required: ["titleKo", "leadKo", "bodyKo", "keyPointsKo", "angleKo"],
   additionalProperties: false,
@@ -64,6 +71,10 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
       "- bodyKo: 문단 3개 배열, 각 문단 3~5문장. 1문단: 배경과 맥락 / 2문단: 핵심 내용 상세 / 3문단: 한국 동물병원 관점의 시사점. 원문의 구체적 수치·사례를 살리되 문장은 재서술. 전체 500~800자.",
       "- keyPointsKo: 핵심 포인트 3~4개, 각각 완결된 한 문장.",
       "- angleKo: '이걸 한국 병원 블로그 글감으로 쓴다면' 관점의 제안 1문장.",
+      "- category: 이 기사의 성격을 다음 중 하나로 분류 — "
+      + "clinical(임상 지견·증례·진단·치료법), practice_management(병원 경영·인력·번아웃·운영), "
+      + "career(수의사 커리어·진로·전문의), client_communication(진료비·보호자 소통·설명), "
+      + "industry(산업·정책·기업·인수합병·학회), other(위 어디에도 뚜렷이 안 맞으면).",
       "- 약물 용량·구체적 처치법은 그대로 옮기지 말고 '원문 참고' 수준으로만 언급.",
       "- 【문체 고정】 leadKo·bodyKo의 모든 문장은 예외 없이 '~습니다/~입니다'로 끝냅니다. "
       + "'~이다/~한다/~했다/~있다' 같은 평서체를 절대 섞지 마세요. 한 기사 안에서 문체가 섞이면 반려됩니다.",
@@ -125,6 +136,24 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
   }
 
   koreanizeItem(item); // 남은 영어 잔여물 교정(학명·약물명은 보존)
+
+  // src/run.js 경로는 select.js의 舊 스코어링 단계에서 이미 post.category를
+  // 채워 넘긴다 — 그쪽이 우선이다. scripts/ingest.js 경로는 별도 스코어링
+  // 없이 바로 여기로 오므로 post.category가 없고, 이번 생성 호출에서 LLM이
+  // 함께 분류한 item.category로 대체한다(2026-07-30부터 전부 "기타"였던 원인).
+  // IS_COMPAT 모드는 스키마를 강제하지 않아, category 키 자체가 빠진 응답이
+  // 실제로 나온다(scripts/backfill-category.js 백필 중 실측) — enum에 없으면
+  // "other"로 명시적으로 떨어뜨리고 로그를 남긴다(재시도는 하지 않음 — 생성
+  // 비용을 다시 쓸 만큼 크지 않고, "기타"가 정직한 폴백이다).
+  let category = post.category;
+  if (!category) {
+    if (CATEGORY_ENUM.includes(item.category)) category = item.category;
+    else {
+      console.warn(`  ⚠ category 누락/무효(${JSON.stringify(item.category)}) — other로 대체`);
+      category = "other";
+    }
+  }
+
   return {
     ...(needsReview ? { needsReview: true } : {}),
     contentTier: "analysis",
@@ -134,7 +163,7 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
     sourceLabel: post.sourceLabel,
     upvotes: post.score ?? null,
     numComments: post.numComments ?? null,
-    category: post.category,
+    category,
     relevance: post.relevance,
     imageUrl: post.imageUrl ?? null,
     sourceUrl: post.finalUrl || post.url,
@@ -170,7 +199,11 @@ export async function generateBrief(post, attempt = 1) {
     ].join("\n"),
     user: `출처: ${post.sourceLabel || ""}\n제목: ${post.title}\n\n내용:\n${content}`,
     schema: BRIEF_SCHEMA,
-    maxTokens: 600,
+    // MiniMax는 답하기 전에 thinking 블록을 쓰는데 그 토큰도 max_tokens에서
+    // 깎인다. 200으로 실험했을 때 128/157이 thinking만 채우고 답을 못 내
+    // "JSON을 찾지 못했습니다"로 실패했다(scripts/backfill-category.js 실측).
+    // 600도 여유가 빠듯할 수 있어 넉넉히 올린다.
+    maxTokens: 1500,
   });
 
   if (!String(item?.titleKo || "").trim() || !String(item?.summaryKo || "").trim()) {

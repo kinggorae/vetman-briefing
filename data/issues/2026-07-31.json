@@ -92,7 +92,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_8977cdecc20db74b",
@@ -183,7 +184,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_ecdd9715ae5b33aa",
@@ -274,7 +276,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_f0efeb482c512335",
@@ -365,7 +368,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "client_communication"
     },
     {
       "id": "v1_dfab869009cacc1d",
@@ -456,7 +460,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "other"
     },
     {
       "id": "v1_f4e1789482af70a7",
@@ -543,7 +548,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_5e79b0eb6efbac68",
@@ -630,7 +636,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_632f817d38e1640a",
@@ -717,7 +724,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_5ed0ce1ffe7661d1",
@@ -804,7 +812,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_a3087f97fcbd8faa",
@@ -891,7 +900,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_000c0774cffcb69e",
@@ -978,7 +988,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_6cb9a2c41af342f1",
@@ -1069,7 +1080,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "client_communication"
     },
     {
       "id": "v1_5a8b1d1fc86addb7",
@@ -1156,7 +1168,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_1e2651ab5b7de355",
@@ -1243,7 +1256,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_174577d6efe88d58",
@@ -1334,7 +1348,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_6f1159579ed79925",
@@ -1421,7 +1436,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_c8a1dfb2b6e491af",
@@ -1508,7 +1524,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_4e1960f5492f96a4",
@@ -1599,7 +1616,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_6369d7b8e2b67768",
@@ -1686,7 +1704,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_19ecfad4fc33b9f7",
@@ -1777,7 +1796,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_637d7663c6260dc9",
@@ -1868,7 +1888,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_d53d44d41d076de8",
@@ -1955,7 +1976,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "client_communication"
     },
     {
       "id": "v1_573643f8a808d4e0",
@@ -2042,7 +2064,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_bac5c1b71916edbb",
@@ -2129,7 +2152,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "client_communication"
     },
     {
       "id": "v1_eff27ff041c0d32b",
@@ -2216,7 +2240,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_33366e97950c6f9c",
@@ -2303,7 +2328,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_847917a16f748b25",
@@ -2394,7 +2420,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_a411f825fd21a009",
@@ -2481,7 +2508,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_54118d55c6aa0d9c",
@@ -2572,7 +2600,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_7e16941be496b67c",
@@ -2659,7 +2688,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_75da3a3b01f5dd1d",
@@ -2746,7 +2776,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_3c872b693cebffdb",
@@ -2833,7 +2864,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_65faae94026c9b88",
@@ -2920,7 +2952,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_ebde304d1aec6972",
@@ -3007,7 +3040,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_1348ac7c75cff356",
@@ -3098,7 +3132,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_ca99a4580afd1024",
@@ -3185,7 +3220,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "practice_management"
     },
     {
       "id": "v1_826de09db61d39b3",
@@ -3272,7 +3308,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_85a47306d477a584",
@@ -3363,7 +3400,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_514e67ea8b5fda4c",
@@ -3454,7 +3492,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_dfc95935c3bcb2d4",
@@ -3545,7 +3584,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_9e4a9ff870671b0b",
@@ -3632,7 +3672,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_1baa3a90d6be2ab8",
@@ -3719,7 +3760,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_ba555ae451c75c7d",
@@ -3806,7 +3848,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_14552c98b78f87e9",
@@ -3897,7 +3940,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_933afc4562e9ecaf",
@@ -3988,7 +4032,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_c1e250a008f6cd12",
@@ -4079,7 +4124,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_c96244ac853fbf49",
@@ -4170,7 +4216,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_702d33aa6e49fc30",
@@ -4257,7 +4304,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_aa90e70b223f8345",
@@ -4344,7 +4392,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_ea72aa5e3eedca04",
@@ -4431,7 +4480,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "other"
     },
     {
       "id": "v1_94700dade2811fbc",
@@ -4518,7 +4568,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_8bbe93b9ae306e29",
@@ -4609,7 +4660,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "other"
     },
     {
       "id": "v1_8e702a82516abf91",
@@ -4700,7 +4752,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_4642cc441caecc02",
@@ -4791,7 +4844,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "other"
     },
     {
       "id": "v1_c7e1550298d14e3d",
@@ -4878,7 +4932,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "other"
     }
   ]
 }

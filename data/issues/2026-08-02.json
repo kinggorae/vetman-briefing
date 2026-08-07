@@ -93,7 +93,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_6ec606054f69fa25",
@@ -185,7 +186,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_90372ba23665f182",
@@ -273,7 +275,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_05d61d1e20232bbb",
@@ -361,7 +364,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_1979ec64b467a7e8",
@@ -449,7 +453,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_df967a298549f8da",
@@ -537,7 +542,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_410f78d5a183c829",
@@ -629,7 +635,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_8045e6b816ae0fa1",
@@ -717,7 +724,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_26599634918b9f25",
@@ -809,7 +817,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_11ea34d6c79bc9a8",
@@ -901,7 +910,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_0ccef482d0ffda71",
@@ -993,7 +1003,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_7566da4bd1e4ad50",
@@ -1081,7 +1092,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_62b778717d7dd79e",
@@ -1173,7 +1185,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_dc70c4ce628f1205",
@@ -1265,7 +1278,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_94fb5469f5291735",
@@ -1353,7 +1367,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_24494c9cab832dce",
@@ -1441,7 +1456,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_ab8b4446e4509ea2",
@@ -1529,7 +1545,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_237e21c46bd19900",
@@ -1617,7 +1634,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_512b760352f98b4d",
@@ -1705,7 +1723,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_7318e6fcb0979f16",
@@ -1797,7 +1816,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_f6825a751271fc9b",
@@ -1889,7 +1909,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_abd0a36fd77e5373",
@@ -1981,7 +2002,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_d505121eaca15441",
@@ -2073,7 +2095,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_4dd78d0ded82864d",
@@ -2161,7 +2184,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "career"
     },
     {
       "id": "v1_162944930eab99d5",
@@ -2253,7 +2277,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_5d7fea6ef7fd2ec9",
@@ -2341,7 +2366,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_e96d67e55bd846d7",
@@ -2429,7 +2455,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_67ab1d1f8abee5c3",
@@ -2521,7 +2548,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_2457d8190e7efe45",
@@ -2613,7 +2641,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_08c08f021364a35a",
@@ -2701,7 +2730,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     },
     {
       "id": "v1_7269d03792e4d04d",
@@ -2793,7 +2823,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "clinical"
     },
     {
       "id": "v1_c60d52b948264c0d",
@@ -2881,7 +2912,8 @@
       "author": null,
       "authorUrl": null,
       "reviewer": null,
-      "reviewerUrl": null
+      "reviewerUrl": null,
+      "category": "industry"
     }
   ]
 }
