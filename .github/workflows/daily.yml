@@ -40,7 +40,17 @@ jobs:
       - name: Check official source health
         run: npm run sources:health
       - name: Diagnose official feeds without changing registry
+        # RECORD_FEED_HISTORY=1은 원래 shadow-newsroom.yml에만 있었는데, 그
+        # 워크플로는 permissions: contents: read라 reports/를 리포에 커밋하지
+        # 못하고 artifact로만 올린다. 그래서 reports/feed-history.json이
+        # 2026-07-29의 2건에서 멈춰 있었다. validate-feed-candidates는
+        # consecutiveSuccessfulRuns >= 3을 요구하므로 어떤 대체 피드도 영원히
+        # 승인될 수 없었고, sources.js가 3회 미만이면 healthy를 degraded로
+        # 강등해 "healthy 0"처럼 보이던 것도 상당 부분 이 교착 탓이었다.
+        # 이 잡은 reports/를 커밋하므로 여기서 기록해야 이력이 실제로 쌓인다.
         run: npm run sources:diagnose
+        env:
+          RECORD_FEED_HISTORY: "1"
       - name: Collect source-first draft candidates
         # 고유 후보가 하루 400건 넘게 쌓이는데 30건만 쓰고 있었다. 동시 실행을
         # 8로 올려 확보한 여유만큼 후보 수를 늘린다(생성 시간은 비슷하게 유지).

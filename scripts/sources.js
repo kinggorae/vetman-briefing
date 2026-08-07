@@ -95,8 +95,11 @@ async function diagnose(sourceFilter = null) {
   const registry = loadRegistry(); const sources = registry.sources.filter((s) => s.enabled && feedsFor(s).length && (!sourceFilter || s.id === sourceFilter || s.label === sourceFilter)); const rows = [];
   for (const source of sources) for (const url of feedsFor(source)) rows.push(await diagnoseFeed(source, url));
   let sourceRows = registry.sources.map((source) => { const checks = rows.filter((r) => r.sourceId === source.id); return { id: source.id, label: source.label, enabled: source.enabled, status: sourceStatus(checks, source), feedCount: feedsFor(source).length, checkedFeedCount: checks.length, consecutiveFailures: source.consecutiveFailures, lastSuccessAt: source.lastSuccessAt || null, lastFailureAt: source.lastFailureAt || null }; });
-  // 운영 shadow 예약 실행만 feed-history를 누적한다. 로컬·PR 감사는
-  // 기존 이력을 읽어 상태를 계산하되, 성공 횟수를 조작하지 않는다.
+  // RECORD_FEED_HISTORY=1인 운영 예약 실행(daily.yml)만 feed-history를
+  // 누적한다 — 그 잡이 reports/를 커밋해야 이력이 실제로 남기 때문이다.
+  // shadow-newsroom도 이 플래그를 켜지만 contents: read라 커밋하지 못하고,
+  // 그 실행의 기록은 artifact 안에서만 존재한다. 로컬·PR 감사는 기존
+  // 이력을 읽어 상태를 계산하되 성공 횟수를 조작하지 않는다.
   const historicalRows = updateHistory(rows, process.env.RECORD_FEED_HISTORY === "1");
   const historyMap = new Map(historicalRows.map((row) => [historyKey(row), row]));
   rows.splice(0, rows.length, ...rows.map((row) => ({ ...row, consecutiveSuccesses: historyMap.get(historyKey(row))?.consecutiveSuccesses || 0, status: row.status === "healthy" && (historyMap.get(historyKey(row))?.consecutiveSuccesses || 0) < 3 ? "degraded" : row.status })));
