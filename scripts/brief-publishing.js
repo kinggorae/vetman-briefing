@@ -6,6 +6,7 @@ import { clinicalSafetyIssues, organizationAuthor } from "../src/lib/editorial-p
 import { imageCanRender, normalizeImageOwnership } from "../src/lib/image-rights.js";
 import { qualityIssues, normalizeContentTier } from "../src/lib/quality.js";
 import { normalizeSourceUrl } from "../src/identity.js";
+import { auditLanguage, auditClaims } from "./editorial-audits.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DRAFT_REPORT = path.join(ROOT, "reports", "draft-newsroom.json");
@@ -48,14 +49,30 @@ function sourceFor(row) {
   const registry = loadRegistry();
   return registry.sources.find((source) => source.id === row.sourceId || source.label === row.sourceLabel) || null;
 }
+// 예전에는 reports/language-audit.json·claims-audit.json에서 id로 찾았다.
+// 그런데 그 리포트는 editorial-audits.js가 data/issues(이미 발행된 것)만
+// 훑어 만든다 — 여기서 평가하는 건 아직 발행 전인 draft라 매칭되는 행이
+// 아예 없었고, `|| []`가 빈 배열을 돌려주며 게이트가 항상 통과했다.
+// 리포트를 매일 재생성해도 고쳐지지 않는 구조적 문제였다(초안은 영원히
+// 그 리포트에 없다). 게다가 이 빈 경고가 release()의 index-low-risk 등급
+// 판정에도 쓰여, 언어 불량 기사가 noindex가 아니라 색인 대상이 됐다.
+// qualityIssues·clinicalSafetyIssues처럼 행 자체에서 실시간으로 계산한다.
 function languageWarnings(row) {
-  const audit = readJson(path.join(ROOT, "reports", "language-audit.json"), { rows: [] });
-  return (audit.rows || []).find((item) => item.id === row.id)?.warnings || [];
+  return auditLanguage([row]).rows.find((item) => item.id === row.id)?.warnings || [];
 }
 function claimWarnings(row) {
-  const audit = readJson(path.join(ROOT, "reports", "claims-audit.json"), { rows: [] });
-  return (audit.rows || []).find((item) => item.id === row.id)?.warnings || [];
+  return auditClaims([row]).rows.find((item) => item.id === row.id)?.warnings || [];
 }
+// 경고를 전부 차단 사유로 쓰면 정밀도 낮은 신호 하나에 멀쩡한 글이 버려진다.
+// 특히 numeric-*는 리드/본문의 숫자 "문자열"을 그대로 대조해서, 리드가
+// "1년 새"로 요약하고 본문이 "2025년 4월~2026년 3월"로 풀어 쓰면 사실은
+// 일치하는데도 불일치로 잡힌다(실측: 초안의 약 40%가 여기 걸린다).
+// 그래서 명백한 결함만 차단하고, 나머지는 경고로 남겨 release()의 등급
+// 판정에서 index-low-risk 대신 public-brief(noindex)로 떨어뜨린다 —
+// 글은 나가되 검색엔진에 권위 있는 정보로는 올리지 않는다.
+const BLOCKING_LANGUAGE = /^(korean-internal-ascii|known-error:|untranslated-title|repeated-paragraph)/;
+const BLOCKING_CLAIM = /^(species-mismatch|case-report-generalization)$/;
+const blockingOnly = (warnings, pattern) => warnings.filter((w) => pattern.test(w));
 function hasKorean(row) { return Boolean(row.titleKo && row.leadKo && Array.isArray(row.bodyKo) && row.bodyKo.length); }
 function evaluate(row) {
   if (!row) throw new Error("draft 후보를 찾을 수 없습니다.");
@@ -77,15 +94,17 @@ function evaluate(row) {
   if (!sourceOk) blockers.push("공식 canonical과 sourceStatus=verified 필요");
   if (row.duplicateStatus !== "unique") blockers.push(`duplicateStatus=unique 필요: ${row.duplicateStatus || "미분류"}`);
   if (!hasKorean(row)) blockers.push("한국어 titleKo·leadKo·bodyKo 필요");
-  if (language.length) blockers.push(`언어 경고 ${language.length}건`);
-  if (claims.length) blockers.push(`임상 주장 경고 ${claims.length}건`);
+  const blockingLanguage = blockingOnly(language, BLOCKING_LANGUAGE);
+  const blockingClaims = blockingOnly(claims, BLOCKING_CLAIM);
+  if (blockingLanguage.length) blockers.push(`언어 경고 ${blockingLanguage.length}건: ${blockingLanguage.join(", ")}`);
+  if (blockingClaims.length) blockers.push(`임상 주장 경고 ${blockingClaims.length}건: ${blockingClaims.join(", ")}`);
   if (safety.length) blockers.push("안전하지 않은 임상 명령 표현");
   if (quality.length) blockers.push(...quality);
   // 대표 이미지는 선택. 다만 이미지를 달았는데 권리가 불확실하면 그건 막는다.
   // (source-first 수집에는 이미지 권리 확인 단계가 아예 없어, 필수로 두면
   //  전 항목이 탈락한다. 텍스트만으로도 발행 가치가 있는 브리핑이다.)
   if (imageUrl && !imageOk) blockers.push("대표 이미지 권리 확인 필요");
-  const status = row.duplicateStatus !== "unique" ? "duplicate" : !sourceOk ? "needs-source-fix" : !hasKorean(row) || language.length ? "needs-language-fix" : claims.length || safety.length ? "needs-claim-fix" : row.clinicalRisk === "high" ? "rejected" : blockers.length ? "needs-claim-fix" : "ready-public-brief";
+  const status = row.duplicateStatus !== "unique" ? "duplicate" : !sourceOk ? "needs-source-fix" : !hasKorean(row) || blockingLanguage.length ? "needs-language-fix" : blockingClaims.length || safety.length ? "needs-claim-fix" : row.clinicalRisk === "high" ? "rejected" : blockers.length ? "needs-claim-fix" : "ready-public-brief";
   return {
     id: row.id,
     title: row.titleKo || row.sourceTitle || row.title || "",
