@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T03:12:30.651Z",
+  "generatedAt": "2026-08-07T11:58:56.775Z",
   "status": "passed",
   "counts": {
     "htmlPages": 703,
@@ -17,31 +17,31 @@
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 163812,
+    "homepageBytes": 164113,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 164061
+        "bytes": 166199
       },
       {
         "file": "search/2026-05.json",
-        "bytes": 1820
+        "bytes": 1842
       },
       {
         "file": "search/2026-06.json",
-        "bytes": 16340
+        "bytes": 16538
       },
       {
         "file": "search/2026-07.json",
-        "bytes": 134592
+        "bytes": 136313
       },
       {
         "file": "search/2026-08.json",
-        "bytes": 11497
+        "bytes": 11694
       }
     ],
-    "articleBytes": 12396865,
-    "searchFirstRequestBytes": 134592
+    "articleBytes": 12404476,
+    "searchFirstRequestBytes": 136313
   },
   "duplicate": {
     "title": [],
@@ -108,7 +108,7 @@
         {
           "date": "2026-08-07",
           "id": "v1_da6e9cdd2126f3f5",
-          "title": "수의학 경기침체 진행 중이다… 리휴수의 고용 조정 시점 온 것인가",
+          "title": "수의학 경기침체 진행 중이다… 대진수의사 고용 조정 시점 온 것인가",
           "indexable": true,
           "tier": "analysis",
           "clinicalRisk": "low",
@@ -362,7 +362,7 @@
         {
           "date": "2026-08-07",
           "id": "v1_71311f0429c1afeb",
-          "title": "멕시코 재출현한 광대어파리, 사람 감염 204건 확인",
+          "title": "멕시코 재출현한 신세계나사벌레, 사람 감염 204건 확인",
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",
@@ -427,7 +427,7 @@
         {
           "date": "2026-08-07",
           "id": "v1_80882c7b3387c6bd",
-          "title": "옥라톡신 A, 돼지 난자 성숙 과정에서 세포소기관 손상 유발",
+          "title": "오크라톡신 A, 돼지 난자 성숙 과정에서 세포소기관 손상 유발",
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",

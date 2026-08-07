@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T03:40:58.764Z",
+  "generatedAt": "2026-08-07T11:24:28.106Z",
   "counts": {
     "approved-candidate": 0,
     "needs-human-review": 5,
@@ -15,12 +15,12 @@
       "currentFeedUrl": "https://drandyroark.com/feed/",
       "officialDomain": true,
       "currentFeed": true,
-      "checkedAt": "2026-07-30T03:40:52.212Z",
+      "checkedAt": "2026-08-07T11:24:22.020Z",
       "patch": null,
-      "httpStatus": 304,
+      "httpStatus": 200,
       "finalUrl": "https://drandyroark.com/feed/",
       "itemCount": 90,
-      "newestItemAt": "2026-07-24T17:49:01.000Z",
+      "newestItemAt": "2026-08-06T20:38:25.000Z",
       "checks": {
         "http200": true,
         "xmlParsed": true,
@@ -32,7 +32,7 @@
         "officialDomain": true,
         "consecutiveSuccessfulRuns": 2
       },
-      "latencyMs": 305,
+      "latencyMs": 680,
       "error": null,
       "classification": "needs-human-review"
     },
@@ -44,12 +44,12 @@
       "currentFeedUrl": "https://ivcjournal.com/feed/",
       "officialDomain": true,
       "currentFeed": true,
-      "checkedAt": "2026-07-30T03:40:52.478Z",
+      "checkedAt": "2026-08-07T11:24:22.704Z",
       "patch": null,
-      "httpStatus": 304,
+      "httpStatus": 200,
       "finalUrl": "https://ivcjournal.com/feed/",
       "itemCount": 15,
-      "newestItemAt": "2026-07-29T13:00:40.000Z",
+      "newestItemAt": "2026-08-06T13:00:58.000Z",
       "checks": {
         "http200": true,
         "xmlParsed": true,
@@ -61,7 +61,7 @@
         "officialDomain": true,
         "consecutiveSuccessfulRuns": 2
       },
-      "latencyMs": 333,
+      "latencyMs": 956,
       "error": null,
       "classification": "needs-human-review"
     },
@@ -73,12 +73,12 @@
       "currentFeedUrl": "https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml",
       "officialDomain": true,
       "currentFeed": false,
-      "checkedAt": "2026-07-30T03:40:53.708Z",
+      "checkedAt": "2026-08-07T11:24:23.662Z",
       "patch": null,
-      "httpStatus": 304,
+      "httpStatus": 200,
       "finalUrl": "https://www.sciencedaily.com/rss/all.xml",
       "itemCount": 60,
-      "newestItemAt": "2026-07-29T23:44:16.000Z",
+      "newestItemAt": "2026-08-07T10:24:52.000Z",
       "checks": {
         "http200": true,
         "xmlParsed": true,
@@ -90,7 +90,7 @@
         "officialDomain": true,
         "consecutiveSuccessfulRuns": 0
       },
-      "latencyMs": 933,
+      "latencyMs": 980,
       "error": null,
       "classification": "needs-human-review"
     },
@@ -102,12 +102,12 @@
       "currentFeedUrl": "https://vetpracticemag.com.au/feed/",
       "officialDomain": true,
       "currentFeed": false,
-      "checkedAt": "2026-07-30T03:40:54.352Z",
+      "checkedAt": "2026-08-07T11:24:24.645Z",
       "patch": null,
-      "httpStatus": 304,
+      "httpStatus": 200,
       "finalUrl": "https://www.vetpracticemag.com.au/feed/",
       "itemCount": 25,
-      "newestItemAt": "2026-07-29T02:57:02.000Z",
+      "newestItemAt": "2026-08-05T11:10:16.000Z",
       "checks": {
         "http200": true,
         "xmlParsed": true,
@@ -119,7 +119,7 @@
         "officialDomain": true,
         "consecutiveSuccessfulRuns": 0
       },
-      "latencyMs": 1711,
+      "latencyMs": 1566,
       "error": null,
       "classification": "needs-human-review"
     },
@@ -131,12 +131,12 @@
       "currentFeedUrl": "https://www.veterinarypracticenews.com/feed/",
       "officialDomain": true,
       "currentFeed": true,
-      "checkedAt": "2026-07-30T03:40:55.997Z",
+      "checkedAt": "2026-08-07T11:24:26.215Z",
       "patch": null,
       "httpStatus": 200,
       "finalUrl": "https://www.veterinarypracticenews.com/feed/",
       "itemCount": 20,
-      "newestItemAt": "2026-07-29T19:52:54.000Z",
+      "newestItemAt": "2026-08-05T20:48:05.000Z",
       "checks": {
         "http200": true,
         "xmlParsed": true,
@@ -148,7 +148,7 @@
         "officialDomain": true,
         "consecutiveSuccessfulRuns": 2
       },
-      "latencyMs": 2764,
+      "latencyMs": 1888,
       "error": null,
       "classification": "needs-human-review"
     }
