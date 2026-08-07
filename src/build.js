@@ -6,8 +6,7 @@ import { normalizeSourceUrl } from "./identity.js";
 import { cleanImageUrl, removeRepeatedImages } from "./images.js";
 import { jsonLdScript } from "./lib/schema.js";
 import {
-  cardAssetPath,
-  cardRelativePath,
+  findCardHash,
   generatedImageMeta,
 } from "./editorial-cards.js";
 import {
@@ -163,10 +162,12 @@ function validIsoDate(value) {
 const articleImage = (a) => a.image || `${SITE.baseUrl}/og.png`;
 const articleImages = (a) => a.images?.length ? a.images : [articleImage(a)];
 
+let cachedIssues = null;
 function loadIssues() {
-  if (!fs.existsSync(ISSUES_DIR)) return [];
+  if (cachedIssues) return cachedIssues;
+  if (!fs.existsSync(ISSUES_DIR)) return (cachedIssues = []);
   const now = Date.now();
-  return fs
+  cachedIssues = fs
     .readdirSync(ISSUES_DIR)
     .filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
     .map((f) => JSON.parse(fs.readFileSync(path.join(ISSUES_DIR, f), "utf8")))
@@ -176,6 +177,20 @@ function loadIssues() {
       items: (issue.items || []).filter((item) => !item.scheduledAt || Number.isNaN(new Date(item.scheduledAt).getTime()) || new Date(item.scheduledAt).getTime() <= now),
     }))
     .sort((a, b) => (labelOf(a) < labelOf(b) ? 1 : -1));
+  return cachedIssues;
+}
+
+// 실제 발행 횟수 기준 에디션 번호. 예전엔 2021-01-01부터 경과일수를 썼는데
+// 실제 발행은 42회뿐이라 "NO. 2,044" 같은 독자에게 의미 없는 숫자가 나왔다.
+// 가장 오래된 발행이 1호가 되도록 loadIssues()와 같은 목록·정렬을 그대로 쓴다
+// (다른 데서 "발행된 이슈 목록"과 절대 어긋나지 않도록).
+let cachedEditionRanks = null;
+function editionRankOf(date) {
+  if (!cachedEditionRanks) {
+    const ascending = loadIssues().map(labelOf).filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort();
+    cachedEditionRanks = new Map(ascending.map((d, i) => [d, i + 1]));
+  }
+  return cachedEditionRanks.get(date) || null;
 }
 
 // 일부 생성물의 리드가 본문·글머리표까지 삼켜 과도하게 길다.
@@ -210,9 +225,18 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
   const readMin = Math.max(1, Math.round(chars / 500));
   // 개별 원문 발행 시각이 없는 레거시 항목은 이슈에 기록된 실제 발행 시각을
   // 사용한다. 빌드 시각(Date.now())이나 날짜 자정을 새 발행일로 가장하지 않는다.
-  const candidatePub = item.sourcePublishedAt || item.publishedAt || issuePublishedAt
+  const rawCandidatePub = item.sourcePublishedAt || item.publishedAt || issuePublishedAt
     ? new Date(item.sourcePublishedAt || item.publishedAt || issuePublishedAt)
     : null;
+  // 소스가 이슈 발행 시점보다 미래인 시각을 주는 경우가 있다(피드 스케줄링,
+  // 시간대 오차 등 — 예: 2026-08-07 이슈에 08-09 기사). 그대로 쓰면 "미래 날짜"
+  // 배지가 붙고, ts 정렬에서 당일 기사보다 부당하게 앞선다. 이슈 발행 시점으로
+  // 잘라낸다 — 재빌드해도 같은 결과가 나오도록 빌드 시각(Date.now())이 아니라
+  // 이슈 자체의 발행 시점을 상한으로 쓴다.
+  const publishCeiling = issuePublishedAt && !Number.isNaN(new Date(issuePublishedAt).getTime())
+    ? new Date(issuePublishedAt)
+    : new Date();
+  const candidatePub = rawCandidatePub && rawCandidatePub.getTime() > publishCeiling.getTime() ? publishCeiling : rawCandidatePub;
   const pub = candidatePub && !Number.isNaN(candidatePub.getTime()) ? candidatePub : null;
   // 발행일이 없는 기사도 있어 날짜가 통째로 비던 문제 → 이슈 날짜로 대체
   const fallbackIssueDate = /^\d{4}-\d{2}-\d{2}$/.test(issueDate)
@@ -344,8 +368,9 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
   // 색인 가능한 기사에만 자체 제작 편집 카드가 붙는다. brief·검수 대기·중계 URL은
   // 이미지를 억지로 만들지 않아 기사 수를 늘리거나 품질 신호를 왜곡하지 않는다.
   if (!article.image && isIndexable(article)) {
-    const meta = generatedImageMeta(article.id, article.title);
-    if (fs.existsSync(cardAssetPath(path.join(ROOT, "assets"), article.id, "webp"))) {
+    const cardHash = findCardHash(path.join(ROOT, "assets"), article.id);
+    if (cardHash) {
+      const meta = generatedImageMeta(article.id, article.title, cardHash);
       article.image = meta.image;
       article.images = [meta.image];
       article.imageAlt = meta.imageAlt;
@@ -392,7 +417,7 @@ function buildIssueData(issue) {
   }
   const d = new Date(date + "T00:00:00");
   const dateline = `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 · ${WEEKDAYS[d.getDay()]}요일`;
-  const editionNo = Math.round((d - new Date("2021-01-01T00:00:00")) / 86400000);
+  const editionNo = editionRankOf(date) ?? Math.round((d - new Date("2021-01-01T00:00:00")) / 86400000);
   return {
     date,
     dateLabel: date.replace(/-/g, "."),
@@ -3392,8 +3417,12 @@ function build() {
     const data = buildIssueData(issue);
     fs.writeFileSync(path.join(SITE_DIR, "issues", `${labelOf(issue)}.html`), renderPage(issue, issues));
     fs.writeFileSync(path.join(SITE_DIR, "data", `${labelOf(issue)}.json`), JSON.stringify(data));
-    if (data.count > 0)
-      archive.push({ date: data.date, dateLabel: data.dateLabel, count: data.count, titles: data.articles.slice(0, 3).map((a) => a.title) });
+    if (data.count > 0) {
+      // 그날 발행분 전체가 brief(요약)뿐이면 data.articles가 비어 제목 미리보기가
+      // 통째로 빈다("1건 · " 표시). briefs·stories로 대표 제목을 채운다.
+      const previewSource = data.articles.length ? data.articles : [...data.briefs, ...data.stories];
+      archive.push({ date: data.date, dateLabel: data.dateLabel, count: data.count, titles: previewSource.slice(0, 3).map((a) => a.title) });
+    }
 
     // 기사별 개별 페이지 — 색인 면적을 날짜 단위에서 기사 단위로 넓힌다
     // 공개 지면에는 넣지 않지만, 이미 색인됐을 수 있는 억제 항목의 URL은

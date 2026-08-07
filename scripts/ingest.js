@@ -43,7 +43,10 @@ function scoreEntry(entry, source) {
   // 최신성. 아카이브 글이 순서상 앞이라는 이유로 뽑히던 문제를 직접 겨냥한다.
   const ms = Date.parse(entry.publishedAt || "");
   const ageDays = Number.isFinite(ms) ? (Date.now() - ms) / 86400000 : null;
-  const recency = ageDays == null ? 0.15 : Math.max(0, 1 - Math.max(0, ageDays) / 30);
+  // 미래 발행 시각(피드 스케줄링·시간대 오차)을 Math.max(0, ageDays)로 0에
+  // 붙이면 "방금 나온 글"과 똑같은 만점을 받아 당일 진짜 신선한 글을 밀어낸다.
+  // 절댓값을 써서 미래로 튄 만큼도 과거로 튄 것과 동일하게 감점한다.
+  const recency = ageDays == null ? 0.15 : Math.max(0, 1 - Math.abs(ageDays) / 30);
 
   // 생성 재료. description이 짧으면 본문이 짧게 나와 body-too-short로 탈락한다
   // (실측 중앙값 403자, 최소 29자, 30건 중 14건이 이 사유로 걸렸다).
