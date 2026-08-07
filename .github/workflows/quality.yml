@@ -23,6 +23,13 @@ jobs:
       # install only the pinned browser binary to keep CI deterministic.
       - run: npx playwright install chromium
       - run: npm test
+      # daily.yml/deploy.yml과 동일한 이유: npm run build의 prebuild가 에디토리얼
+      # 카드를 생성하는데, CI에 한글 폰트가 없으면 렌더링이 깨진다.
+      - name: Install Korean font for editorial cards
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-nanum
+          fc-cache -f
       - run: npm run build
       - run: npm run validate
       - run: npm run seo:audit

@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   newsroom:
@@ -24,6 +25,16 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # ubuntu-latest에는 한글 폰트가 없다. editorial-cards.js가 SVG에
+      # font-family="Arial, Apple SD Gothic Neo, …"만 지정해뒀는데 둘 다
+      # macOS 전용이라, CI에서 sharp가 래스터라이즈하면 한글이 전부
+      # tofu(네모)로 깨진다 — 여기서 렌더링될 카드가 og:image로도 쓰인다.
+      # npm run build가 prebuild(카드 생성)를 자동으로 먼저 돌리므로 그 전에 설치한다.
+      - name: Install Korean font for editorial cards
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-nanum
+          fc-cache -f
       - name: Run unit tests
         run: npm test
       - name: Check official source health
@@ -35,6 +46,11 @@ jobs:
         # 8로 올려 확보한 여유만큼 후보 수를 늘린다(생성 시간은 비슷하게 유지).
         # 선정은 점수 기반이라 소스별 상한(--per-source)은 걸지 않는다. 좋은
         # 후보를 많이 낸 매체가 많이 나가는 것이 의도한 동작이다.
+        # 스텝 자체 타임아웃: LLM_TIMEOUT_MS(llm.js)로 개별 호출은 이제 2분
+        # 상한이 있지만, 피드 수백 개가 겹쳐 늘어지는 경우까지 대비해 잡
+        # 전체(90분)가 애매하게 취소되기 전에 이 스텝에서 먼저, 분명하게
+        # 실패하도록 한다(2026-08-03 취소 사례).
+        timeout-minutes: 70
         run: npm run ingest:all -- --generate --max=60
         env:
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
@@ -140,3 +156,35 @@ jobs:
         if: steps.release.outputs.count != '0'
         continue-on-error: true
         run: node src/indexnow.js
+
+      # 실패 알림 이슈가 열려 있는데 이번 실행은 성공했다면 복구된 것 —
+      # 방치돼 "늘 열려있는" 알림으로 무시당하지 않도록 닫아준다.
+      - name: Close recovered failure issue
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          EXISTING=$(gh issue list --repo "${{ github.repository }}" --label daily-briefing-failure --state open --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "${{ github.repository }}" --body "복구됨: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            gh issue close "$EXISTING" --repo "${{ github.repository }}"
+          fi
+
+      # 이 잡이 조용히 실패해도(2026-08-05, 08-06 사례) 아무도 몰랐다.
+      # 어느 스텝에서 실패하든 이슈로 남겨 GitHub 알림(watcher 이메일)을 태운다.
+      # 라벨로 열린 이슈를 찾아 있으면 댓글만 남기고, 없으면 새로 만든다 —
+      # 연속 실패가 이슈를 계속 새로 만들지 않게.
+      - name: Notify on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create daily-briefing-failure --color d73a4a --description "데일리 브리핑 파이프라인 실패" 2>/dev/null || true
+          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          BODY="데일리 브리핑 실행이 실패했습니다.$(printf '\n\n')로그: $RUN_URL"
+          EXISTING=$(gh issue list --repo "${{ github.repository }}" --label daily-briefing-failure --state open --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "${{ github.repository }}" --body "$BODY"
+          else
+            gh issue create --repo "${{ github.repository }}" --title "데일리 브리핑 실패 $(TZ=Asia/Seoul date +%F)" --label daily-briefing-failure --body "$BODY"
+          fi

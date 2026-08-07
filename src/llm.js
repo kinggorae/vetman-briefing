@@ -10,9 +10,16 @@ import { MODEL } from "../config.js";
 
 const BASE_URL = process.env.LLM_BASE_URL || null;
 
+// SDK 기본 타임아웃은 10분이고 타임아웃도 재시도 대상이라 최악의 경우 호출
+// 하나가 30분 가까이 걸릴 수 있다. LLM_CONCURRENCY=4로 60건을 돌리면 이런
+// 호출 몇 개만 겹쳐도 90분 잡 타임아웃을 다 먹어버린다(2026-08-03 취소 사례).
+// 훨씬 짧은 상한을 둬서 느린 호출 하나가 전체 배치를 인질로 잡지 못하게 한다.
+const LLM_TIMEOUT_MS = Number(process.env.LLM_TIMEOUT_MS) || 120000;
+
 export const client = new Anthropic({
   ...(BASE_URL ? { baseURL: BASE_URL } : {}),
   apiKey: process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY,
+  timeout: LLM_TIMEOUT_MS,
 });
 
 // 전용 base URL이 설정되어 있으면 서드파티 호환 게이트웨이로 간주

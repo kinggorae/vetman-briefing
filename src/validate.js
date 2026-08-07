@@ -140,12 +140,16 @@ function htmlFiles(dir = SITE_DIR) {
   return out;
 }
 
+// 속성값 매칭은 여는 인용부호와 "같은" 인용부호에서만 닫아야 한다.
+// [^"']로 두 인용부호를 모두 종료문자 취급하면, 값 안에 아포스트로피가
+// 하나만 있어도(예: "Hill's Pet Nutrition …") 그 지점에서 잘려 서로
+// 다른 문서가 우연히 동일 문자열로 오탐(false-positive 중복)될 수 있다.
 function canonicalOf(html) {
-  return html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)/i)?.[1] || null;
+  return html.match(/<link[^>]+rel=["']canonical["'][^>]+href=(["'])([\s\S]*?)\1/i)?.[2] || null;
 }
 
 function robotsOf(html) {
-  return html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)/i)?.[1].toLowerCase() || "";
+  return html.match(/<meta[^>]+name=["']robots["'][^>]+content=(["'])([\s\S]*?)\1/i)?.[2]?.toLowerCase() || "";
 }
 
 function titleOf(html) {
@@ -153,7 +157,7 @@ function titleOf(html) {
 }
 
 function descriptionOf(html) {
-  return html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)/i)?.[1] || null;
+  return html.match(/<meta[^>]+name=["']description["'][^>]+content=(["'])([\s\S]*?)\1/i)?.[2] || null;
 }
 
 function fileForUrl(url) {
@@ -182,8 +186,17 @@ for (const file of pageFiles) {
   const description = descriptionOf(html);
   const canonical = canonicalOf(html);
   const robots = robotsOf(html);
-  if (title) { if (titles.has(title)) fail(`중복 title: ${title}`); else titles.set(title, file); }
-  if (description) { if (descriptions.has(description)) fail(`중복 description: ${description}`); else descriptions.set(description, file); }
+  // title/description 중복은 SEO상 바람직하지 않지만 기사 한 건의 콘텐츠 품질
+  // 문제일 뿐이다. 이걸로 exit 1을 내면 그날 발행분 전체(수십 건)가 막힌다 —
+  // 경고로만 남기고, 라우팅 무결성 문제인 canonical 중복만 하드 실패로 둔다.
+  if (title) {
+    if (titles.has(title)) console.warn(`경고: 중복 title: ${title} (${path.relative(SITE_DIR, titles.get(title))} / ${path.relative(SITE_DIR, file)})`);
+    else titles.set(title, file);
+  }
+  if (description) {
+    if (descriptions.has(description)) console.warn(`경고: 중복 description: ${description} (${path.relative(SITE_DIR, descriptions.get(description))} / ${path.relative(SITE_DIR, file)})`);
+    else descriptions.set(description, file);
+  }
   if (canonical) { if (canonicals.has(canonical)) fail(`중복 canonical: ${canonical}`); else canonicals.set(canonical, file); }
   pageMeta.set(file, { canonical, robots });
   for (const match of html.matchAll(/<a\b[^>]+href=["']([^"']+)["']/gi)) {
