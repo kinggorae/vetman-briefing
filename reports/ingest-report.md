@@ -1,80 +1,80 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-08-07T03:11:42.355Z
+- 실행 시각: 2026-08-08T01:46:07.921Z
 - 모드: write-draft
 - 소스/피드: 27/14
-- 수집 항목: 630
-- 고유 후보: 439
-- exact duplicate: 135
+- 수집 항목: 610
+- 고유 후보: 402
+- exact duplicate: 152
 - 기존 기사 업데이트 후보: 56
 - 관련성 제외: 128
-- 기수집(seen) 제외: 108
-- 신규 가용 후보: 213
+- 기수집(seen) 제외: 116
+- 신규 가용 후보: 168
 - draft 후보: 60
 - canonical 확인 시도: 60
-- 공식 canonical 확보: 57
-- unresolved source: 3
+- 공식 canonical 확보: 60
+- unresolved source: 0
 - relay sourceUrl: 0
 
 ## draft 후보
 
-- v1_20331e39631e0d9d · src-ivc-journal · verified · unique · 6 Key Canine Physiotherapy Techniques for Veterinary Practices
-- v1_bde76ffd7787b74e · src-veterinary-practice-news · verified · unique · Partnership focuses on nutrition and care for aging dogs
-- v1_e556ae28c3ec01c1 · src-vet-practice-magazine · verified · unique · Regenerative Therapy Without Compromise
-- v1_71490782be509ecf · src-ivc-journal · verified · unique · Complexity-Aware Evidence Synthesis in TCIM, With Homeopathy as a Case Study
-- v1_ba3b4a5166bff029 · src-dr-andy-roark · verified · unique · New Guidelines on Canine Cognitive Dysfunction
-- v1_0dfa80d5a98afc29 · src-vet-practice-magazine · verified · unique · Dr. Fetch: Helping Pet Owners Take the Right First Step
-- v1_0cb4609ff790b988 · src-vet-candy · verified · unique · UT Veterinary College Breaks Ground on $72 Million Expansion to Train More Veterinarians
-- v1_84a2d784ed4a3b7b · src-vet-practice-magazine · verified · unique · Proposed changes to veterinary CPD open for consultation
-- v1_9a825a1a814c2cd2 · src-vet-practice-magazine · verified · unique · Tools of the trade: Surflo 20-gauge 2-inch IV catheter
-- v1_e5cd4f6cf806cb89 · src-vet-candy · verified · unique · Meet Dr. Courtney Campbell, the Surgeon Taking the Mic at WVC Nashville
-- v1_850afb56ea231543 · src-vet-practice-magazine · verified · unique · The Behavioural Side of Recovery:
-- v1_7cd44e66fe720290 · src-vet-practice-magazine · verified · unique · Meet veterinary behaviour specialist Dr Sally Nixon
-- v1_afccba445c1441ec · src-vet-practice-magazine · verified · unique · Lumbosacral stabilisation in a Rottweiler dog
-- v1_5995e0693206a0a4 · src-dr-andy-roark · verified · unique · Vets on a Plane!
-- v1_b88f0a04d39ae7af · src-vet-candy · verified · unique · Merck Animal Health Supports Future Poultry Veterinarians with $50,000 in Scholarships
-- v1_6b2afc253415c613 · src-vet-candy · verified · unique · FTC Takes a Closer Look at Proposed Cencora-Covetrus Merger
-- v1_71311f0429c1afeb · src-vet-candy · verified · unique · Human Screwworm Cases Surge as New World Screwworm Reemerges in Mexico
-- v1_1c3fcff4da80ac35 · src-vet-candy · verified · unique · Nashville Is Calling: Why WVC Nashville 2026 Is the Vet Conference You Cannot Miss
-- v1_be0b322ac21a27b5 · src-veterinary-practice-news · unresolved · unique · Management of Respiratory Complications During Anesthesia
-- v1_846de71cb81606e1 · src-vet-candy · verified · unique · Purina and Senior Dog Veterinary Society Collaborate to Advance Nutrition Care for Aging Dogs
-- v1_457da96a0b745457 · src-vet-candy · verified · unique · Adding Famciclovir Early May Help Kittens Recover Faster from Upper Respiratory Disease
-- v1_97770016d402905f · src-vet-candy · verified · unique · Ohio Nonprofit Veterinary Clinic Closes After Two Decades of Serving Pets in Need
-- v1_07494d59f3421db3 · src-veterinary-practice-news · verified · unique · Scholarships support next generation of veterinarians
+- v1_69697a3259311059 · src-vet-candy · verified · unique · FDA Issues Emergency Use Authorization for Drug to Prevent New World Screwworm in Multiple Species, Including Sheep, Cattle, Goats, and Swine
+- v1_d4b0d4c4c4fc9777 · src-vet-candy · verified · unique · U.S. Scrapie-Free Status Delayed After New Oregon Case Confirmed
+- v1_e852b2b0327f4eb6 · src-vet-candy · verified · unique · Adequan Recall Issued Nationwide After Glass Fibers Found in Injectable Products
+- v1_2227d3ee39e6aa53 · src-frontiers-in-veterinary-science · verified · unique · A simplified feline phantom and Monte-Carlo simulation can be used to evaluate radiation exposure to veterinary staff during [211At]NaAt treatment
 - v1_dd8cb4c6bb496b3e · src-frontiers-in-veterinary-science · verified · unique · Effects of a resveratrol-containing nutraceutical on cardiac biomarkers, echocardiographic parameters, and oxidative stress in dogs with naturally occurring cardiac disease
-- v1_0bdec3a23a8e35d3 · src-veterinary-practice-news · verified · unique · WordRx: Your dose of veterinary wordplay
-- v1_a87fa4df901c9337 · src-vet-candy · verified · unique · Elanco Releases 2025 Impact Report, Demonstrating How Animal Health Helps Meet Society's Growing Needs
-- v1_8b90d5fafae36360 · src-veterinary-practice-news · verified · unique · Joint meds recalled over potential glass fibers
 - v1_59b31e71973b8bec · src-frontiers-in-veterinary-science · verified · unique · Association between echogenicity of ascites and its classification in dogs
-- v1_21b114761ddd53ed · src-frontiers-in-veterinary-science · verified · unique · Measuring canine impulsivity: translation and validation of a German dog impulsivity assessment scale
 - v1_070137f8543313c4 · src-frontiers-in-veterinary-science · verified · unique · Sleep architecture and lying behavior in horses across age groups and two housing systems: an overnight non-invasive EEG study
 - v1_fb7f0af9edb21564 · src-frontiers-in-veterinary-science · verified · unique · PI3K over-expression drives canine mammary tumor progression
-- v1_9b52ddc20eb6f7d9 · src-frontiers-in-veterinary-science · verified · unique · Cryopreserved umbilical allograft (equicenta® CTM) improves clinical outcomes compared with clinician-selected standard of care in performance horses: a pragmatic prospective controlled trial
-- v1_0c3dbc59fbd98540 · src-vet-candy · verified · unique · Dogs Don't Just Feel Stressed at the Vet. Now We Can See It.
+- v1_954731ce0d7428cf · src-frontiers-in-veterinary-science · verified · unique · Development and validation of a Quality of Life and Treatment Satisfaction measure in feline osteoarthritis
 - v1_96a3152b05e4fcf4 · src-frontiers-in-veterinary-science · verified · unique · Cord blood mesenchymal stromal cells combined with hyaluronic acid show symptom-modifying and potential disease-modifying effects in an equine osteoarthritis fetlock chip model
 - v1_c4e2b9dd53090f4e · src-frontiers-in-veterinary-science · verified · unique · Global transcriptomic response of Malassezia pachydermatis isolates under ketoconazole-induced stress
-- v1_8e5394dcf154dbb5 · src-frontiers-in-veterinary-science · verified · unique · Preparation and epitope identification of duck myxovirus resistance protein monoclonal antibody 4B6 and its expression in duck embryonic tissue
-- v1_1bac274a8af2d392 · src-veterinary-practice-news · verified · unique · Reviewing the evidence for RECOVER CPR
+- v1_21c5456a327e6a70 · src-frontiers-in-veterinary-science · verified · unique · Deployment of a herd health package increases production traits and reduces parasite load and disease incidence in sheep and goats in Mali
+- v1_e4df3100c7ca74aa · src-frontiers-in-veterinary-science · verified · unique · Isolation and assessment of characterization of porcine epidemic diarrhea virus GD1 strain from China
 - v1_74a003236e4289c3 · src-frontiers-in-veterinary-science · verified · unique · Aqueous extracts of Moringa oleifera and Carica papaya moderately reduce gastrointestinal helminth burden in sheep under field conditions in Ghana
-- v1_80882c7b3387c6bd · src-frontiers-in-veterinary-science · verified · unique · Exposure to ochratoxin a induces organelle damage during porcine oocyte maturation
 - v1_6c491dc474042e54 · src-frontiers-in-veterinary-science · verified · unique · Environmental enrichment reduces displacements and reorganises circadian patterns: a putative indicator of positive welfare in dairy calves
 - v1_8a88c14a33c7edca · src-frontiers-in-veterinary-science · verified · unique · Evaluating cone-beam computed tomography vs. intraoral radiography for the detection of endodontal disease in dogs: diagnostic performance and inter-rater agreement
-- v1_90055bb82f3284d4 · src-frontiers-in-veterinary-science · verified · unique · The effect of laser-assisted incubation on bovine in vitro embryos
-- v1_d7ea7af882399ba4 · src-frontiers-in-veterinary-science · verified · unique · From veterinary practice to science: the transformation of dairy cow lameness in Britain, c.1930–1987
-- v1_7fd567f6c1eab1d7 · src-frontiers-in-veterinary-science · verified · unique · Interdisciplinary insights on selection, surveillance and mitigations of antimicrobial resistance dynamics on a UK dairy farm with relevance to other one health sectors
-- v1_dd54a4318e3b1999 · src-veterinary-evidence · unresolved · unique · In broodmares undergoing artificial insemination is intrauterine fluid development more likely with frozen semen or chilled semen?
-- v1_4072a2b4c35ac33b · src-veterinary-evidence · unresolved · unique · Thinking inside the box: do hiding boxes reduce the fear and stress of hospitalised cats?
-- v1_187c4760ccffebfc · src-vet-candy · verified · unique · How a $44 Million Ranch Donation Is Reshaping Veterinary Education and the Future of Cattle Medicine
-- v1_5d1113f2fa6bd1b9 · src-vet-candy · verified · unique · Hill's Pet Nutrition Introduces New Therapeutic Diets for Pets with Kidney Disease and Sensitivities
-- v1_4ecce64ddac762c6 · src-vet-candy · verified · unique · The Hardest Moments in Veterinary Medicine May Finally Have Their Own Specialty
-- v1_b8265ca9be3dd06e · src-nc-state-university · verified · unique · Open House Draws Thousands to CVM Campus for Discoveries and Delights
-- v1_da6e9cdd2126f3f5 · src-dr-andy-roark · verified · unique · Is It Time to Let Your Relief Vet Go? The Veterinary Recession is Here
-- v1_ccaf1f8f44a0f84c · src-vet-candy · verified · unique · The LatinxVMA Is Growing &#x2014; And They Want You
-- v1_8c4e62670827cfb6 · src-sciencedaily · verified · unique · Scientists keep a human alive with a genetically engineered pig liver
-- v1_df8d90b04e64aa16 · src-vet-candy · verified · unique · Feline Sporotrichosis Is Becoming Harder to Treat. The Data From Thailand Should Be on Every Clinician's Radar.
-- v1_376040c4a542df98 · src-vet-candy · verified · unique · GP vs. Specialist vs. Industry: Real Talk from Vets in Every Lane
-- v1_1030b85efaaf5127 · src-vet-candy · verified · unique · Fatal Case of Rabies Reported in Canadian Child
-- v1_d6ae8dbc4ed68537 · src-vet-candy · verified · unique · Texas Tech Just Got $650K to Study Why Some Pigs Get Sick and Others Don't.
-- v1_312ae02ce962025a · src-vet-candy · verified · unique · FDA Approves The First Medication Proven to Treat Both Dog Noise Aversion and Separation Anxiety
-- v1_a305cc102707a16f · src-sciencedaily · verified · unique · Triceratops had a giant nose that may have cooled its massive head
-- v1_1c6c8bdc4696d81f · src-today-s-veterinary-nurse · verified · unique · Spectrum of Care in Veterinary Medicine and the Role of the Veterinary Nurse
+- v1_b9a1d22585a7cb1c · src-sciencedaily · verified · unique · Scientists discover pets are helping an invasive flatworm spread
+- v1_d69fcb73f885e465 · src-dr-andy-roark · verified · unique · New Cat is Stressing the Old Cat (HDYTT)
+- v1_e029bb0e899135c9 · src-vet-candy · verified · unique · Vet Students: Don't Miss This Exclusive Purina Workshop at WVC Nashville
+- v1_564826b409c785cc · src-vet-candy · verified · unique · Antibiotic resistance threatens vision in pets and horses, new veterinary review warns
+- v1_bcd84824b8e67540 · src-vet-candy · verified · unique · UC Davis Receives $75M Historic Gift in Support of Veterinary Medicine
+- v1_eca8c3fa144e3df5 · src-vet-candy · verified · unique · What Every Vet Needs to Know: Hill's Just Dropped the World of the Kitten Report
+- v1_816a56c3ce0671e3 · src-vet-candy · verified · unique · Dr. Kaitlyn Guerrido Started as a Kennel Tech. Now She's Opening Her Own Practice.
+- v1_a5de144c877cc003 · src-today-s-veterinary-nurse · verified · unique · Building on Progress: How NAVTA Is Turning Strategic Momentum Into Action
+- v1_39b928cffcddd9c2 · src-vet-candy · verified · unique · Liavium-CA1 Receives FDA Conditional Approval for Canine Neuropathic Pain
+- v1_8bf21da46fadebd4 · src-dr-andy-roark · verified · unique · Fear and Honesty in Vet Medicine
+- v1_34fbb55503868b7f · src-vet-candy · verified · unique · Nobody Talks About Food Insecurity in Veterinary Medicine. We Need to Start.
+- v1_8adc53dc9d38e430 · src-vet-candy · verified · unique · New Veterinary Specialty Hospital Opens as Jacksonville's Pet Care Needs Continue to Grow
+- v1_c75ac055bf36dc84 · src-dr-andy-roark · verified · unique · Best of Dr. Andy Roark 2025
+- v1_543b8672a2557fd1 · src-today-s-veterinary-nurse · verified · unique · A Nursing Care Continuum
+- v1_9b8535d8c9223a52 · src-vet-candy · verified · unique · Dr. Eric Snook Sees Things Most Veterinarians Miss. That Is Exactly the Point.
+- v1_cab93fa52258ce86 · src-sciencedaily · verified · unique · This spider’s “pearl necklace” was living parasites
+- v1_6327d24c0fe94e3c · src-vet-candy · verified · unique · The FelineVMA Is Offering Two $10,000 Scholarships to Vet Students Who Care About Cats. Here's How to Apply.
+- v1_7a26d93261a99432 · src-sciencedaily · verified · unique · Your cat’s purr says more than you think
+- v1_b59013b9dfe37f7f · src-vet-candy · verified · unique · A Simple Urine Ratio Could Help Predict Which CKD Dogs Are Running Out of Time
+- v1_6b2e4cb41e1f4f6f · src-vet-candy · verified · unique · Purdue Just Launched Two Clinical Trials Using Focused Ultrasound to Treat Cancer in Dogs. Here's What You Need to Know.
+- v1_13e2349d4ee5ca12 · src-vet-candy · verified · unique · Dr. Andy Ogrodny Almost Studied Computer Science. A Coin Toss Sent Him to Vet Med. The Profession Won.
+- v1_849c27297f5c1a94 · src-vet-candy · verified · unique · Oklahoma Tightens the Rules on Veterinary Telemedicine&#x2014;Here’s What It Means for You
+- v1_9e8ee26cfcb91651 · src-vet-candy · verified · unique · This Herd Monitoring Technology Can Flag Sick Cows 3 Days Before You'd Catch It Otherwise
+- v1_68c7e0562cc4fdf8 · src-vet-candy · verified · unique · Everything You Need to Know About the 2026 NAVLE Before You Even Open a Study Guide
+- v1_90f05f73038c8af9 · src-nc-state-university · verified · unique · Annual CVM Awards Ceremony Celebrates Faculty and Staff Excellence
+- v1_8002ff2ca5c0f734 · src-sciencedaily · verified · unique · Bird flu’s surprising heat tolerance has scientists worried
+- v1_8d51173835b67ed4 · src-vet-candy · verified · unique · Meet the Veterinary Students Changing the Profession Before Graduation: Vet Candy’s June 2026 Rising Stars Issue Is Here
+- v1_ea81b5bc60600831 · src-vet-candy · verified · unique · Pathogenic fungus transmitted by domestic cat scratches is present in wild animals
+- v1_417a3bf8a954ab38 · src-vet-candy · verified · unique · What If Your Dog Holds the Secret to Healthy Aging?
+- v1_3668ab6c7d61de63 · src-vet-candy · verified · unique · Parental Leave in Veterinary Medicine: The Data We Still Don't Have
+- v1_86d61a473b4a1217 · src-dr-andy-roark · verified · unique · What Technicians Mean to Us
+- v1_97058eb5b259f509 · src-nc-state-university · verified · unique · Stride Length is Marker for Cognitive Decline in Dogs
+- v1_0cdb782603c2deb6 · src-vet-candy · verified · unique · Surgeons Are Wearing AR Glasses in the OR. Could Veterinary Surgery Be Next?
+- v1_d8b51d57a768af86 · src-vet-candy · verified · unique · Outdoor Pet Cats Face Disease Risks Similar to Feral Cats, Global Study Finds
+- v1_3bbea7f36cdff068 · src-nc-state-university · verified · unique · Here’s Why Your Face Doesn’t Perceive Itchiness the Same Way Your Body Does
+- v1_cef457216e3f920b · src-vet-candy · verified · unique · Rhode Island Just Legalized Veterinary Telemedicine. Here's Exactly What the Law Says
+- v1_f5b0b4a70a07b16f · src-sciencedaily · verified · unique · 5,000-year-old wolves found on remote island rewrite what we know about domestication
+- v1_dd0871c133ba3c7a · src-vet-candy · verified · unique · The Flea Treatment Conversation Is Changing in the UK. Here's What Veterinary Professionals Need to Know
+- v1_72b96cb6996df281 · src-vet-candy · verified · unique · CSU Just Opened a $230 Million Vet School. The Building Isn't Even the Most Interesting Part
+- v1_dfaba078624ca894 · src-vet-candy · verified · unique · Five Shows, One Mission: Why Vet Candy's Talk Shows Are Becoming Must-Watch Content for Veterinary Professionals
+- v1_58f80bb05fc7434c · src-vet-candy · verified · unique · Science Just Confirmed: Your Patient's Anxiety Is Real, It's Genetic, and It Looks a Lot Like Ours.
+- v1_fd9c72238d9660dd · src-vet-candy · verified · unique · New World Screwworm Is 62 Miles From the U.S. Border. Every Veterinarian Needs to Be Paying Attention.
+- v1_cb1d3c54050f4de8 · src-vet-candy · verified · unique · Inside and Out Talk Show with Dr. Joya Griffin & Dr. Forrest Cummings | Free RACE-Approved CE
+- v1_9a429255bf53757b · src-nc-state-university · verified · unique · CVM Cancer Researcher Wins NC&#160;State University Outstanding Teacher Award
