@@ -1452,7 +1452,7 @@ const APP_JS = String.raw`
           focusArticleCard(restoreId);
           S.restoreFocusId=null;
         }
-      },0);
+      },48);
     }
     if(S.searchFocus){ var q=document.getElementById('vm-q'); if(q){ q.focus(); try{ q.setSelectionRange(S.caret,S.caret); }catch(e){} } }
     document.documentElement.style.overflow = S.openId ? 'hidden' : '';
