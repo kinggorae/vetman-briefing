@@ -1111,7 +1111,7 @@ const APP_JS = String.raw`
   // 잘게 나뉘어 있어 미세 조정은 왼쪽이 담당한다.
   var FP={brief:7,side:2,busy:false,steps:0};
   function fitFold(){
-    if(FP.busy||S.view!=='home'||S.openId||innerWidth<=900) return;
+    if(FP.busy||S.view!=='home'||S.openId||S.restoreFocusId||innerWidth<=900) return;
     var C=document.getElementById('vm-leadcell'), B=document.getElementById('vm-brief'), R=document.getElementById('vm-side');
     if(!C||!B||!R||!B.lastElementChild||!R.lastElementChild) return;
     var target=C.getBoundingClientRect().height;
@@ -1447,8 +1447,12 @@ const APP_JS = String.raw`
       },0);
     }else if(!S.openId&&S.restoreFocusId){
       var restoreId=S.restoreFocusId;
-      S.restoreFocusId=null;
-      setTimeout(function(){ focusArticleCard(restoreId); },0);
+      setTimeout(function(){
+        if(!S.openId&&S.restoreFocusId===restoreId){
+          focusArticleCard(restoreId);
+          S.restoreFocusId=null;
+        }
+      },0);
     }
     if(S.searchFocus){ var q=document.getElementById('vm-q'); if(q){ q.focus(); try{ q.setSelectionRange(S.caret,S.caret); }catch(e){} } }
     document.documentElement.style.overflow = S.openId ? 'hidden' : '';
