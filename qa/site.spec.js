@@ -89,6 +89,24 @@ test("homepage lead is complete and compact article opens before hydration", asy
   expect(dataRequests).toEqual([]);
 });
 
+test("article detail has a shareable URL and browser history closes the panel", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const homeUrl = page.url();
+  await page.locator("article[data-open]").nth(1).click();
+  await expect(page.locator('.vm-detail[role="dialog"]')).toBeVisible();
+  await expect(page).toHaveURL(/\/article\//);
+
+  await page.goBack();
+  await expect(page).toHaveURL(homeUrl);
+  await expect(page.locator('.vm-detail[role="dialog"]')).toHaveCount(0);
+
+  await page.locator("article[data-open]").nth(1).click();
+  await expect(page.locator('.vm-detail[role="dialog"]')).toBeVisible();
+  await page.locator('.vm-detail[role="dialog"] button[title="닫기"]').click();
+  await expect(page).toHaveURL(homeUrl);
+  await expect(page.locator('.vm-detail[role="dialog"]')).toHaveCount(0);
+});
+
 test("search can be cleared and mobile navigation keeps personal views reachable", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
   const searchInput = page.locator("#vm-q");
