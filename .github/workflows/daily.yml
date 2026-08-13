@@ -98,6 +98,7 @@ jobs:
             reports/image-rights-queue.json
             reports/image-rights-queue.md
             reports/deploy-guard.json
+            reports/brief-release.json
             data/drafts
           if-no-files-found: ignore
 
@@ -133,7 +134,7 @@ jobs:
         run: |
           npm run brief:release-ready -- --apply
           DATE=$(TZ=Asia/Seoul date +%F)
-          COUNT=$(node -e 'const fs=require("node:fs");const p="data/issues/"+process.argv[1]+".json";console.log(fs.existsSync(p)?(JSON.parse(fs.readFileSync(p,"utf8")).items||[]).length:0)' "$DATE")
+          COUNT=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.released||0))')
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
           echo "오늘($DATE) 발행 $COUNT건"
