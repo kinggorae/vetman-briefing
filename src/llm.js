@@ -15,11 +15,17 @@ const BASE_URL = process.env.LLM_BASE_URL || null;
 // 호출 몇 개만 겹쳐도 90분 잡 타임아웃을 다 먹어버린다(2026-08-03 취소 사례).
 // 훨씬 짧은 상한을 둬서 느린 호출 하나가 전체 배치를 인질로 잡지 못하게 한다.
 const LLM_TIMEOUT_MS = Number(process.env.LLM_TIMEOUT_MS) || 120000;
+const COMPAT_JSON_ATTEMPTS = Math.max(1, Number(process.env.LLM_JSON_ATTEMPTS) || 3);
+// SDK 기본값은 연결 오류·타임아웃을 두 번 더 재시도한다. 일간 수집처럼
+// 후보가 여러 개인 배치에서는 이 숨은 재시도가 한 후보를 오래 붙잡아 전체
+// 실행을 멈추게 하므로, 운영 워크플로에서 0~1회로 제한할 수 있게 한다.
+const LLM_MAX_RETRIES = Math.max(0, Number.isFinite(Number(process.env.LLM_MAX_RETRIES)) ? Number(process.env.LLM_MAX_RETRIES) : 2);
 
 export const client = new Anthropic({
   ...(BASE_URL ? { baseURL: BASE_URL } : {}),
   apiKey: process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY,
   timeout: LLM_TIMEOUT_MS,
+  maxRetries: LLM_MAX_RETRIES,
 });
 
 // 전용 base URL이 설정되어 있으면 서드파티 호환 게이트웨이로 간주
@@ -56,7 +62,7 @@ export async function jsonCall({ system, user, schema, maxTokens = 16000, temper
   // temperature를 낮춰 다국어 모델의 언어 혼입 확률을 줄인다
   // JSON 없는 응답이 오면 최대 3회까지 재호출
   let lastErr;
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= COMPAT_JSON_ATTEMPTS; i++) {
     const response = await client.messages.create({
       model: MODEL,
       max_tokens: maxTokens,
@@ -75,7 +81,7 @@ export async function jsonCall({ system, user, schema, maxTokens = 16000, temper
       return extractJson(text);
     } catch (err) {
       lastErr = err;
-      console.warn(`  ↻ JSON 파싱 실패 (시도 ${i}/3) — 재호출`);
+      console.warn(`  ↻ JSON 파싱 실패 (시도 ${i}/${COMPAT_JSON_ATTEMPTS}) — 재호출`);
     }
   }
   throw lastErr;

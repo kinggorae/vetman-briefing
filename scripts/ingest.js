@@ -11,6 +11,7 @@ import { enrichItems } from "../src/enrich.js";
 import { fetchArticleMeta, articleTextQuality } from "../src/article.js";
 import { stableItemId, sourceKeys, addSourceKeys } from "../src/identity.js";
 import { mapPool } from "../src/pool.js";
+import { buildIngestProgress, renderIngestProgress } from "../src/lib/ingest-progress.js";
 import {
   atomicWrite, contentHash as sourceContentHash, dedupeFeedEntries, fetchArticleMetadata, fetchFeed, isOfficialUrl, isRelayUrl,
   loadRegistry, metadataHash, normalizeSource, readJson, safeSourceUrl, sourceStatusFor,
@@ -24,12 +25,41 @@ const DRAFT_DIR = path.join(ROOT, "data", "drafts");
 const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 const REPORT_JSON = path.join(ROOT, "reports", "ingest-report.json");
 const REPORT_MD = path.join(ROOT, "reports", "ingest-report.md");
+const PROGRESS_JSON = path.join(ROOT, "reports", "ingest-progress.json");
+const PROGRESS_MD = path.join(ROOT, "reports", "ingest-progress.md");
 const RELAY = /^https?:\/\/(?:news\.)?google\.[^/]+\/rss\/articles\//i;
 // src/lib/quality.js가 analysis 티어에 요구하는 본문 최소 길이와 같아야 한다.
 const ANALYSIS_MIN_CHARS = 420;
 const VET_TERMS = /veterin|animal health|animal hospital|pet health|dog|cat|canine|feline|equine|veterinary|zoon|rabies|parasit|antimicrobial|clinical|journal|medicine|병원|동물|수의|반려|질환|감염|백신|논문|임상/i;
 // 관련도를 통과/탈락이 아니라 매칭 개수로 재기 위한 전역 판.
 const VET_TERMS_GLOBAL = new RegExp(VET_TERMS.source, "gi");
+let activeProgress = null;
+
+function persistProgress(patch = {}) {
+  if (!activeProgress) return;
+  activeProgress = buildIngestProgress({
+    ...activeProgress,
+    ...patch,
+    updatedAt: new Date().toISOString(),
+  });
+  try {
+    atomicWrite(PROGRESS_JSON, JSON.stringify(activeProgress, null, 2) + "\n");
+    atomicWrite(PROGRESS_MD, renderIngestProgress(activeProgress));
+  } catch (error) {
+    console.error(`⚠ ingest progress checkpoint failed: ${error.message}`);
+  }
+}
+
+function hasGenerationFailure(draft) {
+  return draft?.generation?.generationWarnings?.some((warning) => (
+    warning === "llm-key-not-configured" ||
+    String(warning).startsWith("generation-failed:") ||
+    String(warning).startsWith("radar-failed:")
+  ));
+}
+function reportGenerationFailures(drafts) {
+  return drafts.filter(hasGenerationFailure).length;
+}
 
 function args() {
   const raw = process.argv.slice(2); const command = raw.shift() || "dry";
@@ -182,11 +212,14 @@ async function confirmCanonicals(entries, sources, flags) {
 // run.js와 같이 원문 본문을 가져와 넘긴다. 소스별 rateLimit을 지킨다.
 async function attachFullText(entries, sources, flags) {
   if (flags["no-fulltext"]) return entries;
+  // 같은 매체의 요청 순서는 보존하되, 서로 다른 매체는 제한적으로 동시에
+  // 가져온다. 기존에는 후보 전체를 한 줄로 처리해 원문 응답 지연이 후보
+  // 수만큼 누적됐다.
   const lastRequest = new Map();
-  const out = [];
-  for (const entry of entries) {
+  const sourceQueues = new Map();
+  const fetchOne = async (entry) => {
     const url = entry.canonicalUrl || entry.url;
-    if (!url || isRelayUrl(url)) { out.push(entry); continue; }
+    if (!url || isRelayUrl(url)) return entry;
     const source = sources.find((candidate) => candidate.id === entry.sourceId);
     const rateLimitMs = Math.max(0, Number(source?.rateLimitMs) || 1000);
     const wait = rateLimitMs - (Date.now() - (lastRequest.get(entry.sourceId) || 0));
@@ -199,11 +232,31 @@ async function attachFullText(entries, sources, flags) {
     if (meta.fullText && !quality.ok) console.warn(`  ⚠ 원문 추출 무시(${quality.reason}) — ${String(entry.title).slice(0, 40)}`);
     // imageUrl도 함께 오지만 붙이지 않는다. 권리 확인 정보 없이 이미지를 달면
     // brief-publishing의 "대표 이미지 권리 확인 필요" 차단에 걸려 발행이 막힌다.
-    out.push({ ...entry, fullText: quality.ok ? meta.fullText : null, fullTextReason: quality.reason });
-  }
-  return out;
+    return { ...entry, fullText: quality.ok ? meta.fullText : null, fullTextReason: quality.reason };
+  };
+  const fulltextConcurrency = Math.max(1, Number(process.env.FULLTEXT_CONCURRENCY) || 6);
+  return mapPool(entries, async (entry) => {
+    const key = entry.sourceId || entry.sourceLabel || "unknown";
+    const previous = sourceQueues.get(key) || Promise.resolve();
+    const current = previous.catch(() => {}).then(() => fetchOne(entry));
+    sourceQueues.set(key, current);
+    try {
+      return await current;
+    } catch (error) {
+      console.warn(`  ⚠ 원문 수집 실패(${String(error.message || error).slice(0, 100)}) — ${String(entry.title).slice(0, 40)}`);
+      return { ...entry, fullText: null, fullTextReason: "fetch-failed" };
+    }
+  }, fulltextConcurrency);
 }
 async function collect(id, flags) {
+  const runDate = today();
+  activeProgress = buildIngestProgress({
+    date: runDate,
+    startedAt: new Date().toISOString(),
+    status: "preparing",
+  });
+  persistProgress();
+
   const sources = sourcesFor(id); const fetched = await sourceRows(sources, flags); const existing = allExisting();
   const entries = fetched.flatMap((row) => (row.result?.entries || []).map((entry) => ({ ...entry, sourceId: row.source.id, sourceLabel: row.source.label })));
   const deduped = dedupeFeedEntries(entries, existing);
@@ -215,17 +268,54 @@ async function collect(id, flags) {
   let draftEntries = rankedPick(fresh, Math.max(1, Number(flags.max) || 50), Number(flags["per-source"]) || 0, sources);
   draftEntries = await confirmCanonicals(draftEntries, sources, flags);
   if (flags.generate) draftEntries = await attachFullText(draftEntries, sources, flags);
-  // LLM_CONCURRENCY는 기존 레이더 생성에만 적용되고 본문 생성은 한 건씩
-  // 순차 실행되고 있었다. 60건이 모두 재생성·교정 경로를 타면 CI의 70분
-  // 상한을 그대로 소진한다. 공통 제한 풀을 사용해 입력 순서는 보존하면서
-  // 게이트웨이 허용 범위 안에서 본문 생성도 병렬 처리한다.
-  const drafts = (await mapPool(draftEntries, async (entry) =>
-    generateDraft(
-      draftFor(entry, sources.find((source) => source.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel }), flags),
-      entry,
-      flags
-    )
-  )).filter(Boolean);
+  const checkpointFile = path.relative(ROOT, path.join(DRAFT_DIR, `source-first-${runDate}.json`));
+  persistProgress({
+    status: flags.generate ? "generating" : "dry-run",
+    selected: draftEntries.length,
+    checkpointFile: flags.dry ? null : checkpointFile,
+  });
+  // 본문 생성도 공통 제한 풀에서 처리한다. 입력 순서는 보존하면서
+  // 게이트웨이 허용 범위 안에서 병렬 처리하고, 각 결과는 즉시 체크포인트한다.
+  const checkpoint = new Map();
+  let checkpointQueue = Promise.resolve();
+  let completed = 0;
+  let generatedCount = 0;
+  let generationFailed = 0;
+  const recordDraft = (draft) => {
+    completed += 1;
+    if (draft?.id) checkpoint.set(draft.id, draft);
+    if (draft?.titleKo && draft?.bodyKo?.length) generatedCount += 1;
+    if (hasGenerationFailure(draft)) generationFailed += 1;
+    checkpointQueue = checkpointQueue.catch(() => {}).then(() => {
+      if (!flags.dry && checkpoint.size) writeDraftFile([...checkpoint.values()], runDate);
+      persistProgress({ completed, generated: generatedCount, generationFailed });
+    });
+    return checkpointQueue;
+  };
+
+  const drafts = (await mapPool(draftEntries, async (entry) => {
+    const source = sources.find((candidate) => candidate.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel });
+    const baseDraft = draftFor(entry, source, flags);
+    let draft;
+    try {
+      draft = await generateDraft(baseDraft, entry, flags);
+    } catch (error) {
+      draft = {
+        ...baseDraft,
+        generation: {
+          ...baseDraft.generation,
+          generationWarnings: [`generation-failed:${error.message.slice(0, 120)}`],
+        },
+      };
+    }
+    try {
+      await recordDraft(draft);
+    } catch (error) {
+      console.error(`⚠ draft checkpoint failed: ${error.message}`);
+    }
+    return draft;
+  })).filter(Boolean);
+  await checkpointQueue;
   const generated = drafts.filter((draft) => draft.titleKo && draft.bodyKo?.length);
   // generate.js는 source-first 경로에서 본문 길이와 무관하게 analysis로 찍는다.
   // analysis는 본문 420자를 요구하므로(src/lib/quality.js) 짧은 글이 통째로
@@ -233,7 +323,21 @@ async function collect(id, flags) {
   for (const draft of generated) if (bodyCharCount(draft) < ANALYSIS_MIN_CHARS) draft.contentTier = "brief";
   // radar는 발행 게이트의 필수 항목인데 source-first 수집에는 채우는 단계가
   // 없었다(run.js만 enrich했다). 생성을 요청한 실행에서만 함께 채운다.
-  if (flags.generate && generated.length) await enrichItems(generated);
+  if (flags.generate && generated.length) {
+    persistProgress({ status: "enriching", generated: generated.length, generationFailed: reportGenerationFailures(drafts) });
+    let enrichQueue = Promise.resolve();
+    await enrichItems(generated, {
+      onItem: (item) => {
+        enrichQueue = enrichQueue.catch(() => {}).then(() => {
+          checkpoint.set(item.id, item);
+          if (!flags.dry) writeDraftFile([...checkpoint.values()], runDate);
+          persistProgress({ status: "enriching", generated: generated.length, generationFailed: reportGenerationFailures(drafts) });
+        });
+        return enrichQueue;
+      },
+    });
+    await enrichQueue;
+  }
   if (!flags.dry && drafts.length) {
     for (const draft of drafts) addSourceKeys(seen, draft.sourceUrl || draft.sourceUrlRaw || "");
     saveSeen(seen);
@@ -241,18 +345,25 @@ async function collect(id, flags) {
   const report = {
     generatedAt: new Date().toISOString(), mode: flags.dry ? "dry-run" : "write-draft", sources: sources.map((source) => ({ id: source.id, label: source.label, feeds: feedUrls(source) })),
     feeds: fetched.map((row) => ({ sourceId: row.source.id, sourceLabel: row.source.label, url: row.url, itemCount: row.result?.entries?.length || 0, fromCache: row.result?.fromCache || false, error: row.error })),
-    counts: { sources: sources.length, feeds: fetched.length, feedFailures: fetched.filter((row) => row.error).length, fetchedEntries: entries.length, unique: deduped.filter((entry) => entry.duplicateStatus === "unique").length, exactDuplicate: deduped.filter((entry) => entry.duplicateStatus === "exact-duplicate").length, updateOfExisting: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").length, excludedIrrelevant: deduped.filter((entry) => relevance(entry) === "excluded").length, relevantUnique: relevant.length, seenSkipped: relevant.length - fresh.length, freshAvailable: fresh.length, drafts: drafts.length, canonicalChecked: draftEntries.filter((entry) => entry.pageMetadata).length, verifiedCanonical: drafts.filter((draft) => draft.sourceStatus === "verified").length, unresolved: drafts.filter((draft) => draft.sourceStatus === "unresolved").length, relaySourceUrl: drafts.filter((draft) => RELAY.test(draft.sourceUrl || "")).length, draftSources: new Set(drafts.map((draft) => draft.sourceId)).size },
+    counts: { sources: sources.length, feeds: fetched.length, feedFailures: fetched.filter((row) => row.error).length, fetchedEntries: entries.length, unique: deduped.filter((entry) => entry.duplicateStatus === "unique").length, exactDuplicate: deduped.filter((entry) => entry.duplicateStatus === "exact-duplicate").length, updateOfExisting: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").length, excludedIrrelevant: deduped.filter((entry) => relevance(entry) === "excluded").length, relevantUnique: relevant.length, seenSkipped: relevant.length - fresh.length, freshAvailable: fresh.length, drafts: drafts.length, generated: generated.length, generationFailed: reportGenerationFailures(drafts), canonicalChecked: draftEntries.filter((entry) => entry.pageMetadata).length, verifiedCanonical: drafts.filter((draft) => draft.sourceStatus === "verified").length, unresolved: drafts.filter((draft) => draft.sourceStatus === "unresolved").length, relaySourceUrl: drafts.filter((draft) => RELAY.test(draft.sourceUrl || "")).length, draftSources: new Set(drafts.map((draft) => draft.sourceId)).size },
     sourceMix: Object.fromEntries(Object.entries(drafts.reduce((acc, draft) => { const key = draft.sourceLabel || draft.sourceId || "?"; acc[key] = (acc[key] || 0) + 1; return acc; }, {})).sort((a, b) => b[1] - a[1])),
     selection: (() => { const s = drafts.map((d) => d.selectionScore).filter((x) => typeof x === "number").sort((a, b) => b - a); const ages = drafts.map((d) => Date.parse(d.sourcePublishedAt || "")).filter(Number.isFinite).map((ms) => Math.round((Date.now() - ms) / 86400000)).sort((a, b) => a - b); return { scoreTop: s[0] ?? null, scoreMedian: s.length ? s[Math.floor(s.length / 2)] : null, scoreMin: s.at(-1) ?? null, ageDaysMedian: ages.length ? ages[Math.floor(ages.length / 2)] : null, ageDaysMax: ages.at(-1) ?? null, within7Days: ages.filter((x) => x <= 7).length }; })(),
     drafts: drafts.map((draft) => ({ ...draft, title: draft.sourceTitle, publishedAt: draft.sourcePublishedAt, provenance: draft.generation })),
     updateCandidates: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").map((entry) => ({ id: entry.guid, title: entry.title, sourceId: entry.sourceId, sourceLabel: entry.sourceLabel, sourceStatus: sourceStatus(entry, sources.find((s) => s.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel })), sourceUrl: entry.canonicalUrl || entry.url, sourceUrlRaw: entry.url, publishedAt: entry.publishedAt, duplicateStatus: entry.duplicateStatus, sourceContentHash: sourceContentHash(`${entry.title}\n${entry.description}`) })),
     note: "수집 결과는 자동 published로 전환되지 않으며, 공식 canonical·중복·임상 검수 후에만 다음 단계로 이동할 수 있습니다.",
   };
+  persistProgress({
+    status: "complete",
+    completed,
+    generated: generated.length,
+    generationFailed: report.counts.generationFailed,
+    checkpointFile: flags.dry ? null : checkpointFile,
+  });
   return { report, drafts };
 }
 function writeReport(report) {
   atomicWrite(REPORT_JSON, JSON.stringify(report, null, 2) + "\n");
-  atomicWrite(REPORT_MD, `# Source-first 수집 보고서\n\n- 실행 시각: ${report.generatedAt}\n- 모드: ${report.mode}\n- 소스/피드: ${report.counts.sources}/${report.counts.feeds}\n- 수집 항목: ${report.counts.fetchedEntries}\n- 고유 후보: ${report.counts.unique}\n- exact duplicate: ${report.counts.exactDuplicate}\n- 기존 기사 업데이트 후보: ${report.counts.updateOfExisting}\n- 관련성 제외: ${report.counts.excludedIrrelevant}\n- 기수집(seen) 제외: ${report.counts.seenSkipped}\n- 신규 가용 후보: ${report.counts.freshAvailable}\n- draft 후보: ${report.counts.drafts}\n- canonical 확인 시도: ${report.counts.canonicalChecked}\n- 공식 canonical 확보: ${report.counts.verifiedCanonical}\n- unresolved source: ${report.counts.unresolved}\n- relay sourceUrl: ${report.counts.relaySourceUrl}\n\n## draft 후보\n\n${report.drafts.map((row) => `- ${row.id} · ${row.sourceId} · ${row.sourceStatus} · ${row.duplicateStatus} · ${row.title}`).join("\n") || "없음"}\n`);
+  atomicWrite(REPORT_MD, `# Source-first 수집 보고서\n\n- 실행 시각: ${report.generatedAt}\n- 모드: ${report.mode}\n- 소스/피드: ${report.counts.sources}/${report.counts.feeds}\n- 수집 항목: ${report.counts.fetchedEntries}\n- 고유 후보: ${report.counts.unique}\n- exact duplicate: ${report.counts.exactDuplicate}\n- 기존 기사 업데이트 후보: ${report.counts.updateOfExisting}\n- 관련성 제외: ${report.counts.excludedIrrelevant}\n- 기수집(seen) 제외: ${report.counts.seenSkipped}\n- 신규 가용 후보: ${report.counts.freshAvailable}\n- draft 후보: ${report.counts.drafts}\n- 생성 완료: ${report.counts.generated}\n- 생성 실패 경고: ${report.counts.generationFailed}\n- canonical 확인 시도: ${report.counts.canonicalChecked}\n- 공식 canonical 확보: ${report.counts.verifiedCanonical}\n- unresolved source: ${report.counts.unresolved}\n- relay sourceUrl: ${report.counts.relaySourceUrl}\n\n## draft 후보\n\n${report.drafts.map((row) => `- ${row.id} · ${row.sourceId} · ${row.sourceStatus} · ${row.duplicateStatus} · ${row.title}`).join("\n") || "없음"}\n`);
 }
 function writeDraftFile(drafts, date = today()) {
   if (!drafts.length) return null;
@@ -271,4 +382,8 @@ try {
   if (command === "promote") await promote(id, flags);
   else if (command === "report") { const report = readJson(REPORT_JSON, { counts: {}, drafts: [], note: "아직 수집 보고서가 없습니다." }); console.log(JSON.stringify(report, null, 2)); }
   else { const { report, drafts } = await collect(command === "source" ? id : null, { ...flags, dry: command === "dry" }); if (command === "dry") { writeReport(report); console.log(JSON.stringify(report.counts, null, 2)); } else { const file = writeDraftFile(drafts); report.draftFile = file ? path.relative(ROOT, file) : null; writeReport(report); console.log(JSON.stringify({ ...report.counts, draftFile: report.draftFile }, null, 2)); } }
-} catch (error) { console.error(error.message); process.exit(1); }
+} catch (error) {
+  persistProgress({ status: "failed", error: error.message });
+  console.error(error.message);
+  process.exit(1);
+}

@@ -6,6 +6,9 @@ import { koreanizeItem } from "./koreanize.js";
 // 이미 정해지고(generatePaper/generateStory가 끝에서 하드코딩), LLM이 고를
 // 여지를 주면 일반 기사가 이 두 값으로 오분류될 수 있다.
 const CATEGORY_ENUM = ["clinical", "practice_management", "career", "client_communication", "industry", "other"];
+// Source-first 일간 실행은 한 후보가 재생성 루프를 독점하지 않도록 CI에서
+// LLM_GENERATION_ATTEMPTS를 낮출 수 있다. 기본값은 기존 품질 검수 경로와 같은 3회다.
+const GENERATION_MAX_ATTEMPTS = Math.max(1, Number(process.env.LLM_GENERATION_ATTEMPTS) || 3);
 
 const ITEM_SCHEMA = {
   type: "object",
@@ -103,12 +106,12 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
   // 리드와 첫 문단이 같은 문장인 경우가 있다(기존 520건 중 112건). 화면에
   // 같은 문장이 두 번 보이고, 실질 본문도 한 문단 줄어 짧아진다. 재생성한다.
   const norm = (v) => String(v || "").replace(/\s/g, "");
-  if (item.leadKo && norm(item.bodyKo[0]) === norm(item.leadKo) && attempt < 3) {
+  if (item.leadKo && norm(item.bodyKo[0]) === norm(item.leadKo) && attempt < GENERATION_MAX_ATTEMPTS) {
     return generateItem(post, comments, attempt + 1, "리드와 본문 첫 문단이 같은 문장입니다. 첫 문단은 리드를 반복하지 말고 배경과 맥락을 새로 쓰세요.");
   }
 
   const bodyChars = item.bodyKo.map(String).join("").length;
-  if (bodyChars < 500 && attempt < 3) {
+  if (bodyChars < 500 && attempt < GENERATION_MAX_ATTEMPTS) {
     return generateItem(
       post,
       comments,
@@ -119,7 +122,7 @@ export async function generateItem(post, comments = [], attempt = 1, prevFeedbac
 
   // 외국 문자가 섞였으면 피드백을 담아 재생성 → 그래도 실패하면 교정 패스
   let foreign = foreignScriptIn(item);
-  if (foreign && attempt < 3) {
+  if (foreign && attempt < GENERATION_MAX_ATTEMPTS) {
     console.warn(`  ↻ 외국어 혼입 감지("${foreign.slice(0, 30)}") — 재생성 ${attempt}/2`);
     return generateItem(post, comments, attempt + 1, foreign);
   }

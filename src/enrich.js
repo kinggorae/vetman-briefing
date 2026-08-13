@@ -12,6 +12,7 @@ import { mapPool } from "./pool.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
+const RADAR_MAX_ATTEMPTS = Math.max(1, Number(process.env.LLM_RADAR_ATTEMPTS) || 3);
 
 const RADAR_SCHEMA = {
   type: "object",
@@ -120,7 +121,7 @@ export async function radarFor(item, attempt = 1) {
   // 한국어 순수성 가드: 사람이 읽는 필드만 검사 → 재생성(최대 2회) → 교정 패스 → 최종 스트립
   const readable = (o) => [o.ownerQ, o.ownerScript, o.clinical, o.evidenceDesign, o.evidenceNote];
   let bad = contaminationIn(readable(out));
-  if (bad && attempt < 3) {
+  if (bad && attempt < RADAR_MAX_ATTEMPTS) {
     console.warn(`  ↻ 레이더 오염("${bad.slice(0, 24)}") — 재생성 ${attempt}/2`);
     return radarFor(item, attempt + 1);
   }
@@ -161,12 +162,26 @@ export async function radarFor(item, attempt = 1) {
 }
 
 // items 배열에 radar를 in-place로 채운다(이미 있으면 건너뜀). run.js 파이프라인에서 사용.
-export async function enrichItems(items, { force = false } = {}) {
+export async function enrichItems(items, { force = false, onItem = null } = {}) {
   // 대상만 추려 동시 실행한다(순차 호출이 일간 실행 시간의 큰 몫이었다)
   const todo = items.filter((it) => it.category !== "watercooler" && (force || !it.radar));
   let done = 0;
   await mapPool(todo, async (it) => {
-    it.radar = await radarFor(it);
+    try {
+      it.radar = await radarFor(it);
+    } catch (error) {
+      // 레이더 한 건의 실패가 앞서 생성한 본문과 전체 일간 수집을 버리지
+      // 않게 한다. 경고가 있는 항목은 발행 품질 게이트가 공개를 차단한다.
+      const warning = `radar-failed:${String(error.message || error).slice(0, 120)}`;
+      it.generation = {
+        ...(it.generation || {}),
+        generationWarnings: [...new Set([...(it.generation?.generationWarnings || []), warning])],
+      };
+      if (onItem) await onItem(it);
+      console.error(`  ✗ 레이더 생성 실패 — ${(it.titleKo || "").slice(0, 34)}: ${error.message}`);
+      return null;
+    }
+    if (onItem) await onItem(it);
     done++;
     const tags = [
       it.radar.owner?.soon ? "보호자⚑" : it.radar.owner ? "보호자" : "",
