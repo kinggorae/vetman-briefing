@@ -107,6 +107,25 @@ test("article detail has a shareable URL and browser history closes the panel", 
   await expect(page.locator('.vm-detail[role="dialog"]')).toHaveCount(0);
 });
 
+test("article dialog traps focus and restores the trigger after closing", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const trigger = page.locator("article[data-open]").nth(1).locator("a[href]").first();
+  await trigger.focus();
+  await page.keyboard.press("Enter");
+  const dialog = page.locator('.vm-detail[role="dialog"]');
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('button[title="닫기"]')).toBeFocused();
+
+  for (let i = 0; i < 20; i += 1) {
+    await page.keyboard.press("Tab");
+    expect(await dialog.evaluate((node) => node.contains(document.activeElement))).toBe(true);
+  }
+
+  await page.keyboard.press("Escape");
+  await expect(dialog).toHaveCount(0);
+  await expect(trigger).toBeFocused();
+});
+
 test("search can be cleared and mobile navigation keeps personal views reachable", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
   const searchInput = page.locator("#vm-q");

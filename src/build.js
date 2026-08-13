@@ -789,6 +789,7 @@ const APP_JS = String.raw`
     view:'home', openId:null, blogOpen:true, showAll:false, briefAll:false,
     saved:load(LS.saved,{}), ideas:load(LS.ideas,{}), read:load(LS.read,{}),
     fs:load(LS.fs,1), toast:null, searchFocus:false, caret:0,
+    dialogFocusPending:false, restoreFocusId:null,
     archive:null, loadingDate:null, draft:null
   };
   function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
@@ -1110,7 +1111,7 @@ const APP_JS = String.raw`
   // 잘게 나뉘어 있어 미세 조정은 왼쪽이 담당한다.
   var FP={brief:7,side:2,busy:false,steps:0};
   function fitFold(){
-    if(FP.busy||S.view!=='home'||S.openId||innerWidth<=900) return;
+    if(FP.busy||S.view!=='home'||S.openId||S.restoreFocusId||innerWidth<=900) return;
     var C=document.getElementById('vm-leadcell'), B=document.getElementById('vm-brief'), R=document.getElementById('vm-side');
     if(!C||!B||!R||!B.lastElementChild||!R.lastElementChild) return;
     var target=C.getBoundingClientRect().height;
@@ -1318,7 +1319,7 @@ const APP_JS = String.raw`
     // 목차
     var toc=ctx.map(function(x,i){ var on=x.id===a.id; return '<button class="vm-toc-i" data-open="'+x.id+'" style="width:100%;text-align:left;display:flex;gap:10px;align-items:baseline;padding:9px 0;border:0;border-top:1px solid var(--color-line-normal);background:transparent;cursor:pointer;font-family:inherit;'+(on?'color:var(--color-primary-normal);':'color:var(--color-label-neutral);')+(isRead(x.id)&&!on?'opacity:.5;':'')+'"><span style="flex:none;width:22px;font-family:var(--font-display);font-weight:800;font-size:13px;color:'+(on?'var(--color-primary-normal)':'var(--color-label-alternative)')+';">'+(i+1)+'</span><span style="font-size:13.5px;font-weight:'+(on?'700':'600')+';line-height:1.4;">'+e(x.title)+'</span></button>'; }).join('');
     return '<div data-act="close" style="position:fixed;inset:0;background:var(--color-material-dimmer);z-index:50;animation:vmFade .18s ease-out;"></div>'
-    +'<div class="vm-detail" role="dialog" aria-modal="true" aria-labelledby="vm-detail-title" data-theme="'+S.theme+'" style="--fs:'+S.fs+';position:fixed;top:0;right:0;bottom:0;width:760px;max-width:calc(100vw - 24px);background:var(--color-background-normal);color:var(--color-label-normal);z-index:51;display:flex;flex-direction:column;box-shadow:var(--elevation-5);animation:vmSlide .24s ease-out;font-family:var(--font-sans);">'
+    +'<div class="vm-detail" role="dialog" aria-modal="true" aria-labelledby="vm-detail-title" tabindex="-1" data-theme="'+S.theme+'" style="--fs:'+S.fs+';position:fixed;top:0;right:0;bottom:0;width:760px;max-width:calc(100vw - 24px);background:var(--color-background-normal);color:var(--color-label-normal);z-index:51;display:flex;flex-direction:column;box-shadow:var(--elevation-5);animation:vmSlide .24s ease-out;font-family:var(--font-sans);">'
     // header
     +'<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;border-bottom:1px solid var(--color-line-normal);">'
     +'<div style="display:flex;align-items:center;gap:8px;min-width:0;">'
@@ -1332,7 +1333,7 @@ const APP_JS = String.raw`
     +'<button data-act="share" data-id="'+a.id+'" title="공유" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);">'+SHARE+'</button>'
     +'<button data-act="copylink" data-id="'+a.id+'" class="vm-dt-hide" title="링크 복사" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);">'+COPY+'</button>'
     +'<button data-save="'+a.id+'" title="저장" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:'+saveColor(a.id)+';">'+BM.replace(/W/g,16)+'</button>'
-    +'<button data-act="close" title="닫기" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--color-material-base);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>'
+    +'<button data-act="close" title="닫기" aria-label="기사 닫기" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--color-material-base);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>'
     +'</div></div>'
     // body
     +'<div class="vm-detail-body" id="vm-db" style="overflow-y:auto;padding:30px 44px 20px;">'
@@ -1437,6 +1438,22 @@ const APP_JS = String.raw`
     root.setAttribute('data-theme',S.theme);
     document.documentElement.setAttribute('data-theme',S.theme);
     root.innerHTML=h;
+    if(S.openId&&S.dialogFocusPending){
+      S.dialogFocusPending=false;
+      setTimeout(function(){
+        if(!S.openId) return;
+        var closeButton=document.querySelector('.vm-detail button[title="닫기"]');
+        if(closeButton) closeButton.focus();
+      },0);
+    }else if(!S.openId&&S.restoreFocusId){
+      var restoreId=S.restoreFocusId;
+      setTimeout(function(){
+        if(!S.openId&&S.restoreFocusId===restoreId){
+          focusArticleCard(restoreId);
+          S.restoreFocusId=null;
+        }
+      },48);
+    }
     if(S.searchFocus){ var q=document.getElementById('vm-q'); if(q){ q.focus(); try{ q.setSelectionRange(S.caret,S.caret); }catch(e){} } }
     document.documentElement.style.overflow = S.openId ? 'hidden' : '';
     if(!FP.busy){ FP.steps=0; setTimeout(fitFold,16); }
@@ -1507,6 +1524,30 @@ const APP_JS = String.raw`
     if(location.hash){ try{ history.replaceState(history.state,'',location.pathname+location.search); }catch(e){} }
     if(S.openId){ S.openId=null; render(); }
   }
+  function focusArticleCard(id){
+    if(!id) return;
+    var nodes=document.querySelectorAll('[data-open]');
+    for(var i=0;i<nodes.length;i++){
+      if(nodes[i].getAttribute('data-open')!==id) continue;
+      var target=nodes[i].matches('a[href],button,[tabindex]')?nodes[i]:nodes[i].querySelector('a[href]')||nodes[i].querySelector('button,[tabindex]');
+      if(target){ target.focus(); return; }
+    }
+  }
+  function dialogFocusables(dialog){
+    return Array.prototype.slice.call(dialog.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')).filter(function(el){ return el.offsetWidth||el.offsetHeight||el.getClientRects().length; });
+  }
+  function trapDialogTab(ev){
+    if(!S.openId||ev.key!=='Tab') return false;
+    var dialog=document.querySelector('.vm-detail');
+    if(!dialog) return false;
+    var items=dialogFocusables(dialog);
+    if(!items.length){ ev.preventDefault(); dialog.focus(); return true; }
+    var first=items[0], last=items[items.length-1], active=document.activeElement;
+    if(ev.shiftKey ? (active===first||!dialog.contains(active)) : (active===last||!dialog.contains(active))){
+      ev.preventDefault(); (ev.shiftKey?last:first).focus();
+    }
+    return true;
+  }
   var SHARE='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:block"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"></path></svg>';
 
   // ── 기능 B: 구독 ──
@@ -1565,12 +1606,14 @@ const APP_JS = String.raw`
     // 기다리지 않는다. 검색 색인처럼 compact 본문이 없는 항목만 기존 hydrate를 쓴다.
     if(byId[id]&&!hydrated&&byId[id]._compact&&!byId[id].readReady){
       var compact=byId[id], db;
+      if(!S.openId) S.restoreFocusId=id;
+      S.dialogFocusPending=true;
       S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(compact); syncArticleHistory(compact,historyMode); render();
       db=document.getElementById('vm-db'); if(db) db.scrollTop=0;
       hydrateArticle(id).then(function(){ if(S.openId===id) render(); }).catch(function(){ if(S.openId===id) toast('기사 본문을 불러오지 못했습니다'); });
       return;
     }
-    if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); syncArticleHistory(byId[id],historyMode); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
+    if(byId[id]){ if(!S.openId) S.restoreFocusId=id; S.openId=id; S.blogOpen=true; S.searchFocus=false; S.dialogFocusPending=true; markRead(id); track(byId[id]); syncArticleHistory(byId[id],historyMode); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
     else {
       var stored=S.saved[id]||S.ideas[id];
       if(stored&&stored.href){ location.href=stored.href; return; }
@@ -1651,6 +1694,7 @@ const APP_JS = String.raw`
   document.addEventListener('keydown',function(ev){
     var t=ev.target, typing = t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA');
     if(ev.key==='Escape'){ if(S.draft){ S.draft=null; render(); } else if(S.openId){ closeArticle(); } else if(t&&t.id==='vm-q'&&S.query){ S.query=''; S.searchFocus=true; S.caret=0; render(); } return; }
+    if(trapDialogTab(ev)) return;
     if(typing) return;
     if(S.openId && (ev.key==='ArrowRight'||ev.key==='j')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i+1]) openArticle(ctx[i+1].id,false,'replace'); }
     else if(S.openId && (ev.key==='ArrowLeft'||ev.key==='k')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i-1]) openArticle(ctx[i-1].id,false,'replace'); }
