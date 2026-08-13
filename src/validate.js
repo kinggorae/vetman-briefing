@@ -77,9 +77,23 @@ const required = [
   "_headers",
   "404.html",
   "admin-ui.html",
+  "deployment.json",
 ];
 for (const file of required) if (!fs.existsSync(path.join(SITE_DIR, file))) fail(`site/${file} 없음`);
 if (fs.existsSync(path.join(SITE_DIR, "admin.html"))) fail("공개 admin.html이 남아 있습니다.");
+
+const deploymentFile = path.join(SITE_DIR, "deployment.json");
+if (fs.existsSync(deploymentFile)) {
+  const deployment = json(deploymentFile);
+  if (!deployment || deployment.version !== 1 || !deployment.builtAt || !/^\d{4}-\d{2}-\d{2}$/.test(deployment.latestDate || "")) fail("deployment.json 형식 이상");
+  for (const key of ["publicArticleCount", "searchCount", "sitemapCount"]) {
+    if (!Number.isInteger(deployment[key]) || deployment[key] < 0) fail(`deployment.json ${key} 형식 이상`);
+  }
+  if (deployment.sourceCommit === "undefined") fail("deployment.json에 undefined sourceCommit이 있습니다.");
+  const sitemapXml = fs.existsSync(path.join(SITE_DIR, "sitemap.xml")) ? fs.readFileSync(path.join(SITE_DIR, "sitemap.xml"), "utf8") : "";
+  const sitemapCount = (sitemapXml.match(/<loc>/g) || []).length;
+  if (deployment.sitemapCount !== sitemapCount) fail(`deployment.json sitemapCount 불일치: ${deployment.sitemapCount} != ${sitemapCount}`);
+}
 
 const searchFile = path.join(SITE_DIR, "search.json");
 if (fs.existsSync(searchFile)) {
@@ -124,6 +138,7 @@ for (const blocked of ["Disallow: /admin", "Disallow: /api/", "Disallow: /raw/",
 }
 const headers = fs.existsSync(path.join(SITE_DIR, "_headers")) ? fs.readFileSync(path.join(SITE_DIR, "_headers"), "utf8") : "";
 if (!headers.includes("X-Robots-Tag: noindex")) fail("_headers에 내부 경로 noindex 없음");
+if (!headers.includes("Cache-Control: public, max-age=60, stale-while-revalidate=300")) fail("_headers에 최신 데이터 캐시 정책 없음");
 
 const sitemap = fs.existsSync(path.join(SITE_DIR, "sitemap.xml")) ? fs.readFileSync(path.join(SITE_DIR, "sitemap.xml"), "utf8") : "";
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
