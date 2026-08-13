@@ -67,7 +67,9 @@ test("public pages pass axe critical checks and keyboard focus is visible", asyn
 });
 
 test("homepage lead is complete and compact article opens before hydration", async ({ page }) => {
+  const dataRequests = [];
   await page.route("**/data/*.json", async (route) => {
+    dataRequests.push(route.request().url());
     await new Promise((resolve) => setTimeout(resolve, 2_000));
     await route.continue();
   });
@@ -75,13 +77,16 @@ test("homepage lead is complete and compact article opens before hydration", asy
 
   const payload = await page.locator("#vm-issue").evaluate((node) => JSON.parse(node.textContent || "{}"));
   expect(payload.articles[0].body?.length).toBeGreaterThan(0);
-  expect(payload.articles[1].body).toBeUndefined();
+  expect(payload.articles[1].body?.length).toBeGreaterThan(0);
+  expect(payload.articles[1].readReady).toBe(true);
   await expect(page.locator(".vm-fp-body")).not.toBeEmpty();
 
   await page.locator("article[data-open]").nth(1).click();
   await expect(page.locator('.vm-detail[role="dialog"]')).toBeVisible({ timeout: 1_000 });
   await expect(page.getByText("기사 본문을 불러오는 중…")).toHaveCount(0);
   await expect(page.locator("#vm-detail-title")).toBeVisible();
+  await expect(page.locator(".vm-detail-body")).toContainText(payload.articles[1].body[0].slice(0, 30));
+  expect(dataRequests).toEqual([]);
 });
 
 test("search can be cleared and mobile navigation keeps personal views reachable", async ({ page }) => {
