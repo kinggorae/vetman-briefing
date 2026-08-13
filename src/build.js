@@ -1485,6 +1485,28 @@ const APP_JS = String.raw`
     if(navigator.share){ navigator.share({title:a.title,text:a.dek,url:url}).catch(function(){}); }
     else { copy(url,'링크를 복사했습니다'); }
   }
+  function articlePath(a){
+    try{
+      var url=new URL((a&&a.href)||location.pathname,location.href);
+      return url.pathname+url.search;
+    }catch(e){ return location.pathname; }
+  }
+  function syncArticleHistory(a,mode){
+    if(!a||!a.href) return;
+    var next=articlePath(a), current=location.pathname+location.search;
+    var state={vmArticle:true,articleId:a.id};
+    if(current===next){
+      if(!history.state||!history.state.vmArticle) history.replaceState(state,'',next);
+      return;
+    }
+    if(mode==='replace') history.replaceState(state,'',next);
+    else history.pushState(state,'',next);
+  }
+  function closeArticle(){
+    if(history.state&&history.state.vmArticle){ history.back(); return; }
+    if(location.hash){ try{ history.replaceState(history.state,'',location.pathname+location.search); }catch(e){} }
+    if(S.openId){ S.openId=null; render(); }
+  }
   var SHARE='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:block"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"></path></svg>';
 
   // ── 기능 B: 구독 ──
@@ -1538,17 +1560,17 @@ const APP_JS = String.raw`
       DATA.articles=full.articles||[]; DATA.briefs=full.briefs||[]; DATA.stories=full.stories||[]; DATA._compact=false; DATA.hasMore=false; indexDay(); render(); return DATA;
     });
   }
-  function openArticle(id, hydrated){
+  function openArticle(id, hydrated, historyMode){
     // 홈 카드에는 read-ready payload가 들어 있으므로 클릭 시 전체 날짜 JSON을
     // 기다리지 않는다. 검색 색인처럼 compact 본문이 없는 항목만 기존 hydrate를 쓴다.
     if(byId[id]&&!hydrated&&byId[id]._compact&&!byId[id].readReady){
       var compact=byId[id], db;
-      S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(compact); render();
+      S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(compact); syncArticleHistory(compact,historyMode); render();
       db=document.getElementById('vm-db'); if(db) db.scrollTop=0;
       hydrateArticle(id).then(function(){ if(S.openId===id) render(); }).catch(function(){ if(S.openId===id) toast('기사 본문을 불러오지 못했습니다'); });
       return;
     }
-    if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
+    if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); syncArticleHistory(byId[id],historyMode); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
     else {
       var stored=S.saved[id]||S.ideas[id];
       if(stored&&stored.href){ location.href=stored.href; return; }
@@ -1597,9 +1619,9 @@ const APP_JS = String.raw`
       else if(act==='more'){ if(DATA._compact){ hydrateCurrent().catch(function(){toast('전체 기사를 불러오지 못했습니다');}); } else { S.showAll=true; } }
       else if(act==='brief-more'){ S.briefAll=true; }
       else if(act==='brief-less'){ S.briefAll=false; }
-      else if(act==='close'){ S.openId=null; }
+      else if(act==='close'){ closeArticle(); return; }
       else if(act==='blog'){ S.blogOpen=!S.blogOpen; }
-      else if(act==='prev'||act==='next'){ var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); var t=act==='next'?ctx[i+1]:ctx[i-1]; if(t){ openArticle(t.id); return; } }
+      else if(act==='prev'||act==='next'){ var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); var t=act==='next'?ctx[i+1]:ctx[i-1]; if(t){ openArticle(t.id,false,'replace'); return; } }
       else if(act==='fs+'){ S.fs=Math.min(1.5,Math.round((S.fs+0.1)*10)/10); persist('fs',S.fs); }
       else if(act==='fs-'){ S.fs=Math.max(0.85,Math.round((S.fs-0.1)*10)/10); persist('fs',S.fs); }
       else if(act==='copylink'){ var ca=byId[el.getAttribute('data-id')]; copy(location.origin+((ca&&ca.href)||location.pathname),'링크를 복사했습니다'); return; }
@@ -1628,15 +1650,21 @@ const APP_JS = String.raw`
   document.addEventListener('submit',function(ev){ if(ev.target.id==='vm-sub'){ ev.preventDefault(); var em=document.getElementById('vm-email'); if(em&&em.value) subscribe(em.value.trim()); } });
   document.addEventListener('keydown',function(ev){
     var t=ev.target, typing = t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA');
-    if(ev.key==='Escape'){ if(S.draft){ S.draft=null; render(); } else if(S.openId){ S.openId=null; render(); } else if(t&&t.id==='vm-q'&&S.query){ S.query=''; S.searchFocus=true; S.caret=0; render(); } return; }
+    if(ev.key==='Escape'){ if(S.draft){ S.draft=null; render(); } else if(S.openId){ closeArticle(); } else if(t&&t.id==='vm-q'&&S.query){ S.query=''; S.searchFocus=true; S.caret=0; render(); } return; }
     if(typing) return;
-    if(S.openId && (ev.key==='ArrowRight'||ev.key==='j')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i+1]) openArticle(ctx[i+1].id); }
-    else if(S.openId && (ev.key==='ArrowLeft'||ev.key==='k')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i-1]) openArticle(ctx[i-1].id); }
+    if(S.openId && (ev.key==='ArrowRight'||ev.key==='j')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i+1]) openArticle(ctx[i+1].id,false,'replace'); }
+    else if(S.openId && (ev.key==='ArrowLeft'||ev.key==='k')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i-1]) openArticle(ctx[i-1].id,false,'replace'); }
     else if((ev.key==='s'||ev.key==='S') && S.openId){ var id=S.openId,a=byId[id]; if(S.saved[id]) delete S.saved[id]; else S.saved[id]=snap(a); persist('saved',S.saved); render(); }
     else if((ev.key==='d'||ev.key==='D') && S.openId){ toggleIdea(S.openId); }
     else if(ev.key==='/'){ ev.preventDefault(); S.view='home'; S.searchFocus=true; render(); }
   });
   if(location.hash && byId[location.hash.slice(1)]){ S.openId=location.hash.slice(1); markRead(S.openId); }
+  window.addEventListener('popstate',function(){
+    var state=history.state;
+    if(state&&state.vmArticle&&state.articleId&&byId[state.articleId]){
+      S.openId=state.articleId; S.blogOpen=true; S.searchFocus=false; markRead(state.articleId); render();
+    }else if(S.openId){ S.openId=null; render(); }
+  });
   render();
   prefetchIssue(DATA.date);
 })();`;
