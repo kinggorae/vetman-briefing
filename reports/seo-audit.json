@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-08-08T01:46:36.095Z",
+  "generatedAt": "2026-08-13T14:06:34.660Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 729,
-    "articles": 645,
-    "index": 186,
-    "noindex": 459,
-    "sitemap": 232,
-    "newsSitemap": 2,
+    "htmlPages": 736,
+    "articles": 650,
+    "index": 187,
+    "noindex": 463,
+    "sitemap": 233,
+    "newsSitemap": 0,
     "rssItems": 50,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 186,
+    "indexImages": 187,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 160195,
+    "homepageBytes": 142877,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 167008
+        "bytes": 167848
       },
       {
         "file": "search/2026-05.json",
@@ -37,10 +37,10 @@
       },
       {
         "file": "search/2026-08.json",
-        "bytes": 12503
+        "bytes": 13343
       }
     ],
-    "articleBytes": 12913770,
+    "articleBytes": 13019819,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -50,12 +50,12 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 186,
-    "currentNoindex": 459,
-    "delta": -132,
+    "currentIndex": 187,
+    "currentNoindex": 463,
+    "delta": -131,
     "reasonCounts": {
-      "build-policy": 112,
-      "brief-tier": 270,
+      "build-policy": 114,
+      "brief-tier": 272,
       "brief-too-short": 49,
       "source-relay": 39,
       "internal-ascii": 17,
@@ -72,6 +72,17 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-08-13",
+          "id": "v1_e855df430e994d79",
+          "title": "대량 중성화 수술과 동물보호소 의료의 미래",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
         {
           "date": "2026-08-08",
           "id": "v1_34fbb55503868b7f",
@@ -280,20 +291,61 @@
           "paragraphs": 3,
           "qualityIssues": [],
           "reasons": []
-        },
-        {
-          "date": "2026-07-30",
-          "id": "v1_d1ece76710d46dd7",
-          "title": "수의학 프론트 데스크 현황: 커뮤니케이션 변화와 AI 대응",
-          "indexable": true,
-          "tier": "analysis",
-          "clinicalRisk": "low",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
         }
       ],
       "noindex": [
+        {
+          "date": "2026-08-13",
+          "id": "v1_8f4c60856b3dff50",
+          "title": "고양이 만성신장병의 분자 기전, 저산소·철·지질 대사 상호작용 규명",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-13",
+          "id": "v1_9c4d2fc7f68ae590",
+          "title": "개 관절염 영양보충제와 NSAID 임상 비교 연구",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-13",
+          "id": "v1_1f513945a49523cb",
+          "title": "수의대 학생 위한 새 팟캐스트, 대출·스트레스 솔직 대화",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-13",
+          "id": "v1_b67b02651304dca5",
+          "title": "미션 펫헬스, 콜로라도 VPA 역할 반대 입장 표명",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 4,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
         {
           "date": "2026-08-08",
           "id": "v1_d4b0d4c4c4fc9777",
@@ -493,58 +545,6 @@
           "date": "2026-08-08",
           "id": "v1_849c27297f5c1a94",
           "title": "오클라호마, 수의 원격 진료 규제는 강화된다",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-08",
-          "id": "v1_9e8ee26cfcb91651",
-          "title": "Cornell 연구, 소 질병 조기 감지 기술 효과 입증",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-08",
-          "id": "v1_90f05f73038c8af9",
-          "title": "NC주립대 수의대, 연간 직원 시상식서 공로 인정",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-08",
-          "id": "v1_8002ff2ca5c0f734",
-          "title": "조류독감의 예상치 못한 내열성, 팬데믹 우려 커져",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-08",
-          "id": "v1_8d51173835b67ed4",
-          "title": "졸업 전부터 Profession을 바꾸는 수의대 학생들",
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",
@@ -2678,6 +2678,13 @@
         "card": true
       },
       {
+        "file": "article/v1_e855df430e994d79.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_f6825a751271fc9b.html",
         "hero": true,
         "og": true,
@@ -2718,18 +2725,18 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 146,
-      "medium": 358,
+      "low": 148,
+      "medium": 361,
       "high": 141
     },
-    "explicitReviewFields": 188
+    "explicitReviewFields": 193
   },
   "workflow": {
-    "explicitItems": 188,
+    "explicitItems": 193,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 182
+      "published": 187
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0

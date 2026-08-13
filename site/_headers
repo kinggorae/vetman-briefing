@@ -12,6 +12,30 @@
   ! Cache-Control
   Cache-Control: public, max-age=300, stale-while-revalidate=86400
 
+/data/*
+  ! Cache-Control
+  Cache-Control: public, max-age=60, stale-while-revalidate=300
+
+/latest.json
+  ! Cache-Control
+  Cache-Control: public, max-age=60, stale-while-revalidate=300
+
+/archive.json
+  ! Cache-Control
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+
+/search*.json
+  ! Cache-Control
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+
+/rss.xml
+  ! Cache-Control
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+
+/news-sitemap.xml
+  ! Cache-Control
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+
 /icon.svg
   ! Cache-Control
   Cache-Control: public, max-age=31536000, immutable
@@ -55,4 +79,7 @@
   X-Robots-Tag: noindex, nofollow, noarchive
 
 /admin-review.json
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/deployment.json
   X-Robots-Tag: noindex, nofollow, noarchive

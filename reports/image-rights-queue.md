@@ -1,0 +1,96 @@
+# 이미지 권리 검수 큐
+
+- 전체 대기·결정 항목: 87
+- index 우선 확인: 62
+- 승인: 0
+- 반려: 0
+
+권리 근거가 없는 외부 이미지는 복제·자체 호스팅하지 않고 편집 카드로 대체합니다.
+
+- [INDEX] 2026-05-21_1 · pending · unknown · image-ownership-unknown · 수의 마취에서 우리가 잘못 생각하는 것들
+- [INDEX] 2026-05-22_1 · pending · unknown · image-ownership-unknown · 수의사 생산성 보상, 진짜 문제점은 무엇인가
+- [INDEX] 2026-06-05_1 · pending · unknown · image-ownership-unknown · 기관내관 풍선 적절한 팽창, 왜 중요한가
+- [INDEX] 2026-06-05_2 · pending · unknown · image-ownership-unknown · 수의학에서 일반수의의 역할, 전문의보다 중요하다
+- [INDEX] 2026-06-11_1 · pending · unknown · image-ownership-unknown · 수의사가 사용해선 안 되는 비판적 표현 3가지
+- [INDEX] 2026-06-11_2 · pending · unknown · image-ownership-unknown · 미국 태평양 북서부에서 폐활성 조충 발견…너구리 37% 감염
+- [INDEX] 2026-06-12_1 · pending · unknown · image-ownership-unknown · 개·고양이 기관튜브 선택과 삽관 깊이 관리 핵심
+- [INDEX] 2026-06-17_1 · pending · unknown · image-ownership-unknown · 신입수의사·경력 수의기사 협업 가이드
+- [INDEX] 2026-06-19_1 · pending · unknown · image-ownership-unknown · 고양이 만성질환에서 장유래 독소 관리와 영양 전략
+- [INDEX] 2026-06-19_2 · pending · unknown · image-ownership-unknown · 개의 단백질 손실 장염, 조기 진단이 생사를 가른다
+- [INDEX] 2026-06-19_5 · pending · unknown · image-ownership-unknown · 개 폐충감염의 진단과 치료: 임상에서 반드시 고려해야 할 원인
+- [INDEX] 2026-06-19_7 · pending · unknown · image-ownership-unknown · 애완동물 환각버섯 중독 증가...수의사 주목 필요
+- [INDEX] 2026-06-22_1 · pending · unknown · image-ownership-unknown · 개와 고양이 소음 민감증, 삼중 접근법으로 관리하기
+- [INDEX] 2026-06-23_1 · pending · unknown · image-ownership-unknown · 고양이 식이 칼륨 보충, 요로결석 위험 낮추는 효과 확인
+- [INDEX] 2026-06-23_2 · pending · unknown · image-ownership-unknown · H5N1, 소 유선에서만 심한 감염 보이는 이유 규명
+- [INDEX] 2026-06-26_1 · pending · unknown · image-ownership-unknown · 고양이 배설 장애: 수의사를 위한 실용적 접근법
+- [INDEX] 2026-06-26_3 · pending · unknown · image-ownership-unknown · 말 정맥 카테터 삽입 완벽 가이드: 합병증 예방을 위한 실천적 단계
+- [INDEX] 2026-06-29_1 · pending · unknown · image-ownership-unknown · 수의사 커리어 경로의 새로운 가능성
+- [INDEX] 2026-06-29_2 · pending · unknown · image-ownership-unknown · 개·고양이 유방종양, 식물 화학물질 연구 동향
+- [INDEX] 2026-06-30_1 · pending · unknown · image-ownership-unknown · 개 전십자 인대 질환에서 ADSC Enriched Secretome의 TPLO 회복 보조 효과
+- [INDEX] 2026-07-01_1 · pending · unknown · image-ownership-unknown · 개 관절염 치료 새로운 선택지...관절 내 방사성동위원소 주사
+- [INDEX] 2026-07-01_2 · pending · unknown · image-ownership-unknown · 개 자가면역 피부질환에 사용되는 허브 3가지
+- [INDEX] 2026-07-01_3 · pending · unknown · image-ownership-unknown · 수의 의료에 사회복지사 도입... 호주 18개월 파일럿 진행
+- [INDEX] 2026-07-02_1 · pending · unknown · image-ownership-unknown · 폭죽 공포증 전화 상담 — 수의사가 지금 바로 확인해야 할 대응법
+- [INDEX] 2026-07-02_2 · pending · unknown · image-ownership-unknown · 동물병원 PIMS, 제대로 활용하고 계신가요?
+- [INDEX] 2026-07-03_2 · pending · unknown · image-ownership-unknown · 미국 여름철 반려동물 클레임 증가, 열사병 266%·독사 물림 145% 상승
+- [INDEX] 2026-07-06_1 · pending · unknown · image-ownership-unknown · 수중 운동으로 관절염 개 낮추기… 운동 어려웠던 강아지 9kg 감량
+- [INDEX] 2026-07-07_1 · pending · unknown · image-ownership-unknown, image-http · 고양이 스트레스성 비뇨기 질환 관리 통합치료 7가지 접근법
+- [INDEX] 2026-07-08_1 · pending · unknown · image-ownership-unknown · 수의 AI 필기 도구, 사용법과 한계 살펴보기
+- [INDEX] 2026-07-08_2 · pending · unknown · image-ownership-unknown · 동물병원 채용 실패 루프를 끊는 9가지 HR 도구
+- [INDEX] 2026-07-08_3 · pending · unknown · image-ownership-unknown · 수의사 영양 상담, 실제로 얼마나 이루어질까
+- [INDEX] 2026-07-08_4 · pending · unknown · image-ownership-unknown · 동물병원 소프트웨어 감사, 90분 안에 자가 점검하는 법
+- [INDEX] 2026-07-08_5 · pending · unknown · image-ownership-unknown · 24시간 동물병원 개축 시 임상 운영 연속성 유지 사례
+- [INDEX] 2026-07-08_8 · pending · unknown · image-ownership-unknown · 수의 리더십의 새로운 시대: 기업 동물병원 운영의 핵심
+- [INDEX] 2026-07-09_1 · pending · unknown · image-ownership-unknown · 개 경추 추간판 질환 통합 재활치료 사례 – 외과와 한의학 협업의 가능성
+- [INDEX] 2026-07-09_2 · pending · unknown · image-ownership-unknown · 개·고양이 치주낭 치료제를 위한 이식재 활용 가이드
+- [INDEX] 2026-07-09_4 · pending · unknown · image-ownership-unknown · 빈혈 검사, MCHC만으로는 부족하다-CHCM의 임상적 가치
+- [INDEX] 2026-07-09_6 · pending · unknown · image-ownership-unknown · 원격진료 플랫폼 'Dutch'의 위험성 - 수의학적 안전장치 해체 우려
+- [INDEX] 2026-07-12_1 · pending · unknown · image-ownership-unknown · 개구충 위험 북상... 예방 미흡한 반려동물 증가 우려
+- [INDEX] 2026-07-20_1 · pending · unknown · image-ownership-unknown · 고령 동물 관절염 통증, 약물+비약물 복합 관리의 실제
+- [INDEX] 2026-07-20_10 · pending · unknown · image-ownership-unknown · 개 미생물군집 조절로 항생제 의존도 낮추기
+- [INDEX] 2026-07-20_11 · pending · unknown · image-ownership-unknown · 노령견 전지 보폭 감소, 치매 조기 경고 신호 가능성
+- [INDEX] 2026-07-20_3 · pending · unknown · image-ownership-unknown · 중고도 공포·불안 강아지의 수의과 진료실 대처법
+- [INDEX] 2026-07-20_4 · pending · unknown · image-ownership-unknown · 고양이 당뇨병 관리의 새로운 선택지, SGLT2 억제제
+- [INDEX] 2026-07-20_5 · pending · unknown · image-ownership-unknown · 개의 관절염, 치료적 운동으로 관절 가동성과 근육량 개선
+- [INDEX] 2026-07-20_8 · pending · unknown · image-ownership-unknown, image-http · 개에서 쿼럼 센싱 조절제: 세균 신호 차단을 통한 장 건강 관리
+- [INDEX] 2026-07-20_9 · pending · unknown · image-ownership-unknown · 노령개 인지기능장애, 영양보충제로 관리한다
+- [INDEX] 2026-07-21_18 · pending · unknown · image-ownership-unknown · 호주 동물 입양률 40% 급락…주거 불안정 주요 원인
+- [INDEX] 2026-07-21_2 · pending · unknown · image-ownership-unknown · AI 혈액도말 분석, 개 IMHA 진단 시간 획기적 단축
+- [INDEX] 2026-07-22_9 · pending · unknown · image-ownership-unknown · 개 장 미생물군집 연구 새 시대 열었다
+- [INDEX] 2026-07-23_1 · pending · unknown · image-ownership-unknown · 수의 수술실 효율화, 입체적 배치 전략
+- [INDEX] 2026-07-23_2 · pending · unknown · image-ownership-unknown · 고양이 만성신장질환, 장내 대사물질 변화와 연관 발견
+- [INDEX] 2026-07-23_5 · pending · unknown · image-ownership-unknown · 수가 진료실 AI 필기 도구, 도입이 필요한 이유
+- [INDEX] 2026-07-23_6 · pending · unknown · image-ownership-unknown · 수의사 고객 준수율 높이는 5가지 방법
+- [INDEX] 2026-07-23_7 · pending · unknown · image-ownership-unknown · 수의 인력 분석 플랫폼 출시, 리프스태핑 성과 데이터로 확인한다
+- [INDEX] 2026-07-23_8 · pending · unknown · image-ownership-unknown · 개 고양이 영양 검사, 미량영양소 결핍 확인 가능
+- [INDEX] 2026-07-24_1 · pending · unknown · image-ownership-unknown · 소동물 종양 조기 발견, 천자흡인검사가 답이다
+- [INDEX] 2026-07-24_3 · pending · unknown · image-ownership-unknown · 미국 콜로라도에 고양이 전용 동물병원 개원... 진료 공백 해소 도전
+- [INDEX] 2026-07-25_1 · pending · unknown · image-ownership-unknown · 개의 아토피 피부염 JAK 억제제 치료 최신 관점
+- [INDEX] 2026-07-25_4 · pending · unknown · image-ownership-unknown · 치료식 선택 도우미 도구, 2600명 이상 수의사 사용 중
+- [INDEX] v1_717de352ac7865a6 · pending · unknown · image-ownership-unknown, image-http · 보더콜리, 고관절 교체술 10개월 만에 플라이볼 복귀…고양이와 소형견도 가능해진다
+- [INDEX] v1_97407f7b28526af0 · pending · unknown · image-ownership-unknown · 퇴원 처방 개선, 그 순간부터 환자 결과가 달라집니다
+- [NOINDEX] 2026-05-29_1 · pending · unknown · image-ownership-unknown · 수의 PIMS와 AI 워크플로우, 병원 운영의 미래
+- [NOINDEX] 2026-06-04_1 · pending · unknown · image-ownership-unknown · 수의학에서 듣는 '나쁜 조언' 사례 공개
+- [NOINDEX] 2026-06-19_3 · pending · unknown · image-ownership-unknown · 고양이 배변 문제, 예방은 대화에서 시작된다
+- [NOINDEX] 2026-06-19_4 · pending · unknown · image-ownership-unknown · 개의당뇨병 관리에서 연속혈당측정기 활용 최신 동향
+- [NOINDEX] 2026-06-19_6 · pending · unknown · image-ownership-unknown · 통조림 Dressing에서 생명 구하는 해독제로, 정맥 내 지방 유제 치료의 탄생
+- [NOINDEX] 2026-06-25_1 · pending · unknown · image-ownership-unknown · 중증 외상 고양이 환자, 안정화가 먼저입니다
+- [NOINDEX] 2026-06-26_2 · pending · unknown · image-ownership-unknown · 신입 수의사 주목 영역, 고난도 수술·가정방문·난치 케이스
+- [NOINDEX] 2026-07-03_1 · pending · unknown · image-ownership-unknown · 이글 병원 방문 원인 5가지, 가장 흔한 관리 실수
+- [NOINDEX] 2026-07-08_6 · pending · unknown · image-ownership-unknown · 개방형 API가 동물 병원 소프트웨어의 미래를 바꾼다
+- [NOINDEX] 2026-07-08_7 · pending · unknown · image-ownership-unknown · 동물병원 수익성 강화 위한 4가지 핵심 KPI 관리법
+- [NOINDEX] 2026-07-09_3 · pending · unknown · image-ownership-unknown · 고양이 삶의 질 평가 도구 FelQoL 개발
+- [NOINDEX] 2026-07-09_5 · pending · unknown · image-ownership-unknown · 수의백신 개발 단계와 근거기반 가이드라인의 현재 동향
+- [NOINDEX] 2026-07-15_1 · pending · unknown · image-ownership-unknown · 레몬 프로스트 게코, 자연 종양 연구 모델로 급부상
+- [NOINDEX] 2026-07-16_1 · pending · unknown · image-ownership-unknown · 수의사도 Relax 못할까? 전문가의 자기 비판적 마음
+- [NOINDEX] 2026-07-20_15 · pending · unknown · image-ownership-unknown · 야생동물부터 애완동물까지, 신뢰 기반 의료의 공통 원칙
+- [NOINDEX] 2026-07-20_16 · pending · unknown · image-ownership-unknown · 반려동물 Enrichment의 모든 것: 5가지 범주로 이해하는 동물 복지
+- [NOINDEX] 2026-07-20_2 · pending · unknown · image-ownership-unknown · 가바펜틴·트라조돈 말고: 진정 프로토콜이 안 먹힐 때
+- [NOINDEX] 2026-07-22_1 · pending · unknown · image-ownership-unknown · 미국 보호자 46%, 비용 문제로 수의료 지연 경험
+- [NOINDEX] 2026-07-23_13 · pending · unknown · image-ownership-unknown · 고양이 갑상선기능항진증 치료제 세계 최초.제네릭 출시
+- [NOINDEX] 2026-07-25_10 · pending · unknown · image-ownership-unknown, image-http · Vet Candy, 동물 의료 서비스 품질 보장 정책 발표
+- [NOINDEX] 2026-07-25_14 · pending · unknown · image-ownership-unknown · 힐스 글로벌 심포지엄, 피부·장 건강 영양 전략 논의
+- [NOINDEX] 2026-07-25_16 · pending · unknown · image-ownership-unknown · 환형고래에서 신규 헬리코박터균 3종 확인
+- [NOINDEX] 2026-07-25_5 · pending · unknown · image-ownership-unknown · 개 열치료, 이 6가지 상황에 효과적
+- [NOINDEX] v1_5ef792dba5c1c590 · pending · unknown · image-ownership-unknown · 수의 임상 인력 채용·유지 전략
+- [NOINDEX] v1_b57ff7397629a2d4 · pending · unknown · image-ownership-unknown, image-http · 진드기 방지제별 검은다리진드기(Blacklegged Tick) 사멸 속도 연구 비교
