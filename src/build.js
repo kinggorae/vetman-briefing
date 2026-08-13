@@ -3003,6 +3003,26 @@ ${sec(
 function renderTopicIndex(counts) {
   const canonical = `${SITE.baseUrl}/topic/`;
   const hasTopics = Object.keys(counts || {}).length > 0;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `주제별 보기 | ${SITE.name}`,
+    description: `${SITE.brandKo}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.`,
+    url: canonical,
+    inLanguage: "ko",
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.baseUrl },
+    publisher: PUBLISHER_LD,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: Object.keys(counts || {}).length,
+      itemListElement: TOPICS.filter((t) => counts[t.slug]).map((t, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: t.name,
+        url: `${SITE.baseUrl}${topicPath(t)}`,
+      })),
+    },
+  };
   const rows = TOPICS.filter((t) => counts[t.slug])
     .sort((a, b) => counts[b.slug] - counts[a.slug])
     .map(
@@ -3029,6 +3049,7 @@ function renderTopicIndex(counts) {
 <meta name="twitter:title" content="주제별 보기 | ${esc(SITE.name)}">
 <meta name="twitter:description" content="${esc(SITE.brandKo)}이 정리한 해외 수의 소식을 임상 주제별로 모아 봅니다.">
 <meta name="twitter:image" content="${SITE.baseUrl}/og.png">
+<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
