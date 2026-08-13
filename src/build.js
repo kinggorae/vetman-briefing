@@ -636,6 +636,9 @@ a:hover{color:var(--color-primary-strong);}
 .vm-skip:focus{transform:translateY(0);}
 .vm-title-link{color:inherit;text-decoration:none;}
 .vm-title-link:hover{color:var(--color-primary-normal);}
+.vm-mobile-nav{display:none;}
+.vm-search-clear{flex:none;display:inline-flex;width:28px;height:28px;border:0;border-radius:7px;background:transparent;color:var(--color-label-alternative);cursor:pointer;font:700 18px/1 var(--font-sans);align-items:center;justify-content:center;}
+.vm-search-clear:hover{background:var(--color-material-base);color:var(--color-label-normal);}
 /* JS 실행 전에도 완성된 첫 화면을 제공하는 검색엔진·장애 대응 셸 */
 .vm-static-top{max-width:1180px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:22px;border-bottom:1px solid var(--color-line-normal);}
 .vm-static-brand{font-family:var(--font-display);font-size:19px;font-weight:800;color:var(--color-label-strong);}
@@ -722,6 +725,10 @@ a:hover{color:var(--color-primary-strong);}
   .vm-row-thumb{width:112px !important;}
   .vm-detail{width:100% !important;max-width:100% !important;}
   .vm-search{display:flex !important;order:3;flex:1 0 100% !important;max-width:none !important;}
+  .vm-search-clear{display:inline-flex;min-width:36px;min-height:36px;}
+  .vm-mobile-nav{display:flex;max-width:1180px;margin:0 auto;padding:0 20px 8px;gap:8px;overflow-x:auto;scrollbar-width:none;}
+  .vm-mobile-nav::-webkit-scrollbar{display:none;}
+  .vm-mobile-nav button{flex:none;min-height:40px;border:1px solid var(--color-line-normal) !important;border-radius:999px;padding:0 14px !important;background:var(--color-background-normal) !important;font-size:12.5px !important;}
   .vm-dateline{display:none !important;}
   /* 터치 타깃 확대 — 칩 29px·정렬 25px는 손가락으로 정확히 누르기 어렵다.
      시각적 크기는 유지하고 세로 패딩으로 누를 수 있는 면적만 키운다. */
@@ -803,16 +810,17 @@ const APP_JS = String.raw`
   var ARL='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M15 18l-6-6 6-6"></path></svg>';
   var ARR='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M9 6l6 6-6 6"></path></svg>';
 
-  function loadSearch(){
+  function loadSearch(silent){
     if(SEARCH_INDEX||searchLoading) return;
-    searchLoading=true; render();
+    searchLoading=true; if(!silent) render();
     // 검색 실행 시 최신 월 청크만 먼저 가져온다. 과거 청크는 백그라운드로 이어 받아
     // 첫 검색 요청의 전송량을 낮추고, CDN 캐시가 오래된 월까지 매번 깨지지 않게 한다.
     function add(parts){
       var incoming=parts.reduce(function(all,part){return all.concat(Array.isArray(part.items)?part.items:[]);},[]);
       SEARCH_INDEX=(SEARCH_INDEX||[]).concat(incoming);
       SEARCH_INDEX.forEach(function(a){ byId[a.id]=a; });
-      searchLoading=false; render();
+      searchLoading=false;
+      if(!silent||S.query.trim()) render();
     }
     fetch('/search-manifest.json').then(function(r){if(!r.ok)throw new Error('manifest');return r.json();}).then(function(manifest){
       var chunks=Array.isArray(manifest.chunks)?manifest.chunks.slice().sort(function(a,b){return String(b.key).localeCompare(String(a.key));}):[];
@@ -820,13 +828,12 @@ const APP_JS = String.raw`
       var read=function(chunk){return fetch(chunk.href).then(function(r){if(!r.ok)throw new Error('chunk');return r.json();});};
       return read(chunks[0]).then(function(first){
         add([first]);
-        Promise.all(chunks.slice(1).map(read)).then(function(rest){add(rest);}).catch(function(){toast('일부 과거 검색 색인을 불러오지 못했습니다');});
+        Promise.all(chunks.slice(1).map(read)).then(function(rest){add(rest);}).catch(function(){if(S.query.trim()) toast('일부 과거 검색 색인을 불러오지 못했습니다');});
       });
     }).catch(function(){
       return fetch('/search.json').then(function(r){if(!r.ok)throw new Error('search');return r.json();}).then(function(data){add([{items:Array.isArray(data.items)?data.items:[]}]);});
-    }).catch(function(){ searchLoading=false; toast('전체 검색 색인을 불러오지 못했습니다'); });
+    }).catch(function(){ searchLoading=false; if(!silent||S.query.trim()) toast('전체 검색 색인을 불러오지 못했습니다'); });
   }
-
   // 검색 중에는 전체 색인(과거 브리핑 포함)을 대상으로 한다.
   function sorted(){
     var base=S.query.trim()&&SEARCH_INDEX?SEARCH_INDEX:(S.query.trim()?DATA.articles.concat(DATA.briefs||[],DATA.recent||[],DATA.stories||[]):DATA.articles);
@@ -1377,7 +1384,7 @@ const APP_JS = String.raw`
     if(S.view==='saved'){ stripLabel='저장한 글'; stripMeta=savedCount+'건 저장됨'; }
     else if(S.view==='ideas'){ stripLabel='글감 보관함'; stripMeta=ideaCount+'개 담김'; }
     else if(S.view==='archive'){ stripLabel='지난 브리핑'; stripMeta='날짜별 아카이브'; }
-    else if(searching){ stripLabel='검색 결과'; stripMeta=searchLoading&&!SEARCH_INDEX?'전체 검색 색인을 불러오는 중…':'"'+e(S.query.trim())+'" · '+activeList().length+'건'; }
+    else if(searching){ stripLabel='검색 결과'; stripMeta='"'+e(S.query.trim())+'" · '+activeList().length+'건'+(searchLoading&&!SEARCH_INDEX?' · 과거 기사 검색 중':''); }
     else if(DATA.weekly){ stripLabel='주간 요약'; stripMeta=DATA.date+' · 총 '+DATA.count+'건'; }
     else {
       // 1면 전체 분량을 보여준다 — "오늘"만 세면 수확 적은 날 과도하게 작아 보인다
@@ -1392,10 +1399,10 @@ const APP_JS = String.raw`
     var h='';
     h+='<div style="position:sticky;top:0;z-index:30;background:var(--color-background-normal);border-bottom:1px solid var(--color-line-normal);"><div class="vm-bar" style="max-width:1180px;margin:0 auto;padding:9px 40px;display:flex;align-items:center;gap:16px;">'
     +'<button data-nav="home" class="vm-tap" style="flex:none;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--color-label-strong);">VetManLab 브리핑</button>'
-    +'<div class="vm-search" role="search" style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:var(--color-material-thin);border-radius:9px;padding:9px 12px;color:var(--color-label-alternative);">'+search+'<input id="vm-q" aria-label="전체 기사 검색" value="'+e(S.query)+'" placeholder="기사 검색 — 제목·본문·출처" style="border:0;outline:0;background:transparent;font-family:inherit;font-size:13px;color:var(--color-label-normal);width:100%;"></div>'
+    +'<div class="vm-search" role="search" style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:var(--color-material-thin);border-radius:9px;padding:9px 12px;color:var(--color-label-alternative);">'+search+'<input id="vm-q" aria-label="전체 기사 검색" value="'+e(S.query)+'" placeholder="기사 검색 — 제목·본문·출처" style="border:0;outline:0;background:transparent;font-family:inherit;font-size:13px;color:var(--color-label-normal);width:100%;">'+(searching?'<button type="button" class="vm-search-clear" data-act="clearq" aria-label="검색어 지우기" title="검색어 지우기">×</button>':'')+'</div>'
     +'<div style="flex:none;display:flex;align-items:center;gap:14px;"><span class="vm-bar-label">'+navBtn('ideas','글감함',ideaCount)+'</span><span class="vm-bar-label">'+navBtn('saved','저장',savedCount)+'</span><span class="vm-bar-label">'+navBtn('archive','지난 브리핑')+'</span>'
     +'<button data-act="theme" class="vm-tap" title="테마 전환" style="flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--color-line-normal);background:var(--color-background-normal);color:var(--color-label-neutral);cursor:pointer;border-radius:9px;">'+(S.theme==='dark'?sun:moon)+'</button></div>'
-    +'</div></div>';
+    +'</div><nav class="vm-mobile-nav" aria-label="모바일 빠른 메뉴">'+navBtn('ideas','글감함',ideaCount)+navBtn('saved','저장',savedCount)+navBtn('archive','지난 브리핑')+'</nav></div>';
 
     h+='<div class="vm-wrap" style="max-width:1180px;margin:0 auto;padding:0 40px 64px;"><main id="main-content">';
     h+='<div class="vm-dateline" style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:12px;color:var(--color-label-alternative);"><span style="flex:1;text-align:left;">'+e(DATA.dateline)+'</span><span style="flex:1;text-align:center;letter-spacing:.06em;">해외 수의 소식을 한국 동물병원의 눈으로</span><span style="flex:1;text-align:right;">원문 출처 표기 · 번역 참고용</span></div>';
@@ -1499,10 +1506,22 @@ const APP_JS = String.raw`
     if(typeof gtag!=='function') return;
     try{ gtag('event','section_view',{section:cat||'all',issue_date:DATA.date}); }catch(e){}
   }
+  var issueRequests={};
+  function fetchIssue(date){
+    if(issueRequests[date]) return issueRequests[date];
+    issueRequests[date]=fetch('/data/'+encodeURIComponent(date)+'.json').then(function(r){if(!r.ok)throw new Error('issue-data');return r.json();}).catch(function(err){ delete issueRequests[date]; throw err; });
+    return issueRequests[date];
+  }
+  function prefetchIssue(date){
+    if(!DATA._compact) return;
+    var run=function(){ fetchIssue(date).catch(function(){}); };
+    if('requestIdleCallback' in window) window.requestIdleCallback(run,{timeout:1200});
+    else window.setTimeout(run,300);
+  }
   function hydrateArticle(id){
     var compact=byId[id], date=(compact&&compact.day)||DATA.date;
     if(!compact||!compact._compact) return Promise.resolve(compact);
-    return fetch('/data/'+encodeURIComponent(date)+'.json').then(function(r){if(!r.ok)throw new Error('article-data');return r.json();}).then(function(full){
+    return fetchIssue(date).then(function(full){
       var list=(full.articles||[]).concat(full.briefs||[],full.stories||[]), found=list.find(function(a){return a.id===id;});
       if(!found) throw new Error('article-not-found');
       byId[id]=found;
@@ -1512,14 +1531,16 @@ const APP_JS = String.raw`
   }
   function hydrateCurrent(){
     if(!DATA._compact) return Promise.resolve(DATA);
-    return fetch('/data/'+encodeURIComponent(DATA.date)+'.json').then(function(r){if(!r.ok)throw new Error('issue-data');return r.json();}).then(function(full){
+    return fetchIssue(DATA.date).then(function(full){
       DATA.articles=full.articles||[]; DATA.briefs=full.briefs||[]; DATA.stories=full.stories||[]; DATA._compact=false; DATA.hasMore=false; indexDay(); render(); return DATA;
     });
   }
   function openArticle(id, hydrated){
     if(byId[id]&&!hydrated&&byId[id]._compact){
-      toast('기사 본문을 불러오는 중…');
-      hydrateArticle(id).then(function(){openArticle(id,true);}).catch(function(){toast('기사 본문을 불러오지 못했습니다');});
+      var compact=byId[id], db;
+      S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(compact); render();
+      db=document.getElementById('vm-db'); if(db) db.scrollTop=0;
+      hydrateArticle(id).then(function(){ if(S.openId===id) render(); }).catch(function(){ if(S.openId===id) toast('기사 본문을 불러오지 못했습니다'); });
       return;
     }
     if(byId[id]){ S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
@@ -1566,6 +1587,7 @@ const APP_JS = String.raw`
       if(act==='theme'){ S.theme=S.theme==='dark'?'light':'dark'; persist('theme',S.theme); }
       else if(act==='rel'){ S.sort='rel'; }
       else if(act==='latest'){ S.sort='latest'; }
+      else if(act==='clearq'){ S.query=''; S.searchFocus=true; S.caret=0; render(); return; }
       else if(act==='unread'){ S.unreadOnly=!S.unreadOnly; S.showAll=false; }
       else if(act==='more'){ if(DATA._compact){ hydrateCurrent().catch(function(){toast('전체 기사를 불러오지 못했습니다');}); } else { S.showAll=true; } }
       else if(act==='brief-more'){ S.briefAll=true; }
@@ -1596,11 +1618,12 @@ const APP_JS = String.raw`
       openArticle(el.getAttribute('data-open'));
     }
   });
-  document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; if(!SEARCH_INDEX&&!searchLoading) loadSearch(); } render(); } });
+  document.addEventListener('focusin',function(ev){ if(ev.target.id==='vm-q') loadSearch(true); });
+  document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; if(!SEARCH_INDEX&&!searchLoading) loadSearch(true); } render(); } });
   document.addEventListener('submit',function(ev){ if(ev.target.id==='vm-sub'){ ev.preventDefault(); var em=document.getElementById('vm-email'); if(em&&em.value) subscribe(em.value.trim()); } });
   document.addEventListener('keydown',function(ev){
     var t=ev.target, typing = t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA');
-    if(ev.key==='Escape'){ if(S.draft){ S.draft=null; render(); } else if(S.openId){ S.openId=null; render(); } return; }
+    if(ev.key==='Escape'){ if(S.draft){ S.draft=null; render(); } else if(S.openId){ S.openId=null; render(); } else if(t&&t.id==='vm-q'&&S.query){ S.query=''; S.searchFocus=true; S.caret=0; render(); } return; }
     if(typing) return;
     if(S.openId && (ev.key==='ArrowRight'||ev.key==='j')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i+1]) openArticle(ctx[i+1].id); }
     else if(S.openId && (ev.key==='ArrowLeft'||ev.key==='k')){ ev.preventDefault(); var ctx=contextList(),ids=ctx.map(function(x){return x.id;}),i=ids.indexOf(S.openId); if(ctx[i-1]) openArticle(ctx[i-1].id); }
@@ -1610,6 +1633,7 @@ const APP_JS = String.raw`
   });
   if(location.hash && byId[location.hash.slice(1)]){ S.openId=location.hash.slice(1); markRead(S.openId); }
   render();
+  prefetchIssue(DATA.date);
 })();`;
 
 // 홈 지면이 비지 않도록 최근 다른 날짜의 기사를 함께 싣는다(오늘 지면과는 분리 표기).
@@ -1648,7 +1672,7 @@ function recentArticles(current, allIssues, limit = 6) {
   return [...preferred, ...fallback].slice(0, limit);
 }
 
-function compactClientArticle(a) {
+function compactClientArticle(a, { lead = false } = {}) {
   return {
     id: a.id,
     href: a.href,
@@ -1666,6 +1690,7 @@ function compactClientArticle(a) {
     contentTier: a.contentTier,
     tier: a.tier,
     tag: a.tag,
+    ...(lead ? { body: Array.isArray(a.body) ? a.body.slice(0, 3) : [] } : {}),
     // 상세 Q&A와 근거 블록은 기사 JSON을 hydrate한 뒤 표시한다. 초기 HTML에는
     // 카드와 탐색에 필요한 필드만 넣어 첫 화면의 전송량을 제한한다.
     radar: null,
@@ -1674,7 +1699,7 @@ function compactClientArticle(a) {
 }
 
 function compactClientData(data) {
-  const articles = (data.articles || []).slice(0, 24).map(compactClientArticle);
+  const articles = (data.articles || []).slice(0, 24).map((a, i) => compactClientArticle(a, { lead: i === 0 }));
   const briefs = (data.briefs || []).slice(0, 12).map(compactClientArticle);
   const stories = (data.stories || []).slice(0, 8).map(compactClientArticle);
   const recent = (data.recent || []).slice(0, 6).map(compactClientArticle);
