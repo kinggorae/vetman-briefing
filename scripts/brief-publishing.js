@@ -14,6 +14,8 @@ const QA_REPORT = path.join(ROOT, "reports", "first-release-candidates-qa.json")
 const OUT_DIR = path.join(ROOT, "reports", "briefs");
 const ISSUE_DIR = path.join(ROOT, "data", "issues");
 const DRAFT_DIR = path.join(ROOT, "data", "drafts");
+const RELEASE_REPORT = path.join(ROOT, "reports", "brief-release.json");
+const MIN_RELEASE_ITEMS = 5;
 const CANDIDATE_IDS = ["v1_88e7bde7826c5eaf", "v1_8977cdecc20db74b", "v1_66712dc60cebbebc", "v1_ecdd9715ae5b33aa", "v1_5f01b0b4f48babba"];
 
 function parse() {
@@ -73,6 +75,9 @@ function claimWarnings(row) {
 const BLOCKING_LANGUAGE = /^(korean-internal-ascii|known-error:|untranslated-title|repeated-paragraph)/;
 const BLOCKING_CLAIM = /^(species-mismatch|case-report-generalization)$/;
 const blockingOnly = (warnings, pattern) => warnings.filter((w) => pattern.test(w));
+function canReleaseDaily(existingCount, candidateCount, minimum = MIN_RELEASE_ITEMS) {
+  return Number(existingCount || 0) + Number(candidateCount || 0) >= minimum;
+}
 function hasKorean(row) { return Boolean(row.titleKo && row.leadKo && Array.isArray(row.bodyKo) && row.bodyKo.length); }
 function evaluate(row) {
   if (!row) throw new Error("draft 후보를 찾을 수 없습니다.");
@@ -170,6 +175,11 @@ function releaseReady(flags) {
   // 발행된다. 과거분 소급 발행이 필요할 때만 --all-drafts로 명시한다.
   const files = flags["all-drafts"] ? draftFiles() : draftFiles().filter((file) => path.basename(file).includes(date));
   const rows = files.flatMap((file) => readJson(file, { items: [] }).items || []);
+  const target = path.join(ISSUE_DIR, `${date}.json`);
+  const current = readJson(target, { date, status: "published", generatedAt: new Date().toISOString(), items: [] });
+  const currentItems = Array.isArray(current.items) ? current.items : [];
+  const currentIds = new Set(currentItems.map((item) => item.id).filter(Boolean));
+  const currentUrls = new Set(currentItems.map((item) => normalizeSourceUrl(item.sourceUrl || item.sourceUrlRaw || "")).filter(Boolean));
   const published = new Set();
   for (const file of fs.readdirSync(ISSUE_DIR).filter((name) => /^\d{4}-\d{2}-\d{2}\.json$/.test(name))) {
     if (file.slice(0, 10) === date) continue;
@@ -179,22 +189,40 @@ function releaseReady(flags) {
     }
   }
   const seen = new Set();
-  const summary = { date, total: rows.length, released: 0, skipped: {}, ids: [] };
+  const summary = { date, total: rows.length, existing: currentItems.length, eligible: 0, released: 0, minimum: MIN_RELEASE_ITEMS, skipped: {}, ids: [] };
   const bump = (reason) => { summary.skipped[reason] = (summary.skipped[reason] || 0) + 1; };
+  const candidates = [];
   for (const row of rows) {
     if (seen.has(row.id)) continue;
     seen.add(row.id);
     const url = normalizeSourceUrl(row.sourceUrl || row.sourceUrlRaw || "");
+    if (currentIds.has(row.id) || (url && currentUrls.has(url))) { bump("오늘 이미 발행됨"); continue; }
     if (url && published.has(url)) { bump("이미 발행된 원문"); continue; }
     let evaluation;
     try { evaluation = evaluate(row); } catch { bump("평가 실패"); continue; }
     if (evaluation.status !== "ready-public-brief") { bump(evaluation.status); continue; }
-    if (!flags.apply) { summary.released += 1; summary.ids.push(row.id); if (url) published.add(url); continue; }
+    candidates.push({ row, url });
+    if (url) published.add(url);
+  }
+  summary.eligible = candidates.length;
+  // 하루 이슈는 최소 5건이 모일 때만 새 날짜 파일을 만든다. 항목을 먼저
+  // 파일에 하나씩 써버리면 3건짜리 부분 발행이 남아 다음 build/validate를
+  // 막고, 결과적으로 정상적인 이전 발행본까지 배포할 수 없게 된다. 후보가
+  // 부족한 날은 draft·리포트만 보존하고 다음 실행에서 다시 모은다.
+  if (flags.apply && !canReleaseDaily(currentItems.length, candidates.length)) {
+    summary.skipped["daily-minimum-not-reached"] = candidates.length;
+    summary.note = "최소 발행 건수 미달이라 오늘 이슈 파일을 변경하지 않았습니다.";
+    atomicWrite(RELEASE_REPORT, JSON.stringify({ ...summary, dryRun: false }, null, 2) + "\n");
+    console.log(JSON.stringify({ ...summary, dryRun: false }, null, 2));
+    return;
+  }
+  for (const { row } of candidates) {
+    if (!flags.apply) { summary.released += 1; summary.ids.push(row.id); continue; }
     release(row.id, { ...flags, date, apply: true }, row);
     summary.released += 1;
     summary.ids.push(row.id);
-    if (url) published.add(url);
   }
+  atomicWrite(RELEASE_REPORT, JSON.stringify({ ...summary, dryRun: !flags.apply }, null, 2) + "\n");
   console.log(JSON.stringify({ ...summary, dryRun: !flags.apply }, null, 2));
 }
 function main() {
@@ -211,4 +239,4 @@ function main() {
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
 
-export { evaluate };
+export { canReleaseDaily, evaluate };

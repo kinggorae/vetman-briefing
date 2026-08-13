@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { isProfessionallyIndexable, publishQualityIssues } from "../src/lib/quality.js";
 import { clinicalSafetyIssues, loadEditorialSettings, organizationAuthor } from "../src/lib/editorial-policy.js";
-import { evaluate } from "../scripts/brief-publishing.js";
+import { canReleaseDaily, evaluate } from "../scripts/brief-publishing.js";
 
 const ROOT = process.cwd();
 
@@ -21,6 +21,12 @@ test("감수자 없는 public brief는 임상 명령 표현을 차단한다", ()
   const item = { publicationStatus: "public-brief", contentTier: "brief", titleKo: "고양이 질환 안내", leadKo: "반드시 투여해야 합니다. 충분한 설명을 덧붙입니다." };
   assert.ok(clinicalSafetyIssues(item).length > 0);
   assert.ok(publishQualityIssues(item).includes("unsafe-clinical-command"));
+});
+
+test("일일 발행은 최소 건수에 도달하기 전 부분 이슈를 만들지 않는다", () => {
+  assert.equal(canReleaseDaily(0, 3), false);
+  assert.equal(canReleaseDaily(2, 3), true);
+  assert.equal(canReleaseDaily(0, 5), true);
 });
 
 test("첫 low-risk 후보는 public brief release 전 언어·이미지 검수를 요구한다", () => {
