@@ -1513,7 +1513,10 @@ const APP_JS = String.raw`
     return issueRequests[date];
   }
   function prefetchIssue(date){
-    if(!DATA._compact) return;
+    // 현재 홈에 보이는 기사들은 read-ready라서 상세를 위해 전체 날짜 JSON을
+    // 미리 당겨올 필요가 없다. 더보기·날짜 전환이 가능한 경우에만 유휴 시간에
+    // 가져와 초기 로딩과 클릭 경험을 동시에 가볍게 유지한다.
+    if(!DATA._compact||!DATA.hasMore) return;
     var run=function(){ fetchIssue(date).catch(function(){}); };
     if('requestIdleCallback' in window) window.requestIdleCallback(run,{timeout:1200});
     else window.setTimeout(run,300);
@@ -1536,7 +1539,9 @@ const APP_JS = String.raw`
     });
   }
   function openArticle(id, hydrated){
-    if(byId[id]&&!hydrated&&byId[id]._compact){
+    // 홈 카드에는 read-ready payload가 들어 있으므로 클릭 시 전체 날짜 JSON을
+    // 기다리지 않는다. 검색 색인처럼 compact 본문이 없는 항목만 기존 hydrate를 쓴다.
+    if(byId[id]&&!hydrated&&byId[id]._compact&&!byId[id].readReady){
       var compact=byId[id], db;
       S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(compact); render();
       db=document.getElementById('vm-db'); if(db) db.scrollTop=0;
@@ -1690,10 +1695,18 @@ function compactClientArticle(a, { lead = false } = {}) {
     contentTier: a.contentTier,
     tier: a.tier,
     tag: a.tag,
-    ...(lead ? { body: Array.isArray(a.body) ? a.body.slice(0, 3) : [] } : {}),
-    // 상세 Q&A와 근거 블록은 기사 JSON을 hydrate한 뒤 표시한다. 초기 HTML에는
-    // 카드와 탐색에 필요한 필드만 넣어 첫 화면의 전송량을 제한한다.
-    radar: null,
+    // 홈에서 보이는 기사는 상세 패널에 필요한 본문·출처·편집 메모를 함께 싣는다.
+    // 클릭 직후 원문 데이터 파일을 기다리지 않아도 읽기가 시작되도록 하는 경량
+    // read-ready payload다. 전체 이슈 JSON은 검색·날짜 전환·추가 목록에서만 hydrate한다.
+    body: Array.isArray(a.body) ? a.body : [],
+    sourceUrl: a.sourceUrl || null,
+    sourceTitle: a.sourceTitle || null,
+    sourceAuthor: a.sourceAuthor || null,
+    sourcePublishedAt: a.sourcePublishedAt || null,
+    radar: a.radar || null,
+    blog: a.blog || "",
+    blogAngle: Array.isArray(a.blogAngle) ? a.blogAngle : [],
+    readReady: true,
     _compact: true,
   };
 }
