@@ -65,3 +65,38 @@ test("public pages pass axe critical checks and keyboard focus is visible", asyn
   await page.keyboard.press("Tab");
   expect(await page.locator(":focus").count()).toBeGreaterThan(0);
 });
+
+test("homepage lead is complete and compact article opens before hydration", async ({ page }) => {
+  await page.route("**/data/*.json", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 2_000));
+    await route.continue();
+  });
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+
+  const payload = await page.locator("#vm-issue").evaluate((node) => JSON.parse(node.textContent || "{}"));
+  expect(payload.articles[0].body?.length).toBeGreaterThan(0);
+  expect(payload.articles[1].body).toBeUndefined();
+  await expect(page.locator(".vm-fp-body")).not.toBeEmpty();
+
+  await page.locator("article[data-open]").nth(1).click();
+  await expect(page.locator('.vm-detail[role="dialog"]')).toBeVisible({ timeout: 1_000 });
+  await expect(page.getByText("기사 본문을 불러오는 중…")).toHaveCount(0);
+  await expect(page.locator("#vm-detail-title")).toBeVisible();
+});
+
+test("search can be cleared and mobile navigation keeps personal views reachable", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const searchInput = page.locator("#vm-q");
+  await searchInput.fill("고양이");
+  await expect(page.getByRole("button", { name: "검색어 지우기" })).toBeVisible();
+  await page.getByRole("button", { name: "검색어 지우기" }).click();
+  await expect(searchInput).toHaveValue("");
+
+  const mobileNav = page.getByRole("navigation", { name: "모바일 빠른 메뉴" });
+  if ((page.viewportSize()?.width || 0) <= 900) {
+    await expect(mobileNav).toBeVisible();
+    for (const label of ["글감함", "저장", "지난 브리핑"]) await expect(mobileNav.getByRole("button", { name: new RegExp(label) })).toBeVisible();
+  } else {
+    await expect(mobileNav).toBeHidden();
+  }
+});

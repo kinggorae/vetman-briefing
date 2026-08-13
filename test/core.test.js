@@ -25,6 +25,7 @@ import {
 import { MAX_FEED_BYTES, dedupeFeedEntries, isOfficialUrl, parseFeed, sourceStatusFor } from "../src/lib/source-first.js";
 import { auditClaims, auditLanguage, auditTerminology } from "../scripts/editorial-audits.js";
 import { classifyUpdate } from "../scripts/updates.js";
+import { mapPool } from "../src/pool.js";
 
 test("source URLs normalize tracking parameters and fragments", () => {
   const clean = "https://example.com/story";
@@ -37,6 +38,20 @@ test("stable item IDs are unchanged when tracking changes", () => {
     stableItemId({ sourceUrl: "https://example.com/story?utm_campaign=one" }),
     stableItemId({ sourceUrl: "https://example.com/story?utm_campaign=two" })
   );
+});
+
+test("bounded pool preserves result order while processing concurrently", async () => {
+  let active = 0;
+  let peak = 0;
+  const results = await mapPool([35, 5, 20, 10], async (delay, index) => {
+    active += 1;
+    peak = Math.max(peak, active);
+    await new Promise((resolve) => setTimeout(resolve, delay));
+    active -= 1;
+    return index;
+  }, 2);
+  assert.deepEqual(results, [0, 1, 2, 3]);
+  assert.equal(peak, 2);
 });
 
 test("Koreanization removes known MiniMax translation artifacts", () => {

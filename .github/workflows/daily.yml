@@ -15,8 +15,8 @@ jobs:
     concurrency:
       group: daily-source-first-newsroom
       cancel-in-progress: false
-    # 실측: 후보 60건 수집·생성에 63분(radar 포함), 발행·빌드·배포에 3분.
-    # 동시 실행 8이 기대만큼 병렬을 주지 않아 75분은 여유가 9분뿐이라 90으로 둔다.
+    # 본문·radar 생성은 모두 LLM_CONCURRENCY를 따르는 제한 병렬 풀을 쓴다.
+    # 피드·원문·외부 LLM 장애까지 감안해 잡 전체 상한은 90분을 유지한다.
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
@@ -52,8 +52,8 @@ jobs:
         env:
           RECORD_FEED_HISTORY: "1"
       - name: Collect source-first draft candidates
-        # 고유 후보가 하루 400건 넘게 쌓이는데 30건만 쓰고 있었다. 동시 실행을
-        # 8로 올려 확보한 여유만큼 후보 수를 늘린다(생성 시간은 비슷하게 유지).
+        # 고유 후보가 하루 400건 넘게 쌓이므로 점수 상위 60건을 다룬다.
+        # 본문·radar 생성은 공통 병렬 풀에서 순서를 보존하며 처리된다.
         # 선정은 점수 기반이라 소스별 상한(--per-source)은 걸지 않는다. 좋은
         # 후보를 많이 낸 매체가 많이 나가는 것이 의도한 동작이다.
         # 스텝 자체 타임아웃: LLM_TIMEOUT_MS(llm.js)로 개별 호출은 이제 2분

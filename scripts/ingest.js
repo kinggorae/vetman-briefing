@@ -10,6 +10,7 @@ import { bodyCharCount } from "../src/lib/quality.js";
 import { enrichItems } from "../src/enrich.js";
 import { fetchArticleMeta, articleTextQuality } from "../src/article.js";
 import { stableItemId, sourceKeys, addSourceKeys } from "../src/identity.js";
+import { mapPool } from "../src/pool.js";
 import {
   atomicWrite, contentHash as sourceContentHash, dedupeFeedEntries, fetchArticleMetadata, fetchFeed, isOfficialUrl, isRelayUrl,
   loadRegistry, metadataHash, normalizeSource, readJson, safeSourceUrl, sourceStatusFor,
@@ -214,8 +215,17 @@ async function collect(id, flags) {
   let draftEntries = rankedPick(fresh, Math.max(1, Number(flags.max) || 50), Number(flags["per-source"]) || 0, sources);
   draftEntries = await confirmCanonicals(draftEntries, sources, flags);
   if (flags.generate) draftEntries = await attachFullText(draftEntries, sources, flags);
-  const drafts = [];
-  for (const entry of draftEntries) drafts.push(await generateDraft(draftFor(entry, sources.find((source) => source.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel }), flags), entry, flags));
+  // LLM_CONCURRENCY는 기존 레이더 생성에만 적용되고 본문 생성은 한 건씩
+  // 순차 실행되고 있었다. 60건이 모두 재생성·교정 경로를 타면 CI의 70분
+  // 상한을 그대로 소진한다. 공통 제한 풀을 사용해 입력 순서는 보존하면서
+  // 게이트웨이 허용 범위 안에서 본문 생성도 병렬 처리한다.
+  const drafts = (await mapPool(draftEntries, async (entry) =>
+    generateDraft(
+      draftFor(entry, sources.find((source) => source.id === entry.sourceId) || normalizeSource({ label: entry.sourceLabel }), flags),
+      entry,
+      flags
+    )
+  )).filter(Boolean);
   const generated = drafts.filter((draft) => draft.titleKo && draft.bodyKo?.length);
   // generate.js는 source-first 경로에서 본문 길이와 무관하게 analysis로 찍는다.
   // analysis는 본문 420자를 요구하므로(src/lib/quality.js) 짧은 글이 통째로
