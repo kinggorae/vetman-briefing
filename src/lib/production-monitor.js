@@ -1,4 +1,7 @@
+import { recentNewsEntries, sitePublicationDate } from "./publication-dates.js";
+
 const DAY_MS = 24 * 60 * 60 * 1000;
+const INDEXABLE_PUBLICATION_STATUSES = new Set(["index-low-risk", "index-analysis"]);
 
 function isCalendarDate(value) {
   return /^\d{4}-\d{2}-\d{2}$/.test(String(value || ""));
@@ -54,6 +57,29 @@ export function inspectLatestPayload(payload, { today = kstDateString(), maxAgeD
   }
 
   return { date, itemCount, ageDays, critical, warnings };
+}
+
+// Keep the production monitor's expectation identical to buildNewsSitemap:
+// only indexable articles first published on this site within the News sitemap
+// window should be able to trigger an empty-feed failure.
+export function recentIndexableNewsCount(items = [], { now = Date.now(), maxAgeDays = 2 } = {}) {
+  const entries = (Array.isArray(items) ? items : [])
+    .filter((item) => INDEXABLE_PUBLICATION_STATUSES.has(item?.publicationStatus))
+    .map((item) => ({ ...item, publishedAt: sitePublicationDate(item) }));
+  return recentNewsEntries(entries, { now, maxAgeDays }).length;
+}
+
+export function inspectNewsSitemap(body = "", expectedCount = null) {
+  const critical = [];
+  const text = String(body || "");
+  const urlCount = [...text.matchAll(/<loc>([^<]+)<\/loc>/g)].length;
+  if (!text.includes('xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"')) {
+    critical.push({ reason: "news-sitemap-namespace-missing" });
+  }
+  if (Number.isInteger(expectedCount) && expectedCount !== urlCount) {
+    critical.push({ reason: "news-sitemap-count-mismatch", expected: expectedCount, actual: urlCount });
+  }
+  return { urlCount, critical };
 }
 
 function headerValue(headers, name) {

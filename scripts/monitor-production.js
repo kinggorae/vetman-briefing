@@ -4,8 +4,10 @@ import {
   inspectArticleHtml,
   inspectDeploymentPayload,
   inspectLatestPayload,
+  inspectNewsSitemap,
   inspectResponseContract,
   kstDateString,
+  recentIndexableNewsCount,
 } from "../src/lib/production-monitor.js";
 
 const base = process.env.MONITOR_BASE_URL || "https://news.vetmanlab.com";
@@ -174,14 +176,13 @@ if (sitemapResponse) {
 
 const newsSitemapResponse = responses.get("/news-sitemap.xml");
 if (newsSitemapResponse) {
-  const urlCount = extractLocs(newsSitemapResponse.body).length;
   const expected = Number.isInteger(result.deployment?.newsSitemapCount) ? result.deployment.newsSitemapCount : null;
-  const latestIndexableCount = Array.isArray(latestPayload?.items)
-    ? latestPayload.items.filter((item) => ["index-low-risk", "index-analysis"].includes(item.publicationStatus)).length
-    : 0;
-  result.newsSitemap = { urlCount, expected, expectedSource: expected === null ? null : "deployment.json", latestIndexableCount };
-  if (expected !== null && expected !== urlCount) result.critical.push({ pathname: "/news-sitemap.xml", reason: "news-sitemap-count-manifest-mismatch", expected, actual: urlCount });
-  if (latestIndexableCount > 0 && urlCount === 0) result.critical.push({ pathname: "/news-sitemap.xml", reason: "news-sitemap-empty-for-indexable-latest", latestIndexableCount });
+  const inspection = inspectNewsSitemap(newsSitemapResponse.body, expected);
+  addIssues(result.critical, inspection.critical, "/news-sitemap.xml");
+  const newsMaxAgeDays = Number(process.env.MONITOR_NEWS_MAX_AGE_DAYS || 2);
+  const latestIndexableCount = recentIndexableNewsCount(latestPayload?.items, { maxAgeDays: newsMaxAgeDays });
+  result.newsSitemap = { urlCount: inspection.urlCount, expected, expectedSource: expected === null ? null : "deployment.json", latestIndexableCount, maxAgeDays: newsMaxAgeDays };
+  if (latestIndexableCount > 0 && inspection.urlCount === 0) result.critical.push({ pathname: "/news-sitemap.xml", reason: "news-sitemap-empty-for-indexable-latest", latestIndexableCount });
 }
 
 const rssResponse = responses.get("/rss.xml");
