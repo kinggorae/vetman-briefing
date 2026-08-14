@@ -35,7 +35,12 @@ test("production monitor rejects a latest payload without item data", () => {
 test("production monitor validates response headers and deployment manifest", () => {
   const contract = inspectResponseContract({ pathname: "/latest.json", status: 200, headers: { "content-type": "application/json", "cache-control": "public, max-age=60", "x-content-type-options": "nosniff" }, body: "{}" });
   assert.deepEqual(contract.critical, []);
-  assert.deepEqual(inspectDeploymentPayload({ version: 1, builtAt: "2026-08-13T00:00:00.000Z", sourceCommit: "abcdef1", latestDate: "2026-08-13", publicArticleCount: 1, searchCount: 1, sitemapCount: 5 }).critical, []);
+  assert.deepEqual(inspectDeploymentPayload({ version: 1, builtAt: "2026-08-13T00:00:00.000Z", sourceCommit: "abcdef1", latestDate: "2026-08-13", publicArticleCount: 1, searchCount: 1, sitemapCount: 5, newsSitemapCount: 1 }).critical, []);
+});
+
+test("production monitor rejects an invalid news sitemap count", () => {
+  const result = inspectDeploymentPayload({ version: 1, builtAt: "2026-08-13T00:00:00.000Z", sourceCommit: "abcdef1", latestDate: "2026-08-13", publicArticleCount: 1, searchCount: 1, sitemapCount: 5, newsSitemapCount: -1 });
+  assert.ok(result.critical.some((item) => item.reason === "deployment-newsSitemapCount-invalid"));
 });
 
 test("deployment verifier detects a live site that is behind the expected build", () => {

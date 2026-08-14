@@ -173,7 +173,10 @@ if (sitemapResponse) {
 
 const newsSitemapResponse = responses.get("/news-sitemap.xml");
 if (newsSitemapResponse) {
-  result.newsSitemap = { urlCount: extractLocs(newsSitemapResponse.body).length };
+  const urlCount = extractLocs(newsSitemapResponse.body).length;
+  const expected = Number.isInteger(result.deployment?.newsSitemapCount) ? result.deployment.newsSitemapCount : null;
+  result.newsSitemap = { urlCount, expected, expectedSource: expected === null ? null : "deployment.json" };
+  if (expected !== null && expected !== urlCount) result.critical.push({ pathname: "/news-sitemap.xml", reason: "news-sitemap-count-manifest-mismatch", expected, actual: urlCount });
 }
 
 const rssResponse = responses.get("/rss.xml");

@@ -44,6 +44,7 @@ import {
 } from "./lib/editorial-policy.js";
 import { evidenceMetadata, numericEvidenceIssues, studyTypeLabel } from "./lib/evidence.js";
 import { isRelayUrl } from "./lib/source-first.js";
+import { recentNewsEntries, sitePublicationDate } from "./lib/publication-dates.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES_DIR = path.join(ROOT, "data", "issues");
@@ -238,6 +239,7 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     : new Date();
   const candidatePub = rawCandidatePub && rawCandidatePub.getTime() > publishCeiling.getTime() ? publishCeiling : rawCandidatePub;
   const pub = candidatePub && !Number.isNaN(candidatePub.getTime()) ? candidatePub : null;
+  const sitePublishedAt = sitePublicationDate(item, issuePublishedAt);
   // 발행일이 없는 기사도 있어 날짜가 통째로 비던 문제 → 이슈 날짜로 대체
   const fallbackIssueDate = /^\d{4}-\d{2}-\d{2}$/.test(issueDate)
     ? issueDate
@@ -267,6 +269,7 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     day: sourceDay,
     ts: pub ? pub.getTime() : shown.getTime(),
     publishedAt: pub ? pub.toISOString() : null,
+    sitePublishedAt,
     firstPublishedAt: validIsoDate(item.firstPublishedAt),
     scheduledAt: validIsoDate(item.scheduledAt),
     cat: item.category || "other",
@@ -471,7 +474,7 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
         description: a.dek,
         url: `${SITE.baseUrl}${articlePath(a)}`,
         image: articleImages(a),
-        ...(a.ts ? { datePublished: new Date(a.ts).toISOString() } : {}),
+        ...(a.sitePublishedAt ? { datePublished: a.sitePublishedAt } : {}),
         ...(a.updatedAt ? { dateModified: a.updatedAt } : {}),
         author: authorLd(a),
         publisher: PUBLISHER_LD,
@@ -2245,7 +2248,7 @@ function renderArticlePage(a, data, prev, next, related = []) {
     inLanguage: "ko",
     isAccessibleForFree: true,
     image: articleImages(a),
-    ...(a.ts ? { datePublished: new Date(a.ts).toISOString() } : {}),
+    ...(a.sitePublishedAt ? { datePublished: a.sitePublishedAt } : {}),
     ...(a.updatedAt ? { dateModified: a.updatedAt } : {}),
     author: authorLd(a),
     ...(a.sourceUrl ? { isBasedOn: { "@type": "CreativeWork", url: a.sourceUrl, ...(a.sourceTitle ? { name: a.sourceTitle } : {}), ...(a.sourceAuthor ? { author: { "@type": "Person", name: a.sourceAuthor } } : {}), ...(a.sourcePublishedAt ? { datePublished: a.sourcePublishedAt } : {}) } } : {}),
@@ -2327,7 +2330,7 @@ function renderArticlePage(a, data, prev, next, related = []) {
     SITE.verification?.google ? `\n<meta name="google-site-verification" content="${esc(SITE.verification.google)}">` : ""
   }${SITE.verification?.naver ? `\n<meta name="naver-site-verification" content="${esc(SITE.verification.naver)}">` : ""}
 <meta property="og:type" content="article">${
-    a.ts ? `\n<meta property="article:published_time" content="${new Date(a.ts).toISOString()}">` : ""
+    a.sitePublishedAt ? `\n<meta property="article:published_time" content="${a.sitePublishedAt}">` : ""
   }${a.updatedAt ? `\n<meta property="article:modified_time" content="${a.updatedAt}">` : ""}${a.kicker ? `\n<meta property="article:section" content="${esc(a.kicker)}">` : ""}
 <meta property="og:title" content="${esc(a.title)}">
 <meta property="og:description" content="${esc(desc)}">
@@ -3432,16 +3435,11 @@ ${entries.map((e) => `  <url><loc>${e.loc}</loc>${e.lastmod ? `<lastmod>${e.last
 </urlset>`;
 }
 
-// 구글 뉴스 사이트맵 — 최근 48시간 기사만(뉴스 사이트맵 규격). 뉴스 탭·신선도 발견에 쓰인다.
-// 규격: 2일 이내, 최대 1000건. 제목·발행일·언어를 함께 싣는다.
+// 구글 뉴스 사이트맵 — 이 사이트에 게시된 최근 48시간 기사만(뉴스 사이트맵 규격).
+// 원문 발행일이 아니라 우리 사이트의 최초 게시일을 사용해야 새 브리핑이
+// 오래된 원문으로 오인되지 않는다. 최대 1000건, 미래 시각은 제외한다.
 function buildNewsSitemap(entries) {
-  const cutoff = Date.now() - 2 * 24 * 60 * 60 * 1000;
-  const recent = entries
-    // Google News는 실제 원문 최초 발행일을 요구한다. 날짜가 없는 글을
-    // 빌드 시각으로 가장해 넣으면 오래된 글이 새 기사처럼 보이므로 제외한다.
-    .filter((e) => e.publishedAt && new Date(e.publishedAt).getTime() >= cutoff)
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-    .slice(0, 1000);
+  const recent = recentNewsEntries(entries);
   const body = recent
     .map(
       (e) => `  <url>
@@ -3482,7 +3480,7 @@ function buildRss(issues) {
   const items = recent
     .map((article) => {
       const url = `${SITE.baseUrl}${article.href}`;
-      const published = article.publishedAt || `${article.day}T00:00:00+09:00`;
+      const published = article.sitePublishedAt || article.publishedAt || `${article.day}T00:00:00+09:00`;
       const content = `<p>${esc(article.dek)}</p>${(article.body || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join("")}`;
       return `  <item>
     <title>${esc(article.title)}</title>
@@ -3525,7 +3523,7 @@ function buildBriefRss(issues) {
   }
   const items = briefs.map((article) => {
     const url = `${SITE.baseUrl}${articlePath(article)}`;
-    const published = article.publishedAt || `${article.day}T00:00:00+09:00`;
+    const published = article.sitePublishedAt || article.publishedAt || `${article.day}T00:00:00+09:00`;
     const content = `<p>${esc(article.dek)}</p>${(article.body || []).map((paragraph) => `<p>${esc(paragraph)}</p>`).join("")}`;
     return `  <item>\n    <title>${esc(article.title)}</title>\n    <link>${url}</link>\n    <guid isPermaLink="true">${url}</guid>\n    <pubDate>${new Date(published).toUTCString()}</pubDate>\n    <category>자동 브리프</category>\n    <description>${esc(article.dek)}</description>\n    <content:encoded><![CDATA[${content.replace(/]]>/g, "]]]]><![CDATA[>")}]]></content:encoded>\n  </item>`;
   }).join("\n");
@@ -3703,7 +3701,7 @@ function build() {
       if (isIndexable(a)) {
         const u = `${SITE.baseUrl}${articlePath(a)}`;
         articleUrls.push(u);
-        articleEntries.push({ url: u, ts: a.ts || null, publishedAt: a.publishedAt || null, modifiedAt: a.updatedAt || null, title: a.title, section: a.kicker });
+        articleEntries.push({ url: u, ts: a.ts || null, publishedAt: a.sitePublishedAt || null, modifiedAt: a.updatedAt || null, title: a.title, section: a.kicker });
         // 검색은 최신 지면에만 갇히면 과거 기사 유입을 놓친다. 상세 화면에
         // 필요한 필드까지 포함한 검색 전용 색인을 별도 파일로 제공한다.
         const searchItem = {
@@ -3822,6 +3820,7 @@ function build() {
     publicArticleCount: articleEntries.length,
     searchCount: searchEntries.length,
     sitemapCount: (sitemapXml.match(/<loc>/g) || []).length,
+    newsSitemapCount: (newsSitemapXml.match(/<loc>/g) || []).length,
   }, null, 2));
   // robots.txt — 검색 크롤러 + AI 답변엔진(GEO)을 명시적으로 환영한다.
   // 많은 언론사가 GPTBot·ClaudeBot 등을 차단하는데, 우리는 열어 두어 AI 개요·

@@ -86,13 +86,17 @@ const deploymentFile = path.join(SITE_DIR, "deployment.json");
 if (fs.existsSync(deploymentFile)) {
   const deployment = json(deploymentFile);
   if (!deployment || deployment.version !== 1 || !deployment.builtAt || !/^\d{4}-\d{2}-\d{2}$/.test(deployment.latestDate || "")) fail("deployment.json 형식 이상");
-  for (const key of ["publicArticleCount", "searchCount", "sitemapCount"]) {
+  for (const key of ["publicArticleCount", "searchCount", "sitemapCount", "newsSitemapCount"]) {
     if (!Number.isInteger(deployment[key]) || deployment[key] < 0) fail(`deployment.json ${key} 형식 이상`);
   }
   if (deployment.sourceCommit === "undefined") fail("deployment.json에 undefined sourceCommit이 있습니다.");
   const sitemapXml = fs.existsSync(path.join(SITE_DIR, "sitemap.xml")) ? fs.readFileSync(path.join(SITE_DIR, "sitemap.xml"), "utf8") : "";
   const sitemapCount = (sitemapXml.match(/<loc>/g) || []).length;
-  if (deployment.sitemapCount !== sitemapCount) fail(`deployment.json sitemapCount 불일치: ${deployment.sitemapCount} != ${sitemapCount}`);
+if (deployment.sitemapCount !== sitemapCount) fail(`deployment.json sitemapCount 불일치: ${deployment.sitemapCount} != ${sitemapCount}`);
+const newsSitemapCount = fs.existsSync(path.join(SITE_DIR, "news-sitemap.xml"))
+  ? (fs.readFileSync(path.join(SITE_DIR, "news-sitemap.xml"), "utf8").match(/<loc>/g) || []).length
+  : 0;
+if (deployment.newsSitemapCount !== newsSitemapCount) fail(`deployment.json newsSitemapCount 불일치: ${deployment.newsSitemapCount} != ${newsSitemapCount}`);
 }
 
 const searchFile = path.join(SITE_DIR, "search.json");
@@ -314,4 +318,4 @@ if (fs.existsSync(articleDir)) {
   }
 }
 
-console.log(`검증 완료: ${issues.length}개 이슈, 최신 ${latest?.date || "없음"}, sitemap ${locs.length}개 URL`);
+console.log(`검증 완료: ${issues.length}개 이슈, 최신 ${latest?.date || "없음"}, sitemap ${locs.length}개 URL, news sitemap ${newsLocs.length}개 URL`);

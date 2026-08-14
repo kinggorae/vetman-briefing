@@ -124,10 +124,11 @@ export function inspectDeploymentPayload(payload = {}) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(payload.latestDate || ""))) critical.push({ reason: "deployment-latest-date-invalid" });
   if (!/^local$|^[0-9a-f]{7,64}$/i.test(String(payload.sourceCommit || ""))) critical.push({ reason: "deployment-source-commit-invalid" });
   for (const key of ["publicArticleCount", "searchCount", "sitemapCount"]) if (!Number.isInteger(payload[key]) || payload[key] < 0) critical.push({ reason: `deployment-${key}-invalid` });
+  if (payload.newsSitemapCount !== undefined && (!Number.isInteger(payload.newsSitemapCount) || payload.newsSitemapCount < 0)) critical.push({ reason: "deployment-newsSitemapCount-invalid" });
   return { critical };
 }
 
-const DEPLOYMENT_MATCH_FIELDS = ["version", "sourceCommit", "latestDate", "publicArticleCount", "searchCount", "sitemapCount"];
+const DEPLOYMENT_MATCH_FIELDS = ["version", "sourceCommit", "latestDate", "publicArticleCount", "searchCount", "sitemapCount", "newsSitemapCount"];
 
 export function compareDeploymentPayload(actual = {}, expected = {}) {
   const critical = [];
