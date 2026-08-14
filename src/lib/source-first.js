@@ -131,19 +131,37 @@ export function parseFeed(xml, feedUrl, source) {
   if (rawEntries.length > MAX_FEED_ENTRIES) throw new Error(`피드 항목이 너무 많습니다: ${rawEntries.length}`);
   const entries = rawEntries.map((entry) => {
     const url = normalizeSourceUrl(firstLink(entry.link) || text(entry.guid) || text(entry.id));
-    const explicitCanonical = normalizeSourceUrl(text(entry["dc:identifier"]) || text(entry.canonical) || "");
+    const identifier = text(entry["dc:identifier"]) || "";
+    const canonicalValue = text(entry.canonical) || "";
+    const canonicalRaw = isUrl(canonicalValue) ? canonicalValue : (isUrl(identifier) ? identifier : "");
+    const explicitCanonical = normalizeSourceUrl(canonicalRaw);
+    // Wiley·Crossref 계열 피드는 dc:identifier에 article URL 대신 DOI를 넣는다.
+    // DOI를 canonical URL로 저장하면 sourceStatusFor가 30건을 unresolved로
+    // 분류하고, 같은 공식 article URL을 다시 확인하지 못한다. DOI는 별도
+    // 메타데이터로 보존하고, 안전한 공식 feed item URL을 canonical 후보로 쓴다.
+    const doi = normalizeDoi(identifier) || normalizeDoi(canonicalValue);
+    const feedItemCanonical = doi && isOfficialUrl(url, source) && safeSourceUrl(url) ? url : null;
     const publishedRaw = dateValue(entry);
     const publishedAt = publishedRaw && !Number.isNaN(new Date(publishedRaw).getTime()) ? new Date(publishedRaw).toISOString() : null;
     const title = text(entry.title).replace(/\s+/g, " ").trim();
     const description = text(entry.description || entry.summary || entry["content:encoded"] || entry.content).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 1200);
     return {
       guid: text(entry.guid) || text(entry.id) || url || contentHash(`${title}|${publishedAt}`),
-      title, url, canonicalUrl: explicitCanonical || null, publishedAt, description,
+      title, url, canonicalUrl: explicitCanonical || feedItemCanonical || null, doi, publishedAt, description,
       sourceId: source.id, sourceLabel: source.label, feedUrl,
       official: isOfficialUrl(explicitCanonical || url, source), relay: isRelayUrl(url),
     };
   }).filter((entry) => entry.title && entry.url);
   return { root, entries, isFeed: Boolean(root?.rss || root?.feed || root?.["rdf:RDF"]) };
+}
+
+function isUrl(value) {
+  try { return /^https?:$/i.test(new URL(String(value || "")).protocol); } catch { return false; }
+}
+
+function normalizeDoi(value) {
+  const candidate = String(value || "").trim().replace(/^doi:\s*/i, "").replace(/^https?:\/\/(?:dx\.)?doi\.org\//i, "");
+  return /^10\.\d{4,9}\/\S+$/i.test(candidate) ? candidate.replace(/[.,;)]+$/, "") : null;
 }
 
 export function cachePath(url) { return path.join(SOURCE_CACHE_DIR, `${crypto.createHash("sha256").update(url).digest("hex")}.json`); }

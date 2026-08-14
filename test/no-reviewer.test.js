@@ -27,7 +27,7 @@ test("감수자 없는 public brief는 임상 명령 표현을 차단한다", ()
 test("일일 발행은 60건 목표에 도달하기 전 부분 이슈를 만들지 않는다", () => {
   assert.equal(DAILY_TARGET_ITEMS, 60);
   assert.equal(DAILY_DEEP_TARGET_ITEMS, 32);
-  assert.equal(DAILY_CANDIDATE_POOL, 90);
+  assert.equal(DAILY_CANDIDATE_POOL, 140);
   assert.equal(DAILY_HOME_ITEMS, 60);
   assert.equal(DAILY_RSS_ITEMS, 100);
   assert.equal(canReleaseDaily(0, 59), false);
@@ -66,6 +66,27 @@ test("첫 low-risk 후보는 public brief release 전 언어·이미지 검수�
   assert.equal(result.publication.sitemap, false);
   assert.equal(result.reviewer, null);
   assert.ok(result.blockers.includes("한국어 titleKo·leadKo·bodyKo 필요"));
+});
+
+test("이전 DOI 초안은 공식 feed item URL로 source 검증을 회복한다", () => {
+  const result = evaluate({
+    id: "doi-source-fallback",
+    sourceId: "src-veterinary-medicine-and-science",
+    sourceLabel: "Veterinary medicine and science",
+    sourceStatus: "unresolved",
+    sourceUrl: null,
+    sourceUrlRaw: "https://onlinelibrary.wiley.com/doi/10.1002/vms3.71117?af=R",
+    sourceTitle: "Veterinary study",
+    titleKo: "수의학 연구 결과를 정리했습니다",
+    leadKo: "공식 원문에서 연구 설계와 결과를 요약한 짧은 브리핑입니다.",
+    bodyKo: ["첫 번째 문단은 연구 대상을 설명하고 원문 출처를 표시합니다.", "두 번째 문단은 관찰된 결과와 해석의 한계를 설명합니다.", "세 번째 문단은 임상 적용 전에 추가 확인할 점을 설명합니다."],
+    clinicalRisk: "medium",
+    duplicateStatus: "unique",
+    contentTier: "brief",
+    generation: { generationWarnings: [] },
+  });
+  assert.equal(result.source.status, "verified");
+  assert.notEqual(result.status, "needs-source-fix");
 });
 
 test("정책 보고서의 기존 치명 오류와 자동 published를 확인한다", () => {
