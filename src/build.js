@@ -682,6 +682,8 @@ a:hover{color:var(--color-primary-strong);}
 .vm-detail-body::-webkit-scrollbar-thumb{background:var(--color-line-strong);border-radius:8px;border:3px solid var(--color-background-normal);}
 .vm-plate-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .vm-progress{height:100%;background:var(--color-primary-normal);transition:width .3s ease;}
+.vm-reading-progress{height:3px;background:var(--color-material-base);overflow:hidden;}
+.vm-reading-progress-bar{height:100%;width:0;background:var(--color-primary-normal);transition:width .12s linear;}
 .vm-site-footer{margin-top:64px;border-top:2px solid var(--color-label-strong);padding:32px 0 12px;color:var(--color-label-alternative);}
 .vm-footer-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(150px,.7fr) minmax(240px,1fr);gap:34px 52px;align-items:start;}
 .vm-footer-brand{min-width:0;}
@@ -1370,6 +1372,7 @@ const APP_JS = String.raw`
     +'<button data-save="'+a.id+'" title="저장" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:'+saveColor(a.id)+';">'+BM.replace(/W/g,16)+'</button>'
     +'<button data-act="close" title="닫기" aria-label="기사 닫기" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--color-material-base);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>'
     +'</div></div>'
+    +'<div class="vm-reading-progress" role="progressbar" aria-label="기사 읽기 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0% 읽음"><div class="vm-reading-progress-bar"></div></div>'
     // body
     +'<div class="vm-detail-body" id="vm-db" style="overflow-y:auto;padding:30px 44px 20px;">'
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+(a.tag?'<span style="font-size:11px;font-weight:800;color:var(--color-primary-normal);">['+e(a.tag)+']</span>':'')+tag(a.isToday,17,10)+'</div>'
@@ -1473,6 +1476,8 @@ const APP_JS = String.raw`
     root.setAttribute('data-theme',S.theme);
     document.documentElement.setAttribute('data-theme',S.theme);
     root.innerHTML=h;
+    var progressBody=document.getElementById('vm-db');
+    if(progressBody){ progressBody.addEventListener('scroll',updateReadProgress,{passive:true}); updateReadProgress(); }
     if(S.openId&&S.dialogFocusPending){
       S.dialogFocusPending=false;
       setTimeout(function(){
@@ -1558,6 +1563,15 @@ const APP_JS = String.raw`
     if(history.state&&history.state.vmArticle){ history.back(); return; }
     if(location.hash){ try{ history.replaceState(history.state,'',location.pathname+location.search); }catch(e){} }
     if(S.openId){ S.openId=null; render(); }
+  }
+  function updateReadProgress(){
+    var db=document.getElementById('vm-db'), track=document.querySelector('.vm-reading-progress'), fill=document.querySelector('.vm-reading-progress-bar');
+    if(!db||!track||!fill) return;
+    var max=Math.max(0,db.scrollHeight-db.clientHeight);
+    var pct=max?Math.min(100,Math.round(db.scrollTop/max*100)):100;
+    fill.style.width=pct+'%';
+    track.setAttribute('aria-valuenow',String(pct));
+    track.setAttribute('aria-valuetext',pct+'% 읽음');
   }
   function focusArticleCard(id){
     if(!id) return;
