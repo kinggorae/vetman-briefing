@@ -1,6 +1,6 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-08-14T15:55:04.490Z
+- 실행 시각: 2026-08-14T16:44:30.615Z
 - 모드: write-draft
 - 소스/피드: 35/22
 - 수집 항목: 1051
@@ -8,105 +8,155 @@
 - exact duplicate: 181
 - 기존 기사 업데이트 후보: 41
 - 관련성 제외: 121
-- 기수집(seen) 제외: 176
-- 신규 가용 후보: 537
-- draft 후보: 90
-- 생성 완료: 85
-- 생성 실패 경고: 5
+- 기수집(seen) 제외: 240
+- 신규 가용 후보: 473
+- draft 후보: 140
+- 생성 완료: 130
+- 생성 실패 경고: 11
 - canonical 확인 시도: 0
-- 공식 canonical 확보: 60
-- unresolved source: 30
+- 공식 canonical 확보: 140
+- unresolved source: 0
 - relay sourceUrl: 0
 
 ## draft 후보
 
 - v1_2719dd62405aba8f · src-pubmed · verified · unique · Five cases of tremorgenic mycotoxicosis in dogs - clinical aspects and analytical methods.
 - v1_b5f21bf5db5567db · src-pubmed · verified · unique · Radiographic reference values for canine baculum length: association with body-weight category in dogs aged at least 1 year.
-- v1_70204e5d97d402fa · src-pubmed · verified · unique · Characterization of putative germline pathogenic variants in 27 candidate cancer-predisposing genes in 813 cats using a feline-specific multiplex targeted sequencing.
-- v1_2222fd387c76e7d6 · src-pubmed · verified · unique · Combination S100A1 and ARC gene therapy as a treatment for Duchenne muscular dystrophy cardiomyopathy.
-- v1_815bdd1a94a1ef95 · src-pubmed · verified · unique · Pediatric Anal Pruritus and Misdiagnosis: Dipylidium caninum in a Spanish Child with a Review of Reported Human Cases.
 - v1_924a92fd08df3b04 · src-pubmed · verified · unique · Advances in biomarker discovery for canine cognitive dysfunction: a comprehensive structured narrative review and future perspectives.
-- v1_85d009b610ff68da · src-pubmed · verified · unique · Longitudinal echocardiographic systolic changes in dogs receiving doxorubicin-based chemotherapy.
 - v1_2077a53ba410e391 · src-pubmed · verified · unique · Molecular survey of vector-borne pathogens in shelter dogs of Cyprus.
-- v1_4a2f788c38430dcb · src-pubmed · verified · unique · First report of gurltiosis in a domestic feline from Santa Catarina, Brazil.
 - v1_e15159158dd314b5 · src-pubmed · verified · unique · Temporary transarticular stabilization with locking compression plate for the treatment of traumatic glenohumeral luxation in 10 dogs.
 - v1_2c291de16899abc6 · src-pubmed · verified · unique · Nutritional management of feline chronic enteropathy with evolving dietary response and long-term stabilization.
-- v1_a1096e78d5f45090 · src-pubmed · verified · unique · Evaluating Feline Release Criteria Following 131 I Therapy for Hyperthyroidism.
 - v1_210f5bf07331fb43 · src-pubmed · verified · unique · Spatial distribution and cluster detection of zoonotic dog endoparasites in public parks from Gran Santiago, Chile.
 - v1_86cdd8ce06b8575a · src-pubmed · verified · unique · Broad permissiveness of mammalian nectin-4 orthologs for morbilliviruses: a notable exception in dolphin nectin-4.
 - v1_67587d72bf3dc25e · src-pubmed · verified · unique · Comparative analysis of intestinal parasites in companion and hunting domestic dogs and wild canids from Pennsylvania, USA from 2023 to 2024.
-- v1_cdaed745c9bd243c · src-pubmed · verified · unique · Postoperative body weight increase and surgical wound complications in soft tissue surgery: A retrospective study.
-- v1_30736638a9e00222 · src-pubmed · verified · unique · In vitro compatibility of type-B feline blood with canine blood of different DEA 1 phenotypes and with type-A feline blood.
 - v1_e0057d5748d2a413 · src-pubmed · verified · unique · Dystocia in cats under UK primary emergency veterinary care: epidemiology, clinical management and outcomes.
-- v1_55c38bd7d9a8a14a · src-pubmed · verified · unique · Effective ultrasonography protocol for investigating muscular structures of the canine dorsolateral hip region with comparative magnetic resonance imaging.
 - v1_3675ccb362d00ce5 · src-pubmed · verified · unique · Assessment of knowledge, attitudes, and preventive practices for equine Endoparasite control among livestock owners in South Gondar Zone, Northwest Ethiopia: A community-based cross-sectional study.
-- v1_050a80724521266e · src-pubmed · verified · unique · PasteurizedMucreduces high-caloric diet-induced weight gain and alters bile acid and inflammatory profiles in dogs.
-- v1_13f29f513a8791b6 · src-pubmed · verified · unique · Structure and dynamics of confined water in amyloid protein fibril nanochannels.
-- v1_0f681b29392edd0e · src-pubmed · verified · unique · Evolutionary history and life-history traits influence cause-specific mortality in domestic dogs.
-- v1_fc4c07c27d16d880 · src-pubmed · verified · unique · Biological Evaluation, Molecular Docking, and in Ovo Hatchability Assessment of Selected Mannich-Type 1,2,4-Triazol-5-one Derivatives.
 - v1_d0a56db7ec2d8b82 · src-pubmed · verified · unique · Lack of leishmania spp. detection in a molecular survey of high-risk domestic cats from the southcentral USA.
 - v1_32f2fc3aded7a27c · src-pubmed · verified · unique · Preliminary Analysis of CpG, CHG and CHH Methylation in the Mitochondrial Control Region of Dogs With Malignant Mammary Gland Tumours.
-- v1_2deb4afb52eb2e79 · src-pubmed · verified · unique · Intracranial abscess and otitis interna treated by temporal burr-hole craniotomy and ventral bulla osteotomy in a Maine coon cat.
 - v1_2b34b6dd5b7f8d4b · src-pubmed · verified · unique · An evaluation of osteoarthrosis in specific anatomic locations of the canine stifle joint treated with tibial plateau leveling osteotomy and tibial tuberosity advancement.
-- v1_af0c15f21b37fc0e · src-pubmed · verified · unique · Evaluation of postoperative analgesia with perioperative electroacupuncture in clinical dog patients undergoing surgery for cranial cruciate ligament rupture (Tibial Tuberosity Advancement).
-- v1_64d4e594c6af159f · src-pubmed · verified · unique · Canine-derived Lactobacillus acidophilus modulates Th2-driven allergic inflammation via IL-10-mediated immune regulation in murine models.
-- v1_45a099e7de36f288 · src-pubmed · verified · unique · Keeping an eye on pain: Characterization of pain behaviours in cats undergoing ophthalmic surgery.
 - v1_4a5bac6923a17363 · src-pubmed · verified · unique · High prevalence and cross-species transmission potential of Entamoeba gingivalis and Trichomonas tenax in humans, dogs, and cats in Guangxi, China.
-- v1_a1cc94fa1f590854 · src-pubmed · verified · unique · Pufferfish exposure and presumed tetrodotoxicosis in Australian dogs: 372 cases (2007-2018).
 - v1_a014b3426aa38a55 · src-pubmed · verified · unique · Association between the natural bobtail phenotype and lumbosacral transitional vertebra in Brittany dogs and Danish-Swedish Farmdogs.
-- v1_fc703a526ac8ab4c · src-pubmed · verified · unique · Probable sepsis-associated encephalopathy as a component of multiple organ dysfunction syndrome in a cat with pyothorax.
 - v1_4ab84434bc6cd1b0 · src-pubmed · verified · unique · Effects and safety analysis of diets with different Omega-3:Omega-6 ratios on postoperative recovery indicators in cats with feline chronic gingivostomatitis (FCGS).
-- v1_3243da147f2c8b28 · src-pubmed · verified · unique · Prevalence and epidemiologic patterns of feline parasitism detected by fecal examination in the United States, 2023.
 - v1_8a420f87e9a80213 · src-pubmed · verified · unique · Exploratory associations between quantitative multiparametric testicular ultrasound and semen quality in dogs.
-- v1_b20855a12238e868 · src-pubmed · verified · unique · Brain mineral concentrations in canine cognitive dysfunction.
-- v1_f4012be9169b7580 · src-veterinary-record-case-reports · unresolved · unique · Diet‐associated thyrotoxicosis in two dogs: Clinical, hormonal and imaging findings before and after dietary modification
-- v1_4162b1dd9248b73b · src-pubmed · verified · unique · Functional and Structural Characterization of a Large Animal Model of RDH5-Associated Retinopathy.
-- v1_3141822eb6c9b6ab · src-veterinary-medicine-and-science · unresolved · unique · Diet‐Induced Bloat in Confiscated Capped Langurs (Trachypithecus pileatus): Clinical Management and Conservation Implications
 - v1_3fc4e0d3750fb221 · src-pubmed · verified · unique · SOAT1 Nonsense Variant in a Cat With Sebaceous Gland Dysplasia.
-- v1_6684601392f01444 · src-pubmed · verified · unique · Influence of serum chloride concentrations on the renin-angiotensin-aldosterone system in dogs with congestive heart failure.
-- v1_a220478eb6580bc4 · src-pubmed · verified · unique · A NECAP1 Nonsense Variant is Associated With Leukoencephalomyelopathy With Oligodendroglial Dysplasia in a Belgian Malinois With Spinocerebellar Ataxia.
-- v1_4947fc7cfd749ef3 · src-pubmed · verified · unique · The role of muscle forces on rotational and cranio-caudal stability in the intact and CCL-deficient stifle: An ex vivo biomechanical study.
-- v1_7d77699515b9200c · src-pubmed · verified · unique · Comparison of Long vs. Short Concave Neck in One-Piece Implants Inserted 1&#x2009;mm Subcrestally: A Pre-Clinical In&#xa0;Vivo Study.
 - v1_09e2c10209e11ac1 · src-pubmed · verified · unique · Effect of Apical Micro-Intervention on Pulp Vitality and Periodontal Regeneration Following Tooth Autotransplantation: A Clinical Outcome Study.
-- v1_e220bfee0683d7eb · src-pubmed · verified · unique · Deep learning-supported image quantification of epithelial cell shapes and its application to polycystic kidney disease.
-- v1_5a4d82c5d7fa2c4a · src-pubmed · verified · unique · Morning Elevation in Insulin Enhances Afternoon Hepatic Glucose Disposal in Dogs by Increasing Both Insulin Signaling and Glucose Action.
 - v1_14a9af18de011e82 · src-pubmed · verified · unique · Necrohemorrhagic Pneumonia From Extraintestinal Pathogenic Escherichia coli (ExPEC) in Federal Government-Owned Dogs: A Case Series.
 - v1_381988435b0abd89 · src-pubmed · verified · unique · Ultrasound-guided bilateral quadratus lumborum block in dogs undergoing abdominal surgery: A retrospective study.
-- v1_2da8cd9f5a49fa40 · src-pubmed · verified · unique · Oral use of anxiolytic, sedative, and anaesthetic medications in domestic cats (Felis catus): A scoping review.
 - v1_3a6d556a986a6374 · src-pubmed · verified · unique · Regional airway fat distribution and its association with brachycephalic obstructive airway syndrome severity in pugs with varying body condition.
 - v1_3d79aa992cfc0423 · src-pubmed · verified · unique · Evaluation of a vaginal and vestibular sampling technique and microbiological study of the vaginal and vestibular flora in female cats, healthy and with reproductive tract disorders.
 - v1_0f3d4a8a499dde38 · src-pubmed · verified · unique · First Molecular Survey of Equine Adenovirus Type 1 Infection Among Horses in Poland.
 - v1_c184ac4c70a85e46 · src-pubmed · verified · unique · Characterization of Lipizzan Horse Population From Lipica Stud Using Molecular and Pedigree Data.
-- v1_3ea05fe9122ed656 · src-veterinary-medicine-and-science · unresolved · unique · Characterization of Phylogroups, Virulence Factors and Antimicrobial Resistance in Canine Pyometra‐associated Escherichia coli
-- v1_552f6d341567eb8f · src-pubmed · verified · unique · Quadruple co-infection with Mycobacterium tuberculosis complex and M. kansasii in a chronically immunosuppressed cat.
-- v1_39518b5e14b2b80f · src-pubmed · verified · unique · High-Glucose Microenvironment Promotes Canine Osteosarcoma Cell Stemness via the HBP/O-GlcNAc Signaling Axis.
-- v1_8a8b77fec89deb53 · src-veterinary-medicine-and-science · unresolved · unique · Antimicrobial Resistance Among Selected Zoonotic Bacteria: A Case Study of Tortoises and Birds at the Uganda Wildlife Conservation Education Centre
-- v1_9a9375c15661be9b · src-veterinary-medicine-and-science · unresolved · unique · Quantifying the Equine Pain Response to Paracetamol Administration in Horses With Chronic Lameness Already Receiving Non‐Steroidal Anti‐Inflammatories
-- v1_65916a48ee721bb8 · src-veterinary-medicine-and-science · unresolved · unique · Macroanatomical, Histological, Histochemical and Ultrastructural Characterisation of the Kidney in the Aksaray Malakli Dog: First Comprehensive Renal Morphological Study of the Breed
-- v1_5d73a8be05651b3a · src-veterinary-record-case-reports · unresolved · unique · Clinical outcome, imaging and histopathological findings of liver cirrhosis in dogs
-- v1_d5587d7d67da764d · src-veterinary-clinical-pathology · unresolved · unique · Laboratory Changes Supporting a Diagnosis of Immune‐Mediated Anemia in Cats With Initial Suspicion of Progressive Feline Leukemia Virus
-- v1_8bd480f28e1e3e73 · src-veterinary-medicine-and-science · unresolved · unique · Nanotechnology‐Based Immunostimulants in Aquaculture: Mechanisms, Advances and Practical Applications
-- v1_1af93041d30b1127 · src-veterinary-medicine-and-science · unresolved · unique · Prevalence, Genetic Diversity, and Zoonotic Transmission Potential of Cryptosporidium spp. in Snakes: A Systematic Review and Meta‐Analysis
-- v1_e1e2a8c77cb97337 · src-veterinary-clinical-pathology · unresolved · unique · Agreement of Hematologic Measurements Between Jugular and Coccygeal Puncture Sites in Cattle
-- v1_3458360d17e5f1f4 · src-veterinary-and-comparative-oncology · unresolved · unique · Canine Oral Melanoma as a Translational Model for Human Mucosal Melanoma: Molecular Architecture, Immune Landscape, and Therapeutic Implications
-- v1_f3f78c9e2894ca95 · src-veterinary-and-comparative-oncology · unresolved · unique · Clinical Outcome and Histopathologic Assessment of Canine Perivulvar Mast Cell Tumours
-- v1_fe789b25c7e4bdfe · src-pubmed · verified · unique · The presence of a hypercoagulable state in cats with cardiomyopathies with or without thromboembolic disease: A scoping review.
-- v1_a2e6bb441bd75388 · src-veterinary-medicine-and-science · unresolved · unique · Antibacterial Effect of the In Vitro Interaction Between Clotrimazole and Chlorhexidine Against Staphylococcus pseudintermedius With Known Resistance Patterns Isolated From Canine Pyoderma
-- v1_47963e08ea562aed · src-pubmed · verified · unique · Canine scent detection: an analytical chemistry perspective.
-- v1_f36b042f7ebbf08e · src-pubmed · verified · unique · Health risk assessment of enrofloxacin, oxytetracycline, and sulfadimidine residues in broiler chicken carcasses marketed in Mit Ghamr, Egypt.
-- v1_ff4be16075b0f3c7 · src-veterinary-record-case-reports · unresolved · unique · Contracture‐like fixed abnormal pelvic limb posture as a complication in intervertebral disc extrusion in two French bulldogs
-- v1_4df3f8c5b5977dd9 · src-veterinary-and-comparative-oncology · unresolved · unique · Comparative Response of Canine and Human Osteosarcoma Tumour Cell Lines to Molecularly Targeted Anticancer Agents at Clinically Relevant Exposures With Analysis of Genomic Biomarkers
-- v1_90d140438287d72b · src-veterinary-and-comparative-oncology · unresolved · unique · Identification of Novel Therapeutic Agent Candidates Through High Throughput Screening With Chemical Library Based on Molecular Subclassification in Canine Histiocytic Sarcoma Cell Lines
-- v1_791d11963b4f38aa · src-veterinary-and-comparative-oncology · unresolved · unique · Transcriptomic and microRNA Profiling Suggest a Candidate RIPPLY1–cfa‐miR‐187 Relationship in Canine Mammary Gland Tumours From Dogs With Confirmed Metastasis
-- v1_0d84f9177bcb86d4 · src-veterinary-and-comparative-oncology · unresolved · unique · Cross‐Species Transcriptomic and Network Analysis of Human and Canine Diffuse Large B‐Cell Lymphoma Identifies a Conserved Replication–DNA Damage Module for Drug Repurposing
-- v1_d949aa5190eecb25 · src-veterinary-medicine-and-science · unresolved · unique · Beraprost Attenuates Starvation‐Induced Apoptosis and Protects Feline Endothelial Cells
-- v1_370feaf70f45dbfb · src-veterinary-medicine-and-science · unresolved · unique · Association Between Postoperative Pain and Inflammatory Biomarkers After Ovariohysterectomy in Dogs: A Pilot Study
-- v1_1b989070e8c026a4 · src-veterinary-clinical-pathology · unresolved · unique · What Is Your Diagnosis? Abdominal Wall Mass in a Dog
-- v1_776a40ed60910ecf · src-veterinary-medicine-and-science · unresolved · unique · Bibliometric Analysis of Artificial Intelligence Use in Small Animal Thoracic Radiography
-- v1_a1f63c26c73c43f6 · src-veterinary-medicine-and-science · unresolved · unique · Feeding and Husbandry Practices in Pet Ferrets (Mustela putorius furo): A Cross‐Sectional International Study
-- v1_3981747f619f111e · src-veterinary-medicine-and-science · unresolved · unique · Identification of Potential Vaccine Strains of Escherichia coli Isolates From Diarrhoeic Calves
-- v1_ed7d43bfc36fd51e · src-veterinary-medicine-and-science · unresolved · unique · Isolation, Associated Factors and Antimicrobial Susceptibility Patterns of Salmonella spp. in Human Stool, Eggshell Swab and Feces of Egg‐Laying Hens in Mekelle and Southeast Zones of Tigrai, Ethiopia
-- v1_66b11299dd5a2294 · src-veterinary-record-case-reports · unresolved · unique · Glycogen storage disease type II (Pompe disease) presenting with peripheral lymphadenopathy in a juvenile domestic shorthair cat
-- v1_4894a3e93bc824d9 · src-veterinary-record-case-reports · unresolved · unique · Effective management of oral eosinophilic granuloma in two dogs using oclacitinib
-- v1_e4098aeddd805819 · src-veterinary-record-case-reports · unresolved · unique · Colonic perforation and pneumoperitoneum secondary to meloxicam administration in a dog
-- v1_375521ebb9669ce8 · src-veterinary-medicine-and-science · unresolved · unique · Characterizing the Milk Microbiome in Subclinical Mastitis: A Pilot 16S rRNA‐Based Study in Cattle and Water Buffalo
+- v1_126d493069eb2c80 · src-veterinary-medicine-and-science · verified · unique · Multiple Intramedullary and Skewer Pin Fixation for Complex Humeral and Femoral Fractures in Cats and Small‐Breed Dogs
+- v1_301b3e5b2ea5def2 · src-veterinary-medicine-and-science · verified · unique · Development and Evaluation of a Colourimetric LAMP Assay for Field Detection of Erysipelothrix rhusiopathiae in Poultry Using a Rapid DNA Extraction Method
+- v1_3f2285b396a79fbd · src-veterinary-medicine-and-science · verified · unique · Effects of Exercise on Ocular Parameters and Oxidative Stress Biomarkers in Saliva and Tear Fluid of Horses
+- v1_3271fa9e16226398 · src-veterinary-and-comparative-oncology · verified · unique · Expression of Topoisomerase II Alpha in Canine Colorectal Polyps, Adenomas and Adenocarcinomas
+- v1_3574909205e104c1 · src-veterinary-record-case-reports · verified · unique · Primary rib haemangiosarcoma in two dogs
+- v1_5e535315a9c92e1e · src-pubmed · verified · unique · A previously uncharacterized R881S variant of transporter NBCe1 exhibits intracellular retention and virtually no plasma membrane expression.
+- v1_95f2d1bcd2733c42 · src-veterinary-ophthalmology · verified · unique · Sequential Photodynamic Therapy and Electrochemotherapy for Bilateral Palpebral Squamous Cell Carcinoma in a Cat: A Case Report
+- v1_1461646fc1658ab8 · src-pubmed · verified · unique · Multimodality imaging characteristics and surgical management of a biliary cystadenoma in a cat.
+- v1_b23b1e760e95176a · src-veterinary-record-case-reports · verified · unique · Extragonadal mature cystic teratoma in a cat
+- v1_c86d0e9ebd4663f9 · src-veterinary-record-case-reports · verified · unique · Delayed intestinal impaction following functional end‐to‐end stapled jejunal anastomosis in a dog
+- v1_81287db6bd906101 · src-veterinary-record-case-reports · verified · unique · Venous vascular anomaly and phleboliths in a 2‐year‐old German shepherd dog: A presumed case of Servelle–Martorell syndrome
+- v1_37a725da676c814b · src-veterinary-record-case-reports · verified · unique · Human intravenous immunoglobulin as salvage therapy in a dog with refractory precursor‐targeted immune‐mediated anaemia
+- v1_67a61241366ba4ee · src-veterinary-record-case-reports · verified · unique · Thalidomide treatment of a dog with myelofibrosis
+- v1_3801ff814dbbb7ca · src-veterinary-record-case-reports · verified · unique · Successful conservative management of suspected primary septic peritonitis in a cat
+- v1_c8651a7b26ef957e · src-veterinary-record-case-reports · verified · unique · Successful treatment of common bile duct obstruction in a cat using modified ‘drop‐in’ technique for bile duct transposition (choledochoduodenostomy)
+- v1_6bef1061a9946f40 · src-veterinary-record-case-reports · verified · unique · Acute pancreatitis secondary to a massive falciform ligament lipoma in a dog: Surgical management and outcome
+- v1_c23e76078600d399 · src-veterinary-and-comparative-oncology · verified · unique · Surgical Margins Required for the Complete Excision of Canine Oral Melanomas
+- v1_51ab06d164c82e05 · src-veterinary-and-comparative-oncology · verified · unique · Retrospective Analysis of Survival and Adverse Effects Associated With Stereotactic Body Radiation Therapy in 12 Dogs With Hepatocellular Carcinoma
+- v1_c374d44ef5c2b0b8 · src-veterinary-and-comparative-oncology · verified · unique · The Definitive‐Intent 10‐Fraction Radiotherapy Protocol (‘The Zurich Protocol’) Yields Lasting Tumour Control and Survival in Dogs With Intracranial Meningiomas
+- v1_54925eade15153a0 · src-veterinary-and-comparative-oncology · verified · unique · Use of the IlluminOss Photodynamic Bone Stabilisation System Following Stereotactic Body Radiation Therapy for Limb‐Sparing in Six Dogs With Presumptive Appendicular Osteosarcoma
+- v1_5fe053284cda929a · src-veterinary-and-comparative-oncology · verified · unique · Raman Spectroscopy for Differentiating High‐ and Low‐Grade Canine Cutaneous Mast Cell Tumours
+- v1_facb02d7571682aa · src-veterinary-and-comparative-oncology · verified · unique · Enhancing EGFR Inhibition: Monensin and Erlotinib Synergize to Eliminate Cancer Stem Cells in Canine Mammary Tumours
+- v1_7df02d1caf716e2b · src-veterinary-and-comparative-oncology · verified · unique · Proteasome Inhibitor–Induced Cytotoxic Mechanisms in Canine Pulmonary Adenocarcinoma Cell Lines
+- v1_43d43c893f1f3397 · src-veterinary-and-comparative-oncology · verified · unique · Integrative Phosphoproteomic Profiling Reveals Stage‐Specific Signalling and Metabolism in Equine Melanocytic Neoplasm
+- v1_2fc7b278dcfff2e8 · src-veterinary-and-comparative-oncology · verified · unique · Cytokine‐Enhanced Vaccine as Surgery Adjuvant Treatment for Spontaneous Canine Melanoma: Comparison of Two Intralesional Procedures for Local Disease Control
+- v1_90e46dd530ea8a2c · src-veterinary-and-comparative-oncology · verified · unique · Comparison of Volumetric Modulated Arc Therapy and Fixed‐Field Intensity‐Modulated Radiotherapy for Canine Prostatic Carcinoma Using a 4.3 Gy × 10‐Fraction Protocol: A Dosimetric Planning Study
+- v1_b40d63e13663920b · src-veterinary-and-comparative-oncology · verified · unique · Prognostic Significance of the Tumour Microenvironment in Surgically Resected Canine Pulmonary Adenocarcinomas
+- v1_bfdd30792c2106e8 · src-veterinary-and-comparative-oncology · verified · unique · Messenger RNA From Canine Cytology Lymph Node Specimens Can Be Utilised for Gene Expression Profiling Using Digital RNA Counting
+- v1_9c45dc75afd0659b · src-veterinary-and-comparative-oncology · verified · unique · Cabazitaxel Demonstrates Potent Antitumour Activity Against Canine Large‐Cell Alimentary Lymphoma In Vitro and In Vivo
+- v1_03937edbaa89a947 · src-veterinary-and-comparative-oncology · verified · unique · Transcriptomic Profiling of Canine Mammary Tumours Reveals Significant Heterogeneity Between and Within Histological Classes
+- v1_5b36402919d5372c · src-pubmed · verified · unique · The Transcriptomic and Proteomic Molecular Signatures of Equine Multiple-System Neuropathy (Grass Sickness).
+- v1_35fbf6fd12f15b6f · src-veterinary-and-comparative-oncology · verified · unique · Differential Effects of Cobalt Chloride Preconditioning on Vasculogenic Mimicry‐Like Structure Formation in Two Canine Mammary Tumour Cell Lines
+- v1_90d43d2a22ecef5f · src-veterinary-medicine-and-science · verified · unique · Artificial Intelligence in Veterinary Neurology: Comparative Insights From Human Medicine and Cross‐Species Technology Transfer
+- v1_389a719519e64b60 · src-veterinary-medicine-and-science · verified · unique · Seroprevalence of Lumpy Skin Disease and Livestock Owners’ Knowledge, Attitudes and Practices in Selected Districts of Kazakhstan
+- v1_bda6aa7d71a8f3df · src-veterinary-ophthalmology · verified · unique · The Role of Trace Elements in the Formation of Feline Corneal Sequestra
+- v1_8d6fac80d1032f4e · src-veterinary-and-comparative-oncology · verified · unique · Fluvastatin Plus Dipyridamole Suppresses Canine Hemangiosarcoma Growth in Patient‐Derived Xenograft Models Through Lactate Dehydrogenase‐Associated Cholesterol/Lipid Metabolism
+- v1_9a1ba97e7ff75f03 · src-veterinary-medicine-and-science · verified · unique · Survey of Gastrointestinal Parasites of Farmed Pigs in Ghana
+- v1_34364edf2a953ab7 · src-veterinary-clinical-pathology · verified · unique · Reliability of Reagent Strips in Veterinary Medicine: A Critical Evaluation of pH and Urinary Density in Dogs using Statistical Modeling
+- v1_36c24ccaf9b2389e · src-veterinary-record-case-reports · verified · unique · Suspected biliopancreatic reflux identified during exploratory laparotomy in a cat
+- v1_e25ecc1a5e22b6d4 · src-veterinary-medicine-and-science · verified · unique · Effectiveness of Ginsenoside Rh2 Treatment in Mice Experimentally Infected With Cryptosporidium parvum
+- v1_90c66ea666335227 · src-veterinary-record-case-reports · verified · unique · Laryngotracheobronchoscopy in a chihuahua with brachycephalic obstructive airway syndrome (BOAS)
+- v1_495ef447b291187c · src-veterinary-record-case-reports · verified · unique · Multiple congenital anomalies in a neonatal goat kid: Atresia ani, rectovaginal fistula, renal fusion, ectopic ureter and sinus of Valsalva aneurysm
+- v1_69e2fecc270d02d4 · src-veterinary-record-case-reports · verified · unique · Horizontal right dorsolateral approach to ovariohysterectomy in a guinea pig (Cavia porcellus) with bilateral cystic ovarian disease
+- v1_80318a50a6038e66 · src-veterinary-medicine-and-science · verified · unique · Effects of Topical Administration of Bupivacaine HCl to the Ovarian Pedicle on Postoperative Pain, Antioxidant Enzyme Activity and Inflammatory Cytokines in Dogs Undergoing Laparoscopic Ovariectomy
+- v1_dff010a524e50790 · src-veterinary-medicine-and-science · verified · unique · Fermented Pangasius Catfish Waste Improves Energy Utilization and Nutrient Digestibility in Low‐Protein Diets for Indonesian Super Native Chickens
+- v1_e1f45f47a50f9323 · src-veterinary-medicine-and-science · verified · unique · Dose‐Dependent Effects of Clinoptilolite Supplementation on Sperm Quality and Oxidative Stress During Canine Semen Cryopreservation
+- v1_707788bc3880bc73 · src-veterinary-record · verified · unique · Single‐dose enflicoxib versus a 7‐day course of firocoxib for postoperative pain control in dogs undergoing orthopaedic surgery: A multicentre, randomised, masked, non‐inferiority study
+- v1_d1fe763e2bab3a26 · src-veterinary-dermatology · verified · unique · A Retrospective Comparison of Survival, Tumour Reduction and Relapse Outcomes Following Oclacitinib and CCNU Treatment in Dogs With Canine Epitheliotropic T‐Cell Lymphoma
+- v1_31f269b393f62aed · src-veterinary-record-case-reports · verified · unique · Suspected lymphoid leukosis visceral lymphoma with intestinal and ovarian involvement in a chicken
+- v1_02de2020bd90e2a5 · src-veterinary-record-case-reports · verified · unique · Idiopathic penile prolapse in a juvenile Nile crocodile (Crocodylus niloticus): A multimodal diagnostic investigation
+- v1_5748d9c585b9c4a0 · src-veterinary-dermatology · verified · unique · 2026 Selected Abstracts for the North American Veterinary Dermatology Forum 29 April – 2 May 2026 in Indianapolis, Indiana
+- v1_2d3c430a27bd78aa · src-veterinary-record-case-reports · verified · unique · Surgical management of post‐traumatic abdominal hernias in three rehabilitated microchiropteran (Vespertilionid) bats (Nyctalus noctula and Eptesicus serotinus)
+- v1_243f6dfb3ab26d3c · src-veterinary-medicine-and-science · verified · unique · The Effect of Using Different Probiotics on the Performance, Digestibility of Nutrients, Feces Score, Blood Parameters and Skeletal Indices of Suckling Holstein's Calves
+- v1_a3f8c83f25dafef5 · src-veterinary-medicine-and-science · verified · unique · Molecular Epidemiology of Peste des Petits Ruminants Virus Circulating in Fat‐Tailed Sheep in Bangladesh
+- v1_a046bfc622438735 · src-veterinary-medicine-and-science · verified · unique · Effects of Nano Zinc Oxide Supplementation on Oxidative Stress and Selected Metabolic Parameters During the Transition Period in Lacaune Ewes
+- v1_405b88208b91b2a5 · src-veterinary-medicine-and-science · verified · unique · Molecular and Serological Screening of West Nile and Usutu Virus in Birds and Humans: A Sentinel Study in Finland
+- v1_e8ce6e41eb07d0a4 · src-veterinary-and-comparative-oncology · verified · unique · Critical Questions in Genomic Diagnostics for Veterinary Oncology: What We Need to Know
+- v1_9f3b9faafed108cb · src-veterinary-and-comparative-oncology · verified · unique · Chemical Exposures, DNA Methylation and Whole Blood DNA Damage in Pet Golden Retrievers
+- v1_f2f64bdc07c21eb1 · src-veterinary-clinical-pathology · verified · unique · Hemoglobin Globules: Now You See Them… Now You Don't?
+- v1_4c8f4971a9669df3 · src-veterinary-ophthalmology · verified · unique · Outcomes of Ahmed Glaucoma Valve Placement in Client‐Owned Rabbits With Refractory Glaucoma
+- v1_5ec0532ea7294aae · src-veterinary-ophthalmology · verified · unique · Sustained Tear Film Exposure After Parenteral Cefovecin Administration in Dogs: Pharmacokinetics and Relevance to Canine Bacterial Keratitis
+- v1_21d2682939fe910b · src-veterinary-medicine-and-science · verified · unique · Molecular Detection of Anaplasma spp. in Horses From Golestan Province, Northern Iran
+- v1_805410cf9c0d01df · src-veterinary-record-case-reports · verified · unique · Iatrogenic hyperthyroidism associated with hypocobalaminaemia in a dog
+- v1_8e5f5b660b5ffc7a · src-veterinary-record-case-reports · verified · unique · Cervical ectopia cordis in a Whitebred Shorthorn cross calf
+- v1_32becf36ca24292a · src-veterinary-ophthalmology · verified · unique · Complications Following Nictitating Membrane Resection in Horses: 92 Eyes (2015–2024)
+- v1_0fe2fe3709b0d89d · src-veterinary-ophthalmology · verified · unique · Breed‐Specific Relationship Between Rebound Tonometers (TonoVet and TonoVet Plus) in Labrador Retrievers
+- v1_0f2bd6c0929dcbde · src-veterinary-record-case-reports · verified · unique · Pyometra in an African wild dog (Lycaon pictus)
+- v1_4af04157964a507e · src-veterinary-record-case-reports · verified · unique · Effective treatment of acute febrile sterile neutrophilic dermatosis with oclacitinib following prednisolone dose tapering in a dog
+- v1_1d36327e7e28b335 · src-veterinary-record-case-reports · verified · unique · Management of L7 osteochondrosis with secondary lumbosacral degenerative stenosis in a dog by vertebral distraction and dorsal fusion
+- v1_08240401cd379dfe · src-veterinary-record-case-reports · verified · unique · Successful diagnosis and treatment of nasal transmissible venereal tumour in a dog
+- v1_ebcba0b91ab53d3a · src-veterinary-dermatology · verified · unique · Clinical and Immunological Responses to Dermatophagoides farinae Allergen Immunotherapy in Dogs With Atopic Dermatitis
+- v1_a14654eef0ce4b04 · src-veterinary-medicine-and-science · verified · unique · Silver and Copper Nanoparticles as Non‐Antibiotic Therapy for Postpartum Endometritis in Dairy Cows
+- v1_39aa3ad5a29fc349 · src-veterinary-medicine-and-science · verified · unique · Mito‐TEMPO Improves Post‐Thaw Quality and Fertilizing Capacity of Rooster Semen Cryopreserved in Beltsville Extender
+- v1_98a33b12c0dcfa58 · src-veterinary-medicine-and-science · verified · unique · Harnessing of Tomato (Solanum lycopersicum) Pomace Powder on Growth Response and Haematological Indices of Sonali Chickens
+- v1_038193e2db1102df · src-veterinary-medicine-and-science · verified · unique · Drug Resistance Assessment of Commonly Used Anthelmintics, and Their Combination Effect in Naturally Infected Sheep: The Case of Kaffa Zone, Southwestern Ethiopia
+- v1_874cb1c2c0493c13 · src-veterinary-medicine-and-science · verified · unique · Household‐Based Epidemiology of Bovine Ixodid Tick Infestation and Associated Risk Factors in Endamehoni, Raya‐Azebo and Enderta Districts, Tigray Region, Northern Ethiopia
+- v1_d59ca3b941467722 · src-veterinary-medicine-and-science · verified · unique · Effects of Lactobacillus Alone and in Combination With Saccharomyces as Alternatives to Antibiotics on Performance and Immunity in Laying Hens
+- v1_2edb7ce5f55cb38a · src-veterinary-medicine-and-science · verified · unique · Estimating the Economic Impact of Neonatal Calf Diarrhea Agents With Decision Tree Analysis and the Monte Carlo Simulation Model
+- v1_bec86f7789ad26a6 · src-veterinary-medicine-and-science · verified · unique · The Interplay Between Trace Elements, Morphometry, and Semen Quality in Bucks During the Breeding Season
+- v1_da836a8b62b53e7a · src-veterinary-medicine-and-science · verified · unique · Prevalence of Mastitis in Cows and Raw Milk Microbial Contamination in Selected Districts, Tanzania
+- v1_fb7aeabd16b18c72 · src-veterinary-medicine-and-science · verified · unique · Assessment on Available Livestock Feed Resources and Feeding System in Korahey Zone, Somali Region, Ethiopia
+- v1_8b365338459606d9 · src-veterinary-medicine-and-science · verified · unique · Graded Levels of Dietary Valine in Protein‐Restricted Diets: Effects on Reproductive Performance and Tissue Morphology in Laying Japanese Quail
+- v1_53085ab5eb7f6bc0 · src-veterinary-record-case-reports · verified · unique · Flashing third eyelids and other involuntary facial movements in tetanus in four dogs
+- v1_75dc2afee2100cca · src-veterinary-record-case-reports · verified · unique · Ultrasound‐guided removal of parotid ductal foreign bodies responsible for parotid sialadenitis in three dogs
+- v1_daa3323929530137 · src-veterinary-record-case-reports · verified · unique · Surgical treatment of ventromedial strabismus following trauma in a dog
+- v1_d4af69b15df39398 · src-veterinary-clinical-pathology · verified · unique · Stability of Cerebrospinal Fluid Proteins in Dogs and Cats: Effects of Refrigeration and Freezing Over Time
+- v1_4e6b64cc07a8659d · src-veterinary-clinical-pathology · verified · unique · Comparison of Plasma Protein Fractions and Electrophoretograms in Non‐Laying and Egg‐Laying Domestic Chickens
+- v1_544aeb7faf682088 · src-veterinary-medicine-and-science · verified · unique · Exploring Neutrophil Extracellular Traps in Canine Soft Tissue Sarcomas: A Preliminary Study With Translational Insights
+- v1_f125bf763063c15c · src-veterinary-clinical-pathology · verified · unique · Performance of a Veterinary Portable Glucose Meter for Blood Glucose Concentration Measurement in Red‐Eared Slider Turtles (Trachemys scripta elegans)
+- v1_f7cf03ba114919ef · src-veterinary-medicine-and-science · verified · unique · Evaluation of a Wearable Device for Cardiorespiratory Monitoring in Healthy Anaesthetised Cats
+- v1_a2b779929fe99060 · src-veterinary-ophthalmology · verified · unique · Effects of Topical Omidenepag Isopropyl on Intraocular Pressure and Pupil Diameter in Normal Dogs
+- v1_5c83de245e57cbe5 · src-veterinary-record · verified · unique · Expectations of dog and cat owners when dealing with veterinary errors and the emotional impact of such errors
+- v1_4417e9a04b90840d · src-veterinary-ophthalmology · verified · unique · Morphological and Biomechanical Characterization of Amniotic Membranes Across Species: Equine, Canine, Porcine, Ovine, and Human Samples—A Pilot Study
+- v1_20328dd18286c38a · src-pubmed · verified · unique · Detection of H5N1 HPAIV Clade 2.3.4.4b Avian Influenza Virus in Backyard Chickens in Costa Rica.
+- v1_e6c0a0781de347dd · src-veterinary-radiology-ultrasound-the-official-journal-of- · verified · unique · Imaging Characteristics of Pylorogastric, Duodenogastric, and True‐Gastrogastric Intussusception in 25 Dogs and One Cat
+- v1_d4fcb3d2811ad7dc · src-pubmed · verified · unique · Apoptosis inhibitor of macrophage (AIM/CD5L) as a potential immunomodulator in feline injection-site sarcoma: a hypothesis on tumor-macrophage interactions.
+- v1_0faded3f5eeec10a · src-pubmed · verified · unique · Dog ownership and healthy brain aging: a pilot study.
+- v1_25a6c06509b41fc8 · src-veterinary-medicine-and-science · verified · unique · Primary Peritoneal Perivesical Hemangiosarcoma in 16 Dogs (2020–2024)
+- v1_dbec1e3da588bb9f · src-veterinary-medicine-and-science · verified · unique · Survey of Smallholder Dairy Cattle Farming System and Antibiotic Residues in Raw Cow's Milk in Bagamoyo District, Tanzania
+- v1_e9bcfaa8bb38cd2f · src-veterinary-medicine-and-science · verified · unique · Seroprevalence and Presumed Bovine Leukaemia Virus and Coxiella burnetii Coinfections in Three Dairy Cattle Herds From the Al Ain Region, United Arab Emirates
+- v1_5b880a327c7950d9 · src-veterinary-record-case-reports · verified · unique · Pituitary abscess syndrome in a greater kudu (Tragelaphus strepsiceros)
+- v1_517846ea5835376c · src-veterinary-radiology-ultrasound-the-official-journal-of- · verified · unique · Patient Dimensions From a Single CT Image Provide a Clinically Practical and Accurate Method for Dose Estimation in Canine Abdominal CT Imaging
+- v1_a160b77989b4fa41 · src-veterinary-clinical-pathology · verified · unique · Cytologic Characteristics of the Feline Ovary at Different Sexual Stages
+- v1_c2d16f80f71fb6c1 · src-veterinary-dermatology · verified · unique · A Novel Veterinary Molecular Multiplex Microarray Serological Allergen Test (Pet Allergy Xplorer; Nextmune) Versus Conventional Extract‐Based Serological (Idexx; Stallergenes Greer Laboratories) Versus Intradermal Allergen Testing in 59 Dogs With Atopic Dermatitis: Evaluation of Agreement Between Allergy Testing Platforms
+- v1_80c0df014db03de8 · src-veterinary-dermatology · verified · unique · Associations Between Otic Cytological Findings and Clinical Severity by Pathogen Group in Canine Otitis Externa: A Retrospective Study of 318 Cases
+- v1_983290a7929e31db · src-veterinary-dermatology · verified · unique · Symmetrical Lupoid Onychodystrophy in Review: Lessons Learned From 31 Cases
+- v1_ace41825ea611066 · src-veterinary-clinical-pathology · verified · unique · What Is Your Diagnosis? Lymph Node Aspirate From a Dog
+- v1_5bbe124a40e3c551 · src-veterinary-ophthalmology · verified · unique · Visual Axis Opacification After Canine Cataract Surgery Combined With Posterior Continuous Curvilinear Capsulorhexis
+- v1_e0d2b4612aaec14f · src-veterinary-record · verified · unique · Interobserver agreement when using a four‐point mobility scoring system to score dairy cattle from video footage
+- v1_e64946a3c5474f15 · src-veterinary-record · verified · unique · Feasibility and acceptability of meticillin‐resistant Staphylococcus aureus biosecurity measures in equine facilities: A cross‐sectional study
+- v1_cd2f3b71aa2c4b25 · src-veterinary-record · verified · unique · Concerns over withdrawal of cattle lungworm vaccine
+- v1_512adbd5ef0b7016 · src-veterinary-record · verified · unique · Cat owners sought for antibiotic use survey
+- v1_fc7fd8b4dee57d7b · src-veterinary-record · verified · unique · Medicines update: June 2026
+- v1_823e6ac1fce8513f · src-veterinary-record · verified · unique · Selected highlights from other journals

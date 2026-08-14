@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-14T15:55:53.192Z",
+  "generatedAt": "2026-08-14T16:45:19.945Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 767,
-    "articles": 680,
+    "htmlPages": 828,
+    "articles": 740,
     "index": 187,
-    "noindex": 493,
+    "noindex": 553,
     "sitemap": 233,
     "newsSitemap": 1,
     "rssItems": 100,
@@ -17,7 +17,7 @@
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 234697,
+    "homepageBytes": 321146,
     "searchSizes": [
       {
         "file": "search.json",
@@ -40,7 +40,7 @@
         "bytes": 13343
       }
     ],
-    "articleBytes": 13553589,
+    "articleBytes": 14640466,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -51,11 +51,11 @@
   "indexPolicy": {
     "previousIndex": 318,
     "currentIndex": 187,
-    "currentNoindex": 493,
+    "currentNoindex": 553,
     "delta": -131,
     "reasonCounts": {
-      "build-policy": 117,
-      "brief-tier": 299,
+      "build-policy": 131,
+      "brief-tier": 345,
       "brief-too-short": 49,
       "source-relay": 39,
       "internal-ascii": 17,
@@ -295,11 +295,11 @@
       ],
       "noindex": [
         {
-          "date": "2026-08-14",
-          "id": "v1_0c31832fcfdc67fb",
-          "title": "개와 함께 자라면 영아 호흡기 감염 줄어든다? 핀란드 연구",
+          "date": "2026-08-15",
+          "id": "v1_2719dd62405aba8f",
+          "title": "개에서 떨림성 곰팡이 독소 중독 5례 – 임상소견 및 분석법",
           "indexable": false,
-          "tier": "analysis",
+          "tier": "evidence",
           "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
@@ -308,11 +308,11 @@
           ]
         },
         {
-          "date": "2026-08-14",
-          "id": "v1_1a9219802a02554a",
-          "title": "유전체 편집 강아지, 강아지 알레르기 해결할 수 있을까",
+          "date": "2026-08-15",
+          "id": "v1_924a92fd08df3b04",
+          "title": "개 인지장애 생체표지자 연구 검토…NfL이 가장 유력",
           "indexable": false,
-          "tier": "analysis",
+          "tier": "evidence",
           "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
@@ -321,11 +321,11 @@
           ]
         },
         {
-          "date": "2026-08-14",
-          "id": "v1_0dc365b9c54d3d29",
-          "title": "개 고관절 탈구 회복을 위한 새로운 힙 슬링, 연구 통해 효과 검증",
+          "date": "2026-08-15",
+          "id": "v1_2077a53ba410e391",
+          "title": "키프로스 보호소 개에서 벡터매개 병원체 높은 감염률",
           "indexable": false,
-          "tier": "analysis",
+          "tier": "evidence",
           "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
@@ -334,9 +334,126 @@
           ]
         },
         {
-          "date": "2026-08-14",
-          "id": "v1_479ea6f2bc404b7f",
-          "title": "가나 강아지·개 소유자 SARS-CoV-2 감염 실태 조사",
+          "date": "2026-08-15",
+          "id": "v1_2c291de16899abc6",
+          "title": "고단백 저탄수화물 식이가 고양이 만성 장염과 당뇨를 동시에 관리할 수 있다",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_67587d72bf3dc25e",
+          "title": "미국 펜실베이니아 주 가정·사냥 개와 야생 개과 동물의 장내 기생충 유병률 비교",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_210f5bf07331fb43",
+          "title": "칠레 산티아고 도시 공원의 개 기생충 분포와 공간 군집 분석",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 4,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_3675ccb362d00ce5",
+          "title": "에티오피ia 말 기생충 관리, 교육·연령이 관건",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_d0a56db7ec2d8b82",
+          "title": "미국 남중부 고위험 고양이 리슈만 원충 감 조사 결과",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_4a5bac6923a17363",
+          "title": "구강 원생동물 인간-반려동물 공존감염 실태 및 동물매개 감염 가능성",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_a014b3426aa38a55",
+          "title": "브리타니 강아지에서 자연 꼬리 짧음과 요추천추 이행추간판의 연관성",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_4ab84434bc6cd1b0",
+          "title": "고양이 구강염 수술 후 회복, 오메가3:6 비율이 결정한다",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_8a420f87e9a80213",
+          "title": "개 고환 초음파 경직도와 정자 질 상관관계 규명",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_f4012be9169b7580",
+          "title": "개 두 마리에서 발견된 식이성 갑상선과다증",
           "indexable": false,
           "tier": "brief",
           "clinicalRisk": "medium",
@@ -347,22 +464,9 @@
           ]
         },
         {
-          "date": "2026-08-14",
-          "id": "v1_ed170fe6fb65adf1",
-          "title": "수의사 워드렐 퀴즈",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_bea839b7ab265b8e",
-          "title": "고양이 심장 비대증, 집에서 60초 호흡수 측정으로 관리",
+          "date": "2026-08-15",
+          "id": "v1_3141822eb6c9b6ab",
+          "title": "머리통가면원숭이의 식이성 복부팽만 임상 관리",
           "indexable": false,
           "tier": "brief",
           "clinicalRisk": "medium",
@@ -373,22 +477,48 @@
           ]
         },
         {
-          "date": "2026-08-14",
-          "id": "v1_f2dedd685ca1545c",
-          "title": "자가 조제한 사료 급이 개에서 발생한 요오드 결핍성 갑상선기능저하증",
+          "date": "2026-08-15",
+          "id": "v1_3fc4e0d3750fb221",
+          "title": "고양이 유선 이형성을 유발하는 SOAT1 유전자 변이 확인",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_14a9af18de011e82",
+          "title": "정부 소유 개 최초 보고된 ExPEC 관련 괴사성 폐렴",
           "indexable": false,
           "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
           "qualityIssues": [],
           "reasons": [
             "brief-tier"
           ]
         },
         {
-          "date": "2026-08-14",
-          "id": "v1_bdb58d9a59d0e2ca",
-          "title": "Zoetis, 2026년 전망 하향…미국 애완동물 진료",
+          "date": "2026-08-15",
+          "id": "v1_0f3d4a8a499dde38",
+          "title": "폴란드 말 농장서의 말 아데노바이러스 1형 첫 분자 역학 조사",
+          "indexable": false,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-15",
+          "id": "v1_3ea05fe9122ed656",
+          "title": "개 자궁축농증 원인 대장균의 유전적 특성 분석",
           "indexable": false,
           "tier": "brief",
           "clinicalRisk": "medium",
@@ -399,9 +529,9 @@
           ]
         },
         {
-          "date": "2026-08-14",
-          "id": "v1_e9ec0ec33935e919",
-          "title": "개 전립선암, 혈청 미량원소 분석으로 비침습 진단",
+          "date": "2026-08-15",
+          "id": "v1_8a8b77fec89deb53",
+          "title": "우간다 야생동물센터 거북이·새서 발견된 항생제 내성 균",
           "indexable": false,
           "tier": "brief",
           "clinicalRisk": "medium",
@@ -412,139 +542,9 @@
           ]
         },
         {
-          "date": "2026-08-14",
-          "id": "v1_982ec8e45de9bc25",
-          "title": "개 골관절염 만성 통증과 주인-개 관계 재구성 프레임워크",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_6937c13ece3a1bb4",
-          "title": "개 TPLO 수술 후 합병증 등급 시스템 비교",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_bbe6b3e25feed6c1",
-          "title": "개의 림프종에 대한 티로신 키나제 억제제 치료 효과 메타분석",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_92f9fef4b332889f",
-          "title": "vets 교육·임상연구 위한 참여적 신속민족지 프로토콜",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_287824805465ccef",
-          "title": "카자흐스탄서 분리한 조류 메타폐렴바이러스 subunit 백신 개발",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_5463e7b3e1f2be3f",
-          "title": "Ragdoll 고양이 하악골 조직구성육종 수술 치료 사례",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_2435a65cddcf7fc2",
-          "title": "기계학습으로 규명한 돼지 H1N1 감염 핵심 유전자 SPP1",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_662808c8e15c8814",
-          "title": "성전환 갯염소, 암염소보다 더 많은 친사회적 상호작용 보여",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_473dde5f5c41d616",
-          "title": "구이저우 원숭이 중금속 축적 심각... 생태위험도 중간~매우 높음",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_eccbd7c6dfa6e3d1",
-          "title": "미국서 80년 만에 스크류웜 확인…동물 주인의 주의 필요",
-          "indexable": false,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-14",
-          "id": "v1_8ec650d52c91055b",
-          "title": "7개월 강아지 구토 증상, 수의학 퀴즈 맞혀보세요",
+          "date": "2026-08-15",
+          "id": "v1_65916a48ee721bb8",
+          "title": "아크사라이 말라클리 개 신장 형태학적 특성 최초 보고",
           "indexable": false,
           "tier": "brief",
           "clinicalRisk": "medium",
@@ -2725,26 +2725,75 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 160,
-      "medium": 379,
+      "low": 165,
+      "medium": 434,
       "high": 141
     },
-    "explicitReviewFields": 223
+    "explicitReviewFields": 283
   },
   "workflow": {
-    "explicitItems": 223,
+    "explicitItems": 283,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 217
+      "published": 277
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 101,
-    "numericWarnings": 103,
+    "articlesWithExplicitMetadata": 137,
+    "numericWarnings": 111,
     "samples": [
+      {
+        "id": "v1_2719dd62405aba8f",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_2077a53ba410e391",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_3675ccb362d00ce5",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_4a5bac6923a17363",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_a014b3426aa38a55",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_3fc4e0d3750fb221",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_14a9af18de011e82",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_0f3d4a8a499dde38",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
       {
         "id": "v1_1a9219802a02554a",
         "issues": [
@@ -3329,58 +3378,6 @@
         "id": "2026-07-20_34",
         "issues": [
           "numeric-lead-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-20_35",
-        "issues": [
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-12_1",
-        "issues": [
-          "numeric-lead-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-08_3",
-        "issues": [
-          "numeric-lead-body-mismatch",
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-08_5",
-        "issues": [
-          "numeric-lead-body-mismatch",
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-06_1",
-        "issues": [
-          "numeric-lead-body-mismatch",
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-02_2",
-        "issues": [
-          "numeric-lead-body-mismatch",
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-06-19_2",
-        "issues": [
-          "numeric-lead-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-06-19_5",
-        "issues": [
-          "numeric-keypoints-body-mismatch"
         ]
       }
     ]
