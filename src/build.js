@@ -518,6 +518,13 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
     url: SITE.baseUrl,
     inLanguage: "ko",
     publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn },
+    // 홈의 검색 UI를 구조화해 브랜드·주제 검색 유입이 사이트 내 검색으로
+    // 이어지도록 한다. 검색 결과 자체는 noindex로 유지하고 원문 기사만 색인한다.
+    potentialAction: {
+      "@type": "SearchAction",
+      target: { "@type": "EntryPoint", urlTemplate: `${SITE.baseUrl}/?q={search_term_string}` },
+      "query-input": "required name=search_term_string",
+    },
   };
   return `
 <title>${esc(title)}</title>
@@ -799,6 +806,33 @@ const APP_JS = String.raw`
     dialogFocusPending:false, restoreFocusId:null,
     archive:null, loadingDate:null, draft:null
   };
+  function readBrowseRoute(){
+    if(!DATA.isHome||location.pathname!=='/') return;
+    try{
+      var p=new URLSearchParams(location.search), q=(p.get('q')||'').trim().slice(0,100);
+      var cats=(DATA.cats||[]).map(function(c){return c.key;}), cat=p.get('cat');
+      S.query=q;
+      S.cat=cat&&cats.indexOf(cat)>=0?cat:'all';
+      S.sort=p.get('sort')==='latest'?'latest':'rel';
+      S.unreadOnly=p.get('unread')==='1';
+      S.searchFocus=!!q;
+      S.caret=q.length;
+    }catch(err){}
+  }
+  // 검색·카테고리·읽지 않음 필터를 링크로 공유할 수 있게 한다. replaceState만
+  // 사용해 타이핑마다 브라우저 뒤로가기 이력이 쌓이지 않도록 한다.
+  function syncBrowseUrl(){
+    if(!DATA.isHome||location.pathname!=='/'||S.openId) return;
+    try{
+      var url=new URL(location.href), q=S.query.trim().slice(0,100);
+      if(q) url.searchParams.set('q',q); else url.searchParams.delete('q');
+      if(S.cat&&S.cat!=='all') url.searchParams.set('cat',S.cat); else url.searchParams.delete('cat');
+      if(S.sort==='latest') url.searchParams.set('sort','latest'); else url.searchParams.delete('sort');
+      if(S.unreadOnly) url.searchParams.set('unread','1'); else url.searchParams.delete('unread');
+      var next=url.pathname+(url.search||'')+(url.hash||''), current=location.pathname+location.search+location.hash;
+      if(next!==current) history.replaceState(history.state||null,'',next);
+    }catch(err){}
+  }
   function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function persist(k,v){ localStorage.setItem(LS[k],JSON.stringify(v)); }
   function isSaved(id){ return !!S.saved[id]; }
@@ -1427,6 +1461,7 @@ const APP_JS = String.raw`
   }
 
   function render(){
+    syncBrowseUrl();
     var savedCount=Object.keys(S.saved).length, ideaCount=Object.keys(S.ideas).length;
     var moon='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(2.529 2.431)"><path d="M 7.161 0.281 C 7.416 0.551 7.48 0.949 7.321 1.284 C 6.827 2.331 6.55 3.502 6.55 4.739 C 6.55 9.213 10.176 12.839 14.65 12.839 C 15.732 12.839 16.762 12.628 17.703 12.245 C 18.046 12.105 18.441 12.19 18.696 12.459 C 18.951 12.729 19.015 13.127 18.856 13.463 C 17.272 16.816 13.858 19.139 9.9 19.139 C 4.432 19.139 0 14.706 0 9.239 C 0 5.09 2.552 1.539 6.168 0.066 C 6.512 -0.073 6.906 0.012 7.161 0.281 Z" fill-rule="evenodd"></path></g></svg>';
     var sun='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(1.1 1.1)"><path d="M 10 20.9 C 10 21.397 10.403 21.8 10.9 21.8 C 11.397 21.8 11.8 21.397 11.8 20.9 L 11.8 18.9 C 11.8 18.403 11.397 18 10.9 18 C 10.403 18 10 18.403 10 18.9 Z"></path><path d="M 10 2.9 C 10 3.397 10.403 3.8 10.9 3.8 C 11.397 3.8 11.8 3.397 11.8 2.9 L 11.8 0.9 C 11.8 0.403 11.397 0 10.9 0 C 10.403 0 10 0.403 10 0.9 Z"></path><path d="M 5.5 10.897 C 5.5 7.915 7.918 5.497 10.9 5.497 C 13.882 5.497 16.3 7.915 16.3 10.897 C 16.3 13.88 13.882 16.297 10.9 16.297 C 7.918 16.297 5.5 13.88 5.5 10.897 Z M 10.9 7.297 C 8.912 7.297 7.3 8.909 7.3 10.897 C 7.3 12.885 8.912 14.497 10.9 14.497 C 12.888 14.497 14.5 12.885 14.5 10.897 C 14.5 8.909 12.888 7.297 10.9 7.297 Z" fill-rule="evenodd"></path><path d="M 0 10.9 C 0 10.403 0.403 10 0.9 10 L 2.9 10 C 3.397 10 3.8 10.403 3.8 10.9 C 3.8 11.397 3.397 11.8 2.9 11.8 L 0.9 11.8 C 0.403 11.8 0 11.397 0 10.9 Z"></path><path d="M 18 10.9 C 18 10.403 18.403 10 18.9 10 L 20.9 10 C 21.397 10 21.8 10.403 21.8 10.9 C 21.8 11.397 21.397 11.8 20.9 11.8 L 18.9 11.8 C 18.403 11.8 18 11.397 18 10.9 Z"></path></g></svg>';
@@ -1761,7 +1796,14 @@ const APP_JS = String.raw`
     if(state&&state.vmArticle&&state.articleId&&byId[state.articleId]){
       S.openId=state.articleId; S.blogOpen=true; S.searchFocus=false; markRead(state.articleId); render();
     }else if(S.openId){ S.openId=null; render(); }
+    else if(DATA.isHome&&location.pathname==='/'){
+      readBrowseRoute();
+      if(S.query.trim()&&!SEARCH_INDEX&&!searchLoading) loadSearch(true);
+      render();
+    }
   });
+  readBrowseRoute();
+  if(S.query.trim()) loadSearch(true);
   render();
 })();`;
 
@@ -1953,8 +1995,8 @@ const MANIFEST = JSON.stringify({
   ],
 });
 
-const SW_JS = `const C='vmcache-v7';
-const SHELL=['/','/latest.json','/archive.json','/icon.svg','/icon-192.png','/manifest.webmanifest'];
+const SW_JS = `const C='vmcache-v8';
+const SHELL=['/','/latest.json','/archive.json','/search-manifest.json','/icon.svg','/icon-192.png','/manifest.webmanifest'];
 const OFFLINE='<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 없음</title><style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:#fff;color:#171719}@media(prefers-color-scheme:dark){body{background:#171719;color:#f7f7f8}}.b{max-width:420px;text-align:center}h1{font-size:24px;font-weight:800;margin:0 0 10px}p{margin:0 0 22px;font-size:15px;line-height:1.7;opacity:.7}a{display:inline-block;background:#0066ff;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}</style></head><body><div class="b"><h1>연결이 끊겼습니다</h1><p>이 페이지는 아직 받아두지 않았습니다.<br>연결을 확인한 뒤 다시 시도해 주세요.</p><a href="/">오늘의 브리핑 보기</a></div></body></html>';
 self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(SHELL);}).then(function(){return self.skipWaiting();}));});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){if(k!==C)return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});

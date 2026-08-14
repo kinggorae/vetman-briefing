@@ -48,7 +48,7 @@ if (/<loc>undefined<\/loc>|<loc>[^<]*\/admin|<loc>[^<]*\/search\//i.test(newsSit
 const headers = fs.existsSync(path.join(SITE, "_headers")) ? fs.readFileSync(path.join(SITE, "_headers"), "utf8") : "";
 if (!headers.includes("X-Robots-Tag: noindex") || !headers.includes("Cache-Control: public, max-age=60")) critical.push({ file: "_headers", reason: "security-or-cache-contract-missing" });
 const sw = fs.existsSync(path.join(SITE, "sw.js")) ? fs.readFileSync(path.join(SITE, "sw.js"), "utf8") : "";
-if (!sw.includes("vmcache-v7") || !sw.includes("/api/")) critical.push({ file: "sw.js", reason: "service-worker-contract-missing" });
+if (!sw.includes("vmcache-v8") || !sw.includes("/api/")) critical.push({ file: "sw.js", reason: "service-worker-contract-missing" });
 
 const result = { version: 1, generatedAt: new Date().toISOString(), critical, warnings, deployment: deployment ? { sourceCommit: deployment.sourceCommit, latestDate: deployment.latestDate, publicArticleCount: deployment.publicArticleCount, searchCount: deployment.searchCount, newsSitemapCount: deployment.newsSitemapCount } : null };
 fs.mkdirSync(path.dirname(REPORT), { recursive: true });
