@@ -101,6 +101,10 @@ test("homepage lead is complete and compact article opens before hydration", asy
   await expect(page.getByText("기사 본문을 불러오는 중…")).toHaveCount(0);
   await expect(page.locator("#vm-detail-title")).toBeVisible();
   await expect(page.locator(".vm-detail-body")).toContainText(payload.articles[1].body[0].slice(0, 30));
+  const readingProgress = page.locator(".vm-reading-progress");
+  await expect(readingProgress).toHaveAttribute("role", "progressbar");
+  await page.locator("#vm-db").evaluate((node) => { node.scrollTop = node.scrollHeight; node.dispatchEvent(new Event("scroll")); });
+  await expect(readingProgress).toHaveAttribute("aria-valuenow", "100");
   expect(dataRequests).toEqual([]);
 });
 
