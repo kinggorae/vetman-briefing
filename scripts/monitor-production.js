@@ -27,6 +27,7 @@ const result = {
   warnings: [],
 };
 const responses = new Map();
+let latestPayload = null;
 const parser = new XMLParser({ ignoreAttributes: false });
 
 function addIssues(target, issues, pathname) {
@@ -103,9 +104,9 @@ for (const pathname of ["/sitemap.xml", "/news-sitemap.xml", "/rss.xml"]) {
 
 const latestResponse = responses.get("/latest.json");
 if (latestResponse) {
-  const payload = parseJson("/latest.json", latestResponse.body);
-  if (payload) {
-    result.latest = inspectLatestPayload(payload, {
+  latestPayload = parseJson("/latest.json", latestResponse.body);
+  if (latestPayload) {
+    result.latest = inspectLatestPayload(latestPayload, {
       today: process.env.MONITOR_TODAY || kstDateString(),
       maxAgeDays: Number(process.env.MONITOR_LATEST_MAX_AGE_DAYS || 3),
     });
@@ -175,8 +176,12 @@ const newsSitemapResponse = responses.get("/news-sitemap.xml");
 if (newsSitemapResponse) {
   const urlCount = extractLocs(newsSitemapResponse.body).length;
   const expected = Number.isInteger(result.deployment?.newsSitemapCount) ? result.deployment.newsSitemapCount : null;
-  result.newsSitemap = { urlCount, expected, expectedSource: expected === null ? null : "deployment.json" };
+  const latestIndexableCount = Array.isArray(latestPayload?.items)
+    ? latestPayload.items.filter((item) => ["index-low-risk", "index-analysis"].includes(item.publicationStatus)).length
+    : 0;
+  result.newsSitemap = { urlCount, expected, expectedSource: expected === null ? null : "deployment.json", latestIndexableCount };
   if (expected !== null && expected !== urlCount) result.critical.push({ pathname: "/news-sitemap.xml", reason: "news-sitemap-count-manifest-mismatch", expected, actual: urlCount });
+  if (latestIndexableCount > 0 && urlCount === 0) result.critical.push({ pathname: "/news-sitemap.xml", reason: "news-sitemap-empty-for-indexable-latest", latestIndexableCount });
 }
 
 const rssResponse = responses.get("/rss.xml");
