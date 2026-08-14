@@ -80,6 +80,11 @@ test("homepage lead is complete and compact article opens before hydration", asy
   expect(payload.articles[1].body?.length).toBeGreaterThan(0);
   expect(payload.articles[1].readReady).toBe(true);
   const todayItems = [...(payload.articles || []), ...(payload.briefs || []), ...(payload.stories || [])];
+  if (todayItems.some((item) => item.radar?.clinical)) {
+    await expect(page.locator(".vm-qa-bridge")).toHaveCount(1);
+    await expect(page.locator(".vm-qa-bridge")).toContainText("오늘의 핵심");
+    await expect(page.locator(".vm-qa-bridge")).toContainText("진료 포인트");
+  }
   if (todayItems.length < 10 && payload.recentPromoted) {
     // 짧은 홈도 기존 3열 1면을 유지하면서 오늘 기사 전체가 카드 슬롯에 남아 있어야 한다.
     await expect(page.locator("#vm-fold")).toBeVisible();
