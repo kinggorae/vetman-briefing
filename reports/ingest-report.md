@@ -1,40 +1,82 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-08-14T00:55:41.392Z
+- 실행 시각: 2026-08-14T02:33:07.112Z
 - 모드: write-draft
 - 소스/피드: 27/14
-- 수집 항목: 610
-- 고유 후보: 404
-- exact duplicate: 159
-- 기존 기사 업데이트 후보: 47
-- 관련성 제외: 130
-- 기수집(seen) 제외: 144
-- 신규 가용 후보: 137
-- draft 후보: 18
-- 생성 완료: 8
-- 생성 실패 경고: 10
-- canonical 확인 시도: 18
-- 공식 canonical 확보: 18
+- 수집 항목: 555
+- 고유 후보: 376
+- exact duplicate: 153
+- 기존 기사 업데이트 후보: 26
+- 관련성 제외: 120
+- 기수집(seen) 제외: 149
+- 신규 가용 후보: 112
+- draft 후보: 60
+- 생성 완료: 60
+- 생성 실패 경고: 0
+- canonical 확인 시도: 60
+- 공식 canonical 확보: 60
 - unresolved source: 0
 - relay sourceUrl: 0
 
 ## draft 후보
 
-- v1_2d024f05a8993e14 · src-vet-candy · verified · unique · Luxury Hotels Are Rolling Out the Red Carpet for Dogs
-- v1_0c31832fcfdc67fb · src-vet-candy · verified · unique · Can Your Dog Help Protect Your Child From Respiratory Infections? New Study Suggests It Might
-- v1_1a33403506bff3c1 · src-vet-candy · verified · unique · The FDA Just Cleared a Monthly Chew to Treat New World Screwworm in Dogs
-- v1_95195f3f4fd1926f · src-vet-candy · verified · unique · Prepared, not panicked: An owner’s guide to choking emergency responses
-- v1_2aaff4ac4e7374e5 · src-dr-andy-roark · verified · unique · The Best Thing Happened&#8230;
-- v1_7c1e7a64d23d1c4d · src-vet-candy · verified · unique · New Cattle Virus Discovered in Europe as Scientists Race to Understand Emerging Orthobunyavirus
-- v1_95700aa6bb28acd4 · src-vet-candy · verified · unique · Nearly Half the Cats in One Kampala Study Have Been Exposed to Toxoplasma
-- v1_9052bd18ffcebc4d · src-vet-candy · verified · unique · A DVM/PhD Student Just Cracked Part of the Genetic Code Behind Equine Pregnancy Loss
-- v1_1a9219802a02554a · src-vet-candy · verified · unique · Could Gene-Edited Dogs Finally End Pet Allergies? Meet the Beagles That Could Change Everything
-- v1_279cbe0a0b374131 · src-vet-candy · verified · unique · The AI Stethoscope Heard a Murmur. A Fourth-Year Student Heard It Better.
-- v1_38696525285e02eb · src-vet-candy · verified · unique · Mississippi Just Put $32 Million Behind a Vet School Built in the 1970s
-- v1_0dc365b9c54d3d29 · src-vet-candy · verified · unique · Could a New Hip Sling Improve Recovery After Hip Luxation? New Study Puts It to the Test
-- v1_f6a9608fafafda9c · src-vet-candy · verified · unique · Second Rabid Beaver Confirmed at Maryland State Park After Man Is Attacked While Fishing
-- v1_66f633c2dd562928 · src-vet-candy · verified · unique · Cornell and PetSmart Charities Are Betting on the Vet Students Who Want to Serve the Families Who Can't Pay Full Price
-- v1_98be4859147b106c · src-today-s-veterinary-practice · verified · unique · The Data Behind the Variable Perianesthesia Management of Brachycephalic Dogs
-- v1_9dc24ec9e9811c4d · src-vet-candy · verified · unique · Mastering Veterinary Cardiology Drugs for the NAVLE with Dr. Laurent Locquet
-- v1_8922a8ffd95e83bf · src-vet-candy · verified · unique · A Nebraska Lab May Have Found the H5N1 Vaccine Cattle Have Been Waiting For
-- v1_20600613a309aed1 · src-sciencedaily · verified · unique · Dogs can tell fear from sadness — and scientists saw it in their brains
+- v1_bdb58d9a59d0e2ca · src-vet-candy · verified · unique · Zoetis Just Confirmed What Every Front Desk Already Knows
+- v1_479ea6f2bc404b7f · src-frontiers-in-veterinary-science · verified · unique · SARS-CoV-2 infection in dogs, dog owners, dog breeders, and veterinarians in the Ashanti and Greater Accra regions of Ghana—zoonotic implications
+- v1_0c9477b038931a04 · src-veterinary-practice-news · verified · unique · How to manage anxiety in pets
+- v1_ed170fe6fb65adf1 · src-veterinary-practice-news · verified · unique · WordRx: Your dose of veterinary wordplay
+- v1_185e6407f3056fdd · src-veterinary-practice-news · verified · unique · Spotlight on vitreoretinal surgery
+- v1_bea839b7ab265b8e · src-veterinary-practice-news · verified · unique · The 60-second check that can change outcomes for HCM patients
+- v1_f2dedd685ca1545c · src-frontiers-in-veterinary-science · verified · unique · Case Report: Diet-associated iodine-deficiency goitrous hypothyroidism in a dog: a longitudinal clinical, endocrine, and ultrasonographic evaluation
+- v1_92f9fef4b332889f · src-frontiers-in-veterinary-science · verified · unique · A participatory rapid ethnographic assessment protocol for studying human-animal-material interactions in veterinary clinical practice
+- v1_982ec8e45de9bc25 · src-frontiers-in-veterinary-science · verified · unique · From dyadic deco-construction to reco-construction: a framework for the human–osteoarthritic dog relationship
+- v1_e9ec0ec33935e919 · src-frontiers-in-veterinary-science · verified · unique · Serum multi-element profiling and a Metallobalance index for noninvasive differentiation of canine prostatic adenocarcinoma: a pilot case-control study
+- v1_bbe6b3e25feed6c1 · src-frontiers-in-veterinary-science · verified · unique · Tyrosine kinase inhibitors and molecularly driven therapeutic approaches for canine lymphoma: a systematic review and meta-analysis
+- v1_6937c13ece3a1bb4 · src-frontiers-in-veterinary-science · verified · unique · Comparison of two postoperative complication grading systems following an elective orthopedic procedure in dogs
+- v1_5463e7b3e1f2be3f · src-frontiers-in-veterinary-science · verified · unique · Case Report: Surgical management of mandibular oral histiocytic sarcoma in a ragdoll cat with favorable outcome
+- v1_287824805465ccef · src-frontiers-in-veterinary-science · verified · unique · Development and immunogenicity of a novel subunit vaccine candidate against avian metapneumovirus
+- v1_064ff6adc7b28736 · src-frontiers-in-veterinary-science · verified · unique · Modulating the avian cecal microbiome: probiotics in the prevention of Histomonas meleagridis in poultry
+- v1_2435a65cddcf7fc2 · src-frontiers-in-veterinary-science · verified · unique · Identification and validation of key host genes associated with porcine H1N1 infection based on integrated machine learning algorithms
+- v1_662808c8e15c8814 · src-frontiers-in-veterinary-science · verified · unique · An exploratory study comparing the social behavior of intersex and female goats
+- v1_2eadaa185f7bf274 · src-frontiers-in-veterinary-science · verified · unique · Crossing the comfort zone: rabbit appeasing pheromone enhances acclimation to a novel environment
+- v1_473dde5f5c41d616 · src-frontiers-in-veterinary-science · verified · unique · Heavy metal exposure and ecological risk assessment in the Guizhou snub-nosed monkey (Rhinopithecus brelichi): a fecal biomonitoring study
+- v1_8ec650d52c91055b · src-veterinary-practice-news · verified · unique · Brain Teaser: Can you solve this puzzle?
+- v1_7db36899bbb0a6f2 · src-nc-state-university · verified · unique · From a Local Animal Hospital, Kristen Folk Reports
+- v1_eccbd7c6dfa6e3d1 · src-nc-state-university · verified · unique · New World Screwworm in the U.S.: What It Means for North Carolina
+- v1_d49660660f0f8da2 · src-nc-state-university · verified · unique · Class of 2026: From Nerves to NAVLE, Four Years of Questions Finally Answered
+- v1_c8137b83c867d176 · src-vet-candy · verified · unique · The Cat Slow Blink Is Real. Here's the Science, and Why It Actually Matters in Practice
+- v1_c97d8a7396bf0542 · src-vet-candy · verified · unique · Dr. Christine Jenkins named 2026 recipient of AVMA's Frederick Douglass Patterson Award
+- v1_cea77f22eed05561 · src-vet-candy · verified · unique · Veterinary Corporations Are Back in the Headlines: Here's What You Need to Know
+- v1_01b1ea25177ebe46 · src-vet-candy · verified · unique · The Dogs in This Clinical Trial May Change How We Treat Brain Cancer in Children
+- v1_538ae7f5b13b4c7c · src-vet-candy · verified · unique · Scientists reveal the secrets behind the penguin waddle and underwater “flight”
+- v1_f3a44eed5d634b3d · src-vet-candy · verified · unique · Arkansas State's Veterinary College Doesn't Open Until Fall. It's Already Seeing Patients.
+- v1_a51f0697b3b57806 · src-vet-candy · verified · unique · A Podcast Clip Doubled Ivermectin Prescriptions. Veterinary Professionals Need to Be Ready for the Conversation.
+- v1_ee61c30c4e05ca06 · src-vet-candy · verified · unique · A review argues the family dog may become science’s unlikely ally against autism
+- v1_fdef9caff01cfaa4 · src-nc-state-university · verified · unique · Class of 2026: The Pressure Dims When You Let Others Shine
+- v1_e0c48d00ed76503b · src-vet-candy · verified · unique · Darwin's Ark invites research collaboration on the world's largest community science initiative for cats and dogs
+- v1_76711aa0953d0c12 · src-nc-state-university · verified · unique · The Rescued &#8216;Rebel&#8217; that Inspired an Unending Scientific Legacy
+- v1_7ad0a131dd65a6f3 · src-vet-candy · verified · unique · Purdue Just Put a Veterinary Expert in Your Client's Living Room
+- v1_060a035f3a45f081 · src-vet-candy · verified · unique · Penn Vet Just Built a Lab Designed to Catch Livestock Health Problems Before They Become Disasters
+- v1_9ce9cc3f20e586a4 · src-vet-candy · verified · unique · FSIS Is Moving to Iowa. What Veterinary and Food Safety Professionals Need to Know.
+- v1_5bc98be1e135c242 · src-vet-candy · verified · unique · Screwworm Is Back in the U.S. for the First Time Since 1968. Here's Everything You Need to Know.
+- v1_549f21819f7e27f9 · src-vet-candy · verified · unique · 85% of Dogs Have Fear or Anxiety Issues. Your Clients Need More Support Than You Can Give Them in One Appointment.
+- v1_0490ea67c02bc588 · src-vet-candy · verified · unique · Dr. Jessica McArt Is the New Dean of Cornell's College of Veterinary Medicine and Her Path Here Is a Blueprint
+- v1_1719ca57da112d25 · src-vet-candy · verified · unique · Ohio Just Took a Step Toward Fixing the Veterinary Shortage and RVTs Are at the Center of It
+- v1_6e699f7e40725bc9 · src-vet-candy · verified · unique · How to protect pets from the New World screwworm
+- v1_2b1269cc525380d4 · src-vet-candy · verified · unique · The Farmer's Dog Just Funded a Vet Nutrition Residency at UGA. And It's a Bigger Deal Than It Sounds
+- v1_cd30cd4ec6282a04 · src-vet-candy · verified · unique · Europe Had FMD for the First Time in 14 Years. Here's What Every Veterinarian Should Take From It
+- v1_3c27d253fb485d20 · src-vet-candy · verified · unique · WOAH's 2026 State of the World's Animal Health Report Is Out. The Numbers Are Hard to Look At &#x2014; and Impossible to Ignore.
+- v1_f8bb90fa08927cfd · src-nc-state-university · verified · unique · Class of 2026: Homesickness, Culture Shock, Then a Purpose Realized
+- v1_267e006b78d7a91a · src-vet-candy · verified · unique · The Veterinary Staffing Crisis Has a New Playbook. Here Is What Is In It.
+- v1_1d402edc677e7363 · src-vet-candy · verified · unique · Stopping ticks in their tracks
+- v1_e78d5c3a828c72ae · src-vet-candy · verified · unique · Austin Warren is on a Mission Bigger Than Medicine
+- v1_49c3bc086ad25895 · src-vet-candy · verified · unique · Dog daycare leptospirosis outbreak in Los Angeles reveals broader public health risks
+- v1_8c1a56e279ce0b83 · src-vet-candy · verified · unique · Veterinarians Needed: Help Shape the Future of the NAVLE®
+- v1_60c2ebcb3ee047c6 · src-vet-candy · verified · unique · Cats Have a Unique Kidney Chemistry That Could Be Harming Their Health
+- v1_1f41c8c9cdbb67fc · src-vet-candy · verified · unique · Widely Used Veterinary Sedative Formulation Remains Stable for Three Months, Researchers Find
+- v1_68732c0a676b26a0 · src-vet-candy · verified · unique · The Maps Have Changed. Has Your Prevention Protocol?
+- v1_1e55da1ec72d5a50 · src-vet-candy · verified · unique · The Antibiotic Resistance Problem Is Coming for Veterinary Medicine &#x2014; and We Need to Talk About It
+- v1_6dbfe2c2bdcbad0e · src-vet-candy · verified · unique · San Antonio's Shelter Numbers Are Moving in the Right Direction. Here Is What the Data Shows.
+- v1_0ae3ac571a14e8e3 · src-sciencedaily · verified · unique · Scientists studied 47,000 dogs on CBD and found a surprising behavior shift
+- v1_e65c35b7b7d8e0fc · src-vet-candy · verified · unique · Virbac Reaches $500K in Donations forU.S. Animal Charities
+- v1_9deb16f385081615 · src-vet-candy · verified · unique · FIP in 2026: New Guidelines, a Better Diagnostic Test, and a Disease That's No Longer a Death Sentence
+- v1_4bc131de86853669 · src-vet-candy · verified · unique · This Juneteenth, Veterinary Medicine Still Has a Long Way to Go
