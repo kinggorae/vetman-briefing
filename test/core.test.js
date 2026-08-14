@@ -226,6 +226,14 @@ test("source-first feed parsing keeps official canonical explicit and rejects re
   assert.equal(sourceStatusFor(relay, source), "unresolved");
 });
 
+test("Wiley-style DOI identifiers resolve to the official feed item URL", () => {
+  const source = { id: "src-wiley", label: "Wiley", officialDomains: ["onlinelibrary.wiley.com"] };
+  const parsed = parseFeed(`<?xml version="1.0"?><rss version="2.0"><channel><item><title>Veterinary study</title><link>https://onlinelibrary.wiley.com/doi/10.1002/vms3.71117?af=R</link><dc:identifier>10.1002/vms3.71117</dc:identifier><guid>doi:10.1002/vms3.71117</guid></item></channel></rss>`, "https://onlinelibrary.wiley.com/feed.xml", source);
+  assert.equal(parsed.entries[0].doi, "10.1002/vms3.71117");
+  assert.equal(parsed.entries[0].canonicalUrl, "https://onlinelibrary.wiley.com/doi/10.1002/vms3.71117?af=R");
+  assert.equal(sourceStatusFor(parsed.entries[0], source), "verified");
+});
+
 test("relay URLs preserved as raw evidence cannot pass the index gate", () => {
   const item = {
     titleKo: "수의학 연구 결과를 임상에 적용할 때 확인할 점입니다.",

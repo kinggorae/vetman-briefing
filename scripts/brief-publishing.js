@@ -55,6 +55,22 @@ function sourceFor(row) {
   const registry = loadRegistry();
   return registry.sources.find((source) => source.id === row.sourceId || source.label === row.sourceLabel) || null;
 }
+// 이전 실행에서 DOI가 canonicalUrl에 들어가 sourceStatus=unresolved로 남은
+// 초안도 있다. 레지스트리의 공식 도메인과 안전한 feed item URL이 확인되면
+// 그 URL을 공식 canonical 후보로 승격해, 수정 배포 뒤 재수집을 기다리지 않고
+// 이미 생성된 초안을 정상적으로 릴리스할 수 있게 한다.
+function resolveOfficialDraft(row) {
+  if (!row) return row;
+  const source = sourceFor(row);
+  const candidateUrl = row.sourceUrl || row.sourceUrlRaw;
+  if (!source || !candidateUrl || !safeSourceUrl(candidateUrl) || !isOfficialUrl(candidateUrl, source)) return row;
+  const sourceUrl = normalizeSourceUrl(candidateUrl);
+  const canonicalUrl = /^https?:\/\//i.test(String(row.canonicalUrl || ""))
+    ? normalizeSourceUrl(row.canonicalUrl)
+    : sourceUrl;
+  if (row.sourceStatus === "verified" && row.sourceUrl === sourceUrl && row.canonicalUrl === canonicalUrl) return row;
+  return { ...row, sourceStatus: "verified", sourceUrl, canonicalUrl, sourceResolution: row.sourceResolution || "official-feed-item-url" };
+}
 // 예전에는 reports/language-audit.json·claims-audit.json에서 id로 찾았다.
 // 그런데 그 리포트는 editorial-audits.js가 data/issues(이미 발행된 것)만
 // 훑어 만든다 — 여기서 평가하는 건 아직 발행 전인 draft라 매칭되는 행이
@@ -104,24 +120,25 @@ function requeueUnreleasedCandidates(candidates) {
 function hasKorean(row) { return Boolean(row.titleKo && row.leadKo && Array.isArray(row.bodyKo) && row.bodyKo.length); }
 function evaluate(row) {
   if (!row) throw new Error("draft 후보를 찾을 수 없습니다.");
-  const source = sourceFor(row);
-  const sourceOk = Boolean(row.sourceUrl && safeSourceUrl(row.sourceUrl) && row.sourceStatus === "verified" && source && isOfficialUrl(row.sourceUrl, source));
-  const language = languageWarnings(row);
-  const claims = claimWarnings(row);
-  const imageUrl = row.imageUrl || row.image || null;
-  const ownership = normalizeImageOwnership(row.imageOwnership, { hasImage: Boolean(imageUrl), origin: row.imageOrigin });
-  const imageOk = Boolean(imageUrl && imageCanRender({ url: imageUrl, ownership, origin: row.imageOrigin }));
-  const safety = clinicalSafetyIssues(row);
-  const quality = hasKorean(row) ? qualityIssues(row) : ["titleKo/leadKo/bodyKo-missing"];
+  const candidate = resolveOfficialDraft(row);
+  const source = sourceFor(candidate);
+  const sourceOk = Boolean(candidate.sourceUrl && safeSourceUrl(candidate.sourceUrl) && candidate.sourceStatus === "verified" && source && isOfficialUrl(candidate.sourceUrl, source));
+  const language = languageWarnings(candidate);
+  const claims = claimWarnings(candidate);
+  const imageUrl = candidate.imageUrl || candidate.image || null;
+  const ownership = normalizeImageOwnership(candidate.imageOwnership, { hasImage: Boolean(imageUrl), origin: candidate.imageOrigin });
+  const imageOk = Boolean(imageUrl && imageCanRender({ url: imageUrl, ownership, origin: candidate.imageOrigin }));
+  const safety = clinicalSafetyIssues(candidate);
+  const quality = hasKorean(candidate) ? qualityIssues(candidate) : ["titleKo/leadKo/bodyKo-missing"];
   const blockers = [];
   // 임상 위험도: high만 차단하고 low·medium은 발행한다. requiredReviewRole이
   // 수의사를 요구하는 구간이 high(및 임상 행위 표현이 있는 medium)이므로,
   // 그 아래는 수의사 없이 조직 명의로 내보내도 검수 정책과 어긋나지 않는다.
-  if (row.clinicalRisk === "high") blockers.push(`high-risk는 수의사 검수 필요: ${row.clinicalRisk}`);
-  if (!row.clinicalRisk) blockers.push("clinicalRisk 미분류");
+  if (candidate.clinicalRisk === "high") blockers.push(`high-risk는 수의사 검수 필요: ${candidate.clinicalRisk}`);
+  if (!candidate.clinicalRisk) blockers.push("clinicalRisk 미분류");
   if (!sourceOk) blockers.push("공식 canonical과 sourceStatus=verified 필요");
-  if (row.duplicateStatus !== "unique") blockers.push(`duplicateStatus=unique 필요: ${row.duplicateStatus || "미분류"}`);
-  if (!hasKorean(row)) blockers.push("한국어 titleKo·leadKo·bodyKo 필요");
+  if (candidate.duplicateStatus !== "unique") blockers.push(`duplicateStatus=unique 필요: ${candidate.duplicateStatus || "미분류"}`);
+  if (!hasKorean(candidate)) blockers.push("한국어 titleKo·leadKo·bodyKo 필요");
   const blockingLanguage = blockingOnly(language, BLOCKING_LANGUAGE);
   const blockingClaims = blockingOnly(claims, BLOCKING_CLAIM);
   if (blockingLanguage.length) blockers.push(`언어 경고 ${blockingLanguage.length}건: ${blockingLanguage.join(", ")}`);
@@ -132,13 +149,13 @@ function evaluate(row) {
   // (source-first 수집에는 이미지 권리 확인 단계가 아예 없어, 필수로 두면
   //  전 항목이 탈락한다. 텍스트만으로도 발행 가치가 있는 브리핑이다.)
   if (imageUrl && !imageOk) blockers.push("대표 이미지 권리 확인 필요");
-  const status = row.duplicateStatus !== "unique" ? "duplicate" : !sourceOk ? "needs-source-fix" : !hasKorean(row) || blockingLanguage.length ? "needs-language-fix" : blockingClaims.length || safety.length ? "needs-claim-fix" : row.clinicalRisk === "high" ? "rejected" : blockers.length ? "needs-claim-fix" : "ready-public-brief";
+  const status = candidate.duplicateStatus !== "unique" ? "duplicate" : !sourceOk ? "needs-source-fix" : !hasKorean(candidate) || blockingLanguage.length ? "needs-language-fix" : blockingClaims.length || safety.length ? "needs-claim-fix" : candidate.clinicalRisk === "high" ? "rejected" : blockers.length ? "needs-claim-fix" : "ready-public-brief";
   return {
-    id: row.id,
-    title: row.titleKo || row.sourceTitle || row.title || "",
-    source: { label: row.sourceLabel || null, url: row.sourceUrl || null, rawUrl: row.sourceUrlRaw || null, status: row.sourceStatus || null, publishedAt: row.sourcePublishedAt || row.publishedAt || null },
-    clinicalRisk: row.clinicalRisk || null,
-    duplicateStatus: row.duplicateStatus || null,
+    id: candidate.id,
+    title: candidate.titleKo || candidate.sourceTitle || candidate.title || "",
+    source: { label: candidate.sourceLabel || null, url: candidate.sourceUrl || null, rawUrl: candidate.sourceUrlRaw || null, status: candidate.sourceStatus || null, publishedAt: candidate.sourcePublishedAt || candidate.publishedAt || null },
+    clinicalRisk: candidate.clinicalRisk || null,
+    duplicateStatus: candidate.duplicateStatus || null,
     status,
     blockers: [...new Set(blockers)],
     languageWarnings: language,
@@ -181,7 +198,7 @@ function preview(id) { prepare(id); }
 // 여러 draft 파일에 있을 때 다른 사본이 잡혀, 평가는 통과했는데 release가
 // 차단되는 어긋남이 생긴다(2026-07-31 실행이 이걸로 실패했다).
 function release(id, flags, preRow = null) {
-  const row = preRow || find(id); const evaluation = evaluate(row); console.log(JSON.stringify({ id, action: "release", dryRun: !flags.apply, evaluation }, null, 2));
+  const row = resolveOfficialDraft(preRow || find(id)); const evaluation = evaluate(row); console.log(JSON.stringify({ id, action: "release", dryRun: !flags.apply, evaluation }, null, 2));
   if (evaluation.blockers.length) throw new Error(`release 차단:\n- ${evaluation.blockers.join("\n- ")}`);
   if (!flags.apply) { console.log("dry-run: --apply 없이는 public-brief issue를 저장하지 않습니다."); return; }
   const date = flags.date || new Date().toISOString().slice(0, 10);
@@ -237,10 +254,11 @@ function releaseReady(flags) {
     const url = normalizeSourceUrl(row.sourceUrl || row.sourceUrlRaw || "");
     if (currentIds.has(row.id) || (url && currentUrls.has(url))) { bump("오늘 이미 발행됨"); continue; }
     if (url && published.has(url)) { bump("이미 발행된 원문"); continue; }
+    const candidateRow = resolveOfficialDraft(row);
     let evaluation;
-    try { evaluation = evaluate(row); } catch { bump("평가 실패"); continue; }
+    try { evaluation = evaluate(candidateRow); } catch { bump("평가 실패"); continue; }
     if (evaluation.status !== "ready-public-brief") { bump(evaluation.status); continue; }
-    candidates.push({ row, url, evaluation });
+    candidates.push({ row: candidateRow, url, evaluation });
     if (url) published.add(url);
   }
   summary.eligible = candidates.length;

@@ -491,7 +491,7 @@ export const MIN_RELEVANCE = 5;     // 심층 하한 (0~10). 국제 수집 확�
 // 색인 후보로 만들고 나머지는 짧은 public brief로 제공한다.
 export const DAILY_TARGET_ITEMS = 60;
 export const DAILY_DEEP_TARGET_ITEMS = 32;
-export const DAILY_CANDIDATE_POOL = 90;
+export const DAILY_CANDIDATE_POOL = 140;
 export const DAILY_HOME_ITEMS = 60;
 export const DAILY_RSS_ITEMS = 100;
 
