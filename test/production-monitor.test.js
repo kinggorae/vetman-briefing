@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { calendarAgeDays, compareDeploymentPayload, inspectArticleHtml, inspectDeploymentPayload, inspectLatestPayload, inspectResponseContract } from "../src/lib/production-monitor.js";
+import { calendarAgeDays, compareDeploymentPayload, inspectArticleHtml, inspectDeploymentPayload, inspectLatestPayload, inspectNewsSitemap, inspectResponseContract, recentIndexableNewsCount } from "../src/lib/production-monitor.js";
 
 test("production monitor calculates calendar age in days", () => {
   assert.equal(calendarAgeDays("2026-08-10", "2026-08-13"), 3);
@@ -35,7 +35,28 @@ test("production monitor rejects a latest payload without item data", () => {
 test("production monitor validates response headers and deployment manifest", () => {
   const contract = inspectResponseContract({ pathname: "/latest.json", status: 200, headers: { "content-type": "application/json", "cache-control": "public, max-age=60", "x-content-type-options": "nosniff" }, body: "{}" });
   assert.deepEqual(contract.critical, []);
-  assert.deepEqual(inspectDeploymentPayload({ version: 1, builtAt: "2026-08-13T00:00:00.000Z", sourceCommit: "abcdef1", latestDate: "2026-08-13", publicArticleCount: 1, searchCount: 1, sitemapCount: 5 }).critical, []);
+  assert.deepEqual(inspectDeploymentPayload({ version: 1, builtAt: "2026-08-13T00:00:00.000Z", sourceCommit: "abcdef1", latestDate: "2026-08-13", publicArticleCount: 1, searchCount: 1, sitemapCount: 5, newsSitemapCount: 1 }).critical, []);
+});
+
+test("production monitor rejects an invalid news sitemap count", () => {
+  const result = inspectDeploymentPayload({ version: 1, builtAt: "2026-08-13T00:00:00.000Z", sourceCommit: "abcdef1", latestDate: "2026-08-13", publicArticleCount: 1, searchCount: 1, sitemapCount: 5, newsSitemapCount: -1 });
+  assert.ok(result.critical.some((item) => item.reason === "deployment-newsSitemapCount-invalid"));
+});
+
+test("production monitor only counts recent indexable latest items for an empty news sitemap", () => {
+  const items = [
+    { publicationStatus: "index-analysis", firstPublishedAt: "2026-08-14T01:00:00Z" },
+    { publicationStatus: "index-low-risk", firstPublishedAt: "2026-08-10T01:00:00Z" },
+    { publicationStatus: "public-brief", firstPublishedAt: "2026-08-14T01:00:00Z" },
+  ];
+  assert.equal(recentIndexableNewsCount(items, { now: "2026-08-14T02:00:00Z", maxAgeDays: 2 }), 1);
+});
+
+test("news sitemap contract validates namespace and live URL count", () => {
+  const valid = '<?xml version="1.0"?><urlset xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"><url><loc>https://news.vetmanlab.com/article/one</loc></url></urlset>';
+  assert.deepEqual(inspectNewsSitemap(valid, 1), { urlCount: 1, critical: [] });
+  assert.equal(inspectNewsSitemap(valid, 2).critical[0].reason, "news-sitemap-count-mismatch");
+  assert.equal(inspectNewsSitemap("<urlset></urlset>", 0).critical[0].reason, "news-sitemap-namespace-missing");
 });
 
 test("deployment verifier detects a live site that is behind the expected build", () => {

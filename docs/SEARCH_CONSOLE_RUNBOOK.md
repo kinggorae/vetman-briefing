@@ -9,6 +9,15 @@
 3. 색인 생성 보고서에서 제외 사유를 별도로 확인합니다. `noindex`, 중복·대체 페이지, Google이 선택한 canonical과 사이트 canonical 불일치를 구분합니다.
 4. 뉴스·Discover 보고서가 제공되는 경우 노출·클릭·CTR을 별도로 확인합니다.
 
+### 뉴스 사이트맵 날짜 기준
+
+`news-sitemap.xml`, RSS의 `<pubDate>`, 기사 `NewsArticle.datePublished`는 우리 사이트의
+최초 게시일(`firstPublishedAt`)을 사용합니다. 원문 발행일은 기사 구조화 데이터의
+`isBasedOn.datePublished`에만 사용합니다. 따라서 재가공 브리핑이 오래된 원문으로
+오인되거나, 새로 게시된 색인 가능 기사가 48시간 뉴스 창에서 누락되지 않습니다.
+`deployment.json`의 `newsSitemapCount`와 실제 `<loc>` 수가 다르면 배포를 중단하고
+빌드 산출물을 다시 확인합니다.
+
 ## 네이버 서치어드바이저
 
 검색 유입·검색어·페이지별 성과를 같은 기간으로 내려받고 CSV 헤더를 `reports/import-templates/naver-search-advisor.csv`와 맞춥니다. 네이버가 제공하는 원본 페이지 URL을 그대로 보존해야 기사 매핑이 가능합니다.

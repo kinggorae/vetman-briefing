@@ -41,6 +41,8 @@ const sitemap = fs.existsSync(path.join(SITE, "sitemap.xml")) ? fs.readFileSync(
 const newsSitemap = fs.existsSync(path.join(SITE, "news-sitemap.xml")) ? fs.readFileSync(path.join(SITE, "news-sitemap.xml"), "utf8") : "";
 const sitemapCount = (sitemap.match(/<loc>/g) || []).length;
 if (deployment && deployment.sitemapCount !== sitemapCount) critical.push({ file: "deployment.json", reason: "sitemap-count-mismatch", manifest: deployment.sitemapCount, actual: sitemapCount });
+const newsSitemapCount = (newsSitemap.match(/<loc>/g) || []).length;
+if (deployment && deployment.newsSitemapCount !== newsSitemapCount) critical.push({ file: "deployment.json", reason: "news-sitemap-count-mismatch", manifest: deployment.newsSitemapCount, actual: newsSitemapCount });
 if (/<loc>undefined<\/loc>|<loc>[^<]*\/admin|<loc>[^<]*\/search\//i.test(sitemap)) critical.push({ file: "sitemap.xml", reason: "internal-url-in-sitemap" });
 if (/<loc>undefined<\/loc>|<loc>[^<]*\/admin|<loc>[^<]*\/search\//i.test(newsSitemap)) critical.push({ file: "news-sitemap.xml", reason: "internal-url-in-news-sitemap" });
 const headers = fs.existsSync(path.join(SITE, "_headers")) ? fs.readFileSync(path.join(SITE, "_headers"), "utf8") : "";
@@ -48,7 +50,7 @@ if (!headers.includes("X-Robots-Tag: noindex") || !headers.includes("Cache-Contr
 const sw = fs.existsSync(path.join(SITE, "sw.js")) ? fs.readFileSync(path.join(SITE, "sw.js"), "utf8") : "";
 if (!sw.includes("vmcache-v7") || !sw.includes("/api/")) critical.push({ file: "sw.js", reason: "service-worker-contract-missing" });
 
-const result = { version: 1, generatedAt: new Date().toISOString(), critical, warnings, deployment: deployment ? { sourceCommit: deployment.sourceCommit, latestDate: deployment.latestDate, publicArticleCount: deployment.publicArticleCount, searchCount: deployment.searchCount } : null };
+const result = { version: 1, generatedAt: new Date().toISOString(), critical, warnings, deployment: deployment ? { sourceCommit: deployment.sourceCommit, latestDate: deployment.latestDate, publicArticleCount: deployment.publicArticleCount, searchCount: deployment.searchCount, newsSitemapCount: deployment.newsSitemapCount } : null };
 fs.mkdirSync(path.dirname(REPORT), { recursive: true });
 fs.writeFileSync(REPORT, JSON.stringify(result, null, 2) + "\n");
 console.log(`deploy guard: critical ${critical.length} · warnings ${warnings.length}`);

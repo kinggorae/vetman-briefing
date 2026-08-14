@@ -4,8 +4,10 @@ import {
   inspectArticleHtml,
   inspectDeploymentPayload,
   inspectLatestPayload,
+  inspectNewsSitemap,
   inspectResponseContract,
   kstDateString,
+  recentIndexableNewsCount,
 } from "../src/lib/production-monitor.js";
 
 const base = process.env.MONITOR_BASE_URL || "https://news.vetmanlab.com";
@@ -27,6 +29,7 @@ const result = {
   warnings: [],
 };
 const responses = new Map();
+let latestPayload = null;
 const parser = new XMLParser({ ignoreAttributes: false });
 
 function addIssues(target, issues, pathname) {
@@ -103,9 +106,9 @@ for (const pathname of ["/sitemap.xml", "/news-sitemap.xml", "/rss.xml"]) {
 
 const latestResponse = responses.get("/latest.json");
 if (latestResponse) {
-  const payload = parseJson("/latest.json", latestResponse.body);
-  if (payload) {
-    result.latest = inspectLatestPayload(payload, {
+  latestPayload = parseJson("/latest.json", latestResponse.body);
+  if (latestPayload) {
+    result.latest = inspectLatestPayload(latestPayload, {
       today: process.env.MONITOR_TODAY || kstDateString(),
       maxAgeDays: Number(process.env.MONITOR_LATEST_MAX_AGE_DAYS || 3),
     });
@@ -173,7 +176,13 @@ if (sitemapResponse) {
 
 const newsSitemapResponse = responses.get("/news-sitemap.xml");
 if (newsSitemapResponse) {
-  result.newsSitemap = { urlCount: extractLocs(newsSitemapResponse.body).length };
+  const expected = Number.isInteger(result.deployment?.newsSitemapCount) ? result.deployment.newsSitemapCount : null;
+  const inspection = inspectNewsSitemap(newsSitemapResponse.body, expected);
+  addIssues(result.critical, inspection.critical, "/news-sitemap.xml");
+  const newsMaxAgeDays = Number(process.env.MONITOR_NEWS_MAX_AGE_DAYS || 2);
+  const latestIndexableCount = recentIndexableNewsCount(latestPayload?.items, { maxAgeDays: newsMaxAgeDays });
+  result.newsSitemap = { urlCount: inspection.urlCount, expected, expectedSource: expected === null ? null : "deployment.json", latestIndexableCount, maxAgeDays: newsMaxAgeDays };
+  if (latestIndexableCount > 0 && inspection.urlCount === 0) result.critical.push({ pathname: "/news-sitemap.xml", reason: "news-sitemap-empty-for-indexable-latest", latestIndexableCount });
 }
 
 const rssResponse = responses.get("/rss.xml");
