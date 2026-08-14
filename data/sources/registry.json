@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-07-31T14:52:26.456Z",
+  "generatedAt": "2026-08-14T15:12:57.851Z",
   "sources": [
     {
       "id": "src-1851-franchise",
@@ -2609,7 +2609,7 @@
       ],
       "atomUrls": [],
       "sitemapUrls": [],
-      "fetchStrategy": "manual",
+      "fetchStrategy": "rss",
       "archiveUrl": null,
       "searchUrlTemplate": null,
       "country": null,
@@ -3202,6 +3202,40 @@
       "notes": null,
       "evidence": [
         "existing-direct-source-url"
+      ]
+    },
+    {
+      "id": "src-pubmed",
+      "label": "PubMed",
+      "officialName": "PubMed",
+      "domains": [
+        "pubmed.ncbi.nlm.nih.gov"
+      ],
+      "officialDomains": [
+        "pubmed.ncbi.nlm.nih.gov"
+      ],
+      "rssUrls": [],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "manual",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "journal",
+      "rateLimitMs": 350,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 95,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "NCBI E-utilities API에서 초록 메타데이터를 수집하고 PubMed 원문 링크만 제공합니다.",
+      "evidence": [
+        "data/source-publishers.json"
       ]
     },
     {
@@ -4523,6 +4557,78 @@
       ]
     },
     {
+      "id": "src-veterinary-clinical-pathology",
+      "label": "Veterinary Clinical Pathology",
+      "officialName": "Veterinary Clinical Pathology",
+      "domains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "officialDomains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "rssUrls": [
+        "https://onlinelibrary.wiley.com/feed/1939165X/most-recent"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 50,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "id": "src-veterinary-dermatology",
+      "label": "Veterinary Dermatology",
+      "officialName": "Veterinary Dermatology",
+      "domains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "officialDomains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "rssUrls": [
+        "https://onlinelibrary.wiley.com/feed/13653164/most-recent"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 50,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
       "id": "src-veterinary-evidence",
       "label": "Veterinary Evidence",
       "officialName": "Veterinary Evidence",
@@ -4631,6 +4737,42 @@
       ]
     },
     {
+      "id": "src-veterinary-record-case-reports",
+      "label": "Veterinary Record Case Reports",
+      "officialName": "Veterinary Record Case Reports",
+      "domains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "officialDomains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "rssUrls": [
+        "https://onlinelibrary.wiley.com/feed/20526121/most-recent"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 50,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
       "id": "src-veterinary-sciences",
       "label": "Veterinary Sciences",
       "officialName": "Veterinary Sciences",
@@ -4695,6 +4837,42 @@
       ]
     },
     {
+      "id": "src-veterinary-and-comparative-oncology",
+      "label": "Veterinary and Comparative Oncology",
+      "officialName": "Veterinary and Comparative Oncology",
+      "domains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "officialDomains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "rssUrls": [
+        "https://onlinelibrary.wiley.com/feed/14765829/most-recent"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 50,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
       "id": "src-veterinary-immunology-and-immunopathology",
       "label": "Veterinary immunology and immunopathology",
       "officialName": "Veterinary immunology and immunopathology",
@@ -4728,12 +4906,18 @@
       "id": "src-veterinary-medicine-and-science",
       "label": "Veterinary medicine and science",
       "officialName": "Veterinary medicine and science",
-      "domains": [],
-      "officialDomains": [],
-      "rssUrls": [],
+      "domains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "officialDomains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "rssUrls": [
+        "https://onlinelibrary.wiley.com/feed/20531095/most-recent"
+      ],
       "atomUrls": [],
       "sitemapUrls": [],
-      "fetchStrategy": "manual",
+      "fetchStrategy": "rss",
       "archiveUrl": null,
       "searchUrlTemplate": null,
       "country": null,
@@ -4742,16 +4926,16 @@
       "sourceType": "publisher",
       "rateLimitMs": 1000,
       "timeoutMs": 12000,
-      "enabled": false,
-      "priority": 0,
-      "active": false,
+      "enabled": true,
+      "priority": 50,
+      "active": true,
       "lastSuccessAt": null,
       "lastFailureAt": null,
       "consecutiveFailures": 0,
-      "healthStatus": "disabled",
+      "healthStatus": "unknown",
       "notes": null,
       "evidence": [
-        "existing-direct-source-url"
+        "data/source-publishers.json"
       ]
     },
     {
@@ -4788,12 +4972,18 @@
       "id": "src-veterinary-ophthalmology",
       "label": "Veterinary ophthalmology",
       "officialName": "Veterinary ophthalmology",
-      "domains": [],
-      "officialDomains": [],
-      "rssUrls": [],
+      "domains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "officialDomains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "rssUrls": [
+        "https://onlinelibrary.wiley.com/feed/14635224/most-recent"
+      ],
       "atomUrls": [],
       "sitemapUrls": [],
-      "fetchStrategy": "manual",
+      "fetchStrategy": "rss",
       "archiveUrl": null,
       "searchUrlTemplate": null,
       "country": null,
@@ -4802,28 +4992,34 @@
       "sourceType": "publisher",
       "rateLimitMs": 1000,
       "timeoutMs": 12000,
-      "enabled": false,
-      "priority": 0,
-      "active": false,
+      "enabled": true,
+      "priority": 50,
+      "active": true,
       "lastSuccessAt": null,
       "lastFailureAt": null,
       "consecutiveFailures": 0,
-      "healthStatus": "disabled",
+      "healthStatus": "unknown",
       "notes": null,
       "evidence": [
-        "existing-direct-source-url"
+        "data/source-publishers.json"
       ]
     },
     {
       "id": "src-veterinary-radiology-ultrasound-the-official-journal-of-",
       "label": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
       "officialName": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
-      "domains": [],
-      "officialDomains": [],
-      "rssUrls": [],
+      "domains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "officialDomains": [
+        "onlinelibrary.wiley.com"
+      ],
+      "rssUrls": [
+        "https://onlinelibrary.wiley.com/feed/17408261/most-recent"
+      ],
       "atomUrls": [],
       "sitemapUrls": [],
-      "fetchStrategy": "manual",
+      "fetchStrategy": "rss",
       "archiveUrl": null,
       "searchUrlTemplate": null,
       "country": null,
@@ -4832,16 +5028,16 @@
       "sourceType": "publisher",
       "rateLimitMs": 1000,
       "timeoutMs": 12000,
-      "enabled": false,
-      "priority": 0,
-      "active": false,
+      "enabled": true,
+      "priority": 50,
+      "active": true,
       "lastSuccessAt": null,
       "lastFailureAt": null,
       "consecutiveFailures": 0,
-      "healthStatus": "disabled",
+      "healthStatus": "unknown",
       "notes": null,
       "evidence": [
-        "existing-direct-source-url"
+        "data/source-publishers.json"
       ]
     },
     {

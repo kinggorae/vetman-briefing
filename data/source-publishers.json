@@ -9,6 +9,13 @@
   "Today's Veterinary Nurse": {"domains":["todaysveterinarynurse.com"],"feeds":["https://todaysveterinarynurse.com/feed/"]},
   "Vet Practice Magazine": {"domains":["vetpracticemag.com.au"],"feeds":["https://vetpracticemag.com.au/feed/"]},
   "Veterinary Record": {"domains":["bvajournals.onlinelibrary.wiley.com"],"feeds":["https://bvajournals.onlinelibrary.wiley.com/feed/20427670/most-recent"]},
+  "Veterinary Record Case Reports": {"domains":["onlinelibrary.wiley.com"],"feeds":["https://onlinelibrary.wiley.com/feed/20526121/most-recent"]},
+  "Veterinary Dermatology": {"domains":["onlinelibrary.wiley.com"],"feeds":["https://onlinelibrary.wiley.com/feed/13653164/most-recent"]},
+  "Veterinary Clinical Pathology": {"domains":["onlinelibrary.wiley.com"],"feeds":["https://onlinelibrary.wiley.com/feed/1939165X/most-recent"]},
+  "Veterinary and Comparative Oncology": {"domains":["onlinelibrary.wiley.com"],"feeds":["https://onlinelibrary.wiley.com/feed/14765829/most-recent"]},
+  "Veterinary medicine and science": {"domains":["onlinelibrary.wiley.com"],"feeds":["https://onlinelibrary.wiley.com/feed/20531095/most-recent"]},
+  "Veterinary ophthalmology": {"domains":["onlinelibrary.wiley.com"],"feeds":["https://onlinelibrary.wiley.com/feed/14635224/most-recent"]},
+  "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association": {"domains":["onlinelibrary.wiley.com"],"feeds":["https://onlinelibrary.wiley.com/feed/17408261/most-recent"]},
   "ScienceDaily": {"domains":["sciencedaily.com"],"feeds":["https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml"]},
   "Frontiers in Veterinary Science": {"domains":["frontiersin.org"],"feeds":["https://www.frontiersin.org/journals/veterinary-science/rss"]},
   "Veterinary Evidence": {"domains":["veterinaryevidence.org"],"feeds":["https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2"]},
@@ -20,7 +27,8 @@
   "New York Post": {"domains":["nypost.com"]},
   "USA Today": {"domains":["usatoday.com"]},
   "Purdue University College of Veterinary Medicine": {"domains":["vet.purdue.edu"]},
-  "NC State University": {"domains":["cvm.ncsu.edu"]},
+  "NC State University": {"domains":["cvm.ncsu.edu"],"feeds":["https://cvm.ncsu.edu/feed/"]},
   "aphis.usda.gov": {"domains":["aphis.usda.gov"]},
-  "American Animal Hospital Association - AAHA": {"domains":["aaha.org"]}
+  "American Animal Hospital Association - AAHA": {"domains":["aaha.org"]},
+  "PubMed": {"domains":["pubmed.ncbi.nlm.nih.gov"],"enabled":true,"sourceType":"journal","priority":95,"rateLimitMs":350,"notes":"NCBI E-utilities API에서 초록 메타데이터를 수집하고 PubMed 원문 링크만 제공합니다."}
 }

@@ -46,10 +46,10 @@ test("production monitor rejects a latest payload without item data", () => {
   assert.equal(result.critical[0].reason, "latest-items-invalid");
 });
 
-test("production monitor enforces today's 30-item edition after the cutoff", () => {
+test("production monitor enforces today's 60-item edition after the cutoff", () => {
   const result = inspectLatestPayload(
     { date: "2026-08-13", count: 2, items: [{ id: "one" }, { id: "two" }] },
-    { today: "2026-08-14", minItems: 30, requireToday: true },
+    { today: "2026-08-14", minItems: 60, requireToday: true },
   );
   assert.deepEqual(result.critical.map((item) => item.reason), ["latest-not-today", "latest-below-minimum"]);
 });

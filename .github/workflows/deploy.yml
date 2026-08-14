@@ -79,6 +79,8 @@ jobs:
 
       - name: Monitor production feed and article contract
         env:
+          # 기능 배포 직후에는 아직 이전 30건 최신호가 남아 있을 수 있다.
+          # 새 일간 발행 잡이 60건을 만들면 daily.yml에서 60건 계약을 검사한다.
           MONITOR_MIN_LATEST_ITEMS: "30"
           MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
           MONITOR_SW_CACHE: "vmcache-v8"

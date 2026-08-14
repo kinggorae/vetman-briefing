@@ -55,10 +55,11 @@ export async function fetchPubmed() {
     }
     await new Promise((r) => setTimeout(r, 350)); // NCBI 요청 간격 예의
   }
-  if (!ids.length) return [];
+  const candidateIds = ids.slice(0, Math.max(1, Number(PUBMED.max) || ids.length));
+  if (!candidateIds.length) return [];
 
   // 2) 초록·메타 가져오기
-  const fetchRes = await eget("efetch.fcgi", { db: "pubmed", id: ids.join(","), retmode: "xml" });
+  const fetchRes = await eget("efetch.fcgi", { db: "pubmed", id: candidateIds.join(","), retmode: "xml" });
   const xml = parser.parse(await fetchRes.text());
   const articles = asArray(xml?.PubmedArticleSet?.PubmedArticle);
 
@@ -77,10 +78,10 @@ export async function fetchPubmed() {
       for (const idn of asArray(art.PubmedData?.ArticleIdList?.ArticleId)) {
         if (idn?.["@_IdType"] === "doi") doi = textOf(idn);
       }
-      const year =
-        artNode.Journal?.JournalIssue?.PubDate?.Year ||
-        (art.PubmedData?.History && "");
-      const url = doi ? `https://doi.org/${doi}` : `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
+      const publishedAt = publishedDate(artNode.Journal?.JournalIssue?.PubDate);
+      // DOI는 원문 식별자로 보존하되, canonical·출처 검증·본문 링크는
+      // robots와 도메인 정책을 일관되게 적용할 수 있는 PubMed URL을 사용한다.
+      const url = `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
       return {
         id: crypto.createHash("md5").update(pmid || title).digest("hex").slice(0, 10),
         sourceType: "paper",
@@ -92,10 +93,25 @@ export async function fetchPubmed() {
         doi,
         pmid,
         url,
-        publishedAt: null,
+        canonicalUrl: url,
+        publishedAt,
       };
     })
     .filter((p) => p.title && p.abstract && p.abstract.length > 150);
+}
+
+const MONTHS = new Map([
+  ["jan", 1], ["feb", 2], ["mar", 3], ["apr", 4], ["may", 5], ["jun", 6],
+  ["jul", 7], ["aug", 8], ["sep", 9], ["oct", 10], ["nov", 11], ["dec", 12],
+]);
+
+function publishedDate(pubDate = {}) {
+  const year = Number(pubDate?.Year || String(pubDate?.MedlineDate || "").match(/\b(19|20)\d{2}\b/)?.[0]);
+  if (!Number.isInteger(year) || year < 1900 || year > 2100) return null;
+  const rawMonth = String(pubDate?.Month || String(pubDate?.MedlineDate || "").match(/[A-Za-z]{3,}/)?.[0] || "").slice(0, 3).toLowerCase();
+  const month = MONTHS.get(rawMonth) || 1;
+  const day = Math.min(28, Math.max(1, Number(pubDate?.Day) || 1));
+  return new Date(Date.UTC(year, month - 1, day)).toISOString();
 }
 
 function textOf(node) {

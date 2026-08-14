@@ -2,13 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { MODEL } from "../config.js";
+import { DAILY_CANDIDATE_POOL, DAILY_DEEP_TARGET_ITEMS, MODEL } from "../config.js";
 import { inferClinicalRisk } from "../src/lib/editorial-review.js";
 import { articleContractIssues, SCHEMA_VERSION } from "../src/lib/editorial-operations.js";
 import { publishQualityIssues } from "../src/quality.js";
 import { bodyCharCount } from "../src/lib/quality.js";
 import { enrichItems } from "../src/enrich.js";
 import { fetchArticleMeta, articleTextQuality } from "../src/article.js";
+import { fetchPubmed } from "../src/pubmed.js";
 import { stableItemId, sourceKeys, addSourceKeys } from "../src/identity.js";
 import { mapPool } from "../src/pool.js";
 import { buildIngestProgress, renderIngestProgress } from "../src/lib/ingest-progress.js";
@@ -21,7 +22,7 @@ const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES = path.join(ROOT, "data", "issues");
 const DRAFT_DIR = path.join(ROOT, "data", "drafts");
 // run.js와 같은 파일을 공유한다. 초안 단계에도 기억이 있어야 어제 뽑은 원문을
-// 오늘 다시 집지 않는다. 이게 없으면 후보 목록 앞에서 매일 같은 30건을 자른다.
+// 오늘 다시 집지 않는다. 이게 없으면 후보 목록 앞에서 매일 같은 60건을 자른다.
 const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 const REPORT_JSON = path.join(ROOT, "reports", "ingest-report.json");
 const REPORT_MD = path.join(ROOT, "reports", "ingest-report.md");
@@ -146,18 +147,23 @@ async function generateDraft(draft, entry, flags) {
   if (!flags.generate) return draft;
   if (!(process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY)) return { ...draft, generation: { ...draft.generation, generationWarnings: ["llm-key-not-configured"] } };
   try {
-    const { generateBrief, generateItem } = await import("../src/generate.js");
+    const { generateBrief, generateItem, generatePaper } = await import("../src/generate.js");
     // 원문 본문이 RSS 요약문보다 길 때만 쓴다. 짧은 칼럼은 추출 결과가 요약문보다
     // 빈약해서, 무조건 원문을 쓰면 오히려 본문이 줄어든다(실측: 446자 → 296자로
     // analysis에서 brief로 떨어진 사례가 있었다).
     const description = entry.description || "";
     const content = (entry.fullText || "").length > description.length ? entry.fullText : description;
-    const volumeBrief = flags.volume === true || flags.brief === true || flags["content-tier"] === "brief";
-    const generated = volumeBrief
-      ? await generateBrief({ ...entry, sourceType: "rss", finalUrl: draft.sourceUrl, url: draft.sourceUrlRaw, fullText: content, body: content, sourceLabel: draft.sourceLabel, publishedAt: draft.sourcePublishedAt })
-      : await generateItem({ ...entry, sourceType: "rss", finalUrl: draft.sourceUrl, url: draft.sourceUrlRaw, fullText: content, body: content, sourceLabel: draft.sourceLabel, publishedAt: draft.sourcePublishedAt });
+    const isPaper = entry.sourceType === "paper" || draft.sourceType === "paper";
+    const deepCandidate = isPaper || entry.generationMode === "deep" || entry.generationMode === "paper" || (flags.volume !== true && flags.brief !== true && flags["content-tier"] !== "brief");
+    const volumeBrief = !isPaper && !deepCandidate && (flags.volume === true || flags.brief === true || flags["content-tier"] === "brief");
+    const generationInput = { ...entry, sourceType: isPaper ? "paper" : "rss", finalUrl: draft.sourceUrl, url: draft.sourceUrlRaw, fullText: content, body: content, abstract: entry.abstract || content, sourceLabel: draft.sourceLabel, publishedAt: draft.sourcePublishedAt };
+    const generated = isPaper
+      ? await generatePaper(generationInput)
+      : volumeBrief
+        ? await generateBrief(generationInput)
+        : await generateItem(generationInput);
     const outputHash = sourceContentHash(JSON.stringify({ titleKo: generated.titleKo, leadKo: generated.leadKo, bodyKo: generated.bodyKo, keyPointsKo: generated.keyPointsKo }));
-    return { ...draft, ...generated, id: draft.id, sourceUrl: draft.sourceUrl, sourceUrlRaw: draft.sourceUrlRaw, sourceStatus: draft.sourceStatus, sourceEvidence: draft.sourceEvidence, workflowStatus: "draft", editorialStatus: "editor-review-required", contentTier: volumeBrief ? "brief" : generated.contentTier, tier: volumeBrief ? "brief" : generated.tier, generation: { model: MODEL, promptVersion: volumeBrief ? "source-first-brief-v1" : "source-first-v1", generatedAt: new Date().toISOString(), inputSourceIds: [draft.sourceId], inputHash: draft.generation.inputHash, outputHash, generationWarnings: [] }, contentHash: outputHash, metadataHash: draft.metadataHash, clinicalRisk: inferClinicalRisk(generated) };
+    return { ...draft, ...generated, id: draft.id, sourceUrl: draft.sourceUrl, sourceUrlRaw: draft.sourceUrlRaw, sourceStatus: draft.sourceStatus, sourceEvidence: draft.sourceEvidence, workflowStatus: "draft", editorialStatus: "editor-review-required", contentTier: volumeBrief ? "brief" : generated.contentTier, tier: volumeBrief ? "brief" : generated.tier, generationMode: isPaper ? "paper" : volumeBrief ? "brief" : "deep", generation: { model: MODEL, promptVersion: isPaper ? "source-first-paper-v1" : volumeBrief ? "source-first-brief-v1" : "source-first-v1", generatedAt: new Date().toISOString(), inputSourceIds: [draft.sourceId], inputHash: draft.generation.inputHash, outputHash, generationWarnings: [] }, contentHash: outputHash, metadataHash: draft.metadataHash, clinicalRisk: inferClinicalRisk(generated) };
   } catch (error) {
     return { ...draft, generation: { ...draft.generation, model: MODEL, promptVersion: "source-first-v1", generationWarnings: [`generation-failed:${error.message.slice(0, 120)}`] } };
   }
@@ -169,10 +175,11 @@ function draftFor(entry, source, flags) {
   const draft = {
     id: stableItemId({ sourceUrl: officialUrl || entry.url, sourceTitle: entry.title, title: entry.title }, `source-${entry.guid}`),
     dataSchemaVersion: SCHEMA_VERSION, draftKind: "source-candidate", workflowStatus: "draft", editorialStatus: "editor-review-required",
-    sourceStatus: status, discoverySource: "official-rss", sourceId: source.id, sourceLabel: source.label,
+    sourceStatus: status, discoverySource: entry.sourceType === "paper" ? "pubmed-eutils" : "official-rss", sourceId: source.id, sourceLabel: source.label, sourceType: entry.sourceType || "rss", generationMode: entry.generationMode || null,
     sourceUrlRaw: entry.url, sourceUrl: officialUrl, sourceTitle: entry.title, sourcePublishedAt: entry.publishedAt,
     publishedAt: null, firstPublishedAt: null, updatedAt: null, fetchedAt: new Date().toISOString(), canonicalUrl: entry.canonicalUrl || null,
     guid: entry.guid, description: entry.description || null, sourceContentHash: sourceContentHash(`${entry.title}\n${entry.description}`), metadataHash: inputHash,
+    abstract: entry.abstract || null, journal: entry.journal || null, doi: entry.doi || null, pmid: entry.pmid || null,
     contentHash: null, titleKo: null, leadKo: null, bodyKo: [], keyPointsKo: [],
     contentTier: "brief", clinicalRisk: inferClinicalRisk({ titleKo: entry.title, leadKo: entry.description, bodyKo: [] }),
     generation: { model: null, promptVersion: null, generatedAt: null, inputSourceIds: [source.id], inputHash, outputHash: null, generationWarnings: ["llm-generation-not-requested"] },
@@ -182,13 +189,40 @@ function draftFor(entry, source, flags) {
   };
   return draft;
 }
-function sourceRows(sources, flags) {
-  return Promise.all(sources.flatMap((source) => feedUrls(source).map(async (url) => {
+async function sourceRows(sources, flags) {
+  const rows = await Promise.all(sources.flatMap((source) => feedUrls(source).map(async (url) => {
     try {
       const result = await fetchFeed(source, url, { useCache: !flags.refresh, retries: 1 });
       return { source, url, result, error: null };
     } catch (error) { return { source, url, result: null, error: error.message }; }
   })));
+  const pubmedSource = sources.find((source) => source.id === "src-pubmed" || source.label === "PubMed");
+  if (flags.pubmed && pubmedSource) {
+    try {
+      const papers = await fetchPubmed();
+      rows.push({
+        source: pubmedSource,
+        url: "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/",
+        result: {
+          entries: papers.map((paper) => ({
+            ...paper,
+            guid: paper.pmid || paper.id,
+            title: paper.title,
+            description: paper.abstract,
+            body: paper.abstract,
+            sourceType: "paper",
+          })),
+          status: 200,
+          contentType: "application/json+xml",
+          fromCache: false,
+        },
+        error: null,
+      });
+    } catch (error) {
+      rows.push({ source: pubmedSource, url: "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/", result: null, error: `PubMed ${error.message}` });
+    }
+  }
+  return rows;
 }
 async function confirmCanonicals(entries, sources, flags) {
   const checked = [];
@@ -221,6 +255,11 @@ async function attachFullText(entries, sources, flags) {
   const lastRequest = new Map();
   const sourceQueues = new Map();
   const fetchOne = async (entry) => {
+    // PubMed는 이미 E-utilities 응답에 초록을 담아 온다. 같은 PMID HTML을
+    // 다시 긁지 않아 NCBI 요청을 줄이고, 초록이 생성 입력에서 빠지는 회귀를 막는다.
+    if (entry.sourceType === "paper") {
+      return { ...entry, fullText: entry.abstract || entry.description || entry.body || null, fullTextReason: "pubmed-abstract" };
+    }
     const url = entry.canonicalUrl || entry.url;
     if (!url || isRelayUrl(url)) return entry;
     const source = sources.find((candidate) => candidate.id === entry.sourceId);
@@ -268,7 +307,12 @@ async function collect(id, flags) {
   const seen = flags["ignore-seen"] ? new Set() : loadSeen();
   const relevant = deduped.filter((entry) => relevance(entry) === "relevant" && entry.duplicateStatus === "unique");
   const fresh = relevant.filter((entry) => !sourceKeys(entry).some((key) => seen.has(key)));
-  let draftEntries = rankedPick(fresh, Math.max(1, Number(flags.max) || 50), Number(flags["per-source"]) || 0, sources);
+  let draftEntries = rankedPick(fresh, Math.max(1, Number(flags.max) || DAILY_CANDIDATE_POOL), Number(flags["per-source"]) || 0, sources);
+  const requestedDeep = flags["deep-limit"] == null ? DAILY_DEEP_TARGET_ITEMS : Math.max(0, Number(flags["deep-limit"]) || 0);
+  draftEntries = draftEntries.map((entry, index) => ({
+    ...entry,
+    generationMode: entry.sourceType === "paper" ? "paper" : (flags.volume === true && index < requestedDeep ? "deep" : flags.volume === true ? "brief" : "deep"),
+  }));
   draftEntries = await confirmCanonicals(draftEntries, sources, flags);
   if (flags.generate) draftEntries = await attachFullText(draftEntries, sources, flags);
   const checkpointFile = path.relative(ROOT, path.join(DRAFT_DIR, `source-first-${runDate}.json`));
@@ -343,7 +387,7 @@ async function collect(id, flags) {
   }
   if (!flags.dry && drafts.length) {
     // 생성 실패 후보는 다음 실행에서 다시 시도해야 한다. 실패한 원문까지
-    // seen에 넣으면 하루 30건을 채우기 전에 후보가 영구히 소진된다.
+    // seen에 넣으면 하루 60건을 채우기 전에 후보가 영구히 소진된다.
     for (const draft of drafts.filter((item) => item.titleKo && item.bodyKo?.length && !hasGenerationFailure(item))) {
       addSourceKeys(seen, draft.sourceUrl || draft.sourceUrlRaw || "");
     }
@@ -352,7 +396,7 @@ async function collect(id, flags) {
   const report = {
     generatedAt: new Date().toISOString(), mode: flags.dry ? "dry-run" : "write-draft", sources: sources.map((source) => ({ id: source.id, label: source.label, feeds: feedUrls(source) })),
     feeds: fetched.map((row) => ({ sourceId: row.source.id, sourceLabel: row.source.label, url: row.url, itemCount: row.result?.entries?.length || 0, fromCache: row.result?.fromCache || false, error: row.error })),
-    counts: { sources: sources.length, feeds: fetched.length, feedFailures: fetched.filter((row) => row.error).length, fetchedEntries: entries.length, unique: deduped.filter((entry) => entry.duplicateStatus === "unique").length, exactDuplicate: deduped.filter((entry) => entry.duplicateStatus === "exact-duplicate").length, updateOfExisting: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").length, excludedIrrelevant: deduped.filter((entry) => relevance(entry) === "excluded").length, relevantUnique: relevant.length, seenSkipped: relevant.length - fresh.length, freshAvailable: fresh.length, drafts: drafts.length, generated: generated.length, generationFailed: reportGenerationFailures(drafts), canonicalChecked: draftEntries.filter((entry) => entry.pageMetadata).length, verifiedCanonical: drafts.filter((draft) => draft.sourceStatus === "verified").length, unresolved: drafts.filter((draft) => draft.sourceStatus === "unresolved").length, relaySourceUrl: drafts.filter((draft) => RELAY.test(draft.sourceUrl || "")).length, draftSources: new Set(drafts.map((draft) => draft.sourceId)).size },
+    counts: { sources: sources.length, feeds: fetched.length, feedFailures: fetched.filter((row) => row.error).length, fetchedEntries: entries.length, unique: deduped.filter((entry) => entry.duplicateStatus === "unique").length, exactDuplicate: deduped.filter((entry) => entry.duplicateStatus === "exact-duplicate").length, updateOfExisting: deduped.filter((entry) => entry.duplicateStatus === "update-of-existing").length, excludedIrrelevant: deduped.filter((entry) => relevance(entry) === "excluded").length, relevantUnique: relevant.length, seenSkipped: relevant.length - fresh.length, freshAvailable: fresh.length, drafts: drafts.length, generated: generated.length, deepRequested: draftEntries.filter((entry) => entry.generationMode === "deep" || entry.generationMode === "paper").length, briefRequested: draftEntries.filter((entry) => entry.generationMode === "brief").length, pubmedEntries: entries.filter((entry) => entry.sourceType === "paper").length, generationFailed: reportGenerationFailures(drafts), canonicalChecked: draftEntries.filter((entry) => entry.pageMetadata).length, verifiedCanonical: drafts.filter((draft) => draft.sourceStatus === "verified").length, unresolved: drafts.filter((draft) => draft.sourceStatus === "unresolved").length, relaySourceUrl: drafts.filter((draft) => RELAY.test(draft.sourceUrl || "")).length, draftSources: new Set(drafts.map((draft) => draft.sourceId)).size },
     sourceMix: Object.fromEntries(Object.entries(drafts.reduce((acc, draft) => { const key = draft.sourceLabel || draft.sourceId || "?"; acc[key] = (acc[key] || 0) + 1; return acc; }, {})).sort((a, b) => b[1] - a[1])),
     selection: (() => { const s = drafts.map((d) => d.selectionScore).filter((x) => typeof x === "number").sort((a, b) => b - a); const ages = drafts.map((d) => Date.parse(d.sourcePublishedAt || "")).filter(Number.isFinite).map((ms) => Math.round((Date.now() - ms) / 86400000)).sort((a, b) => a - b); return { scoreTop: s[0] ?? null, scoreMedian: s.length ? s[Math.floor(s.length / 2)] : null, scoreMin: s.at(-1) ?? null, ageDaysMedian: ages.length ? ages[Math.floor(ages.length / 2)] : null, ageDaysMax: ages.at(-1) ?? null, within7Days: ages.filter((x) => x <= 7).length }; })(),
     drafts: drafts.map((draft) => ({ ...draft, title: draft.sourceTitle, publishedAt: draft.sourcePublishedAt, provenance: draft.generation })),
