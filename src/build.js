@@ -1188,7 +1188,11 @@ const APP_JS = String.raw`
       : null;
     var allArr=todayArr||activeList();
     if(includeIssueBriefs&&DATA.recentPromoted) allArr=allArr.concat(DATA.recent||[]);
-    var arr=S.showAll?allArr:allArr.slice(0,24);
+    // 오늘자 발행분은 목표 건수(30건)를 홈에서 바로 보여준다. 기존 24건
+    // 제한은 발행은 정상인데 나머지 기사가 사라진 것처럼 보이게 만들었다.
+    // 검색·카테고리 화면은 정보 밀도를 유지하기 위해 기존 제한을 사용한다.
+    var defaultHomeLimit=includeIssueBriefs?Math.max(30,todayArr?todayArr.length:0):24;
+    var arr=S.showAll?allArr:allArr.slice(0,defaultHomeLimit);
     if(S.sort==='latest'&&!S.query.trim()) arr.sort(function(x,y){return y.ts-x.ts;});
     if(S.sort==='latest'&&!S.query.trim()&&todayArr) todayArr.sort(function(x,y){return y.ts-x.ts;});
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
@@ -1234,8 +1238,11 @@ const APP_JS = String.raw`
     if(quad.length<2) quad=[];
     var feat=layoutArr[i++];
     var bandAll=layoutArr.slice(i);
-    var band=S.showAll?bandAll:bandAll.slice(0,12);
-    var top5=layoutArr.slice(0,5), more=bandAll.length-band.length, clipped=(DATA.hasMore?1:allArr.length-arr.length);
+    // 오늘 홈은 30건을 모두 이어서 보여주므로 밴드도 별도 12건 제한을 두지
+    // 않는다. 검색·필터 화면에서는 기존의 짧은 초기 렌더를 유지한다.
+    var fullDailyHome=includeIssueBriefs&&!S.showAll;
+    var band=(S.showAll||fullDailyHome)?bandAll:bandAll.slice(0,12);
+    var top5=layoutArr.slice(0,5), more=fullDailyHome?0:bandAll.length-band.length, clipped=fullDailyHome?0:(DATA.hasMore?1:allArr.length-arr.length);
 
     var h='<div>'
     // ① 폴드 — 3단 비대칭
