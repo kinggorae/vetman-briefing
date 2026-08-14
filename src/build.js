@@ -1062,8 +1062,9 @@ const APP_JS = String.raw`
   }
 
   // "이어 읽기" — 오늘 지면과 겹치지 않고, 오늘 다룬 주제와 연결되는 최근 기사만 함께.
-  function recentSection(){
-    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly||DATA.recentPromoted) return '';
+  // 짧은 오늘 지면에서는 오늘 기사를 먼저 모두 보여준 뒤 최근 기사를 붙인다.
+  function recentSection(force){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly||(!force&&DATA.recentPromoted)) return '';
     var list=DATA.recent||[]; if(!list.length) return '';
     return '<div style="margin-top:32px;"><div style="border-top:2px solid var(--color-label-strong);padding:16px 0 13px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">이어 읽기</span><span style="font-size:12.5px;color:var(--color-label-alternative);">오늘 기사와 연결되는 최근 소식 · '+list.length+'건</span></div>'
     +bandGrid(list)+'</div>';
@@ -1166,22 +1167,28 @@ const APP_JS = String.raw`
 
   function homeView(){
     var includeIssueBriefs=!S.query.trim()&&S.cat==='all'&&!S.unreadOnly;
-    var allArr=includeIssueBriefs
+    // 오늘 지면과 보강용 최근 지면을 분리한다. 최근 기사가 먼저 섞이면
+    // 오늘 기사 일부가 '한눈에' 요약 행으로 밀려 메인에서 사라져 보인다.
+    var todayArr=includeIssueBriefs
       ? (DATA.articles||[]).concat(DATA.briefs||[],DATA.stories||[])
-      : activeList();
+      : null;
+    var allArr=todayArr||activeList();
     if(includeIssueBriefs&&DATA.recentPromoted) allArr=allArr.concat(DATA.recent||[]);
     var arr=S.showAll?allArr:allArr.slice(0,24);
     if(S.sort==='latest'&&!S.query.trim()) arr.sort(function(x,y){return y.ts-x.ts;});
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
     // 기사가 적은 필터에서는 2단을 쓰지 않는다. 오른쪽 단(카드 4 + TOP 5)이
     // 목록 전체보다 길어 어떻게 나눠도 한쪽에 수백 px 빈칸이 남기 때문이다.
-    if(arr.length<10){
+    // 홈의 짧은 오늘 지면은 보강용 최근 기사가 10건 기준을 넘겨도 compact 지면을 유지해
+    // 오늘 기사를 먼저 전부 노출한다. 최근 기사는 그 아래 '이어 읽기'로 분리한다.
+    var compactArr=includeIssueBriefs&&todayArr&&todayArr.length>0&&todayArr.length<10?todayArr:arr;
+    if(compactArr.length<10){
       var h1='<div><div style="padding:28px 0 34px;border-bottom:2px solid var(--color-label-strong);">'
-      +leadCard(arr[0])+arr.slice(1).map(leadFollow).join('')+'</div>'
-      +mostRead(arr.slice(0,5));
-      h1+=qaColumn(arr);
+      +leadCard(compactArr[0])+compactArr.slice(1).map(leadFollow).join('')+'</div>'
+      +mostRead(compactArr.slice(0,5));
+      h1+=qaColumn(compactArr);
       if(!includeIssueBriefs) h1+=briefsBoard();
-      h1+=recentSection();
+      h1+=recentSection(includeIssueBriefs&&!!DATA.recentPromoted);
       h1+=storyBoard();
       return h1+'</div>';
     }
