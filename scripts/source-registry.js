@@ -43,6 +43,7 @@ function buildRegistry() {
       country: configured.country || null, language: configured.language || "en", timezone: configured.timezone || "UTC",
       sourceType: configured.sourceType || "publisher", rateLimitMs: Number(configured.rateLimitMs) || 1000,
       timeoutMs: Number(configured.timeoutMs) || 12000, enabled: Boolean(enabled), priority: Number(configured.priority) || (enabled ? 50 : 0),
+      ...(configured.userAgent ? { userAgent: configured.userAgent } : {}),
       active: Boolean(enabled), lastSuccessAt: configured.lastSuccessAt || null, lastFailureAt: configured.lastFailureAt || null,
       consecutiveFailures: Number(configured.consecutiveFailures) || 0, healthStatus: configured.healthStatus || (enabled ? "unknown" : "disabled"),
       notes: configured.notes || null, evidence: configured.evidence || [Object.prototype.hasOwnProperty.call(mapping, label) ? "data/source-publishers.json" : "existing-direct-source-url"],

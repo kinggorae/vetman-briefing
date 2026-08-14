@@ -2,7 +2,7 @@ name: Deploy site
 
 # 저장소에 이미 커밋된 발행분을 그대로 빌드해 배포한다.
 # Cloudflare Pages에 git 연동이 없어 wrangler 배포를 거치지 않으면 라이브가
-# 갱신되지 않는다. 수집·생성(60건에 60분 이상)을 다시 돌리지 않고 배포만
+# 갱신되지 않는다. 대량 수집·생성 작업을 다시 돌리지 않고 배포만
 # 필요할 때 쓴다. 데이터를 만들지도, 커밋하지도 않는다.
 
 on:
@@ -80,7 +80,7 @@ jobs:
       - name: Monitor production feed and article contract
         env:
           # 기능 배포 직후에는 아직 이전 30건 최신호가 남아 있을 수 있다.
-          # 새 일간 발행 잡이 60건을 만들면 daily.yml에서 60건 계약을 검사한다.
+          # 새 일간 발행 잡이 목표 건수를 만들면 daily.yml에서 해당 계약을 검사한다.
           MONITOR_MIN_LATEST_ITEMS: "30"
           MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
           MONITOR_SW_CACHE: "vmcache-v8"

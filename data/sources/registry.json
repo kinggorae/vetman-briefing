@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-14T15:12:57.851Z",
+  "generatedAt": "2026-08-14T18:13:37.593Z",
   "sources": [
     {
       "id": "src-1851-franchise",
@@ -334,6 +334,43 @@
       "notes": null,
       "evidence": [
         "existing-direct-source-url"
+      ]
+    },
+    {
+      "id": "src-animals",
+      "label": "Animals",
+      "officialName": "Animals",
+      "domains": [
+        "mdpi.com"
+      ],
+      "officialDomains": [
+        "mdpi.com"
+      ],
+      "rssUrls": [
+        "https://www.mdpi.com/rss/journal/animals"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "journal",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 60,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/131 Safari/537.36",
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "MDPI Animals 공식 RSS. 수의·동물보건 관련성 필터를 통과한 항목만 사용",
+      "evidence": [
+        "data/source-publishers.json"
       ]
     },
     {
@@ -3759,6 +3796,42 @@
       ]
     },
     {
+      "id": "src-texas-a-m-vmbs-news",
+      "label": "Texas A&M VMBS News",
+      "officialName": "Texas A&M VMBS News",
+      "domains": [
+        "vetmed.tamu.edu"
+      ],
+      "officialDomains": [
+        "vetmed.tamu.edu"
+      ],
+      "rssUrls": [
+        "https://vetmed.tamu.edu/news/feed/"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 65,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
       "id": "src-the-age",
       "label": "The Age",
       "officialName": "The Age",
@@ -4355,6 +4428,80 @@
       ]
     },
     {
+      "id": "src-university-of-florida-veterinary-news",
+      "label": "University of Florida Veterinary News",
+      "officialName": "University of Florida Veterinary News",
+      "domains": [
+        "vetmed.ufl.edu"
+      ],
+      "officialDomains": [
+        "vetmed.ufl.edu"
+      ],
+      "rssUrls": [
+        "https://www.vetmed.ufl.edu/feed/"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 65,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "id": "src-university-of-missouri-veterinary-news",
+      "label": "University of Missouri Veterinary News",
+      "officialName": "University of Missouri Veterinary News",
+      "domains": [
+        "vetmed.missouri.edu",
+        "cvm.missouri.edu"
+      ],
+      "officialDomains": [
+        "vetmed.missouri.edu",
+        "cvm.missouri.edu"
+      ],
+      "rssUrls": [
+        "https://vetmed.missouri.edu/feed/"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 65,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
       "id": "src-vocm",
       "label": "VOCM",
       "officialName": "VOCM",
@@ -4741,10 +4888,12 @@
       "label": "Veterinary Record Case Reports",
       "officialName": "Veterinary Record Case Reports",
       "domains": [
-        "onlinelibrary.wiley.com"
+        "onlinelibrary.wiley.com",
+        "bvajournals.onlinelibrary.wiley.com"
       ],
       "officialDomains": [
-        "onlinelibrary.wiley.com"
+        "onlinelibrary.wiley.com",
+        "bvajournals.onlinelibrary.wiley.com"
       ],
       "rssUrls": [
         "https://onlinelibrary.wiley.com/feed/20526121/most-recent"
@@ -4782,28 +4931,31 @@
       "officialDomains": [
         "mdpi.com"
       ],
-      "rssUrls": [],
+      "rssUrls": [
+        "https://www.mdpi.com/rss/journal/vetsci"
+      ],
       "atomUrls": [],
       "sitemapUrls": [],
-      "fetchStrategy": "manual",
+      "fetchStrategy": "rss",
       "archiveUrl": null,
       "searchUrlTemplate": null,
       "country": null,
       "language": "en",
       "timezone": "UTC",
-      "sourceType": "publisher",
+      "sourceType": "journal",
       "rateLimitMs": 1000,
       "timeoutMs": 12000,
       "enabled": true,
-      "priority": 50,
+      "priority": 65,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/131 Safari/537.36",
       "active": true,
       "lastSuccessAt": null,
       "lastFailureAt": null,
       "consecutiveFailures": 0,
       "healthStatus": "unknown",
-      "notes": null,
+      "notes": "MDPI Veterinary Sciences 공식 RSS",
       "evidence": [
-        "existing-direct-source-url"
+        "data/source-publishers.json"
       ]
     },
     {
@@ -5488,6 +5640,42 @@
       "notes": null,
       "evidence": [
         "existing-direct-source-url"
+      ]
+    },
+    {
+      "id": "src-washington-state-veterinary-news",
+      "label": "Washington State Veterinary News",
+      "officialName": "Washington State Veterinary News",
+      "domains": [
+        "vetmed.wsu.edu"
+      ],
+      "officialDomains": [
+        "vetmed.wsu.edu"
+      ],
+      "rssUrls": [
+        "https://vetmed.wsu.edu/feed/"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 65,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": null,
+      "evidence": [
+        "data/source-publishers.json"
       ]
     },
     {

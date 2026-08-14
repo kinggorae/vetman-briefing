@@ -182,7 +182,7 @@ async function robotsAllows(url, source) {
   const parsed = new URL(url); const robotsUrl = `${parsed.protocol}//${parsed.host}/robots.txt`;
   let rules = robotsCache.get(robotsUrl);
   if (!rules) {
-    try { const response = await fetch(robotsUrl, { headers: { "User-Agent": SOURCE_USER_AGENT }, signal: AbortSignal.timeout(source.timeoutMs) }); rules = response.ok ? await response.text() : ""; } catch { rules = ""; }
+    try { const response = await fetch(robotsUrl, { headers: { "User-Agent": source.userAgent || SOURCE_USER_AGENT }, signal: AbortSignal.timeout(source.timeoutMs) }); rules = response.ok ? await response.text() : ""; } catch { rules = ""; }
     robotsCache.set(robotsUrl, rules);
   }
   let active = false;
@@ -203,7 +203,7 @@ export async function fetchArticleMetadata(source, url, { useCache = true } = {}
   const cachedPath = pageCachePath(url);
   const cached = useCache ? readJson(cachedPath, null) : null;
   if (cached) return { ...cached, fromCache: true };
-  const response = await fetch(url, { headers: { "User-Agent": SOURCE_USER_AGENT, Accept: "text/html,application/xhtml+xml" }, redirect: "follow", signal: AbortSignal.timeout(source.timeoutMs) });
+  const response = await fetch(url, { headers: { "User-Agent": source.userAgent || SOURCE_USER_AGENT, Accept: "text/html,application/xhtml+xml" }, redirect: "follow", signal: AbortSignal.timeout(source.timeoutMs) });
   const contentType = response.headers.get("content-type") || "";
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   if (!/html|xhtml/i.test(contentType)) throw new Error(`HTML이 아닙니다: ${contentType || "MIME 없음"}`);
@@ -226,7 +226,7 @@ export async function fetchFeed(source, url, { useCache = true, maxCacheAgeMs = 
   let lastError = null;
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-      const headers = { "User-Agent": SOURCE_USER_AGENT, Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml" };
+      const headers = { "User-Agent": source.userAgent || SOURCE_USER_AGENT, Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml" };
       if (!force && cached?.etag) headers["If-None-Match"] = cached.etag;
       if (!force && cached?.lastModified) headers["If-Modified-Since"] = cached.lastModified;
       const response = await fetch(url, { headers, redirect: "follow", signal: AbortSignal.timeout(source.timeoutMs) });

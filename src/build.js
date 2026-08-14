@@ -571,7 +571,7 @@ function renderStaticShell(data) {
     ...(data.briefs || []),
     ...(data.stories || []),
     ...(data.recentPromoted ? (data.recent || []) : []),
-  // JS가 실행되지 않는 검색 크롤러에도 오늘 목표 60건을 전달한다.
+  // JS가 실행되지 않는 검색 크롤러에도 오늘 목표 건수를 전달한다.
   ].slice(0, DAILY_HOME_ITEMS);
   const lead = articles[0];
   const cards = articles.slice(1);
@@ -1257,7 +1257,7 @@ const APP_JS = String.raw`
       : null;
     var allArr=todayArr||activeList();
     if(includeIssueBriefs&&DATA.recentPromoted) allArr=allArr.concat(DATA.recent||[]);
-    // 오늘자 발행분은 목표 건수(60건)를 홈에서 바로 보여준다. 기존 24건
+    // 오늘자 발행분은 목표 건수를 홈에서 바로 보여준다. 기존 24건
     // 제한은 발행은 정상인데 나머지 기사가 사라진 것처럼 보이게 만들었다.
     // 검색·카테고리 화면은 정보 밀도를 유지하기 위해 기존 제한을 사용한다.
     var defaultHomeLimit=includeIssueBriefs?Math.max(${DAILY_HOME_ITEMS},todayArr?todayArr.length:0):24;
@@ -1308,7 +1308,7 @@ const APP_JS = String.raw`
     if(quad.length<2) quad=[];
     var feat=layoutArr[i++];
     var bandAll=layoutArr.slice(i);
-    // 오늘 홈은 60건을 모두 이어서 보여주므로 밴드도 별도 12건 제한을 두지
+    // 오늘 홈은 발행분을 모두 이어서 보여주므로 밴드도 별도 12건 제한을 두지
     // 않는다. 검색·필터 화면에서는 기존의 짧은 초기 렌더를 유지한다.
     var fullDailyHome=includeIssueBriefs&&!S.showAll;
     var band=(S.showAll||fullDailyHome)?bandAll:bandAll.slice(0,12);
@@ -1948,10 +1948,10 @@ function compactClientArticle(a, { lead = false } = {}) {
 }
 
 function compactClientData(data) {
-  // 홈은 첫 HTML에 오늘 지면을 최소 60건까지 담아야 한다. 기존에는 유형별로
-  // 심층 24·브리프 12·화제 8건을 따로 자르면서, 오늘 60건 중 브리프가 많은 날의
-  // 15건이 초기 payload에서 빠졌다. 발행 수는 정상인데 홈에는 적게 보이는 현상이다.
-  // 세 유형을 하나의 지면으로 합산해 앞 60건을 보존하고, 각 배열의 순서는 유지한다.
+  // 홈은 첫 HTML에 오늘 지면의 전체 목표 건수까지 담아야 한다. 기존에는 유형별로
+  // 심층 24·브리프 12·화제 8건을 따로 자르면서, 오늘 지면 중 브리프가 많은 날의
+  // 일부 기사가 초기 payload에서 빠졌다. 발행 수는 정상인데 홈에는 적게 보이는 현상이다.
+  // 세 유형을 하나의 지면으로 합산해 목표 건수를 보존하고, 각 배열의 순서는 유지한다.
   const editionItems = [...(data.articles || []), ...(data.briefs || []), ...(data.stories || [])];
   const editionIds = new Set(editionItems.slice(0, DAILY_HOME_ITEMS).map((a) => a.id));
   const keepEdition = (items, options = {}) => (items || [])
