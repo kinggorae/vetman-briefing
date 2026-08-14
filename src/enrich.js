@@ -164,7 +164,13 @@ export async function radarFor(item, attempt = 1) {
 // items 배열에 radar를 in-place로 채운다(이미 있으면 건너뜀). run.js 파이프라인에서 사용.
 export async function enrichItems(items, { force = false, onItem = null } = {}) {
   // 대상만 추려 동시 실행한다(순차 호출이 일간 실행 시간의 큰 몫이었다)
-  const todo = items.filter((it) => it.category !== "watercooler" && (force || !it.radar));
+  // brief는 제목·2문장 요약으로 공개하는 볼륨 티어라 심층 레이더를 붙이지
+  // 않는다. 레이더를 매 기사마다 생성하면 하루 30건 목표에서 본문보다
+  // 부가 호출이 병목이 되고, 짧은 글에 억지 임상 시사점을 덧붙이게 된다.
+  const todo = items.filter((it) => {
+    const brief = it.contentTier === "brief" || it.tier === "brief" || it.category === "brief";
+    return !brief && it.category !== "watercooler" && (force || !it.radar);
+  });
   let done = 0;
   await mapPool(todo, async (it) => {
     try {

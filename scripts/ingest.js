@@ -146,15 +146,18 @@ async function generateDraft(draft, entry, flags) {
   if (!flags.generate) return draft;
   if (!(process.env.LLM_API_KEY || process.env.ANTHROPIC_API_KEY)) return { ...draft, generation: { ...draft.generation, generationWarnings: ["llm-key-not-configured"] } };
   try {
-    const { generateItem } = await import("../src/generate.js");
+    const { generateBrief, generateItem } = await import("../src/generate.js");
     // 원문 본문이 RSS 요약문보다 길 때만 쓴다. 짧은 칼럼은 추출 결과가 요약문보다
     // 빈약해서, 무조건 원문을 쓰면 오히려 본문이 줄어든다(실측: 446자 → 296자로
     // analysis에서 brief로 떨어진 사례가 있었다).
     const description = entry.description || "";
     const content = (entry.fullText || "").length > description.length ? entry.fullText : description;
-    const generated = await generateItem({ ...entry, sourceType: "rss", finalUrl: draft.sourceUrl, url: draft.sourceUrlRaw, fullText: content, body: content, sourceLabel: draft.sourceLabel, publishedAt: draft.sourcePublishedAt });
+    const volumeBrief = flags.volume === true || flags.brief === true || flags["content-tier"] === "brief";
+    const generated = volumeBrief
+      ? await generateBrief({ ...entry, sourceType: "rss", finalUrl: draft.sourceUrl, url: draft.sourceUrlRaw, fullText: content, body: content, sourceLabel: draft.sourceLabel, publishedAt: draft.sourcePublishedAt })
+      : await generateItem({ ...entry, sourceType: "rss", finalUrl: draft.sourceUrl, url: draft.sourceUrlRaw, fullText: content, body: content, sourceLabel: draft.sourceLabel, publishedAt: draft.sourcePublishedAt });
     const outputHash = sourceContentHash(JSON.stringify({ titleKo: generated.titleKo, leadKo: generated.leadKo, bodyKo: generated.bodyKo, keyPointsKo: generated.keyPointsKo }));
-    return { ...draft, ...generated, id: draft.id, sourceUrl: draft.sourceUrl, sourceUrlRaw: draft.sourceUrlRaw, sourceStatus: draft.sourceStatus, sourceEvidence: draft.sourceEvidence, workflowStatus: "draft", editorialStatus: "editor-review-required", generation: { model: MODEL, promptVersion: "source-first-v1", generatedAt: new Date().toISOString(), inputSourceIds: [draft.sourceId], inputHash: draft.generation.inputHash, outputHash, generationWarnings: [] }, contentHash: outputHash, metadataHash: draft.metadataHash, clinicalRisk: inferClinicalRisk(generated) };
+    return { ...draft, ...generated, id: draft.id, sourceUrl: draft.sourceUrl, sourceUrlRaw: draft.sourceUrlRaw, sourceStatus: draft.sourceStatus, sourceEvidence: draft.sourceEvidence, workflowStatus: "draft", editorialStatus: "editor-review-required", contentTier: volumeBrief ? "brief" : generated.contentTier, tier: volumeBrief ? "brief" : generated.tier, generation: { model: MODEL, promptVersion: volumeBrief ? "source-first-brief-v1" : "source-first-v1", generatedAt: new Date().toISOString(), inputSourceIds: [draft.sourceId], inputHash: draft.generation.inputHash, outputHash, generationWarnings: [] }, contentHash: outputHash, metadataHash: draft.metadataHash, clinicalRisk: inferClinicalRisk(generated) };
   } catch (error) {
     return { ...draft, generation: { ...draft.generation, model: MODEL, promptVersion: "source-first-v1", generationWarnings: [`generation-failed:${error.message.slice(0, 120)}`] } };
   }
@@ -339,7 +342,11 @@ async function collect(id, flags) {
     await enrichQueue;
   }
   if (!flags.dry && drafts.length) {
-    for (const draft of drafts) addSourceKeys(seen, draft.sourceUrl || draft.sourceUrlRaw || "");
+    // 생성 실패 후보는 다음 실행에서 다시 시도해야 한다. 실패한 원문까지
+    // seen에 넣으면 하루 30건을 채우기 전에 후보가 영구히 소진된다.
+    for (const draft of drafts.filter((item) => item.titleKo && item.bodyKo?.length && !hasGenerationFailure(item))) {
+      addSourceKeys(seen, draft.sourceUrl || draft.sourceUrlRaw || "");
+    }
     saveSeen(seen);
   }
   const report = {

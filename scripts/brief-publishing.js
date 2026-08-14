@@ -15,7 +15,9 @@ const OUT_DIR = path.join(ROOT, "reports", "briefs");
 const ISSUE_DIR = path.join(ROOT, "data", "issues");
 const DRAFT_DIR = path.join(ROOT, "data", "drafts");
 const RELEASE_REPORT = path.join(ROOT, "reports", "brief-release.json");
-const MIN_RELEASE_ITEMS = 5;
+// 무료 뉴스룸의 일간 볼륨 목표. 후보가 목표보다 적으면 부분 발행하지 않고
+// 워크플로를 실패시켜 다음 실행에서 재시도하게 한다.
+export const DAILY_TARGET_ITEMS = 30;
 const CANDIDATE_IDS = ["v1_88e7bde7826c5eaf", "v1_8977cdecc20db74b", "v1_66712dc60cebbebc", "v1_ecdd9715ae5b33aa", "v1_5f01b0b4f48babba"];
 
 function parse() {
@@ -75,8 +77,12 @@ function claimWarnings(row) {
 const BLOCKING_LANGUAGE = /^(korean-internal-ascii|known-error:|untranslated-title|repeated-paragraph)/;
 const BLOCKING_CLAIM = /^(species-mismatch|case-report-generalization)$/;
 const blockingOnly = (warnings, pattern) => warnings.filter((w) => pattern.test(w));
-function canReleaseDaily(existingCount, candidateCount, minimum = MIN_RELEASE_ITEMS) {
-  return Number(existingCount || 0) + Number(candidateCount || 0) >= minimum;
+function releaseTarget(flags = {}) {
+  const requested = Number(flags.target || flags["daily-target"] || DAILY_TARGET_ITEMS);
+  return Number.isFinite(requested) && requested > 0 ? Math.floor(requested) : DAILY_TARGET_ITEMS;
+}
+function canReleaseDaily(existingCount, candidateCount, target = DAILY_TARGET_ITEMS) {
+  return Number(existingCount || 0) + Number(candidateCount || 0) >= target;
 }
 function hasKorean(row) { return Boolean(row.titleKo && row.leadKo && Array.isArray(row.bodyKo) && row.bodyKo.length); }
 function evaluate(row) {
@@ -171,6 +177,7 @@ function release(id, flags, preRow = null) {
 // 나머지는 사유와 함께 남긴다. 이미 다른 날짜에 나간 sourceUrl은 건너뛴다.
 function releaseReady(flags) {
   const date = flags.date || new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(new Date());
+  const dailyTarget = releaseTarget(flags);
   // 기본은 그날 수집분만 본다. 전체 draft를 훑으면 며칠 지난 초안이 오늘 날짜로
   // 발행된다. 과거분 소급 발행이 필요할 때만 --all-drafts로 명시한다.
   const files = flags["all-drafts"] ? draftFiles() : draftFiles().filter((file) => path.basename(file).includes(date));
@@ -189,7 +196,7 @@ function releaseReady(flags) {
     }
   }
   const seen = new Set();
-  const summary = { date, total: rows.length, existing: currentItems.length, eligible: 0, released: 0, minimum: MIN_RELEASE_ITEMS, skipped: {}, ids: [] };
+  const summary = { date, total: rows.length, existing: currentItems.length, target: dailyTarget, eligible: 0, released: 0, minimum: dailyTarget, skipped: {}, ids: [] };
   const bump = (reason) => { summary.skipped[reason] = (summary.skipped[reason] || 0) + 1; };
   const candidates = [];
   for (const row of rows) {
@@ -205,18 +212,21 @@ function releaseReady(flags) {
     if (url) published.add(url);
   }
   summary.eligible = candidates.length;
-  // 하루 이슈는 최소 5건이 모일 때만 새 날짜 파일을 만든다. 항목을 먼저
-  // 파일에 하나씩 써버리면 3건짜리 부분 발행이 남아 다음 build/validate를
-  // 막고, 결과적으로 정상적인 이전 발행본까지 배포할 수 없게 된다. 후보가
-  // 부족한 날은 draft·리포트만 보존하고 다음 실행에서 다시 모은다.
-  if (flags.apply && !canReleaseDaily(currentItems.length, candidates.length)) {
-    summary.skipped["daily-minimum-not-reached"] = candidates.length;
-    summary.note = "최소 발행 건수 미달이라 오늘 이슈 파일을 변경하지 않았습니다.";
+  // 목표를 넘겨 한 번에 너무 많이 공개하지 않는다. 여러 번 실행해도
+  // currentItems와 합산해 하루 목표까지 부족분만 채운다.
+  const needed = Math.max(0, dailyTarget - currentItems.length);
+  const releaseCandidates = candidates.slice(0, needed);
+  if (candidates.length > releaseCandidates.length) summary.skipped["daily-target-cap"] = candidates.length - releaseCandidates.length;
+  // 하루 이슈는 목표 건수가 모일 때만 새 날짜 파일을 만든다. 부분 발행은
+  // 다음 재실행에서 새 후보를 더 모아 정확히 30건을 채우도록 남겨 둔다.
+  if (flags.apply && currentItems.length < dailyTarget && !canReleaseDaily(currentItems.length, candidates.length, dailyTarget)) {
+    summary.skipped["daily-target-not-reached"] = candidates.length;
+    summary.note = `일일 목표 ${dailyTarget}건 미달이라 오늘 이슈 파일을 변경하지 않았습니다.`;
     atomicWrite(RELEASE_REPORT, JSON.stringify({ ...summary, dryRun: false }, null, 2) + "\n");
     console.log(JSON.stringify({ ...summary, dryRun: false }, null, 2));
     return;
   }
-  for (const { row } of candidates) {
+  for (const { row } of releaseCandidates) {
     if (!flags.apply) { summary.released += 1; summary.ids.push(row.id); continue; }
     release(row.id, { ...flags, date, apply: true }, row);
     summary.released += 1;
