@@ -1,21 +1,17 @@
 {
-  "date": "2026-08-13",
+  "date": "2026-08-14",
   "total": 18,
   "existing": 0,
-  "eligible": 5,
-  "released": 5,
+  "eligible": 3,
+  "released": 0,
   "minimum": 5,
   "skipped": {
-    "needs-source-fix": 2,
-    "needs-language-fix": 7,
-    "needs-claim-fix": 4
+    "needs-language-fix": 11,
+    "rejected": 2,
+    "needs-claim-fix": 2,
+    "daily-minimum-not-reached": 3
   },
-  "ids": [
-    "v1_8f4c60856b3dff50",
-    "v1_9c4d2fc7f68ae590",
-    "v1_e855df430e994d79",
-    "v1_1f513945a49523cb",
-    "v1_b67b02651304dca5"
-  ],
+  "ids": [],
+  "note": "최소 발행 건수 미달이라 오늘 이슈 파일을 변경하지 않았습니다.",
   "dryRun": false
 }

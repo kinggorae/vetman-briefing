@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T14:06:30.934Z",
+  "generatedAt": "2026-08-14T00:56:26.636Z",
   "noindex": true,
   "summary": {
     "total": 650,
@@ -37487,14 +37487,14 @@
     }
   ],
   "feedDiagnostics": {
-    "generatedAt": "2026-08-13T13:59:35.294Z",
+    "generatedAt": "2026-08-14T00:49:04.311Z",
     "registryVersion": 2,
     "counts": {
       "healthy": 0,
       "quiet": 0,
       "stale": 1,
-      "degraded": 11,
-      "failing": 2,
+      "degraded": 10,
+      "failing": 3,
       "retired": 0,
       "disabled": 185
     },
@@ -39120,7 +39120,7 @@
         "id": "src-veterinary-evidence",
         "label": "Veterinary Evidence",
         "enabled": true,
-        "status": "degraded",
+        "status": "failing",
         "feedCount": 1,
         "checkedFeedCount": 1,
         "consecutiveFailures": 0,
@@ -39696,22 +39696,22 @@
         "feedUrl": "https://drandyroark.com/feed/",
         "finalUrl": "https://drandyroark.com/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:13.024Z",
+        "checkedAt": "2026-08-14T00:48:34.613Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
         "rssAtom": "rss",
-        "responseBytes": 103473,
+        "responseBytes": 103423,
         "itemCount": 90,
-        "latestPublishedAt": "2026-08-13T04:01:00.000Z",
-        "ageDays": 0.42,
-        "averageIntervalDays": 3.53,
+        "latestPublishedAt": "2026-08-13T23:45:01.000Z",
+        "ageDays": 0.04,
+        "averageIntervalDays": 3.47,
         "officialDomain": true,
         "relayRatio": 0,
         "canonicalCoverage": 0,
         "duplicateGuidCount": 0,
-        "etag": "\"d0c7914e20cda1c07cef2daf71e51b33\"",
-        "lastModified": "Thu, 13 Aug 2026 04:01:00 GMT",
+        "etag": "\"dde5f5059c4bdd02b0678e8798b953d2\"",
+        "lastModified": "Thu, 13 Aug 2026 23:47:30 GMT",
         "notModified": false,
         "fromCache": false,
         "lastError": null,
@@ -39729,7 +39729,7 @@
             "reason": "official alternate/sitemap link"
           }
         ],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-frontiers-in-veterinary-science",
@@ -39737,12 +39737,12 @@
         "feedUrl": "https://www.frontiersin.org/journals/veterinary-science/rss",
         "finalUrl": "https://www.frontiersin.org/journals/veterinary-science/rss",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:13.431Z",
+        "checkedAt": "2026-08-14T00:48:34.948Z",
         "httpStatus": 200,
         "contentType": "application/xml; charset=utf-8",
         "xmlParsed": true,
         "rssAtom": "rss",
-        "responseBytes": 52814,
+        "responseBytes": 52813,
         "itemCount": 20,
         "latestPublishedAt": null,
         "ageDays": null,
@@ -39765,7 +39765,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-ivc-journal",
@@ -39773,7 +39773,7 @@
         "feedUrl": "https://ivcjournal.com/feed/",
         "finalUrl": "https://ivcjournal.com/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:15.136Z",
+        "checkedAt": "2026-08-14T00:48:36.515Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -39781,7 +39781,7 @@
         "responseBytes": 123567,
         "itemCount": 15,
         "latestPublishedAt": "2026-08-13T13:00:14.000Z",
-        "ageDays": 0.04,
+        "ageDays": 0.49,
         "averageIntervalDays": 2,
         "officialDomain": true,
         "relayRatio": 0,
@@ -39806,7 +39806,7 @@
             "reason": "official alternate/sitemap link"
           }
         ],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-nc-state-university",
@@ -39814,7 +39814,7 @@
         "feedUrl": "https://cvm.ncsu.edu/feed/",
         "finalUrl": "https://cvm.ncsu.edu/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:15.792Z",
+        "checkedAt": "2026-08-14T00:48:36.810Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -39822,14 +39822,14 @@
         "responseBytes": 624332,
         "itemCount": 50,
         "latestPublishedAt": "2026-08-12T15:11:03.000Z",
-        "ageDays": 0.95,
+        "ageDays": 1.4,
         "averageIntervalDays": 3.04,
         "officialDomain": false,
         "relayRatio": 0,
         "canonicalCoverage": 0,
         "duplicateGuidCount": 0,
-        "etag": "W/\"7259c7232ac3dec89b1540dee4c826b5\"",
-        "lastModified": "Wed, 12 Aug 2026 19:08:13 GMT",
+        "etag": "W/\"fe8b491d0b3e5f425a132d12fc697a09\"",
+        "lastModified": "Thu, 13 Aug 2026 19:20:35 GMT",
         "notModified": false,
         "fromCache": false,
         "lastError": null,
@@ -39842,7 +39842,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 2
+        "consecutiveSuccesses": 3
       },
       {
         "sourceId": "src-sciencedaily",
@@ -39850,7 +39850,7 @@
         "feedUrl": "https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml",
         "finalUrl": "https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:17.553Z",
+        "checkedAt": "2026-08-14T00:48:40.292Z",
         "httpStatus": 200,
         "contentType": "application/xml",
         "xmlParsed": true,
@@ -39858,7 +39858,7 @@
         "responseBytes": 47157,
         "itemCount": 60,
         "latestPublishedAt": "2026-08-12T05:32:21.000Z",
-        "ageDays": 1.35,
+        "ageDays": 1.8,
         "averageIntervalDays": 4.35,
         "officialDomain": true,
         "relayRatio": 0,
@@ -39883,7 +39883,7 @@
             "reason": "official alternate/sitemap link"
           }
         ],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-today-s-veterinary-business",
@@ -39891,7 +39891,7 @@
         "feedUrl": "https://todaysveterinarybusiness.com/feed/",
         "finalUrl": "https://todaysveterinarybusiness.com/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:18.185Z",
+        "checkedAt": "2026-08-14T00:48:40.983Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -39899,7 +39899,7 @@
         "responseBytes": 53675,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-10T18:53:45.000Z",
-        "ageDays": 2.8,
+        "ageDays": 3.25,
         "averageIntervalDays": 3.77,
         "officialDomain": true,
         "relayRatio": 0,
@@ -39919,7 +39919,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-today-s-veterinary-nurse",
@@ -39927,7 +39927,7 @@
         "feedUrl": "https://todaysveterinarynurse.com/feed/",
         "finalUrl": "https://todaysveterinarynurse.com/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:18.693Z",
+        "checkedAt": "2026-08-14T00:48:41.686Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -39935,7 +39935,7 @@
         "responseBytes": 235331,
         "itemCount": 10,
         "latestPublishedAt": "2026-06-25T19:03:16.000Z",
-        "ageDays": 48.79,
+        "ageDays": 49.24,
         "averageIntervalDays": 4.56,
         "officialDomain": true,
         "relayRatio": 0,
@@ -39955,7 +39955,7 @@
         "ok": true,
         "status": "stale",
         "alternatives": [],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-today-s-veterinary-practice",
@@ -39963,7 +39963,7 @@
         "feedUrl": "https://todaysveterinarypractice.com/feed/",
         "finalUrl": "https://todaysveterinarypractice.com/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:19.205Z",
+        "checkedAt": "2026-08-14T00:48:42.271Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -39971,7 +39971,7 @@
         "responseBytes": 155092,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-07T21:35:01.000Z",
-        "ageDays": 5.68,
+        "ageDays": 6.13,
         "averageIntervalDays": 5.57,
         "officialDomain": true,
         "relayRatio": 0,
@@ -39991,7 +39991,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-vet-candy",
@@ -39999,21 +39999,21 @@
         "feedUrl": "https://www.myvetcandy.com/news?format=rss",
         "finalUrl": "https://www.myvetcandy.com/news?format=rss",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:19.777Z",
+        "checkedAt": "2026-08-14T00:48:42.939Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
         "rssAtom": "rss",
-        "responseBytes": 352137,
+        "responseBytes": 353521,
         "itemCount": 300,
-        "latestPublishedAt": "2026-08-14T21:25:04.000Z",
-        "ageDays": -1.31,
-        "averageIntervalDays": 0.39,
+        "latestPublishedAt": "2026-08-16T22:03:48.000Z",
+        "ageDays": -2.89,
+        "averageIntervalDays": 0.38,
         "officialDomain": false,
         "relayRatio": 0,
         "canonicalCoverage": 0,
         "duplicateGuidCount": 0,
-        "etag": "W/\"bd8638cd28643fdcbb29a2e49c0064ae\"",
+        "etag": "W/\"189be0aa1caf64f8772a5c0bde643971\"",
         "lastModified": null,
         "notModified": false,
         "fromCache": false,
@@ -40027,7 +40027,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-vet-practice-magazine",
@@ -40035,7 +40035,7 @@
         "feedUrl": "https://vetpracticemag.com.au/feed/",
         "finalUrl": "https://www.vetpracticemag.com.au/feed/",
         "redirected": true,
-        "checkedAt": "2026-08-13T13:59:20.782Z",
+        "checkedAt": "2026-08-14T00:48:47.375Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -40043,7 +40043,7 @@
         "responseBytes": 39351,
         "itemCount": 25,
         "latestPublishedAt": "2026-08-12T12:25:03.000Z",
-        "ageDays": 1.07,
+        "ageDays": 1.52,
         "averageIntervalDays": 1.19,
         "officialDomain": true,
         "relayRatio": 0,
@@ -40068,13 +40068,13 @@
             "reason": "official alternate/sitemap link"
           }
         ],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-vetgirl",
         "sourceLabel": "VetGirl",
         "feedUrl": "https://vetgirlontherun.com/feed/",
-        "checkedAt": "2026-08-13T13:59:23.609Z",
+        "checkedAt": "2026-08-14T00:48:49.710Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -40093,37 +40093,20 @@
         "sourceId": "src-veterinary-evidence",
         "sourceLabel": "Veterinary Evidence",
         "feedUrl": "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2",
-        "finalUrl": "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2",
-        "redirected": false,
-        "checkedAt": "2026-08-13T13:59:26.849Z",
-        "httpStatus": 200,
-        "contentType": "application/rss+xml; charset=utf-8",
-        "xmlParsed": true,
-        "rssAtom": "rss",
-        "responseBytes": 54255,
-        "itemCount": 20,
-        "latestPublishedAt": "2026-08-10T00:00:00.000Z",
-        "ageDays": 3.58,
-        "averageIntervalDays": 18.21,
-        "officialDomain": true,
-        "relayRatio": 0,
-        "canonicalCoverage": 0,
-        "duplicateGuidCount": 0,
-        "etag": null,
-        "lastModified": null,
-        "notModified": false,
-        "fromCache": false,
-        "lastError": null,
-        "consecutiveFailures": 0,
+        "checkedAt": "2026-08-14T00:48:52.965Z",
+        "status": "failing",
+        "ok": false,
+        "xmlParsed": false,
+        "error": "fetch failed",
+        "recentError": "fetch failed",
+        "consecutiveFailures": 1,
         "robots": {
-          "checked": true,
+          "checked": false,
           "allowed": true,
-          "url": "https://veterinaryevidence.org/robots.txt"
+          "url": null
         },
-        "ok": true,
-        "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 0
       },
       {
         "sourceId": "src-veterinary-practice-news",
@@ -40131,22 +40114,22 @@
         "feedUrl": "https://www.veterinarypracticenews.com/feed/",
         "finalUrl": "https://www.veterinarypracticenews.com/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-13T13:59:27.868Z",
+        "checkedAt": "2026-08-14T00:48:56.893Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
         "rssAtom": "rss",
-        "responseBytes": 158525,
+        "responseBytes": 146713,
         "itemCount": 20,
-        "latestPublishedAt": "2026-08-13T12:41:27.000Z",
-        "ageDays": 0.05,
-        "averageIntervalDays": 0.65,
+        "latestPublishedAt": "2026-08-13T20:39:45.000Z",
+        "ageDays": 0.17,
+        "averageIntervalDays": 0.67,
         "officialDomain": true,
         "relayRatio": 0,
         "canonicalCoverage": 0,
         "duplicateGuidCount": 0,
-        "etag": "\"3c5e5a2f4b7893f0bd193cc5dd247010-gzip\"",
-        "lastModified": "Thu, 13 Aug 2026 12:41:27 GMT",
+        "etag": "\"558604f6eb133a49a14fdde9deff4a12-gzip\"",
+        "lastModified": "Thu, 13 Aug 2026 20:44:33 GMT",
         "notModified": false,
         "fromCache": false,
         "lastError": null,
@@ -40164,13 +40147,13 @@
             "reason": "official alternate/sitemap link"
           }
         ],
-        "consecutiveSuccesses": 4
+        "consecutiveSuccesses": 5
       },
       {
         "sourceId": "src-veterinary-record",
         "sourceLabel": "Veterinary Record",
         "feedUrl": "https://bvajournals.onlinelibrary.wiley.com/feed/20427670/most-recent",
-        "checkedAt": "2026-08-13T13:59:32.073Z",
+        "checkedAt": "2026-08-14T00:49:01.155Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -48917,7 +48900,7 @@
   },
   "firstReleaseQa": {
     "version": 1,
-    "generatedAt": "2026-08-13T13:59:11.765Z",
+    "generatedAt": "2026-08-14T00:48:33.412Z",
     "candidates": [
       {
         "id": "v1_88e7bde7826c5eaf",
@@ -49092,7 +49075,7 @@
   },
   "operationsStatus": {
     "version": 1,
-    "generatedAt": "2026-08-13T14:06:32.500Z",
+    "generatedAt": "2026-08-14T00:56:28.242Z",
     "publication": {
       "totalArticles": 650,
       "index": 187,
@@ -49334,11 +49317,11 @@
     "feeds": {
       "total": 14,
       "byStatus": {
-        "degraded": 9,
-        "failing": 3,
-        "stale": 2
+        "degraded": 11,
+        "failing": 2,
+        "stale": 1
       },
-      "failing": 3
+      "failing": 2
     },
     "searchPerformance": {
       "rows": 0,
@@ -49353,7 +49336,7 @@
   },
   "imageRightsQueue": {
     "version": 1,
-    "generatedAt": "2026-08-13T14:06:32.725Z",
+    "generatedAt": "2026-08-14T00:56:28.477Z",
     "count": 87,
     "rows": [
       {
@@ -50583,7 +50566,7 @@
   },
   "workQueue": {
     "version": 1,
-    "generatedAt": "2026-08-13T14:06:32.892Z",
+    "generatedAt": "2026-08-14T00:56:28.659Z",
     "noindex": true,
     "count": 719,
     "open": 719,
@@ -60441,28 +60424,6 @@
           "HTTP 미확인",
           "MIME 미확인"
         ],
-        "id": "feed:src-veterinary-evidence",
-        "type": "feed-health",
-        "label": "공식 피드 복구",
-        "priority": 90,
-        "title": "Veterinary Evidence",
-        "blocker": "feed-health",
-        "reason": "failing · fetch failed",
-        "sourceLabel": "Veterinary Evidence",
-        "sourceUrl": "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2"
-      },
-      {
-        "status": "open",
-        "indexable": false,
-        "requiredRole": "editor",
-        "commands": [
-          "npm run sources:diagnose",
-          "npm run sources:repair:validate"
-        ],
-        "evidence": [
-          "HTTP 미확인",
-          "MIME 미확인"
-        ],
         "id": "feed:src-veterinary-record",
         "type": "feed-health",
         "label": "공식 피드 복구",
@@ -66230,28 +66191,6 @@
           "HTTP 200",
           "application/rss+xml; charset=UTF-8"
         ],
-        "id": "feed:src-today-s-veterinary-practice",
-        "type": "feed-health",
-        "label": "공식 피드 복구",
-        "priority": 65,
-        "title": "Today's Veterinary Practice",
-        "blocker": "feed-health",
-        "reason": "stale · 최근 피드 상태 확인 필요",
-        "sourceLabel": "Today's Veterinary Practice",
-        "sourceUrl": "https://todaysveterinarypractice.com/feed/"
-      },
-      {
-        "status": "open",
-        "indexable": false,
-        "requiredRole": "editor",
-        "commands": [
-          "npm run sources:diagnose",
-          "npm run sources:repair:validate"
-        ],
-        "evidence": [
-          "HTTP 200",
-          "application/rss+xml; charset=UTF-8"
-        ],
         "id": "feed:src-dr-andy-roark",
         "type": "feed-health",
         "label": "공식 피드 복구",
@@ -66384,6 +66323,28 @@
           "HTTP 200",
           "application/rss+xml; charset=UTF-8"
         ],
+        "id": "feed:src-today-s-veterinary-practice",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 55,
+        "title": "Today's Veterinary Practice",
+        "blocker": "feed-health",
+        "reason": "degraded · 최근 피드 상태 확인 필요",
+        "sourceLabel": "Today's Veterinary Practice",
+        "sourceUrl": "https://todaysveterinarypractice.com/feed/"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 200",
+          "application/rss+xml; charset=UTF-8"
+        ],
         "id": "feed:src-vet-candy",
         "type": "feed-health",
         "label": "공식 피드 복구",
@@ -66415,6 +66376,28 @@
         "reason": "degraded · 최근 피드 상태 확인 필요",
         "sourceLabel": "Vet Practice Magazine",
         "sourceUrl": "https://vetpracticemag.com.au/feed/"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 200",
+          "application/rss+xml; charset=utf-8"
+        ],
+        "id": "feed:src-veterinary-evidence",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 55,
+        "title": "Veterinary Evidence",
+        "blocker": "feed-health",
+        "reason": "degraded · 최근 피드 상태 확인 필요",
+        "sourceLabel": "Veterinary Evidence",
+        "sourceUrl": "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2"
       },
       {
         "status": "open",
@@ -67875,11 +67858,11 @@
       },
       "byPriority": {
         "critical": 1,
-        "high": 409,
-        "normal": 309
+        "high": 408,
+        "normal": 310
       }
     },
     "note": "인증 관리자 전용 작업 큐. 작업 카드는 승인·발행을 자동 실행하지 않으며 기존 검수 CLI의 다음 명령만 안내합니다."
   },
-  "statusSyncedAt": "2026-08-13T14:06:33.084Z"
+  "statusSyncedAt": "2026-08-14T00:56:28.868Z"
 }

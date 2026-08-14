@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-13T14:06:32.892Z",
+  "generatedAt": "2026-08-14T00:56:28.659Z",
   "noindex": true,
   "count": 719,
   "open": 719,
@@ -9858,28 +9858,6 @@
         "HTTP 미확인",
         "MIME 미확인"
       ],
-      "id": "feed:src-veterinary-evidence",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 90,
-      "title": "Veterinary Evidence",
-      "blocker": "feed-health",
-      "reason": "failing · fetch failed",
-      "sourceLabel": "Veterinary Evidence",
-      "sourceUrl": "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 미확인",
-        "MIME 미확인"
-      ],
       "id": "feed:src-veterinary-record",
       "type": "feed-health",
       "label": "공식 피드 복구",
@@ -15647,28 +15625,6 @@
         "HTTP 200",
         "application/rss+xml; charset=UTF-8"
       ],
-      "id": "feed:src-today-s-veterinary-practice",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 65,
-      "title": "Today's Veterinary Practice",
-      "blocker": "feed-health",
-      "reason": "stale · 최근 피드 상태 확인 필요",
-      "sourceLabel": "Today's Veterinary Practice",
-      "sourceUrl": "https://todaysveterinarypractice.com/feed/"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 200",
-        "application/rss+xml; charset=UTF-8"
-      ],
       "id": "feed:src-dr-andy-roark",
       "type": "feed-health",
       "label": "공식 피드 복구",
@@ -15801,6 +15757,28 @@
         "HTTP 200",
         "application/rss+xml; charset=UTF-8"
       ],
+      "id": "feed:src-today-s-veterinary-practice",
+      "type": "feed-health",
+      "label": "공식 피드 복구",
+      "priority": 55,
+      "title": "Today's Veterinary Practice",
+      "blocker": "feed-health",
+      "reason": "degraded · 최근 피드 상태 확인 필요",
+      "sourceLabel": "Today's Veterinary Practice",
+      "sourceUrl": "https://todaysveterinarypractice.com/feed/"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "editor",
+      "commands": [
+        "npm run sources:diagnose",
+        "npm run sources:repair:validate"
+      ],
+      "evidence": [
+        "HTTP 200",
+        "application/rss+xml; charset=UTF-8"
+      ],
       "id": "feed:src-vet-candy",
       "type": "feed-health",
       "label": "공식 피드 복구",
@@ -15832,6 +15810,28 @@
       "reason": "degraded · 최근 피드 상태 확인 필요",
       "sourceLabel": "Vet Practice Magazine",
       "sourceUrl": "https://vetpracticemag.com.au/feed/"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "editor",
+      "commands": [
+        "npm run sources:diagnose",
+        "npm run sources:repair:validate"
+      ],
+      "evidence": [
+        "HTTP 200",
+        "application/rss+xml; charset=utf-8"
+      ],
+      "id": "feed:src-veterinary-evidence",
+      "type": "feed-health",
+      "label": "공식 피드 복구",
+      "priority": 55,
+      "title": "Veterinary Evidence",
+      "blocker": "feed-health",
+      "reason": "degraded · 최근 피드 상태 확인 필요",
+      "sourceLabel": "Veterinary Evidence",
+      "sourceUrl": "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2"
     },
     {
       "status": "open",
@@ -17292,8 +17292,8 @@
     },
     "byPriority": {
       "critical": 1,
-      "high": 409,
-      "normal": 309
+      "high": 408,
+      "normal": 310
     }
   },
   "note": "인증 관리자 전용 작업 큐. 작업 카드는 승인·발행을 자동 실행하지 않으며 기존 검수 CLI의 다음 명령만 안내합니다."

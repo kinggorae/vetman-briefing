@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-13T14:06:32.500Z",
+  "generatedAt": "2026-08-14T00:56:28.242Z",
   "publication": {
     "totalArticles": 650,
     "index": 187,
@@ -242,11 +242,11 @@
   "feeds": {
     "total": 14,
     "byStatus": {
-      "degraded": 9,
-      "failing": 3,
-      "stale": 2
+      "degraded": 11,
+      "failing": 2,
+      "stale": 1
     },
-    "failing": 3
+    "failing": 2
   },
   "searchPerformance": {
     "rows": 0,
