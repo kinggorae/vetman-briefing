@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 concurrency:
   group: deploy-site
@@ -77,8 +78,47 @@ jobs:
         run: VERIFY_ATTEMPTS=6 VERIFY_DELAY_MS=5000 npm run verify:deployment
 
       - name: Monitor production feed and article contract
+        env:
+          MONITOR_MIN_LATEST_ITEMS: "30"
+          MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
+          MONITOR_SW_CACHE: "vmcache-v8"
         run: npm run monitor:production
+
+      - name: Upload production monitoring result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-monitor-deploy-${{ github.run_id }}
+          path: reports/production-monitoring.json
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Notify search engines (IndexNow)
         continue-on-error: true
         run: node src/indexnow.js
+
+      - name: Close recovered deploy issue
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          EXISTING=$(gh issue list --repo "${{ github.repository }}" --label production-deploy-failure --state open --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "${{ github.repository }}" --body "복구됨: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            gh issue close "$EXISTING" --repo "${{ github.repository }}"
+          fi
+
+      - name: Notify on deploy failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create production-deploy-failure --color d73a4a --description "Production 배포 또는 검증 실패" 2>/dev/null || true
+          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          BODY="Production 배포 또는 검증이 실패했습니다.\n\n로그: $RUN_URL"
+          EXISTING=$(gh issue list --repo "${{ github.repository }}" --label production-deploy-failure --state open --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "${{ github.repository }}" --body "$BODY"
+          else
+            gh issue create --repo "${{ github.repository }}" --title "Production deploy 실패 $(TZ=Asia/Seoul date +%F)" --label production-deploy-failure --body "$BODY"
+          fi

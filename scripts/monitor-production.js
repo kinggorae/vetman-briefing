@@ -1,11 +1,17 @@
 import fs from "node:fs/promises";
 import { XMLParser } from "fast-xml-parser";
 import {
+  inspectArchivePayload,
   inspectArticleHtml,
   inspectDeploymentPayload,
+  inspectHomepageHtml,
   inspectLatestPayload,
   inspectNewsSitemap,
   inspectResponseContract,
+  inspectSearchManifest,
+  inspectSearchPayload,
+  inspectServiceWorker,
+  kstHour,
   kstDateString,
   recentIndexableNewsCount,
 } from "../src/lib/production-monitor.js";
@@ -20,6 +26,11 @@ const paths = [
   "/rss.xml",
   "/latest.json",
   "/deployment.json",
+  "/search.json",
+  "/search-manifest.json",
+  "/archive.json",
+  "/manifest.webmanifest",
+  "/sw.js",
 ];
 const result = {
   generatedAt: new Date().toISOString(),
@@ -31,6 +42,11 @@ const result = {
 const responses = new Map();
 let latestPayload = null;
 const parser = new XMLParser({ ignoreAttributes: false });
+const today = process.env.MONITOR_TODAY || kstDateString();
+const minLatestItems = Math.max(0, Number(process.env.MONITOR_MIN_LATEST_ITEMS || 30));
+const cutoffHour = Number(process.env.MONITOR_REQUIRE_TODAY_AFTER_KST || 10);
+const requireToday = process.env.MONITOR_REQUIRE_TODAY === "1"
+  || (Number.isInteger(cutoffHour) && cutoffHour >= 0 && kstHour() >= cutoffHour);
 
 function addIssues(target, issues, pathname) {
   for (const issue of issues || []) {
@@ -104,13 +120,22 @@ for (const pathname of ["/sitemap.xml", "/news-sitemap.xml", "/rss.xml"]) {
   if (response) parseXml(pathname, response.body);
 }
 
+const homeResponse = responses.get("/");
+if (homeResponse) {
+  result.home = inspectHomepageHtml(homeResponse.body, { minEditionItems: minLatestItems });
+  addIssues(result.critical, result.home.critical, "/");
+  addIssues(result.warnings, result.home.warnings, "/");
+}
+
 const latestResponse = responses.get("/latest.json");
 if (latestResponse) {
   latestPayload = parseJson("/latest.json", latestResponse.body);
   if (latestPayload) {
     result.latest = inspectLatestPayload(latestPayload, {
-      today: process.env.MONITOR_TODAY || kstDateString(),
+      today,
       maxAgeDays: Number(process.env.MONITOR_LATEST_MAX_AGE_DAYS || 3),
+      minItems: minLatestItems,
+      requireToday,
     });
     addIssues(result.critical, result.latest.critical, "/latest.json");
     addIssues(result.warnings, result.latest.warnings, "/latest.json");
@@ -125,6 +150,46 @@ if (deploymentResponse) {
     const inspection = inspectDeploymentPayload(payload);
     addIssues(result.critical, inspection.critical, "/deployment.json");
   }
+}
+
+const searchResponse = responses.get("/search.json");
+const searchManifestResponse = responses.get("/search-manifest.json");
+const archiveResponse = responses.get("/archive.json");
+const webManifestResponse = responses.get("/manifest.webmanifest");
+const serviceWorkerResponse = responses.get("/sw.js");
+let searchPayload = null;
+if (searchResponse) {
+  searchPayload = parseJson("/search.json", searchResponse.body);
+  if (searchPayload) {
+    result.search = inspectSearchPayload(searchPayload);
+    addIssues(result.critical, result.search.critical, "/search.json");
+  }
+}
+if (searchManifestResponse) {
+  const manifestPayload = parseJson("/search-manifest.json", searchManifestResponse.body);
+  if (manifestPayload) {
+    result.searchManifest = inspectSearchManifest(manifestPayload, searchPayload?.count ?? result.deployment?.searchCount ?? null);
+    addIssues(result.critical, result.searchManifest.critical, "/search-manifest.json");
+  }
+}
+if (archiveResponse) {
+  const archivePayload = parseJson("/archive.json", archiveResponse.body);
+  if (archivePayload) {
+    result.archive = inspectArchivePayload(archivePayload);
+    addIssues(result.critical, result.archive.critical, "/archive.json");
+    addIssues(result.warnings, result.archive.warnings, "/archive.json");
+  }
+}
+if (webManifestResponse) {
+  const manifestPayload = parseJson("/manifest.webmanifest", webManifestResponse.body);
+  if (manifestPayload) {
+    result.webManifest = { name: manifestPayload.name || null, startUrl: manifestPayload.start_url || null };
+    if (!manifestPayload.name || !manifestPayload.start_url) result.critical.push({ pathname: "/manifest.webmanifest", reason: "webmanifest-contract-invalid" });
+  }
+}
+if (serviceWorkerResponse) {
+  result.serviceWorker = inspectServiceWorker(serviceWorkerResponse.body, process.env.MONITOR_SW_CACHE || "vmcache-v8");
+  addIssues(result.critical, result.serviceWorker.critical, "/sw.js");
 }
 
 const sitemapResponse = responses.get("/sitemap.xml");
@@ -155,7 +220,17 @@ if (sitemapResponse) {
 
   const representativeUrl = urls.find((url) => /\/article\//.test(url)) || urls[0];
   if (representativeUrl) {
-    const article = await fetchUrl(representativeUrl, representativeUrl);
+    // Keep every request on the requested monitor target. This matters for
+    // local preview and preview deployments: following the absolute sitemap
+    // URL would silently inspect production while the other endpoints inspect
+    // the preview target.
+    let articleUrl = representativeUrl;
+    try {
+      articleUrl = new URL(new URL(representativeUrl).pathname, `${base.replace(/\/$/, "")}/`).toString();
+    } catch {
+      articleUrl = representativeUrl;
+    }
+    const article = await fetchUrl(articleUrl, representativeUrl);
     if (article) {
       const trust = inspectArticleHtml(article.body, representativeUrl);
       result.sitemap.representative = {
@@ -194,5 +269,5 @@ if (rssResponse) {
 
 await fs.mkdir("reports", { recursive: true });
 await fs.writeFile("reports/production-monitoring.json", JSON.stringify(result, null, 2) + "\n");
-console.log(`production monitor: ${result.endpoints.filter((row) => row.ok).length}/${paths.length} OK · critical ${result.critical.length} · warnings ${result.warnings.length}`);
+console.log(`production monitor: ${result.endpoints.filter((row) => row.ok).length}/${paths.length} OK · latest ${result.latest?.date || "-"}/${result.latest?.itemCount ?? "-"} · search ${result.search?.itemCount ?? "-"} · critical ${result.critical.length} · warnings ${result.warnings.length}`);
 if (result.critical.length) process.exitCode = 1;

@@ -212,6 +212,23 @@ jobs:
         run: |
           VERIFY_ATTEMPTS=6 VERIFY_DELAY_MS=5000 npm run verify:deployment
 
+      - name: Monitor production contract
+        if: steps.release.outputs.count != '0'
+        env:
+          MONITOR_MIN_LATEST_ITEMS: "30"
+          MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
+          MONITOR_SW_CACHE: "vmcache-v8"
+        run: npm run monitor:production
+
+      - name: Upload production monitoring result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-monitor-daily-${{ github.run_id }}
+          path: reports/production-monitoring.json
+          if-no-files-found: ignore
+          retention-days: 14
+
       # 배포가 끝난 뒤에 알려야 크롤러가 새 글을 실제로 받아간다
       - name: Notify search engines (IndexNow)
         if: steps.release.outputs.count != '0'
