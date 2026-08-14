@@ -2,28 +2,88 @@ name: Production SEO monitoring
 
 on:
   schedule:
-    - cron: "0 1 * * 1,3,5"
+    # 10:00 KST. daily newsroom(09:00 KST) 완료 뒤 오늘 발행분과 공개 계약을 검사한다.
+    - cron: "0 1 * * *"
   workflow_dispatch: {}
 
 permissions:
   contents: read
+  issues: write
+
+concurrency:
+  group: production-monitoring
+  cancel-in-progress: false
 
 jobs:
   monitor:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
       - run: npm ci --ignore-scripts
-      - run: npm run monitor:production
+      - name: Monitor production contract
+        env:
+          MONITOR_MIN_LATEST_ITEMS: "30"
+          MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
+          MONITOR_SW_CACHE: "vmcache-v8"
+        run: npm run monitor:production
       - name: Upload monitoring result
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: production-monitor-${{ github.run_id }}
           path: reports/production-monitoring.json
           if-no-files-found: ignore
+          retention-days: 14
+      - name: Write monitoring summary
+        if: always()
+        run: |
+          node --input-type=module - <<'NODE'
+          import fs from 'node:fs';
+          const file = 'reports/production-monitoring.json';
+          if (!fs.existsSync(file)) {
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, '## Production monitoring\n\n리포트가 생성되지 않았습니다.\n');
+            process.exit(0);
+          }
+          const report = JSON.parse(fs.readFileSync(file, 'utf8'));
+          const latest = report.latest || {};
+          const lines = [
+            '## Production monitoring',
+            '',
+            `- latest: ${latest.date || '-'} / ${latest.itemCount ?? '-'}건`,
+            `- endpoints: ${report.endpoints?.filter((row) => row.ok).length || 0}/${report.endpoints?.length || 0} HTTP 2xx`,
+            `- critical: ${report.critical?.length || 0}`,
+            `- warnings: ${report.warnings?.length || 0}`,
+            '',
+            report.critical?.length ? '### Critical\n\n```json\n' + JSON.stringify(report.critical, null, 2) + '\n```' : '정상: critical 오류가 없습니다.',
+          ];
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
+          NODE
+      - name: Close recovered monitoring issue
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          EXISTING=$(gh issue list --repo "${{ github.repository }}" --label production-monitoring-failure --state open --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "${{ github.repository }}" --body "복구됨: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            gh issue close "$EXISTING" --repo "${{ github.repository }}"
+          fi
+      - name: Notify on monitoring failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create production-monitoring-failure --color d73a4a --description "Production 계약 점검 실패" 2>/dev/null || true
+          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          BODY="Production 계약 점검이 실패했습니다. 배포·발행 상태와 artifact 리포트를 확인하세요.\n\n로그: $RUN_URL"
+          EXISTING=$(gh issue list --repo "${{ github.repository }}" --label production-monitoring-failure --state open --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "${{ github.repository }}" --body "$BODY"
+          else
+            gh issue create --repo "${{ github.repository }}" --title "Production monitoring 실패 $(TZ=Asia/Seoul date +%F)" --label production-monitoring-failure --body "$BODY"
+          fi

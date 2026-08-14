@@ -1,6 +1,20 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { calendarAgeDays, compareDeploymentPayload, inspectArticleHtml, inspectDeploymentPayload, inspectLatestPayload, inspectNewsSitemap, inspectResponseContract, recentIndexableNewsCount } from "../src/lib/production-monitor.js";
+import {
+  calendarAgeDays,
+  compareDeploymentPayload,
+  inspectArchivePayload,
+  inspectArticleHtml,
+  inspectDeploymentPayload,
+  inspectHomepageHtml,
+  inspectLatestPayload,
+  inspectNewsSitemap,
+  inspectResponseContract,
+  inspectSearchManifest,
+  inspectSearchPayload,
+  inspectServiceWorker,
+  recentIndexableNewsCount,
+} from "../src/lib/production-monitor.js";
 
 test("production monitor calculates calendar age in days", () => {
   assert.equal(calendarAgeDays("2026-08-10", "2026-08-13"), 3);
@@ -30,6 +44,45 @@ test("production monitor rejects a latest payload without item data", () => {
   const result = inspectLatestPayload({ date: "2026-08-13" }, { today: "2026-08-13" });
   assert.equal(result.itemCount, null);
   assert.equal(result.critical[0].reason, "latest-items-invalid");
+});
+
+test("production monitor enforces today's 30-item edition after the cutoff", () => {
+  const result = inspectLatestPayload(
+    { date: "2026-08-13", count: 2, items: [{ id: "one" }, { id: "two" }] },
+    { today: "2026-08-14", minItems: 30, requireToday: true },
+  );
+  assert.deepEqual(result.critical.map((item) => item.reason), ["latest-not-today", "latest-below-minimum"]);
+});
+
+test("production monitor checks static homepage edition and crawl paths", () => {
+  const items = Array.from({ length: 30 }, (_, index) => ({ id: `item-${index}` }));
+  const html = [
+    '<main id="main-content"><h1>오늘의 브리핑</h1>',
+    '<a href="/archive/">지난 브리핑</a>',
+    '<a href="/article/item-0">기사</a>',
+    '<script type="application/ld+json">{"potentialAction":{"@type":"SearchAction"}}</script>',
+    `<script id="vm-issue" type="application/json">${JSON.stringify({ count: 30, articles: items.slice(0, 4), briefs: items.slice(4) })}</script>`,
+    "</main>",
+  ].join("");
+  const result = inspectHomepageHtml(html, { minEditionItems: 30 });
+  assert.deepEqual(result.critical, []);
+  assert.equal(result.editionCount, 30);
+  assert.equal(result.staticItemCount, 30);
+  assert.equal(result.articleLinks, 1);
+});
+
+test("production monitor checks search, archive, and service-worker contracts", () => {
+  const search = inspectSearchPayload({ count: 2, items: [{ id: "one", url: "/article/one" }, { id: "two", url: "/article/two" }] });
+  assert.deepEqual(search.critical, []);
+  assert.deepEqual(inspectSearchManifest({ count: 2, chunks: [{ key: "a", href: "/search/a.json", count: 2 }] }, 2).critical, []);
+  assert.deepEqual(inspectArchivePayload({ issues: [{ date: "2026-08-14" }], weeklies: [{ week: "2026-W33" }] }).critical, []);
+
+  const serviceWorker = [
+    "const C='vmcache-v8';",
+    "const SHELL=['/','/latest.json','/archive.json','/search-manifest.json'];",
+    "self.addEventListener('fetch',function(){});",
+  ].join("\n");
+  assert.deepEqual(inspectServiceWorker(serviceWorker), { cache: "vmcache-v8", critical: [] });
 });
 
 test("production monitor validates response headers and deployment manifest", () => {
