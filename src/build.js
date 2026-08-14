@@ -561,7 +561,8 @@ function renderStaticShell(data) {
     ...(data.briefs || []),
     ...(data.stories || []),
     ...(data.recentPromoted ? (data.recent || []) : []),
-  ].slice(0, 24);
+  // JS가 실행되지 않는 검색 크롤러에도 오늘 목표 30건을 전달한다.
+  ].slice(0, 30);
   const lead = articles[0];
   const cards = articles.slice(1);
   const topics = (data.cats || [])
@@ -1272,7 +1273,9 @@ const APP_JS = String.raw`
     }
     h+=qaBridge(arr);
     h+=qaColumn(arr);
-    h+=briefsBoard();
+    // 브리프도 오늘 지면의 band에 이미 포함되어 있다. 별도 추가 소식
+    // 블록으로 다시 그리면 같은 기사가 중복되고 페이지가 불필요하게 길어진다.
+    if(!includeIssueBriefs) h+=briefsBoard();
     h+=recentSection();
     h+=storyBoard();
     return h+'</div>';
