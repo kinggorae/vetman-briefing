@@ -1596,15 +1596,6 @@ const APP_JS = String.raw`
     issueRequests[date]=fetch('/data/'+encodeURIComponent(date)+'.json').then(function(r){if(!r.ok)throw new Error('issue-data');return r.json();}).catch(function(err){ delete issueRequests[date]; throw err; });
     return issueRequests[date];
   }
-  function prefetchIssue(date){
-    // 현재 홈에 보이는 기사들은 read-ready라서 상세를 위해 전체 날짜 JSON을
-    // 미리 당겨올 필요가 없다. 더보기·날짜 전환이 가능한 경우에만 유휴 시간에
-    // 가져와 초기 로딩과 클릭 경험을 동시에 가볍게 유지한다.
-    if(!DATA._compact||!DATA.hasMore) return;
-    var run=function(){ fetchIssue(date).catch(function(){}); };
-    if('requestIdleCallback' in window) window.requestIdleCallback(run,{timeout:1200});
-    else window.setTimeout(run,300);
-  }
   function hydrateArticle(id){
     var compact=byId[id], date=(compact&&compact.day)||DATA.date;
     if(!compact||!compact._compact) return Promise.resolve(compact);
@@ -1731,7 +1722,6 @@ const APP_JS = String.raw`
     }else if(S.openId){ S.openId=null; render(); }
   });
   render();
-  prefetchIssue(DATA.date);
 })();`;
 
 // 홈 지면이 비지 않도록 최근 다른 날짜의 기사를 함께 싣는다(오늘 지면과는 분리 표기).

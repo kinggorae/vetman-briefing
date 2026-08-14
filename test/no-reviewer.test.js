@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { isProfessionallyIndexable, publishQualityIssues } from "../src/lib/quality.js";
 import { clinicalSafetyIssues, loadEditorialSettings, organizationAuthor } from "../src/lib/editorial-policy.js";
-import { canReleaseDaily, DAILY_TARGET_ITEMS, evaluate } from "../scripts/brief-publishing.js";
+import { canReleaseDaily, DAILY_TARGET_ITEMS, evaluate, retainSeenAfterTargetMiss } from "../scripts/brief-publishing.js";
 
 const ROOT = process.cwd();
 
@@ -29,6 +29,16 @@ test("일일 발행은 30건 목표에 도달하기 전 부분 이슈를 만들�
   assert.equal(canReleaseDaily(5, 24), false);
   assert.equal(canReleaseDaily(5, 25), true);
   assert.equal(canReleaseDaily(0, 30), true);
+});
+
+test("일일 목표 미달이면 발행 후보만 seen 큐로 되돌린다", () => {
+  const keep = "https://example.com/keep";
+  const retry = "https://example.com/retry";
+  const retained = retainSeenAfterTargetMiss(
+    [keep, retry, `${retry}?utm_source=feed`],
+    [{ row: { sourceUrl: retry, sourceUrlRaw: `${retry}?utm_source=feed` } }],
+  );
+  assert.deepEqual(retained, [keep]);
 });
 
 test("첫 low-risk 후보는 public brief release 전 언어·이미지 검수를 요구한다", () => {
