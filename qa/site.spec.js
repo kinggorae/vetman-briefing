@@ -94,6 +94,11 @@ test("homepage lead is complete and compact article opens before hydration", asy
     expect(new Set(visibleTodayIds)).toEqual(new Set(todayIds));
   } else {
     await expect(page.locator(".vm-fp-body")).not.toBeEmpty();
+    // 오늘자 발행분은 홈 초기 렌더에서 일부가 잘리지 않고 모두 노출된다.
+    const todayIds = todayItems.map((item) => item.id);
+    const visibleTodayIds = await page.locator("[data-open]").evaluateAll((elements, ids) =>
+      elements.map((element) => element.getAttribute("data-open")).filter((id) => ids.includes(id)), todayIds);
+    expect(new Set(visibleTodayIds)).toEqual(new Set(todayIds));
   }
 
   await page.locator("article[data-open]").nth(1).click();
