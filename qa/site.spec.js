@@ -79,7 +79,15 @@ test("homepage lead is complete and compact article opens before hydration", asy
   expect(payload.articles[0].body?.length).toBeGreaterThan(0);
   expect(payload.articles[1].body?.length).toBeGreaterThan(0);
   expect(payload.articles[1].readReady).toBe(true);
-  await expect(page.locator(".vm-fp-body")).not.toBeEmpty();
+  const todayItems = [...(payload.articles || []), ...(payload.briefs || []), ...(payload.stories || [])];
+  if (todayItems.length < 10) {
+    // 짧은 지면에서는 보강용 최근 기사보다 오늘 기사가 먼저 전부 나온다.
+    const primaryText = (await page.locator('article[data-open]').allTextContents()).slice(0, todayItems.length).join("\n");
+    for (const item of todayItems) expect(primaryText).toContain(item.title);
+    await expect(page.getByText("이어 읽기", { exact: true })).toBeVisible();
+  } else {
+    await expect(page.locator(".vm-fp-body")).not.toBeEmpty();
+  }
 
   await page.locator("article[data-open]").nth(1).click();
   await expect(page.locator('.vm-detail[role="dialog"]')).toBeVisible({ timeout: 1_000 });
