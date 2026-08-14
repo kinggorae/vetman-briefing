@@ -81,7 +81,9 @@ test("homepage lead is complete and compact article opens before hydration", asy
   expect(payload.articles[1].readReady).toBe(true);
   const todayItems = [...(payload.articles || []), ...(payload.briefs || []), ...(payload.stories || [])];
   if (payload.count >= 30) {
-    expect(todayItems.length).toBe(30);
+    // 일간 발행 목표가 늘어나도 첫 HTML의 지면 전체가 보존되어야 한다.
+    // 과거 30건 고정값은 실제 60건 발행분을 정상 payload인데도 실패시켰다.
+    expect(todayItems.length).toBe(payload.count);
     await expect(page.locator(".vm-brief-card")).toHaveCount(0);
   }
   if (todayItems.some((item) => item.radar?.clinical)) {

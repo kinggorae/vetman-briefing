@@ -18,7 +18,7 @@ function args() { const raw = process.argv.slice(2); const command = raw.shift()
 function feedsFor(source) { return [...new Set([...(source.rssUrls || []), ...(source.atomUrls || [])])]; }
 function officialFeedUrl(url, source) { try { return isOfficialUrl(url, source) && !/^https?:\/\/(?:www\.)?feedburner\.com/i.test(url); } catch { return false; } }
 function parseRobots(text, targetPath) { let active = false; for (const line of String(text || "").split(/\r?\n/)) { const clean = line.split("#")[0].trim(); if (/^user-agent\s*:\s*\*/i.test(clean)) active = true; else if (/^user-agent\s*:/i.test(clean)) active = false; else if (active && /^disallow\s*:/i.test(clean)) { const value = clean.replace(/^disallow\s*:/i, "").trim(); if (value && targetPath.startsWith(value)) return false; } } return true; }
-async function robotsAllowed(url, source) { try { const parsed = new URL(url); const robotsUrl = `${parsed.protocol}//${parsed.host}/robots.txt`; const response = await fetch(robotsUrl, { headers: { "User-Agent": USER_AGENT }, signal: AbortSignal.timeout(source.timeoutMs) }); return { checked: true, allowed: response.ok ? parseRobots(await response.text(), parsed.pathname) : true, url: robotsUrl }; } catch { return { checked: false, allowed: true, url: null }; } }
+async function robotsAllowed(url, source) { try { const parsed = new URL(url); const robotsUrl = `${parsed.protocol}//${parsed.host}/robots.txt`; const response = await fetch(robotsUrl, { headers: { "User-Agent": source.userAgent || USER_AGENT }, signal: AbortSignal.timeout(source.timeoutMs) }); return { checked: true, allowed: response.ok ? parseRobots(await response.text(), parsed.pathname) : true, url: robotsUrl }; } catch { return { checked: false, allowed: true, url: null }; } }
 function dateTimes(entries) { return entries.map((e) => Date.parse(e.publishedAt || "")).filter(Number.isFinite).sort((a, b) => a - b); }
 function averageGapDays(entries) { const dates = dateTimes(entries); if (dates.length < 2) return null; const gaps = dates.slice(1).map((v, i) => (v - dates[i]) / 86400000).filter((v) => v >= 0); return gaps.length ? Number((gaps.reduce((a, b) => a + b, 0) / gaps.length).toFixed(2)) : null; }
 function statusFor(row, source) {
@@ -27,7 +27,12 @@ function statusFor(row, source) {
   if (!row.ok || row.httpStatus >= 400 || row.xmlParsed === false) return "failing";
   if (row.ageDays != null && row.ageDays > 30 && (row.averageIntervalDays == null || row.averageIntervalDays <= 14)) return "stale";
   if (row.ageDays != null && row.ageDays > 7 && (row.averageIntervalDays == null || row.averageIntervalDays > 14 || row.itemCount <= 2)) return "quiet";
-  if (!row.officialDomain || row.relayRatio > 0 || row.canonicalCoverage < 0.5 || row.duplicateGuidCount > 0 || !/^application\/(?:rss|atom)\+xml|xml|rdf/i.test(row.contentType || "")) return "degraded";
+  // RSS item에 <link rel="canonical">이 없는 것은 정상이다. 피드의 개별
+  // URL이 모두 공식 도메인이고 중계·중복이 없으면, 발행 단계에서 그 URL을
+  // canonical 후보로 검증할 수 있으므로 canonical 태그 부재만으로 degraded로
+  // 내리지 않는다. Wiley처럼 DOI 식별자가 있는 피드는 기존 coverage 지표도
+  // 계속 기록한다.
+  if (!row.officialDomain || row.relayRatio > 0 || row.duplicateGuidCount > 0 || !/^application\/(?:rss|atom)\+xml|xml|rdf/i.test(row.contentType || "")) return "degraded";
   if (row.itemCount === 0) return "degraded";
   return "healthy";
 }
@@ -53,7 +58,7 @@ async function discoverAlternatives(source, feedUrl, errors = []) {
   const found = [];
   for (const root of roots) {
     try {
-      const response = await fetch(root, { headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/xhtml+xml" }, redirect: "follow", signal: AbortSignal.timeout(source.timeoutMs) });
+      const response = await fetch(root, { headers: { "User-Agent": source.userAgent || USER_AGENT, Accept: "text/html,application/xhtml+xml" }, redirect: "follow", signal: AbortSignal.timeout(source.timeoutMs) });
       const contentType = response.headers.get("content-type") || "";
       if (!response.ok) { errors.push({ root, reason: `HTTP ${response.status}` }); continue; }
       if (!/html|xml/i.test(contentType)) { errors.push({ root, reason: `content-type ${contentType.split(";")[0] || "불명"}` }); continue; }

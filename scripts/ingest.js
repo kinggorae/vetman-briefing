@@ -22,7 +22,7 @@ const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ISSUES = path.join(ROOT, "data", "issues");
 const DRAFT_DIR = path.join(ROOT, "data", "drafts");
 // run.js와 같은 파일을 공유한다. 초안 단계에도 기억이 있어야 어제 뽑은 원문을
-// 오늘 다시 집지 않는다. 이게 없으면 후보 목록 앞에서 매일 같은 60건을 자른다.
+// 오늘 다시 집지 않는다. 이게 없으면 후보 목록 앞에서 매일 같은 일부 후보를 자른다.
 const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 const REPORT_JSON = path.join(ROOT, "reports", "ingest-report.json");
 const REPORT_MD = path.join(ROOT, "reports", "ingest-report.md");
@@ -387,7 +387,7 @@ async function collect(id, flags) {
   }
   if (!flags.dry && drafts.length) {
     // 생성 실패 후보는 다음 실행에서 다시 시도해야 한다. 실패한 원문까지
-    // seen에 넣으면 하루 60건을 채우기 전에 후보가 영구히 소진된다.
+    // seen에 넣으면 일일 목표를 채우기 전에 후보가 영구히 소진된다.
     for (const draft of drafts.filter((item) => item.titleKo && item.bodyKo?.length && !hasGenerationFailure(item))) {
       addSourceKeys(seen, draft.sourceUrl || draft.sourceUrlRaw || "");
     }

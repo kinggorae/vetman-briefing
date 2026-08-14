@@ -274,7 +274,7 @@ function releaseReady(flags) {
   const releaseCandidates = candidates.slice(0, needed);
   if (candidates.length > releaseCandidates.length) summary.skipped["daily-target-cap"] = candidates.length - releaseCandidates.length;
   // 하루 이슈는 목표 건수가 모일 때만 새 날짜 파일을 만든다. 부분 발행은
-  // 다음 재실행에서 새 후보를 더 모아 정확히 60건을 채우도록 남겨 둔다.
+  // 다음 재실행에서 새 후보를 더 모아 정확히 일일 목표를 채우도록 남겨 둔다.
   if (flags.apply && currentItems.length < dailyTarget && !canReleaseDaily(currentItems.length, candidates.length, dailyTarget)) {
     summary.skipped["daily-target-not-reached"] = candidates.length;
     summary.retryQueued = candidates.length;

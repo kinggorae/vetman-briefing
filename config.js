@@ -434,8 +434,8 @@ export const WEBSEARCH_SUBREDDITS = ["Veterinary", "VetTech", "AskVet"];
 export const PUBMED = {
   // 개·고양이 MeSH + 초록에 veterinary. 축산·실험동물 노이즈를 줄이기 위해 임상 위주.
   term: '("dogs"[MeSH Terms] OR "cats"[MeSH Terms]) AND veterinary[Title/Abstract]',
-  recentDays: 30, // 최근 N일
-  max: 90, // 후보 최대(스코어링 전)
+  recentDays: 45, // 최근 N일 — 저널별 발행 간격을 감안해 후보 공백을 줄인다.
+  max: 120, // 후보 최대(스코어링 전)
 };
 
 // 임상 분과별 PubMed 쿼리.
@@ -468,8 +468,8 @@ export const PUBMED_TOPICS = [
   { name: "이그조틱", term: '(rabbits[MeSH Terms] OR ferrets[MeSH Terms] OR birds[MeSH Terms] OR reptiles[MeSH Terms]) AND veterinary[Title/Abstract]' },
   { name: "말", term: 'horses[MeSH Terms] AND (lameness[Title/Abstract] OR colic[Title/Abstract] OR equine[Title/Abstract])' },
 ];
-export const PUBMED_PER_TOPIC = 4; // 분과당 후보 수(스코어링 전)
-export const PAPERS_PER_ISSUE = 16; // 전세계 뉴스 확장과 균형을 맞춰 최신 연구도 함께 확대
+export const PUBMED_PER_TOPIC = 5; // 분과당 후보 수(스코어링 전)
+export const PAPERS_PER_ISSUE = 20; // 전세계 뉴스 확장과 균형을 맞춰 최신 연구도 함께 확대
 
 // ── Reddit API 직접 수집 (키가 생기면 자동 활성화) ──
 export const SUBREDDITS = [
@@ -487,19 +487,19 @@ export const MIN_RELEVANCE = 5;     // 심층 하한 (0~10). 국제 수집 확�
 
 // ── source-first 일간 운영 목표 ──
 // 홈에 실제로 보이는 기사 수와 검색에 기여하는 심층 기사 수를 같은 상한으로
-// 묶지 않는다. 60건을 지면에 채우되, 상위 32건은 심층 생성·품질 게이트를 거쳐
+// 묶지 않는다. 90건을 지면에 채우되, 상위 48건은 심층 생성·품질 게이트를 거쳐
 // 색인 후보로 만들고 나머지는 짧은 public brief로 제공한다.
-export const DAILY_TARGET_ITEMS = 60;
-export const DAILY_DEEP_TARGET_ITEMS = 32;
-export const DAILY_CANDIDATE_POOL = 140;
-export const DAILY_HOME_ITEMS = 60;
+export const DAILY_TARGET_ITEMS = 90;
+export const DAILY_DEEP_TARGET_ITEMS = 48;
+export const DAILY_CANDIDATE_POOL = 220;
+export const DAILY_HOME_ITEMS = 90;
 export const DAILY_RSS_ITEMS = 100;
 
 // ── 계층화(볼륨) ──
 // 화면은 100건처럼 풍성하되, 색인은 심층(≥MIN_RELEVANCE)만. 브리프·가십은 noindex.
 // 무료 Actions 예산(월 2,000분≈하루 50분) 안에서 돌도록 브리프는 1콜 짧은 요약만 한다.
 export const BRIEF_MIN_RELEVANCE = 3; // 브리프 하한. 3~5점(심층 탈락분)을 짧은 소식으로 재활용
-export const BRIEFS_PER_ISSUE = 60;   // 전세계 단신은 브리프로도 폭넓게 제공(개별 색인 X)
+export const BRIEFS_PER_ISSUE = 90;   // 전세계 단신은 브리프로도 폭넓게 제공(개별 색인 X)
 export const TOP_COMMENTS = 8;      // 요약에 참고할 상위 댓글 수
 
 // 스펙 합의대로 sonnet-5 기본. CLAUDE_MODEL 환경변수로 교체 가능 (예: claude-opus-4-8)

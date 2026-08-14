@@ -24,23 +24,28 @@ test("감수자 없는 public brief는 임상 명령 표현을 차단한다", ()
   assert.ok(publishQualityIssues(item).includes("unsafe-clinical-command"));
 });
 
-test("일일 발행은 60건 목표에 도달하기 전 부분 이슈를 만들지 않는다", () => {
-  assert.equal(DAILY_TARGET_ITEMS, 60);
-  assert.equal(DAILY_DEEP_TARGET_ITEMS, 32);
-  assert.equal(DAILY_CANDIDATE_POOL, 140);
-  assert.equal(DAILY_HOME_ITEMS, 60);
+test("일일 발행은 90건 목표에 도달하기 전 부분 이슈를 만들지 않는다", () => {
+  assert.equal(DAILY_TARGET_ITEMS, 90);
+  assert.equal(DAILY_DEEP_TARGET_ITEMS, 48);
+  assert.equal(DAILY_CANDIDATE_POOL, 220);
+  assert.equal(DAILY_HOME_ITEMS, 90);
   assert.equal(DAILY_RSS_ITEMS, 100);
-  assert.equal(canReleaseDaily(0, 59), false);
-  assert.equal(canReleaseDaily(5, 54), false);
-  assert.equal(canReleaseDaily(5, 55), true);
-  assert.equal(canReleaseDaily(0, 60), true);
+  assert.equal(canReleaseDaily(0, 89), false);
+  assert.equal(canReleaseDaily(5, 84), false);
+  assert.equal(canReleaseDaily(5, 85), true);
+  assert.equal(canReleaseDaily(0, 90), true);
 });
 
 test("일간 수집 레지스트리는 Wiley 전문 저널과 PubMed를 공급원으로 유지한다", () => {
   const registry = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "sources", "registry.json"), "utf8"));
   const labels = new Set((registry.sources || []).map((source) => source.label));
-  for (const label of ["Veterinary Dermatology", "Veterinary Clinical Pathology", "Veterinary and Comparative Oncology", "Veterinary ophthalmology"]) {
+  for (const label of ["Veterinary Dermatology", "Veterinary Clinical Pathology", "Veterinary and Comparative Oncology", "Veterinary ophthalmology", "Veterinary Sciences", "Animals", "Texas A&M VMBS News", "Washington State Veterinary News", "University of Florida Veterinary News", "University of Missouri Veterinary News"]) {
     assert.ok(labels.has(label), `${label} source missing`);
+  }
+  for (const label of ["Veterinary Sciences", "Animals", "Texas A&M VMBS News", "Washington State Veterinary News", "University of Florida Veterinary News", "University of Missouri Veterinary News"]) {
+    const source = registry.sources.find((candidate) => candidate.label === label);
+    assert.equal(source?.enabled, true, `${label} must be active`);
+    assert.ok(source?.rssUrls?.length, `${label} RSS missing`);
   }
   const pubmed = registry.sources.find((source) => source.label === "PubMed");
   assert.equal(pubmed?.enabled, true);
