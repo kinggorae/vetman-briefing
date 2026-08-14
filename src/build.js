@@ -720,6 +720,7 @@ a:hover{color:var(--color-primary-strong);}
   .vm-band{grid-template-columns:1fr !important;}
   .vm-band-fill{display:none !important;}
   .vm-qa-grid{grid-template-columns:1fr !important;}
+  .vm-qa-bridge{grid-template-columns:1fr !important;gap:7px !important;}
   .vm-mast h1{font-size:40px !important;}
   .vm-lead-h{font-size:30px !important;}
   .vm-row-thumb{width:112px !important;}
@@ -1039,6 +1040,17 @@ const APP_JS = String.raw`
     +'<div style="display:flex;align-items:center;gap:10px;padding:8px 0 2px;font-size:11.5px;color:var(--color-label-alternative);"><div style="flex:1;height:4px;border-radius:99px;background:var(--color-material-base);overflow:hidden;"><div class="vm-progress" style="width:'+pct+'%;"></div></div><span style="font-variant-numeric:tabular-nums;">'+readCnt+' / '+total+' 읽음</span></div>';
   }
 
+  // 피처 지면과 Q&A 사이의 편집 브릿지. 빈 광고 슬롯을 흉내 내지 않고,
+  // 이미 검수된 기사에 있는 진료 포인트를 다음 칼럼으로 연결한다.
+  function qaBridge(arr){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    var item=(arr||[]).find(function(a){return a.radar&&a.radar.clinical;});
+    if(!item) return '';
+    return '<article class="vm-qa-bridge'+readCls(item.id)+'" data-open="'+item.id+'" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:22px;align-items:start;padding:18px 0 20px;border-bottom:1px solid var(--color-line-normal);cursor:pointer;">'
+      +'<div style="padding-top:1px;"><div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary-normal);">오늘의 핵심</div><div style="margin-top:6px;font-size:12px;line-height:1.5;color:var(--color-label-alternative);">진료 포인트가 있는 기사</div></div>'
+      +'<div><div class="vm-hl" style="font-family:var(--font-display);font-size:18px;line-height:1.35;font-weight:800;letter-spacing:-.015em;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(item)+'</div><div style="margin-top:8px;padding-left:11px;border-left:2px solid var(--color-primary-normal);font-size:13px;line-height:1.6;color:var(--color-label-neutral);"><b style="color:var(--color-primary-normal);font-weight:700;">진료 포인트</b> '+e(item.radar.clinical)+'</div></div></article>';
+  }
+
   // 프런트페이지 편집 칼럼 "진료실 문답" — 보호자 질문을 신문 Q&A 지면처럼.
   function qaColumn(arr){
     if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
@@ -1049,7 +1061,7 @@ const APP_JS = String.raw`
       +'<div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">'+[a.source,a.country].filter(Boolean).map(e).join(' · ')+'</div>'
       +'<div class="vm-hl" style="font-family:var(--font-display);font-size:17px;line-height:1.42;font-weight:700;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.radar.owner.q)+'</div></div>';
     }).join('');
-    return '<div style="margin-top:6px;"><div style="border-top:2px solid var(--color-label-strong);padding:16px 0 4px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">진료실 문답</span><span style="font-size:12.5px;color:var(--color-label-alternative);">이번 주, 보호자가 묻는 것</span></div>'
+    return '<div style="margin-top:0;"><div style="padding:16px 0 4px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">진료실 문답</span><span style="font-size:12.5px;color:var(--color-label-alternative);">이번 주, 보호자가 묻는 것</span></div>'
     +'<div class="vm-qa-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0 44px;">'+items+'</div></div>';
   }
 
@@ -1188,6 +1200,7 @@ const APP_JS = String.raw`
       var h1='<div><div style="padding:28px 0 34px;border-bottom:2px solid var(--color-label-strong);">'
       +leadCard(compactArr[0])+compactArr.slice(1).map(leadFollow).join('')+'</div>'
       +mostRead(compactArr.slice(0,5));
+      h1+=qaBridge(compactArr);
       h1+=qaColumn(compactArr);
       if(!includeIssueBriefs) h1+=briefsBoard();
       h1+=recentSection(includeIssueBriefs&&!!DATA.recentPromoted);
@@ -1248,6 +1261,7 @@ const APP_JS = String.raw`
       +bandGrid(band);
       if(more>0||clipped>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+Math.max(more,clipped)+'건 더 보기</button></div>'; }
     }
+    h+=qaBridge(arr);
     h+=qaColumn(arr);
     h+=briefsBoard();
     h+=recentSection();
