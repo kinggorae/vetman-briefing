@@ -707,10 +707,10 @@ a:hover{color:var(--color-primary-strong);}
       : null;
     var allArr=todayArr||activeList();
     if(includeIssueBriefs&&DATA.recentPromoted) allArr=allArr.concat(DATA.recent||[]);
-    // 오늘자 발행분은 목표 건수(60건)를 홈에서 바로 보여준다. 기존 24건
+    // 오늘자 발행분은 목표 건수를 홈에서 바로 보여준다. 기존 24건
     // 제한은 발행은 정상인데 나머지 기사가 사라진 것처럼 보이게 만들었다.
     // 검색·카테고리 화면은 정보 밀도를 유지하기 위해 기존 제한을 사용한다.
-    var defaultHomeLimit=includeIssueBriefs?Math.max(60,todayArr?todayArr.length:0):24;
+    var defaultHomeLimit=includeIssueBriefs?Math.max(90,todayArr?todayArr.length:0):24;
     var arr=S.showAll?allArr:allArr.slice(0,defaultHomeLimit);
     if(S.sort==='latest'&&!S.query.trim()) arr.sort(function(x,y){return y.ts-x.ts;});
     if(S.sort==='latest'&&!S.query.trim()&&todayArr) todayArr.sort(function(x,y){return y.ts-x.ts;});
@@ -758,7 +758,7 @@ a:hover{color:var(--color-primary-strong);}
     if(quad.length<2) quad=[];
     var feat=layoutArr[i++];
     var bandAll=layoutArr.slice(i);
-    // 오늘 홈은 60건을 모두 이어서 보여주므로 밴드도 별도 12건 제한을 두지
+    // 오늘 홈은 발행분을 모두 이어서 보여주므로 밴드도 별도 12건 제한을 두지
     // 않는다. 검색·필터 화면에서는 기존의 짧은 초기 렌더를 유지한다.
     var fullDailyHome=includeIssueBriefs&&!S.showAll;
     var band=(S.showAll||fullDailyHome)?bandAll:bandAll.slice(0,12);

@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-08-14T16:45:19.945Z",
+  "generatedAt": "2026-08-14T19:16:15.189Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 828,
-    "articles": 740,
-    "index": 187,
-    "noindex": 553,
-    "sitemap": 233,
-    "newsSitemap": 1,
+    "htmlPages": 858,
+    "articles": 770,
+    "index": 188,
+    "noindex": 582,
+    "sitemap": 234,
+    "newsSitemap": 2,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 187,
+    "indexImages": 188,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 321146,
+    "homepageBytes": 395902,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 167848
+        "bytes": 168632
       },
       {
         "file": "search/2026-05.json",
@@ -37,10 +37,10 @@
       },
       {
         "file": "search/2026-08.json",
-        "bytes": 13343
+        "bytes": 14127
       }
     ],
-    "articleBytes": 14640466,
+    "articleBytes": 15209232,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -50,12 +50,12 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 187,
-    "currentNoindex": 553,
-    "delta": -131,
+    "currentIndex": 188,
+    "currentNoindex": 582,
+    "delta": -130,
     "reasonCounts": {
-      "build-policy": 131,
-      "brief-tier": 345,
+      "build-policy": 137,
+      "brief-tier": 368,
       "brief-too-short": 49,
       "source-relay": 39,
       "internal-ascii": 17,
@@ -72,6 +72,17 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-08-15",
+          "id": "v1_e6c2efcc0b547532",
+          "title": "연간 바비큐로 직원 헌신 인정하는 워싱턴주립대의대",
+          "indexable": true,
+          "tier": "analysis",
+          "clinicalRisk": "low",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": []
+        },
         {
           "date": "2026-08-13",
           "id": "v1_e855df430e994d79",
@@ -274,17 +285,6 @@
           "date": "2026-07-31",
           "id": "v1_5a8b1d1fc86addb7",
           "title": "\"고품질 진료\"의 딜레마, 모든 병원에게 적용 가능한가",
-          "indexable": true,
-          "tier": "analysis",
-          "clinicalRisk": "low",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
-        },
-        {
-          "date": "2026-07-31",
-          "id": "v1_3c872b693cebffdb",
-          "title": "수의 전문가 커리어 전환 불안, '알 수 없는 것'의 공포 극복법",
           "indexable": true,
           "tier": "analysis",
           "clinicalRisk": "low",
@@ -2678,6 +2678,13 @@
         "card": true
       },
       {
+        "file": "article/v1_e6c2efcc0b547532.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_e855df430e994d79.html",
         "hero": true,
         "og": true,
@@ -2725,25 +2732,25 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 165,
-      "medium": 434,
+      "low": 168,
+      "medium": 461,
       "high": 141
     },
-    "explicitReviewFields": 283
+    "explicitReviewFields": 313
   },
   "workflow": {
-    "explicitItems": 283,
+    "explicitItems": 313,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 277
+      "published": 307
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 137,
-    "numericWarnings": 111,
+    "articlesWithExplicitMetadata": 166,
+    "numericWarnings": 113,
     "samples": [
       {
         "id": "v1_2719dd62405aba8f",
@@ -2790,6 +2797,18 @@
       },
       {
         "id": "v1_0f3d4a8a499dde38",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_c184ac4c70a85e46",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_8748ee04b9e16d74",
         "issues": [
           "numeric-keypoints-body-mismatch"
         ]
@@ -3366,18 +3385,6 @@
         "id": "2026-07-20_4",
         "issues": [
           "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-20_22",
-        "issues": [
-          "numeric-lead-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-20_34",
-        "issues": [
-          "numeric-lead-body-mismatch"
         ]
       }
     ]
