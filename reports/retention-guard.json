@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-14T15:55:54.019Z",
+  "baseRef": "HEAD^",
+  "allowRemovals": [],
+  "status": "passed",
+  "previous": {
+    "count": 187,
+    "declaredCount": 187
+  },
+  "current": {
+    "count": 187,
+    "declaredCount": 187
+  },
+  "added": [],
+  "removed": [],
+  "allowedRemoved": [],
+  "unexpectedRemoved": [],
+  "critical": [],
+  "previousCount": 187,
+  "currentCount": 187
+}

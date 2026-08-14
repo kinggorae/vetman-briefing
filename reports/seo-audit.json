@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T02:33:56.036Z",
+  "generatedAt": "2026-08-14T15:55:53.192Z",
   "status": "passed",
   "counts": {
     "htmlPages": 767,
@@ -7,8 +7,8 @@
     "index": 187,
     "noindex": 493,
     "sitemap": 233,
-    "newsSitemap": 0,
-    "rssItems": 50,
+    "newsSitemap": 1,
+    "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
@@ -17,7 +17,7 @@
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 199991,
+    "homepageBytes": 234697,
     "searchSizes": [
       {
         "file": "search.json",

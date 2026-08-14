@@ -1,82 +1,112 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-08-14T02:33:07.112Z
+- 실행 시각: 2026-08-14T15:55:04.490Z
 - 모드: write-draft
-- 소스/피드: 27/14
-- 수집 항목: 555
-- 고유 후보: 376
-- exact duplicate: 153
-- 기존 기사 업데이트 후보: 26
-- 관련성 제외: 120
-- 기수집(seen) 제외: 149
-- 신규 가용 후보: 112
-- draft 후보: 60
-- 생성 완료: 60
-- 생성 실패 경고: 0
-- canonical 확인 시도: 60
+- 소스/피드: 35/22
+- 수집 항목: 1051
+- 고유 후보: 829
+- exact duplicate: 181
+- 기존 기사 업데이트 후보: 41
+- 관련성 제외: 121
+- 기수집(seen) 제외: 176
+- 신규 가용 후보: 537
+- draft 후보: 90
+- 생성 완료: 85
+- 생성 실패 경고: 5
+- canonical 확인 시도: 0
 - 공식 canonical 확보: 60
-- unresolved source: 0
+- unresolved source: 30
 - relay sourceUrl: 0
 
 ## draft 후보
 
-- v1_bdb58d9a59d0e2ca · src-vet-candy · verified · unique · Zoetis Just Confirmed What Every Front Desk Already Knows
-- v1_479ea6f2bc404b7f · src-frontiers-in-veterinary-science · verified · unique · SARS-CoV-2 infection in dogs, dog owners, dog breeders, and veterinarians in the Ashanti and Greater Accra regions of Ghana—zoonotic implications
-- v1_0c9477b038931a04 · src-veterinary-practice-news · verified · unique · How to manage anxiety in pets
-- v1_ed170fe6fb65adf1 · src-veterinary-practice-news · verified · unique · WordRx: Your dose of veterinary wordplay
-- v1_185e6407f3056fdd · src-veterinary-practice-news · verified · unique · Spotlight on vitreoretinal surgery
-- v1_bea839b7ab265b8e · src-veterinary-practice-news · verified · unique · The 60-second check that can change outcomes for HCM patients
-- v1_f2dedd685ca1545c · src-frontiers-in-veterinary-science · verified · unique · Case Report: Diet-associated iodine-deficiency goitrous hypothyroidism in a dog: a longitudinal clinical, endocrine, and ultrasonographic evaluation
-- v1_92f9fef4b332889f · src-frontiers-in-veterinary-science · verified · unique · A participatory rapid ethnographic assessment protocol for studying human-animal-material interactions in veterinary clinical practice
-- v1_982ec8e45de9bc25 · src-frontiers-in-veterinary-science · verified · unique · From dyadic deco-construction to reco-construction: a framework for the human–osteoarthritic dog relationship
-- v1_e9ec0ec33935e919 · src-frontiers-in-veterinary-science · verified · unique · Serum multi-element profiling and a Metallobalance index for noninvasive differentiation of canine prostatic adenocarcinoma: a pilot case-control study
-- v1_bbe6b3e25feed6c1 · src-frontiers-in-veterinary-science · verified · unique · Tyrosine kinase inhibitors and molecularly driven therapeutic approaches for canine lymphoma: a systematic review and meta-analysis
-- v1_6937c13ece3a1bb4 · src-frontiers-in-veterinary-science · verified · unique · Comparison of two postoperative complication grading systems following an elective orthopedic procedure in dogs
-- v1_5463e7b3e1f2be3f · src-frontiers-in-veterinary-science · verified · unique · Case Report: Surgical management of mandibular oral histiocytic sarcoma in a ragdoll cat with favorable outcome
-- v1_287824805465ccef · src-frontiers-in-veterinary-science · verified · unique · Development and immunogenicity of a novel subunit vaccine candidate against avian metapneumovirus
-- v1_064ff6adc7b28736 · src-frontiers-in-veterinary-science · verified · unique · Modulating the avian cecal microbiome: probiotics in the prevention of Histomonas meleagridis in poultry
-- v1_2435a65cddcf7fc2 · src-frontiers-in-veterinary-science · verified · unique · Identification and validation of key host genes associated with porcine H1N1 infection based on integrated machine learning algorithms
-- v1_662808c8e15c8814 · src-frontiers-in-veterinary-science · verified · unique · An exploratory study comparing the social behavior of intersex and female goats
-- v1_2eadaa185f7bf274 · src-frontiers-in-veterinary-science · verified · unique · Crossing the comfort zone: rabbit appeasing pheromone enhances acclimation to a novel environment
-- v1_473dde5f5c41d616 · src-frontiers-in-veterinary-science · verified · unique · Heavy metal exposure and ecological risk assessment in the Guizhou snub-nosed monkey (Rhinopithecus brelichi): a fecal biomonitoring study
-- v1_8ec650d52c91055b · src-veterinary-practice-news · verified · unique · Brain Teaser: Can you solve this puzzle?
-- v1_7db36899bbb0a6f2 · src-nc-state-university · verified · unique · From a Local Animal Hospital, Kristen Folk Reports
-- v1_eccbd7c6dfa6e3d1 · src-nc-state-university · verified · unique · New World Screwworm in the U.S.: What It Means for North Carolina
-- v1_d49660660f0f8da2 · src-nc-state-university · verified · unique · Class of 2026: From Nerves to NAVLE, Four Years of Questions Finally Answered
-- v1_c8137b83c867d176 · src-vet-candy · verified · unique · The Cat Slow Blink Is Real. Here's the Science, and Why It Actually Matters in Practice
-- v1_c97d8a7396bf0542 · src-vet-candy · verified · unique · Dr. Christine Jenkins named 2026 recipient of AVMA's Frederick Douglass Patterson Award
-- v1_cea77f22eed05561 · src-vet-candy · verified · unique · Veterinary Corporations Are Back in the Headlines: Here's What You Need to Know
-- v1_01b1ea25177ebe46 · src-vet-candy · verified · unique · The Dogs in This Clinical Trial May Change How We Treat Brain Cancer in Children
-- v1_538ae7f5b13b4c7c · src-vet-candy · verified · unique · Scientists reveal the secrets behind the penguin waddle and underwater “flight”
-- v1_f3a44eed5d634b3d · src-vet-candy · verified · unique · Arkansas State's Veterinary College Doesn't Open Until Fall. It's Already Seeing Patients.
-- v1_a51f0697b3b57806 · src-vet-candy · verified · unique · A Podcast Clip Doubled Ivermectin Prescriptions. Veterinary Professionals Need to Be Ready for the Conversation.
-- v1_ee61c30c4e05ca06 · src-vet-candy · verified · unique · A review argues the family dog may become science’s unlikely ally against autism
-- v1_fdef9caff01cfaa4 · src-nc-state-university · verified · unique · Class of 2026: The Pressure Dims When You Let Others Shine
-- v1_e0c48d00ed76503b · src-vet-candy · verified · unique · Darwin's Ark invites research collaboration on the world's largest community science initiative for cats and dogs
-- v1_76711aa0953d0c12 · src-nc-state-university · verified · unique · The Rescued &#8216;Rebel&#8217; that Inspired an Unending Scientific Legacy
-- v1_7ad0a131dd65a6f3 · src-vet-candy · verified · unique · Purdue Just Put a Veterinary Expert in Your Client's Living Room
-- v1_060a035f3a45f081 · src-vet-candy · verified · unique · Penn Vet Just Built a Lab Designed to Catch Livestock Health Problems Before They Become Disasters
-- v1_9ce9cc3f20e586a4 · src-vet-candy · verified · unique · FSIS Is Moving to Iowa. What Veterinary and Food Safety Professionals Need to Know.
-- v1_5bc98be1e135c242 · src-vet-candy · verified · unique · Screwworm Is Back in the U.S. for the First Time Since 1968. Here's Everything You Need to Know.
-- v1_549f21819f7e27f9 · src-vet-candy · verified · unique · 85% of Dogs Have Fear or Anxiety Issues. Your Clients Need More Support Than You Can Give Them in One Appointment.
-- v1_0490ea67c02bc588 · src-vet-candy · verified · unique · Dr. Jessica McArt Is the New Dean of Cornell's College of Veterinary Medicine and Her Path Here Is a Blueprint
-- v1_1719ca57da112d25 · src-vet-candy · verified · unique · Ohio Just Took a Step Toward Fixing the Veterinary Shortage and RVTs Are at the Center of It
-- v1_6e699f7e40725bc9 · src-vet-candy · verified · unique · How to protect pets from the New World screwworm
-- v1_2b1269cc525380d4 · src-vet-candy · verified · unique · The Farmer's Dog Just Funded a Vet Nutrition Residency at UGA. And It's a Bigger Deal Than It Sounds
-- v1_cd30cd4ec6282a04 · src-vet-candy · verified · unique · Europe Had FMD for the First Time in 14 Years. Here's What Every Veterinarian Should Take From It
-- v1_3c27d253fb485d20 · src-vet-candy · verified · unique · WOAH's 2026 State of the World's Animal Health Report Is Out. The Numbers Are Hard to Look At &#x2014; and Impossible to Ignore.
-- v1_f8bb90fa08927cfd · src-nc-state-university · verified · unique · Class of 2026: Homesickness, Culture Shock, Then a Purpose Realized
-- v1_267e006b78d7a91a · src-vet-candy · verified · unique · The Veterinary Staffing Crisis Has a New Playbook. Here Is What Is In It.
-- v1_1d402edc677e7363 · src-vet-candy · verified · unique · Stopping ticks in their tracks
-- v1_e78d5c3a828c72ae · src-vet-candy · verified · unique · Austin Warren is on a Mission Bigger Than Medicine
-- v1_49c3bc086ad25895 · src-vet-candy · verified · unique · Dog daycare leptospirosis outbreak in Los Angeles reveals broader public health risks
-- v1_8c1a56e279ce0b83 · src-vet-candy · verified · unique · Veterinarians Needed: Help Shape the Future of the NAVLE®
-- v1_60c2ebcb3ee047c6 · src-vet-candy · verified · unique · Cats Have a Unique Kidney Chemistry That Could Be Harming Their Health
-- v1_1f41c8c9cdbb67fc · src-vet-candy · verified · unique · Widely Used Veterinary Sedative Formulation Remains Stable for Three Months, Researchers Find
-- v1_68732c0a676b26a0 · src-vet-candy · verified · unique · The Maps Have Changed. Has Your Prevention Protocol?
-- v1_1e55da1ec72d5a50 · src-vet-candy · verified · unique · The Antibiotic Resistance Problem Is Coming for Veterinary Medicine &#x2014; and We Need to Talk About It
-- v1_6dbfe2c2bdcbad0e · src-vet-candy · verified · unique · San Antonio's Shelter Numbers Are Moving in the Right Direction. Here Is What the Data Shows.
-- v1_0ae3ac571a14e8e3 · src-sciencedaily · verified · unique · Scientists studied 47,000 dogs on CBD and found a surprising behavior shift
-- v1_e65c35b7b7d8e0fc · src-vet-candy · verified · unique · Virbac Reaches $500K in Donations forU.S. Animal Charities
-- v1_9deb16f385081615 · src-vet-candy · verified · unique · FIP in 2026: New Guidelines, a Better Diagnostic Test, and a Disease That's No Longer a Death Sentence
-- v1_4bc131de86853669 · src-vet-candy · verified · unique · This Juneteenth, Veterinary Medicine Still Has a Long Way to Go
+- v1_2719dd62405aba8f · src-pubmed · verified · unique · Five cases of tremorgenic mycotoxicosis in dogs - clinical aspects and analytical methods.
+- v1_b5f21bf5db5567db · src-pubmed · verified · unique · Radiographic reference values for canine baculum length: association with body-weight category in dogs aged at least 1 year.
+- v1_70204e5d97d402fa · src-pubmed · verified · unique · Characterization of putative germline pathogenic variants in 27 candidate cancer-predisposing genes in 813 cats using a feline-specific multiplex targeted sequencing.
+- v1_2222fd387c76e7d6 · src-pubmed · verified · unique · Combination S100A1 and ARC gene therapy as a treatment for Duchenne muscular dystrophy cardiomyopathy.
+- v1_815bdd1a94a1ef95 · src-pubmed · verified · unique · Pediatric Anal Pruritus and Misdiagnosis: Dipylidium caninum in a Spanish Child with a Review of Reported Human Cases.
+- v1_924a92fd08df3b04 · src-pubmed · verified · unique · Advances in biomarker discovery for canine cognitive dysfunction: a comprehensive structured narrative review and future perspectives.
+- v1_85d009b610ff68da · src-pubmed · verified · unique · Longitudinal echocardiographic systolic changes in dogs receiving doxorubicin-based chemotherapy.
+- v1_2077a53ba410e391 · src-pubmed · verified · unique · Molecular survey of vector-borne pathogens in shelter dogs of Cyprus.
+- v1_4a2f788c38430dcb · src-pubmed · verified · unique · First report of gurltiosis in a domestic feline from Santa Catarina, Brazil.
+- v1_e15159158dd314b5 · src-pubmed · verified · unique · Temporary transarticular stabilization with locking compression plate for the treatment of traumatic glenohumeral luxation in 10 dogs.
+- v1_2c291de16899abc6 · src-pubmed · verified · unique · Nutritional management of feline chronic enteropathy with evolving dietary response and long-term stabilization.
+- v1_a1096e78d5f45090 · src-pubmed · verified · unique · Evaluating Feline Release Criteria Following 131 I Therapy for Hyperthyroidism.
+- v1_210f5bf07331fb43 · src-pubmed · verified · unique · Spatial distribution and cluster detection of zoonotic dog endoparasites in public parks from Gran Santiago, Chile.
+- v1_86cdd8ce06b8575a · src-pubmed · verified · unique · Broad permissiveness of mammalian nectin-4 orthologs for morbilliviruses: a notable exception in dolphin nectin-4.
+- v1_67587d72bf3dc25e · src-pubmed · verified · unique · Comparative analysis of intestinal parasites in companion and hunting domestic dogs and wild canids from Pennsylvania, USA from 2023 to 2024.
+- v1_cdaed745c9bd243c · src-pubmed · verified · unique · Postoperative body weight increase and surgical wound complications in soft tissue surgery: A retrospective study.
+- v1_30736638a9e00222 · src-pubmed · verified · unique · In vitro compatibility of type-B feline blood with canine blood of different DEA 1 phenotypes and with type-A feline blood.
+- v1_e0057d5748d2a413 · src-pubmed · verified · unique · Dystocia in cats under UK primary emergency veterinary care: epidemiology, clinical management and outcomes.
+- v1_55c38bd7d9a8a14a · src-pubmed · verified · unique · Effective ultrasonography protocol for investigating muscular structures of the canine dorsolateral hip region with comparative magnetic resonance imaging.
+- v1_3675ccb362d00ce5 · src-pubmed · verified · unique · Assessment of knowledge, attitudes, and preventive practices for equine Endoparasite control among livestock owners in South Gondar Zone, Northwest Ethiopia: A community-based cross-sectional study.
+- v1_050a80724521266e · src-pubmed · verified · unique · PasteurizedMucreduces high-caloric diet-induced weight gain and alters bile acid and inflammatory profiles in dogs.
+- v1_13f29f513a8791b6 · src-pubmed · verified · unique · Structure and dynamics of confined water in amyloid protein fibril nanochannels.
+- v1_0f681b29392edd0e · src-pubmed · verified · unique · Evolutionary history and life-history traits influence cause-specific mortality in domestic dogs.
+- v1_fc4c07c27d16d880 · src-pubmed · verified · unique · Biological Evaluation, Molecular Docking, and in Ovo Hatchability Assessment of Selected Mannich-Type 1,2,4-Triazol-5-one Derivatives.
+- v1_d0a56db7ec2d8b82 · src-pubmed · verified · unique · Lack of leishmania spp. detection in a molecular survey of high-risk domestic cats from the southcentral USA.
+- v1_32f2fc3aded7a27c · src-pubmed · verified · unique · Preliminary Analysis of CpG, CHG and CHH Methylation in the Mitochondrial Control Region of Dogs With Malignant Mammary Gland Tumours.
+- v1_2deb4afb52eb2e79 · src-pubmed · verified · unique · Intracranial abscess and otitis interna treated by temporal burr-hole craniotomy and ventral bulla osteotomy in a Maine coon cat.
+- v1_2b34b6dd5b7f8d4b · src-pubmed · verified · unique · An evaluation of osteoarthrosis in specific anatomic locations of the canine stifle joint treated with tibial plateau leveling osteotomy and tibial tuberosity advancement.
+- v1_af0c15f21b37fc0e · src-pubmed · verified · unique · Evaluation of postoperative analgesia with perioperative electroacupuncture in clinical dog patients undergoing surgery for cranial cruciate ligament rupture (Tibial Tuberosity Advancement).
+- v1_64d4e594c6af159f · src-pubmed · verified · unique · Canine-derived Lactobacillus acidophilus modulates Th2-driven allergic inflammation via IL-10-mediated immune regulation in murine models.
+- v1_45a099e7de36f288 · src-pubmed · verified · unique · Keeping an eye on pain: Characterization of pain behaviours in cats undergoing ophthalmic surgery.
+- v1_4a5bac6923a17363 · src-pubmed · verified · unique · High prevalence and cross-species transmission potential of Entamoeba gingivalis and Trichomonas tenax in humans, dogs, and cats in Guangxi, China.
+- v1_a1cc94fa1f590854 · src-pubmed · verified · unique · Pufferfish exposure and presumed tetrodotoxicosis in Australian dogs: 372 cases (2007-2018).
+- v1_a014b3426aa38a55 · src-pubmed · verified · unique · Association between the natural bobtail phenotype and lumbosacral transitional vertebra in Brittany dogs and Danish-Swedish Farmdogs.
+- v1_fc703a526ac8ab4c · src-pubmed · verified · unique · Probable sepsis-associated encephalopathy as a component of multiple organ dysfunction syndrome in a cat with pyothorax.
+- v1_4ab84434bc6cd1b0 · src-pubmed · verified · unique · Effects and safety analysis of diets with different Omega-3:Omega-6 ratios on postoperative recovery indicators in cats with feline chronic gingivostomatitis (FCGS).
+- v1_3243da147f2c8b28 · src-pubmed · verified · unique · Prevalence and epidemiologic patterns of feline parasitism detected by fecal examination in the United States, 2023.
+- v1_8a420f87e9a80213 · src-pubmed · verified · unique · Exploratory associations between quantitative multiparametric testicular ultrasound and semen quality in dogs.
+- v1_b20855a12238e868 · src-pubmed · verified · unique · Brain mineral concentrations in canine cognitive dysfunction.
+- v1_f4012be9169b7580 · src-veterinary-record-case-reports · unresolved · unique · Diet‐associated thyrotoxicosis in two dogs: Clinical, hormonal and imaging findings before and after dietary modification
+- v1_4162b1dd9248b73b · src-pubmed · verified · unique · Functional and Structural Characterization of a Large Animal Model of RDH5-Associated Retinopathy.
+- v1_3141822eb6c9b6ab · src-veterinary-medicine-and-science · unresolved · unique · Diet‐Induced Bloat in Confiscated Capped Langurs (Trachypithecus pileatus): Clinical Management and Conservation Implications
+- v1_3fc4e0d3750fb221 · src-pubmed · verified · unique · SOAT1 Nonsense Variant in a Cat With Sebaceous Gland Dysplasia.
+- v1_6684601392f01444 · src-pubmed · verified · unique · Influence of serum chloride concentrations on the renin-angiotensin-aldosterone system in dogs with congestive heart failure.
+- v1_a220478eb6580bc4 · src-pubmed · verified · unique · A NECAP1 Nonsense Variant is Associated With Leukoencephalomyelopathy With Oligodendroglial Dysplasia in a Belgian Malinois With Spinocerebellar Ataxia.
+- v1_4947fc7cfd749ef3 · src-pubmed · verified · unique · The role of muscle forces on rotational and cranio-caudal stability in the intact and CCL-deficient stifle: An ex vivo biomechanical study.
+- v1_7d77699515b9200c · src-pubmed · verified · unique · Comparison of Long vs. Short Concave Neck in One-Piece Implants Inserted 1&#x2009;mm Subcrestally: A Pre-Clinical In&#xa0;Vivo Study.
+- v1_09e2c10209e11ac1 · src-pubmed · verified · unique · Effect of Apical Micro-Intervention on Pulp Vitality and Periodontal Regeneration Following Tooth Autotransplantation: A Clinical Outcome Study.
+- v1_e220bfee0683d7eb · src-pubmed · verified · unique · Deep learning-supported image quantification of epithelial cell shapes and its application to polycystic kidney disease.
+- v1_5a4d82c5d7fa2c4a · src-pubmed · verified · unique · Morning Elevation in Insulin Enhances Afternoon Hepatic Glucose Disposal in Dogs by Increasing Both Insulin Signaling and Glucose Action.
+- v1_14a9af18de011e82 · src-pubmed · verified · unique · Necrohemorrhagic Pneumonia From Extraintestinal Pathogenic Escherichia coli (ExPEC) in Federal Government-Owned Dogs: A Case Series.
+- v1_381988435b0abd89 · src-pubmed · verified · unique · Ultrasound-guided bilateral quadratus lumborum block in dogs undergoing abdominal surgery: A retrospective study.
+- v1_2da8cd9f5a49fa40 · src-pubmed · verified · unique · Oral use of anxiolytic, sedative, and anaesthetic medications in domestic cats (Felis catus): A scoping review.
+- v1_3a6d556a986a6374 · src-pubmed · verified · unique · Regional airway fat distribution and its association with brachycephalic obstructive airway syndrome severity in pugs with varying body condition.
+- v1_3d79aa992cfc0423 · src-pubmed · verified · unique · Evaluation of a vaginal and vestibular sampling technique and microbiological study of the vaginal and vestibular flora in female cats, healthy and with reproductive tract disorders.
+- v1_0f3d4a8a499dde38 · src-pubmed · verified · unique · First Molecular Survey of Equine Adenovirus Type 1 Infection Among Horses in Poland.
+- v1_c184ac4c70a85e46 · src-pubmed · verified · unique · Characterization of Lipizzan Horse Population From Lipica Stud Using Molecular and Pedigree Data.
+- v1_3ea05fe9122ed656 · src-veterinary-medicine-and-science · unresolved · unique · Characterization of Phylogroups, Virulence Factors and Antimicrobial Resistance in Canine Pyometra‐associated Escherichia coli
+- v1_552f6d341567eb8f · src-pubmed · verified · unique · Quadruple co-infection with Mycobacterium tuberculosis complex and M. kansasii in a chronically immunosuppressed cat.
+- v1_39518b5e14b2b80f · src-pubmed · verified · unique · High-Glucose Microenvironment Promotes Canine Osteosarcoma Cell Stemness via the HBP/O-GlcNAc Signaling Axis.
+- v1_8a8b77fec89deb53 · src-veterinary-medicine-and-science · unresolved · unique · Antimicrobial Resistance Among Selected Zoonotic Bacteria: A Case Study of Tortoises and Birds at the Uganda Wildlife Conservation Education Centre
+- v1_9a9375c15661be9b · src-veterinary-medicine-and-science · unresolved · unique · Quantifying the Equine Pain Response to Paracetamol Administration in Horses With Chronic Lameness Already Receiving Non‐Steroidal Anti‐Inflammatories
+- v1_65916a48ee721bb8 · src-veterinary-medicine-and-science · unresolved · unique · Macroanatomical, Histological, Histochemical and Ultrastructural Characterisation of the Kidney in the Aksaray Malakli Dog: First Comprehensive Renal Morphological Study of the Breed
+- v1_5d73a8be05651b3a · src-veterinary-record-case-reports · unresolved · unique · Clinical outcome, imaging and histopathological findings of liver cirrhosis in dogs
+- v1_d5587d7d67da764d · src-veterinary-clinical-pathology · unresolved · unique · Laboratory Changes Supporting a Diagnosis of Immune‐Mediated Anemia in Cats With Initial Suspicion of Progressive Feline Leukemia Virus
+- v1_8bd480f28e1e3e73 · src-veterinary-medicine-and-science · unresolved · unique · Nanotechnology‐Based Immunostimulants in Aquaculture: Mechanisms, Advances and Practical Applications
+- v1_1af93041d30b1127 · src-veterinary-medicine-and-science · unresolved · unique · Prevalence, Genetic Diversity, and Zoonotic Transmission Potential of Cryptosporidium spp. in Snakes: A Systematic Review and Meta‐Analysis
+- v1_e1e2a8c77cb97337 · src-veterinary-clinical-pathology · unresolved · unique · Agreement of Hematologic Measurements Between Jugular and Coccygeal Puncture Sites in Cattle
+- v1_3458360d17e5f1f4 · src-veterinary-and-comparative-oncology · unresolved · unique · Canine Oral Melanoma as a Translational Model for Human Mucosal Melanoma: Molecular Architecture, Immune Landscape, and Therapeutic Implications
+- v1_f3f78c9e2894ca95 · src-veterinary-and-comparative-oncology · unresolved · unique · Clinical Outcome and Histopathologic Assessment of Canine Perivulvar Mast Cell Tumours
+- v1_fe789b25c7e4bdfe · src-pubmed · verified · unique · The presence of a hypercoagulable state in cats with cardiomyopathies with or without thromboembolic disease: A scoping review.
+- v1_a2e6bb441bd75388 · src-veterinary-medicine-and-science · unresolved · unique · Antibacterial Effect of the In Vitro Interaction Between Clotrimazole and Chlorhexidine Against Staphylococcus pseudintermedius With Known Resistance Patterns Isolated From Canine Pyoderma
+- v1_47963e08ea562aed · src-pubmed · verified · unique · Canine scent detection: an analytical chemistry perspective.
+- v1_f36b042f7ebbf08e · src-pubmed · verified · unique · Health risk assessment of enrofloxacin, oxytetracycline, and sulfadimidine residues in broiler chicken carcasses marketed in Mit Ghamr, Egypt.
+- v1_ff4be16075b0f3c7 · src-veterinary-record-case-reports · unresolved · unique · Contracture‐like fixed abnormal pelvic limb posture as a complication in intervertebral disc extrusion in two French bulldogs
+- v1_4df3f8c5b5977dd9 · src-veterinary-and-comparative-oncology · unresolved · unique · Comparative Response of Canine and Human Osteosarcoma Tumour Cell Lines to Molecularly Targeted Anticancer Agents at Clinically Relevant Exposures With Analysis of Genomic Biomarkers
+- v1_90d140438287d72b · src-veterinary-and-comparative-oncology · unresolved · unique · Identification of Novel Therapeutic Agent Candidates Through High Throughput Screening With Chemical Library Based on Molecular Subclassification in Canine Histiocytic Sarcoma Cell Lines
+- v1_791d11963b4f38aa · src-veterinary-and-comparative-oncology · unresolved · unique · Transcriptomic and microRNA Profiling Suggest a Candidate RIPPLY1–cfa‐miR‐187 Relationship in Canine Mammary Gland Tumours From Dogs With Confirmed Metastasis
+- v1_0d84f9177bcb86d4 · src-veterinary-and-comparative-oncology · unresolved · unique · Cross‐Species Transcriptomic and Network Analysis of Human and Canine Diffuse Large B‐Cell Lymphoma Identifies a Conserved Replication–DNA Damage Module for Drug Repurposing
+- v1_d949aa5190eecb25 · src-veterinary-medicine-and-science · unresolved · unique · Beraprost Attenuates Starvation‐Induced Apoptosis and Protects Feline Endothelial Cells
+- v1_370feaf70f45dbfb · src-veterinary-medicine-and-science · unresolved · unique · Association Between Postoperative Pain and Inflammatory Biomarkers After Ovariohysterectomy in Dogs: A Pilot Study
+- v1_1b989070e8c026a4 · src-veterinary-clinical-pathology · unresolved · unique · What Is Your Diagnosis? Abdominal Wall Mass in a Dog
+- v1_776a40ed60910ecf · src-veterinary-medicine-and-science · unresolved · unique · Bibliometric Analysis of Artificial Intelligence Use in Small Animal Thoracic Radiography
+- v1_a1f63c26c73c43f6 · src-veterinary-medicine-and-science · unresolved · unique · Feeding and Husbandry Practices in Pet Ferrets (Mustela putorius furo): A Cross‐Sectional International Study
+- v1_3981747f619f111e · src-veterinary-medicine-and-science · unresolved · unique · Identification of Potential Vaccine Strains of Escherichia coli Isolates From Diarrhoeic Calves
+- v1_ed7d43bfc36fd51e · src-veterinary-medicine-and-science · unresolved · unique · Isolation, Associated Factors and Antimicrobial Susceptibility Patterns of Salmonella spp. in Human Stool, Eggshell Swab and Feces of Egg‐Laying Hens in Mekelle and Southeast Zones of Tigrai, Ethiopia
+- v1_66b11299dd5a2294 · src-veterinary-record-case-reports · unresolved · unique · Glycogen storage disease type II (Pompe disease) presenting with peripheral lymphadenopathy in a juvenile domestic shorthair cat
+- v1_4894a3e93bc824d9 · src-veterinary-record-case-reports · unresolved · unique · Effective management of oral eosinophilic granuloma in two dogs using oclacitinib
+- v1_e4098aeddd805819 · src-veterinary-record-case-reports · unresolved · unique · Colonic perforation and pneumoperitoneum secondary to meloxicam administration in a dog
+- v1_375521ebb9669ce8 · src-veterinary-medicine-and-science · unresolved · unique · Characterizing the Milk Microbiome in Subclinical Mastitis: A Pilot 16S rRNA‐Based Study in Cattle and Water Buffalo

@@ -24,7 +24,7 @@
 <meta name="robots" content="noindex, follow">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"2026-07-15 수의계 해외 뉴스 브리핑 | VetManLab 해외 브리핑 · 베트맨랩(VetManLab)","description":"해외 수의 미디어·논문 수백 곳을 매일 대신 읽고 한국 동물병원이 오늘 알아야 할 것만 골라 전하는 조기경보 레이더. 진료 점검 포인트, 보호자가 곧 물어볼 질문과 설명 대본, 논문 근거등급, 블로그 선점 글감을 함께 제공합니다.","url":"https://news.vetmanlab.com/issues/2026-07-15","itemListElement":[]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["Organization","NewsMediaOrganization"],"@id":"https://news.vetmanlab.com/#org","name":"베트맨랩","alternateName":["VetManLab","VetManLab 해외 브리핑","베트맨랩 VetManLab 해외 브리핑"],"url":"https://news.vetmanlab.com","logo":{"@type":"ImageObject","url":"https://news.vetmanlab.com/og.png","width":1200,"height":630},"image":"https://news.vetmanlab.com/og.png","description":"해외 수의 미디어·논문 수백 곳을 매일 대신 읽고 한국 동물병원이 오늘 알아야 할 것만 골라 전하는 조기경보 레이더. 진료 점검 포인트, 보호자가 곧 물어볼 질문과 설명 대본, 논문 근거등급, 블로그 선점 글감을 함께 제공합니다.","knowsAbout":["수의학","동물병원 진료","반려동물 건강","수의 임상 연구","동물병원 경영","수의 감염병","반려동물 종양학","수의 영양학"],"knowsLanguage":["ko","en"],"areaServed":{"@type":"Country","name":"대한민국"},"audience":{"@type":"Audience","audienceType":"동물병원 원장·수의사"},"publishingPrinciples":"https://news.vetmanlab.com/about","correctionsPolicy":"https://news.vetmanlab.com/about","contactPoint":{"@type":"ContactPoint","email":"vetmanlab@gmail.com","contactType":"editorial"},"parentOrganization":{"@type":"Organization","name":"주식회사 비전인피플"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"베트맨랩 VetManLab 해외 브리핑","alternateName":["베트맨랩","VetManLab","VetManLab 해외 브리핑"],"url":"https://news.vetmanlab.com","inLanguage":"ko","publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"베트맨랩 VetManLab 해외 브리핑","alternateName":["베트맨랩","VetManLab","VetManLab 해외 브리핑"],"url":"https://news.vetmanlab.com","inLanguage":"ko","publisher":{"@type":"Organization","name":"베트맨랩","alternateName":"VetManLab"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://news.vetmanlab.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -116,6 +116,8 @@ a:hover{color:var(--color-primary-strong);}
 .vm-detail-body::-webkit-scrollbar-thumb{background:var(--color-line-strong);border-radius:8px;border:3px solid var(--color-background-normal);}
 .vm-plate-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .vm-progress{height:100%;background:var(--color-primary-normal);transition:width .3s ease;}
+.vm-reading-progress{height:3px;background:var(--color-material-base);overflow:hidden;}
+.vm-reading-progress-bar{height:100%;width:0;background:var(--color-primary-normal);transition:width .12s linear;}
 .vm-site-footer{margin-top:64px;border-top:2px solid var(--color-label-strong);padding:32px 0 12px;color:var(--color-label-alternative);}
 .vm-footer-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(150px,.7fr) minmax(240px,1fr);gap:34px 52px;align-items:start;}
 .vm-footer-brand{min-width:0;}
@@ -133,6 +135,9 @@ a:hover{color:var(--color-primary-strong);}
 .vm-footer-subscribe{margin-top:16px;}
 .vm-footer-bottom{display:flex;justify-content:space-between;gap:18px;margin-top:32px;padding-top:14px;border-top:1px solid var(--color-line-normal);font-size:10.5px;line-height:1.6;color:var(--color-label-alternative);}
 .vm-footer-bottom span:last-child{text-align:right;}
+.vm-archive-shelf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.vm-archive-day{display:block;min-width:0;padding:15px 16px;border:1px solid var(--color-line-normal);border-radius:11px;background:var(--color-background-normal);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s;}
+.vm-archive-day:hover{border-color:var(--color-primary-normal);transform:translateY(-1px);}
 @keyframes vmFade{from{opacity:0;}to{opacity:1;}}
 @keyframes vmSlide{from{transform:translateX(36px);opacity:0;}to{transform:translateX(0);opacity:1;}}
 :focus-visible{outline:2px solid var(--color-primary-normal);outline-offset:2px;}
@@ -153,7 +158,9 @@ a:hover{color:var(--color-primary-strong);}
   #vm-feat-r{padding-top:20px !important;border-top:1px solid var(--color-line-normal);}
   .vm-band{grid-template-columns:1fr !important;}
   .vm-band-fill{display:none !important;}
+  .vm-archive-shelf{grid-template-columns:repeat(2,minmax(0,1fr));}
   .vm-qa-grid{grid-template-columns:1fr !important;}
+  .vm-qa-bridge{grid-template-columns:1fr !important;gap:7px !important;}
   .vm-mast h1{font-size:40px !important;}
   .vm-lead-h{font-size:30px !important;}
   .vm-row-thumb{width:112px !important;}
@@ -199,6 +206,7 @@ a:hover{color:var(--color-primary-strong);}
   .vm-static-footer{margin:0 20px 24px;}
 }
 @media (max-width:560px){
+  .vm-archive-shelf{grid-template-columns:1fr;}
   .vm-footer-grid{grid-template-columns:1fr !important;gap:28px !important;}
   .vm-footer-brand{grid-column:auto;}
   .vm-footer-links a{min-height:44px;display:flex;align-items:center;}
@@ -232,7 +240,7 @@ a:hover{color:var(--color-primary-strong);}
   </section>
 </main>
 <footer class="vm-static-footer"><nav><a href="/topic/">주제별 보기</a><a href="/archive/">지난 브리핑</a><a href="/sources/">출처별 보기</a><a href="/rss.xml">RSS</a><a href="/about">편집 원칙</a><a href="/privacy">개인정보처리방침</a></nav><p>해외 공개 자료의 요약·번역이며 임상 정보는 참고용입니다. 적용 전 원문과 최신 문헌을 확인하세요.</p></footer></div>
-<script id="vm-issue" type="application/json">{"date":"2026-07-15","dateLabel":"2026.07.15","dateline":"2026년 7월 15일 · 수요일","editionNo":"26","count":1,"cats":[],"articles":[],"briefs":[{"id":"2026-07-15_1","legacySlug":null,"day":"2026-07-15","ts":1784123250000,"publishedAt":"2026-07-15T13:47:30.000Z","firstPublishedAt":null,"scheduledAt":null,"cat":"clinical","kicker":"임상","isToday":true,"title":"레몬 프로스트 게코, 자연 종양 연구 모델로 급부상","dek":"영국 연구팀이 특정 Leopard Geco 변이가 자연스럽게 종양을 유발하는 것을 확인했습니다. 이 게코는 인간 암과 유사한 유전자 변이를 보여 새로운 동물 연구 모델로 주목받고 있습니다.","source":"ScienceDaily","country":"","market":null,"date":"07.15","read":"1분 읽기","plate":"ScienceDaily","image":null,"images":[],"imageUrlRaw":"https://www.sciencedaily.com/images/1920/lemon-frost-gecko.webp","imageAlt":null,"imageCaption":null,"imageCredit":null,"imageLicense":null,"imageLicenseUrl":null,"imageWidth":null,"imageHeight":null,"imageOrigin":"external-source","imageOwnership":"unknown","imageSourceUrl":"https://www.sciencedaily.com/images/1920/lemon-frost-gecko.webp","imageReviewedAt":null,"imageReviewedBy":null,"sourceUrlRaw":"https://www.sciencedaily.com/releases/2026/07/260714225525.htm","sourceUrl":"https://www.sciencedaily.com/releases/2026/07/260714225525.htm","finalUrl":null,"sourceTitle":"This pet gecko could help scientists unlock the secrets of cancer","sourceAuthor":null,"sourcePublishedAt":"2026-07-15T13:47:30.000Z","sourceStatus":"ok","discoverySource":null,"canonicalUrl":null,"sourceEvidence":null,"generation":null,"doi":null,"journal":null,"author":null,"authorUrl":null,"reviewer":null,"reviewerUrl":null,"reviewedAt":null,"updatedAt":null,"aiAssisted":null,"correctionNote":null,"correctionHistory":[],"editorialStatus":"automated","workflowStatus":"legacy-published","publicationStatus":null,"dataSchemaVersion":null,"reviewPolicyVersion":null,"_workflowExplicit":false,"reviewerId":null,"reviewerRole":null,"vetReviewerId":null,"reviewChecklist":null,"contentHash":null,"sourceHash":null,"_reviewPolicyExplicit":false,"reviewedBy":null,"vetReviewer":null,"vetReviewerUrl":null,"vetReviewedAt":null,"clinicalRisk":"medium","reviewNotes":null,"evidence":{},"studyType":null,"speciesStudied":null,"sampleSize":null,"intervention":null,"comparator":null,"primaryOutcome":null,"evidenceLevel":null,"limitations":null,"institution":null,"funding":null,"conflictOfInterest":null,"species":[],"conditions":[],"specialty":null,"audience":[],"articleType":"analysis","dateLong":"2026.07.15","body":["레오파드 게코의 '레몬 프로스트' 변이는 사육 중 우연히 나타난 유전자 돌연변이에서 유래했습니다. 이 특유의 흰색과 노란색 무늬가 애완동물 시장에서 인기를 끌었지만, 번식자들이 곧 심각한 문제를 발견했습니다. 이 변이의 약 80%가 어린 나이에 공격적인 종양을 발생시키며, 종종 다른 신체 부위로 전이됩니다.","연구팀은 노팅엄 대학을 중심으로 전체 유전체 시퀀싱을 실시하여 종양 조직과 건강한 조직을 비교했습니다. 그 결과, 종양에서 반복적으로 나타나는 유전자 변화를 확인했습니다. 이들 유전자와 생물학적 경로 중 다수는 인간과 다른 동물에서 암과 이미 연관된 것들이어서, 이 게코가 종양 형성 메커니즘 연구에 가치 있는 도구가 될 수 있음을 시사합니다.","한국 동물병원에서도 다양한 종의 암 발생률 차이에 대한 관심이 높아지는 상황에서, 이 연구는 종 특이적 암 취약성 이해의 중요성을 보여줍니다. 특히 자연 발생 종양 모델의 가치는 실험실에서 인위적으로 유발한 종양과는 다른 임상적 의미를 가질 수 있으며, 향후 비교종양학 연구의 방향을 제시하는 결과입니다."],"blog":"반려 파충류 종양 환자를 진료하는 한국 동물병원에서, 종별 암 취약성 차이에 대한 소유주 교육 자료로 활용할 수 있는 주제입니다.","blogAngle":["레몬 프로스트 게코 변이의 약 80%에서 자연 종양 발생 확인","종양의 유전자 변화가 인간 암과 공통된 경로 포함","실험용 마우스와 달리 자연적 발생·상대적으로 어린 나이에 발병으로 연구 유리","거북이 등 일부 종은 암에 저항적이고, 특정 종은 취약한 종 특이적 특성 존재"],"radar":{"owner":null,"clinical":"자가 번식이나 특수 품종 게코를 진료할 때 종 특이적 종양 발생 가능성을 고려하고, 필요시 동물 전문병원으로의뢰를 검토한다","evidence":null},"tag":"","contentTier":"brief","tier":"brief","indexPolicy":null,"href":"/issues/2026-07-15#2026-07-15_1"}],"stories":[],"isHome":false}</script>
+<script id="vm-issue" type="application/json">{"date":"2026-07-15","dateLabel":"2026.07.15","dateline":"2026년 7월 15일 · 수요일","editionNo":"26","count":1,"cats":[],"articles":[],"briefs":[{"id":"2026-07-15_1","legacySlug":null,"day":"2026-07-15","ts":1784123250000,"publishedAt":"2026-07-15T13:47:30.000Z","sitePublishedAt":"2026-07-15T13:47:30.000Z","firstPublishedAt":null,"scheduledAt":null,"cat":"clinical","kicker":"임상","isToday":true,"title":"레몬 프로스트 게코, 자연 종양 연구 모델로 급부상","dek":"영국 연구팀이 특정 Leopard Geco 변이가 자연스럽게 종양을 유발하는 것을 확인했습니다. 이 게코는 인간 암과 유사한 유전자 변이를 보여 새로운 동물 연구 모델로 주목받고 있습니다.","source":"ScienceDaily","country":"","market":null,"date":"07.15","read":"1분 읽기","plate":"ScienceDaily","image":null,"images":[],"imageUrlRaw":"https://www.sciencedaily.com/images/1920/lemon-frost-gecko.webp","imageAlt":null,"imageCaption":null,"imageCredit":null,"imageLicense":null,"imageLicenseUrl":null,"imageWidth":null,"imageHeight":null,"imageOrigin":"external-source","imageOwnership":"unknown","imageSourceUrl":"https://www.sciencedaily.com/images/1920/lemon-frost-gecko.webp","imageReviewedAt":null,"imageReviewedBy":null,"sourceUrlRaw":"https://www.sciencedaily.com/releases/2026/07/260714225525.htm","sourceUrl":"https://www.sciencedaily.com/releases/2026/07/260714225525.htm","finalUrl":null,"sourceTitle":"This pet gecko could help scientists unlock the secrets of cancer","sourceAuthor":null,"sourcePublishedAt":"2026-07-15T13:47:30.000Z","sourceStatus":"ok","discoverySource":null,"canonicalUrl":null,"sourceEvidence":null,"generation":null,"doi":null,"journal":null,"author":null,"authorUrl":null,"reviewer":null,"reviewerUrl":null,"reviewedAt":null,"updatedAt":null,"aiAssisted":null,"correctionNote":null,"correctionHistory":[],"editorialStatus":"automated","workflowStatus":"legacy-published","publicationStatus":null,"dataSchemaVersion":null,"reviewPolicyVersion":null,"_workflowExplicit":false,"reviewerId":null,"reviewerRole":null,"vetReviewerId":null,"reviewChecklist":null,"contentHash":null,"sourceHash":null,"_reviewPolicyExplicit":false,"reviewedBy":null,"vetReviewer":null,"vetReviewerUrl":null,"vetReviewedAt":null,"clinicalRisk":"medium","reviewNotes":null,"evidence":{},"studyType":null,"speciesStudied":null,"sampleSize":null,"intervention":null,"comparator":null,"primaryOutcome":null,"evidenceLevel":null,"limitations":null,"institution":null,"funding":null,"conflictOfInterest":null,"species":[],"conditions":[],"specialty":null,"audience":[],"articleType":"analysis","dateLong":"2026.07.15","body":["레오파드 게코의 '레몬 프로스트' 변이는 사육 중 우연히 나타난 유전자 돌연변이에서 유래했습니다. 이 특유의 흰색과 노란색 무늬가 애완동물 시장에서 인기를 끌었지만, 번식자들이 곧 심각한 문제를 발견했습니다. 이 변이의 약 80%가 어린 나이에 공격적인 종양을 발생시키며, 종종 다른 신체 부위로 전이됩니다.","연구팀은 노팅엄 대학을 중심으로 전체 유전체 시퀀싱을 실시하여 종양 조직과 건강한 조직을 비교했습니다. 그 결과, 종양에서 반복적으로 나타나는 유전자 변화를 확인했습니다. 이들 유전자와 생물학적 경로 중 다수는 인간과 다른 동물에서 암과 이미 연관된 것들이어서, 이 게코가 종양 형성 메커니즘 연구에 가치 있는 도구가 될 수 있음을 시사합니다.","한국 동물병원에서도 다양한 종의 암 발생률 차이에 대한 관심이 높아지는 상황에서, 이 연구는 종 특이적 암 취약성 이해의 중요성을 보여줍니다. 특히 자연 발생 종양 모델의 가치는 실험실에서 인위적으로 유발한 종양과는 다른 임상적 의미를 가질 수 있으며, 향후 비교종양학 연구의 방향을 제시하는 결과입니다."],"blog":"반려 파충류 종양 환자를 진료하는 한국 동물병원에서, 종별 암 취약성 차이에 대한 소유주 교육 자료로 활용할 수 있는 주제입니다.","blogAngle":["레몬 프로스트 게코 변이의 약 80%에서 자연 종양 발생 확인","종양의 유전자 변화가 인간 암과 공통된 경로 포함","실험용 마우스와 달리 자연적 발생·상대적으로 어린 나이에 발병으로 연구 유리","거북이 등 일부 종은 암에 저항적이고, 특정 종은 취약한 종 특이적 특성 존재"],"radar":{"owner":null,"clinical":"자가 번식이나 특수 품종 게코를 진료할 때 종 특이적 종양 발생 가능성을 고려하고, 필요시 동물 전문병원으로의뢰를 검토한다","evidence":null},"tag":"","contentTier":"brief","tier":"brief","indexPolicy":null,"href":"/issues/2026-07-15#2026-07-15_1"}],"stories":[],"isHome":false}</script>
 <script id="vm-cfg" type="application/json">{"newsletter":false,"slots":[{"at":"fold","kind":"house","enabled":false,"advertiser":"VetMan","headline":"","body":"","cta":"","url":""}],"footer":{"email":"vetmanlab@gmail.com","partnerName":"신현규","partnerEmail":"vetmanlab@gmail.com","operator":"주식회사 비전인피플","bizNumber":"170-81-03853"}}</script>
 <script>
 (function(){
@@ -241,18 +249,45 @@ a:hover{color:var(--color-primary-strong);}
   var byId = {};
   function indexDay(){ byId={}; DATA.articles.concat(DATA.briefs||[],DATA.stories||[],DATA.recent||[]).forEach(function(a){ byId[a.id]=a; }); }
   indexDay();
-  var LS={saved:'vm_saved',ideas:'vm_ideas',read:'vm_read',theme:'vm_theme',fs:'vm_fs'};
+  var LS={saved:'vm_saved',ideas:'vm_ideas',read:'vm_read',theme:'vm_theme',fs:'vm_fs',last:'vm_last'};
   function load(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }
   var SEARCH_INDEX=null, searchLoading=false;
   var S={
     theme: load(LS.theme,(window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'),
     sort:'rel', cat:'all', unreadOnly:false, query:'',
     view:'home', openId:null, blogOpen:true, showAll:false, briefAll:false,
-    saved:load(LS.saved,{}), ideas:load(LS.ideas,{}), read:load(LS.read,{}),
+    saved:load(LS.saved,{}), ideas:load(LS.ideas,{}), read:load(LS.read,{}), last:load(LS.last,null),
     fs:load(LS.fs,1), toast:null, searchFocus:false, caret:0,
     dialogFocusPending:false, restoreFocusId:null,
     archive:null, loadingDate:null, draft:null
   };
+  function readBrowseRoute(){
+    if(!DATA.isHome||location.pathname!=='/') return;
+    try{
+      var p=new URLSearchParams(location.search), q=(p.get('q')||'').trim().slice(0,100);
+      var cats=(DATA.cats||[]).map(function(c){return c.key;}), cat=p.get('cat');
+      S.query=q;
+      S.cat=cat&&cats.indexOf(cat)>=0?cat:'all';
+      S.sort=p.get('sort')==='latest'?'latest':'rel';
+      S.unreadOnly=p.get('unread')==='1';
+      S.searchFocus=!!q;
+      S.caret=q.length;
+    }catch(err){}
+  }
+  // 검색·카테고리·읽지 않음 필터를 링크로 공유할 수 있게 한다. replaceState만
+  // 사용해 타이핑마다 브라우저 뒤로가기 이력이 쌓이지 않도록 한다.
+  function syncBrowseUrl(){
+    if(!DATA.isHome||location.pathname!=='/'||S.openId) return;
+    try{
+      var url=new URL(location.href), q=S.query.trim().slice(0,100);
+      if(q) url.searchParams.set('q',q); else url.searchParams.delete('q');
+      if(S.cat&&S.cat!=='all') url.searchParams.set('cat',S.cat); else url.searchParams.delete('cat');
+      if(S.sort==='latest') url.searchParams.set('sort','latest'); else url.searchParams.delete('sort');
+      if(S.unreadOnly) url.searchParams.set('unread','1'); else url.searchParams.delete('unread');
+      var next=url.pathname+(url.search||'')+(url.hash||''), current=location.pathname+location.search+location.hash;
+      if(next!==current) history.replaceState(history.state||null,'',next);
+    }catch(err){}
+  }
   function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function persist(k,v){ localStorage.setItem(LS[k],JSON.stringify(v)); }
   function isSaved(id){ return !!S.saved[id]; }
@@ -263,6 +298,16 @@ a:hover{color:var(--color-primary-strong);}
   function metaShort(a){ return [a.source,a.country,a.date].filter(Boolean).map(e).join(' · '); }
   function snap(a){ return {id:a.id,href:a.href,day:a.day,title:a.title,dek:a.dek,kicker:a.kicker,source:a.source,country:a.country,date:a.date,read:a.read,cat:a.cat,image:a.image,plate:a.plate,blog:a.blog,blogAngle:a.blogAngle,isToday:a.isToday,radar:a.radar}; }
   function titleLink(a){ return '<a class="vm-title-link" href="'+e(a.href||'#')+'">'+e(a.title)+'</a>'; }
+  function resumeBar(){
+    var a=S.last;
+    if(S.view!=='home'||S.openId||!a||!a.href||!a.title) return '';
+    var age=Number(a.lastOpenedAt||0), maxAge=30*24*60*60*1000;
+    if(age&&Date.now()-age>maxAge) return '';
+    return '<aside aria-label="지난번 읽던 기사" style="display:flex;align-items:center;gap:12px;margin:18px 0 4px;padding:12px 14px;border:1px solid var(--color-line-normal);border-radius:10px;background:var(--color-background-alternative);">'
+      +'<span style="flex:none;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--color-primary-normal);">지난번 읽던 기사</span>'
+      +'<a href="'+e(a.href)+'" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--color-label-strong);font-size:13px;font-weight:700;text-decoration:none;">'+e(a.title)+'</a>'
+      +'<button data-act="clear-resume" aria-label="이어보기 안내 닫기" title="닫기" style="flex:none;border:0;background:transparent;color:var(--color-label-alternative);font-size:18px;line-height:1;cursor:pointer;">×</button></aside>';
+  }
 
   var BM='<svg width="W" height="W" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(4.1 2.1)"><path d="M 4.065 0 L 11.735 0 C 12.265 0 12.716 0 13.087 0.03 C 13.476 0.062 13.855 0.132 14.217 0.316 C 14.762 0.594 15.206 1.038 15.484 1.583 C 15.668 1.945 15.738 2.324 15.77 2.713 C 15.8 3.084 15.8 3.535 15.8 4.065 L 15.8 18.9 C 15.8 19.225 15.625 19.525 15.341 19.684 C 15.058 19.844 14.711 19.838 14.433 19.669 L 7.9 15.703 L 1.367 19.669 C 1.089 19.838 0.742 19.844 0.459 19.684 C 0.175 19.525 0 19.225 0 18.9 L 0 4.065 C 0 3.535 0 3.084 0.03 2.713 C 0.062 2.324 0.132 1.945 0.316 1.583 C 0.594 1.038 1.038 0.594 1.583 0.316 C 1.945 0.132 2.324 0.062 2.713 0.03 C 3.084 0 3.535 0 4.065 0 Z M 3.7 1.8 C 2.885 1.8 2.692 1.811 2.56 1.854 C 2.225 1.963 1.963 2.225 1.854 2.56 C 1.811 2.692 1.8 2.886 1.8 3.7 L 1.8 17.301 L 7.433 13.881 C 7.72 13.707 8.08 13.707 8.367 13.881 L 14 17.301 L 14 3.7 C 14 2.886 13.989 2.692 13.946 2.56 C 13.837 2.225 13.575 1.963 13.24 1.854 C 13.108 1.811 12.915 1.8 12.1 1.8 L 3.7 1.8 Z" fill-rule="evenodd"></path></g></svg>';
   var EXT='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(2.85 2.85)"><path d="M 11.9 0 C 11.403 0 11 0.403 11 0.9 C 11 1.397 11.403 1.8 11.9 1.8 L 15.227 1.8 L 8.514 8.514 C 8.162 8.865 8.162 9.435 8.514 9.786 C 8.865 10.138 9.435 10.138 9.787 9.786 L 16.5 3.073 L 16.5 6.4 C 16.5 6.897 16.903 7.3 17.4 7.3 C 17.897 7.3 18.3 6.897 18.3 6.4 L 18.3 0.9 C 18.3 0.403 17.897 0 17.4 0 L 11.9 0 Z"></path><path d="M 7.25 0.001 C 7.747 0.001 8.15 0.404 8.15 0.901 C 8.15 1.398 7.747 1.801 7.25 1.801 L 5.7 1.801 C 4.845 1.801 4.258 1.801 3.803 1.838 C 3.358 1.875 3.119 1.941 2.947 2.029 C 2.551 2.231 2.23 2.552 2.029 2.947 C 1.941 3.12 1.874 3.359 1.838 3.803 C 1.801 4.259 1.8 4.846 1.8 5.701 L 1.8 12.601 C 1.8 13.456 1.801 14.043 1.838 14.498 C 1.874 14.942 1.941 15.181 2.029 15.354 C 2.23 15.749 2.551 16.07 2.947 16.272 C 3.119 16.36 3.358 16.426 3.803 16.463 C 4.258 16.5 4.845 16.501 5.7 16.501 L 12.6 16.501 C 13.455 16.501 14.042 16.5 14.497 16.463 C 14.942 16.426 15.18 16.36 15.353 16.272 C 15.748 16.07 16.07 15.749 16.271 15.354 C 16.359 15.181 16.426 14.942 16.462 14.498 C 16.499 14.043 16.5 13.456 16.5 12.601 L 16.5 11.051 C 16.5 10.554 16.903 10.151 17.4 10.151 C 17.897 10.151 18.3 10.554 18.3 11.051 L 18.3 12.638 C 18.3 13.446 18.3 14.107 18.256 14.644 C 18.211 15.2 18.114 15.702 17.875 16.171 C 17.501 16.905 16.904 17.502 16.171 17.876 C 15.702 18.114 15.2 18.211 14.644 18.257 C 14.107 18.301 13.446 18.301 12.638 18.301 L 5.662 18.301 C 4.854 18.301 4.193 18.301 3.656 18.257 C 3.1 18.211 2.598 18.114 2.129 17.876 C 1.396 17.502 0.799 16.905 0.425 16.171 C 0.186 15.702 0.089 15.2 0.044 14.644 C 0 14.107 0 13.446 0 12.638 L 0 5.663 C 0 4.855 0 4.194 0.044 3.657 C 0.089 3.101 0.186 2.599 0.425 2.13 C 0.799 1.396 1.396 0.8 2.129 0.426 C 2.598 0.187 3.1 0.09 3.656 0.044 C 4.193 0.001 4.854 0.001 5.662 0.001 L 7.25 0.001 Z"></path></g></svg>';
@@ -500,6 +545,17 @@ a:hover{color:var(--color-primary-strong);}
     +'<div style="display:flex;align-items:center;gap:10px;padding:8px 0 2px;font-size:11.5px;color:var(--color-label-alternative);"><div style="flex:1;height:4px;border-radius:99px;background:var(--color-material-base);overflow:hidden;"><div class="vm-progress" style="width:'+pct+'%;"></div></div><span style="font-variant-numeric:tabular-nums;">'+readCnt+' / '+total+' 읽음</span></div>';
   }
 
+  // 피처 지면과 Q&A 사이의 편집 브릿지. 빈 광고 슬롯을 흉내 내지 않고,
+  // 이미 검수된 기사에 있는 진료 포인트를 다음 칼럼으로 연결한다.
+  function qaBridge(arr){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    var item=(arr||[]).find(function(a){return a.radar&&a.radar.clinical;});
+    if(!item) return '';
+    return '<article class="vm-qa-bridge'+readCls(item.id)+'" data-open="'+item.id+'" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:22px;align-items:start;padding:18px 0 20px;border-bottom:1px solid var(--color-line-normal);cursor:pointer;">'
+      +'<div style="padding-top:1px;"><div style="font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--color-primary-normal);">오늘의 핵심</div><div style="margin-top:6px;font-size:12px;line-height:1.5;color:var(--color-label-alternative);">진료 포인트가 있는 기사</div></div>'
+      +'<div><div class="vm-hl" style="font-family:var(--font-display);font-size:18px;line-height:1.35;font-weight:800;letter-spacing:-.015em;color:var(--color-label-strong);text-wrap:pretty;">'+titleLink(item)+'</div><div style="margin-top:8px;padding-left:11px;border-left:2px solid var(--color-primary-normal);font-size:13px;line-height:1.6;color:var(--color-label-neutral);"><b style="color:var(--color-primary-normal);font-weight:700;">진료 포인트</b> '+e(item.radar.clinical)+'</div></div></article>';
+  }
+
   // 프런트페이지 편집 칼럼 "진료실 문답" — 보호자 질문을 신문 Q&A 지면처럼.
   function qaColumn(arr){
     if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
@@ -510,7 +566,7 @@ a:hover{color:var(--color-primary-strong);}
       +'<div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-label-alternative);margin-bottom:6px;">'+[a.source,a.country].filter(Boolean).map(e).join(' · ')+'</div>'
       +'<div class="vm-hl" style="font-family:var(--font-display);font-size:17px;line-height:1.42;font-weight:700;color:var(--color-label-strong);text-wrap:pretty;">'+e(a.radar.owner.q)+'</div></div>';
     }).join('');
-    return '<div style="margin-top:6px;"><div style="border-top:2px solid var(--color-label-strong);padding:16px 0 4px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">진료실 문답</span><span style="font-size:12.5px;color:var(--color-label-alternative);">이번 주, 보호자가 묻는 것</span></div>'
+    return '<div style="margin-top:0;"><div style="padding:16px 0 4px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">진료실 문답</span><span style="font-size:12.5px;color:var(--color-label-alternative);">이번 주, 보호자가 묻는 것</span></div>'
     +'<div class="vm-qa-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0 44px;">'+items+'</div></div>';
   }
 
@@ -529,6 +585,22 @@ a:hover{color:var(--color-primary-strong);}
     var list=DATA.recent||[]; if(!list.length) return '';
     return '<div style="margin-top:32px;"><div style="border-top:2px solid var(--color-label-strong);padding:16px 0 13px;display:flex;align-items:baseline;gap:10px;"><span style="font-family:var(--font-display);font-size:19px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">이어 읽기</span><span style="font-size:12.5px;color:var(--color-label-alternative);">오늘 기사와 연결되는 최근 소식 · '+list.length+'건</span></div>'
     +bandGrid(list)+'</div>';
+  }
+
+  // 발행일이 바뀌어도 전날 지면으로 바로 돌아갈 수 있게 한다. 최근 기사만
+  // 섞어 보여주면 날짜 맥락이 사라져 "어제 글이 없어졌다"고 느끼기 쉽다.
+  function archiveShelf(){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    var list=Array.isArray(DATA.recentIssues)?DATA.recentIssues:[]; if(!list.length) return '';
+    var cards=list.map(function(day){
+      var titles=(day.titles||[]).slice(0,2).map(function(title){return '<div style="font-family:var(--font-display);font-size:14px;font-weight:700;line-height:1.4;color:var(--color-label-strong);">'+e(title)+'</div>';}).join('');
+      return '<a class="vm-archive-day" href="'+e(day.href||('/issues/'+day.date))+'">'
+        +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--color-primary-normal);"><span>'+e(day.dateLabel||day.date)+'</span><span style="font-weight:600;color:var(--color-label-alternative);">'+e(day.count||0)+'건</span></div>'
+        +titles+'<div style="margin-top:10px;font-size:11.5px;font-weight:700;color:var(--color-primary-normal);">이 날짜 브리핑 보기 →</div></a>';
+    }).join('');
+    return '<section aria-label="지난 브리핑" style="margin-top:34px;padding:20px 0 2px;border-top:2px solid var(--color-label-strong);">'
+      +'<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:13px;"><div><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">지난 브리핑</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">날짜가 바뀌어도 이어서 읽을 수 있습니다</span></div><a href="/archive/" style="flex:none;font-size:12px;font-weight:700;color:var(--color-primary-normal);text-decoration:none;">전체 보기 →</a></div>'
+      +'<div class="vm-archive-shelf">'+cards+'</div></section>';
   }
 
   // "진료실 밖 이야기" — 네이트판식 화제글 보드(신뢰 뉴스와 분리, 캐주얼)
@@ -635,7 +707,11 @@ a:hover{color:var(--color-primary-strong);}
       : null;
     var allArr=todayArr||activeList();
     if(includeIssueBriefs&&DATA.recentPromoted) allArr=allArr.concat(DATA.recent||[]);
-    var arr=S.showAll?allArr:allArr.slice(0,24);
+    // 오늘자 발행분은 목표 건수(60건)를 홈에서 바로 보여준다. 기존 24건
+    // 제한은 발행은 정상인데 나머지 기사가 사라진 것처럼 보이게 만들었다.
+    // 검색·카테고리 화면은 정보 밀도를 유지하기 위해 기존 제한을 사용한다.
+    var defaultHomeLimit=includeIssueBriefs?Math.max(60,todayArr?todayArr.length:0):24;
+    var arr=S.showAll?allArr:allArr.slice(0,defaultHomeLimit);
     if(S.sort==='latest'&&!S.query.trim()) arr.sort(function(x,y){return y.ts-x.ts;});
     if(S.sort==='latest'&&!S.query.trim()&&todayArr) todayArr.sort(function(x,y){return y.ts-x.ts;});
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
@@ -649,9 +725,11 @@ a:hover{color:var(--color-primary-strong);}
       var h1='<div><div style="padding:28px 0 34px;border-bottom:2px solid var(--color-label-strong);">'
       +leadCard(compactArr[0])+compactArr.slice(1).map(leadFollow).join('')+'</div>'
       +mostRead(compactArr.slice(0,5));
+      h1+=qaBridge(compactArr);
       h1+=qaColumn(compactArr);
       if(!includeIssueBriefs) h1+=briefsBoard();
       h1+=recentSection(includeIssueBriefs&&!!DATA.recentPromoted);
+      h1+=archiveShelf();
       h1+=storyBoard();
       return h1+'</div>';
     }
@@ -680,8 +758,11 @@ a:hover{color:var(--color-primary-strong);}
     if(quad.length<2) quad=[];
     var feat=layoutArr[i++];
     var bandAll=layoutArr.slice(i);
-    var band=S.showAll?bandAll:bandAll.slice(0,12);
-    var top5=layoutArr.slice(0,5), more=bandAll.length-band.length, clipped=(DATA.hasMore?1:allArr.length-arr.length);
+    // 오늘 홈은 60건을 모두 이어서 보여주므로 밴드도 별도 12건 제한을 두지
+    // 않는다. 검색·필터 화면에서는 기존의 짧은 초기 렌더를 유지한다.
+    var fullDailyHome=includeIssueBriefs&&!S.showAll;
+    var band=(S.showAll||fullDailyHome)?bandAll:bandAll.slice(0,12);
+    var top5=layoutArr.slice(0,5), more=fullDailyHome?0:bandAll.length-band.length, clipped=fullDailyHome?0:(DATA.hasMore?1:allArr.length-arr.length);
 
     var h='<div>'
     // ① 폴드 — 3단 비대칭
@@ -709,9 +790,13 @@ a:hover{color:var(--color-primary-strong);}
       +bandGrid(band);
       if(more>0||clipped>0){ h+='<div style="display:flex;justify-content:center;padding:28px 0 0;"><button data-act="more" style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;">기사 '+Math.max(more,clipped)+'건 더 보기</button></div>'; }
     }
+    h+=qaBridge(arr);
     h+=qaColumn(arr);
-    h+=briefsBoard();
+    // 브리프도 오늘 지면의 band에 이미 포함되어 있다. 별도 추가 소식
+    // 블록으로 다시 그리면 같은 기사가 중복되고 페이지가 불필요하게 길어진다.
+    if(!includeIssueBriefs) h+=briefsBoard();
     h+=recentSection();
+    h+=archiveShelf();
     h+=storyBoard();
     return h+'</div>';
   }
@@ -817,6 +902,7 @@ a:hover{color:var(--color-primary-strong);}
     +'<button data-save="'+a.id+'" title="저장" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--color-line-normal);background:var(--color-background-normal);border-radius:8px;cursor:pointer;color:'+saveColor(a.id)+';">'+BM.replace(/W/g,16)+'</button>'
     +'<button data-act="close" title="닫기" aria-label="기사 닫기" style="width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--color-material-base);border-radius:8px;cursor:pointer;color:var(--color-label-neutral);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>'
     +'</div></div>'
+    +'<div class="vm-reading-progress" role="progressbar" aria-label="기사 읽기 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0% 읽음"><div class="vm-reading-progress-bar"></div></div>'
     // body
     +'<div class="vm-detail-body" id="vm-db" style="overflow-y:auto;padding:30px 44px 20px;">'
     +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;"><span style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary-normal);">'+e(a.kicker)+'</span>'+(a.tag?'<span style="font-size:11px;font-weight:800;color:var(--color-primary-normal);">['+e(a.tag)+']</span>':'')+tag(a.isToday,17,10)+'</div>'
@@ -858,6 +944,7 @@ a:hover{color:var(--color-primary-strong);}
   }
 
   function render(){
+    syncBrowseUrl();
     var savedCount=Object.keys(S.saved).length, ideaCount=Object.keys(S.ideas).length;
     var moon='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(2.529 2.431)"><path d="M 7.161 0.281 C 7.416 0.551 7.48 0.949 7.321 1.284 C 6.827 2.331 6.55 3.502 6.55 4.739 C 6.55 9.213 10.176 12.839 14.65 12.839 C 15.732 12.839 16.762 12.628 17.703 12.245 C 18.046 12.105 18.441 12.19 18.696 12.459 C 18.951 12.729 19.015 13.127 18.856 13.463 C 17.272 16.816 13.858 19.139 9.9 19.139 C 4.432 19.139 0 14.706 0 9.239 C 0 5.09 2.552 1.539 6.168 0.066 C 6.512 -0.073 6.906 0.012 7.161 0.281 Z" fill-rule="evenodd"></path></g></svg>';
     var sun='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(1.1 1.1)"><path d="M 10 20.9 C 10 21.397 10.403 21.8 10.9 21.8 C 11.397 21.8 11.8 21.397 11.8 20.9 L 11.8 18.9 C 11.8 18.403 11.397 18 10.9 18 C 10.403 18 10 18.403 10 18.9 Z"></path><path d="M 10 2.9 C 10 3.397 10.403 3.8 10.9 3.8 C 11.397 3.8 11.8 3.397 11.8 2.9 L 11.8 0.9 C 11.8 0.403 11.397 0 10.9 0 C 10.403 0 10 0.403 10 0.9 Z"></path><path d="M 5.5 10.897 C 5.5 7.915 7.918 5.497 10.9 5.497 C 13.882 5.497 16.3 7.915 16.3 10.897 C 16.3 13.88 13.882 16.297 10.9 16.297 C 7.918 16.297 5.5 13.88 5.5 10.897 Z M 10.9 7.297 C 8.912 7.297 7.3 8.909 7.3 10.897 C 7.3 12.885 8.912 14.497 10.9 14.497 C 12.888 14.497 14.5 12.885 14.5 10.897 C 14.5 8.909 12.888 7.297 10.9 7.297 Z" fill-rule="evenodd"></path><path d="M 0 10.9 C 0 10.403 0.403 10 0.9 10 L 2.9 10 C 3.397 10 3.8 10.403 3.8 10.9 C 3.8 11.397 3.397 11.8 2.9 11.8 L 0.9 11.8 C 0.403 11.8 0 11.397 0 10.9 Z"></path><path d="M 18 10.9 C 18 10.403 18.403 10 18.9 10 L 20.9 10 C 21.397 10 21.8 10.403 21.8 10.9 C 21.8 11.397 21.397 11.8 20.9 11.8 L 18.9 11.8 C 18.403 11.8 18 11.397 18 10.9 Z"></path></g></svg>';
@@ -893,6 +980,7 @@ a:hover{color:var(--color-primary-strong);}
     h+='<header class="vm-mast" style="text-align:center;padding:30px 0 22px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-label-alternative);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetManLab 해외 브리핑</h1>'
     +'<p style="margin:14px auto 0;font-size:13.5px;font-style:italic;color:var(--color-label-alternative);font-family:var(--font-display);">베트맨랩이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑</p>'
     +'</header>';
+    h+=resumeBar();
     h+='<div class="vm-strip" style="border-top:2px solid var(--color-label-strong);border-bottom:1px solid var(--color-line-normal);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 0;"><div style="display:flex;align-items:baseline;gap:10px;min-width:0;"><span style="font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);white-space:nowrap;">'+stripLabel+'</span><span style="font-size:12.5px;color:var(--color-label-alternative);">'+stripMeta+'</span></div>'
     + (showSort ? '<div style="display:inline-flex;padding:3px;background:var(--color-material-base);border-radius:8px;gap:2px;flex:none;"><button data-act="rel" class="vm-seg" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='rel')+';color:'+segFg(S.sort==='rel')+';">관련성순</button><button data-act="latest" class="vm-seg" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='latest')+';color:'+segFg(S.sort==='latest')+';">최신순</button></div>' : '')
     +'</div>';
@@ -920,6 +1008,8 @@ a:hover{color:var(--color-primary-strong);}
     root.setAttribute('data-theme',S.theme);
     document.documentElement.setAttribute('data-theme',S.theme);
     root.innerHTML=h;
+    var progressBody=document.getElementById('vm-db');
+    if(progressBody){ progressBody.addEventListener('scroll',updateReadProgress,{passive:true}); updateReadProgress(); }
     if(S.openId&&S.dialogFocusPending){
       S.dialogFocusPending=false;
       setTimeout(function(){
@@ -1006,6 +1096,15 @@ a:hover{color:var(--color-primary-strong);}
     if(location.hash){ try{ history.replaceState(history.state,'',location.pathname+location.search); }catch(e){} }
     if(S.openId){ S.openId=null; render(); }
   }
+  function updateReadProgress(){
+    var db=document.getElementById('vm-db'), track=document.querySelector('.vm-reading-progress'), fill=document.querySelector('.vm-reading-progress-bar');
+    if(!db||!track||!fill) return;
+    var max=Math.max(0,db.scrollHeight-db.clientHeight);
+    var pct=max?Math.min(100,Math.round(db.scrollTop/max*100)):100;
+    fill.style.width=pct+'%';
+    track.setAttribute('aria-valuenow',String(pct));
+    track.setAttribute('aria-valuetext',pct+'% 읽음');
+  }
   function focusArticleCard(id){
     if(!id) return;
     var nodes=document.querySelectorAll('[data-open]');
@@ -1057,15 +1156,6 @@ a:hover{color:var(--color-primary-strong);}
     issueRequests[date]=fetch('/data/'+encodeURIComponent(date)+'.json').then(function(r){if(!r.ok)throw new Error('issue-data');return r.json();}).catch(function(err){ delete issueRequests[date]; throw err; });
     return issueRequests[date];
   }
-  function prefetchIssue(date){
-    // 현재 홈에 보이는 기사들은 read-ready라서 상세를 위해 전체 날짜 JSON을
-    // 미리 당겨올 필요가 없다. 더보기·날짜 전환이 가능한 경우에만 유휴 시간에
-    // 가져와 초기 로딩과 클릭 경험을 동시에 가볍게 유지한다.
-    if(!DATA._compact||!DATA.hasMore) return;
-    var run=function(){ fetchIssue(date).catch(function(){}); };
-    if('requestIdleCallback' in window) window.requestIdleCallback(run,{timeout:1200});
-    else window.setTimeout(run,300);
-  }
   function hydrateArticle(id){
     var compact=byId[id], date=(compact&&compact.day)||DATA.date;
     if(!compact||!compact._compact) return Promise.resolve(compact);
@@ -1076,6 +1166,15 @@ a:hover{color:var(--color-primary-strong);}
       if(date===DATA.date){ DATA.articles=full.articles||[]; DATA.briefs=full.briefs||[]; DATA.stories=full.stories||[]; DATA._compact=false; DATA.hasMore=false; indexDay(); }
       return found;
     });
+  }
+  var prefetchTimers={};
+  function prefetchArticle(id){
+    var a=byId[id];
+    if(!a||!a._compact||a.readReady||prefetchTimers[id]) return;
+    prefetchTimers[id]=setTimeout(function(){
+      delete prefetchTimers[id];
+      hydrateArticle(id).catch(function(){});
+    },120);
   }
   function hydrateCurrent(){
     if(!DATA._compact) return Promise.resolve(DATA);
@@ -1090,12 +1189,12 @@ a:hover{color:var(--color-primary-strong);}
       var compact=byId[id], db;
       if(!S.openId) S.restoreFocusId=id;
       S.dialogFocusPending=true;
-      S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(compact); syncArticleHistory(compact,historyMode); render();
+      S.openId=id; S.blogOpen=true; S.searchFocus=false; S.last=Object.assign({},snap(compact),{lastOpenedAt:Date.now()}); persist('last',S.last); markRead(id); track(compact); syncArticleHistory(compact,historyMode); render();
       db=document.getElementById('vm-db'); if(db) db.scrollTop=0;
       hydrateArticle(id).then(function(){ if(S.openId===id) render(); }).catch(function(){ if(S.openId===id) toast('기사 본문을 불러오지 못했습니다'); });
       return;
     }
-    if(byId[id]){ if(!S.openId) S.restoreFocusId=id; S.openId=id; S.blogOpen=true; S.searchFocus=false; S.dialogFocusPending=true; markRead(id); track(byId[id]); syncArticleHistory(byId[id],historyMode); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
+    if(byId[id]){ if(!S.openId) S.restoreFocusId=id; S.openId=id; S.blogOpen=true; S.searchFocus=false; S.dialogFocusPending=true; S.last=Object.assign({},snap(byId[id]),{lastOpenedAt:Date.now()}); persist('last',S.last); markRead(id); track(byId[id]); syncArticleHistory(byId[id],historyMode); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
     else {
       var stored=S.saved[id]||S.ideas[id];
       if(stored&&stored.href){ location.href=stored.href; return; }
@@ -1140,6 +1239,7 @@ a:hover{color:var(--color-primary-strong);}
       else if(act==='rel'){ S.sort='rel'; }
       else if(act==='latest'){ S.sort='latest'; }
       else if(act==='clearq'){ S.query=''; S.searchFocus=true; S.caret=0; render(); return; }
+      else if(act==='clear-resume'){ S.last=null; persist('last',null); }
       else if(act==='unread'){ S.unreadOnly=!S.unreadOnly; S.showAll=false; }
       else if(act==='more'){ if(DATA._compact){ hydrateCurrent().catch(function(){toast('전체 기사를 불러오지 못했습니다');}); } else { S.showAll=true; } }
       else if(act==='brief-more'){ S.briefAll=true; }
@@ -1170,7 +1270,15 @@ a:hover{color:var(--color-primary-strong);}
       openArticle(el.getAttribute('data-open'));
     }
   });
-  document.addEventListener('focusin',function(ev){ if(ev.target.id==='vm-q') loadSearch(true); });
+  document.addEventListener('pointerover',function(ev){
+    var card=ev.target.closest&&ev.target.closest('[data-open]');
+    if(card) prefetchArticle(card.getAttribute('data-open'));
+  });
+  document.addEventListener('focusin',function(ev){
+    if(ev.target.id==='vm-q') loadSearch(true);
+    var card=ev.target.closest&&ev.target.closest('[data-open]');
+    if(card) prefetchArticle(card.getAttribute('data-open'));
+  });
   document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; if(!SEARCH_INDEX&&!searchLoading) loadSearch(true); } render(); } });
   document.addEventListener('submit',function(ev){ if(ev.target.id==='vm-sub'){ ev.preventDefault(); var em=document.getElementById('vm-email'); if(em&&em.value) subscribe(em.value.trim()); } });
   document.addEventListener('keydown',function(ev){
@@ -1190,9 +1298,15 @@ a:hover{color:var(--color-primary-strong);}
     if(state&&state.vmArticle&&state.articleId&&byId[state.articleId]){
       S.openId=state.articleId; S.blogOpen=true; S.searchFocus=false; markRead(state.articleId); render();
     }else if(S.openId){ S.openId=null; render(); }
+    else if(DATA.isHome&&location.pathname==='/'){
+      readBrowseRoute();
+      if(S.query.trim()&&!SEARCH_INDEX&&!searchLoading) loadSearch(true);
+      render();
+    }
   });
+  readBrowseRoute();
+  if(S.query.trim()) loadSearch(true);
   render();
-  prefetchIssue(DATA.date);
 })();</script>
 <script>if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}</script>
 <script src="https://cardkit.vetmanlab.com/switcher.js" defer></script>
