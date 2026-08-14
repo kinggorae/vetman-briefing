@@ -712,6 +712,9 @@ a:hover{color:var(--color-primary-strong);}
 .vm-footer-subscribe{margin-top:16px;}
 .vm-footer-bottom{display:flex;justify-content:space-between;gap:18px;margin-top:32px;padding-top:14px;border-top:1px solid var(--color-line-normal);font-size:10.5px;line-height:1.6;color:var(--color-label-alternative);}
 .vm-footer-bottom span:last-child{text-align:right;}
+.vm-archive-shelf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.vm-archive-day{display:block;min-width:0;padding:15px 16px;border:1px solid var(--color-line-normal);border-radius:11px;background:var(--color-background-normal);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s;}
+.vm-archive-day:hover{border-color:var(--color-primary-normal);transform:translateY(-1px);}
 @keyframes vmFade{from{opacity:0;}to{opacity:1;}}
 @keyframes vmSlide{from{transform:translateX(36px);opacity:0;}to{transform:translateX(0);opacity:1;}}
 :focus-visible{outline:2px solid var(--color-primary-normal);outline-offset:2px;}
@@ -732,6 +735,7 @@ a:hover{color:var(--color-primary-strong);}
   #vm-feat-r{padding-top:20px !important;border-top:1px solid var(--color-line-normal);}
   .vm-band{grid-template-columns:1fr !important;}
   .vm-band-fill{display:none !important;}
+  .vm-archive-shelf{grid-template-columns:repeat(2,minmax(0,1fr));}
   .vm-qa-grid{grid-template-columns:1fr !important;}
   .vm-qa-bridge{grid-template-columns:1fr !important;gap:7px !important;}
   .vm-mast h1{font-size:40px !important;}
@@ -779,6 +783,7 @@ a:hover{color:var(--color-primary-strong);}
   .vm-static-footer{margin:0 20px 24px;}
 }
 @media (max-width:560px){
+  .vm-archive-shelf{grid-template-columns:1fr;}
   .vm-footer-grid{grid-template-columns:1fr !important;gap:28px !important;}
   .vm-footer-brand{grid-column:auto;}
   .vm-footer-links a{min-height:44px;display:flex;align-items:center;}
@@ -1132,6 +1137,22 @@ const APP_JS = String.raw`
     +bandGrid(list)+'</div>';
   }
 
+  // 발행일이 바뀌어도 전날 지면으로 바로 돌아갈 수 있게 한다. 최근 기사만
+  // 섞어 보여주면 날짜 맥락이 사라져 "어제 글이 없어졌다"고 느끼기 쉽다.
+  function archiveShelf(){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    var list=Array.isArray(DATA.recentIssues)?DATA.recentIssues:[]; if(!list.length) return '';
+    var cards=list.map(function(day){
+      var titles=(day.titles||[]).slice(0,2).map(function(title){return '<div style="font-family:var(--font-display);font-size:14px;font-weight:700;line-height:1.4;color:var(--color-label-strong);">'+e(title)+'</div>';}).join('');
+      return '<a class="vm-archive-day" href="'+e(day.href||('/issues/'+day.date))+'">'
+        +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--color-primary-normal);"><span>'+e(day.dateLabel||day.date)+'</span><span style="font-weight:600;color:var(--color-label-alternative);">'+e(day.count||0)+'건</span></div>'
+        +titles+'<div style="margin-top:10px;font-size:11.5px;font-weight:700;color:var(--color-primary-normal);">이 날짜 브리핑 보기 →</div></a>';
+    }).join('');
+    return '<section aria-label="지난 브리핑" style="margin-top:34px;padding:20px 0 2px;border-top:2px solid var(--color-label-strong);">'
+      +'<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:13px;"><div><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">지난 브리핑</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">날짜가 바뀌어도 이어서 읽을 수 있습니다</span></div><a href="/archive/" style="flex:none;font-size:12px;font-weight:700;color:var(--color-primary-normal);text-decoration:none;">전체 보기 →</a></div>'
+      +'<div class="vm-archive-shelf">'+cards+'</div></section>';
+  }
+
   // "진료실 밖 이야기" — 네이트판식 화제글 보드(신뢰 뉴스와 분리, 캐주얼)
   function storyBoard(){
     if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
@@ -1258,6 +1279,7 @@ const APP_JS = String.raw`
       h1+=qaColumn(compactArr);
       if(!includeIssueBriefs) h1+=briefsBoard();
       h1+=recentSection(includeIssueBriefs&&!!DATA.recentPromoted);
+      h1+=archiveShelf();
       h1+=storyBoard();
       return h1+'</div>';
     }
@@ -1324,6 +1346,7 @@ const APP_JS = String.raw`
     // 블록으로 다시 그리면 같은 기사가 중복되고 페이지가 불필요하게 길어진다.
     if(!includeIssueBriefs) h+=briefsBoard();
     h+=recentSection();
+    h+=archiveShelf();
     h+=storyBoard();
     return h+'</div>';
   }
@@ -1872,6 +1895,24 @@ function recentArticles(current, allIssues, limit = 6) {
   return [...preferred, ...fallback].slice(0, limit);
 }
 
+function recentIssueShelf(current, allIssues, limit = 4) {
+  const currentLabel = labelOf(current);
+  return allIssues
+    .filter((issue) => !issue.weekly && labelOf(issue) !== currentLabel)
+    .slice(0, limit)
+    .map((issue) => {
+      const data = buildIssueData(issue);
+      const previewSource = data.articles.length ? data.articles : [...data.briefs, ...data.stories];
+      return {
+        date: data.date,
+        dateLabel: data.dateLabel,
+        count: data.count,
+        href: `/issues/${labelOf(issue)}`,
+        titles: previewSource.slice(0, 2).map((article) => article.title),
+      };
+    });
+}
+
 function compactClientArticle(a, { lead = false } = {}) {
   return {
     id: a.id,
@@ -1939,6 +1980,7 @@ function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) 
   data.isHome = isIndex;
   if (isIndex) {
     data.recent = recentArticles(issue, allIssues, 6);
+    data.recentIssues = recentIssueShelf(issue, allIssues, 4);
     const currentCount = (data.articles || []).length + (data.briefs || []).length + (data.stories || []).length;
     // 오늘 지면이 짧은 날에는 최근 글을 1면에 보강해 어제와 같은 밀도를 유지한다.
     data.recentPromoted = currentCount < 16 && data.recent.length > 0;
