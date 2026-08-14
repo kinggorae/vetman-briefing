@@ -1176,13 +1176,15 @@ const APP_JS = String.raw`
     if(includeIssueBriefs&&DATA.recentPromoted) allArr=allArr.concat(DATA.recent||[]);
     var arr=S.showAll?allArr:allArr.slice(0,24);
     if(S.sort==='latest'&&!S.query.trim()) arr.sort(function(x,y){return y.ts-x.ts;});
+    if(S.sort==='latest'&&!S.query.trim()&&todayArr) todayArr.sort(function(x,y){return y.ts-x.ts;});
     if(!arr.length){ return '<div style="text-align:center;padding:64px 0;color:var(--color-label-alternative);"><div style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--color-label-neutral);">해당 조건의 글이 없습니다</div><p style="margin:8px 0 0;font-size:14px;">필터를 바꿔보세요.</p></div>'; }
     // 기사가 적은 필터에서는 2단을 쓰지 않는다. 오른쪽 단(카드 4 + TOP 5)이
     // 목록 전체보다 길어 어떻게 나눠도 한쪽에 수백 px 빈칸이 남기 때문이다.
-    // 홈의 짧은 오늘 지면은 보강용 최근 기사가 10건 기준을 넘겨도 compact 지면을 유지해
-    // 오늘 기사를 먼저 전부 노출한다. 최근 기사는 그 아래 '이어 읽기'로 분리한다.
+    // 보강용 최근 기사가 있는 홈의 짧은 지면은 기존 3열 1면을 유지한다.
+    // 오늘 기사는 톱기사·사이드·쿼드 슬롯에 먼저 넣고, 최근 기사는 왼쪽 '한눈에'에 채운다.
+    var promotedShortHome=includeIssueBriefs&&todayArr&&todayArr.length>0&&todayArr.length<10&&DATA.recentPromoted;
     var compactArr=includeIssueBriefs&&todayArr&&todayArr.length>0&&todayArr.length<10?todayArr:arr;
-    if(compactArr.length<10){
+    if(compactArr.length<10&&!promotedShortHome){
       var h1='<div><div style="padding:28px 0 34px;border-bottom:2px solid var(--color-label-strong);">'
       +leadCard(compactArr[0])+compactArr.slice(1).map(leadFollow).join('')+'</div>'
       +mostRead(compactArr.slice(0,5));
@@ -1198,15 +1200,27 @@ const APP_JS = String.raw`
     //   폴드   3단(1 : 2.3 : 1.15) — 브리프 리스트 | 톱기사(본문 2단 조판) | 사이드
     //   쿼드   4단 — 같은 무게의 카드 4장
     //   피처   2단(1.7 : 1) 비대칭 — 해설 기사 | TOP 5
-    var i=1, lead=arr[0];
-    var side=arr.slice(i,i+FP.side); i+=FP.side;
-    var brief=arr.slice(i,i+FP.brief); i+=FP.brief;
-    var quad=arr.slice(i,i+4); i+=quad.length>=2?quad.length:0;
+    var layoutArr=arr, layoutBriefCount=FP.brief, layoutSideCount=FP.side;
+    if(promotedShortHome){
+      var recentArr=DATA.recent||[];
+      layoutBriefCount=Math.min(FP.brief,recentArr.length);
+      // 현재 기사 3건은 폴드에, 나머지 오늘 기사 2건은 바로 이어지는 쿼드에 둔다.
+      // 최근 기사는 왼쪽 브리프 목록으로 보내 기존 1면 리듬과 오늘 기사 우선순위를 함께 지킨다.
+      layoutSideCount=Math.max(2,FP.side);
+      layoutArr=todayArr.slice(0,3)
+        .concat(recentArr.slice(0,layoutBriefCount))
+        .concat(todayArr.slice(3))
+        .concat(recentArr.slice(layoutBriefCount));
+    }
+    var i=1, lead=layoutArr[0];
+    var side=layoutArr.slice(i,i+layoutSideCount); i+=side.length;
+    var brief=layoutArr.slice(i,i+layoutBriefCount); i+=brief.length;
+    var quad=layoutArr.slice(i,i+4); i+=quad.length>=2?quad.length:0;
     if(quad.length<2) quad=[];
-    var feat=arr[i++];
-    var bandAll=arr.slice(i);
+    var feat=layoutArr[i++];
+    var bandAll=layoutArr.slice(i);
     var band=S.showAll?bandAll:bandAll.slice(0,12);
-    var top5=arr.slice(0,5), more=bandAll.length-band.length, clipped=(DATA.hasMore?1:allArr.length-arr.length);
+    var top5=layoutArr.slice(0,5), more=bandAll.length-band.length, clipped=(DATA.hasMore?1:allArr.length-arr.length);
 
     var h='<div>'
     // ① 폴드 — 3단 비대칭
