@@ -19,10 +19,10 @@ jobs:
     # 않도록 제한한다. 실패 시 알림 이슈가 열려 운영자가 바로 확인한다.
     timeout-minutes: 75
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 2
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -78,7 +78,7 @@ jobs:
           LLM_JSON_ATTEMPTS: "2"
       - name: Upload newsroom reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: source-first-newsroom-${{ github.run_id }}
           path: |
@@ -222,7 +222,7 @@ jobs:
 
       - name: Upload production monitoring result
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: production-monitor-daily-${{ github.run_id }}
           path: reports/production-monitoring.json
