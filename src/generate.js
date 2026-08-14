@@ -192,41 +192,51 @@ const BRIEF_SCHEMA = {
 export async function generateBrief(post, attempt = 1) {
   const content = (post.fullText || post.body || post.title || "").slice(0, 2000);
   const item = await jsonCall({
+    temperature: 0.1,
     system: [
       "당신은 한국 동물병원 수의사를 위한 '해외 브리핑'의 에디터입니다.",
       "해외 수의 소식 하나를 '간추린 소식'용으로 아주 짧게 정리합니다.",
       "- titleKo: 핵심을 담은 재작성 제목(직역 금지, 낚시 금지, 45자 이내).",
       "- summaryKo: 반드시 2문장, 100~160자로 무슨 일이고 왜 알 만한지 설명합니다. 한 문장짜리 메모나 제목 반복은 금지합니다. 모든 문장 '~습니다/~입니다'체.",
-      "- 순수 한국어만. 중국어(한자)·일본어·러시아어 금지. 영어는 인명·기관명·약어만.",
+      "- 제목과 요약 모두 순수 한국어만. 중국어(한자)·일본어·러시아어 금지. 영어는 인명·기관명·약어만.",
       "- 약물 용량·구체적 처치법은 옮기지 않습니다.",
     ].join("\n"),
-    user: `출처: ${post.sourceLabel || ""}\n제목: ${post.title}\n\n내용:\n${content}`,
+    user: `출처: ${post.sourceLabel || ""}\n제목: ${post.title}\n\n내용:\n${content}\n\n제목과 요약은 반드시 한국어로만 작성하세요.`,
     schema: BRIEF_SCHEMA,
     // MiniMax는 답하기 전에 thinking 블록을 쓰는데 그 토큰도 max_tokens에서
     // 깎인다. 200으로 실험했을 때 128/157이 thinking만 채우고 답을 못 내
     // "JSON을 찾지 못했습니다"로 실패했다(scripts/backfill-category.js 실측).
-    // 600도 여유가 빠듯할 수 있어 넉넉히 올린다.
-    maxTokens: 1500,
+    // 1200으로 올려 짧은 브리프의 JSON 응답을 안정적으로 받는다.
+    maxTokens: 1200,
   });
 
   if (!String(item?.titleKo || "").trim() || !String(item?.summaryKo || "").trim()) {
     throw new Error("브리프 생성 결과가 비어 있음");
   }
-  // 외국어 혼입은 재생성 1회만(브리프는 저비용 유지). 그래도 남으면 스트립 후 통과
+  // 외국어 혼입은 재생성 후 마지막에 제거한다. 제목·요약이 한국어가 아니면
+  // 제거한 결과를 발행하지 않고 한 번 더 시도해 빈 카드 생성을 막는다.
   let foreign = foreignScriptIn({ titleKo: item.titleKo, leadKo: item.summaryKo, bodyKo: [] });
-  if (foreign && attempt < 2) return generateBrief(post, attempt + 1);
+  if (foreign && attempt < 3) return generateBrief(post, attempt + 1);
   if (foreign) {
     item.titleKo = item.titleKo.replace(/[一-鿿぀-ヿЀ-ӿ]+/g, "").replace(/\s{2,}/g, " ").trim();
     item.summaryKo = item.summaryKo.replace(/[一-鿿぀-ヿЀ-ӿ]+/g, "").replace(/\s{2,}/g, " ").trim();
+  }
+  const titleKo = String(item.titleKo || "").trim();
+  const summaryKo = String(item.summaryKo || "").replace(/\s+/g, " ").trim();
+  if ((!/[가-힣]/.test(titleKo) || !/[가-힣]/.test(summaryKo) || summaryKo.length < 90) && attempt < 3) {
+    return generateBrief(post, attempt + 1);
+  }
+  if (!/[가-힣]/.test(titleKo) || !/[가-힣]/.test(summaryKo) || summaryKo.length < 90) {
+    throw new Error("브리프 한국어·분량 기준 미달");
   }
   return {
     contentTier: "brief",
     tier: "brief",
     aiAssisted: true,
     category: "brief",
-    titleKo: item.titleKo,
-    leadKo: item.summaryKo,
-    bodyKo: [item.summaryKo],
+    titleKo,
+    leadKo: summaryKo,
+    bodyKo: [summaryKo],
     sourceType: post.sourceType,
     sourceLabel: post.sourceLabel,
     relevance: post.relevance,
