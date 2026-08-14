@@ -80,11 +80,13 @@ test("homepage lead is complete and compact article opens before hydration", asy
   expect(payload.articles[1].body?.length).toBeGreaterThan(0);
   expect(payload.articles[1].readReady).toBe(true);
   const todayItems = [...(payload.articles || []), ...(payload.briefs || []), ...(payload.stories || [])];
-  if (todayItems.length < 10) {
-    // 짧은 지면에서는 보강용 최근 기사보다 오늘 기사가 먼저 전부 나온다.
-    const primaryText = (await page.locator('article[data-open]').allTextContents()).slice(0, todayItems.length).join("\n");
-    for (const item of todayItems) expect(primaryText).toContain(item.title);
-    await expect(page.getByText("이어 읽기", { exact: true })).toBeVisible();
+  if (todayItems.length < 10 && payload.recentPromoted) {
+    // 짧은 홈도 기존 3열 1면을 유지하면서 오늘 기사 전체가 카드 슬롯에 남아 있어야 한다.
+    await expect(page.locator("#vm-fold")).toBeVisible();
+    const todayIds = todayItems.map((item) => item.id);
+    const visibleTodayIds = await page.locator('article[data-open]').evaluateAll((elements, ids) =>
+      elements.map((element) => element.getAttribute("data-open")).filter((id) => ids.includes(id)), todayIds);
+    expect(new Set(visibleTodayIds)).toEqual(new Set(todayIds));
   } else {
     await expect(page.locator(".vm-fp-body")).not.toBeEmpty();
   }
