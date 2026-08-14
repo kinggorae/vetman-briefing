@@ -5,7 +5,7 @@ import { atomicWrite, isOfficialUrl, loadRegistry, readJson, safeSourceUrl } fro
 import { clinicalSafetyIssues, organizationAuthor } from "../src/lib/editorial-policy.js";
 import { imageCanRender, normalizeImageOwnership } from "../src/lib/image-rights.js";
 import { qualityIssues, normalizeContentTier } from "../src/lib/quality.js";
-import { normalizeSourceUrl } from "../src/identity.js";
+import { normalizeSourceUrl, sourceKeys } from "../src/identity.js";
 import { auditLanguage, auditClaims } from "./editorial-audits.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
@@ -14,6 +14,7 @@ const QA_REPORT = path.join(ROOT, "reports", "first-release-candidates-qa.json")
 const OUT_DIR = path.join(ROOT, "reports", "briefs");
 const ISSUE_DIR = path.join(ROOT, "data", "issues");
 const DRAFT_DIR = path.join(ROOT, "data", "drafts");
+const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 const RELEASE_REPORT = path.join(ROOT, "reports", "brief-release.json");
 // 무료 뉴스룸의 일간 볼륨 목표. 후보가 목표보다 적으면 부분 발행하지 않고
 // 워크플로를 실패시켜 다음 실행에서 재시도하게 한다.
@@ -83,6 +84,21 @@ function releaseTarget(flags = {}) {
 }
 function canReleaseDaily(existingCount, candidateCount, target = DAILY_TARGET_ITEMS) {
   return Number(existingCount || 0) + Number(candidateCount || 0) >= target;
+}
+// 목표 미달이면 이번 실행에서 ready였지만 발행하지 못한 후보만 seen 큐로
+// 되돌린다. 언어·임상·출처 차단 후보는 다시 넣지 않아 매일 같은 후보가
+// 상위 60개를 점유하지 않게 한다.
+export function retainSeenAfterTargetMiss(seenUrls = [], candidates = []) {
+  const retryKeys = new Set(candidates.flatMap(({ row }) => sourceKeys(row)));
+  return (Array.isArray(seenUrls) ? seenUrls : []).filter((url) => !retryKeys.has(normalizeSourceUrl(url)));
+}
+function requeueUnreleasedCandidates(candidates) {
+  const current = readJson(SEEN_PATH, { urls: [] });
+  const before = Array.isArray(current.urls) ? current.urls : [];
+  const after = retainSeenAfterTargetMiss(before, candidates).slice(-20000);
+  const restored = before.length - after.length;
+  if (restored > 0) atomicWrite(SEEN_PATH, JSON.stringify({ urls: after }, null, 2) + "\n");
+  return restored;
 }
 function hasKorean(row) { return Boolean(row.titleKo && row.leadKo && Array.isArray(row.bodyKo) && row.bodyKo.length); }
 function evaluate(row) {
@@ -196,7 +212,7 @@ function releaseReady(flags) {
     }
   }
   const seen = new Set();
-  const summary = { date, total: rows.length, existing: currentItems.length, target: dailyTarget, eligible: 0, released: 0, minimum: dailyTarget, skipped: {}, ids: [] };
+  const summary = { date, total: rows.length, existing: currentItems.length, target: dailyTarget, eligible: 0, released: 0, retryQueued: 0, seenRestored: 0, minimum: dailyTarget, skipped: {}, ids: [] };
   const bump = (reason) => { summary.skipped[reason] = (summary.skipped[reason] || 0) + 1; };
   const candidates = [];
   for (const row of rows) {
@@ -221,6 +237,8 @@ function releaseReady(flags) {
   // 다음 재실행에서 새 후보를 더 모아 정확히 30건을 채우도록 남겨 둔다.
   if (flags.apply && currentItems.length < dailyTarget && !canReleaseDaily(currentItems.length, candidates.length, dailyTarget)) {
     summary.skipped["daily-target-not-reached"] = candidates.length;
+    summary.retryQueued = candidates.length;
+    summary.seenRestored = requeueUnreleasedCandidates(candidates);
     summary.note = `일일 목표 ${dailyTarget}건 미달이라 오늘 이슈 파일을 변경하지 않았습니다.`;
     atomicWrite(RELEASE_REPORT, JSON.stringify({ ...summary, dryRun: false }, null, 2) + "\n");
     console.log(JSON.stringify({ ...summary, dryRun: false }, null, 2));
