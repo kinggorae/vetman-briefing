@@ -27,6 +27,8 @@ jobs:
       - run: npm ci --ignore-scripts
       - name: Monitor production contract
         env:
+          # 롤아웃 첫날 이전 최신호도 정상으로 관찰할 수 있도록 하위 호환한다.
+          # 새 60건 발행분은 daily.yml의 배포 직후 계약에서 강제한다.
           MONITOR_MIN_LATEST_ITEMS: "30"
           MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
           MONITOR_SW_CACHE: "vmcache-v8"

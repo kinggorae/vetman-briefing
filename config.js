@@ -435,7 +435,7 @@ export const PUBMED = {
   // 개·고양이 MeSH + 초록에 veterinary. 축산·실험동물 노이즈를 줄이기 위해 임상 위주.
   term: '("dogs"[MeSH Terms] OR "cats"[MeSH Terms]) AND veterinary[Title/Abstract]',
   recentDays: 30, // 최근 N일
-  max: 40, // 후보 최대(스코어링 전)
+  max: 90, // 후보 최대(스코어링 전)
 };
 
 // 임상 분과별 PubMed 쿼리.
@@ -484,6 +484,16 @@ export const CANDIDATES_MAX = 520;  // 권역별 피드가 스코어링 전에 �
 export const ITEMS_PER_ISSUE = 42;  // 심층 뉴스 상한 — 검색 색인 대상의 일간 폭을 확대
 export const SCORE_BATCH = 30;      // 스코어링 배치 크기 (한 번에 너무 많이 넣으면 평가 품질 저하)
 export const MIN_RELEVANCE = 5;     // 심층 하한 (0~10). 국제 수집 확대에 맞춰 긴 기사 폭을 확보
+
+// ── source-first 일간 운영 목표 ──
+// 홈에 실제로 보이는 기사 수와 검색에 기여하는 심층 기사 수를 같은 상한으로
+// 묶지 않는다. 60건을 지면에 채우되, 상위 32건은 심층 생성·품질 게이트를 거쳐
+// 색인 후보로 만들고 나머지는 짧은 public brief로 제공한다.
+export const DAILY_TARGET_ITEMS = 60;
+export const DAILY_DEEP_TARGET_ITEMS = 32;
+export const DAILY_CANDIDATE_POOL = 90;
+export const DAILY_HOME_ITEMS = 60;
+export const DAILY_RSS_ITEMS = 100;
 
 // ── 계층화(볼륨) ──
 // 화면은 100건처럼 풍성하되, 색인은 심층(≥MIN_RELEVANCE)만. 브리프·가십은 noindex.

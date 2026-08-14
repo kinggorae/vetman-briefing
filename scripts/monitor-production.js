@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import { XMLParser } from "fast-xml-parser";
+import { DAILY_HOME_ITEMS } from "../config.js";
 import {
   inspectArchivePayload,
   inspectArticleHtml,
@@ -43,7 +44,7 @@ const responses = new Map();
 let latestPayload = null;
 const parser = new XMLParser({ ignoreAttributes: false });
 const today = process.env.MONITOR_TODAY || kstDateString();
-const minLatestItems = Math.max(0, Number(process.env.MONITOR_MIN_LATEST_ITEMS || 30));
+const minLatestItems = Math.max(0, Number(process.env.MONITOR_MIN_LATEST_ITEMS || DAILY_HOME_ITEMS));
 const cutoffHour = Number(process.env.MONITOR_REQUIRE_TODAY_AFTER_KST || 10);
 const requireToday = process.env.MONITOR_REQUIRE_TODAY === "1"
   || (Number.isInteger(cutoffHour) && cutoffHour >= 0 && kstHour() >= cutoffHour);

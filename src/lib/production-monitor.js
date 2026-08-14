@@ -1,4 +1,5 @@
 import { recentNewsEntries, sitePublicationDate } from "./publication-dates.js";
+import { DAILY_HOME_ITEMS } from "../../config.js";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const INDEXABLE_PUBLICATION_STATUSES = new Set(["index-low-risk", "index-analysis"]);
@@ -90,7 +91,7 @@ function extractInlineJson(html, id) {
   catch (error) { return { value: null, error: error.message }; }
 }
 
-export function inspectHomepageHtml(html = "", { minEditionItems = 30 } = {}) {
+export function inspectHomepageHtml(html = "", { minEditionItems = DAILY_HOME_ITEMS } = {}) {
   const critical = [];
   const warnings = [];
   const text = String(html || "");

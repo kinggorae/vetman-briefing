@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { DAILY_TARGET_ITEMS as CONFIG_DAILY_TARGET_ITEMS } from "../config.js";
 import { atomicWrite, isOfficialUrl, loadRegistry, readJson, safeSourceUrl } from "../src/lib/source-first.js";
 import { clinicalSafetyIssues, organizationAuthor } from "../src/lib/editorial-policy.js";
 import { imageCanRender, normalizeImageOwnership } from "../src/lib/image-rights.js";
@@ -18,7 +19,7 @@ const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 const RELEASE_REPORT = path.join(ROOT, "reports", "brief-release.json");
 // 무료 뉴스룸의 일간 볼륨 목표. 후보가 목표보다 적으면 부분 발행하지 않고
 // 워크플로를 실패시켜 다음 실행에서 재시도하게 한다.
-export const DAILY_TARGET_ITEMS = 30;
+export const DAILY_TARGET_ITEMS = CONFIG_DAILY_TARGET_ITEMS;
 const CANDIDATE_IDS = ["v1_88e7bde7826c5eaf", "v1_8977cdecc20db74b", "v1_66712dc60cebbebc", "v1_ecdd9715ae5b33aa", "v1_5f01b0b4f48babba"];
 
 function parse() {
@@ -143,6 +144,7 @@ function evaluate(row) {
     languageWarnings: language,
     claimWarnings: claims,
     clinicalSafetyIssues: safety,
+    qualityIssues: quality,
     image: { url: imageUrl, ownership: ownership || null, confirmed: imageOk },
     publication: { status: "public-brief", robots: "noindex,follow", sitemap: false, newsSitemap: false, rss: false },
     author: organizationAuthor(),
@@ -150,6 +152,20 @@ function evaluate(row) {
     noReviewer: true,
     generatedTextPresent: hasKorean(row),
   };
+}
+
+// 감수자 없는 운영 모드에서도 색인할 수 있는 유일한 자동 등급이다.
+// low-risk + 심층 본문 + 실시간 감사 경고 0건만 먼저 배치해, 일간 목표를
+// 채우기 위해 색인 품질이 낮은 brief가 심층 기사 자리를 밀어내지 않게 한다.
+function isIndexCandidate(row, evaluation) {
+  const tier = normalizeContentTier(row);
+  return String(row?.clinicalRisk || "").toLowerCase() === "low"
+    && (tier === "analysis" || tier === "evidence")
+    && !evaluation.languageWarnings.length
+    && !evaluation.claimWarnings.length
+    && !evaluation.clinicalSafetyIssues.length
+    && !evaluation.qualityIssues.length
+    && !evaluation.blockers.length;
 }
 function writePreview(row, evaluation) {
   fs.mkdirSync(OUT_DIR, { recursive: true });
@@ -212,7 +228,7 @@ function releaseReady(flags) {
     }
   }
   const seen = new Set();
-  const summary = { date, total: rows.length, existing: currentItems.length, target: dailyTarget, eligible: 0, released: 0, retryQueued: 0, seenRestored: 0, minimum: dailyTarget, skipped: {}, ids: [] };
+  const summary = { date, total: rows.length, existing: currentItems.length, target: dailyTarget, eligible: 0, indexEligible: 0, released: 0, retryQueued: 0, seenRestored: 0, minimum: dailyTarget, skipped: {}, ids: [] };
   const bump = (reason) => { summary.skipped[reason] = (summary.skipped[reason] || 0) + 1; };
   const candidates = [];
   for (const row of rows) {
@@ -224,17 +240,23 @@ function releaseReady(flags) {
     let evaluation;
     try { evaluation = evaluate(row); } catch { bump("평가 실패"); continue; }
     if (evaluation.status !== "ready-public-brief") { bump(evaluation.status); continue; }
-    candidates.push({ row, url });
+    candidates.push({ row, url, evaluation });
     if (url) published.add(url);
   }
   summary.eligible = candidates.length;
+  candidates.sort((a, b) => {
+    const indexOrder = Number(isIndexCandidate(b.row, b.evaluation)) - Number(isIndexCandidate(a.row, a.evaluation));
+    if (indexOrder) return indexOrder;
+    return Number(b.row.selectionScore || 0) - Number(a.row.selectionScore || 0);
+  });
+  summary.indexEligible = candidates.filter(({ row, evaluation }) => isIndexCandidate(row, evaluation)).length;
   // 목표를 넘겨 한 번에 너무 많이 공개하지 않는다. 여러 번 실행해도
   // currentItems와 합산해 하루 목표까지 부족분만 채운다.
   const needed = Math.max(0, dailyTarget - currentItems.length);
   const releaseCandidates = candidates.slice(0, needed);
   if (candidates.length > releaseCandidates.length) summary.skipped["daily-target-cap"] = candidates.length - releaseCandidates.length;
   // 하루 이슈는 목표 건수가 모일 때만 새 날짜 파일을 만든다. 부분 발행은
-  // 다음 재실행에서 새 후보를 더 모아 정확히 30건을 채우도록 남겨 둔다.
+  // 다음 재실행에서 새 후보를 더 모아 정확히 60건을 채우도록 남겨 둔다.
   if (flags.apply && currentItems.length < dailyTarget && !canReleaseDaily(currentItems.length, candidates.length, dailyTarget)) {
     summary.skipped["daily-target-not-reached"] = candidates.length;
     summary.retryQueued = candidates.length;

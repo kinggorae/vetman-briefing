@@ -5,6 +5,7 @@ import path from "node:path";
 import { isProfessionallyIndexable, publishQualityIssues } from "../src/lib/quality.js";
 import { clinicalSafetyIssues, loadEditorialSettings, organizationAuthor } from "../src/lib/editorial-policy.js";
 import { canReleaseDaily, DAILY_TARGET_ITEMS, evaluate, retainSeenAfterTargetMiss } from "../scripts/brief-publishing.js";
+import { DAILY_CANDIDATE_POOL, DAILY_DEEP_TARGET_ITEMS, DAILY_HOME_ITEMS, DAILY_RSS_ITEMS } from "../config.js";
 
 const ROOT = process.cwd();
 
@@ -23,12 +24,28 @@ test("감수자 없는 public brief는 임상 명령 표현을 차단한다", ()
   assert.ok(publishQualityIssues(item).includes("unsafe-clinical-command"));
 });
 
-test("일일 발행은 30건 목표에 도달하기 전 부분 이슈를 만들지 않는다", () => {
-  assert.equal(DAILY_TARGET_ITEMS, 30);
-  assert.equal(canReleaseDaily(0, 29), false);
-  assert.equal(canReleaseDaily(5, 24), false);
-  assert.equal(canReleaseDaily(5, 25), true);
-  assert.equal(canReleaseDaily(0, 30), true);
+test("일일 발행은 60건 목표에 도달하기 전 부분 이슈를 만들지 않는다", () => {
+  assert.equal(DAILY_TARGET_ITEMS, 60);
+  assert.equal(DAILY_DEEP_TARGET_ITEMS, 32);
+  assert.equal(DAILY_CANDIDATE_POOL, 90);
+  assert.equal(DAILY_HOME_ITEMS, 60);
+  assert.equal(DAILY_RSS_ITEMS, 100);
+  assert.equal(canReleaseDaily(0, 59), false);
+  assert.equal(canReleaseDaily(5, 54), false);
+  assert.equal(canReleaseDaily(5, 55), true);
+  assert.equal(canReleaseDaily(0, 60), true);
+});
+
+test("일간 수집 레지스트리는 Wiley 전문 저널과 PubMed를 공급원으로 유지한다", () => {
+  const registry = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "sources", "registry.json"), "utf8"));
+  const labels = new Set((registry.sources || []).map((source) => source.label));
+  for (const label of ["Veterinary Dermatology", "Veterinary Clinical Pathology", "Veterinary and Comparative Oncology", "Veterinary ophthalmology"]) {
+    assert.ok(labels.has(label), `${label} source missing`);
+  }
+  const pubmed = registry.sources.find((source) => source.label === "PubMed");
+  assert.equal(pubmed?.enabled, true);
+  assert.equal(pubmed?.sourceType, "journal");
+  assert.deepEqual(pubmed?.officialDomains, ["pubmed.ncbi.nlm.nih.gov"]);
 });
 
 test("일일 목표 미달이면 발행 후보만 seen 큐로 되돌린다", () => {
