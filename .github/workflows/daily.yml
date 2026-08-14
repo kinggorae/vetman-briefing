@@ -20,6 +20,8 @@ jobs:
     timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -99,6 +101,7 @@ jobs:
             reports/image-rights-queue.json
             reports/image-rights-queue.md
             reports/deploy-guard.json
+            reports/retention-guard.json
             reports/brief-release.json
             data/drafts
           if-no-files-found: ignore
@@ -158,6 +161,13 @@ jobs:
           const report = JSON.parse(fs.readFileSync('reports/seo-audit.json', 'utf8'));
           if ((report.critical?.length ?? 0) > 0) throw new Error('SEO critical 오류가 있습니다.');
           NODE
+
+      # 기존 공개 기사는 다음 날 발행분과 무관하게 보존되어야 한다. 검색
+      # 인덱스에서 조용히 사라지는 경우에는 배포하지 않고 이력과 함께 실패시킨다.
+      - name: Guard public article retention
+        run: npm run retention:guard
+        env:
+          RETENTION_BASE_REF: HEAD^
 
       - name: Commit publication set, drafts and reports
         run: |

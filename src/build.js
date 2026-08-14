@@ -518,6 +518,13 @@ function seoHead(issue, data, canonicalPath, isIndex = false) {
     url: SITE.baseUrl,
     inLanguage: "ko",
     publisher: { "@type": "Organization", name: SITE.brandKo, alternateName: SITE.brandEn },
+    // 홈의 검색 UI를 구조화해 브랜드·주제 검색 유입이 사이트 내 검색으로
+    // 이어지도록 한다. 검색 결과 자체는 noindex로 유지하고 원문 기사만 색인한다.
+    potentialAction: {
+      "@type": "SearchAction",
+      target: { "@type": "EntryPoint", urlTemplate: `${SITE.baseUrl}/?q={search_term_string}` },
+      "query-input": "required name=search_term_string",
+    },
   };
   return `
 <title>${esc(title)}</title>
@@ -705,6 +712,9 @@ a:hover{color:var(--color-primary-strong);}
 .vm-footer-subscribe{margin-top:16px;}
 .vm-footer-bottom{display:flex;justify-content:space-between;gap:18px;margin-top:32px;padding-top:14px;border-top:1px solid var(--color-line-normal);font-size:10.5px;line-height:1.6;color:var(--color-label-alternative);}
 .vm-footer-bottom span:last-child{text-align:right;}
+.vm-archive-shelf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+.vm-archive-day{display:block;min-width:0;padding:15px 16px;border:1px solid var(--color-line-normal);border-radius:11px;background:var(--color-background-normal);color:inherit;text-decoration:none;transition:border-color .15s,transform .15s;}
+.vm-archive-day:hover{border-color:var(--color-primary-normal);transform:translateY(-1px);}
 @keyframes vmFade{from{opacity:0;}to{opacity:1;}}
 @keyframes vmSlide{from{transform:translateX(36px);opacity:0;}to{transform:translateX(0);opacity:1;}}
 :focus-visible{outline:2px solid var(--color-primary-normal);outline-offset:2px;}
@@ -725,6 +735,7 @@ a:hover{color:var(--color-primary-strong);}
   #vm-feat-r{padding-top:20px !important;border-top:1px solid var(--color-line-normal);}
   .vm-band{grid-template-columns:1fr !important;}
   .vm-band-fill{display:none !important;}
+  .vm-archive-shelf{grid-template-columns:repeat(2,minmax(0,1fr));}
   .vm-qa-grid{grid-template-columns:1fr !important;}
   .vm-qa-bridge{grid-template-columns:1fr !important;gap:7px !important;}
   .vm-mast h1{font-size:40px !important;}
@@ -772,6 +783,7 @@ a:hover{color:var(--color-primary-strong);}
   .vm-static-footer{margin:0 20px 24px;}
 }
 @media (max-width:560px){
+  .vm-archive-shelf{grid-template-columns:1fr;}
   .vm-footer-grid{grid-template-columns:1fr !important;gap:28px !important;}
   .vm-footer-brand{grid-column:auto;}
   .vm-footer-links a{min-height:44px;display:flex;align-items:center;}
@@ -787,18 +799,45 @@ const APP_JS = String.raw`
   var byId = {};
   function indexDay(){ byId={}; DATA.articles.concat(DATA.briefs||[],DATA.stories||[],DATA.recent||[]).forEach(function(a){ byId[a.id]=a; }); }
   indexDay();
-  var LS={saved:'vm_saved',ideas:'vm_ideas',read:'vm_read',theme:'vm_theme',fs:'vm_fs'};
+  var LS={saved:'vm_saved',ideas:'vm_ideas',read:'vm_read',theme:'vm_theme',fs:'vm_fs',last:'vm_last'};
   function load(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }
   var SEARCH_INDEX=null, searchLoading=false;
   var S={
     theme: load(LS.theme,(window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'),
     sort:'rel', cat:'all', unreadOnly:false, query:'',
     view:'home', openId:null, blogOpen:true, showAll:false, briefAll:false,
-    saved:load(LS.saved,{}), ideas:load(LS.ideas,{}), read:load(LS.read,{}),
+    saved:load(LS.saved,{}), ideas:load(LS.ideas,{}), read:load(LS.read,{}), last:load(LS.last,null),
     fs:load(LS.fs,1), toast:null, searchFocus:false, caret:0,
     dialogFocusPending:false, restoreFocusId:null,
     archive:null, loadingDate:null, draft:null
   };
+  function readBrowseRoute(){
+    if(!DATA.isHome||location.pathname!=='/') return;
+    try{
+      var p=new URLSearchParams(location.search), q=(p.get('q')||'').trim().slice(0,100);
+      var cats=(DATA.cats||[]).map(function(c){return c.key;}), cat=p.get('cat');
+      S.query=q;
+      S.cat=cat&&cats.indexOf(cat)>=0?cat:'all';
+      S.sort=p.get('sort')==='latest'?'latest':'rel';
+      S.unreadOnly=p.get('unread')==='1';
+      S.searchFocus=!!q;
+      S.caret=q.length;
+    }catch(err){}
+  }
+  // 검색·카테고리·읽지 않음 필터를 링크로 공유할 수 있게 한다. replaceState만
+  // 사용해 타이핑마다 브라우저 뒤로가기 이력이 쌓이지 않도록 한다.
+  function syncBrowseUrl(){
+    if(!DATA.isHome||location.pathname!=='/'||S.openId) return;
+    try{
+      var url=new URL(location.href), q=S.query.trim().slice(0,100);
+      if(q) url.searchParams.set('q',q); else url.searchParams.delete('q');
+      if(S.cat&&S.cat!=='all') url.searchParams.set('cat',S.cat); else url.searchParams.delete('cat');
+      if(S.sort==='latest') url.searchParams.set('sort','latest'); else url.searchParams.delete('sort');
+      if(S.unreadOnly) url.searchParams.set('unread','1'); else url.searchParams.delete('unread');
+      var next=url.pathname+(url.search||'')+(url.hash||''), current=location.pathname+location.search+location.hash;
+      if(next!==current) history.replaceState(history.state||null,'',next);
+    }catch(err){}
+  }
   function e(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
   function persist(k,v){ localStorage.setItem(LS[k],JSON.stringify(v)); }
   function isSaved(id){ return !!S.saved[id]; }
@@ -809,6 +848,16 @@ const APP_JS = String.raw`
   function metaShort(a){ return [a.source,a.country,a.date].filter(Boolean).map(e).join(' · '); }
   function snap(a){ return {id:a.id,href:a.href,day:a.day,title:a.title,dek:a.dek,kicker:a.kicker,source:a.source,country:a.country,date:a.date,read:a.read,cat:a.cat,image:a.image,plate:a.plate,blog:a.blog,blogAngle:a.blogAngle,isToday:a.isToday,radar:a.radar}; }
   function titleLink(a){ return '<a class="vm-title-link" href="'+e(a.href||'#')+'">'+e(a.title)+'</a>'; }
+  function resumeBar(){
+    var a=S.last;
+    if(S.view!=='home'||S.openId||!a||!a.href||!a.title) return '';
+    var age=Number(a.lastOpenedAt||0), maxAge=30*24*60*60*1000;
+    if(age&&Date.now()-age>maxAge) return '';
+    return '<aside aria-label="지난번 읽던 기사" style="display:flex;align-items:center;gap:12px;margin:18px 0 4px;padding:12px 14px;border:1px solid var(--color-line-normal);border-radius:10px;background:var(--color-background-alternative);">'
+      +'<span style="flex:none;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--color-primary-normal);">지난번 읽던 기사</span>'
+      +'<a href="'+e(a.href)+'" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--color-label-strong);font-size:13px;font-weight:700;text-decoration:none;">'+e(a.title)+'</a>'
+      +'<button data-act="clear-resume" aria-label="이어보기 안내 닫기" title="닫기" style="flex:none;border:0;background:transparent;color:var(--color-label-alternative);font-size:18px;line-height:1;cursor:pointer;">×</button></aside>';
+  }
 
   var BM='<svg width="W" height="W" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(4.1 2.1)"><path d="M 4.065 0 L 11.735 0 C 12.265 0 12.716 0 13.087 0.03 C 13.476 0.062 13.855 0.132 14.217 0.316 C 14.762 0.594 15.206 1.038 15.484 1.583 C 15.668 1.945 15.738 2.324 15.77 2.713 C 15.8 3.084 15.8 3.535 15.8 4.065 L 15.8 18.9 C 15.8 19.225 15.625 19.525 15.341 19.684 C 15.058 19.844 14.711 19.838 14.433 19.669 L 7.9 15.703 L 1.367 19.669 C 1.089 19.838 0.742 19.844 0.459 19.684 C 0.175 19.525 0 19.225 0 18.9 L 0 4.065 C 0 3.535 0 3.084 0.03 2.713 C 0.062 2.324 0.132 1.945 0.316 1.583 C 0.594 1.038 1.038 0.594 1.583 0.316 C 1.945 0.132 2.324 0.062 2.713 0.03 C 3.084 0 3.535 0 4.065 0 Z M 3.7 1.8 C 2.885 1.8 2.692 1.811 2.56 1.854 C 2.225 1.963 1.963 2.225 1.854 2.56 C 1.811 2.692 1.8 2.886 1.8 3.7 L 1.8 17.301 L 7.433 13.881 C 7.72 13.707 8.08 13.707 8.367 13.881 L 14 17.301 L 14 3.7 C 14 2.886 13.989 2.692 13.946 2.56 C 13.837 2.225 13.575 1.963 13.24 1.854 C 13.108 1.811 12.915 1.8 12.1 1.8 L 3.7 1.8 Z" fill-rule="evenodd"></path></g></svg>';
   var EXT='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(2.85 2.85)"><path d="M 11.9 0 C 11.403 0 11 0.403 11 0.9 C 11 1.397 11.403 1.8 11.9 1.8 L 15.227 1.8 L 8.514 8.514 C 8.162 8.865 8.162 9.435 8.514 9.786 C 8.865 10.138 9.435 10.138 9.787 9.786 L 16.5 3.073 L 16.5 6.4 C 16.5 6.897 16.903 7.3 17.4 7.3 C 17.897 7.3 18.3 6.897 18.3 6.4 L 18.3 0.9 C 18.3 0.403 17.897 0 17.4 0 L 11.9 0 Z"></path><path d="M 7.25 0.001 C 7.747 0.001 8.15 0.404 8.15 0.901 C 8.15 1.398 7.747 1.801 7.25 1.801 L 5.7 1.801 C 4.845 1.801 4.258 1.801 3.803 1.838 C 3.358 1.875 3.119 1.941 2.947 2.029 C 2.551 2.231 2.23 2.552 2.029 2.947 C 1.941 3.12 1.874 3.359 1.838 3.803 C 1.801 4.259 1.8 4.846 1.8 5.701 L 1.8 12.601 C 1.8 13.456 1.801 14.043 1.838 14.498 C 1.874 14.942 1.941 15.181 2.029 15.354 C 2.23 15.749 2.551 16.07 2.947 16.272 C 3.119 16.36 3.358 16.426 3.803 16.463 C 4.258 16.5 4.845 16.501 5.7 16.501 L 12.6 16.501 C 13.455 16.501 14.042 16.5 14.497 16.463 C 14.942 16.426 15.18 16.36 15.353 16.272 C 15.748 16.07 16.07 15.749 16.271 15.354 C 16.359 15.181 16.426 14.942 16.462 14.498 C 16.499 14.043 16.5 13.456 16.5 12.601 L 16.5 11.051 C 16.5 10.554 16.903 10.151 17.4 10.151 C 17.897 10.151 18.3 10.554 18.3 11.051 L 18.3 12.638 C 18.3 13.446 18.3 14.107 18.256 14.644 C 18.211 15.2 18.114 15.702 17.875 16.171 C 17.501 16.905 16.904 17.502 16.171 17.876 C 15.702 18.114 15.2 18.211 14.644 18.257 C 14.107 18.301 13.446 18.301 12.638 18.301 L 5.662 18.301 C 4.854 18.301 4.193 18.301 3.656 18.257 C 3.1 18.211 2.598 18.114 2.129 17.876 C 1.396 17.502 0.799 16.905 0.425 16.171 C 0.186 15.702 0.089 15.2 0.044 14.644 C 0 14.107 0 13.446 0 12.638 L 0 5.663 C 0 4.855 0 4.194 0.044 3.657 C 0.089 3.101 0.186 2.599 0.425 2.13 C 0.799 1.396 1.396 0.8 2.129 0.426 C 2.598 0.187 3.1 0.09 3.656 0.044 C 4.193 0.001 4.854 0.001 5.662 0.001 L 7.25 0.001 Z"></path></g></svg>';
@@ -1088,6 +1137,22 @@ const APP_JS = String.raw`
     +bandGrid(list)+'</div>';
   }
 
+  // 발행일이 바뀌어도 전날 지면으로 바로 돌아갈 수 있게 한다. 최근 기사만
+  // 섞어 보여주면 날짜 맥락이 사라져 "어제 글이 없어졌다"고 느끼기 쉽다.
+  function archiveShelf(){
+    if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
+    var list=Array.isArray(DATA.recentIssues)?DATA.recentIssues:[]; if(!list.length) return '';
+    var cards=list.map(function(day){
+      var titles=(day.titles||[]).slice(0,2).map(function(title){return '<div style="font-family:var(--font-display);font-size:14px;font-weight:700;line-height:1.4;color:var(--color-label-strong);">'+e(title)+'</div>';}).join('');
+      return '<a class="vm-archive-day" href="'+e(day.href||('/issues/'+day.date))+'">'
+        +'<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--color-primary-normal);"><span>'+e(day.dateLabel||day.date)+'</span><span style="font-weight:600;color:var(--color-label-alternative);">'+e(day.count||0)+'건</span></div>'
+        +titles+'<div style="margin-top:10px;font-size:11.5px;font-weight:700;color:var(--color-primary-normal);">이 날짜 브리핑 보기 →</div></a>';
+    }).join('');
+    return '<section aria-label="지난 브리핑" style="margin-top:34px;padding:20px 0 2px;border-top:2px solid var(--color-label-strong);">'
+      +'<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:13px;"><div><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">지난 브리핑</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">날짜가 바뀌어도 이어서 읽을 수 있습니다</span></div><a href="/archive/" style="flex:none;font-size:12px;font-weight:700;color:var(--color-primary-normal);text-decoration:none;">전체 보기 →</a></div>'
+      +'<div class="vm-archive-shelf">'+cards+'</div></section>';
+  }
+
   // "진료실 밖 이야기" — 네이트판식 화제글 보드(신뢰 뉴스와 분리, 캐주얼)
   function storyBoard(){
     if(S.cat!=='all'||S.unreadOnly||S.query.trim()||DATA.weekly) return '';
@@ -1214,6 +1279,7 @@ const APP_JS = String.raw`
       h1+=qaColumn(compactArr);
       if(!includeIssueBriefs) h1+=briefsBoard();
       h1+=recentSection(includeIssueBriefs&&!!DATA.recentPromoted);
+      h1+=archiveShelf();
       h1+=storyBoard();
       return h1+'</div>';
     }
@@ -1280,6 +1346,7 @@ const APP_JS = String.raw`
     // 블록으로 다시 그리면 같은 기사가 중복되고 페이지가 불필요하게 길어진다.
     if(!includeIssueBriefs) h+=briefsBoard();
     h+=recentSection();
+    h+=archiveShelf();
     h+=storyBoard();
     return h+'</div>';
   }
@@ -1427,6 +1494,7 @@ const APP_JS = String.raw`
   }
 
   function render(){
+    syncBrowseUrl();
     var savedCount=Object.keys(S.saved).length, ideaCount=Object.keys(S.ideas).length;
     var moon='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(2.529 2.431)"><path d="M 7.161 0.281 C 7.416 0.551 7.48 0.949 7.321 1.284 C 6.827 2.331 6.55 3.502 6.55 4.739 C 6.55 9.213 10.176 12.839 14.65 12.839 C 15.732 12.839 16.762 12.628 17.703 12.245 C 18.046 12.105 18.441 12.19 18.696 12.459 C 18.951 12.729 19.015 13.127 18.856 13.463 C 17.272 16.816 13.858 19.139 9.9 19.139 C 4.432 19.139 0 14.706 0 9.239 C 0 5.09 2.552 1.539 6.168 0.066 C 6.512 -0.073 6.906 0.012 7.161 0.281 Z" fill-rule="evenodd"></path></g></svg>';
     var sun='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:block"><g transform="translate(1.1 1.1)"><path d="M 10 20.9 C 10 21.397 10.403 21.8 10.9 21.8 C 11.397 21.8 11.8 21.397 11.8 20.9 L 11.8 18.9 C 11.8 18.403 11.397 18 10.9 18 C 10.403 18 10 18.403 10 18.9 Z"></path><path d="M 10 2.9 C 10 3.397 10.403 3.8 10.9 3.8 C 11.397 3.8 11.8 3.397 11.8 2.9 L 11.8 0.9 C 11.8 0.403 11.397 0 10.9 0 C 10.403 0 10 0.403 10 0.9 Z"></path><path d="M 5.5 10.897 C 5.5 7.915 7.918 5.497 10.9 5.497 C 13.882 5.497 16.3 7.915 16.3 10.897 C 16.3 13.88 13.882 16.297 10.9 16.297 C 7.918 16.297 5.5 13.88 5.5 10.897 Z M 10.9 7.297 C 8.912 7.297 7.3 8.909 7.3 10.897 C 7.3 12.885 8.912 14.497 10.9 14.497 C 12.888 14.497 14.5 12.885 14.5 10.897 C 14.5 8.909 12.888 7.297 10.9 7.297 Z" fill-rule="evenodd"></path><path d="M 0 10.9 C 0 10.403 0.403 10 0.9 10 L 2.9 10 C 3.397 10 3.8 10.403 3.8 10.9 C 3.8 11.397 3.397 11.8 2.9 11.8 L 0.9 11.8 C 0.403 11.8 0 11.397 0 10.9 Z"></path><path d="M 18 10.9 C 18 10.403 18.403 10 18.9 10 L 20.9 10 C 21.397 10 21.8 10.403 21.8 10.9 C 21.8 11.397 21.397 11.8 20.9 11.8 L 18.9 11.8 C 18.403 11.8 18 11.397 18 10.9 Z"></path></g></svg>';
@@ -1462,6 +1530,7 @@ const APP_JS = String.raw`
     h+='<header class="vm-mast" style="text-align:center;padding:30px 0 22px;"><div style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--color-label-alternative);font-weight:700;">'+(DATA.weekly?'Weekly Digest · '+e(DATA.date):'Daily Edition · No. '+e(DATA.editionNo))+'</div><h1 style="font-family:var(--font-display);font-size:58px;font-weight:800;letter-spacing:-.032em;line-height:1.02;margin:12px 0 0;color:var(--color-label-strong);">VetManLab 해외 브리핑</h1>'
     +'<p style="margin:14px auto 0;font-size:13.5px;font-style:italic;color:var(--color-label-alternative);font-family:var(--font-display);">베트맨랩이 만드는, 한국 동물병원을 위한 해외 수의 임상·연구·업계 브리핑</p>'
     +'</header>';
+    h+=resumeBar();
     h+='<div class="vm-strip" style="border-top:2px solid var(--color-label-strong);border-bottom:1px solid var(--color-line-normal);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 0;"><div style="display:flex;align-items:baseline;gap:10px;min-width:0;"><span style="font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);white-space:nowrap;">'+stripLabel+'</span><span style="font-size:12.5px;color:var(--color-label-alternative);">'+stripMeta+'</span></div>'
     + (showSort ? '<div style="display:inline-flex;padding:3px;background:var(--color-material-base);border-radius:8px;gap:2px;flex:none;"><button data-act="rel" class="vm-seg" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='rel')+';color:'+segFg(S.sort==='rel')+';">관련성순</button><button data-act="latest" class="vm-seg" style="border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;padding:5px 11px;border-radius:6px;background:'+segBg(S.sort==='latest')+';color:'+segFg(S.sort==='latest')+';">최신순</button></div>' : '')
     +'</div>';
@@ -1648,6 +1717,15 @@ const APP_JS = String.raw`
       return found;
     });
   }
+  var prefetchTimers={};
+  function prefetchArticle(id){
+    var a=byId[id];
+    if(!a||!a._compact||a.readReady||prefetchTimers[id]) return;
+    prefetchTimers[id]=setTimeout(function(){
+      delete prefetchTimers[id];
+      hydrateArticle(id).catch(function(){});
+    },120);
+  }
   function hydrateCurrent(){
     if(!DATA._compact) return Promise.resolve(DATA);
     return fetchIssue(DATA.date).then(function(full){
@@ -1661,12 +1739,12 @@ const APP_JS = String.raw`
       var compact=byId[id], db;
       if(!S.openId) S.restoreFocusId=id;
       S.dialogFocusPending=true;
-      S.openId=id; S.blogOpen=true; S.searchFocus=false; markRead(id); track(compact); syncArticleHistory(compact,historyMode); render();
+      S.openId=id; S.blogOpen=true; S.searchFocus=false; S.last=Object.assign({},snap(compact),{lastOpenedAt:Date.now()}); persist('last',S.last); markRead(id); track(compact); syncArticleHistory(compact,historyMode); render();
       db=document.getElementById('vm-db'); if(db) db.scrollTop=0;
       hydrateArticle(id).then(function(){ if(S.openId===id) render(); }).catch(function(){ if(S.openId===id) toast('기사 본문을 불러오지 못했습니다'); });
       return;
     }
-    if(byId[id]){ if(!S.openId) S.restoreFocusId=id; S.openId=id; S.blogOpen=true; S.searchFocus=false; S.dialogFocusPending=true; markRead(id); track(byId[id]); syncArticleHistory(byId[id],historyMode); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
+    if(byId[id]){ if(!S.openId) S.restoreFocusId=id; S.openId=id; S.blogOpen=true; S.searchFocus=false; S.dialogFocusPending=true; S.last=Object.assign({},snap(byId[id]),{lastOpenedAt:Date.now()}); persist('last',S.last); markRead(id); track(byId[id]); syncArticleHistory(byId[id],historyMode); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
     else {
       var stored=S.saved[id]||S.ideas[id];
       if(stored&&stored.href){ location.href=stored.href; return; }
@@ -1711,6 +1789,7 @@ const APP_JS = String.raw`
       else if(act==='rel'){ S.sort='rel'; }
       else if(act==='latest'){ S.sort='latest'; }
       else if(act==='clearq'){ S.query=''; S.searchFocus=true; S.caret=0; render(); return; }
+      else if(act==='clear-resume'){ S.last=null; persist('last',null); }
       else if(act==='unread'){ S.unreadOnly=!S.unreadOnly; S.showAll=false; }
       else if(act==='more'){ if(DATA._compact){ hydrateCurrent().catch(function(){toast('전체 기사를 불러오지 못했습니다');}); } else { S.showAll=true; } }
       else if(act==='brief-more'){ S.briefAll=true; }
@@ -1741,7 +1820,15 @@ const APP_JS = String.raw`
       openArticle(el.getAttribute('data-open'));
     }
   });
-  document.addEventListener('focusin',function(ev){ if(ev.target.id==='vm-q') loadSearch(true); });
+  document.addEventListener('pointerover',function(ev){
+    var card=ev.target.closest&&ev.target.closest('[data-open]');
+    if(card) prefetchArticle(card.getAttribute('data-open'));
+  });
+  document.addEventListener('focusin',function(ev){
+    if(ev.target.id==='vm-q') loadSearch(true);
+    var card=ev.target.closest&&ev.target.closest('[data-open]');
+    if(card) prefetchArticle(card.getAttribute('data-open'));
+  });
   document.addEventListener('input',function(ev){ if(ev.target.id==='vm-q'){ S.query=ev.target.value; S.searchFocus=true; S.caret=ev.target.selectionStart; if(S.query.trim()){ S.view='home'; if(!SEARCH_INDEX&&!searchLoading) loadSearch(true); } render(); } });
   document.addEventListener('submit',function(ev){ if(ev.target.id==='vm-sub'){ ev.preventDefault(); var em=document.getElementById('vm-email'); if(em&&em.value) subscribe(em.value.trim()); } });
   document.addEventListener('keydown',function(ev){
@@ -1761,7 +1848,14 @@ const APP_JS = String.raw`
     if(state&&state.vmArticle&&state.articleId&&byId[state.articleId]){
       S.openId=state.articleId; S.blogOpen=true; S.searchFocus=false; markRead(state.articleId); render();
     }else if(S.openId){ S.openId=null; render(); }
+    else if(DATA.isHome&&location.pathname==='/'){
+      readBrowseRoute();
+      if(S.query.trim()&&!SEARCH_INDEX&&!searchLoading) loadSearch(true);
+      render();
+    }
   });
+  readBrowseRoute();
+  if(S.query.trim()) loadSearch(true);
   render();
 })();`;
 
@@ -1799,6 +1893,24 @@ function recentArticles(current, allIssues, limit = 6) {
     }
   }
   return [...preferred, ...fallback].slice(0, limit);
+}
+
+function recentIssueShelf(current, allIssues, limit = 4) {
+  const currentLabel = labelOf(current);
+  return allIssues
+    .filter((issue) => !issue.weekly && labelOf(issue) !== currentLabel)
+    .slice(0, limit)
+    .map((issue) => {
+      const data = buildIssueData(issue);
+      const previewSource = data.articles.length ? data.articles : [...data.briefs, ...data.stories];
+      return {
+        date: data.date,
+        dateLabel: data.dateLabel,
+        count: data.count,
+        href: `/issues/${labelOf(issue)}`,
+        titles: previewSource.slice(0, 2).map((article) => article.title),
+      };
+    });
 }
 
 function compactClientArticle(a, { lead = false } = {}) {
@@ -1868,6 +1980,7 @@ function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) 
   data.isHome = isIndex;
   if (isIndex) {
     data.recent = recentArticles(issue, allIssues, 6);
+    data.recentIssues = recentIssueShelf(issue, allIssues, 4);
     const currentCount = (data.articles || []).length + (data.briefs || []).length + (data.stories || []).length;
     // 오늘 지면이 짧은 날에는 최근 글을 1면에 보강해 어제와 같은 밀도를 유지한다.
     data.recentPromoted = currentCount < 16 && data.recent.length > 0;
@@ -1953,8 +2066,8 @@ const MANIFEST = JSON.stringify({
   ],
 });
 
-const SW_JS = `const C='vmcache-v7';
-const SHELL=['/','/latest.json','/archive.json','/icon.svg','/icon-192.png','/manifest.webmanifest'];
+const SW_JS = `const C='vmcache-v8';
+const SHELL=['/','/latest.json','/archive.json','/search-manifest.json','/icon.svg','/icon-192.png','/manifest.webmanifest'];
 const OFFLINE='<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>연결 없음</title><style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;background:#fff;color:#171719}@media(prefers-color-scheme:dark){body{background:#171719;color:#f7f7f8}}.b{max-width:420px;text-align:center}h1{font-size:24px;font-weight:800;margin:0 0 10px}p{margin:0 0 22px;font-size:15px;line-height:1.7;opacity:.7}a{display:inline-block;background:#0066ff;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px}</style></head><body><div class="b"><h1>연결이 끊겼습니다</h1><p>이 페이지는 아직 받아두지 않았습니다.<br>연결을 확인한 뒤 다시 시도해 주세요.</p><a href="/">오늘의 브리핑 보기</a></div></body></html>';
 self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(SHELL);}).then(function(){return self.skipWaiting();}));});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){if(k!==C)return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});

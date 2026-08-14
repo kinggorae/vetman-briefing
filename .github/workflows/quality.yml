@@ -14,6 +14,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -31,6 +33,10 @@ jobs:
           sudo apt-get install -y fonts-nanum
           fc-cache -f
       - run: npm run build
+      - name: Guard public article retention
+        run: npm run retention:guard
+        env:
+          RETENTION_BASE_REF: ${{ github.event.pull_request.base.sha || 'HEAD^' }}
       - run: npm run validate
       - run: npm run seo:audit
       - run: npm run review:stats
@@ -58,6 +64,7 @@ jobs:
           name: seo-browser-qa-${{ github.run_id }}
           path: |
             reports/seo-audit.json
+            reports/retention-guard.json
             reports/review-stats.json
             reports/review-queue.json
             reports/source-stats.json

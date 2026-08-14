@@ -21,6 +21,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -54,6 +56,11 @@ jobs:
           const report = JSON.parse(fs.readFileSync('reports/seo-audit.json', 'utf8'));
           if ((report.critical?.length ?? 0) > 0) throw new Error('SEO critical 오류가 있습니다.');
           NODE
+
+      - name: Guard public article retention
+        run: npm run retention:guard
+        env:
+          RETENTION_BASE_REF: HEAD^
 
       - name: Deploy to Cloudflare Pages
         env:
