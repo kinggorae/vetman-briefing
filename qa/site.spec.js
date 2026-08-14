@@ -80,6 +80,7 @@ test("homepage lead is complete and compact article opens before hydration", asy
   expect(payload.articles[1].body?.length).toBeGreaterThan(0);
   expect(payload.articles[1].readReady).toBe(true);
   const todayItems = [...(payload.articles || []), ...(payload.briefs || []), ...(payload.stories || [])];
+  if (payload.count >= 30) expect(todayItems.length).toBe(30);
   if (todayItems.some((item) => item.radar?.clinical)) {
     await expect(page.locator(".vm-qa-bridge")).toHaveCount(1);
     await expect(page.locator(".vm-qa-bridge")).toContainText("오늘의 핵심");
