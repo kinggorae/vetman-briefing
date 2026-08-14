@@ -1830,9 +1830,18 @@ function compactClientArticle(a, { lead = false } = {}) {
 }
 
 function compactClientData(data) {
-  const articles = (data.articles || []).slice(0, 24).map((a, i) => compactClientArticle(a, { lead: i === 0 }));
-  const briefs = (data.briefs || []).slice(0, 12).map(compactClientArticle);
-  const stories = (data.stories || []).slice(0, 8).map(compactClientArticle);
+  // 홈은 첫 HTML에 오늘 지면을 최소 30건까지 담아야 한다. 기존에는 유형별로
+  // 심층 24·브리프 12·화제 8건을 따로 자르면서, 오늘 30건 중 브리프가 많은 날의
+  // 15건이 초기 payload에서 빠졌다. 발행 수는 정상인데 홈에는 적게 보이는 현상이다.
+  // 세 유형을 하나의 지면으로 합산해 앞 30건을 보존하고, 각 배열의 순서는 유지한다.
+  const editionItems = [...(data.articles || []), ...(data.briefs || []), ...(data.stories || [])];
+  const editionIds = new Set(editionItems.slice(0, 30).map((a) => a.id));
+  const keepEdition = (items, options = {}) => (items || [])
+    .filter((a) => editionIds.has(a.id))
+    .map((a, i) => compactClientArticle(a, { ...options, lead: i === 0 && options.lead }));
+  const articles = keepEdition(data.articles, { lead: true });
+  const briefs = keepEdition(data.briefs);
+  const stories = keepEdition(data.stories);
   const recent = (data.recent || []).slice(0, 6).map(compactClientArticle);
   const initialCounts = {
     articles: (data.articles || []).length,
@@ -1840,7 +1849,10 @@ function compactClientData(data) {
     stories: (data.stories || []).length,
     recent: (data.recent || []).length,
   };
-  return { ...data, articles, briefs, stories, recent, initialCounts, hasMore: Object.values(initialCounts).some((count, i) => count > [24, 12, 8, 6][i]), _compact: true };
+  const editionCount = editionItems.length;
+  const initialEditionCount = articles.length + briefs.length + stories.length;
+  const hasMore = initialEditionCount < editionCount || recent.length < initialCounts.recent;
+  return { ...data, articles, briefs, stories, recent, initialCounts, hasMore, _compact: true };
 }
 
 function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) {
