@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-15T16:11:47.295Z",
+  "generatedAt": "2026-08-15T17:09:03.661Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 888,
-    "articles": 799,
+    "htmlPages": 899,
+    "articles": 810,
     "index": 190,
-    "noindex": 609,
+    "noindex": 620,
     "sitemap": 236,
     "newsSitemap": 3,
     "rssItems": 100,
@@ -17,7 +17,7 @@
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 296921,
+    "homepageBytes": 327356,
     "searchSizes": [
       {
         "file": "search.json",
@@ -40,7 +40,7 @@
         "bytes": 15800
       }
     ],
-    "articleBytes": 15823346,
+    "articleBytes": 16031263,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -51,11 +51,11 @@
   "indexPolicy": {
     "previousIndex": 318,
     "currentIndex": 190,
-    "currentNoindex": 609,
+    "currentNoindex": 620,
     "delta": -128,
     "reasonCounts": {
-      "build-policy": 164,
-      "brief-tier": 368,
+      "build-policy": 166,
+      "brief-tier": 377,
       "brief-too-short": 368,
       "source-relay": 39,
       "internal-ascii": 17,
@@ -2746,18 +2746,18 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 170,
-      "medium": 488,
+      "low": 171,
+      "medium": 498,
       "high": 141
     },
-    "explicitReviewFields": 342
+    "explicitReviewFields": 353
   },
   "workflow": {
-    "explicitItems": 342,
+    "explicitItems": 353,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 336
+      "published": 347
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
