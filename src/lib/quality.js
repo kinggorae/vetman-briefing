@@ -3,6 +3,7 @@
 import { clinicalReviewIssues } from "./editorial-review.js";
 import { workflowReviewIssues, isNewWorkflowItem } from "./editorial-operations.js";
 import { clinicalSafetyIssues, normalizePublicationStatus } from "./editorial-policy.js";
+import { BRIEF_MIN_CHARS } from "../../config.js";
 
 export const CONTENT_TIERS = new Set(["brief", "analysis", "evidence"]);
 export const CARD_BLOCKERS = new Set([
@@ -110,7 +111,7 @@ export function qualityIssues(item = {}) {
 
   if (tier === "brief") {
     if (title.length < 10) issues.push("brief-title-too-short");
-    if (lead.length < 90) issues.push("brief-too-short");
+    if (bodyCharCount(item) < BRIEF_MIN_CHARS || lead.length < BRIEF_MIN_CHARS) issues.push("brief-too-short");
     return [...new Set(issues)];
   }
 

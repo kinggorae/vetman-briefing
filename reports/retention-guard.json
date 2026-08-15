@@ -1,24 +1,25 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-15T00:44:05.919Z",
+  "generatedAt": "2026-08-15T16:20:00.317Z",
   "baseRef": "HEAD^",
   "allowRemovals": [],
   "status": "passed",
   "previous": {
-    "count": 187,
-    "declaredCount": 187
-  },
-  "current": {
     "count": 188,
     "declaredCount": 188
   },
+  "current": {
+    "count": 190,
+    "declaredCount": 190
+  },
   "added": [
-    "v1_e6c2efcc0b547532"
+    "v1_bbf6a3a590df85f7",
+    "v1_c815fd1432c802c1"
   ],
   "removed": [],
   "allowedRemoved": [],
   "unexpectedRemoved": [],
   "critical": [],
-  "previousCount": 187,
-  "currentCount": 188
+  "previousCount": 188,
+  "currentCount": 190
 }

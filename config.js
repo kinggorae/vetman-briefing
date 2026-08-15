@@ -486,22 +486,23 @@ export const SCORE_BATCH = 30;      // 스코어링 배치 크기 (한 번에 �
 export const MIN_RELEVANCE = 5;     // 심층 하한 (0~10). 국제 수집 확대에 맞춰 긴 기사 폭을 확보
 
 // ── source-first 일간 운영 목표 ──
-// 홈에 실제로 보이는 기사 수와 검색에 기여하는 심층 기사 수를 같은 상한으로
-// 묶지 않는다. 90건까지 지면을 채우되, 공급이 하루 흔들려도 30건 이상이면
-// 부분 발행해 결번을 만들지 않는다. 상위 60건은 심층 생성·품질 게이트를 거쳐
-// 색인 후보로 만들고 나머지는 짧은 public brief로 제공한다.
-export const DAILY_TARGET_ITEMS = 90;
+// 홈에 실제로 보이는 기사 수와 검색에 기여하는 심층 기사 수를 분리한다.
+// 하루 40건을 목표로 하되, 공급이 흔들려도 30건 이상이면 부분 발행한다.
+// 상위 15건은 심층 생성·품질 게이트를 거치고 나머지는 충분한 분량의
+// public brief로 제공한다. 기사 수를 억지로 늘려 얇은 콘텐츠를 만들지 않는다.
+export const DAILY_TARGET_ITEMS = 40;
 export const DAILY_MINIMUM_ITEMS = 30;
-export const DAILY_DEEP_TARGET_ITEMS = 60;
+export const DAILY_DEEP_TARGET_ITEMS = 15;
 export const DAILY_CANDIDATE_POOL = 260;
-export const DAILY_HOME_ITEMS = 90;
+export const DAILY_HOME_ITEMS = 40;
 export const DAILY_RSS_ITEMS = 100;
+export const BRIEF_MIN_CHARS = 250;
 
 // ── 계층화(볼륨) ──
-// 화면은 100건처럼 풍성하되, 색인은 심층(≥MIN_RELEVANCE)만. 브리프·가십은 noindex.
-// 무료 Actions 예산(월 2,000분≈하루 50분) 안에서 돌도록 브리프는 1콜 짧은 요약만 한다.
+// 화면은 40건으로 충분히 풍성하게 구성하되, 색인은 심층(≥MIN_RELEVANCE)만.
+// 브리프·가십은 noindex이며, 브리프도 최소 250자로 읽을 수 있는 정보를 담는다.
 export const BRIEF_MIN_RELEVANCE = 3; // 브리프 하한. 3~5점(심층 탈락분)을 짧은 소식으로 재활용
-export const BRIEFS_PER_ISSUE = 90;   // 전세계 단신은 브리프로도 폭넓게 제공(개별 색인 X)
+export const BRIEFS_PER_ISSUE = 90;   // 레거시 수집 경로의 상한(일간 source-first와 별도)
 export const TOP_COMMENTS = 8;      // 요약에 참고할 상위 댓글 수
 
 // 스펙 합의대로 sonnet-5 기본. CLAUDE_MODEL 환경변수로 교체 가능 (예: claude-opus-4-8)

@@ -1,5 +1,6 @@
 import { jsonCall } from "./llm.js";
 import { koreanizeItem } from "./koreanize.js";
+import { BRIEF_MIN_CHARS } from "../config.js";
 
 // select.js의 舊 스코어링 단계(scoreBatch)가 쓰던 것과 같은 분류 체계.
 // research/watercooler는 여기 넣지 않는다 — 논문·화제글은 콘텐츠 "타입"으로
@@ -195,9 +196,9 @@ export async function generateBrief(post, attempt = 1) {
     temperature: 0.1,
     system: [
       "당신은 한국 동물병원 수의사를 위한 '해외 브리핑'의 에디터입니다.",
-      "해외 수의 소식 하나를 '간추린 소식'용으로 아주 짧게 정리합니다.",
+      "해외 수의 소식 하나를 '간추린 소식'용으로 핵심을 읽을 수 있게 정리합니다.",
       "- titleKo: 핵심을 담은 재작성 제목(직역 금지, 낚시 금지, 45자 이내).",
-      "- summaryKo: 반드시 2문장, 100~160자로 무슨 일이고 왜 알 만한지 설명합니다. 한 문장짜리 메모나 제목 반복은 금지합니다. 모든 문장 '~습니다/~입니다'체.",
+      `- summaryKo: 3~5문장, ${BRIEF_MIN_CHARS}~450자로 무슨 일이고 왜 중요한지 설명합니다. 핵심 사실·맥락·독자에게 중요한 점을 포함합니다. 한 문장짜리 메모나 제목 반복은 금지합니다. 모든 문장 '~습니다/~입니다'체.`,
       "- 제목과 요약 모두 순수 한국어만. 중국어(한자)·일본어·러시아어 금지. 영어는 인명·기관명·약어만.",
       "- 약물 용량·구체적 처치법은 옮기지 않습니다.",
     ].join("\n"),
@@ -207,7 +208,7 @@ export async function generateBrief(post, attempt = 1) {
     // 깎인다. 200으로 실험했을 때 128/157이 thinking만 채우고 답을 못 내
     // "JSON을 찾지 못했습니다"로 실패했다(scripts/backfill-category.js 실측).
     // 1200으로 올려 짧은 브리프의 JSON 응답을 안정적으로 받는다.
-    maxTokens: 1200,
+    maxTokens: 1600,
   });
 
   if (!String(item?.titleKo || "").trim() || !String(item?.summaryKo || "").trim()) {
@@ -223,10 +224,11 @@ export async function generateBrief(post, attempt = 1) {
   }
   const titleKo = String(item.titleKo || "").trim();
   const summaryKo = String(item.summaryKo || "").replace(/\s+/g, " ").trim();
-  if ((!/[가-힣]/.test(titleKo) || !/[가-힣]/.test(summaryKo) || summaryKo.length < 90) && attempt < 3) {
+  const briefLength = summaryKo.replace(/\s/g, "").length;
+  if ((!/[가-힣]/.test(titleKo) || !/[가-힣]/.test(summaryKo) || briefLength < BRIEF_MIN_CHARS) && attempt < 3) {
     return generateBrief(post, attempt + 1);
   }
-  if (!/[가-힣]/.test(titleKo) || !/[가-힣]/.test(summaryKo) || summaryKo.length < 90) {
+  if (!/[가-힣]/.test(titleKo) || !/[가-힣]/.test(summaryKo) || briefLength < BRIEF_MIN_CHARS) {
     throw new Error("브리프 한국어·분량 기준 미달");
   }
   return {
