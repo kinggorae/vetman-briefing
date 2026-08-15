@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-15T17:09:01.632Z",
+  "generatedAt": "2026-08-15T17:13:21.493Z",
   "noindex": true,
-  "count": 887,
-  "open": 887,
+  "count": 906,
+  "open": 906,
   "next": [
     {
       "status": "open",
@@ -5735,6 +5735,32 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_6132365c3c714245",
+        "npm run review:request-vet -- v1_6132365c3c714245"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_6132365c3c714245",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_6132365c3c714245",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_6132365c3c714245",
+      "title": "「Nature Communications」논문 Figure 레이블 오류 수정 공지",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_4642cc441caecc02",
         "npm run review:request-vet -- v1_4642cc441caecc02"
       ],
@@ -6008,6 +6034,32 @@
       "title": "가축 기니피그의 인수공통질환 위험 – 안데스 지역 One Health 검토",
       "risk": "medium",
       "date": "2026-08-04",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_0df5a0fcadc65b33",
+        "npm run review:request-vet -- v1_0df5a0fcadc65b33"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_0df5a0fcadc65b33",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_0df5a0fcadc65b33",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_0df5a0fcadc65b33",
+      "title": "가축 산업 항생제 내성 대응 전략",
+      "risk": "medium",
+      "date": "2026-08-16",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
@@ -7568,6 +7620,32 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_55e735e27959121e",
+        "npm run review:request-vet -- v1_55e735e27959121e"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_55e735e27959121e",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_55e735e27959121e",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_55e735e27959121e",
+      "title": "거북 등껍질 비대칭 연구, 3D 기하형태측정학으로 좌우 형태 편향 분석",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_826de09db61d39b3",
         "npm run review:request-vet -- v1_826de09db61d39b3"
       ],
@@ -8102,6 +8180,32 @@
       "date": "2026-08-16",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요 · numeric-keypoints-body-mismatch"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_5137a157c4e79d5c",
+        "npm run review:request-vet -- v1_5137a157c4e79d5c"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_5137a157c4e79d5c",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_5137a157c4e79d5c",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_5137a157c4e79d5c",
+      "title": "고양이 올가미에 취하는 진짜 이유, 진화적 방어 전략이었다",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
     {
       "status": "open",
@@ -8659,6 +8763,58 @@
       "title": "닥스훈트 유전병 연구가 아이들을 구하다",
       "risk": "medium",
       "date": "2026-08-02",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_edaddcbd547f770f",
+        "npm run review:request-vet -- v1_edaddcbd547f770f"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_edaddcbd547f770f",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_edaddcbd547f770f",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_edaddcbd547f770f",
+      "title": "단호박 탄닌이 송아지 성장과 분변 환경 배출에 미치는 영향",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_2290fb9175a039db",
+        "npm run review:request-vet -- v1_2290fb9175a039db"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_2290fb9175a039db",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_2290fb9175a039db",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_2290fb9175a039db",
+      "title": "닭 운반용 종이 샘플링으로 살모넬라 원인 부화장 조기 파악 가능",
+      "risk": "medium",
+      "date": "2026-08-16",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
@@ -9898,6 +10054,32 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_43f85d1041692466",
+        "npm run review:request-vet -- v1_43f85d1041692466"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_43f85d1041692466",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_43f85d1041692466",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_43f85d1041692466",
+      "title": "비바이러스 다중 공학으로 폴리클로날 γδ CAR-T 세포 대량 제조 성공",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_f4e1789482af70a7",
         "npm run review:request-vet -- v1_f4e1789482af70a7"
       ],
@@ -9916,6 +10098,32 @@
       "title": "비의학 경영 리더에게 임상 경험이 필수적인가",
       "risk": "medium",
       "date": "2026-07-31",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_edce2449500f228e",
+        "npm run review:request-vet -- v1_edce2449500f228e"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_edce2449500f228e",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_edce2449500f228e",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_edce2449500f228e",
+      "title": "비장 내 조절T세포의 Areg-EGFR 신호로 이식편 내성 유발 연구",
+      "risk": "medium",
+      "date": "2026-08-16",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
@@ -11377,6 +11585,32 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_1a99aef877358d88",
+        "npm run review:request-vet -- v1_1a99aef877358d88"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_1a99aef877358d88",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_1a99aef877358d88",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_1a99aef877358d88",
+      "title": "여러 질환 겪던 고양이, 입원 중 우연히 발견된 심장질환",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_573643f8a808d4e0",
         "npm run review:request-vet -- v1_573643f8a808d4e0"
       ],
@@ -11753,6 +11987,32 @@
       "title": "이집트 개 토소카라증 유병률 25.9% — 409마리 혈청조사",
       "risk": "medium",
       "date": "2026-07-31",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_9794b22fed3be46e",
+        "npm run review:request-vet -- v1_9794b22fed3be46e"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_9794b22fed3be46e",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_9794b22fed3be46e",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_9794b22fed3be46e",
+      "title": "일리노이 수의대, 65년 된 인수공통연구센터 재활성화",
+      "risk": "medium",
+      "date": "2026-08-16",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
@@ -12143,6 +12403,32 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_3c58455b5d4a9288",
+        "npm run review:request-vet -- v1_3c58455b5d4a9288"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_3c58455b5d4a9288",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_3c58455b5d4a9288",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_3c58455b5d4a9288",
+      "title": "캄보디아 돼지농장의 아프리카돼지열병 지식·태도·실천 조사",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_72f01907b2095a5c",
         "npm run review:request-vet -- v1_72f01907b2095a5c"
       ],
@@ -12342,6 +12628,32 @@
       "date": "2026-07-28",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · numeric-lead-body-mismatch · numeric-keypoints-body-mismatch"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_40b79346349d00df",
+        "npm run review:request-vet -- v1_40b79346349d00df"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_40b79346349d00df",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_40b79346349d00df",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_40b79346349d00df",
+      "title": "태평양 북서부 한탄바이러스, 설치류 30% 감염 확인",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
     {
       "status": "open",
@@ -12918,6 +13230,32 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_f247ef14b9be3a91",
+        "npm run review:request-vet -- v1_f247ef14b9be3a91"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_f247ef14b9be3a91",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_f247ef14b9be3a91",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_f247ef14b9be3a91",
+      "title": "AI 추천 독점화 우려…대기업 산하 동물병원만 즐겨",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_60890dc7c2ff9d41",
         "npm run review:request-vet -- v1_60890dc7c2ff9d41"
       ],
@@ -12966,6 +13304,32 @@
       "date": "2026-08-08",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요 · numeric-lead-body-mismatch · numeric-keypoints-body-mismatch"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_c977932a2bc91056",
+        "npm run review:request-vet -- v1_c977932a2bc91056"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_c977932a2bc91056",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_c977932a2bc91056",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_c977932a2bc91056",
+      "title": "DNA 추출 키트, 프리온 제거 불가 확인... 실험실 Biosafety 경고",
+      "risk": "medium",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
     {
       "status": "open",
@@ -14566,6 +14930,29 @@
       "indexable": false,
       "requiredRole": "editor",
       "commands": [
+        "npm run review:show -- v1_d985bcab75cdecc2"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "editor-review-missing"
+      ],
+      "id": "editorial:v1_d985bcab75cdecc2",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 85,
+      "articleId": "v1_d985bcab75cdecc2",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_d985bcab75cdecc2",
+      "title": "비만 미니 당나귀 개용휠체어와 재활 프로그램으로 정상 걸음 되찾아",
+      "risk": "low",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "editor",
+      "commands": [
         "npm run review:show -- v1_8977cdecc20db74b"
       ],
       "evidence": [
@@ -14650,6 +15037,29 @@
       "title": "수의대 학생 위한 새 팟캐스트, 대출·스트레스 솔직 대화",
       "risk": "low",
       "date": "2026-08-13",
+      "blocker": "review-required",
+      "reason": "본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "editor",
+      "commands": [
+        "npm run review:show -- v1_af7244e641858f2f"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "editor-review-missing"
+      ],
+      "id": "editorial:v1_af7244e641858f2f",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 85,
+      "articleId": "v1_af7244e641858f2f",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_af7244e641858f2f",
+      "title": "수의대협회, DEI 위원회 명칭 변경 criti",
+      "risk": "low",
+      "date": "2026-08-16",
       "blocker": "review-required",
       "reason": "본문 해시 변경 후 재검수 필요"
     },
@@ -14820,6 +15230,52 @@
       "indexable": false,
       "requiredRole": "editor",
       "commands": [
+        "npm run review:show -- v1_96fba825c8b49008"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "editor-review-missing"
+      ],
+      "id": "editorial:v1_96fba825c8b49008",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 85,
+      "articleId": "v1_96fba825c8b49008",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_96fba825c8b49008",
+      "title": "일리노이 교사 위한 수의학 석사 장학금 출시",
+      "risk": "low",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "editor",
+      "commands": [
+        "npm run review:show -- v1_63a5fc5a289bf961"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "editor-review-missing"
+      ],
+      "id": "editorial:v1_63a5fc5a289bf961",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 85,
+      "articleId": "v1_63a5fc5a289bf961",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_63a5fc5a289bf961",
+      "title": "일리노이 대학교 수의과, 1000만 달러 유언증여로 역사적 둥근 헛간 복원",
+      "risk": "low",
+      "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "editor",
+      "commands": [
         "npm run review:show -- v1_f2dedd685ca1545c"
       ],
       "evidence": [
@@ -14835,6 +15291,29 @@
       "title": "자가 조제한 사료 급이 개에서 발생한 요오드 결핍성 갑상선기능저하증",
       "risk": "low",
       "date": "2026-08-14",
+      "blocker": "review-required",
+      "reason": "본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "editor",
+      "commands": [
+        "npm run review:show -- v1_d3998759a6292a93"
+      ],
+      "evidence": [
+        "brief-too-short",
+        "editor-review-missing"
+      ],
+      "id": "editorial:v1_d3998759a6292a93",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 85,
+      "articleId": "v1_d3998759a6292a93",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_d3998759a6292a93",
+      "title": "지하서 발견된 오이디오락톤, 크립토스포리듐 치료제 가능성",
+      "risk": "low",
+      "date": "2026-08-16",
       "blocker": "review-required",
       "reason": "본문 해시 변경 후 재검수 필요"
     },
@@ -21581,15 +22060,15 @@
     "byType": {
       "correction": 1,
       "draft-review": 50,
-      "editorial-review": 540,
+      "editorial-review": 559,
       "feed-health": 22,
       "image-rights": 87,
       "source-review": 187
     },
     "byPriority": {
       "critical": 1,
-      "high": 554,
-      "normal": 332
+      "high": 568,
+      "normal": 337
     }
   },
   "note": "인증 관리자 전용 작업 큐. 작업 카드는 승인·발행을 자동 실행하지 않으며 기존 검수 CLI의 다음 명령만 안내합니다."
