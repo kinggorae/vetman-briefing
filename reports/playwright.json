@@ -2,11 +2,11 @@
   "config": {
     "argv": [
       "/Users/shinhyunkyu/.nvm/versions/node/v24.18.0/bin/node",
-      "/Users/shinhyunkyu/claude project/talktalk/node_modules/.bin/playwright",
+      "/private/tmp/vetman-briefing-bulk-release/node_modules/.bin/playwright",
       "test"
     ],
-    "configFile": "/Users/shinhyunkyu/claude project/talktalk/playwright.config.js",
-    "rootDir": "/Users/shinhyunkyu/claude project/talktalk/qa",
+    "configFile": "/private/tmp/vetman-briefing-bulk-release/playwright.config.js",
+    "rootDir": "/private/tmp/vetman-briefing-bulk-release/qa",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -22,7 +22,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/Users/shinhyunkyu/claude project/talktalk/test-results",
+        "outputDir": "/private/tmp/vetman-briefing-bulk-release/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -30,7 +30,7 @@
         },
         "id": "mobile",
         "name": "mobile",
-        "testDir": "/Users/shinhyunkyu/claude project/talktalk/qa",
+        "testDir": "/private/tmp/vetman-briefing-bulk-release/qa",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -38,7 +38,7 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/shinhyunkyu/claude project/talktalk/test-results",
+        "outputDir": "/private/tmp/vetman-briefing-bulk-release/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -46,7 +46,7 @@
         },
         "id": "tablet",
         "name": "tablet",
-        "testDir": "/Users/shinhyunkyu/claude project/talktalk/qa",
+        "testDir": "/private/tmp/vetman-briefing-bulk-release/qa",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -54,7 +54,7 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/shinhyunkyu/claude project/talktalk/test-results",
+        "outputDir": "/private/tmp/vetman-briefing-bulk-release/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -62,7 +62,7 @@
         },
         "id": "desktop",
         "name": "desktop",
-        "testDir": "/Users/shinhyunkyu/claude project/talktalk/qa",
+        "testDir": "/private/tmp/vetman-briefing-bulk-release/qa",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -123,12 +123,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6055,
+                  "duration": 7054,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:25.382Z",
+                  "startTime": "2026-08-15T18:49:42.705Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -157,12 +157,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2114,
+                  "duration": 2068,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:32.128Z",
+                  "startTime": "2026-08-15T18:49:50.409Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -191,12 +191,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 368,
+                  "duration": 559,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:34.245Z",
+                  "startTime": "2026-08-15T18:49:52.490Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -225,12 +225,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1877,
+                  "duration": 2299,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:34.618Z",
+                  "startTime": "2026-08-15T18:49:53.056Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -241,6 +241,142 @@
           "id": "8ac7a53c57781e60bbd6-a9d168e7d8881d9fcdb7",
           "file": "site.spec.js",
           "line": 60,
+          "column": 1
+        },
+        {
+          "title": "homepage lead is complete and compact article opens before hydration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1116,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:49:55.362Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-7d800e143bb19258be0c",
+          "file": "site.spec.js",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "article detail has a shareable URL and browser history closes the panel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2074,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:49:56.484Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-55294a57e049e3958391",
+          "file": "site.spec.js",
+          "line": 122,
+          "column": 1
+        },
+        {
+          "title": "article dialog traps focus and restores the trigger after closing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1642,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:49:58.576Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-d120c6e9a30b8dffdb7d",
+          "file": "site.spec.js",
+          "line": 140,
+          "column": 1
+        },
+        {
+          "title": "search can be cleared and mobile navigation keeps personal views reachable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile",
+              "projectName": "mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 859,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:50:00.232Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-0e6b3029b9542946d44d",
+          "file": "site.spec.js",
+          "line": 159,
           "column": 1
         },
         {
@@ -259,12 +395,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 6240,
+                  "duration": 7095,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:25.381Z",
+                  "startTime": "2026-08-15T18:49:42.702Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -293,12 +429,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 2198,
+                  "duration": 2192,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:32.314Z",
+                  "startTime": "2026-08-15T18:49:50.451Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -327,12 +463,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 307,
+                  "duration": 487,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:34.517Z",
+                  "startTime": "2026-08-15T18:49:52.651Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -361,12 +497,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 1821,
+                  "duration": 2266,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:34.828Z",
+                  "startTime": "2026-08-15T18:49:53.145Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -377,6 +513,142 @@
           "id": "8ac7a53c57781e60bbd6-323e2dc9eaf1642ec44c",
           "file": "site.spec.js",
           "line": 60,
+          "column": 1
+        },
+        {
+          "title": "homepage lead is complete and compact article opens before hydration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet",
+              "projectName": "tablet",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1115,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:49:55.419Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-252265221b856f91e6b4",
+          "file": "site.spec.js",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "article detail has a shareable URL and browser history closes the panel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet",
+              "projectName": "tablet",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1662,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:49:56.541Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-1e89a45917bea0891ea4",
+          "file": "site.spec.js",
+          "line": 122,
+          "column": 1
+        },
+        {
+          "title": "article dialog traps focus and restores the trigger after closing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet",
+              "projectName": "tablet",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1825,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:49:58.217Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-fc7f053a02fbdbfab022",
+          "file": "site.spec.js",
+          "line": 140,
+          "column": 1
+        },
+        {
+          "title": "search can be cleared and mobile navigation keeps personal views reachable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet",
+              "projectName": "tablet",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 855,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:50:00.058Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-7c3b120a54fdc170409c",
+          "file": "site.spec.js",
+          "line": 159,
           "column": 1
         },
         {
@@ -395,12 +667,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 6165,
+                  "duration": 7112,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:25.381Z",
+                  "startTime": "2026-08-15T18:49:42.717Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -429,12 +701,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 2087,
+                  "duration": 2327,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:32.239Z",
+                  "startTime": "2026-08-15T18:49:50.472Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -463,12 +735,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 329,
+                  "duration": 463,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:34.330Z",
+                  "startTime": "2026-08-15T18:49:52.807Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -497,12 +769,12 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 1899,
+                  "duration": 2175,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-30T04:44:34.665Z",
+                  "startTime": "2026-08-15T18:49:53.279Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -514,15 +786,151 @@
           "file": "site.spec.js",
           "line": 60,
           "column": 1
+        },
+        {
+          "title": "homepage lead is complete and compact article opens before hydration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1235,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:49:55.461Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-783cb49f2312be09a7b3",
+          "file": "site.spec.js",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "article detail has a shareable URL and browser history closes the panel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1723,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:49:56.704Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-24de1e226f365997e3b1",
+          "file": "site.spec.js",
+          "line": 122,
+          "column": 1
+        },
+        {
+          "title": "article dialog traps focus and restores the trigger after closing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 1706,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:49:58.444Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-b54d2e687b98ace16001",
+          "file": "site.spec.js",
+          "line": 140,
+          "column": 1
+        },
+        {
+          "title": "search can be cleared and mobile navigation keeps personal views reachable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 874,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-15T18:50:00.162Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ac7a53c57781e60bbd6-ec035929ddf2dd817c0a",
+          "file": "site.spec.js",
+          "line": 159,
+          "column": 1
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-30T04:44:24.261Z",
-    "duration": 12454.822,
-    "expected": 12,
+    "startTime": "2026-08-15T18:49:40.498Z",
+    "duration": 20706.836,
+    "expected": 24,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

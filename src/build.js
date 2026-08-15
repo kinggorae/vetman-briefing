@@ -566,13 +566,15 @@ function renderStaticShell(data) {
   // #vm의 초기 내용으로 직접 렌더하고 클라이언트 앱이 준비되면 같은 자리를 교체한다.
   // 심층 기사만 세면 간추린 소식이 많은 날에도 원본 HTML이 "2건"처럼
   // 보인다. JS를 실행하지 않는 크롤러에도 공개된 전체 지면을 보여준다.
-  const articles = [
+  const allArticles = [
     ...(data.articles || []),
     ...(data.briefs || []),
     ...(data.stories || []),
     ...(data.recentPromoted ? (data.recent || []) : []),
-  // JS가 실행되지 않는 검색 크롤러에도 오늘 목표 건수를 전달한다.
-  ].slice(0, DAILY_HOME_ITEMS);
+  ];
+  // 홈은 오늘 피드 전체를 보여주고, 날짜별·주간 정적 페이지는 기존의
+  // 대표 기사 묶음만 유지해 각 보조 페이지의 첫 응답 크기를 불필요하게 키우지 않는다.
+  const articles = data.isHome ? allArticles : allArticles.slice(0, DAILY_HOME_ITEMS);
   const lead = articles[0];
   const cards = articles.slice(1);
   const topics = (data.cats || [])
@@ -1953,7 +1955,11 @@ function compactClientData(data) {
   // 일부 기사가 초기 payload에서 빠졌다. 발행 수는 정상인데 홈에는 적게 보이는 현상이다.
   // 세 유형을 하나의 지면으로 합산해 목표 건수를 보존하고, 각 배열의 순서는 유지한다.
   const editionItems = [...(data.articles || []), ...(data.briefs || []), ...(data.stories || [])];
-  const editionIds = new Set(editionItems.slice(0, DAILY_HOME_ITEMS).map((a) => a.id));
+  // 홈의 첫 HTML은 오늘 피드 전체를 보존한다. DAILY_HOME_ITEMS는 발행 목표와
+  // 검색·색인 정책의 기준이지, 사용자가 볼 수 있는 홈 기사 수의 상한이 아니다.
+  // 이 값을 그대로 적용하면 40건을 넘긴 날에도 payload.count와 실제 카드 수가
+  // 어긋나고, 나머지 기사가 사라진 것처럼 보인다.
+  const editionIds = new Set(editionItems.map((a) => a.id));
   const keepEdition = (items, options = {}) => (items || [])
     .filter((a) => editionIds.has(a.id))
     .map((a, i) => compactClientArticle(a, { ...options, lead: i === 0 && options.lead }));

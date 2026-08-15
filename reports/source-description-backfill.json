@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-08-15T18:16:19.886Z",
+  "apply": true,
+  "date": "2026-08-16",
+  "candidateCount": 1,
+  "updated": 1,
+  "failed": 0,
+  "ids": [
+    "v1_48562b1cbaec3a54"
+  ],
+  "failures": [],
+  "skipped": [
+    {
+      "id": "v1_c5db9b3bdb23ed79",
+      "reason": "bibliographic-only-source-description"
+    },
+    {
+      "id": "v1_e867899541ca6382",
+      "reason": "bibliographic-only-source-description"
+    },
+    {
+      "id": "v1_bba0b860d9a868d6",
+      "reason": "bibliographic-only-source-description"
+    },
+    {
+      "id": "v1_14447440ff50ce4f",
+      "reason": "bibliographic-only-source-description"
+    },
+    {
+      "id": "v1_44a6634ea2d165f6",
+      "reason": "bibliographic-only-source-description"
+    },
+    {
+      "id": "v1_7edc0bbf51b0ac1e",
+      "reason": "bibliographic-only-source-description"
+    },
+    {
+      "id": "v1_793dc36f6e7ba152",
+      "reason": "bibliographic-only-source-description"
+    }
+  ],
+  "preview": []
+}

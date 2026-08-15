@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-15T17:13:22.816Z",
+  "generatedAt": "2026-08-15T18:46:35.967Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 918,
-    "articles": 829,
+    "htmlPages": 990,
+    "articles": 901,
     "index": 190,
-    "noindex": 639,
+    "noindex": 711,
     "sitemap": 236,
     "newsSitemap": 3,
     "rssItems": 100,
@@ -17,7 +17,7 @@
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 327356,
+    "homepageBytes": 585126,
     "searchSizes": [
       {
         "file": "search.json",
@@ -40,7 +40,7 @@
         "bytes": 15800
       }
     ],
-    "articleBytes": 16383668,
+    "articleBytes": 17761733,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -51,11 +51,11 @@
   "indexPolicy": {
     "previousIndex": 318,
     "currentIndex": 190,
-    "currentNoindex": 639,
+    "currentNoindex": 711,
     "delta": -128,
     "reasonCounts": {
-      "build-policy": 166,
-      "brief-tier": 396,
+      "build-policy": 170,
+      "brief-tier": 464,
       "brief-too-short": 368,
       "source-relay": 39,
       "internal-ascii": 17,
@@ -2746,25 +2746,25 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 176,
-      "medium": 512,
+      "low": 209,
+      "medium": 551,
       "high": 141
     },
-    "explicitReviewFields": 372
+    "explicitReviewFields": 444
   },
   "workflow": {
-    "explicitItems": 372,
+    "explicitItems": 444,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 366
+      "published": 438
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 177,
-    "numericWarnings": 120,
+    "articlesWithExplicitMetadata": 180,
+    "numericWarnings": 121,
     "samples": [
       {
         "id": "v1_7ac96221bc8cdf44",
@@ -2809,6 +2809,12 @@
         "id": "v1_577299a62781e4bc",
         "issues": [
           "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_3e2c2621fedc8abd",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
         ]
       },
       {
@@ -3394,12 +3400,6 @@
       },
       {
         "id": "2026-07-21_6",
-        "issues": [
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-21_23",
         "issues": [
           "numeric-keypoints-body-mismatch"
         ]
