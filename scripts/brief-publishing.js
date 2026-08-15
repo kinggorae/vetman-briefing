@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { DAILY_TARGET_ITEMS as CONFIG_DAILY_TARGET_ITEMS } from "../config.js";
+import { DAILY_MINIMUM_ITEMS as CONFIG_DAILY_MINIMUM_ITEMS, DAILY_TARGET_ITEMS as CONFIG_DAILY_TARGET_ITEMS } from "../config.js";
 import { atomicWrite, isOfficialUrl, loadRegistry, readJson, safeSourceUrl } from "../src/lib/source-first.js";
 import { clinicalSafetyIssues, organizationAuthor } from "../src/lib/editorial-policy.js";
 import { imageCanRender, normalizeImageOwnership } from "../src/lib/image-rights.js";
@@ -17,9 +17,10 @@ const ISSUE_DIR = path.join(ROOT, "data", "issues");
 const DRAFT_DIR = path.join(ROOT, "data", "drafts");
 const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 const RELEASE_REPORT = path.join(ROOT, "reports", "brief-release.json");
-// 무료 뉴스룸의 일간 볼륨 목표. 후보가 목표보다 적으면 부분 발행하지 않고
-// 워크플로를 실패시켜 다음 실행에서 재시도하게 한다.
+// 무료 뉴스룸의 일간 볼륨 목표. target까지 최대한 채우되, minimum을 확보하면
+// 가용 후보를 부분 발행해 수집 변동으로 하루 전체가 결번이 되지 않게 한다.
 export const DAILY_TARGET_ITEMS = CONFIG_DAILY_TARGET_ITEMS;
+export const DAILY_MINIMUM_ITEMS = CONFIG_DAILY_MINIMUM_ITEMS;
 const CANDIDATE_IDS = ["v1_88e7bde7826c5eaf", "v1_8977cdecc20db74b", "v1_66712dc60cebbebc", "v1_ecdd9715ae5b33aa", "v1_5f01b0b4f48babba"];
 
 function parse() {
@@ -99,8 +100,12 @@ function releaseTarget(flags = {}) {
   const requested = Number(flags.target || flags["daily-target"] || DAILY_TARGET_ITEMS);
   return Number.isFinite(requested) && requested > 0 ? Math.floor(requested) : DAILY_TARGET_ITEMS;
 }
-function canReleaseDaily(existingCount, candidateCount, target = DAILY_TARGET_ITEMS) {
-  return Number(existingCount || 0) + Number(candidateCount || 0) >= target;
+function releaseMinimum(flags = {}) {
+  const requested = Number(flags.minimum || flags["daily-minimum"] || DAILY_MINIMUM_ITEMS);
+  return Number.isFinite(requested) && requested > 0 ? Math.floor(requested) : DAILY_MINIMUM_ITEMS;
+}
+function canReleaseDaily(existingCount, candidateCount, minimum = DAILY_MINIMUM_ITEMS) {
+  return Number(existingCount || 0) + Number(candidateCount || 0) >= minimum;
 }
 // 목표 미달이면 이번 실행에서 ready였지만 발행하지 못한 후보만 seen 큐로
 // 되돌린다. 언어·임상·출처 차단 후보는 다시 넣지 않아 매일 같은 후보가
@@ -227,6 +232,7 @@ function release(id, flags, preRow = null) {
 function releaseReady(flags) {
   const date = flags.date || new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(new Date());
   const dailyTarget = releaseTarget(flags);
+  const dailyMinimum = Math.min(dailyTarget, releaseMinimum(flags));
   // 기본은 그날 수집분만 본다. 전체 draft를 훑으면 며칠 지난 초안이 오늘 날짜로
   // 발행된다. 과거분 소급 발행이 필요할 때만 --all-drafts로 명시한다.
   const files = flags["all-drafts"] ? draftFiles() : draftFiles().filter((file) => path.basename(file).includes(date));
@@ -245,7 +251,7 @@ function releaseReady(flags) {
     }
   }
   const seen = new Set();
-  const summary = { date, total: rows.length, existing: currentItems.length, target: dailyTarget, eligible: 0, indexEligible: 0, released: 0, retryQueued: 0, seenRestored: 0, minimum: dailyTarget, skipped: {}, ids: [] };
+  const summary = { date, total: rows.length, existing: currentItems.length, target: dailyTarget, eligible: 0, indexEligible: 0, released: 0, retryQueued: 0, seenRestored: 0, minimum: dailyMinimum, shortfall: Math.max(0, dailyTarget - currentItems.length), skipped: {}, ids: [] };
   const bump = (reason) => { summary.skipped[reason] = (summary.skipped[reason] || 0) + 1; };
   const candidates = [];
   for (const row of rows) {
@@ -273,13 +279,13 @@ function releaseReady(flags) {
   const needed = Math.max(0, dailyTarget - currentItems.length);
   const releaseCandidates = candidates.slice(0, needed);
   if (candidates.length > releaseCandidates.length) summary.skipped["daily-target-cap"] = candidates.length - releaseCandidates.length;
-  // 하루 이슈는 목표 건수가 모일 때만 새 날짜 파일을 만든다. 부분 발행은
-  // 다음 재실행에서 새 후보를 더 모아 정확히 일일 목표를 채우도록 남겨 둔다.
-  if (flags.apply && currentItems.length < dailyTarget && !canReleaseDaily(currentItems.length, candidates.length, dailyTarget)) {
-    summary.skipped["daily-target-not-reached"] = candidates.length;
+  // 최소 건수가 모일 때만 새 날짜 파일을 만든다. 최소 이상이면 target까지
+  // 가용 후보를 먼저 발행하고, 다음 실행에서 부족분을 다시 채울 수 있게 한다.
+  if (flags.apply && currentItems.length < dailyTarget && !canReleaseDaily(currentItems.length, candidates.length, dailyMinimum)) {
+    summary.skipped["daily-minimum-not-reached"] = candidates.length;
     summary.retryQueued = candidates.length;
     summary.seenRestored = requeueUnreleasedCandidates(candidates);
-    summary.note = `일일 목표 ${dailyTarget}건 미달이라 오늘 이슈 파일을 변경하지 않았습니다.`;
+    summary.note = `일일 최소 ${dailyMinimum}건 미달이라 오늘 이슈 파일을 변경하지 않았습니다.`;
     atomicWrite(RELEASE_REPORT, JSON.stringify({ ...summary, dryRun: false }, null, 2) + "\n");
     console.log(JSON.stringify({ ...summary, dryRun: false }, null, 2));
     return;
@@ -290,6 +296,8 @@ function releaseReady(flags) {
     summary.released += 1;
     summary.ids.push(row.id);
   }
+  summary.shortfall = Math.max(0, dailyTarget - (currentItems.length + summary.released));
+  if (summary.shortfall > 0 && summary.released > 0) summary.note = `일일 목표까지 ${summary.shortfall}건 부족하지만 최소 ${dailyMinimum}건을 확보해 부분 발행했습니다.`;
   atomicWrite(RELEASE_REPORT, JSON.stringify({ ...summary, dryRun: !flags.apply }, null, 2) + "\n");
   console.log(JSON.stringify({ ...summary, dryRun: !flags.apply }, null, 2));
 }

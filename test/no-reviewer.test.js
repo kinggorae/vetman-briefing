@@ -4,8 +4,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { isProfessionallyIndexable, publishQualityIssues } from "../src/lib/quality.js";
 import { clinicalSafetyIssues, loadEditorialSettings, organizationAuthor } from "../src/lib/editorial-policy.js";
-import { canReleaseDaily, DAILY_TARGET_ITEMS, evaluate, retainSeenAfterTargetMiss } from "../scripts/brief-publishing.js";
-import { DAILY_CANDIDATE_POOL, DAILY_DEEP_TARGET_ITEMS, DAILY_HOME_ITEMS, DAILY_RSS_ITEMS } from "../config.js";
+import { canReleaseDaily, DAILY_MINIMUM_ITEMS, DAILY_TARGET_ITEMS, evaluate, retainSeenAfterTargetMiss } from "../scripts/brief-publishing.js";
+import { DAILY_CANDIDATE_POOL, DAILY_DEEP_TARGET_ITEMS, DAILY_HOME_ITEMS, DAILY_MINIMUM_ITEMS as CONFIG_DAILY_MINIMUM_ITEMS, DAILY_RSS_ITEMS } from "../config.js";
 
 const ROOT = process.cwd();
 
@@ -24,15 +24,18 @@ test("감수자 없는 public brief는 임상 명령 표현을 차단한다", ()
   assert.ok(publishQualityIssues(item).includes("unsafe-clinical-command"));
 });
 
-test("일일 발행은 90건 목표에 도달하기 전 부분 이슈를 만들지 않는다", () => {
+test("일일 발행은 90건까지 채우되 최소 30건이면 부분 발행한다", () => {
   assert.equal(DAILY_TARGET_ITEMS, 90);
-  assert.equal(DAILY_DEEP_TARGET_ITEMS, 48);
-  assert.equal(DAILY_CANDIDATE_POOL, 220);
+  assert.equal(DAILY_MINIMUM_ITEMS, 30);
+  assert.equal(CONFIG_DAILY_MINIMUM_ITEMS, 30);
+  assert.equal(DAILY_DEEP_TARGET_ITEMS, 60);
+  assert.equal(DAILY_CANDIDATE_POOL, 260);
   assert.equal(DAILY_HOME_ITEMS, 90);
   assert.equal(DAILY_RSS_ITEMS, 100);
-  assert.equal(canReleaseDaily(0, 89), false);
-  assert.equal(canReleaseDaily(5, 84), false);
-  assert.equal(canReleaseDaily(5, 85), true);
+  assert.equal(canReleaseDaily(0, 29), false);
+  assert.equal(canReleaseDaily(0, 30), true);
+  assert.equal(canReleaseDaily(5, 24), false);
+  assert.equal(canReleaseDaily(5, 25), true);
   assert.equal(canReleaseDaily(0, 90), true);
 });
 
@@ -51,6 +54,26 @@ test("일간 수집 레지스트리는 Wiley 전문 저널과 PubMed를 공급�
   assert.equal(pubmed?.enabled, true);
   assert.equal(pubmed?.sourceType, "journal");
   assert.deepEqual(pubmed?.officialDomains, ["pubmed.ncbi.nlm.nih.gov"]);
+});
+
+test("일간 수집 레지스트리는 독립 공식 학술·대학 피드의 최소 공급량을 보장한다", () => {
+  const registry = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "sources", "registry.json"), "utf8"));
+  const active = (registry.sources || []).filter((source) => source.enabled);
+  const rss = active.filter((source) => source.rssUrls?.length || source.atomUrls?.length);
+  assert.ok(active.length >= 48, `active source count ${active.length} < 48`);
+  assert.ok(rss.length >= 35, `RSS source count ${rss.length} < 35`);
+  for (const label of [
+    "Journal of Veterinary Internal Medicine",
+    "Cornell College of Veterinary Medicine News",
+    "Minnesota Veterinary & Biomedical Sciences Research",
+    "Illinois College of Veterinary Medicine News",
+    "Tennessee College of Veterinary Medicine News",
+    "Virginia Tech Veterinary College News",
+  ]) {
+    const source = active.find((candidate) => candidate.label === label);
+    assert.ok(source?.rssUrls?.length, `${label} RSS missing`);
+    assert.ok(source.officialDomains?.length, `${label} official domain missing`);
+  }
 });
 
 test("일일 목표 미달이면 발행 후보만 seen 큐로 되돌린다", () => {

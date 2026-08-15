@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-14T18:13:37.593Z",
+  "generatedAt": "2026-08-15T14:27:05.673Z",
   "sources": [
     {
       "id": "src-1851-franchise",
@@ -986,6 +986,78 @@
       ]
     },
     {
+      "id": "src-cornell-college-of-veterinary-medicine-news",
+      "label": "Cornell College of Veterinary Medicine News",
+      "officialName": "Cornell College of Veterinary Medicine News",
+      "domains": [
+        "vet.cornell.edu"
+      ],
+      "officialDomains": [
+        "vet.cornell.edu"
+      ],
+      "rssUrls": [
+        "https://www.vet.cornell.edu/taxonomy/term/44/feed"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 70,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "Cornell CVM 공식 뉴스 RSS",
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "id": "src-cornell-ruffian-equine-specialists",
+      "label": "Cornell Ruffian Equine Specialists",
+      "officialName": "Cornell Ruffian Equine Specialists",
+      "domains": [
+        "vet.cornell.edu"
+      ],
+      "officialDomains": [
+        "vet.cornell.edu"
+      ],
+      "rssUrls": [
+        "https://www.vet.cornell.edu/taxonomy/term/327/feed"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 65,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "Cornell CVM 공식 말 진료 RSS",
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
       "id": "src-coverager",
       "label": "Coverager",
       "officialName": "Coverager",
@@ -1732,6 +1804,42 @@
       ]
     },
     {
+      "id": "src-illinois-college-of-veterinary-medicine-news",
+      "label": "Illinois College of Veterinary Medicine News",
+      "officialName": "Illinois College of Veterinary Medicine News",
+      "domains": [
+        "vetmed.illinois.edu"
+      ],
+      "officialDomains": [
+        "vetmed.illinois.edu"
+      ],
+      "rssUrls": [
+        "https://vetmed.illinois.edu/category/news/feed/"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 70,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "University of Illinois CVM 공식 뉴스 RSS",
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
       "id": "src-illinois-news-bureau",
       "label": "Illinois News Bureau",
       "officialName": "Illinois News Bureau",
@@ -1909,6 +2017,42 @@
       "notes": null,
       "evidence": [
         "existing-direct-source-url"
+      ]
+    },
+    {
+      "id": "src-journal-of-veterinary-internal-medicine",
+      "label": "Journal of Veterinary Internal Medicine",
+      "officialName": "Journal of Veterinary Internal Medicine",
+      "domains": [
+        "academic.oup.com"
+      ],
+      "officialDomains": [
+        "academic.oup.com"
+      ],
+      "rssUrls": [
+        "https://academic.oup.com/rss/site_6763/4234.xml"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "journal",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 75,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "Oxford Academic 공식 최신 호 RSS",
+      "evidence": [
+        "data/source-publishers.json"
       ]
     },
     {
@@ -2419,6 +2563,42 @@
       "notes": null,
       "evidence": [
         "existing-direct-source-url"
+      ]
+    },
+    {
+      "id": "src-minnesota-veterinary-biomedical-sciences-research",
+      "label": "Minnesota Veterinary & Biomedical Sciences Research",
+      "officialName": "Minnesota Veterinary & Biomedical Sciences Research",
+      "domains": [
+        "experts.umn.edu"
+      ],
+      "officialDomains": [
+        "experts.umn.edu"
+      ],
+      "rssUrls": [
+        "https://experts.umn.edu/en/organisations/veterinary-and-biomedical-sciences/publications/?format=rss"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 70,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "University of Minnesota 전문가 연구 목록 RSS",
+      "evidence": [
+        "data/source-publishers.json"
       ]
     },
     {
@@ -3793,6 +3973,42 @@
       "notes": null,
       "evidence": [
         "existing-direct-source-url"
+      ]
+    },
+    {
+      "id": "src-tennessee-college-of-veterinary-medicine-news",
+      "label": "Tennessee College of Veterinary Medicine News",
+      "officialName": "Tennessee College of Veterinary Medicine News",
+      "domains": [
+        "vetmed.tennessee.edu"
+      ],
+      "officialDomains": [
+        "vetmed.tennessee.edu"
+      ],
+      "rssUrls": [
+        "https://vetmed.tennessee.edu/blog/feed/"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 65,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "University of Tennessee CVM 공식 뉴스 RSS",
+      "evidence": [
+        "data/source-publishers.json"
       ]
     },
     {
@@ -5223,6 +5439,42 @@
       ]
     },
     {
+      "id": "src-veterin-rn-medic-na",
+      "label": "Veterinární medicína",
+      "officialName": "Veterinární medicína",
+      "domains": [
+        "agriculturejournals.cz"
+      ],
+      "officialDomains": [
+        "agriculturejournals.cz"
+      ],
+      "rssUrls": [
+        "https://vetmed.agriculturejournals.cz/rss/latest.xml"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "journal",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 65,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "Czech Academy of Agricultural Sciences 공식 RSS",
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
       "id": "src-vietnam-vn",
       "label": "Vietnam.vn",
       "officialName": "Vietnam.vn",
@@ -5280,6 +5532,44 @@
       "notes": null,
       "evidence": [
         "existing-direct-source-url"
+      ]
+    },
+    {
+      "id": "src-virginia-tech-veterinary-college-news",
+      "label": "Virginia Tech Veterinary College News",
+      "officialName": "Virginia Tech Veterinary College News",
+      "domains": [
+        "news.vt.edu",
+        "vetmed.vt.edu"
+      ],
+      "officialDomains": [
+        "news.vt.edu",
+        "vetmed.vt.edu"
+      ],
+      "rssUrls": [
+        "https://news.vt.edu/tags/_jcr_content/search-results.xml/news_vt_edu%3Atop-news-vmcvm"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "publisher",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 70,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "Virginia-Maryland CVM 공식 검색 RSS",
+      "evidence": [
+        "data/source-publishers.json"
       ]
     },
     {
