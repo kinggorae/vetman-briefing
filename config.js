@@ -487,11 +487,13 @@ export const MIN_RELEVANCE = 5;     // 심층 하한 (0~10). 국제 수집 확�
 
 // ── source-first 일간 운영 목표 ──
 // 홈에 실제로 보이는 기사 수와 검색에 기여하는 심층 기사 수를 같은 상한으로
-// 묶지 않는다. 90건을 지면에 채우되, 상위 48건은 심층 생성·품질 게이트를 거쳐
+// 묶지 않는다. 90건까지 지면을 채우되, 공급이 하루 흔들려도 30건 이상이면
+// 부분 발행해 결번을 만들지 않는다. 상위 60건은 심층 생성·품질 게이트를 거쳐
 // 색인 후보로 만들고 나머지는 짧은 public brief로 제공한다.
 export const DAILY_TARGET_ITEMS = 90;
-export const DAILY_DEEP_TARGET_ITEMS = 48;
-export const DAILY_CANDIDATE_POOL = 220;
+export const DAILY_MINIMUM_ITEMS = 30;
+export const DAILY_DEEP_TARGET_ITEMS = 60;
+export const DAILY_CANDIDATE_POOL = 260;
 export const DAILY_HOME_ITEMS = 90;
 export const DAILY_RSS_ITEMS = 100;
 

@@ -36,5 +36,16 @@
   "NC State University": {"domains":["cvm.ncsu.edu"],"feeds":["https://cvm.ncsu.edu/feed/"]},
   "aphis.usda.gov": {"domains":["aphis.usda.gov"]},
   "American Animal Hospital Association - AAHA": {"domains":["aaha.org"]},
+  "Journal of Veterinary Internal Medicine": {"domains":["academic.oup.com"],"feeds":["https://academic.oup.com/rss/site_6763/4234.xml"],"enabled":true,"priority":75,"sourceType":"journal","notes":"Oxford Academic 공식 최신 호 RSS"},
+  "Cornell College of Veterinary Medicine News": {"domains":["vet.cornell.edu"],"feeds":["https://www.vet.cornell.edu/taxonomy/term/44/feed"],"enabled":true,"priority":70,"sourceType":"publisher","notes":"Cornell CVM 공식 뉴스 RSS"},
+  "Cornell Ruffian Equine Specialists": {"domains":["vet.cornell.edu"],"feeds":["https://www.vet.cornell.edu/taxonomy/term/327/feed"],"enabled":true,"priority":65,"sourceType":"publisher","notes":"Cornell CVM 공식 말 진료 RSS"},
+  "Veterinární medicína": {"domains":["agriculturejournals.cz"],"feeds":["https://vetmed.agriculturejournals.cz/rss/latest.xml"],"enabled":true,"priority":65,"sourceType":"journal","notes":"Czech Academy of Agricultural Sciences 공식 RSS"},
+  "Minnesota Veterinary & Biomedical Sciences Research": {"domains":["experts.umn.edu"],"feeds":["https://experts.umn.edu/en/organisations/veterinary-and-biomedical-sciences/publications/?format=rss"],"enabled":true,"priority":70,"sourceType":"publisher","notes":"University of Minnesota 전문가 연구 목록 RSS"},
+  "Illinois College of Veterinary Medicine News": {"domains":["vetmed.illinois.edu"],"feeds":["https://vetmed.illinois.edu/category/news/feed/"],"enabled":true,"priority":70,"sourceType":"publisher","notes":"University of Illinois CVM 공식 뉴스 RSS"},
+  "Tennessee College of Veterinary Medicine News": {"domains":["vetmed.tennessee.edu"],"feeds":["https://vetmed.tennessee.edu/blog/feed/"],"enabled":true,"priority":65,"sourceType":"publisher","notes":"University of Tennessee CVM 공식 뉴스 RSS"},
+  "Virginia Tech Veterinary College News": {"domains":["news.vt.edu","vetmed.vt.edu"],"feeds":["https://news.vt.edu/tags/_jcr_content/search-results.xml/news_vt_edu%3Atop-news-vmcvm"],"enabled":true,"priority":70,"sourceType":"publisher","notes":"Virginia-Maryland CVM 공식 검색 RSS"},
+  "npj Veterinary Sciences": {"domains":["nature.com"],"feeds":["https://www.nature.com/npjvetsci.rss"],"enabled":true,"priority":85,"sourceType":"journal","notes":"Springer Nature 공식 저널 RSS. 동물 건강·수의학 연구 중심"},
+  "Journal of Research in Veterinary Medicine": {"domains":["dergipark.org.tr"],"feeds":["https://dergipark.org.tr/en/pub/jrvm/rss/lastissue/en","https://dergipark.org.tr/en/pub/jrvm/rss/earlypub/en"],"enabled":true,"priority":70,"sourceType":"journal","notes":"DergiPark 공식 최신호·온라인 선공개 RSS"},
+  "American Journal of Traditional Chinese Veterinary Medicine": {"domains":["ajtcvm.scholasticahq.com"],"feeds":["https://ajtcvm.scholasticahq.com/feed"],"enabled":true,"priority":60,"sourceType":"journal","notes":"공식 저널 전체 논문 RSS"},
   "PubMed": {"domains":["pubmed.ncbi.nlm.nih.gov"],"enabled":true,"sourceType":"journal","priority":95,"rateLimitMs":350,"notes":"NCBI E-utilities API에서 초록 메타데이터를 수집하고 PubMed 원문 링크만 제공합니다."}
 }
