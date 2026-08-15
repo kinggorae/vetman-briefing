@@ -1,97 +1,69 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-08-14T19:15:25.629Z
+- 실행 시각: 2026-08-15T00:43:23.479Z
 - 모드: write-draft
 - 소스/피드: 40/28
-- 수집 항목: 741
-- 고유 후보: 460
-- exact duplicate: 209
-- 기존 기사 업데이트 후보: 72
-- 관련성 제외: 139
-- 기수집(seen) 제외: 212
-- 신규 가용 후보: 116
-- draft 후보: 75
-- 생성 완료: 72
+- 수집 항목: 761
+- 고유 후보: 476
+- exact duplicate: 220
+- 기존 기사 업데이트 후보: 65
+- 관련성 제외: 140
+- 기수집(seen) 제외: 281
+- 신규 가용 후보: 62
+- draft 후보: 47
+- 생성 완료: 44
 - 생성 실패 경고: 3
-- canonical 확인 시도: 51
-- 공식 canonical 확보: 68
-- unresolved source: 7
+- canonical 확인 시도: 38
+- 공식 canonical 확보: 46
+- unresolved source: 1
 - relay sourceUrl: 0
 
 ## draft 후보
 
-- v1_86cdd8ce06b8575a · src-pubmed · verified · unique · Broad permissiveness of mammalian nectin-4 orthologs for morbilliviruses: a notable exception in dolphin nectin-4.
-- v1_39bcddbb5da4b12a · src-pubmed · verified · unique · Lagochilascariosis in Brazil: A systematic search and descriptive review, and the first report of Lagochilascaris minor Leiper, 1909 infection in a domestic cat from Santa Catarina, southern Brazil.
-- v1_381988435b0abd89 · src-pubmed · verified · unique · Ultrasound-guided bilateral quadratus lumborum block in dogs undergoing abdominal surgery: A retrospective study.
-- v1_c184ac4c70a85e46 · src-pubmed · verified · unique · Characterization of Lipizzan Horse Population From Lipica Stud Using Molecular and Pedigree Data.
-- v1_3fe3fa9323dbcb03 · src-washington-state-veterinary-news · verified · unique · Q&#038;A with biochemistry major Felix Bagley
-- v1_8748ee04b9e16d74 · src-pubmed · verified · unique · Evaluation of plasma kynurenine 3-monooxygenase and Ki-67 as screening biomarkers for neoplasia in dogs.
-- v1_ca65dc4f64288279 · src-pubmed · verified · unique · Presumed cervical subperiosteal vertebral hemorrhage in nine greyhounds.
-- v1_487924ac8c90eb46 · src-pubmed · verified · unique · Optimizedexpansion and functional characterization of canine natural killer cells using genetically modified feeder cells.
+- v1_375995438a282c92 · src-veterinary-evidence · unresolved · unique · Does imepitoin reduce signs of fear and anxiety in dogs frightened by loud noises?
+- v1_fdbdc87b2068100c · src-today-s-veterinary-practice · verified · unique · Role of the Microbiota–Gut–Brain Axis in Behavioral and Neurologic Disorders
+- v1_59aa85d359b3b93f · src-today-s-veterinary-practice · verified · unique · Answering FAQs About Feline Hyperesthesia Syndrome
+- v1_bc8852eecdd48def · src-today-s-veterinary-practice · verified · unique · A Diet-First Approach to Chronic Enteropathy and Protein-Losing Enteropathy in Dogs
+- v1_85a625a8b2b51a65 · src-today-s-veterinary-practice · verified · unique · Feline Corneal Ulcers: Diagnosis and Management
+- v1_dffcfcd0ab600799 · src-today-s-veterinary-practice · verified · unique · Algorithm: Diagnosing and Treating Feline Infectious Peritonitis
+- v1_397517c81bd6086f · src-today-s-veterinary-practice · verified · unique · Implementing Spectrum of Care in Exotic Companion Animal Practice
+- v1_bbf6a3a590df85f7 · src-today-s-veterinary-practice · verified · unique · Upcoming NAVC Events and Programs
 - v1_fe869b3667bc8561 · src-pubmed · verified · unique · Sepsis in critically ill dogs: identification of clinical and laboratory risk factors and evaluation of sepsis scoring systems.
-- v1_6ee167e00384d1e0 · src-pubmed · verified · unique · Animal-assisted treatment in spinal cord injury rehabilitation: a scoping review.
-- v1_63f484914aec8e49 · src-pubmed · verified · unique · First case of canine paraprostatic infection caused by a high-risk ST147 Klebsiella pneumoniae harboring multiple extended-spectrum-&#x3b2;-lactamase genes.
-- v1_960e51e7e18904f9 · src-washington-state-veterinary-news · verified · unique · Summer Veterinary Research Fellow: Lorelei Derenne evaluates treatments for canine glaucoma
-- v1_0025477c4031c2fc · src-texas-a-m-vmbs-news · verified · unique · A Prescription For Partnership: Understanding The Benefits Of VCPR
-- v1_fd3d86d1f0081426 · src-pubmed · verified · unique · Preclinical Evaluation of a Zotarolimus-Eluting Stent for Intracranial Application: A 30-Day Procedural Feasibility and Clinical Observation Canine Study.
-- v1_890bbf26af5a3b8f · src-pubmed · verified · unique · Clinical and imaging findings after antiviral treatment in cats with presumptive neurologic feline infectious peritonitis: 9 cases (2020-2024).
-- v1_ef70c0ac6cbd03d7 · src-pubmed · verified · unique · Prevalence of disease in 549 older cats undergoing health screening at two United Kingdom-based veterinary clinics.
-- v1_146cb4233def0550 · src-pubmed · verified · unique · Survival of dogs with glomerular disease in Europe: insights from the European Veterinary Renal Pathology Service.
-- v1_bfb4a48bde457d93 · src-pubmed · verified · unique · Comparative study of the role of nitric oxide in the regulation of food intake across vertebrates.
-- v1_181e527a61b92d17 · src-pubmed · verified · unique · Use of extracorporeal hemoperfusion in a 2-day-old foal with neonatal sepsis.
-- v1_00800c840186e750 · src-university-of-missouri-veterinary-news · verified · unique · Excellence in emergency equine medicine
-- v1_e395c93feed79395 · src-university-of-missouri-veterinary-news · verified · unique · Pamela Adkins receives West Agro Inc. Award from the American Dairy Science Association
-- v1_3c8356f7b7ab65de · src-washington-state-veterinary-news · unresolved · unique · WSU’s Good Samaritan Fund eases veterinary costs for Spokane family after fire
-- v1_4f0c7cad4cd57eb9 · src-university-of-missouri-veterinary-news · verified · unique · Kevin Gustafson receives Boehringer Ingelheim Research Award for Graduate Veterinarians
-- v1_1533e353a1e762cc · src-pubmed · verified · unique · Primer-walking sequencing identifies predominantly noncoding TP53 variants in canine cancers.
-- v1_478725a931a58380 · src-pubmed · verified · unique · Assessment of gastrointestinal health and the coagulation system in dogs with right-sided heart disease: an exploratory study.
-- v1_7aa3bc4ca3bd4362 · src-university-of-missouri-veterinary-news · verified · unique · Elizabeth Giuliano elected to the American Board of Veterinary Ophthalmology
-- v1_e6c2efcc0b547532 · src-washington-state-veterinary-news · verified · unique · Annual staff barbecue celebrates employees and some creativity
-- v1_b30820b742c3003f · src-washington-state-veterinary-news · verified · unique · Summer Veterinary Research Fellow: Aspen Scott examines how dairy cows respond to health challenges
-- v1_8c4735b66227a269 · src-university-of-florida-veterinary-news · unresolved · unique · Breakthroughs at UF: A bone to pick with cancer
+- v1_c6409ff50b29a274 · src-today-s-veterinary-practice · verified · unique · Getting Comfortable With Dexmedetomidine
+- v1_7ac96221bc8cdf44 · src-today-s-veterinary-practice · verified · unique · An Age-Old Concept in Modern Veterinary Practice
+- v1_5054c48d540da7e6 · src-today-s-veterinary-practice · verified · unique · Our Hearts Break Too
+- v1_af2b0ca09e33f210 · src-pubmed · verified · unique · Altered Iron Metabolism in Dogs with Naturally Occurring Cardiac Disease.
+- v1_b4a0ed5acf719d0e · src-pubmed · verified · unique · Development of a dynamic anatomical model using 3D printing for the study of TPLO surgical technique in small-breed dogs.
+- v1_119d1d3770c294fb · src-pubmed · verified · unique · Comparative histological characteristics of the nasal cavity of Beagle dogs and rabbits.
+- v1_52ff2222b2f3dc42 · src-pubmed · verified · unique · Endoscopic reduction of true gastrogastric intussusception in a dog.
+- v1_fda45ca33b494d41 · src-pubmed · verified · unique · Likely radiation-induced sciatic neuropathy in a dog.
+- v1_588642a124b90e0c · src-pubmed · verified · unique · Differential Modulation of Keratinocyte Proliferation, Differentiation, and Barrier Function by Hemp Oil, Blackcurrant Seed Oil, and Vitamin DUnder Atopic-Associated Cytokine Stimulation.
+- v1_65f21f61e7e035a6 · src-pubmed · verified · unique · Evolutionary Analysis Reveals a Single Amino Acid in the AAV Entry Receptor (AAVR) of Cats That Disrupts Binding of a Major Phylogenetic Group of AAVs.
+- v1_b7ea2169fab0647d · src-pubmed · verified · unique · Community-engaged passive tick surveillance highlights the diversity of ticks and tick-borne pathogens in Illinois.
 - v1_0df5a0fcadc65b33 · src-frontiers-in-veterinary-science · verified · unique · Mitigating antimicrobial resistance in the animal industry: reduction strategies and alternatives to antibiotics
 - v1_3c58455b5d4a9288 · src-frontiers-in-veterinary-science · verified · unique · Knowledge, attitudes, and practices toward African swine fever among commercial pig farm producers in Takeo and Kampong Speu provinces, Cambodia
 - v1_edaddcbd547f770f · src-frontiers-in-veterinary-science · verified · unique · Effects of sweet chestnut (Castanea sativa Mill.) hydrolysable tannins on animal performance, health and manure ammonia and nitrous oxide emissions in preweaning holstein calves
 - v1_064ff6adc7b28736 · src-frontiers-in-veterinary-science · verified · unique · Modulating the avian cecal microbiome: probiotics in the prevention of Histomonas meleagridis in poultry
-- v1_3750d5912b4899e2 · src-washington-state-veterinary-news · verified · unique · Summer Veterinary Research Fellow: Tessa Williams investigates respiratory pathogen at the livestock-wildlife interface
 - v1_5f3a960b94750ab5 · src-frontiers-in-veterinary-science · verified · unique · Carbohydrate source modulates protein and amino acid digestibility patterns in domestic cats
 - v1_310231da21e553bf · src-frontiers-in-veterinary-science · verified · unique · Seroprevalence of Toxoplasma gondii infection and risk factors in sheep from Afyonkarahisar province, Türkiye
 - v1_2eadaa185f7bf274 · src-frontiers-in-veterinary-science · verified · unique · Crossing the comfort zone: rabbit appeasing pheromone enhances acclimation to a novel environment
-- v1_96f755ec281e6460 · src-university-of-missouri-veterinary-news · verified · unique · When dedication to animal care becomes a way of life
 - v1_7db36899bbb0a6f2 · src-nc-state-university · verified · unique · From a Local Animal Hospital, Kristen Folk Reports
-- v1_1f0fb50d2a8ed09b · src-washington-state-veterinary-news · verified · unique · Summer Veterinary Research Fellow: Caroline Cave maps Washington’s risk for an emerging tick threat
-- v1_681dd6d44afcf2fd · src-washington-state-veterinary-news · verified · unique · WSU welcomes new house officers
-- v1_6f9a06e6e0112dac · src-university-of-missouri-veterinary-news · verified · unique · First veterinarian completes Mizzou’s innovative mixed animal internship
 - v1_5c1cd8e5352ccb96 · src-today-s-veterinary-business · verified · unique · Evolution
-- v1_21d331a4e857252e · src-today-s-veterinary-nurse · verified · unique · Core Vaccines and the One Health Connection: Protecting Pets, People, and the Planet
-- v1_e0e3c4d40243d05b · src-today-s-veterinary-nurse · verified · unique · Emergency and Critical Care of the Veterinary Patient with Acute Brain Inflammation
-- v1_00e193866937b013 · src-today-s-veterinary-nurse · verified · unique · A Guide to Capnography in Small Animal Anesthesia
-- v1_cbb87b632637f9ec · src-vet-candy · verified · unique · Viticus Group’s Kimberly Keating, Earns PCMA 2026 Visionary Award
-- v1_b916961241809807 · src-vet-candy · verified · unique · Zinc Oxide Nanoparticles: What a New Study Says About Canine Wound Healing
-- v1_2f3afeaa3f78d1f5 · src-university-of-missouri-veterinary-news · verified · unique · Mizzou on the front lines of tracking tick-borne diseases in Missouri
-- v1_1f8661e7b34d2664 · src-today-s-veterinary-nurse · verified · unique · Rejuvenating the Human–Animal Bond in the Care of Senior Veterinary Patients
-- v1_7abbbc9dae15f479 · src-vet-candy · verified · unique · Playing with your dog creates a stronger bond
-- v1_5eca39bbc5c555b9 · src-vet-candy · verified · unique · H5N1 Detected in Wild Birds in Honduras. What Veterinary Professionals Need to Know
-- v1_8a78c61f2c1d5cb8 · src-vet-candy · verified · unique · Veterinary Dentistry Specialists&nbsp;Opens New Practice in Philadelphia, PA
-- v1_675a493cf48a036a · src-vet-candy · verified · unique · The Work Veterinarians Do That Nobody Sees
-- v1_812f0f181591041d · src-vet-candy · verified · unique · Cornell Veterinary Researchers Just Made Embryo Freezing 30 Times Faster &#x2014; and It Works Better
-- v1_379acb876fd456f0 · src-vet-candy · verified · unique · LSU Vet Med Just Handed Out $346,178 to Its Students. Here's Why That Number Matters.
-- v1_bb7141c0ee7d694c · src-vet-candy · verified · unique · UK Considers Major Veterinary Reforms to Lower Pet Care Costs and Increase Transparency
-- v1_92df81f16eec874f · src-university-of-missouri-veterinary-news · verified · unique · Turning complex cases into clear thinking
-- v1_4723737a97601e72 · src-vet-candy · verified · unique · Could a dog’s skull shape tell us something about a spinal condition?
-- v1_b13414f7ccad2d04 · src-vet-candy · verified · unique · How to Observe Juneteenth as a Veterinary Professional
-- v1_9397190c1d0e6453 · src-university-of-missouri-veterinary-news · verified · unique · Mizzou veterinarians give young racehorse a second chance
-- v1_a84ecd5a25b11f48 · src-vet-candy · verified · unique · Is the Ehmer Sling Getting an Upgrade? New Research Compares a Vest-Based Alternative
-- v1_77c7efd20064cbde · src-vet-candy · verified · unique · She Thought She Had Healed. Her Journals Told a Different Story.
-- v1_3cee593cd99cf017 · src-vet-candy · verified · unique · Austin Veterinary Emergency & Specialty Expands Cancer Care With Advanced Radixact™ Radiation Therapy
-- v1_164ad16909096d27 · src-vet-candy · verified · unique · Rattlesnakes among most vulnerable to fungal disease and parasitic lung infection
-- v1_e3a35ac88a9c9342 · src-today-s-veterinary-nurse · verified · unique · Case Report: Neonatal Intensive Care Following Dystocia in a Mare
-- v1_61a7834cf1c6ad5d · src-vet-candy · verified · unique · Ohio's Got a Veterinary Shortage Problem. And It's About to Get Worse.
-- v1_a5cb3cd15da1f586 · src-vet-candy · verified · unique · CoVet Survey Finds Veterinarians Are Gaining Time Back and Experiencing Less Burnout as AI Takes on Administrative Work
-- v1_b8b2f5b6e7272ddd · src-vet-candy · verified · unique · Brachycephalic Cats and Dystocia: What New Research Reveals About Breed Health and Reproductive Emergency
-- v1_e3e895ddd6922e2c · src-university-of-florida-veterinary-news · unresolved · unique · $9.5M gift elevates livestock disease prevention
-- v1_f87162ed16bff108 · src-today-s-veterinary-practice · verified · unique · A Calendar of Upcoming NAVC Events and Programs
-- v1_70080786b0d72c87 · src-university-of-florida-veterinary-news · unresolved · unique · Striding through complicated surgery, recovery
-- v1_7b3e2ebb1d11b2c1 · src-university-of-florida-veterinary-news · unresolved · unique · UFVH at WEC adds 24/7 small animal emergency care in June
-- v1_7be7542678c93728 · src-nc-state-university · unresolved · unique · Ammonia Levels in Urine Could Serve as Marker for Chronic Kidney Disease in Dogs
-- v1_1ce52f4ffb746520 · src-university-of-florida-veterinary-news · unresolved · unique · Disney x CVM: Kendi the White Rhino can see again
+- v1_ac1d647cffabf50e · src-vet-candy · verified · unique · Free-Flight Training Gives Confiscated Parrots a Real Chance at Life in the Wild
+- v1_baf491b37d26ea49 · src-vet-candy · verified · unique · She Wrote a Zombie Novel. She's Also A Veterinarian.
+- v1_14c4262c407562c1 · src-vet-candy · verified · unique · FDA Grants Full Approval to Laverdia &#x2014; The First Oral, At-Home Treatment for Canine Lymphoma
+- v1_f7a56937ecb1cc0c · src-vet-candy · verified · unique · A Vet Lab Got the Wrong Answer. It May Have Saved Human Lives
+- v1_b23231a26006c00d · src-vet-candy · verified · unique · Virginia Tech Vet Students Just Got a Federal Research Grant. Here's Why That Matters.
+- v1_c7ffc2b40d4ade4d · src-vet-candy · verified · unique · Topical Only: How Clinicians Cleared a Drug-Resistant Skin
+- v1_d7b36fcab52731eb · src-vet-candy · verified · unique · Dogs May Be Stressing Wildlife More Than We Realize, 12-Year Study Reveals
+- v1_e38a03e13c26525a · src-vet-candy · verified · unique · A Zoo Vet Team Just Performed One of the Rarest Surgeries in the World With A Little Help From Human MDs. Here's What Happened.
+- v1_bee1b8d946ea1b07 · src-vet-candy · verified · unique · The NAVLE Blueprint, Line by Line: How NAVLE Warriors Covers Every Inch of the Exam &#x2014; For Free
+- v1_c815fd1432c802c1 · src-vet-candy · verified · unique · A New Bill Could Bring Veterinary Care to Tribal and Rural Communities. Here's Why It Matters
+- v1_c47d9ace89bee550 · src-vet-candy · verified · unique · Tractor Supply Company Acquires VIP Petcare Veterinary Services
+- v1_b8d4be157a1a10d9 · src-vet-candy · verified · unique · When New Equipment Causes Unexpected Harm: What the MRI Thermal Injury Case Teaches Veterinary Hospitals
+- v1_61189b056628d70c · src-vet-candy · verified · unique · Decline in prey increases risk of jaguar extinction in Atlantic Forest
+- v1_d468aed997080f5a · src-vet-candy · verified · unique · She Slept in a Tent on a Remote Island to Monitor Killer Whales. Later She Released Seals Back Into the Wild.
+- v1_577299a62781e4bc · src-vet-candy · verified · unique · You Are Not Burned Out Because You Are Bad at This. Study Shows You Are Burned Out Because of the Paperwork.
+- v1_c062c73d42f9318e · src-vet-candy · verified · unique · Canada's NEB Paused PSA Exam Sittings. Here's What It Means and What Comes Next.
+- v1_e628d9c69cf44c88 · src-vet-candy · verified · unique · Florida's New Veterinary Prescription Law Takes Effect July 1. Here's What You Need to Do.
+- v1_1cd9ad3b46d2dbc5 · src-vet-candy · verified · unique · What Your First Vet Salary Will Actually Look Like (And How to Negotiate It)
