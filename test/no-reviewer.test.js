@@ -60,8 +60,8 @@ test("일간 수집 레지스트리는 독립 공식 학술·대학 피드의 �
   const registry = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "sources", "registry.json"), "utf8"));
   const active = (registry.sources || []).filter((source) => source.enabled);
   const rss = active.filter((source) => source.rssUrls?.length || source.atomUrls?.length);
-  assert.ok(active.length >= 48, `active source count ${active.length} < 48`);
-  assert.ok(rss.length >= 35, `RSS source count ${rss.length} < 35`);
+  assert.ok(active.length >= 51, `active source count ${active.length} < 51`);
+  assert.ok(rss.length >= 38, `RSS source count ${rss.length} < 38`);
   for (const label of [
     "Journal of Veterinary Internal Medicine",
     "Cornell College of Veterinary Medicine News",
@@ -69,11 +69,16 @@ test("일간 수집 레지스트리는 독립 공식 학술·대학 피드의 �
     "Illinois College of Veterinary Medicine News",
     "Tennessee College of Veterinary Medicine News",
     "Virginia Tech Veterinary College News",
+    "npj Veterinary Sciences",
+    "Journal of Research in Veterinary Medicine",
+    "American Journal of Traditional Chinese Veterinary Medicine",
   ]) {
     const source = active.find((candidate) => candidate.label === label);
     assert.ok(source?.rssUrls?.length, `${label} RSS missing`);
     assert.ok(source.officialDomains?.length, `${label} official domain missing`);
   }
+  const jrvm = active.find((candidate) => candidate.label === "Journal of Research in Veterinary Medicine");
+  assert.equal(jrvm.rssUrls.length, 2, "JRVM latest/early publication feeds missing");
 });
 
 test("일일 목표 미달이면 발행 후보만 seen 큐로 되돌린다", () => {

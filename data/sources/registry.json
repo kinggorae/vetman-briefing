@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generatedAt": "2026-08-15T14:27:05.673Z",
+  "generatedAt": "2026-08-15T14:58:42.535Z",
   "sources": [
     {
       "id": "src-1851-franchise",
@@ -242,6 +242,42 @@
       "consecutiveFailures": 0,
       "healthStatus": "unknown",
       "notes": null,
+      "evidence": [
+        "data/source-publishers.json"
+      ]
+    },
+    {
+      "id": "src-american-journal-of-traditional-chinese-veterinary-medic",
+      "label": "American Journal of Traditional Chinese Veterinary Medicine",
+      "officialName": "American Journal of Traditional Chinese Veterinary Medicine",
+      "domains": [
+        "ajtcvm.scholasticahq.com"
+      ],
+      "officialDomains": [
+        "ajtcvm.scholasticahq.com"
+      ],
+      "rssUrls": [
+        "https://ajtcvm.scholasticahq.com/feed"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "journal",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 60,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "공식 저널 전체 논문 RSS",
       "evidence": [
         "data/source-publishers.json"
       ]
@@ -2017,6 +2053,43 @@
       "notes": null,
       "evidence": [
         "existing-direct-source-url"
+      ]
+    },
+    {
+      "id": "src-journal-of-research-in-veterinary-medicine",
+      "label": "Journal of Research in Veterinary Medicine",
+      "officialName": "Journal of Research in Veterinary Medicine",
+      "domains": [
+        "dergipark.org.tr"
+      ],
+      "officialDomains": [
+        "dergipark.org.tr"
+      ],
+      "rssUrls": [
+        "https://dergipark.org.tr/en/pub/jrvm/rss/lastissue/en",
+        "https://dergipark.org.tr/en/pub/jrvm/rss/earlypub/en"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "journal",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 70,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "DergiPark 공식 최신호·온라인 선공개 RSS",
+      "evidence": [
+        "data/source-publishers.json"
       ]
     },
     {
@@ -6540,6 +6613,42 @@
       "notes": null,
       "evidence": [
         "existing-direct-source-url"
+      ]
+    },
+    {
+      "id": "src-npj-veterinary-sciences",
+      "label": "npj Veterinary Sciences",
+      "officialName": "npj Veterinary Sciences",
+      "domains": [
+        "nature.com"
+      ],
+      "officialDomains": [
+        "nature.com"
+      ],
+      "rssUrls": [
+        "https://www.nature.com/npjvetsci.rss"
+      ],
+      "atomUrls": [],
+      "sitemapUrls": [],
+      "fetchStrategy": "rss",
+      "archiveUrl": null,
+      "searchUrlTemplate": null,
+      "country": null,
+      "language": "en",
+      "timezone": "UTC",
+      "sourceType": "journal",
+      "rateLimitMs": 1000,
+      "timeoutMs": 12000,
+      "enabled": true,
+      "priority": 85,
+      "active": true,
+      "lastSuccessAt": null,
+      "lastFailureAt": null,
+      "consecutiveFailures": 0,
+      "healthStatus": "unknown",
+      "notes": "Springer Nature 공식 저널 RSS. 동물 건강·수의학 연구 중심",
+      "evidence": [
+        "data/source-publishers.json"
       ]
     },
     {

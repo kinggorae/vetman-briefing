@@ -17,7 +17,9 @@ jobs:
       cancel-in-progress: false
     # 후보별 호출 상한과 실패 체크포인트를 두고, 전체 잡도 무한정 늘어지지
     # 않도록 제한한다. 실패 시 알림 이슈가 열려 운영자가 바로 확인한다.
-    timeout-minutes: 120
+    # 기본 수집 95분 + 30건 미달 시 보강 수집 40분 + 빌드·배포 시간을
+    # 합산하되, 후보 생성이 무한정 늘어지지 않도록 상한을 둔다.
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v7
         with:
@@ -144,7 +146,43 @@ jobs:
           TOTAL=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
           echo "오늘($DATE) 발행 $COUNT건 · 누적 $TOTAL/90건 (최소 30건)"
+
+      # 첫 수확분의 품질 게이트 통과 후보가 30건에 못 미치는 날만
+      # 추가로 120건을 수집한다. 정상적으로 30건 이상 확보된 날에는
+      # LLM 호출을 반복하지 않아 비용·실행 시간을 늘리지 않는다.
+      - name: Top up below daily minimum
+        id: topup
+        if: success()
+        timeout-minutes: 40
+        run: |
+          CURRENT=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
+          if [ "$CURRENT" -ge 30 ]; then
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            echo "total=$CURRENT" >> "$GITHUB_OUTPUT"
+            echo "보강 수집 불필요: 현재 $CURRENT건"
+            exit 0
+          fi
+          echo "일일 최소 30건 미달($CURRENT건) — 보강 수집을 시작합니다."
+          npm run ingest:all -- --generate --volume --pubmed --deep-limit=24 --max=120 --per-source=8
+          npm run brief:release-ready -- --apply --target=90 --minimum=30
+          ADDED=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.released||0))')
+          TOTAL=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
+          echo "count=$ADDED" >> "$GITHUB_OUTPUT"
+          echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
+          echo "보강 발행 $ADDED건 · 누적 $TOTAL/90건"
+        env:
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'MiniMax-M2' }}
+          LLM_CONCURRENCY: "4"
+          FULLTEXT_CONCURRENCY: "8"
+          LLM_TIMEOUT_MS: "120000"
+          LLM_MAX_RETRIES: "0"
+          LLM_GENERATION_ATTEMPTS: "2"
+          LLM_RADAR_ATTEMPTS: "2"
+          LLM_JSON_ATTEMPTS: "2"
 
       - name: Build and validate publication set
         run: |
@@ -178,7 +216,7 @@ jobs:
           # .github는 담지 않는다. GITHUB_TOKEN은 워크플로 파일을 푸시할 수 없다.
           git add data site reports
           git diff --cached --quiet && { echo "커밋할 변경 없음"; exit 0; }
-          git commit -m "daily: $(date -u +%F) briefing (${{ steps.release.outputs.count }}건)"
+          git commit -m "daily: $(date -u +%F) briefing (${{ steps.release.outputs.count }}+${{ steps.topup.outputs.count }}건)"
           # 실행 중 main이 앞서갔을 수 있다. 리베이스 후 올린다.
           # --autostash가 없으면 "cannot pull with rebase: You have unstaged
           # changes"로 거부된다. data/site/reports만 스테이징하므로 빌드가
@@ -201,7 +239,7 @@ jobs:
           fi
 
       - name: Deploy to Cloudflare Pages
-        if: steps.release.outputs.count != '0'
+        if: steps.release.outputs.count != '0' || steps.topup.outputs.count != '0'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: "15178c9e9cab3b38e6b687feb568cb28"
@@ -213,14 +251,16 @@ jobs:
           npx wrangler pages deploy site --project-name vetman-briefing --branch main --commit-dirty=true
 
       - name: Verify production deployment
-        if: steps.release.outputs.count != '0'
+        if: steps.release.outputs.count != '0' || steps.topup.outputs.count != '0'
         run: |
           VERIFY_ATTEMPTS=6 VERIFY_DELAY_MS=5000 npm run verify:deployment
 
       - name: Monitor production contract
-        if: steps.release.outputs.count != '0'
+        if: steps.release.outputs.count != '0' || steps.topup.outputs.count != '0'
         env:
-          MONITOR_MIN_LATEST_ITEMS: "90"
+          # 90건은 최대 목표이고 30건은 운영 하한이다. 부분 발행일에도
+          # 모니터가 정상적인 30건 지면을 실패로 오판하지 않게 한다.
+          MONITOR_MIN_LATEST_ITEMS: "30"
           MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
           MONITOR_SW_CACHE: "vmcache-v8"
         run: npm run monitor:production
@@ -236,7 +276,7 @@ jobs:
 
       # 배포가 끝난 뒤에 알려야 크롤러가 새 글을 실제로 받아간다
       - name: Notify search engines (IndexNow)
-        if: steps.release.outputs.count != '0'
+        if: steps.release.outputs.count != '0' || steps.topup.outputs.count != '0'
         continue-on-error: true
         run: node src/indexnow.js
 
