@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T18:27:22.152Z",
+  "generatedAt": "2026-08-15T18:49:19.210Z",
   "noindex": true,
   "summary": {
     "total": 901,
@@ -63015,7 +63015,7 @@
   },
   "firstReleaseQa": {
     "version": 1,
-    "generatedAt": "2026-08-15T18:26:56.254Z",
+    "generatedAt": "2026-08-15T18:44:56.054Z",
     "candidates": [
       {
         "id": "v1_88e7bde7826c5eaf",
@@ -63190,7 +63190,7 @@
   },
   "operationsStatus": {
     "version": 1,
-    "generatedAt": "2026-08-15T18:32:53.619Z",
+    "generatedAt": "2026-08-15T18:52:41.667Z",
     "publication": {
       "totalArticles": 901,
       "index": 190,
@@ -63455,7 +63455,7 @@
   },
   "imageRightsQueue": {
     "version": 1,
-    "generatedAt": "2026-08-15T18:33:09.488Z",
+    "generatedAt": "2026-08-15T18:52:52.744Z",
     "count": 87,
     "rows": [
       {
@@ -64685,7 +64685,7 @@
   },
   "workQueue": {
     "version": 1,
-    "generatedAt": "2026-08-15T18:33:19.762Z",
+    "generatedAt": "2026-08-15T18:53:13.806Z",
     "noindex": true,
     "count": 978,
     "open": 978,
@@ -88528,5 +88528,5 @@
     },
     "note": "인증 관리자 전용 작업 큐. 작업 카드는 승인·발행을 자동 실행하지 않으며 기존 검수 CLI의 다음 명령만 안내합니다."
   },
-  "statusSyncedAt": "2026-08-15T18:33:32.012Z"
+  "statusSyncedAt": "2026-08-15T18:53:24.272Z"
 }

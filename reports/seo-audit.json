@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T18:31:46.867Z",
+  "generatedAt": "2026-08-15T18:46:35.967Z",
   "status": "passed",
   "counts": {
     "htmlPages": 990,
@@ -17,7 +17,7 @@
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 334075,
+    "homepageBytes": 585126,
     "searchSizes": [
       {
         "file": "search.json",
