@@ -27,10 +27,9 @@ jobs:
       - run: npm ci --ignore-scripts
       - name: Monitor production contract
         env:
-          # 롤아웃 첫날 이전 최신호도 정상으로 관찰할 수 있도록 하위 호환한다.
-          # 기능 배포 직후 이전 최신호가 남을 수 있으므로 30건 하위 호환은
-          # deploy.yml에서만 유지하고, 정기 운영 점검은 새 90건 목표를 확인한다.
-          MONITOR_MIN_LATEST_ITEMS: "90"
+          # 일간 파이프라인은 40건을 목표로 하되, 원문·품질 게이트를 통과한
+          # 30건까지는 부분 발행을 허용한다. 운영 점검도 같은 최소선을 사용한다.
+          MONITOR_MIN_LATEST_ITEMS: "30"
           MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
           MONITOR_SW_CACHE: "vmcache-v8"
         run: npm run monitor:production

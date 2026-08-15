@@ -1183,7 +1183,7 @@ const APP_JS = String.raw`
       +'<div class="vm-brief-open">자세히 보기 '+ARR+'</div></button>';
     }).join('');
     return '<div style="margin-top:34px;">'
-    +'<div style="padding:16px 0 12px;border-bottom:2px solid var(--color-label-strong);"><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">한눈에 보는 추가 소식</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">2문장 · 원문 링크 포함 · '+list.length+'건</span></div>'
+    +'<div style="padding:16px 0 12px;border-bottom:2px solid var(--color-label-strong);"><span style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.01em;color:var(--color-label-strong);">한눈에 보는 추가 소식</span><span style="margin-left:9px;font-size:12.5px;color:var(--color-label-alternative);">핵심 250자 이상 · 원문 링크 포함 · '+list.length+'건</span></div>'
     +'<div class="vm-brief-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;">'+rows+'</div>'
     +(list.length>visible.length?'<div style="display:flex;justify-content:center;margin-top:16px;"><button data-act="brief-more" style="border:1px solid var(--color-line-strong);background:var(--color-background-normal);color:var(--color-label-strong);cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;padding:10px 18px;border-radius:9px;">간추린 소식 '+list.length+'건 전체 보기</button></div>':'')
     +(S.briefAll&&list.length>12?'<div style="display:flex;justify-content:center;margin-top:16px;"><button data-act="brief-less" style="border:0;background:transparent;color:var(--color-label-alternative);cursor:pointer;font-family:inherit;font-size:12px;">간추린 소식 접기</button></div>':'')

@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_c815fd1432c802c1</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-15T16:10:57.240Z</news:publication_date>
+      <news:title>미국 원주민·농촌 동물보건 법안 발의, 광견병 방지 핵심</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_bbf6a3a590df85f7</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-15T16:10:57.238Z</news:publication_date>
+      <news:title>수의 professionals의 정신건강: 숨겨진 비용과 뉴로다양성</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_e6c2efcc0b547532</loc>
     <news:news>
       <news:publication>
@@ -9,17 +31,6 @@
       </news:publication>
       <news:publication_date>2026-08-14T19:15:27.829Z</news:publication_date>
       <news:title>연간 바비큐로 직원 헌신 인정하는 워싱턴주립대의대</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_e855df430e994d79</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-08-13T14:05:47.989Z</news:publication_date>
-      <news:title>대량 중성화 수술과 동물보호소 의료의 미래</news:title>
     </news:news>
   </url>
 </urlset>

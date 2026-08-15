@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-08-15T16:08:04.289Z",
+  "apply": false,
+  "minimumChars": 250,
+  "candidateCount": 128,
+  "updated": 0,
+  "failed": 0,
+  "skipped": 128,
+  "ids": [],
+  "failures": [],
+  "note": "LLM_API_KEY 또는 ANTHROPIC_API_KEY가 없어 dry-run으로 후보만 계산했습니다."
+}
