@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T18:49:19.210Z",
+  "generatedAt": "2026-08-16T00:41:42.409Z",
   "noindex": true,
   "summary": {
     "total": 901,
@@ -50717,13 +50717,13 @@
     }
   ],
   "feedDiagnostics": {
-    "generatedAt": "2026-08-15T16:49:42.582Z",
+    "generatedAt": "2026-08-16T00:32:16.138Z",
     "registryVersion": 2,
     "counts": {
-      "healthy": 7,
+      "healthy": 8,
       "quiet": 2,
       "stale": 0,
-      "degraded": 13,
+      "degraded": 12,
       "failing": 16,
       "retired": 0,
       "disabled": 182
@@ -52515,7 +52515,7 @@
         "id": "src-veterinary-evidence",
         "label": "Veterinary Evidence",
         "enabled": true,
-        "status": "degraded",
+        "status": "healthy",
         "feedCount": 1,
         "checkedFeedCount": 1,
         "consecutiveFailures": 0,
@@ -53157,7 +53157,7 @@
         "feedUrl": "https://ajtcvm.scholasticahq.com/feed",
         "finalUrl": "https://ajtcvm.scholasticahq.com/feed",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:04.312Z",
+        "checkedAt": "2026-08-16T00:27:37.650Z",
         "httpStatus": 200,
         "contentType": "text/xml; charset=utf-8",
         "xmlParsed": true,
@@ -53165,7 +53165,7 @@
         "responseBytes": 9345,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-01T21:31:00.000Z",
-        "ageDays": 13.8,
+        "ageDays": 14.12,
         "averageIntervalDays": 20.13,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53185,13 +53185,13 @@
         "ok": true,
         "status": "quiet",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-animals",
         "sourceLabel": "Animals",
         "feedUrl": "https://www.mdpi.com/rss/journal/animals",
-        "checkedAt": "2026-08-15T16:45:05.022Z",
+        "checkedAt": "2026-08-16T00:27:37.980Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -53212,7 +53212,7 @@
         "feedUrl": "https://www.vet.cornell.edu/taxonomy/term/44/feed",
         "finalUrl": "https://www.vet.cornell.edu/taxonomy/term/44/feed",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:08.623Z",
+        "checkedAt": "2026-08-16T00:27:41.579Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=utf-8",
         "xmlParsed": true,
@@ -53220,14 +53220,14 @@
         "responseBytes": 82736,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-14T12:39:14.000Z",
-        "ageDays": 1.17,
+        "ageDays": 1.49,
         "averageIntervalDays": 3.88,
         "officialDomain": true,
         "relayRatio": 0,
         "canonicalCoverage": 0,
         "duplicateGuidCount": 0,
-        "etag": "\"1786812308\"",
-        "lastModified": "Sat, 15 Aug 2026 16:45:08 GMT",
+        "etag": "\"1786840061\"",
+        "lastModified": "Sun, 16 Aug 2026 00:27:41 GMT",
         "notModified": false,
         "fromCache": false,
         "lastError": null,
@@ -53240,7 +53240,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-cornell-ruffian-equine-specialists",
@@ -53248,7 +53248,7 @@
         "feedUrl": "https://www.vet.cornell.edu/taxonomy/term/327/feed",
         "finalUrl": "https://www.vet.cornell.edu/taxonomy/term/327/feed",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:10.001Z",
+        "checkedAt": "2026-08-16T00:27:41.916Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=utf-8",
         "xmlParsed": true,
@@ -53256,14 +53256,14 @@
         "responseBytes": 91800,
         "itemCount": 10,
         "latestPublishedAt": "2026-07-21T13:58:13.000Z",
-        "ageDays": 25.12,
+        "ageDays": 25.44,
         "averageIntervalDays": 119.44,
         "officialDomain": true,
         "relayRatio": 0,
         "canonicalCoverage": 0,
         "duplicateGuidCount": 0,
-        "etag": "\"1786812310\"",
-        "lastModified": "Sat, 15 Aug 2026 16:45:10 GMT",
+        "etag": "\"1786840061\"",
+        "lastModified": "Sun, 16 Aug 2026 00:27:41 GMT",
         "notModified": false,
         "fromCache": false,
         "lastError": null,
@@ -53276,7 +53276,7 @@
         "ok": true,
         "status": "quiet",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-dr-andy-roark",
@@ -53284,7 +53284,7 @@
         "feedUrl": "https://drandyroark.com/feed/",
         "finalUrl": "https://drandyroark.com/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:10.346Z",
+        "checkedAt": "2026-08-16T00:27:42.172Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -53292,7 +53292,7 @@
         "responseBytes": 103423,
         "itemCount": 90,
         "latestPublishedAt": "2026-08-13T23:45:01.000Z",
-        "ageDays": 1.71,
+        "ageDays": 2.03,
         "averageIntervalDays": 3.47,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53312,7 +53312,7 @@
         "ok": true,
         "status": "healthy",
         "alternatives": [],
-        "consecutiveSuccesses": 11
+        "consecutiveSuccesses": 12
       },
       {
         "sourceId": "src-frontiers-in-veterinary-science",
@@ -53320,7 +53320,7 @@
         "feedUrl": "https://www.frontiersin.org/journals/veterinary-science/rss",
         "finalUrl": "https://www.frontiersin.org/journals/veterinary-science/rss",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:10.632Z",
+        "checkedAt": "2026-08-16T00:27:42.473Z",
         "httpStatus": 200,
         "contentType": "application/xml; charset=utf-8",
         "xmlParsed": true,
@@ -53348,7 +53348,7 @@
         "ok": true,
         "status": "healthy",
         "alternatives": [],
-        "consecutiveSuccesses": 11
+        "consecutiveSuccesses": 12
       },
       {
         "sourceId": "src-ivc-journal",
@@ -53356,7 +53356,7 @@
         "feedUrl": "https://ivcjournal.com/feed/",
         "finalUrl": "https://ivcjournal.com/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:11.349Z",
+        "checkedAt": "2026-08-16T00:27:43.142Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -53364,7 +53364,7 @@
         "responseBytes": 123567,
         "itemCount": 15,
         "latestPublishedAt": "2026-08-13T13:00:14.000Z",
-        "ageDays": 2.16,
+        "ageDays": 2.48,
         "averageIntervalDays": 2,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53384,7 +53384,7 @@
         "ok": true,
         "status": "healthy",
         "alternatives": [],
-        "consecutiveSuccesses": 11
+        "consecutiveSuccesses": 12
       },
       {
         "sourceId": "src-illinois-college-of-veterinary-medicine-news",
@@ -53392,7 +53392,7 @@
         "feedUrl": "https://vetmed.illinois.edu/category/news/feed/",
         "finalUrl": "https://vetmed.illinois.edu/category/news/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:11.889Z",
+        "checkedAt": "2026-08-16T00:27:43.672Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -53400,7 +53400,7 @@
         "responseBytes": 69378,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-11T18:00:21.000Z",
-        "ageDays": 3.95,
+        "ageDays": 4.27,
         "averageIntervalDays": 247.98,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53420,7 +53420,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-journal-of-research-in-veterinary-medicine",
@@ -53428,7 +53428,7 @@
         "feedUrl": "https://dergipark.org.tr/en/pub/jrvm/rss/lastissue/en",
         "finalUrl": "https://dergipark.org.tr/en/pub/jrvm/rss/lastissue/en",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:12.481Z",
+        "checkedAt": "2026-08-16T00:27:44.039Z",
         "httpStatus": 200,
         "contentType": "xml",
         "xmlParsed": true,
@@ -53436,7 +53436,7 @@
         "responseBytes": 31575,
         "itemCount": 10,
         "latestPublishedAt": "2026-07-24T08:47:02.000Z",
-        "ageDays": 22.33,
+        "ageDays": 22.65,
         "averageIntervalDays": 0,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53456,7 +53456,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-journal-of-research-in-veterinary-medicine",
@@ -53464,7 +53464,7 @@
         "feedUrl": "https://dergipark.org.tr/en/pub/jrvm/rss/earlypub/en",
         "finalUrl": "https://dergipark.org.tr/en/pub/jrvm/rss/earlypub/en",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:13.915Z",
+        "checkedAt": "2026-08-16T00:27:45.575Z",
         "httpStatus": 200,
         "contentType": "xml",
         "xmlParsed": true,
@@ -53492,7 +53492,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-journal-of-veterinary-internal-medicine",
@@ -53500,7 +53500,7 @@
         "feedUrl": "https://academic.oup.com/rss/site_6763/4234.xml",
         "finalUrl": "https://academic.oup.com/rss/site_6763/4234.xml",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:14.522Z",
+        "checkedAt": "2026-08-16T00:27:46.167Z",
         "httpStatus": 200,
         "contentType": "text/xml",
         "xmlParsed": true,
@@ -53508,7 +53508,7 @@
         "responseBytes": 117046,
         "itemCount": 44,
         "latestPublishedAt": "2026-08-13T00:00:00.000Z",
-        "ageDays": 2.7,
+        "ageDays": 3.02,
         "averageIntervalDays": 1,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53528,7 +53528,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-minnesota-veterinary-biomedical-sciences-research",
@@ -53536,7 +53536,7 @@
         "feedUrl": "https://experts.umn.edu/en/organisations/veterinary-and-biomedical-sciences/publications/?format=rss",
         "finalUrl": "https://experts.umn.edu/en/organisations/veterinary-and-biomedical-sciences/publications/?format=rss",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:14.905Z",
+        "checkedAt": "2026-08-16T00:27:46.479Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml;charset=UTF-8",
         "xmlParsed": true,
@@ -53544,7 +53544,7 @@
         "responseBytes": 119510,
         "itemCount": 50,
         "latestPublishedAt": "2026-12-01T00:00:00.000Z",
-        "ageDays": -107.3,
+        "ageDays": -106.98,
         "averageIntervalDays": 44.08,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53564,7 +53564,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-nc-state-university",
@@ -53572,7 +53572,7 @@
         "feedUrl": "https://cvm.ncsu.edu/feed/",
         "finalUrl": "https://cvm.ncsu.edu/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:15.236Z",
+        "checkedAt": "2026-08-16T00:27:46.806Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -53580,14 +53580,14 @@
         "responseBytes": 625749,
         "itemCount": 50,
         "latestPublishedAt": "2026-08-12T15:11:03.000Z",
-        "ageDays": 3.07,
+        "ageDays": 3.39,
         "averageIntervalDays": 3.04,
         "officialDomain": false,
         "relayRatio": 0,
         "canonicalCoverage": 0,
         "duplicateGuidCount": 0,
-        "etag": "W/\"31c7d58ec0ad0296285ee9c2838ac9ff\"",
-        "lastModified": "Fri, 14 Aug 2026 20:40:45 GMT",
+        "etag": "W/\"cef41489c517b8dd62a8c8215d577ff7\"",
+        "lastModified": "Sat, 15 Aug 2026 23:20:27 GMT",
         "notModified": false,
         "fromCache": false,
         "lastError": null,
@@ -53600,7 +53600,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 9
+        "consecutiveSuccesses": 10
       },
       {
         "sourceId": "src-sciencedaily",
@@ -53608,7 +53608,7 @@
         "feedUrl": "https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml",
         "finalUrl": "https://www.sciencedaily.com/rss/plants_animals/veterinary_medicine.xml",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:15.975Z",
+        "checkedAt": "2026-08-16T00:27:47.198Z",
         "httpStatus": 200,
         "contentType": "application/xml",
         "xmlParsed": true,
@@ -53616,7 +53616,7 @@
         "responseBytes": 47157,
         "itemCount": 60,
         "latestPublishedAt": "2026-08-12T05:32:21.000Z",
-        "ageDays": 3.47,
+        "ageDays": 3.79,
         "averageIntervalDays": 4.35,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53636,7 +53636,7 @@
         "ok": true,
         "status": "healthy",
         "alternatives": [],
-        "consecutiveSuccesses": 11
+        "consecutiveSuccesses": 12
       },
       {
         "sourceId": "src-tennessee-college-of-veterinary-medicine-news",
@@ -53644,7 +53644,7 @@
         "feedUrl": "https://vetmed.tennessee.edu/blog/feed/",
         "finalUrl": "https://vetmed.tennessee.edu/blog/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:16.194Z",
+        "checkedAt": "2026-08-16T00:27:47.565Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -53652,7 +53652,7 @@
         "responseBytes": 53813,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-14T16:36:26.000Z",
-        "ageDays": 1.01,
+        "ageDays": 1.33,
         "averageIntervalDays": 16.66,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53672,7 +53672,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-texas-a-m-vmbs-news",
@@ -53680,7 +53680,7 @@
         "feedUrl": "https://vetmed.tamu.edu/news/feed/",
         "finalUrl": "https://vetmed.tamu.edu/news/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:45:16.688Z",
+        "checkedAt": "2026-08-16T00:27:48.054Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -53688,7 +53688,7 @@
         "responseBytes": 106925,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-13T17:54:54.000Z",
-        "ageDays": 1.95,
+        "ageDays": 2.27,
         "averageIntervalDays": 2.46,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53717,13 +53717,13 @@
             "reason": "official alternate/sitemap link"
           }
         ],
-        "consecutiveSuccesses": 3
+        "consecutiveSuccesses": 4
       },
       {
         "sourceId": "src-today-s-veterinary-business",
         "sourceLabel": "Today's Veterinary Business",
         "feedUrl": "https://todaysveterinarybusiness.com/feed/",
-        "checkedAt": "2026-08-15T16:45:17.266Z",
+        "checkedAt": "2026-08-16T00:27:48.642Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -53742,7 +53742,7 @@
         "sourceId": "src-today-s-veterinary-nurse",
         "sourceLabel": "Today's Veterinary Nurse",
         "feedUrl": "https://todaysveterinarynurse.com/feed/",
-        "checkedAt": "2026-08-15T16:46:12.724Z",
+        "checkedAt": "2026-08-16T00:28:43.654Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -53761,7 +53761,7 @@
         "sourceId": "src-today-s-veterinary-practice",
         "sourceLabel": "Today's Veterinary Practice",
         "feedUrl": "https://todaysveterinarypractice.com/feed/",
-        "checkedAt": "2026-08-15T16:47:08.193Z",
+        "checkedAt": "2026-08-16T00:29:39.119Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -53782,7 +53782,7 @@
         "feedUrl": "https://www.vetmed.ufl.edu/feed/",
         "finalUrl": "https://www.vetmed.ufl.edu/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:48:03.663Z",
+        "checkedAt": "2026-08-16T00:30:34.587Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -53790,7 +53790,7 @@
         "responseBytes": 12295,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-14T20:39:06.000Z",
-        "ageDays": 0.84,
+        "ageDays": 1.16,
         "averageIntervalDays": 9.57,
         "officialDomain": false,
         "relayRatio": 0,
@@ -53815,7 +53815,7 @@
             "reason": "official alternate/sitemap link"
           }
         ],
-        "consecutiveSuccesses": 3
+        "consecutiveSuccesses": 4
       },
       {
         "sourceId": "src-university-of-missouri-veterinary-news",
@@ -53823,7 +53823,7 @@
         "feedUrl": "https://vetmed.missouri.edu/feed/",
         "finalUrl": "https://cvm.missouri.edu/feed/",
         "redirected": true,
-        "checkedAt": "2026-08-15T16:48:04.735Z",
+        "checkedAt": "2026-08-16T00:30:35.684Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -53831,7 +53831,7 @@
         "responseBytes": 66709,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-12T15:42:35.000Z",
-        "ageDays": 3.05,
+        "ageDays": 3.37,
         "averageIntervalDays": 5.57,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53851,7 +53851,7 @@
         "ok": true,
         "status": "healthy",
         "alternatives": [],
-        "consecutiveSuccesses": 3
+        "consecutiveSuccesses": 4
       },
       {
         "sourceId": "src-vet-candy",
@@ -53859,7 +53859,7 @@
         "feedUrl": "https://www.myvetcandy.com/news?format=rss",
         "finalUrl": "https://www.myvetcandy.com/news?format=rss",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:48:05.156Z",
+        "checkedAt": "2026-08-16T00:30:36.209Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -53867,13 +53867,13 @@
         "responseBytes": 353409,
         "itemCount": 300,
         "latestPublishedAt": "2026-08-16T22:03:48.000Z",
-        "ageDays": -1.22,
+        "ageDays": -0.9,
         "averageIntervalDays": 0.38,
         "officialDomain": false,
         "relayRatio": 0,
         "canonicalCoverage": 0,
         "duplicateGuidCount": 0,
-        "etag": "W/\"c369abc53967cf5d66340895f3d98528\"",
+        "etag": "W/\"acf1674ec6ac47134c395c2f91792c87\"",
         "lastModified": null,
         "notModified": false,
         "fromCache": false,
@@ -53887,13 +53887,13 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 11
+        "consecutiveSuccesses": 12
       },
       {
         "sourceId": "src-vet-practice-magazine",
         "sourceLabel": "Vet Practice Magazine",
         "feedUrl": "https://vetpracticemag.com.au/feed/",
-        "checkedAt": "2026-08-15T16:48:06.249Z",
+        "checkedAt": "2026-08-16T00:30:39.445Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -53912,7 +53912,7 @@
         "sourceId": "src-vetgirl",
         "sourceLabel": "VetGirl",
         "feedUrl": "https://vetgirlontherun.com/feed/",
-        "checkedAt": "2026-08-15T16:49:01.307Z",
+        "checkedAt": "2026-08-16T00:31:34.449Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -53931,7 +53931,7 @@
         "sourceId": "src-veterinary-clinical-pathology",
         "sourceLabel": "Veterinary Clinical Pathology",
         "feedUrl": "https://onlinelibrary.wiley.com/feed/1939165X/most-recent",
-        "checkedAt": "2026-08-15T16:49:04.531Z",
+        "checkedAt": "2026-08-16T00:31:37.693Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -53950,7 +53950,7 @@
         "sourceId": "src-veterinary-dermatology",
         "sourceLabel": "Veterinary Dermatology",
         "feedUrl": "https://onlinelibrary.wiley.com/feed/13653164/most-recent",
-        "checkedAt": "2026-08-15T16:49:07.872Z",
+        "checkedAt": "2026-08-16T00:31:40.905Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -53971,7 +53971,7 @@
         "feedUrl": "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2",
         "finalUrl": "https://veterinaryevidence.org/index.php/ve/gateway/plugin/WebFeedGatewayPlugin/rss2",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:49:11.046Z",
+        "checkedAt": "2026-08-16T00:31:44.071Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=utf-8",
         "xmlParsed": true,
@@ -53979,7 +53979,7 @@
         "responseBytes": 53694,
         "itemCount": 20,
         "latestPublishedAt": "2026-08-14T00:00:00.000Z",
-        "ageDays": 1.7,
+        "ageDays": 2.02,
         "averageIntervalDays": 18.42,
         "officialDomain": true,
         "relayRatio": 0,
@@ -53997,9 +53997,9 @@
           "url": "https://veterinaryevidence.org/robots.txt"
         },
         "ok": true,
-        "status": "degraded",
+        "status": "healthy",
         "alternatives": [],
-        "consecutiveSuccesses": 2
+        "consecutiveSuccesses": 3
       },
       {
         "sourceId": "src-veterinary-practice-news",
@@ -54007,7 +54007,7 @@
         "feedUrl": "https://www.veterinarypracticenews.com/feed/",
         "finalUrl": "https://www.veterinarypracticenews.com/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:49:11.501Z",
+        "checkedAt": "2026-08-16T00:31:44.595Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -54015,7 +54015,7 @@
         "responseBytes": 146713,
         "itemCount": 20,
         "latestPublishedAt": "2026-08-13T20:39:45.000Z",
-        "ageDays": 1.84,
+        "ageDays": 2.16,
         "averageIntervalDays": 0.67,
         "officialDomain": true,
         "relayRatio": 0,
@@ -54035,13 +54035,13 @@
         "ok": true,
         "status": "healthy",
         "alternatives": [],
-        "consecutiveSuccesses": 11
+        "consecutiveSuccesses": 12
       },
       {
         "sourceId": "src-veterinary-record",
         "sourceLabel": "Veterinary Record",
         "feedUrl": "https://bvajournals.onlinelibrary.wiley.com/feed/20427670/most-recent",
-        "checkedAt": "2026-08-15T16:49:12.665Z",
+        "checkedAt": "2026-08-16T00:31:45.690Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -54060,7 +54060,7 @@
         "sourceId": "src-veterinary-record-case-reports",
         "sourceLabel": "Veterinary Record Case Reports",
         "feedUrl": "https://onlinelibrary.wiley.com/feed/20526121/most-recent",
-        "checkedAt": "2026-08-15T16:49:15.919Z",
+        "checkedAt": "2026-08-16T00:31:49.095Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -54079,7 +54079,7 @@
         "sourceId": "src-veterinary-sciences",
         "sourceLabel": "Veterinary Sciences",
         "feedUrl": "https://www.mdpi.com/rss/journal/vetsci",
-        "checkedAt": "2026-08-15T16:49:19.104Z",
+        "checkedAt": "2026-08-16T00:31:52.272Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -54098,7 +54098,7 @@
         "sourceId": "src-veterinary-and-comparative-oncology",
         "sourceLabel": "Veterinary and Comparative Oncology",
         "feedUrl": "https://onlinelibrary.wiley.com/feed/14765829/most-recent",
-        "checkedAt": "2026-08-15T16:49:22.573Z",
+        "checkedAt": "2026-08-16T00:31:56.132Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -54117,7 +54117,7 @@
         "sourceId": "src-veterinary-medicine-and-science",
         "sourceLabel": "Veterinary medicine and science",
         "feedUrl": "https://onlinelibrary.wiley.com/feed/20531095/most-recent",
-        "checkedAt": "2026-08-15T16:49:25.729Z",
+        "checkedAt": "2026-08-16T00:31:59.275Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -54136,7 +54136,7 @@
         "sourceId": "src-veterinary-ophthalmology",
         "sourceLabel": "Veterinary ophthalmology",
         "feedUrl": "https://onlinelibrary.wiley.com/feed/14635224/most-recent",
-        "checkedAt": "2026-08-15T16:49:28.904Z",
+        "checkedAt": "2026-08-16T00:32:02.437Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -54155,7 +54155,7 @@
         "sourceId": "src-veterinary-radiology-ultrasound-the-official-journal-of-",
         "sourceLabel": "Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association",
         "feedUrl": "https://onlinelibrary.wiley.com/feed/17408261/most-recent",
-        "checkedAt": "2026-08-15T16:49:32.069Z",
+        "checkedAt": "2026-08-16T00:32:05.601Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -54176,7 +54176,7 @@
         "feedUrl": "https://vetmed.agriculturejournals.cz/rss/latest.xml",
         "finalUrl": "https://vetmed.agriculturejournals.cz/rss/latest.xml",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:49:35.240Z",
+        "checkedAt": "2026-08-16T00:32:08.765Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=utf-8",
         "xmlParsed": true,
@@ -54184,7 +54184,7 @@
         "responseBytes": 11898,
         "itemCount": 5,
         "latestPublishedAt": "2026-07-30T00:00:00.000Z",
-        "ageDays": 16.7,
+        "ageDays": 17.02,
         "averageIntervalDays": 0,
         "officialDomain": true,
         "relayRatio": 0,
@@ -54204,7 +54204,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-virginia-tech-veterinary-college-news",
@@ -54212,7 +54212,7 @@
         "feedUrl": "https://news.vt.edu/tags/_jcr_content/search-results.xml/news_vt_edu%3Atop-news-vmcvm",
         "finalUrl": "https://news.vt.edu/tags/_jcr_content/search-results.xml/news_vt_edu%3Atop-news-vmcvm",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:49:35.979Z",
+        "checkedAt": "2026-08-16T00:32:09.448Z",
         "httpStatus": 200,
         "contentType": "application/xml;charset=utf-8",
         "xmlParsed": true,
@@ -54220,7 +54220,7 @@
         "responseBytes": 391636,
         "itemCount": 300,
         "latestPublishedAt": "2026-08-13T16:38:00.000Z",
-        "ageDays": 2.01,
+        "ageDays": 2.33,
         "averageIntervalDays": 2.05,
         "officialDomain": true,
         "relayRatio": 0,
@@ -54240,7 +54240,7 @@
         "ok": true,
         "status": "degraded",
         "alternatives": [],
-        "consecutiveSuccesses": 1
+        "consecutiveSuccesses": 2
       },
       {
         "sourceId": "src-washington-state-veterinary-news",
@@ -54248,7 +54248,7 @@
         "feedUrl": "https://vetmed.wsu.edu/feed/",
         "finalUrl": "https://vetmed.wsu.edu/feed/",
         "redirected": false,
-        "checkedAt": "2026-08-15T16:49:36.293Z",
+        "checkedAt": "2026-08-16T00:32:09.789Z",
         "httpStatus": 200,
         "contentType": "application/rss+xml; charset=UTF-8",
         "xmlParsed": true,
@@ -54256,7 +54256,7 @@
         "responseBytes": 43158,
         "itemCount": 10,
         "latestPublishedAt": "2026-08-12T21:08:17.000Z",
-        "ageDays": 2.82,
+        "ageDays": 3.14,
         "averageIntervalDays": 1.57,
         "officialDomain": true,
         "relayRatio": 0,
@@ -54276,13 +54276,13 @@
         "ok": true,
         "status": "healthy",
         "alternatives": [],
-        "consecutiveSuccesses": 3
+        "consecutiveSuccesses": 4
       },
       {
         "sourceId": "src-npj-veterinary-sciences",
         "sourceLabel": "npj Veterinary Sciences",
         "feedUrl": "https://www.nature.com/npjvetsci.rss",
-        "checkedAt": "2026-08-15T16:49:36.980Z",
+        "checkedAt": "2026-08-16T00:32:10.486Z",
         "status": "failing",
         "ok": false,
         "xmlParsed": false,
@@ -63015,7 +63015,7 @@
   },
   "firstReleaseQa": {
     "version": 1,
-    "generatedAt": "2026-08-15T18:44:56.054Z",
+    "generatedAt": "2026-08-16T00:27:36.357Z",
     "candidates": [
       {
         "id": "v1_88e7bde7826c5eaf",
@@ -63190,7 +63190,7 @@
   },
   "operationsStatus": {
     "version": 1,
-    "generatedAt": "2026-08-15T18:52:41.667Z",
+    "generatedAt": "2026-08-16T00:41:44.434Z",
     "publication": {
       "totalArticles": 901,
       "index": 190,
@@ -63433,14 +63433,14 @@
       "open": 0
     },
     "feeds": {
-      "total": 27,
+      "total": 39,
       "byStatus": {
-        "degraded": 10,
-        "failing": 11,
-        "healthy": 5,
-        "stale": 1
+        "degraded": 14,
+        "failing": 16,
+        "healthy": 7,
+        "quiet": 2
       },
-      "failing": 11
+      "failing": 16
     },
     "searchPerformance": {
       "rows": 0,
@@ -63455,7 +63455,7 @@
   },
   "imageRightsQueue": {
     "version": 1,
-    "generatedAt": "2026-08-15T18:52:52.744Z",
+    "generatedAt": "2026-08-16T00:41:44.688Z",
     "count": 87,
     "rows": [
       {
@@ -64685,10 +64685,10 @@
   },
   "workQueue": {
     "version": 1,
-    "generatedAt": "2026-08-15T18:53:13.806Z",
+    "generatedAt": "2026-08-16T00:41:44.870Z",
     "noindex": true,
-    "count": 978,
-    "open": 978,
+    "count": 986,
+    "open": 986,
     "next": [
       {
         "status": "open",
@@ -79523,6 +79523,116 @@
           "HTTP 미확인",
           "MIME 미확인"
         ],
+        "id": "feed:src-npj-veterinary-sciences",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 90,
+        "title": "npj Veterinary Sciences",
+        "blocker": "feed-health",
+        "reason": "failing · DOCTYPE/ENTITY가 포함된 XML은 처리하지 않습니다",
+        "sourceLabel": "npj Veterinary Sciences",
+        "sourceUrl": "https://www.nature.com/npjvetsci.rss"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 미확인",
+          "MIME 미확인"
+        ],
+        "id": "feed:src-today-s-veterinary-business",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 90,
+        "title": "Today's Veterinary Business",
+        "blocker": "feed-health",
+        "reason": "failing · fetch failed",
+        "sourceLabel": "Today's Veterinary Business",
+        "sourceUrl": "https://todaysveterinarybusiness.com/feed/"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 미확인",
+          "MIME 미확인"
+        ],
+        "id": "feed:src-today-s-veterinary-nurse",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 90,
+        "title": "Today's Veterinary Nurse",
+        "blocker": "feed-health",
+        "reason": "failing · fetch failed",
+        "sourceLabel": "Today's Veterinary Nurse",
+        "sourceUrl": "https://todaysveterinarynurse.com/feed/"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 미확인",
+          "MIME 미확인"
+        ],
+        "id": "feed:src-today-s-veterinary-practice",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 90,
+        "title": "Today's Veterinary Practice",
+        "blocker": "feed-health",
+        "reason": "failing · fetch failed",
+        "sourceLabel": "Today's Veterinary Practice",
+        "sourceUrl": "https://todaysveterinarypractice.com/feed/"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 미확인",
+          "MIME 미확인"
+        ],
+        "id": "feed:src-vet-practice-magazine",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 90,
+        "title": "Vet Practice Magazine",
+        "blocker": "feed-health",
+        "reason": "failing · fetch failed",
+        "sourceLabel": "Vet Practice Magazine",
+        "sourceUrl": "https://vetpracticemag.com.au/feed/"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 미확인",
+          "MIME 미확인"
+        ],
         "id": "feed:src-veterinary-and-comparative-oncology",
         "type": "feed-health",
         "label": "공식 피드 복구",
@@ -86853,17 +86963,127 @@
         ],
         "evidence": [
           "HTTP 200",
-          "application/rss+xml; charset=UTF-8"
+          "application/rss+xml; charset=utf-8"
         ],
-        "id": "feed:src-today-s-veterinary-nurse",
+        "id": "feed:src-cornell-college-of-veterinary-medicine-news",
         "type": "feed-health",
         "label": "공식 피드 복구",
-        "priority": 65,
-        "title": "Today's Veterinary Nurse",
+        "priority": 55,
+        "title": "Cornell College of Veterinary Medicine News",
         "blocker": "feed-health",
-        "reason": "stale · 최근 피드 상태 확인 필요",
-        "sourceLabel": "Today's Veterinary Nurse",
-        "sourceUrl": "https://todaysveterinarynurse.com/feed/"
+        "reason": "degraded · 최근 피드 상태 확인 필요",
+        "sourceLabel": "Cornell College of Veterinary Medicine News",
+        "sourceUrl": "https://www.vet.cornell.edu/taxonomy/term/44/feed"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 200",
+          "application/rss+xml; charset=UTF-8"
+        ],
+        "id": "feed:src-illinois-college-of-veterinary-medicine-news",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 55,
+        "title": "Illinois College of Veterinary Medicine News",
+        "blocker": "feed-health",
+        "reason": "degraded · 최근 피드 상태 확인 필요",
+        "sourceLabel": "Illinois College of Veterinary Medicine News",
+        "sourceUrl": "https://vetmed.illinois.edu/category/news/feed/"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 200",
+          "xml"
+        ],
+        "id": "feed:src-journal-of-research-in-veterinary-medicine",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 55,
+        "title": "Journal of Research in Veterinary Medicine",
+        "blocker": "feed-health",
+        "reason": "degraded · 최근 피드 상태 확인 필요",
+        "sourceLabel": "Journal of Research in Veterinary Medicine",
+        "sourceUrl": "https://dergipark.org.tr/en/pub/jrvm/rss/lastissue/en"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 200",
+          "xml"
+        ],
+        "id": "feed:src-journal-of-research-in-veterinary-medicine",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 55,
+        "title": "Journal of Research in Veterinary Medicine",
+        "blocker": "feed-health",
+        "reason": "degraded · 최근 피드 상태 확인 필요",
+        "sourceLabel": "Journal of Research in Veterinary Medicine",
+        "sourceUrl": "https://dergipark.org.tr/en/pub/jrvm/rss/earlypub/en"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 200",
+          "text/xml"
+        ],
+        "id": "feed:src-journal-of-veterinary-internal-medicine",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 55,
+        "title": "Journal of Veterinary Internal Medicine",
+        "blocker": "feed-health",
+        "reason": "degraded · 최근 피드 상태 확인 필요",
+        "sourceLabel": "Journal of Veterinary Internal Medicine",
+        "sourceUrl": "https://academic.oup.com/rss/site_6763/4234.xml"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 200",
+          "application/rss+xml;charset=UTF-8"
+        ],
+        "id": "feed:src-minnesota-veterinary-biomedical-sciences-research",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 55,
+        "title": "Minnesota Veterinary & Biomedical Sciences Research",
+        "blocker": "feed-health",
+        "reason": "degraded · 최근 피드 상태 확인 필요",
+        "sourceLabel": "Minnesota Veterinary & Biomedical Sciences Research",
+        "sourceUrl": "https://experts.umn.edu/en/organisations/veterinary-and-biomedical-sciences/publications/?format=rss"
       },
       {
         "status": "open",
@@ -86899,6 +87119,28 @@
           "HTTP 200",
           "application/rss+xml; charset=UTF-8"
         ],
+        "id": "feed:src-tennessee-college-of-veterinary-medicine-news",
+        "type": "feed-health",
+        "label": "공식 피드 복구",
+        "priority": 55,
+        "title": "Tennessee College of Veterinary Medicine News",
+        "blocker": "feed-health",
+        "reason": "degraded · 최근 피드 상태 확인 필요",
+        "sourceLabel": "Tennessee College of Veterinary Medicine News",
+        "sourceUrl": "https://vetmed.tennessee.edu/blog/feed/"
+      },
+      {
+        "status": "open",
+        "indexable": false,
+        "requiredRole": "editor",
+        "commands": [
+          "npm run sources:diagnose",
+          "npm run sources:repair:validate"
+        ],
+        "evidence": [
+          "HTTP 200",
+          "application/rss+xml; charset=UTF-8"
+        ],
         "id": "feed:src-texas-a-m-vmbs-news",
         "type": "feed-health",
         "label": "공식 피드 복구",
@@ -86908,50 +87150,6 @@
         "reason": "degraded · 최근 피드 상태 확인 필요",
         "sourceLabel": "Texas A&M VMBS News",
         "sourceUrl": "https://vetmed.tamu.edu/news/feed/"
-      },
-      {
-        "status": "open",
-        "indexable": false,
-        "requiredRole": "editor",
-        "commands": [
-          "npm run sources:diagnose",
-          "npm run sources:repair:validate"
-        ],
-        "evidence": [
-          "HTTP 200",
-          "application/rss+xml; charset=UTF-8"
-        ],
-        "id": "feed:src-today-s-veterinary-business",
-        "type": "feed-health",
-        "label": "공식 피드 복구",
-        "priority": 55,
-        "title": "Today's Veterinary Business",
-        "blocker": "feed-health",
-        "reason": "degraded · 최근 피드 상태 확인 필요",
-        "sourceLabel": "Today's Veterinary Business",
-        "sourceUrl": "https://todaysveterinarybusiness.com/feed/"
-      },
-      {
-        "status": "open",
-        "indexable": false,
-        "requiredRole": "editor",
-        "commands": [
-          "npm run sources:diagnose",
-          "npm run sources:repair:validate"
-        ],
-        "evidence": [
-          "HTTP 200",
-          "application/rss+xml; charset=UTF-8"
-        ],
-        "id": "feed:src-today-s-veterinary-practice",
-        "type": "feed-health",
-        "label": "공식 피드 복구",
-        "priority": 55,
-        "title": "Today's Veterinary Practice",
-        "blocker": "feed-health",
-        "reason": "degraded · 최근 피드 상태 확인 필요",
-        "sourceLabel": "Today's Veterinary Practice",
-        "sourceUrl": "https://todaysveterinarypractice.com/feed/"
       },
       {
         "status": "open",
@@ -86987,28 +87185,6 @@
           "HTTP 200",
           "application/rss+xml; charset=UTF-8"
         ],
-        "id": "feed:src-university-of-missouri-veterinary-news",
-        "type": "feed-health",
-        "label": "공식 피드 복구",
-        "priority": 55,
-        "title": "University of Missouri Veterinary News",
-        "blocker": "feed-health",
-        "reason": "degraded · 최근 피드 상태 확인 필요",
-        "sourceLabel": "University of Missouri Veterinary News",
-        "sourceUrl": "https://vetmed.missouri.edu/feed/"
-      },
-      {
-        "status": "open",
-        "indexable": false,
-        "requiredRole": "editor",
-        "commands": [
-          "npm run sources:diagnose",
-          "npm run sources:repair:validate"
-        ],
-        "evidence": [
-          "HTTP 200",
-          "application/rss+xml; charset=UTF-8"
-        ],
         "id": "feed:src-vet-candy",
         "type": "feed-health",
         "label": "공식 피드 복구",
@@ -87029,17 +87205,17 @@
         ],
         "evidence": [
           "HTTP 200",
-          "application/rss+xml; charset=UTF-8"
+          "application/rss+xml; charset=utf-8"
         ],
-        "id": "feed:src-vet-practice-magazine",
+        "id": "feed:src-veterin-rn-medic-na",
         "type": "feed-health",
         "label": "공식 피드 복구",
         "priority": 55,
-        "title": "Vet Practice Magazine",
+        "title": "Veterinární medicína",
         "blocker": "feed-health",
         "reason": "degraded · 최근 피드 상태 확인 필요",
-        "sourceLabel": "Vet Practice Magazine",
-        "sourceUrl": "https://vetpracticemag.com.au/feed/"
+        "sourceLabel": "Veterinární medicína",
+        "sourceUrl": "https://vetmed.agriculturejournals.cz/rss/latest.xml"
       },
       {
         "status": "open",
@@ -87073,17 +87249,17 @@
         ],
         "evidence": [
           "HTTP 200",
-          "application/rss+xml; charset=UTF-8"
+          "application/xml;charset=utf-8"
         ],
-        "id": "feed:src-washington-state-veterinary-news",
+        "id": "feed:src-virginia-tech-veterinary-college-news",
         "type": "feed-health",
         "label": "공식 피드 복구",
         "priority": 55,
-        "title": "Washington State Veterinary News",
+        "title": "Virginia Tech Veterinary College News",
         "blocker": "feed-health",
         "reason": "degraded · 최근 피드 상태 확인 필요",
-        "sourceLabel": "Washington State Veterinary News",
-        "sourceUrl": "https://vetmed.wsu.edu/feed/"
+        "sourceLabel": "Virginia Tech Veterinary College News",
+        "sourceUrl": "https://news.vt.edu/tags/_jcr_content/search-results.xml/news_vt_edu%3Atop-news-vmcvm"
       },
       {
         "status": "open",
@@ -88516,17 +88692,17 @@
         "correction": 1,
         "draft-review": 50,
         "editorial-review": 631,
-        "feed-health": 22,
+        "feed-health": 30,
         "image-rights": 87,
         "source-review": 187
       },
       "byPriority": {
         "critical": 1,
-        "high": 607,
-        "normal": 370
+        "high": 612,
+        "normal": 373
       }
     },
     "note": "인증 관리자 전용 작업 큐. 작업 카드는 승인·발행을 자동 실행하지 않으며 기존 검수 CLI의 다음 명령만 안내합니다."
   },
-  "statusSyncedAt": "2026-08-15T18:53:24.272Z"
+  "statusSyncedAt": "2026-08-16T00:41:45.075Z"
 }

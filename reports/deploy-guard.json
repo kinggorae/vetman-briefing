@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-15T18:53:37.922Z",
+  "generatedAt": "2026-08-16T00:41:45.295Z",
   "critical": [],
   "warnings": [],
   "deployment": {
-    "sourceCommit": "local",
+    "sourceCommit": "a7d2649f4d57d3fa7b4b0e705d501e5fbc994859",
     "latestDate": "2026-08-16",
     "publicArticleCount": 190,
     "searchCount": 190,

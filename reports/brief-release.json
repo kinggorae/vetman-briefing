@@ -1,31 +1,23 @@
 {
   "date": "2026-08-16",
-  "total": 123,
-  "existing": 124,
-  "target": 9999,
-  "eligible": 7,
+  "total": 155,
+  "existing": 131,
+  "target": 40,
+  "eligible": 16,
   "indexEligible": 0,
-  "released": 7,
+  "released": 0,
   "retryQueued": 0,
   "seenRestored": 0,
   "minimum": 30,
-  "shortfall": 9868,
+  "shortfall": 0,
   "skipped": {
-    "rejected": 7,
-    "needs-claim-fix": 2,
-    "오늘 이미 발행됨": 95,
-    "needs-language-fix": 11,
-    "이미 발행된 원문": 1
+    "rejected": 13,
+    "needs-claim-fix": 6,
+    "오늘 이미 발행됨": 102,
+    "needs-language-fix": 17,
+    "이미 발행된 원문": 1,
+    "daily-target-cap": 16
   },
-  "ids": [
-    "v1_7c42accfc7ce9765",
-    "v1_3e2c2621fedc8abd",
-    "v1_c59edf0fe7560bd0",
-    "v1_ca497d5fb4ccdf27",
-    "v1_1966685712ed4a66",
-    "v1_b6a53af3486b4dbd",
-    "v1_85439a4ae7c24079"
-  ],
-  "note": "일일 목표까지 9868건 부족하지만 최소 30건을 확보해 부분 발행했습니다.",
+  "ids": [],
   "dryRun": false
 }

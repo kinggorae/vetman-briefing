@@ -1,145 +1,67 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-08-15T17:08:13.635Z
+- 실행 시각: 2026-08-16T00:40:56.387Z
 - 모드: write-draft
 - 소스/피드: 51/40
 - 수집 항목: 1165
-- 고유 후보: 849
-- exact duplicate: 234
+- 고유 후보: 747
+- exact duplicate: 336
 - 기존 기사 업데이트 후보: 82
 - 관련성 제외: 182
-- 기수집(seen) 제외: 266
-- 신규 가용 후보: 406
-- draft 후보: 123
-- 생성 완료: 46
-- 생성 실패 경고: 77
-- canonical 확인 시도: 119
-- 공식 canonical 확보: 86
-- unresolved source: 37
+- 기수집(seen) 제외: 274
+- 신규 가용 후보: 296
+- draft 후보: 45
+- 생성 완료: 30
+- 생성 실패 경고: 15
+- canonical 확인 시도: 45
+- 공식 canonical 확보: 21
+- unresolved source: 24
 - relay sourceUrl: 0
 
 ## draft 후보
 
-- v1_8f1f9f41bec7fe74 · src-cornell-college-of-veterinary-medicine-news · verified · unique · Isha Chauhan, D.V.M./Ph.D. student receives 2026 Boehringer Ingelheim Research Award
-- v1_8afa6cc750487d37 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Presumed cervical subperiosteal vertebral hemorrhage in nine greyhounds
-- v1_aa94469f01932db5 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Sepsis in critically ill dogs: identification of clinical and laboratory risk factors and evaluation of sepsis scoring systems
-- v1_4394406d3577477c · src-journal-of-veterinary-internal-medicine · unresolved · unique · Short-term mortality prediction based on biochemical blood markers in azotemic cattle with renal disease
-- v1_9315aab3a90d64e8 · src-cornell-college-of-veterinary-medicine-news · verified · unique · Student Story: My journey into stem cell conservation
-- v1_7c42accfc7ce9765 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Staff Spotlight: Andrew Burton
-- v1_3cfec4dfe13a34ef · src-journal-of-veterinary-internal-medicine · unresolved · unique · Endoscopic reduction of true gastrogastric intussusception in a dog
-- v1_72f01907b2095a5c · src-cornell-college-of-veterinary-medicine-news · verified · unique · Cornell Feline Health Center hosts 38th annual Fred Scott Feline Symposium
-- v1_0b39c6abc0fe8579 · src-veterin-rn-medic-na · verified · unique · Efficacy of five peroral therapeutics against Ichthyophthirius multifiliis infestation in salmonids
-- v1_ee0725024b85a97b · src-journal-of-veterinary-internal-medicine · unresolved · unique · Clinical and imaging findings after antiviral treatment in cats with presumptive neurologic feline infectious peritonitis: 9 cases (2020-2024)
-- v1_3e2c2621fedc8abd · src-tennessee-college-of-veterinary-medicine-news · verified · unique · UT Veterinarian Brings Equine Expertise to State Advisory Commission
-- v1_c268c66ece4bbee6 · src-cornell-college-of-veterinary-medicine-news · verified · unique · The dream that drives Rose Molina-Gonzalez, D.V.M. class of 2028
-- v1_1535ca9f55ffbb61 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Likely radiation-induced sciatic neuropathy in a dog
-- v1_c59edf0fe7560bd0 · src-veterin-rn-medic-na · verified · unique · Rearing system type affects baseline and post-vaccination immune gene expression in Atlantic salmon gills during smoltification
-- v1_ca497d5fb4ccdf27 · src-veterin-rn-medic-na · verified · unique · An experimental challenge model for infecting African catfish (Clarias gariepinus) with Edwardsiella tarda
-- v1_bc790c22919a1053 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Survival of dogs with glomerular disease in Europe: insights from the European Veterinary Renal Pathology Service
-- v1_cd2284314f670495 · src-illinois-college-of-veterinary-medicine-news · verified · unique · Undergrads in Health Sciences Go Bananas for Veterinary Experience
-- v1_a923daa465bcd0f1 · src-vet-candy · verified · unique · It’s Official: WVC Nashville Opens Its Doors for the First Time
-- v1_d3f0298568f6c21e · src-cornell-college-of-veterinary-medicine-news · verified · unique · BBS student Q&A: Alexis Smrekar
-- v1_0c9c12e471c34a65 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Fusobacterium necrophorum in necrotic laryngitis of feedlot cattle
-- v1_e1cf5d328556e1cd · src-journal-of-veterinary-internal-medicine · unresolved · unique · Retrospective evaluation of C-reactive protein for discriminating between lower urinary tract infections and acute pyelonephritis in dogs
-- v1_6fd0213818cf494f · src-veterin-rn-medic-na · verified · unique · The contribution of polymer additives to microplastic toxicity: A long-term study with Oncorhynchus mykiss exposed to polystyrene microparticles with different hexabromocyclododecane content
-- v1_9322bcaf57cfff37 · src-journal-of-research-in-veterinary-medicine · unresolved · unique · Living Environment Influences Canine Nasal Microbiota and Antimicrobial Resistance Networks
-- v1_7c4081b4381770f8 · src-cornell-college-of-veterinary-medicine-news · verified · unique · Upcoming Wayne County veterinary clinic free for active-duty military, veterans and first responders
-- v1_87bfa56cf1dac727 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Association of hypoalbuminemia with disease and survival in 1664 cats presenting to a tertiary teaching hospital: a retrospective case-control study
-- v1_e04a162ed7ef35ff · src-journal-of-veterinary-internal-medicine · unresolved · unique · Dachshund spinal health by coat and size type
-- v1_0cf186d86f025384 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Central nervous system lymphoma and neurolymphomatosis in equids
 - v1_941e011a899178f4 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Survival outcomes of dogs with multicentric lymphoma treated with sequential half-body radiotherapy and L-CHOP without maintenance chemotherapy
-- v1_6404e2a00a95fabf · src-cornell-college-of-veterinary-medicine-news · verified · unique · Hospital welcomes new house officers
-- v1_fe77eeede78ea0c1 · src-virginia-tech-veterinary-college-news · verified · unique · Veterinary students expand horizons into biomedical research through summer program in 19th year
-- v1_90350a80f35950b0 · src-journal-of-research-in-veterinary-medicine · unresolved · unique · Comparative Evaluation of EU–Turkey Aquatic Animal Health Legislation in the Context of the EU Animal Health Law
-- v1_06eaddba9ff12165 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Correction to: Pyogranulomatous lymphadenitis with Splendore–Hoeppli phenomenon caused by Neisseria species in a domestic shorthair cat
-- v1_064288dc8c69d0e9 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Correction to: Optic neuritis and meningoencephalitis associated with an ovarian teratoma in a dog
-- v1_fa01b58123f83f02 · src-virginia-tech-veterinary-college-news · verified · unique · Local Tattoo Shop Raises Funds for Canine Cancer Research in Memory of Beloved Pet
-- v1_87eb30a5c45a9b41 · src-cornell-college-of-veterinary-medicine-news · verified · unique · Veterinarians upskill with musculoskeletal ultrasounds
-- v1_b2ffe5fca6b43f89 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Aimee Dalrymple
-- v1_7040548c27f96214 · src-cornell-ruffian-equine-specialists · verified · unique · Newly identified proteins could be key to catching arthritis early
-- v1_fe37c76ca1d06d88 · src-cornell-ruffian-equine-specialists · verified · unique · Gift from the New York Thoroughbred Horsemen’s Association helps Cornell launch Cornell Equine
-- v1_e629a9a94400fcc3 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Best practices framework for using 16S rRNA gene sequencing in poultry microbiota research
-- v1_6c9cfe583727d7b4 · src-american-journal-of-traditional-chinese-veterinary-medic · verified · unique · The Use of Vitamin B12 Aqua-Acupuncture at BL-40 (Wei-zhong) for Treatment of Hindlimb Pain in Canines: A Pilot Study
-- v1_47e226d8c3fec56f · src-cornell-college-of-veterinary-medicine-news · verified · unique · Student story: Immersed in wildlife medicine at the Clinic for the Rehabilitation of Wildlife
-- v1_15fe6d475eb03a74 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Validation of an improved insect bite hypersensitivity severity score for allergic equine insect bite hypersensitivity in horses
-- v1_2997a13dbb039e3d · src-journal-of-research-in-veterinary-medicine · unresolved · unique · Modulation of Soluble Leptin Receptor Levels by Gut Microbiota
+- v1_15bc6105e39d1443 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Medical induction of maternal behavior in nurse mares and foal-rejecting mares undergoing foal grafting: a retrospective study of 140 cases
 - v1_a032196c9466d2d9 · src-journal-of-research-in-veterinary-medicine · unresolved · unique · Modulation of Anxiety-like and Depression-like Dysfunction by Maropitant in Methotrexate-Induced Chemobrain in Mice
-- v1_55e735e27959121e · src-journal-of-research-in-veterinary-medicine · unresolved · unique · 3D Carapace Asymmetry in Tortoises: A Geometric Morphometric Analysis
-- v1_0df5a0fcadc65b33 · src-frontiers-in-veterinary-science · verified · unique · Mitigating antimicrobial resistance in the animal industry: reduction strategies and alternatives to antibiotics
-- v1_3c58455b5d4a9288 · src-frontiers-in-veterinary-science · verified · unique · Knowledge, attitudes, and practices toward African swine fever among commercial pig farm producers in Takeo and Kampong Speu provinces, Cambodia
-- v1_edaddcbd547f770f · src-frontiers-in-veterinary-science · verified · unique · Effects of sweet chestnut (Castanea sativa Mill.) hydrolysable tannins on animal performance, health and manure ammonia and nitrous oxide emissions in preweaning holstein calves
-- v1_064ff6adc7b28736 · src-frontiers-in-veterinary-science · verified · unique · Modulating the avian cecal microbiome: probiotics in the prevention of Histomonas meleagridis in poultry
-- v1_b5e97c167c1deac5 · src-cornell-ruffian-equine-specialists · verified · unique · Veterinary social work advances comprehensive approach to care
-- v1_77c17d799c444cbd · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Pet Spotlight: Luke Fleawalker
-- v1_f54adc5efafe39d0 · src-american-journal-of-traditional-chinese-veterinary-medic · verified · unique · Low Level Laser Therapy Combined with Laser Acupuncture for Treatment of Non-Healing and Multidrug-Resistant Wounds in Five Dogs: A Case Series
-- v1_c109e83e90fc2564 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Pet Spotlight: Venus
-- v1_b000af9971e5bd29 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Amber Lee
-- v1_21d4e146b8f8e2a3 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Cydney Suber
-- v1_d985bcab75cdecc2 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Staff Spotlight: Kirsten Denney
-- v1_1966685712ed4a66 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Estelle Ward
-- v1_43c1918cb89a781e · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Natalia Strandberg
-- v1_7156dc0fb44388af · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Ivan Ravera
 - v1_c3a6c0402abdf52a · src-virginia-tech-veterinary-college-news · verified · unique · Pet pig hogs the family couch again thanks to treatment at Veterinary Teaching Hospital
-- v1_af3afc5168be725a · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Lisa Pinn McFaddin
-- v1_bbd1b8d3b1fa5426 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Pet Spotlight: Hollow
 - v1_9150cc5eed95170d · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Maureen Noftsinger
-- v1_310231da21e553bf · src-frontiers-in-veterinary-science · verified · unique · Seroprevalence of Toxoplasma gondii infection and risk factors in sheep from Afyonkarahisar province, Türkiye
-- v1_2eadaa185f7bf274 · src-frontiers-in-veterinary-science · verified · unique · Crossing the comfort zone: rabbit appeasing pheromone enhances acclimation to a novel environment
-- v1_6132365c3c714245 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Author Correction: Prenatal Zika virus exposure disrupts social-emotional development and cortical visual function in infant macaques (Nature Communications, (2026), 17, 1, (1803), 10.1038/s41467-026-68517-x)
-- v1_458fd8c443ee4393 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Prenatal Zika virus exposure disrupts social-emotional development and cortical visual function in infant macaques
-- v1_f603d1508482104e · src-american-journal-of-traditional-chinese-veterinary-medic · verified · unique · Inheritance and Innovation: The Historical Evolution and Contemporary Transformation of Traditional Chinese Veterinary Medicine
-- v1_b44603ea609e6156 · src-american-journal-of-traditional-chinese-veterinary-medic · verified · unique · Effects of An-shen Aquapuncture on Heart Rate and Salivary Corticosterone Concentrations in Domestic Chickens (Gallus gallus domesticus) and Japanese Quail (Coturnix japonica)
-- v1_6e1ec48d05ae3336 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Clinical features, risk factors, and outcomes of Bordetella bronchiseptica respiratory infections in dogs diagnosed at a tertiary care institution
-- v1_9794b22fed3be46e · src-illinois-college-of-veterinary-medicine-news · verified · unique · Center for Zoonoses Research: Still a Vital Need
-- v1_3878eda15cbbf18d · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Senior-Year Clinical Trainees’ Perceptions of a Clinical Entrustment Scale in an Academic Veterinary Medical Center
-- v1_56a6f815ef6669cf · src-illinois-college-of-veterinary-medicine-news · verified · unique · Narrative Medicine Workshop Helps Veterinarians Consider the Whole Story
+- v1_81cb41c1dbc65c55 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Submucosal urethral bulking with 2.5% polyacrylamide hydrogel (Mictamid) for urinary incontinence in male dogs using a percutaneous fluoroscopically assisted perineal approach
+- v1_89589db95cfd2a1a · src-journal-of-veterinary-internal-medicine · unresolved · unique · Clinical, imaging, and neuropathological characterization of multiple system degeneration associated with a novel SERAC1 variant in a mixed-breed dog
+- v1_ade7242670c8e31d · src-journal-of-veterinary-internal-medicine · unresolved · unique · Testicular seminoma: clinical, imaging, and histologic features in nine horses
+- v1_458bb2e691f16305 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: DeAndrea Gray
+- v1_2d69912d8957733d · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Andrew Mann
+- v1_dc50deca36ba49ac · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Staff Spotlight: Drew Dunn
+- v1_77f91cc172046385 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Yukitaka Kani
+- v1_9ab7cb6f9b98b985 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Pet Spotlight: Velcro
+- v1_fe972ebaef55d3e7 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: JoAnna Pendergrass
+- v1_32cac1a07ae2fe8b · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Alison Lynch
+- v1_eb5df780c061b24c · src-virginia-tech-veterinary-college-news · verified · unique · Off the track: Retired Racehorse Project launches Thoroughbred Wellness Expo at Equine Medical Center
+- v1_fe2bc7a34dc5eef1 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Mitchell Kenyon
+- v1_2f6867c07b2c3a99 · src-virginia-tech-veterinary-college-news · verified · unique · Estate gift builds Spurr family legacy, expands clinical trial opportunities for veterinary college
+- v1_e248e7d98cf9733c · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Ezekiel Jennette
+- v1_02e463c2963ffdcd · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Mary Thornton and Preston Thornton
+- v1_3604dd8239bd521b · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Kristin Eden
+- v1_d1d6731a5bc9c1c0 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Mark Elghossain
 - v1_c5db9b3bdb23ed79 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Can we Mitigate the Impacts of Test Anxiety Through Reappraisal Interventions? A Replication Study in Science Courses Across Multiple Institution Types in the United States
-- v1_956d8cfca85fceb7 · src-cornell-college-of-veterinary-medicine-news · verified · unique · Stroke test tech receives 'breakthrough' status from FDA
-- v1_2290fb9175a039db · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Chick paper sampling: a One Health approach to inform public health action during salmonellosis outbreaks linked to backyard poultry in the United States, 2023
+- v1_a58e971212985b81 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Clinical and microbiota alterations in performance horses undergoing long-distance transport
+- v1_bea6a195c831b08b · src-journal-of-veterinary-internal-medicine · unresolved · unique · Influence of collection site on cerebrospinal fluid test results in horses with equine protozoal myeloencephalitis
 - v1_e867899541ca6382 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Primate resident memory T cells activate humoral and stromal immunity
-- v1_70ff3936ea2286b1 · src-illinois-college-of-veterinary-medicine-news · verified · unique · Equine Surgeon Elected to National Specialty Board Leadership Role
-- v1_f9dcd1d369229b3f · src-illinois-college-of-veterinary-medicine-news · verified · unique · 1977 U. of I. Graduate Leaves Her Legacy to Preserve Historic Round Barns
-- v1_d3998759a6292a93 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Norditerpene Natural Products from Subterranean Fungi with Anti-Parasitic Activity
 - v1_7db36899bbb0a6f2 · src-nc-state-university · verified · unique · From a Local Animal Hospital, Kristen Folk Reports
-- v1_59484ec00cd0d72c · src-illinois-college-of-veterinary-medicine-news · verified · unique · How Risky Is the Bird Flu in Cats?
 - v1_bba0b860d9a868d6 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Comparing Point-of-Care Ultrasound in Multiple Body Positions in Dogs to Key Cardiac Measurements by Echocardiography
-- v1_96fba825c8b49008 · src-illinois-college-of-veterinary-medicine-news · verified · unique · Scholarships Aid Illinois K-12 Teachers Pursuing Master of Veterinary Science Degree
-- v1_b6a53af3486b4dbd · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Antimicrobial Resistance Gene Profiles in Integron-Positive and Integron-Negative Third-Generation Cephalosporin-Resistant E. coli from Human and Animal Sources
-- v1_c977932a2bc91056 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Prion seeding activity in DNA extractions: implications for laboratory biosafety
-- v1_edce2449500f228e · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Allospecific splenic Tr1 cells drive effector T cell exhaustion through up-regulated Areg-EGFR signaling to promote transplant tolerance
 - v1_14447440ff50ce4f · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · In vitro determination of the effects of dairy-origin Propionibacterium freudenreichii subsp. freudenreichii against multidrug-resistant Salmonella Infantis strains infective in broiler chicks
-- v1_c4f2bf4ae3822ba8 · src-tennessee-college-of-veterinary-medicine-news · verified · unique · Okafor elected president-elect of ACVPM Epidemiology Specialty
-- v1_287f290590c04d22 · src-american-journal-of-traditional-chinese-veterinary-medic · verified · unique · Evaluating the Efficacy of Acupuncture for the Treatment of Intervertebral Disc Disease: A Systematic Review and Meta-analysis of Canine and Human Clinical Studies
 - v1_44a6634ea2d165f6 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Highly pathogenic avian influenza (HPAI H5N1, clade 2.3.4.4b, genotype C2.1) in commercial ring-necked pheasants during the 2022 outbreak in the United States
-- v1_43f85d1041692466 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Efficient multiplex non-viral engineering and expansion of polyclonal γδ CAR-T cells for immunotherapy
+- v1_0ba9d38e811aace9 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Dual-functioning Targeted ADAM17 Blocker CD16 (TAB16) mediates selective ADAM17 inhibition in NK cells and engages overexpressed ADAM17 in tumor cells to induce cytotoxicity
+- v1_baccab48af80b9bd · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Utility of dynamic preload indices of hypovolemia in isoflurane-anesthetized horses
 - v1_7edc0bbf51b0ac1e · src-cornell-ruffian-equine-specialists · verified · unique · The Horse: Investigating antimicrobial use at an equine veterinary hospital
-- v1_85439a4ae7c24079 · src-tennessee-college-of-veterinary-medicine-news · verified · unique · UT College of Veterinary Medicine Names New Department Head
-- v1_1f611f8800925fcd · src-tennessee-college-of-veterinary-medicine-news · verified · unique · Leadership Beyond Campus: Dr. David Anderson Reflects on Community and Collaboration
-- v1_a75152ee4d236a3f · src-tennessee-college-of-veterinary-medicine-news · verified · unique · Camelid Conference to be Held at Veterinary College
-- v1_63a5fc5a289bf961 · src-illinois-college-of-veterinary-medicine-news · verified · unique · Renovation of the Leah J. Wightman Round Barns
+- v1_d5ae34120a58c96b · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · A Community-Based Research Approach to Develop Chronic Wasting Disease Outreach with Tribal Communities
+- v1_4eebb0dac7d2c5d2 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Canonical Wnt signaling is not activated in vitro or in vivo by Lawsonia intracellularis infection
+- v1_cf2509c96ada2b9a · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Procedure for in vitro evaluation of antimicrobial compounds against Lawsonia intracellularis
+- v1_a084debb7a3fb234 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Neurological Presentation Associated with Meningoencephalitis Caused by Streptococcus gallolyticus Subsp. pasteurianus in Turkey Poults
+- v1_2134535fb5740f86 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · A Qualitative, Descriptive Pathway Analysis to Explore Routes of African Swine Fever Virus Entry into and Spread from Two Pork Harvest Facilities in the United States
+- v1_01550ceeee9959c9 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Impact of Chemical Aging on Venison Processing Knife Topography and Recoverable Chronic Wasting Disease Prion Seeding Activity
+- v1_f2c145e381186e28 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Turkey oviduct epithelial organoids express region-associated markers and avian influenza virus receptors†
+- v1_ab5f3cf315d99ec9 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Transcriptomic insights into early responses of the uterovaginal junction and vagina to avian influenza virus infection in turkey breeder hens
+- v1_2692f55bab2c22e0 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Microgeographic Approach to the Occurrence, Fate, and Risk of Antibiotic Residues in Wastewater Effluent-Impacted Streams across Rural and Suburban Areas of Minnesota
 - v1_793dc36f6e7ba152 · src-cornell-ruffian-equine-specialists · verified · unique · Governor announces study at Cornell Ruffian Equine Specialists to protect Thoroughbreds
-- v1_fe12273d3abe99cd · src-american-journal-of-traditional-chinese-veterinary-medic · verified · unique · Comparison of Electro-acupuncture Frequency and Lead Placement Changes and Vascular Perfusion of Tissue
-- v1_f92d7361c58c5a15 · src-illinois-college-of-veterinary-medicine-news · verified · unique · Congratulations to Helena
-- v1_57086296fdd887a1 · src-tennessee-college-of-veterinary-medicine-news · verified · unique · Open House Scheduled at UT College of Veterinary Medicine
-- v1_2a1b463e763979c3 · src-tennessee-college-of-veterinary-medicine-news · verified · unique · Congratulations Class of 2026!
-- v1_01a846f87d522f6c · src-illinois-college-of-veterinary-medicine-news · verified · unique · Congratulations to Anamaria
-- v1_3ce05034480fb184 · src-american-journal-of-traditional-chinese-veterinary-medic · verified · unique · Evaluating the Diagnostic Accuracy of Three Traditional Chinese Medicine Eye-based Diagnostic Systems and Clinical Disease in Horses
-- v1_8be8c3a91b1b52fa · src-tennessee-college-of-veterinary-medicine-news · verified · unique · Coley Veterinary Services Joins UT Farm Animal Services–Coley Unit
-- v1_2dd295580437d6f8 · src-tennessee-college-of-veterinary-medicine-news · verified · unique · Stopping Ticks in Their Tracks
-- v1_f7a56937ecb1cc0c · src-vet-candy · verified · unique · A Vet Lab Got the Wrong Answer. It May Have Saved Human Lives
-- v1_a458f8356354bb19 · src-american-journal-of-traditional-chinese-veterinary-medic · verified · unique · Chinese Herbal Medicine and Cardiovascular Disease: Insights into the Integration of Ancient Medicines and Modern Approaches
-- v1_29978032bb0b103d · src-american-journal-of-traditional-chinese-veterinary-medic · verified · unique · Evaluating the Efficacy of Electro-acupuncture Integrated into a Multi-modal Pain Management Protocol for Canine Dental Extractions: A Pilot Study
-- v1_4e359d38060c1956 · src-vet-candy · verified · unique · A Foot-and-Mouth Outbreak in Greece Is Getting Worse. Here's What Veterinary Professionals Need to Know.
-- v1_a5b91d3079e83e9d · src-vet-candy · verified · unique · Watch How Your Senior Dog Walks. It Might Be an Early Sign of Dementia
-- v1_f247ef14b9be3a91 · src-vet-candy · verified · unique · ChatGPT Keeps Recommending the Same Veterinary Chains. Independent Vets Are Barely Showing Up
-- v1_7eeea2df054f36ba · src-vet-candy · verified · unique · Elanco Launches Befrena, a New Anti-IL-31 Monoclonal Antibody for Canine Dermatology
-- v1_6b18b0a8558e5482 · src-vet-candy · verified · unique · Pseudorabies Is Back in Commercial Swine. For the First Time Since 2004
-- v1_40b79346349d00df · src-vet-candy · verified · unique · Hantavirus Is More Common in Pacific Northwest Rodents Than Anyone Expected. Here Is What the Data Shows.
-- v1_5137a157c4e79d5c · src-vet-candy · verified · unique · Why Does Catnip Make Cats High? The Answer Involves Mosquitoes.
-- v1_af7244e641858f2f · src-vet-candy · verified · unique · AAVMC Renames DEI Committee
-- v1_04ad613ffdc2ebc6 · src-vet-candy · verified · unique · Bat Exposures Are Rising. Here's What You Need to Know About Rabies Prevention.
 - v1_48562b1cbaec3a54 · src-vet-candy · verified · unique · A Stanford Infectious Disease Doctor Breaks Down the Hantavirus Cruise Ship Outbreak. Here Is What Veterinary Professionals Need to Take From It.
-- v1_f6e37f8630a45832 · src-vet-candy · verified · unique · A Seat at the Very Top: Dr. Cherice Roth Named CEO of Purgo Scientific’s Vetlen
-- v1_1a99aef877358d88 · src-vet-candy · verified · unique · FIV. Thoracotomy. Enucleation. Kidney Failure. HCM. This Cat Is Surviving All of It.
-- v1_0c54952fd5428f8d · src-vet-candy · verified · unique · Blackbird by Dr. Jessica Turner: The Book That Tells the Truth About Not Being Okay
-- v1_545ab656e59319fb · src-vet-candy · verified · unique · Here's What Every Vet Student Needs to Know Before the Next NAVLE Application Window Opens.
+- v1_fe3e2a37e633550a · src-vet-candy · verified · unique · New Fund Aims to Help Veterinarians Say "Yes" to More Pets in Need
