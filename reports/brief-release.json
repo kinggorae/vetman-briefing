@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-16",
-  "total": 155,
-  "existing": 131,
+  "date": "2026-08-17",
+  "total": 49,
+  "existing": 0,
   "target": 40,
-  "eligible": 16,
+  "eligible": 15,
   "indexEligible": 0,
   "released": 0,
-  "retryQueued": 0,
-  "seenRestored": 0,
+  "retryQueued": 15,
+  "seenRestored": 12,
   "minimum": 30,
-  "shortfall": 0,
+  "shortfall": 40,
   "skipped": {
-    "rejected": 13,
+    "rejected": 5,
     "needs-claim-fix": 6,
-    "오늘 이미 발행됨": 102,
-    "needs-language-fix": 17,
+    "needs-language-fix": 22,
     "이미 발행된 원문": 1,
-    "daily-target-cap": 16
+    "daily-minimum-not-reached": 15
   },
   "ids": [],
+  "note": "일일 최소 30건 미달이라 오늘 이슈 파일을 변경하지 않았습니다.",
   "dryRun": false
 }

@@ -1,67 +1,54 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-08-16T00:40:56.387Z
+- 실행 시각: 2026-08-17T00:50:30.546Z
 - 모드: write-draft
 - 소스/피드: 51/40
 - 수집 항목: 1165
-- 고유 후보: 747
-- exact duplicate: 336
-- 기존 기사 업데이트 후보: 82
+- 고유 후보: 777
+- exact duplicate: 328
+- 기존 기사 업데이트 후보: 60
 - 관련성 제외: 182
-- 기수집(seen) 제외: 274
-- 신규 가용 후보: 296
-- draft 후보: 45
-- 생성 완료: 30
-- 생성 실패 경고: 15
-- canonical 확인 시도: 45
+- 기수집(seen) 제외: 331
+- 신규 가용 후보: 269
+- draft 후보: 32
+- 생성 완료: 15
+- 생성 실패 경고: 17
+- canonical 확인 시도: 25
 - 공식 canonical 확보: 21
-- unresolved source: 24
+- unresolved source: 11
 - relay sourceUrl: 0
 
 ## draft 후보
 
-- v1_941e011a899178f4 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Survival outcomes of dogs with multicentric lymphoma treated with sequential half-body radiotherapy and L-CHOP without maintenance chemotherapy
-- v1_15bc6105e39d1443 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Medical induction of maternal behavior in nurse mares and foal-rejecting mares undergoing foal grafting: a retrospective study of 140 cases
-- v1_a032196c9466d2d9 · src-journal-of-research-in-veterinary-medicine · unresolved · unique · Modulation of Anxiety-like and Depression-like Dysfunction by Maropitant in Methotrexate-Induced Chemobrain in Mice
-- v1_c3a6c0402abdf52a · src-virginia-tech-veterinary-college-news · verified · unique · Pet pig hogs the family couch again thanks to treatment at Veterinary Teaching Hospital
-- v1_9150cc5eed95170d · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Maureen Noftsinger
-- v1_81cb41c1dbc65c55 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Submucosal urethral bulking with 2.5% polyacrylamide hydrogel (Mictamid) for urinary incontinence in male dogs using a percutaneous fluoroscopically assisted perineal approach
-- v1_89589db95cfd2a1a · src-journal-of-veterinary-internal-medicine · unresolved · unique · Clinical, imaging, and neuropathological characterization of multiple system degeneration associated with a novel SERAC1 variant in a mixed-breed dog
-- v1_ade7242670c8e31d · src-journal-of-veterinary-internal-medicine · unresolved · unique · Testicular seminoma: clinical, imaging, and histologic features in nine horses
-- v1_458bb2e691f16305 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: DeAndrea Gray
+- v1_1946a4b1597e0fd9 · src-pubmed · verified · unique · Phased T2T horse and donkey assemblies from a mule reveal peculiar equid centromere evolution.
+- v1_006ffdff2a5be68b · src-pubmed · verified · unique · Tick-borne pathogens infecting urban domestic dogs from a highland swamp area from Para&#xed;ba, northeastern Brazil.
+- v1_eb29050e39d09a0b · src-pubmed · verified · unique · Metabolic and urinary profiles in normal-weight, overweight and obese dogs: clinical response to an individualised weight loss programme.
+- v1_cde6eda0e8c8894d · src-pubmed · verified · unique · Near-infrared Photoimmunotherapy Targeting Canine Mammary Tumors: Comparative Oncology for Overcoming Human Breast Cancer.
+- v1_766664360227903e · src-pubmed · verified · unique · Fulkerson-based oblique novel technique (FONT) to treat concurrent cranial cruciate ligament disease and medial patellar luxation in the dog.
+- v1_aca69391231274bd · src-pubmed · verified · unique · Longitudinal Analysis of Seasonal Variations in Intradermal Test Reactivity and Serum Allergen-Specific Immunoglobulin E in Dogs With Atopic Dermatitis.
+- v1_09e2c10209e11ac1 · src-pubmed · verified · unique · Effect of Apical Micro-Intervention on Pulp Vitality and Periodontal Regeneration Following Tooth Autotransplantation: A Clinical Outcome Study.
 - v1_2d69912d8957733d · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Andrew Mann
-- v1_dc50deca36ba49ac · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Staff Spotlight: Drew Dunn
-- v1_77f91cc172046385 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Yukitaka Kani
-- v1_9ab7cb6f9b98b985 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Pet Spotlight: Velcro
-- v1_fe972ebaef55d3e7 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: JoAnna Pendergrass
-- v1_32cac1a07ae2fe8b · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Alison Lynch
-- v1_eb5df780c061b24c · src-virginia-tech-veterinary-college-news · verified · unique · Off the track: Retired Racehorse Project launches Thoroughbred Wellness Expo at Equine Medical Center
-- v1_fe2bc7a34dc5eef1 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Mitchell Kenyon
 - v1_2f6867c07b2c3a99 · src-virginia-tech-veterinary-college-news · verified · unique · Estate gift builds Spurr family legacy, expands clinical trial opportunities for veterinary college
 - v1_e248e7d98cf9733c · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Ezekiel Jennette
-- v1_02e463c2963ffdcd · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Mary Thornton and Preston Thornton
-- v1_3604dd8239bd521b · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Kristin Eden
 - v1_d1d6731a5bc9c1c0 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Mark Elghossain
-- v1_c5db9b3bdb23ed79 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Can we Mitigate the Impacts of Test Anxiety Through Reappraisal Interventions? A Replication Study in Science Courses Across Multiple Institution Types in the United States
+- v1_5f4e4d7ecbd0e473 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Brian Tu
+- v1_eae2c1b11b034775 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Alumni Spotlight: Timothy Fan
+- v1_f827cae40adbcd2d · src-virginia-tech-veterinary-college-news · verified · unique · Michelle Goodnight returns to veterinary college as a criticalist and clinical instructor
+- v1_33790eac359f71d7 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Malik Torres
+- v1_a8851b4e4d2f1281 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Resident Spotlight: Esteban Jimenez
+- v1_cffbaa85b9ada203 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Greyson Moore
 - v1_a58e971212985b81 · src-journal-of-veterinary-internal-medicine · unresolved · unique · Clinical and microbiota alterations in performance horses undergoing long-distance transport
-- v1_bea6a195c831b08b · src-journal-of-veterinary-internal-medicine · unresolved · unique · Influence of collection site on cerebrospinal fluid test results in horses with equine protozoal myeloencephalitis
 - v1_e867899541ca6382 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Primate resident memory T cells activate humoral and stromal immunity
 - v1_7db36899bbb0a6f2 · src-nc-state-university · verified · unique · From a Local Animal Hospital, Kristen Folk Reports
-- v1_bba0b860d9a868d6 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Comparing Point-of-Care Ultrasound in Multiple Body Positions in Dogs to Key Cardiac Measurements by Echocardiography
-- v1_14447440ff50ce4f · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · In vitro determination of the effects of dairy-origin Propionibacterium freudenreichii subsp. freudenreichii against multidrug-resistant Salmonella Infantis strains infective in broiler chicks
-- v1_44a6634ea2d165f6 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Highly pathogenic avian influenza (HPAI H5N1, clade 2.3.4.4b, genotype C2.1) in commercial ring-necked pheasants during the 2022 outbreak in the United States
-- v1_0ba9d38e811aace9 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Dual-functioning Targeted ADAM17 Blocker CD16 (TAB16) mediates selective ADAM17 inhibition in NK cells and engages overexpressed ADAM17 in tumor cells to induce cytotoxicity
-- v1_baccab48af80b9bd · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Utility of dynamic preload indices of hypovolemia in isoflurane-anesthetized horses
-- v1_7edc0bbf51b0ac1e · src-cornell-ruffian-equine-specialists · verified · unique · The Horse: Investigating antimicrobial use at an equine veterinary hospital
 - v1_d5ae34120a58c96b · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · A Community-Based Research Approach to Develop Chronic Wasting Disease Outreach with Tribal Communities
-- v1_4eebb0dac7d2c5d2 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Canonical Wnt signaling is not activated in vitro or in vivo by Lawsonia intracellularis infection
-- v1_cf2509c96ada2b9a · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Procedure for in vitro evaluation of antimicrobial compounds against Lawsonia intracellularis
-- v1_a084debb7a3fb234 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Neurological Presentation Associated with Meningoencephalitis Caused by Streptococcus gallolyticus Subsp. pasteurianus in Turkey Poults
 - v1_2134535fb5740f86 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · A Qualitative, Descriptive Pathway Analysis to Explore Routes of African Swine Fever Virus Entry into and Spread from Two Pork Harvest Facilities in the United States
-- v1_01550ceeee9959c9 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Impact of Chemical Aging on Venison Processing Knife Topography and Recoverable Chronic Wasting Disease Prion Seeding Activity
-- v1_f2c145e381186e28 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Turkey oviduct epithelial organoids express region-associated markers and avian influenza virus receptors†
-- v1_ab5f3cf315d99ec9 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Transcriptomic insights into early responses of the uterovaginal junction and vagina to avian influenza virus infection in turkey breeder hens
 - v1_2692f55bab2c22e0 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Microgeographic Approach to the Occurrence, Fate, and Risk of Antibiotic Residues in Wastewater Effluent-Impacted Streams across Rural and Suburban Areas of Minnesota
+- v1_965c05016de1e9bb · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Antimicrobial Resistance in Staphylococcus aureus from Bats in Pakistan
+- v1_e37a984b45a1939e · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Movements of poultry product off HPAI-infected premises: using science-based standards for achieving confidence in risk
+- v1_57e9d621c9e41ad8 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Immune Response of Pigs Vaccinated Against Proliferative Enteropathy and Co-Infected with Lawsonia intracellularis and Brachyspira hyodysenteriae
+- v1_414d815e5ac2ddcd · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Locus-Specific Analysis of Replication Dynamics and Detection of DNA–RNA Hybrids by Immuno Electron Microscopy
+- v1_91331b3bc114c5e9 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Current Biosecurity Practices in the Handling and Sampling of Cervids: A Cross-Sectional Survey
+- v1_960d8e296426f94a · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Prophylactic and post-exposure efficacy of a Pichinde virus vector-based tuberculosis vaccine
 - v1_793dc36f6e7ba152 · src-cornell-ruffian-equine-specialists · verified · unique · Governor announces study at Cornell Ruffian Equine Specialists to protect Thoroughbreds
 - v1_48562b1cbaec3a54 · src-vet-candy · verified · unique · A Stanford Infectious Disease Doctor Breaks Down the Hantavirus Cruise Ship Outbreak. Here Is What Veterinary Professionals Need to Take From It.
 - v1_fe3e2a37e633550a · src-vet-candy · verified · unique · New Fund Aims to Help Veterinarians Say "Yes" to More Pets in Need
