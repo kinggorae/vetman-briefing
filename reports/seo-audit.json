@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T00:51:28.085Z",
+  "generatedAt": "2026-08-18T01:10:48.331Z",
   "status": "passed",
   "counts": {
     "htmlPages": 990,
@@ -7,7 +7,7 @@
     "index": 190,
     "noindex": 711,
     "sitemap": 236,
-    "newsSitemap": 2,
+    "newsSitemap": 0,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,

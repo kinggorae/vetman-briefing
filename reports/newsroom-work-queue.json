@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-17T00:51:25.589Z",
+  "generatedAt": "2026-08-18T01:10:46.195Z",
   "noindex": true,
-  "count": 985,
-  "open": 985,
+  "count": 977,
+  "open": 977,
   "next": [
     {
       "status": "open",
@@ -22278,72 +22278,6 @@
       ],
       "evidence": [
         "HTTP 200",
-        "application/rss+xml; charset=utf-8"
-      ],
-      "id": "feed:src-cornell-college-of-veterinary-medicine-news",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 55,
-      "title": "Cornell College of Veterinary Medicine News",
-      "blocker": "feed-health",
-      "reason": "degraded · 최근 피드 상태 확인 필요",
-      "sourceLabel": "Cornell College of Veterinary Medicine News",
-      "sourceUrl": "https://www.vet.cornell.edu/taxonomy/term/44/feed"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 200",
-        "application/rss+xml; charset=UTF-8"
-      ],
-      "id": "feed:src-illinois-college-of-veterinary-medicine-news",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 55,
-      "title": "Illinois College of Veterinary Medicine News",
-      "blocker": "feed-health",
-      "reason": "degraded · 최근 피드 상태 확인 필요",
-      "sourceLabel": "Illinois College of Veterinary Medicine News",
-      "sourceUrl": "https://vetmed.illinois.edu/category/news/feed/"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 200",
-        "xml"
-      ],
-      "id": "feed:src-journal-of-research-in-veterinary-medicine",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 55,
-      "title": "Journal of Research in Veterinary Medicine",
-      "blocker": "feed-health",
-      "reason": "degraded · 최근 피드 상태 확인 필요",
-      "sourceLabel": "Journal of Research in Veterinary Medicine",
-      "sourceUrl": "https://dergipark.org.tr/en/pub/jrvm/rss/lastissue/en"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 200",
         "xml"
       ],
       "id": "feed:src-journal-of-research-in-veterinary-medicine",
@@ -22355,50 +22289,6 @@
       "reason": "degraded · 최근 피드 상태 확인 필요",
       "sourceLabel": "Journal of Research in Veterinary Medicine",
       "sourceUrl": "https://dergipark.org.tr/en/pub/jrvm/rss/earlypub/en"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 200",
-        "text/xml"
-      ],
-      "id": "feed:src-journal-of-veterinary-internal-medicine",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 55,
-      "title": "Journal of Veterinary Internal Medicine",
-      "blocker": "feed-health",
-      "reason": "degraded · 최근 피드 상태 확인 필요",
-      "sourceLabel": "Journal of Veterinary Internal Medicine",
-      "sourceUrl": "https://academic.oup.com/rss/site_6763/4234.xml"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 200",
-        "application/rss+xml;charset=UTF-8"
-      ],
-      "id": "feed:src-minnesota-veterinary-biomedical-sciences-research",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 55,
-      "title": "Minnesota Veterinary & Biomedical Sciences Research",
-      "blocker": "feed-health",
-      "reason": "degraded · 최근 피드 상태 확인 필요",
-      "sourceLabel": "Minnesota Veterinary & Biomedical Sciences Research",
-      "sourceUrl": "https://experts.umn.edu/en/organisations/veterinary-and-biomedical-sciences/publications/?format=rss"
     },
     {
       "status": "open",
@@ -22432,29 +22322,7 @@
       ],
       "evidence": [
         "HTTP 200",
-        "application/rss+xml; charset=UTF-8"
-      ],
-      "id": "feed:src-tennessee-college-of-veterinary-medicine-news",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 55,
-      "title": "Tennessee College of Veterinary Medicine News",
-      "blocker": "feed-health",
-      "reason": "degraded · 최근 피드 상태 확인 필요",
-      "sourceLabel": "Tennessee College of Veterinary Medicine News",
-      "sourceUrl": "https://vetmed.tennessee.edu/blog/feed/"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 200",
-        "application/rss+xml; charset=UTF-8"
+        "text/xml;charset=UTF-8"
       ],
       "id": "feed:src-texas-a-m-vmbs-news",
       "type": "feed-health",
@@ -22509,50 +22377,6 @@
       "reason": "degraded · 최근 피드 상태 확인 필요",
       "sourceLabel": "Vet Candy",
       "sourceUrl": "https://www.myvetcandy.com/news?format=rss"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 200",
-        "application/rss+xml; charset=utf-8"
-      ],
-      "id": "feed:src-veterin-rn-medic-na",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 55,
-      "title": "Veterinární medicína",
-      "blocker": "feed-health",
-      "reason": "degraded · 최근 피드 상태 확인 필요",
-      "sourceLabel": "Veterinární medicína",
-      "sourceUrl": "https://vetmed.agriculturejournals.cz/rss/latest.xml"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 200",
-        "application/xml;charset=utf-8"
-      ],
-      "id": "feed:src-virginia-tech-veterinary-college-news",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 55,
-      "title": "Virginia Tech Veterinary College News",
-      "blocker": "feed-health",
-      "reason": "degraded · 최근 피드 상태 확인 필요",
-      "sourceLabel": "Virginia Tech Veterinary College News",
-      "sourceUrl": "https://news.vt.edu/tags/_jcr_content/search-results.xml/news_vt_edu%3Atop-news-vmcvm"
     },
     {
       "status": "open",
@@ -23985,14 +23809,14 @@
       "correction": 1,
       "draft-review": 50,
       "editorial-review": 631,
-      "feed-health": 29,
+      "feed-health": 21,
       "image-rights": 87,
       "source-review": 187
     },
     "byPriority": {
       "critical": 1,
       "high": 612,
-      "normal": 372
+      "normal": 364
     }
   },
   "note": "인증 관리자 전용 작업 큐. 작업 카드는 승인·발행을 자동 실행하지 않으며 기존 검수 CLI의 다음 명령만 안내합니다."
