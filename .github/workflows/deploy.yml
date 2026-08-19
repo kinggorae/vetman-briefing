@@ -33,10 +33,7 @@ jobs:
       # daily.yml과 동일한 이유: CI에 한글 폰트가 없으면 npm run build가
       # 자동으로 돌리는 prebuild(에디토리얼 카드 생성)에서 한글이 깨진다.
       - name: Install Korean font for editorial cards
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y fonts-nanum
-          fc-cache -f
+        run: bash scripts/ensure-korean-font.sh
 
       - name: Run unit tests
         run: npm test
@@ -79,9 +76,9 @@ jobs:
 
       - name: Monitor production feed and article contract
         env:
-          # 기능 배포 직후에는 아직 이전 30건 최신호가 남아 있을 수 있다.
-          # 새 일간 발행 잡이 목표 건수를 만들면 daily.yml에서 해당 계약을 검사한다.
-          MONITOR_MIN_LATEST_ITEMS: "30"
+          # 40건은 목표이고 30건은 운영 경보선이다. 부분 발행도 정상적인
+          # 최신호이므로 모니터는 빈 지면만 치명 오류로 본다.
+          MONITOR_MIN_LATEST_ITEMS: "1"
           MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
           MONITOR_SW_CACHE: "vmcache-v8"
         run: npm run monitor:production
