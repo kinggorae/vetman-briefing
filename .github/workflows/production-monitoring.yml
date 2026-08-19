@@ -27,9 +27,9 @@ jobs:
       - run: npm ci --ignore-scripts
       - name: Monitor production contract
         env:
-          # 일간 파이프라인은 40건을 목표로 하되, 원문·품질 게이트를 통과한
-          # 30건까지는 부분 발행을 허용한다. 운영 점검도 같은 최소선을 사용한다.
-          MONITOR_MIN_LATEST_ITEMS: "30"
+          # 40건은 목표이고 30건은 운영 경보선이다. 품질 게이트를 통과한
+          # 소규모 최신호도 공개되므로 모니터는 빈 지면만 치명 오류로 본다.
+          MONITOR_MIN_LATEST_ITEMS: "1"
           MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
           MONITOR_SW_CACHE: "vmcache-v8"
         run: npm run monitor:production

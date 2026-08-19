@@ -440,7 +440,7 @@ function gaSnippet() {
   if (!id) return "";
   return `
 <script async src="https://www.googletagmanager.com/gtag/js?id=${esc(id)}"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${esc(id)}');</script>`;
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${esc(id)}',{send_page_view:false});gtag('event','page_view',{page_title:document.title,page_location:window.location.href});</script>`;
 }
 
 function seoHead(issue, data, canonicalPath, isIndex = false) {
@@ -1632,6 +1632,20 @@ const APP_JS = String.raw`
       return url.pathname+url.search;
     }catch(e){ return location.pathname; }
   }
+  var BASE_PAGE_TITLE=document.title;
+  var lastVirtualPage='';
+  function trackPageView(a,href){
+    if(typeof gtag!=='function') return;
+    try{
+      var url=new URL(href||location.href,location.href);
+      var title=a&&a.title?(a.title+' | VetManLab 해외 브리핑'):BASE_PAGE_TITLE;
+      var key=url.href+'|'+title;
+      if(key===lastVirtualPage) return;
+      lastVirtualPage=key;
+      document.title=title;
+      gtag('event','page_view',{page_title:title,page_location:url.href});
+    }catch(e){}
+  }
   function syncArticleHistory(a,mode){
     if(!a||!a.href) return;
     var next=articlePath(a), current=location.pathname+location.search;
@@ -1646,7 +1660,7 @@ const APP_JS = String.raw`
   function closeArticle(){
     if(history.state&&history.state.vmArticle){ history.back(); return; }
     if(location.hash){ try{ history.replaceState(history.state,'',location.pathname+location.search); }catch(e){} }
-    if(S.openId){ S.openId=null; render(); }
+    if(S.openId){ S.openId=null; trackPageView(null,location.pathname+location.search); render(); }
   }
   function updateReadProgress(){
     var db=document.getElementById('vm-db'), track=document.querySelector('.vm-reading-progress'), fill=document.querySelector('.vm-reading-progress-bar');
@@ -1693,7 +1707,9 @@ const APP_JS = String.raw`
   function markRead(id){ if(!S.read[id]){ S.read[id]=1; persist('read',S.read); } }
   // SPA라 기사를 열어도 페이지 이동이 없어 GA4가 조회를 못 잡는다 — 직접 보낸다
   function track(a){
-    if(typeof gtag!=='function'||!a) return;
+    if(!a) return;
+    trackPageView(a,a.href);
+    if(typeof gtag!=='function') return;
     try{
       gtag('event','article_view',{article_id:a.id,article_title:a.title,category:a.cat,content_tier:a.tier||'deep',source:a.source,issue_date:a.day});
     }catch(e){}
@@ -1769,7 +1785,7 @@ const APP_JS = String.raw`
   function loadDate(date){
     if(date===DATA.date){ S.view='home'; render(); return; }
     S.loadingDate=date; render();
-    fetch('/data/'+date+'.json').then(function(r){if(!r.ok)throw new Error('issue');return r.json();}).then(function(d){ DATA=d; indexDay(); S.view='home'; S.openId=null; S.query=''; S.cat='all'; S.showAll=false; S.loadingDate=null; try{history.replaceState(null,'','/issues/'+date);}catch(e){} render(); }).catch(function(){ S.loadingDate=null; toast('불러오지 못했습니다'); render(); });
+    fetch('/data/'+date+'.json').then(function(r){if(!r.ok)throw new Error('issue');return r.json();}).then(function(d){ DATA=d; indexDay(); S.view='home'; S.openId=null; S.query=''; S.cat='all'; S.showAll=false; S.loadingDate=null; try{history.replaceState(null,'','/issues/'+date);}catch(e){} trackPageView(null,location.pathname+location.search); render(); }).catch(function(){ S.loadingDate=null; toast('불러오지 못했습니다'); render(); });
   }
 
   document.addEventListener('click',function(ev){
@@ -1848,8 +1864,9 @@ const APP_JS = String.raw`
   window.addEventListener('popstate',function(){
     var state=history.state;
     if(state&&state.vmArticle&&state.articleId&&byId[state.articleId]){
-      S.openId=state.articleId; S.blogOpen=true; S.searchFocus=false; markRead(state.articleId); render();
-    }else if(S.openId){ S.openId=null; render(); }
+      var article=byId[state.articleId];
+      S.openId=state.articleId; S.blogOpen=true; S.searchFocus=false; markRead(state.articleId); trackPageView(article,article.href); render();
+    }else if(S.openId){ S.openId=null; trackPageView(null,location.pathname+location.search); render(); }
     else if(DATA.isHome&&location.pathname==='/'){
       readBrowseRoute();
       if(S.query.trim()&&!SEARCH_INDEX&&!searchLoading) loadSearch(true);
@@ -1858,6 +1875,7 @@ const APP_JS = String.raw`
   });
   readBrowseRoute();
   if(S.query.trim()) loadSearch(true);
+  if(S.openId&&byId[S.openId]) track(byId[S.openId]);
   render();
 })();`;
 

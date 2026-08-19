@@ -136,7 +136,8 @@ jobs:
       # ready-public-brief만 발행한다. high-risk 임상 기사와 언어·주장 경고가 있는
       # 초안은 여기서 걸러져 data/drafts에 남는다. low-risk 심층 기사는
       # index-low-risk로, 나머지는 public-brief로 등급을 나눈다. 하루 최대 40건을
-      # 목표로 하되, 최소 30건을 확보하면 부분 발행해 조용한 결번을 막는다.
+      # 목표로 하되, 품질 게이트를 통과한 후보가 30건보다 적어도 가용분은
+      # 부분 발행해 조용한 결번을 막는다. 30건은 운영 경보선으로만 사용한다.
       - name: Release ready public briefs
         id: release
         run: |
@@ -147,7 +148,7 @@ jobs:
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
-          echo "오늘($DATE) 발행 $COUNT건 · 누적 $TOTAL/40건 (최소 30건)"
+          echo "오늘($DATE) 발행 $COUNT건 · 누적 $TOTAL/40건 (운영 경보선 30건)"
 
       # 첫 수확분의 품질 게이트 통과 후보가 30건에 못 미치는 날만
       # 추가로 120건을 수집한다. 정상적으로 30건 이상 확보된 날에는
@@ -224,13 +225,12 @@ jobs:
           git pull --rebase --autostash origin main
           git push origin main
 
-      - name: Require daily target
+      - name: Report daily volume
         if: success()
         run: |
           TOTAL=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
           if [ "$TOTAL" -lt 30 ]; then
-            echo "일일 최소 30건 미달($TOTAL건) — 후보·리포트는 커밋했고 다음 실행에서 재시도합니다."
-            exit 1
+            echo "::warning::일일 운영 경보선 30건 미달($TOTAL건) — 가용 후보는 발행했고 다음 실행에서 보강합니다."
           fi
           if [ "$TOTAL" -lt 40 ]; then
             echo "일일 최소 달성: $TOTAL/40건 — 목표까지 부족분은 다음 실행에서 보충합니다."
@@ -245,8 +245,8 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: "15178c9e9cab3b38e6b687feb568cb28"
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
-            echo "CLOUDFLARE_API_TOKEN 미설정 — 배포 건너뜀"
-            exit 0
+            echo "::error::CLOUDFLARE_API_TOKEN 미설정 — 배포할 수 없습니다"
+            exit 1
           fi
           npx wrangler pages deploy site --project-name vetman-briefing --branch main --commit-dirty=true
 
@@ -258,9 +258,10 @@ jobs:
       - name: Monitor production contract
         if: steps.release.outputs.count != '0' || steps.topup.outputs.count != '0'
         env:
-          # 40건은 최대 목표이고 30건은 운영 하한이다. 부분 발행일에도
-          # 모니터가 정상적인 30건 지면을 실패로 오판하지 않게 한다.
-          MONITOR_MIN_LATEST_ITEMS: "30"
+          # 40건은 최대 목표이고 30건은 운영 경보선이다. 부분 발행일에도
+          # 모니터가 품질 게이트를 통과한 소규모 최신호를 실패로 오판하지
+          # 않도록 최소 1건(빈 지면만 실패)으로 검사한다.
+          MONITOR_MIN_LATEST_ITEMS: "1"
           MONITOR_REQUIRE_TODAY_AFTER_KST: "10"
           MONITOR_SW_CACHE: "vmcache-v8"
         run: npm run monitor:production

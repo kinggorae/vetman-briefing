@@ -15,10 +15,9 @@ const QA_REPORT = path.join(ROOT, "reports", "first-release-candidates-qa.json")
 const OUT_DIR = path.join(ROOT, "reports", "briefs");
 const ISSUE_DIR = path.join(ROOT, "data", "issues");
 const DRAFT_DIR = path.join(ROOT, "data", "drafts");
-const SEEN_PATH = path.join(ROOT, "data", "seen.json");
 const RELEASE_REPORT = path.join(ROOT, "reports", "brief-release.json");
-// 무료 뉴스룸의 일간 볼륨 목표. target까지 최대한 채우되, minimum을 확보하면
-// 가용 후보를 부분 발행해 수집 변동으로 하루 전체가 결번이 되지 않게 한다.
+// 무료 뉴스룸의 일간 볼륨 목표. target까지 최대한 채우되, 품질 게이트를 통과한
+// 후보가 minimum보다 적어도 가용 후보를 부분 발행해 하루 전체가 결번이 되지 않게 한다.
 export const DAILY_TARGET_ITEMS = CONFIG_DAILY_TARGET_ITEMS;
 export const DAILY_MINIMUM_ITEMS = CONFIG_DAILY_MINIMUM_ITEMS;
 const CANDIDATE_IDS = ["v1_88e7bde7826c5eaf", "v1_8977cdecc20db74b", "v1_66712dc60cebbebc", "v1_ecdd9715ae5b33aa", "v1_5f01b0b4f48babba"];
@@ -107,20 +106,11 @@ function releaseMinimum(flags = {}) {
 function canReleaseDaily(existingCount, candidateCount, minimum = DAILY_MINIMUM_ITEMS) {
   return Number(existingCount || 0) + Number(candidateCount || 0) >= minimum;
 }
-// 목표 미달이면 이번 실행에서 ready였지만 발행하지 못한 후보만 seen 큐로
-// 되돌린다. 언어·임상·출처 차단 후보는 다시 넣지 않아 매일 같은 후보가
-// 상위 60개를 점유하지 않게 한다.
+// 수동 재시도나 별도 보강 수집에서 ready 후보만 seen 큐에서 제외할 때 쓰는
+// 보조 함수다. 일반 일간 릴리스는 minimum 미달이어도 가용 후보를 즉시 발행한다.
 export function retainSeenAfterTargetMiss(seenUrls = [], candidates = []) {
   const retryKeys = new Set(candidates.flatMap(({ row }) => sourceKeys(row)));
   return (Array.isArray(seenUrls) ? seenUrls : []).filter((url) => !retryKeys.has(normalizeSourceUrl(url)));
-}
-function requeueUnreleasedCandidates(candidates) {
-  const current = readJson(SEEN_PATH, { urls: [] });
-  const before = Array.isArray(current.urls) ? current.urls : [];
-  const after = retainSeenAfterTargetMiss(before, candidates).slice(-20000);
-  const restored = before.length - after.length;
-  if (restored > 0) atomicWrite(SEEN_PATH, JSON.stringify({ urls: after }, null, 2) + "\n");
-  return restored;
 }
 function hasKorean(row) { return Boolean(row.titleKo && row.leadKo && Array.isArray(row.bodyKo) && row.bodyKo.length); }
 function evaluate(row) {
@@ -279,16 +269,14 @@ function releaseReady(flags) {
   const needed = Math.max(0, dailyTarget - currentItems.length);
   const releaseCandidates = candidates.slice(0, needed);
   if (candidates.length > releaseCandidates.length) summary.skipped["daily-target-cap"] = candidates.length - releaseCandidates.length;
-  // 최소 건수가 모일 때만 새 날짜 파일을 만든다. 최소 이상이면 target까지
-  // 가용 후보를 먼저 발행하고, 다음 실행에서 부족분을 다시 채울 수 있게 한다.
-  if (flags.apply && currentItems.length < dailyTarget && !canReleaseDaily(currentItems.length, candidates.length, dailyMinimum)) {
-    summary.skipped["daily-minimum-not-reached"] = candidates.length;
-    summary.retryQueued = candidates.length;
-    summary.seenRestored = requeueUnreleasedCandidates(candidates);
-    summary.note = `일일 최소 ${dailyMinimum}건 미달이라 오늘 이슈 파일을 변경하지 않았습니다.`;
-    atomicWrite(RELEASE_REPORT, JSON.stringify({ ...summary, dryRun: false }, null, 2) + "\n");
-    console.log(JSON.stringify({ ...summary, dryRun: false }, null, 2));
-    return;
+  // minimum은 운영 경보선이지 발행 차단선이 아니다. 품질 게이트를 통과한
+  // 후보가 1건이라도 있으면 그날 지면을 갱신하고, 부족분은 리포트에 남긴다.
+  // 예전에는 30건을 채우지 못하면 가용 후보까지 모두 seen 큐로 되돌려
+  // 8월 17~19일처럼 새 원문이 있어도 최신 발행분이 멈추는 장애가 발생했다.
+  const minimumReached = canReleaseDaily(currentItems.length, candidates.length, dailyMinimum);
+  summary.minimumReached = minimumReached;
+  if (!minimumReached && candidates.length) {
+    summary.note = `일일 최소 ${dailyMinimum}건에 ${Math.max(0, dailyMinimum - currentItems.length - candidates.length)}건 부족하지만, 가용 후보 ${candidates.length}건을 부분 발행합니다.`;
   }
   for (const { row } of releaseCandidates) {
     if (!flags.apply) { summary.released += 1; summary.ids.push(row.id); continue; }
@@ -297,7 +285,7 @@ function releaseReady(flags) {
     summary.ids.push(row.id);
   }
   summary.shortfall = Math.max(0, dailyTarget - (currentItems.length + summary.released));
-  if (summary.shortfall > 0 && summary.released > 0) summary.note = `일일 목표까지 ${summary.shortfall}건 부족하지만 최소 ${dailyMinimum}건을 확보해 부분 발행했습니다.`;
+  if (summary.shortfall > 0 && summary.released > 0) summary.note = `일일 목표까지 ${summary.shortfall}건 부족하지만 가용 후보 ${summary.released}건을 부분 발행했습니다.`;
   atomicWrite(RELEASE_REPORT, JSON.stringify({ ...summary, dryRun: !flags.apply }, null, 2) + "\n");
   console.log(JSON.stringify({ ...summary, dryRun: !flags.apply }, null, 2));
 }
