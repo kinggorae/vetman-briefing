@@ -137,6 +137,33 @@ test("article detail has a shareable URL and browser history closes the panel", 
   await expect(page.locator('.vm-detail[role="dialog"]')).toHaveCount(0);
 });
 
+test("GA4 records one initial page view and SPA article events", async ({ page }) => {
+  const analyticsEvents = [];
+  page.on("request", (request) => {
+    try {
+      const url = new URL(request.url());
+      if (!/google-analytics|googletagmanager/.test(url.hostname)) return;
+      const eventName = url.searchParams.get("en");
+      if (eventName) analyticsEvents.push(eventName);
+      for (const match of (request.postData() || "").matchAll(/(?:^|[&\r\n])en=([^&\r\n]+)/g)) {
+        analyticsEvents.push(decodeURIComponent(match[1]));
+      }
+    } catch {
+      // Ignore non-URL request metadata; the browser test only cares about GA4.
+    }
+  });
+
+  await page.goto("/", { waitUntil: "networkidle" });
+  await expect.poll(() => analyticsEvents.filter((event) => event === "page_view").length, { timeout: 15_000 }).toBeGreaterThanOrEqual(1);
+  await page.waitForTimeout(500);
+  expect(analyticsEvents.filter((event) => event === "page_view")).toHaveLength(1);
+
+  await page.locator("article[data-open]").nth(1).click();
+  await expect(page.locator('.vm-detail[role="dialog"]')).toBeVisible();
+  await expect.poll(() => analyticsEvents.filter((event) => event === "page_view").length, { timeout: 10_000 }).toBe(2);
+  await expect.poll(() => analyticsEvents.filter((event) => event === "article_view").length, { timeout: 10_000 }).toBe(1);
+});
+
 test("article dialog traps focus and restores the trigger after closing", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
   const trigger = page.locator("article[data-open]").nth(1).locator("a[href]").first();
