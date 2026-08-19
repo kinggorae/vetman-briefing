@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "date": "2026-08-18",
-  "startedAt": "2026-08-18T00:52:04.621Z",
-  "updatedAt": "2026-08-18T01:09:58.885Z",
+  "date": "2026-08-19",
+  "startedAt": "2026-08-19T00:50:45.529Z",
+  "updatedAt": "2026-08-19T01:09:42.708Z",
   "status": "complete",
-  "selected": 106,
-  "completed": 106,
-  "generated": 18,
-  "generationFailed": 88,
+  "selected": 107,
+  "completed": 107,
+  "generated": 26,
+  "generationFailed": 81,
   "remaining": 0,
-  "checkpointFile": "data/drafts/source-first-2026-08-18.json",
+  "checkpointFile": "data/drafts/source-first-2026-08-19.json",
   "error": null
 }
