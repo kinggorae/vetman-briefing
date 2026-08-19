@@ -35,10 +35,7 @@ jobs:
       # tofu(네모)로 깨진다 — 여기서 렌더링될 카드가 og:image로도 쓰인다.
       # npm run build가 prebuild(카드 생성)를 자동으로 먼저 돌리므로 그 전에 설치한다.
       - name: Install Korean font for editorial cards
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y fonts-nanum
-          fc-cache -f
+        run: bash scripts/ensure-korean-font.sh
       - name: Run unit tests
         run: npm test
       - name: Check official source health
