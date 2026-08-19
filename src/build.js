@@ -1633,7 +1633,9 @@ const APP_JS = String.raw`
     }catch(e){ return location.pathname; }
   }
   var BASE_PAGE_TITLE=document.title;
-  var lastVirtualPage='';
+  // gaSnippet() has already sent the initial page_view for this document.
+  // Seed the de-duplication key so loadDate() does not send the home view twice.
+  var lastVirtualPage=location.href+'|'+BASE_PAGE_TITLE;
   function trackPageView(a,href){
     if(typeof gtag!=='function') return;
     try{

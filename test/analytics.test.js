@@ -14,6 +14,7 @@ test("GA4 disables the implicit page view and sends an explicit initial page vie
 
 test("SPA article navigation sends virtual page views and article events", () => {
   assert.match(BUILD, /function trackPageView\(a,href\)/);
+  assert.match(BUILD, /var lastVirtualPage=location\.href\+'\|'\+BASE_PAGE_TITLE/);
   assert.match(BUILD, /page_location:url\.href/);
   assert.match(BUILD, /gtag\('event','article_view'/);
   assert.match(BUILD, /trackPageView\(article,article\.href\)/);
