@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="/icon-192.png" sizes="192x192">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XW6BM1B4SH"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XW6BM1B4SH');</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XW6BM1B4SH',{send_page_view:false});gtag('event','page_view',{page_title:document.title,page_location:window.location.href});</script>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="VetManLab 브리핑">
 <style>
@@ -1196,6 +1196,18 @@ a:hover{color:var(--color-primary-strong);}
       return url.pathname+url.search;
     }catch(e){ return location.pathname; }
   }
+  var BASE_PAGE_TITLE=document.title;
+  function syncPageTitle(a){
+    try{ document.title=a&&a.title?(a.title+' | VetManLab 해외 브리핑'):BASE_PAGE_TITLE; }catch(e){}
+  }
+  function sendInitialArticlePageView(a){
+    if(!a||typeof gtag!=='function') return;
+    try{
+      var url=new URL(a.href||location.href,location.href);
+      syncPageTitle(a);
+      gtag('event','page_view',{page_title:document.title,page_location:url.href});
+    }catch(e){}
+  }
   function syncArticleHistory(a,mode){
     if(!a||!a.href) return;
     var next=articlePath(a), current=location.pathname+location.search;
@@ -1208,9 +1220,9 @@ a:hover{color:var(--color-primary-strong);}
     else history.pushState(state,'',next);
   }
   function closeArticle(){
-    if(history.state&&history.state.vmArticle){ history.back(); return; }
-    if(location.hash){ try{ history.replaceState(history.state,'',location.pathname+location.search); }catch(e){} }
-    if(S.openId){ S.openId=null; render(); }
+    if(history.state&&history.state.vmArticle){ syncPageTitle(null); history.back(); return; }
+    if(location.hash){ syncPageTitle(null); try{ history.replaceState(history.state,'',location.pathname+location.search); }catch(e){} }
+    if(S.openId){ S.openId=null; syncPageTitle(null); render(); }
   }
   function updateReadProgress(){
     var db=document.getElementById('vm-db'), track=document.querySelector('.vm-reading-progress'), fill=document.querySelector('.vm-reading-progress-bar');
@@ -1257,9 +1269,10 @@ a:hover{color:var(--color-primary-strong);}
   function markRead(id){ if(!S.read[id]){ S.read[id]=1; persist('read',S.read); } }
   // SPA라 기사를 열어도 페이지 이동이 없어 GA4가 조회를 못 잡는다 — 직접 보낸다
   function track(a){
-    if(typeof gtag!=='function'||!a) return;
+    if(!a) return;
+    if(typeof gtag!=='function') return;
     try{
-      gtag('event','article_view',{article_id:a.id,article_title:a.title,category:a.cat,content_tier:a.tier||'deep',source:a.source,issue_date:a.day});
+      gtag('event','article_view',{article_id:a.id,article_title:a.title,category:a.cat,content_tier:a.tier||'deep',source:a.source,issue_date:a.day,page_title:document.title,page_location:location.href});
     }catch(e){}
   }
   function trackSection(cat){
@@ -1305,12 +1318,12 @@ a:hover{color:var(--color-primary-strong);}
       var compact=byId[id], db;
       if(!S.openId) S.restoreFocusId=id;
       S.dialogFocusPending=true;
-      S.openId=id; S.blogOpen=true; S.searchFocus=false; S.last=Object.assign({},snap(compact),{lastOpenedAt:Date.now()}); persist('last',S.last); markRead(id); track(compact); syncArticleHistory(compact,historyMode); render();
+      S.openId=id; S.blogOpen=true; S.searchFocus=false; S.last=Object.assign({},snap(compact),{lastOpenedAt:Date.now()}); persist('last',S.last); markRead(id); syncPageTitle(compact); syncArticleHistory(compact,historyMode); track(compact); render();
       db=document.getElementById('vm-db'); if(db) db.scrollTop=0;
       hydrateArticle(id).then(function(){ if(S.openId===id) render(); }).catch(function(){ if(S.openId===id) toast('기사 본문을 불러오지 못했습니다'); });
       return;
     }
-    if(byId[id]){ if(!S.openId) S.restoreFocusId=id; S.openId=id; S.blogOpen=true; S.searchFocus=false; S.dialogFocusPending=true; S.last=Object.assign({},snap(byId[id]),{lastOpenedAt:Date.now()}); persist('last',S.last); markRead(id); track(byId[id]); syncArticleHistory(byId[id],historyMode); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
+    if(byId[id]){ if(!S.openId) S.restoreFocusId=id; S.openId=id; S.blogOpen=true; S.searchFocus=false; S.dialogFocusPending=true; S.last=Object.assign({},snap(byId[id]),{lastOpenedAt:Date.now()}); persist('last',S.last); markRead(id); syncPageTitle(byId[id]); syncArticleHistory(byId[id],historyMode); track(byId[id]); var db; render(); db=document.getElementById('vm-db'); if(db) db.scrollTop=0; }
     else {
       var stored=S.saved[id]||S.ideas[id];
       if(stored&&stored.href){ location.href=stored.href; return; }
@@ -1333,7 +1346,7 @@ a:hover{color:var(--color-primary-strong);}
   function loadDate(date){
     if(date===DATA.date){ S.view='home'; render(); return; }
     S.loadingDate=date; render();
-    fetch('/data/'+date+'.json').then(function(r){if(!r.ok)throw new Error('issue');return r.json();}).then(function(d){ DATA=d; indexDay(); S.view='home'; S.openId=null; S.query=''; S.cat='all'; S.showAll=false; S.loadingDate=null; try{history.replaceState(null,'','/issues/'+date);}catch(e){} render(); }).catch(function(){ S.loadingDate=null; toast('불러오지 못했습니다'); render(); });
+    fetch('/data/'+date+'.json').then(function(r){if(!r.ok)throw new Error('issue');return r.json();}).then(function(d){ DATA=d; indexDay(); S.view='home'; S.openId=null; S.query=''; S.cat='all'; S.showAll=false; S.loadingDate=null; syncPageTitle(null); try{history.replaceState(null,'','/issues/'+date);}catch(e){} render(); }).catch(function(){ S.loadingDate=null; toast('불러오지 못했습니다'); render(); });
   }
 
   document.addEventListener('click',function(ev){
@@ -1412,8 +1425,9 @@ a:hover{color:var(--color-primary-strong);}
   window.addEventListener('popstate',function(){
     var state=history.state;
     if(state&&state.vmArticle&&state.articleId&&byId[state.articleId]){
-      S.openId=state.articleId; S.blogOpen=true; S.searchFocus=false; markRead(state.articleId); render();
-    }else if(S.openId){ S.openId=null; render(); }
+      var article=byId[state.articleId];
+      S.openId=state.articleId; S.blogOpen=true; S.searchFocus=false; markRead(state.articleId); syncPageTitle(article); track(article); render();
+    }else if(S.openId){ S.openId=null; syncPageTitle(null); render(); }
     else if(DATA.isHome&&location.pathname==='/'){
       readBrowseRoute();
       if(S.query.trim()&&!SEARCH_INDEX&&!searchLoading) loadSearch(true);
@@ -1422,6 +1436,7 @@ a:hover{color:var(--color-primary-strong);}
   });
   readBrowseRoute();
   if(S.query.trim()) loadSearch(true);
+  if(S.openId&&byId[S.openId]){ syncPageTitle(byId[S.openId]); if(location.hash) sendInitialArticlePageView(byId[S.openId]); track(byId[S.openId]); }
   render();
 })();</script>
 <script>if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}</script>
