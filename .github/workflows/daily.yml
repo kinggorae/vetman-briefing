@@ -131,8 +131,8 @@ jobs:
       # .editorial-backups에 이전 이슈를 남긴다.
 
       # ready-public-brief만 발행한다. high-risk 임상 기사와 언어·주장 경고가 있는
-      # 초안은 여기서 걸러져 data/drafts에 남는다. low-risk 심층 기사는
-      # index-low-risk로, 나머지는 public-brief로 등급을 나눈다. 하루 최대 40건을
+      # 초안은 여기서 걸러져 data/drafts에 남는다. 출처 확인된 brief 뉴스는
+      # index-news로, low-risk 심층 기사는 index-low-risk로, 나머지는 public-brief로 등급을 나눈다. 하루 최대 40건을
       # 목표로 하되, 품질 게이트를 통과한 후보가 30건보다 적어도 가용분은
       # 부분 발행해 조용한 결번을 막는다. 30건은 운영 경보선으로만 사용한다.
       - name: Release ready public briefs

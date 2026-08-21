@@ -76,7 +76,7 @@ function resolveOfficialDraft(row) {
 // 훑어 만든다 — 여기서 평가하는 건 아직 발행 전인 draft라 매칭되는 행이
 // 아예 없었고, `|| []`가 빈 배열을 돌려주며 게이트가 항상 통과했다.
 // 리포트를 매일 재생성해도 고쳐지지 않는 구조적 문제였다(초안은 영원히
-// 그 리포트에 없다). 게다가 이 빈 경고가 release()의 index-low-risk 등급
+// 그 리포트에 없다). 게다가 이 빈 경고가 release()의 index-low-risk·index-news 등급
 // 판정에도 쓰여, 언어 불량 기사가 noindex가 아니라 색인 대상이 됐다.
 // qualityIssues·clinicalSafetyIssues처럼 행 자체에서 실시간으로 계산한다.
 function languageWarnings(row) {
@@ -95,6 +95,17 @@ function claimWarnings(row) {
 const BLOCKING_LANGUAGE = /^(korean-internal-ascii|known-error:|untranslated-title|repeated-paragraph)/;
 const BLOCKING_CLAIM = /^(species-mismatch|case-report-generalization)$/;
 const blockingOnly = (warnings, pattern) => warnings.filter((w) => pattern.test(w));
+export function isAutomatedNewsCandidate(row = {}, evaluation = {}) {
+  const tier = normalizeContentTier(row);
+  const risk = String(row?.clinicalRisk || "").toLowerCase();
+  return tier === "brief"
+    && ["low", "medium"].includes(risk)
+    && !(evaluation.languageWarnings || []).length
+    && !(evaluation.claimWarnings || []).length
+    && !(evaluation.clinicalSafetyIssues || []).length
+    && !(evaluation.qualityIssues || []).length
+    && !(evaluation.blockers || []).length;
+}
 function releaseTarget(flags = {}) {
   const requested = Number(flags.target || flags["daily-target"] || DAILY_TARGET_ITEMS);
   return Number.isFinite(requested) && requested > 0 ? Math.floor(requested) : DAILY_TARGET_ITEMS;
@@ -145,6 +156,13 @@ function evaluate(row) {
   //  전 항목이 탈락한다. 텍스트만으로도 발행 가치가 있는 브리핑이다.)
   if (imageUrl && !imageOk) blockers.push("대표 이미지 권리 확인 필요");
   const status = candidate.duplicateStatus !== "unique" ? "duplicate" : !sourceOk ? "needs-source-fix" : !hasKorean(candidate) || blockingLanguage.length ? "needs-language-fix" : blockingClaims.length || safety.length ? "needs-claim-fix" : candidate.clinicalRisk === "high" ? "rejected" : blockers.length ? "needs-claim-fix" : "ready-public-brief";
+  const indexNews = isAutomatedNewsCandidate(candidate, {
+    languageWarnings: language,
+    claimWarnings: claims,
+    clinicalSafetyIssues: safety,
+    qualityIssues: quality,
+    blockers,
+  });
   return {
     id: candidate.id,
     title: candidate.titleKo || candidate.sourceTitle || candidate.title || "",
@@ -158,7 +176,13 @@ function evaluate(row) {
     clinicalSafetyIssues: safety,
     qualityIssues: quality,
     image: { url: imageUrl, ownership: ownership || null, confirmed: imageOk },
-    publication: { status: "public-brief", robots: "noindex,follow", sitemap: false, newsSitemap: false, rss: false },
+    publication: {
+      status: indexNews ? "index-news" : "public-brief",
+      robots: indexNews ? "index,follow" : "noindex,follow",
+      sitemap: indexNews,
+      newsSitemap: indexNews,
+      rss: indexNews,
+    },
     author: organizationAuthor(),
     reviewer: null,
     noReviewer: true,
@@ -166,9 +190,9 @@ function evaluate(row) {
   };
 }
 
-// 감수자 없는 운영 모드에서도 색인할 수 있는 유일한 자동 등급이다.
-// low-risk + 심층 본문 + 실시간 감사 경고 0건만 먼저 배치해, 일간 목표를
-// 채우기 위해 색인 품질이 낮은 brief가 심층 기사 자리를 밀어내지 않게 한다.
+// 감수자 없는 운영 모드에서도 색인할 수 있는 자동 등급이다.
+// low-risk + 심층 본문은 index-low-risk, 출처 기반 brief 뉴스는 index-news로
+// 배치해, 일간 목표를 채우기 위해 품질이 낮은 글이 색인 자리를 차지하지 않게 한다.
 function isIndexCandidate(row, evaluation) {
   const tier = normalizeContentTier(row);
   return String(row?.clinicalRisk || "").toLowerCase() === "low"
@@ -181,9 +205,10 @@ function isIndexCandidate(row, evaluation) {
 }
 function writePreview(row, evaluation) {
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  const packageData = { version: 1, generatedAt: new Date().toISOString(), previewOnly: true, eligibleForRelease: evaluation.status === "ready-public-brief", evaluation, sourceEvidence: { title: row.sourceTitle || row.title || null, description: row.description || row.sourceEvidence?.description || null, canonical: row.canonicalUrl || row.sourceUrl || null }, article: { titleKo: row.titleKo || null, leadKo: row.leadKo || null, bodyKo: row.bodyKo || [], keyPointsKo: row.keyPointsKo || [], angleKo: row.angleKo || null }, jsonLd: { "@context": "https://schema.org", "@type": "NewsArticle", headline: row.titleKo || row.sourceTitle || "", description: row.leadKo || row.description || "", author: organizationAuthor(), ...(row.sourceUrl ? { isBasedOn: { "@type": "CreativeWork", url: row.sourceUrl } } : {}) }, note: "실제 reviewer가 없으므로 approved/published/index 상태를 만들지 않습니다." };
+  const publication = evaluation.publication || {};
+  const packageData = { version: 1, generatedAt: new Date().toISOString(), previewOnly: true, eligibleForRelease: evaluation.status === "ready-public-brief", evaluation, sourceEvidence: { title: row.sourceTitle || row.title || null, description: row.description || row.sourceEvidence?.description || null, canonical: row.canonicalUrl || row.sourceUrl || null }, article: { titleKo: row.titleKo || null, leadKo: row.leadKo || null, bodyKo: row.bodyKo || [], keyPointsKo: row.keyPointsKo || [], angleKo: row.angleKo || null }, jsonLd: { "@context": "https://schema.org", "@type": "NewsArticle", headline: row.titleKo || row.sourceTitle || "", description: row.leadKo || row.description || "", author: organizationAuthor(), ...(row.sourceUrl ? { isBasedOn: { "@type": "CreativeWork", url: row.sourceUrl } } : {}) }, note: publication.status === "index-news" ? "수의사 감수 없이도 출처·언어·안전 자동 검사를 통과한 뉴스 브리핑으로 색인할 수 있습니다." : "실제 reviewer가 없으므로 분석·임상 판단 콘텐츠는 색인하지 않습니다." };
   atomicWrite(path.join(OUT_DIR, `${row.id}.json`), JSON.stringify(packageData, null, 2) + "\n");
-  atomicWrite(path.join(OUT_DIR, `${row.id}.md`), `# public-brief 발행 전 패키지\n\n- ID: ${row.id}\n- 상태: ${evaluation.status}\n- 공개 정책: public-brief · noindex,follow · sitemap/RSS 제외\n- 작성 주체: ${evaluation.author.name}\n- 수의사 감수: 없음\n- 차단 사유: ${evaluation.blockers.join("; ") || "없음"}\n`);
+  atomicWrite(path.join(OUT_DIR, `${row.id}.md`), `# 뉴스 발행 전 패키지\n\n- ID: ${row.id}\n- 상태: ${evaluation.status}\n- 공개 정책: ${publication.status || "public-brief"} · ${publication.robots || "noindex,follow"} · ${publication.sitemap ? "sitemap/뉴스 sitemap/RSS 포함" : "sitemap/RSS 제외"}\n- 작성 주체: ${evaluation.author.name}\n- 수의사 감수: 없음\n- 차단 사유: ${evaluation.blockers.join("; ") || "없음"}\n`);
   return packageData;
 }
 function prepare(id) { const row = find(id); const evaluation = evaluate(row); const packageData = writePreview(row, evaluation); console.log(JSON.stringify({ id, previewOnly: true, status: evaluation.status, package: packageData }, null, 2)); }
@@ -200,10 +225,13 @@ function release(id, flags, preRow = null) {
   const target = path.join(ISSUE_DIR, `${date}.json`);
   const current = readJson(target, { date, status: "published", generatedAt: new Date().toISOString(), items: [] });
   // 정책 C — 임상 위험도 low이고 언어·주장·임상안전 경고가 하나도 없으며
-  // 색인 가능한 티어인 글만 index-low-risk로 내보낸다. 그 외에는 public-brief로
-  // 남아 noindex 상태로 검수를 기다린다. 감수자를 주장하지 않는 것은 양쪽 동일.
+  // 짧은 뉴스는 index-news, low-risk 심층 글은 index-low-risk로 내보낸다.
+  // 그 외에는 public-brief로 남아 noindex 상태를 유지한다. 두 색인 등급 모두
+  // 감수자를 주장하지 않으며, 고위험 임상 콘텐츠는 이 경로에 들어오지 않는다.
   const tier = normalizeContentTier(row);
-  const grade = String(row.clinicalRisk || "").toLowerCase() === "low"
+  const grade = isAutomatedNewsCandidate(row, evaluation)
+    ? "index-news"
+    : String(row.clinicalRisk || "").toLowerCase() === "low"
     && !evaluation.languageWarnings.length
     && !evaluation.claimWarnings.length
     && !evaluation.clinicalSafetyIssues.length
@@ -213,8 +241,8 @@ function release(id, flags, preRow = null) {
   const published = { ...row, workflowStatus: "published", editorialStatus: "published", publicationStatus: grade, author: null, authorUrl: null, reviewer: null, reviewerUrl: null, publishedAt: row.publishedAt || new Date().toISOString(), firstPublishedAt: row.firstPublishedAt || new Date().toISOString(), updatedAt: row.updatedAt || null };
   if (!current.items.some((item) => item.id === id)) current.items.push(published);
   atomicWrite(target, JSON.stringify(current, null, 2) + "\n");
-  console.log(grade === "index-low-risk"
-    ? `index-low-risk 저장 완료: ${target} (색인·사이트맵 포함, 감수자 없음)`
+  console.log(["index-low-risk", "index-news"].includes(grade)
+    ? `${grade} 저장 완료: ${target} (색인·사이트맵 포함, 감수자 없음)`
     : `public-brief 저장 완료: ${target} (noindex, sitemap/RSS 제외)`);
 }
 // 일간 자동발행용 일괄 릴리스. 해당 날짜 draft 중 ready-public-brief만 발행하고
@@ -259,11 +287,13 @@ function releaseReady(flags) {
   }
   summary.eligible = candidates.length;
   candidates.sort((a, b) => {
+    const newsOrder = Number(isAutomatedNewsCandidate(b.row, b.evaluation)) - Number(isAutomatedNewsCandidate(a.row, a.evaluation));
+    if (newsOrder) return newsOrder;
     const indexOrder = Number(isIndexCandidate(b.row, b.evaluation)) - Number(isIndexCandidate(a.row, a.evaluation));
     if (indexOrder) return indexOrder;
     return Number(b.row.selectionScore || 0) - Number(a.row.selectionScore || 0);
   });
-  summary.indexEligible = candidates.filter(({ row, evaluation }) => isIndexCandidate(row, evaluation)).length;
+  summary.indexEligible = candidates.filter(({ row, evaluation }) => isIndexCandidate(row, evaluation) || isAutomatedNewsCandidate(row, evaluation)).length;
   // 목표를 넘겨 한 번에 너무 많이 공개하지 않는다. 여러 번 실행해도
   // currentItems와 합산해 하루 목표까지 부족분만 채운다.
   const needed = Math.max(0, dailyTarget - currentItems.length);

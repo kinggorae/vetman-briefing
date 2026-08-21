@@ -33,3 +33,13 @@ test("approved source and image decisions leave their queues", () => {
   assert.equal(report.source.unresolved, 0);
   assert.equal(report.images.pending, 0);
 });
+
+test("automated news index items do not create a reviewer queue", () => {
+  const report = summarizeOperations({
+    articles: [{ id: "news", item: { id: "news", sourceUrl: "https://example.com/news", titleKo: "출처 기반 뉴스", bodyKo: ["뉴스 본문"], clinicalRisk: "medium", publicationStatus: "index-news", workflowStatus: "published" }, published: true }],
+    indexIds: ["news"],
+  });
+  assert.equal(report.editorial.indexMediumRiskWaiting, 0);
+  assert.equal(report.gates.automaticPublished, 1);
+  assert.equal(report.gates.canIncreaseIndex, true);
+});

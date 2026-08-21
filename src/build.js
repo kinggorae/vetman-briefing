@@ -276,6 +276,9 @@ function toArticle(item, i, issueDate, issuePublishedAt = null) {
     kicker: CATEGORY_LABELS[item.category] || item.category || "브리핑",
     isToday,
     title: item.titleKo || "",
+    // 화면용 dek는 카드 길이에 맞춰 줄이지만, 자동 뉴스 색인 품질 검사는
+    // 원문 리드 전체를 사용해야 충분한 브리핑이 얇은 글로 오판되지 않는다.
+    leadKo: item.leadKo || item.summaryKo || body[0] || "",
     dek,
     source: shortSource(item.sourceLabel),
     country: SOURCE_COUNTRY[item.sourceLabel] || MARKET_LABELS[item.market] || "",
@@ -2973,8 +2976,9 @@ const ABOUT_BODY = `
 <h2>편집 상태와 검수 구분</h2>
 <p>기사 화면의 작성자·감수 표기는 실제 데이터가 확인된 경우에만 표시합니다. 현재 운영 모드는
 <strong>organization-only</strong>이며 등록된 수의사 감수자는 없습니다. “AI 보조 번역·요약”, “사람 편집 검수”,
-“수의사 감수”는 서로 다른 상태이고, 확인되지 않은 사람이나 자격을 만들지 않습니다. 향후 실제 검수자가 등록되기 전까지
-신규 high-risk 콘텐츠는 차단하고, 신규 public-brief는 noindex로만 다룹니다.</p>
+“수의사 감수”는 서로 다른 상태이고, 확인되지 않은 사람이나 자격을 만들지 않습니다. 수의사 감수 없이도
+출처·언어·안전 검사를 통과한 짧은 뉴스는 <strong>index-news</strong>로 검색·RSS·뉴스 사이트맵에 공개하고,
+고위험 임상 콘텐츠와 처방·진단 지시는 차단합니다.</p>
 
 <h2>이미지 사용 원칙</h2>
 <p>권리와 출처가 확인되지 않은 이미지를 내려받아 재배포하지 않습니다. 기사별 이미지에는 확인된 경우에만 캡션·크레딧·라이선스를 표시합니다. 원본 이미지가 없는 색인 기사에는 실제 환자나 검사 결과로 오인되지 않는 자체 제작 편집 카드를 사용하며, 고유 이미지가 없다는 사실을 숨기지 않습니다.</p>
@@ -3596,7 +3600,7 @@ function buildRss(issues) {
   const recent = [];
   for (const issue of issues) {
     for (const [index, item] of (issue.items || []).entries()) {
-      if (item.visibility === "suppressed" || normalizeContentTier(item) === "brief" || item.category === "watercooler") continue;
+      if (item.visibility === "suppressed" || (normalizeContentTier(item) === "brief" && item.publicationStatus !== "index-news") || item.category === "watercooler") continue;
       const article = toArticle(item, index, labelOf(issue), issue.generatedAt || issue.publishedAt);
       if (!isIndexable(article)) continue;
       const sourceKey = normalizeSourceUrl(article.sourceUrl);
@@ -3918,7 +3922,7 @@ function build() {
   const updateCandidates = loadReportFile("update-candidates.json", { rows: [], counts: {} });
   const shadow = loadLatestShadow();
   const peopleData = EDITORIAL_PEOPLE.people || [];
-  const adminReport = { generatedAt: new Date().toISOString(), noindex: true, summary: { total: auditRows.length, index: auditRows.filter((row) => row.indexable).length, noindex: auditRows.filter((row) => !row.indexable).length, missingImage: auditRows.filter((row) => row.indexable && row.rawImageMissing).length, relayUrl: auditRows.filter((row) => row.relayUrl).length, reviewerNeeded: auditRows.filter((row) => row.reviewerNeeded).length, newsroom: newsroom.summary || {} }, rows: auditRows, drafts: newsroom.drafts || [], queue: newsroom.queue || [], feedDiagnostics, updates: updateCandidates, feedRepairValidation: loadReportFile("feed-repair-validation.json", { candidates: [], counts: {} }), shadow, shadowTrend: loadReportFile("shadow/trend.json", { runs: [], runCount: 0, trendAvailable: false }), firstPublishCandidates: loadReportFile("first-publish-candidates.json", { candidates: [], counts: {} }), languageReview: loadReportFile("language-review.json", { items: [], warningCount: 0 }), claimReview: loadReportFile("claim-review.json", { items: [], warningCount: 0 }), firstReleaseQa: loadReportFile("first-release-candidates-qa.json", { candidates: [], counts: {} }), editorialPolicy: { mode: EDITORIAL_SETTINGS.editorialMode, veterinaryReviewerAvailable: EDITORIAL_SETTINGS.veterinaryReviewerAvailable, organization: EDITORIAL_SETTINGS.organization, message: EDITORIAL_SETTINGS.transparency.noReviewerLabel, newContent: { high: "blocked-clinical", medium: "internal-draft 또는 public-brief(noindex)", low: "자동 검사 통과 시 public-brief(noindex)" }, briefCommands: ["npm run brief:prepare -- <draft-id>", "npm run brief:validate -- <draft-id>", "npm run brief:preview -- <draft-id>", "npm run brief:release -- <draft-id> --apply"] }, peopleStatus: { count: peopleData.filter((person) => person.active !== false).length, reviewerCount: peopleData.filter((person) => person.active !== false && ["editor", "vet", "admin"].includes(person.role)).length, veterinaryReviewerAvailable: EDITORIAL_SETTINGS.veterinaryReviewerAvailable === true, approvalAvailable: peopleData.some((person) => person.active !== false), message: peopleData.length ? "등록된 사람만 승인에 사용할 수 있습니다." : "실제 편집자 등록 필요", addCommand: "npm run people:add -- --id <id> --name <name> --role <role>", requirements: { editor: "확인된 이름과 역할", veterinaryReviewer: "확인된 credentials와 HTTPS profileUrl 및 운영 설정 활성화", administrator: "확인된 이름과 관리자 권한" } }, gscNaverChecklist: { importedRows: (SEO_PERFORMANCE.rows || []).length, gscCommand: "npm run seo:import:gsc -- <csv>", naverCommand: "npm run seo:import:naver -- <csv>", requiredFiles: ["Google Search Console 검색 실적 CSV", "Google 페이지 색인 보고서", "Google News 실적", "네이버 콘텐츠 노출·클릭 CSV", "네이버 수집·색인 오류"], note: "실제 CSV가 없으면 성과 데이터를 생성하지 않습니다." } };
+  const adminReport = { generatedAt: new Date().toISOString(), noindex: true, summary: { total: auditRows.length, index: auditRows.filter((row) => row.indexable).length, noindex: auditRows.filter((row) => !row.indexable).length, missingImage: auditRows.filter((row) => row.indexable && row.rawImageMissing).length, relayUrl: auditRows.filter((row) => row.relayUrl).length, reviewerNeeded: auditRows.filter((row) => row.reviewerNeeded).length, newsroom: newsroom.summary || {} }, rows: auditRows, drafts: newsroom.drafts || [], queue: newsroom.queue || [], feedDiagnostics, updates: updateCandidates, feedRepairValidation: loadReportFile("feed-repair-validation.json", { candidates: [], counts: {} }), shadow, shadowTrend: loadReportFile("shadow/trend.json", { runs: [], runCount: 0, trendAvailable: false }), firstPublishCandidates: loadReportFile("first-publish-candidates.json", { candidates: [], counts: {} }), languageReview: loadReportFile("language-review.json", { items: [], warningCount: 0 }), claimReview: loadReportFile("claim-review.json", { items: [], warningCount: 0 }), firstReleaseQa: loadReportFile("first-release-candidates-qa.json", { candidates: [], counts: {} }), editorialPolicy: { mode: EDITORIAL_SETTINGS.editorialMode, veterinaryReviewerAvailable: EDITORIAL_SETTINGS.veterinaryReviewerAvailable, organization: EDITORIAL_SETTINGS.organization, message: EDITORIAL_SETTINGS.transparency.noReviewerLabel, newContent: { high: "blocked-clinical", medium: "brief는 자동 검사 통과 시 index-news, 임상 분석은 편집 검수 대기", low: "brief는 자동 검사 통과 시 index-news, 심층 글은 index-low-risk 조건 적용" }, briefCommands: ["npm run brief:prepare -- <draft-id>", "npm run brief:validate -- <draft-id>", "npm run brief:preview -- <draft-id>", "npm run brief:release -- <draft-id> --apply"] }, peopleStatus: { count: peopleData.filter((person) => person.active !== false).length, reviewerCount: peopleData.filter((person) => person.active !== false && ["editor", "vet", "admin"].includes(person.role)).length, veterinaryReviewerAvailable: EDITORIAL_SETTINGS.veterinaryReviewerAvailable === true, approvalAvailable: peopleData.some((person) => person.active !== false), message: peopleData.length ? "등록된 사람만 승인에 사용할 수 있습니다." : "실제 편집자 등록 필요", addCommand: "npm run people:add -- --id <id> --name <name> --role <role>", requirements: { editor: "확인된 이름과 역할", veterinaryReviewer: "확인된 credentials와 HTTPS profileUrl 및 운영 설정 활성화", administrator: "확인된 이름과 관리자 권한" } }, gscNaverChecklist: { importedRows: (SEO_PERFORMANCE.rows || []).length, gscCommand: "npm run seo:import:gsc -- <csv>", naverCommand: "npm run seo:import:naver -- <csv>", requiredFiles: ["Google Search Console 검색 실적 CSV", "Google 페이지 색인 보고서", "Google News 실적", "네이버 콘텐츠 노출·클릭 CSV", "네이버 수집·색인 오류"], note: "실제 CSV가 없으면 성과 데이터를 생성하지 않습니다." } };
   fs.writeFileSync(path.join(SITE_DIR, "admin-review.json"), JSON.stringify(adminReport, null, 2));
   fs.writeFileSync(path.join(SITE_DIR, "seo-performance.json"), JSON.stringify({ ...SEO_PERFORMANCE, noindex: true, generatedAt: new Date().toISOString() }, null, 2));
   fs.writeFileSync(

@@ -2,7 +2,7 @@ import { recentNewsEntries, sitePublicationDate } from "./publication-dates.js";
 import { DAILY_HOME_ITEMS } from "../../config.js";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const INDEXABLE_PUBLICATION_STATUSES = new Set(["index-low-risk", "index-analysis"]);
+const INDEXABLE_PUBLICATION_STATUSES = new Set(["index-low-risk", "index-news", "index-analysis"]);
 
 function isCalendarDate(value) {
   return /^\d{4}-\d{2}-\d{2}$/.test(String(value || ""));
