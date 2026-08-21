@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-20T00:47:55.068Z",
+  "generatedAt": "2026-08-21T00:52:46.024Z",
   "publication": {
-    "totalArticles": 950,
+    "totalArticles": 977,
     "index": 190,
-    "noindex": 760,
-    "indexRate": 0.2,
+    "noindex": 787,
+    "indexRate": 0.1945,
     "indexIds": [
       "v1_bbf6a3a590df85f7",
       "v1_c815fd1432c802c1",
@@ -215,14 +215,14 @@
     "queue": 164,
     "byRisk": {
       "high": 141,
-      "low": 213,
-      "medium": 596
+      "low": 218,
+      "medium": 618
     },
     "byStatus": {
       "approved": 5,
       "correction-required": 1,
       "legacy-published": 457,
-      "published": 487
+      "published": 514
     },
     "reviewerRegistered": true
   },
@@ -245,12 +245,12 @@
   "feeds": {
     "total": 39,
     "byStatus": {
-      "degraded": 14,
-      "failing": 8,
+      "degraded": 5,
+      "failing": 17,
       "healthy": 14,
       "quiet": 3
     },
-    "failing": 8
+    "failing": 17
   },
   "searchPerformance": {
     "rows": 0,

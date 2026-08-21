@@ -1,36 +1,41 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-08-20T00:47:17.673Z
+- 실행 시각: 2026-08-21T00:51:58.877Z
 - 모드: write-draft
 - 소스/피드: 51/40
-- 수집 항목: 1168
-- 고유 후보: 760
-- exact duplicate: 339
-- 기존 기사 업데이트 후보: 69
-- 관련성 제외: 181
-- 기수집(seen) 제외: 330
-- 신규 가용 후보: 253
-- draft 후보: 32
-- 생성 완료: 11
+- 수집 항목: 1192
+- 고유 후보: 772
+- exact duplicate: 349
+- 기존 기사 업데이트 후보: 71
+- 관련성 제외: 185
+- 기수집(seen) 제외: 340
+- 신규 가용 후보: 252
+- draft 후보: 36
+- 생성 완료: 15
 - 생성 실패 경고: 21
-- canonical 확인 시도: 32
-- 공식 canonical 확보: 24
-- unresolved source: 8
+- canonical 확인 시도: 36
+- 공식 canonical 확보: 30
+- unresolved source: 6
 - relay sourceUrl: 0
 
 ## draft 후보
 
-- v1_2fc5dfc949008b15 · src-frontiers-in-veterinary-science · verified · unique · A color-coded atlas of the cortical surface anatomy of the equine brain
-- v1_5af9eca330738613 · src-frontiers-in-veterinary-science · verified · unique · Hendra virus: research progress on a bat-borne threat lurking at the human-animal interface
+- v1_80483e27a4f41ce7 · src-vet-candy · verified · unique · Veterinary Researchers Find That Common Microplastic May Increase Risk of Fatty Liver disease
+- v1_aeb0db77dfaa597a · src-vet-candy · verified · unique · Clemson Makes History as South Carolina’s First Veterinary Class Arrives
+- v1_00592048ef82a0e9 · src-vet-candy · verified · unique · A Dog Tests Positive for Rabies in San Antonio for the First Time in More Than a Decade
+- v1_fdbdc87b2068100c · src-today-s-veterinary-practice · verified · unique · Role of the Microbiota–Gut–Brain Axis in Behavioral and Neurologic Disorders
+- v1_75ea9e1dd26cdeb0 · src-vet-candy · verified · unique · EEE Is Back in Massachusetts Mosquitoes. Here’s What Veterinarians and Horse Owners Need to Know
+- v1_2e4252cd08c90eac · src-vet-candy · verified · unique · New Jersey Is Betting Another $6 Million on Its First Veterinary School
+- v1_8ca62a1c73278e65 · src-vet-candy · verified · unique · Can AI Outsmart the Trickiest Viruses? Researchers Are Rethinking How Vaccines Are Designed
+- v1_9374bd815df4fa3c · src-texas-a-m-vmbs-news · verified · unique · Basic First Aid for Pets: What To Know As a Pet Owner
+- v1_a4d312b1b972ab48 · src-vet-candy · verified · unique · Farm dog spread of life-endangering worm disease investigated
 - v1_6771d943d9c47241 · src-frontiers-in-veterinary-science · verified · unique · A multicenter, retrospective, cross-sectional analysis of fresh and processed Vitis vinifera (grape) ingestion in dogs and cats
-- v1_22dd473bbdd3392e · src-frontiers-in-veterinary-science · verified · unique · Short-term effects of pimobendan in dogs with preclinical myxomatous mitral valve disease
-- v1_14177c3d656fbade · src-veterinary-practice-news · verified · unique · FDA authorizes drug to treat New World screwworm in dogs and puppies
+- v1_6bb6b08d4aeaa752 · src-vet-candy · verified · unique · Vet Students Are Learning to Treat a Very Different Kind of Patient: 50,000 Honeybees
+- v1_7a25581ebe48e5a7 · src-vet-candy · verified · unique · Meet the Man Turning Smartphones Into Stethoscopes
 - v1_55fa68dd0cd0b94b · src-frontiers-in-veterinary-science · verified · unique · Development and field validation of a large-volume bag-based whole-blood collection method in donor dairy cows
-- v1_668831fe71d583c8 · src-frontiers-in-veterinary-science · verified · unique · Epidemiological study of strongyle infections in equines in Egypt: prevalence and risk factors
-- v1_682d8ae0f3e39e7c · src-frontiers-in-veterinary-science · verified · unique · Cross-border introduction risk of Rift Valley fever virus: surveillance evidence from intercepted livestock in southwestern Saudi Arabia
-- v1_26e29cc9ec86e2b6 · src-frontiers-in-veterinary-science · verified · unique · Common recorded diagnoses in purebred vs. mixed-breed dogs: a multivariable analysis of primary-care electronic medical records in South Korea
-- v1_b693db0158d5496c · src-frontiers-in-veterinary-science · verified · unique · Mode-dependent differences in kinetic and selected temporospatial gait parameters in healthy cats walking on a pressure-sensitive treadmill: a pilot study
 - v1_314950eb59d50fb9 · src-frontiers-in-veterinary-science · verified · unique · Physical simulation models for veterinary surgical training: a systematic review
+- v1_a8eac0cce6bd4fd2 · src-frontiers-in-veterinary-science · verified · unique · Dogs display context-dependent behavioral responses to subtle owner-derived multimodal stimuli
+- v1_54e0d7f6e7fabeec · src-frontiers-in-veterinary-science · verified · unique · Polyherbal therapy modulates survival, hematological parameters, and gill health in Aeromonas veronii-infected Cyprinus carpio
 - v1_2f6867c07b2c3a99 · src-virginia-tech-veterinary-college-news · verified · unique · Estate gift builds Spurr family legacy, expands clinical trial opportunities for veterinary college
 - v1_e248e7d98cf9733c · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Student Spotlight: Ezekiel Jennette
 - v1_d1d6731a5bc9c1c0 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Mark Elghossain
@@ -42,13 +47,12 @@
 - v1_c7be4f96e335f11b · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Faculty Spotlight: Jessica Gilbertie
 - v1_afbd397875fc0b83 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Pet Spotlight: Alba
 - v1_7db36899bbb0a6f2 · src-nc-state-university · verified · unique · From a Local Animal Hospital, Kristen Folk Reports
+- v1_9b795a122a4b9732 · src-nc-state-university · unresolved · unique · A flesh-eating parasite is back in the U.S. after nearly 60 years. Here&#8217;s what it means for NC
 - v1_69a18199179be129 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Letter to the editor
-- v1_2692f55bab2c22e0 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Microgeographic Approach to the Occurrence, Fate, and Risk of Antibiotic Residues in Wastewater Effluent-Impacted Streams across Rural and Suburban Areas of Minnesota
-- v1_960d8e296426f94a · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Prophylactic and post-exposure efficacy of a Pichinde virus vector-based tuberculosis vaccine
-- v1_a6753fb70503c25a · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Evaluation of experiences in mass depopulation of upland gamebirds in response to highly pathogenic avian influenza H5N1 outbreaks in North America: a mixed-methods study
+- v1_25019755fbbff7f0 · src-frontiers-in-veterinary-science · verified · unique · Territorial expansion and parasitic zoonoses: the pampas gray fox in Argentina as a case study and its educational potential for prevention
+- v1_e5bce5fce7160b69 · src-nc-state-university · unresolved · unique · NC&#160;State Professor Wins AVMA Award for Swine Welfare Work
 - v1_793dc36f6e7ba152 · src-cornell-ruffian-equine-specialists · verified · unique · Governor announces study at Cornell Ruffian Equine Specialists to protect Thoroughbreds
 - v1_1edcadc05384b538 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Bones, Joints, Tendons, and Ligaments
 - v1_b4cf01c8b36d26e6 · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Letter to the editor: expanding the discourse on NK cell Fc receptor engineering
-- v1_9840c140de55c67b · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Translon: a single term for translated regions
 - v1_be0ca5eeb3e4454b · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Note from Editor
 - v1_48562b1cbaec3a54 · src-vet-candy · verified · unique · A Stanford Infectious Disease Doctor Breaks Down the Hantavirus Cruise Ship Outbreak. Here Is What Veterinary Professionals Need to Take From It.
