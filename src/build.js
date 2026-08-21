@@ -626,7 +626,7 @@ const TOKENS_CSS = `
   --color-material-dimmer:rgba(0,0,0,.55); --color-material-thin:rgba(112,115,124,.05); --color-material-base:rgba(112,115,124,.08);
   --color-atomic-blue-100:#eaf2fe; --color-atomic-blue-800:#0054d1;
   --elevation-4:0px 0px 60px 0px rgba(23,23,23,.10); --elevation-5:0px 15px 75px 0px rgba(23,23,23,.16); --elevation-input:0px 1px 2px 0px rgba(0,0,0,.03);
-  --font-display:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;
+  --font-display:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;
   --font-sans:"Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
 }
 :root[data-theme="dark"], .vm-page[data-theme="dark"], .vm-detail[data-theme="dark"]{
@@ -2030,9 +2030,8 @@ function renderPage(issue, allIssues, { isIndex = false, weekly = false } = {}) 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ${seoHead(issue, data, canonicalPath, isIndex)}
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#0066ff">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -2483,13 +2482,13 @@ function renderArticlePage(a, data, prev, next, related = []) {
 <meta name="twitter:image:alt" content="${esc(a.imageAlt || a.title)}">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"></noscript>
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
 <style>
 :root{color-scheme:light dark;--ink:#171719;--sub:#5a5c63;--line:#e3e5e8;--bg:#fff;--pri:#0066ff}
 @media (prefers-color-scheme:dark){:root{--ink:#fff;--sub:rgba(255,255,255,.62);--line:rgba(255,255,255,.2);--bg:#171719;--pri:#4f95ff}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
- font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;
+ font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;
  -webkit-font-smoothing:antialiased;line-height:1.7}
 .wrap{max-width:720px;margin:0 auto;padding:22px 20px 64px}
 .top{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--line);font-size:13px}
@@ -2530,7 +2529,7 @@ p{margin:0 0 16px;font-size:16px;color:var(--sub)}
    모든 기사 페이지에서 주요 페이지로 링크가 나가 내부 링크 구조도 강해진다. */
 .site-h{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin:0 0 26px}
 .site-h .in{max-width:720px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.site-h a.b{font-family:"Wanted Sans Variable","Pretendard Variable",system-ui,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.site-h a.b{font-family:"Pretendard Variable",system-ui,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
 .site-h nav a{font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-left:14px}
 .site-h nav a:hover{color:var(--pri)}
 .site-f{border-top:2px solid var(--ink);margin-top:64px;padding:30px 0 8px;font-size:13px;color:var(--sub)}
@@ -2709,9 +2708,8 @@ function renderLegalPage({ slug, title, lede, body }) {
 <script type="application/ld+json">${JSON.stringify(pageLd)}</script>
 <link rel="canonical" href="${pageUrl}">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <style>
   :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;color-scheme:light dark}
@@ -2722,7 +2720,7 @@ function renderLegalPage({ slug, title, lede, body }) {
   .wrap{max-width:760px;margin:0 auto}
   header{border-bottom:2px solid var(--ink);padding:26px 0 18px;margin-bottom:34px}
   header a{color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.02em}
-  h1,h2{font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif}
+  h1,h2{font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif}
   h1{font-size:31px;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin:0 0 12px}
   .lede{color:var(--dim);font-size:15px;margin:0 0 8px}
   .date{color:var(--dim);font-size:12.5px;letter-spacing:.03em;margin:0 0 36px}
@@ -3146,9 +3144,8 @@ function renderTopicPage(topic, arts) {
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
 <meta property="og:title" content="${esc(topic.name)} — 해외 수의 소식 모음">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${canonical}">
@@ -3165,7 +3162,7 @@ function renderTopicPage(topic, arts) {
     display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   header a.brand{color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.02em}
   header nav a{color:var(--dim);text-decoration:none;font-size:13px;font-weight:600;margin-left:14px}
-  h1,h2{font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif}
+  h1,h2{font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif}
   h1{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.18;margin:0 0 10px}
   .crumb{margin:0 0 18px;font-size:12.5px;color:var(--dim);line-height:1.6}
   .crumb a{color:var(--dim);text-decoration:none}
@@ -3334,9 +3331,8 @@ function renderTopicIndex(counts) {
 <meta name="twitter:image" content="${SITE.baseUrl}/og.png">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.4/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css"></noscript>
 <style>
   :root{--bg:#fff;--ink:#171719;--dim:#5c5c61;--line:#e6e6ea;--pri:#0066ff;color-scheme:light dark}
   @media (prefers-color-scheme:dark){:root{--bg:#171719;--ink:#f7f7f8;--dim:#a0a0a8;--line:#2e2e33}}
@@ -3346,7 +3342,7 @@ function renderTopicIndex(counts) {
   .wrap{max-width:800px;margin:0 auto}
   header{border-bottom:2px solid var(--ink);padding:24px 0 16px;margin-bottom:30px}
   header a{color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.02em}
-  h1{font-family:"Wanted Sans Variable","Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;font-size:32px;font-weight:800;letter-spacing:-.03em;margin:0 0 10px}
+  h1{font-family:"Pretendard Variable","Apple SD Gothic Neo",system-ui,sans-serif;font-size:32px;font-weight:800;letter-spacing:-.03em;margin:0 0 10px}
   .lede{color:var(--dim);font-size:15px;margin:0 0 34px}
   ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
   li{border:1px solid var(--line);border-radius:12px;padding:16px 18px}
@@ -3949,7 +3945,7 @@ function build() {
   fs.writeFileSync(path.join(SITE_DIR, "deployment.json"), JSON.stringify({
     version: 1,
     builtAt: new Date().toISOString(),
-    sourceCommit: process.env.GITHUB_SHA || process.env.CF_PAGES_COMMIT_SHA || process.env.COMMIT_SHA || "local",
+    sourceCommit: process.env.DEPLOY_COMMIT || process.env.GITHUB_SHA || process.env.CF_PAGES_COMMIT_SHA || process.env.COMMIT_SHA || "local",
     latestDate: latest.date,
     publicArticleCount: articleEntries.length,
     searchCount: searchEntries.length,

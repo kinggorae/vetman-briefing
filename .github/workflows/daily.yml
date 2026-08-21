@@ -38,8 +38,6 @@ jobs:
         run: bash scripts/ensure-korean-font.sh
       - name: Run unit tests
         run: npm test
-      - name: Check official source health
-        run: npm run sources:health
       - name: Diagnose official feeds without changing registry
         # RECORD_FEED_HISTORY=1은 원래 shadow-newsroom.yml에만 있었는데, 그
         # 워크플로는 permissions: contents: read라 reports/를 리포에 커밋하지
@@ -52,6 +50,8 @@ jobs:
         run: npm run sources:diagnose
         env:
           RECORD_FEED_HISTORY: "1"
+      - name: Check official source health
+        run: npm run sources:health
       - name: Collect source-first draft candidates
         # 고유 후보가 하루 수백 건 쌓이므로 점수 상위 260건을 처리한다.
         # 상위 15건은 심층 생성해 색인 후보로 만들고, 나머지는 충분한 분량의 브리프로
@@ -199,6 +199,11 @@ jobs:
           if ((report.critical?.length ?? 0) > 0) throw new Error('SEO critical 오류가 있습니다.');
           NODE
 
+      - name: Run daily browser smoke tests
+        # PR 품질 잡에서만 실행되던 반응형·접근성·GA4 브라우저 계약을
+        # 실제 일일 발행물에도 적용해 정적 빌드 회귀를 배포 전에 잡는다.
+        run: npm run test:browser -- --reporter=line
+
       # 기존 공개 기사는 다음 날 발행분과 무관하게 보존되어야 한다. 검색
       # 인덱스에서 조용히 사라지는 경우에는 배포하지 않고 이력과 함께 실패시킨다.
       - name: Guard public article retention
@@ -207,18 +212,47 @@ jobs:
           RETENTION_BASE_REF: HEAD^
 
       - name: Commit publication set, drafts and reports
+        id: publication
         run: |
           git config user.name "vetman-briefing-newsroom"
           git config user.email "actions@users.noreply.github.com"
           # .source-cache는 .gitignore 대상이라 git add에 넣으면 exit 1로 잡 전체가 죽는다. 넣지 않는다.
           # .github는 담지 않는다. GITHUB_TOKEN은 워크플로 파일을 푸시할 수 없다.
           git add data site reports
-          git diff --cached --quiet && { echo "커밋할 변경 없음"; exit 0; }
+          if git diff --cached --quiet; then
+            echo "커밋할 변경 없음"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           git commit -m "daily: $(date -u +%F) briefing (${{ steps.release.outputs.count }}+${{ steps.topup.outputs.count }}건)"
           # 실행 중 main이 앞서갔을 수 있다. 리베이스 후 올린다.
           # --autostash가 없으면 "cannot pull with rebase: You have unstaged
           # changes"로 거부된다. data/site/reports만 스테이징하므로 빌드가
           # 건드린 다른 파일이 항상 미스테이징으로 남는다.
+          git pull --rebase --autostash origin main
+          git push origin main
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Align deployment metadata with published commit
+        if: steps.release.outputs.count != '0' || steps.topup.outputs.count != '0'
+        env:
+          DEPLOY_COMMIT: ${{ steps.publication.outputs.sha }}
+        run: |
+          if [ -z "$DEPLOY_COMMIT" ]; then
+            echo "::error::발행 커밋 SHA를 확인할 수 없습니다"
+            exit 1
+          fi
+          # 최초 빌드는 발행 커밋이 만들어지기 전에 실행되므로, 푸시된
+          # 발행 커밋을 이미 검증한 deployment.json에 기록한다. 전체 사이트를
+          # 다시 빌드하지 않아 타임스탬프·이미지 산출물을 불필요하게 바꾸지 않는다.
+          node scripts/align-deployment-metadata.js "$DEPLOY_COMMIT"
+          npm run deploy:guard
+          git add site/deployment.json
+          if git diff --cached --quiet; then
+            echo "배포 메타데이터 변경 없음"
+            exit 0
+          fi
+          git commit -m "daily: align deployment metadata"
           git pull --rebase --autostash origin main
           git push origin main
 
