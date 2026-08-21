@@ -29,6 +29,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # 브라우저 smoke test에서 사용할 Chromium 바이너리를 설치한다.
+      - run: npx playwright install chromium
       # ubuntu-latest에는 한글 폰트가 없다. editorial-cards.js가 SVG에
       # font-family="Arial, Apple SD Gothic Neo, …"만 지정해뒀는데 둘 다
       # macOS 전용이라, CI에서 sharp가 래스터라이즈하면 한글이 전부
