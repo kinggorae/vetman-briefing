@@ -1,4 +1,322 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_48562b1cbaec3a54</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:51:59.472Z</news:publication_date>
+      <news:title>화난트바이러스 크루즈선 집단 발생, 수의사도 경고해야 하는 이유</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_e5bce5fce7160b69</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:51:59.462Z</news:publication_date>
+      <news:title>NC State 교수, 돼지 복지 기여로 AVMA 수상</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_c7be4f96e335f11b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:51:59.453Z</news:publication_date>
+      <news:title>비통상적 여정한 수의학자의 멘토십과 항생제 연구</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_cffbaa85b9ada203</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:51:59.445Z</news:publication_date>
+      <news:title>버지니아 테크수의대 그레이슨 무어, 농업·공중보건 꿈 향해 도전</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_5f4e4d7ecbd0e473</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:51:59.434Z</news:publication_date>
+      <news:title>16세 강아지 구급 경험으로 시작한수의학 도전기</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_d1d6731a5bc9c1c0</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:51:59.422Z</news:publication_date>
+      <news:title>“고통스러운 순간도 진심 어린 Compassion이” 마크 엘고신 Virginia Tech 수의대 기부금 담당자 인터뷰</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_a4d312b1b972ab48</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:51:59.414Z</news:publication_date>
+      <news:title>영국 농촌, 농장 개 통한 기생충 질병 확산 조사 시작</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_960d8e296426f94a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:44:36.999Z</news:publication_date>
+      <news:title>피친데 벡터 기반결핵백신 TBpV1, 마우스서 BCG 수준의 보호 효과</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_2692f55bab2c22e0</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:44:36.992Z</news:publication_date>
+      <news:title>미네소타 소규모 하천의 항생제 잔류물 오염 실태 및 생태학적 위험 평가</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_0a456ca7b6cb4dc2</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:44:36.985Z</news:publication_date>
+      <news:title>&quot;24시간 공부해야 한다&quot;는 오해에 맞선 수의대 학생 Regan Hodgson</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_ed88f64acc241076</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:44:36.977Z</news:publication_date>
+      <news:title>이탈리아 유산 농장, 동물 복지와 유방염 병원체 연관성 입증</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_dfbd476805e3347b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:44:36.969Z</news:publication_date>
+      <news:title>TaqMan 다중 실시간 PCR로 bovine 5종 바이러스 동시 검출법 개발</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_62b8f91a52d29f4a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:44:36.962Z</news:publication_date>
+      <news:title>수의학 학생 정신건강과 개 다루기 기술이 개 두려움 반응에 미치는 영향</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_dfe6e2d2a6837c7e</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:44:36.955Z</news:publication_date>
+      <news:title>푸리나, 설사 관리용 2단계 FortiFlora 키트 출시</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_52fe20c4f3bab995</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:44:36.947Z</news:publication_date>
+      <news:title>NC주립대, 세계 45개 기관 수의학 연구생 대거 참가한 심포지엄 개최</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9db0847fc1bb1f71</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-21T00:44:36.939Z</news:publication_date>
+      <news:title>7세 개도 벌써 '노령' 관리 필요할 수 있다</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9840c140de55c67b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:47:18.111Z</news:publication_date>
+      <news:title>생명공학 새 용어 Translon, 번역 영역 나타내는 단일 명칭 등장</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_a6753fb70503c25a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:47:18.103Z</news:publication_date>
+      <news:title>북미 고지대 사냥새 고병원성 조류인플루엔자 대응 집단 살처리의 경험 평가</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_b693db0158d5496c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:47:18.097Z</news:publication_date>
+      <news:title>건강한 고양이 트레드밀 보행·달리기 모드별 보행 매개변수 비교 연구</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_26e29cc9ec86e2b6</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:47:18.084Z</news:publication_date>
+      <news:title>한국 1차 진료 강아지 순수품종·혼합품종 진단 비교 연구</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_e4c48703ee06a557</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:41:07.472Z</news:publication_date>
+      <news:title>칠면조 병아리 온도 스트레스 유방 근육 유전자 발현 변화</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_ee46196c4e3f361c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:41:07.466Z</news:publication_date>
+      <news:title>NK 세포 Engager와 ADAM17 저해 전략으로 종양 치료 효과 높인다</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_d805fce1000ac67c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:41:07.461Z</news:publication_date>
+      <news:title>나노포어 시퀀싱의 라임병 원인균 검출 성능 평가</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_c1cf6dca9b4d2db3</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:41:07.455Z</news:publication_date>
+      <news:title>버지니아대 말 의료센터 임상수의 보조사 &quot;말 목숨 구하는 건 조직화된 혼돈&quot;</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_506ee77f1e59c749</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:41:07.450Z</news:publication_date>
+      <news:title>버지니아 대학 임상병리 기술자의</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_eae2c1b11b034775</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:41:07.444Z</news:publication_date>
+      <news:title>비교 종양학자 티모시 팬 교수, 사람과 동물 모두를 위한 암 연구 기여</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_7ebbf96b631e2ae0</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:41:07.439Z</news:publication_date>
+      <news:title>모바일 유전 요소로 퍼지는 항생제 내성, 아프리카의 교훈</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_6945f945d4ca4252</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:41:07.434Z</news:publication_date>
+      <news:title>저지yak 사료 단백질 수준별 ceRNA 네트워크 분석</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9e36e1aba7065184</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-20T00:41:07.428Z</news:publication_date>
+      <news:title>고혈압 랫드 패혈증 모델에서 마취 프로토콜별 심혈관 안전성 비교</news:title>
+    </news:news>
+  </url>
 </urlset>

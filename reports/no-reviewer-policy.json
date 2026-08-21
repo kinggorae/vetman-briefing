@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-07-30T04:44:19.754Z",
+  "generatedAt": "2026-08-21T08:53:14.081Z",
   "settings": {
     "editorialMode": "organization-only",
     "veterinaryReviewerAvailable": false,
@@ -11,8 +11,8 @@
   },
   "policy": {
     "high": "blocked-clinical",
-    "medium": "internal-draft-or-public-brief-noindex",
-    "low": "public-brief-noindex-after-all-automated-checks"
+    "medium": "brief-index-news-after-automated-checks",
+    "low": "brief-index-news-after-automated-checks"
   },
   "candidates": [
     {
@@ -30,12 +30,14 @@
       "status": "needs-language-fix",
       "blockers": [
         "한국어 titleKo·leadKo·bodyKo 필요",
-        "titleKo/leadKo/bodyKo-missing",
-        "권리 확인된 대표 이미지 필요"
+        "titleKo/leadKo/bodyKo-missing"
       ],
       "languageWarnings": [],
       "claimWarnings": [],
       "clinicalSafetyIssues": [],
+      "qualityIssues": [
+        "titleKo/leadKo/bodyKo-missing"
+      ],
       "image": {
         "url": null,
         "ownership": null,
@@ -72,12 +74,14 @@
       "status": "needs-language-fix",
       "blockers": [
         "한국어 titleKo·leadKo·bodyKo 필요",
-        "titleKo/leadKo/bodyKo-missing",
-        "권리 확인된 대표 이미지 필요"
+        "titleKo/leadKo/bodyKo-missing"
       ],
       "languageWarnings": [],
       "claimWarnings": [],
       "clinicalSafetyIssues": [],
+      "qualityIssues": [
+        "titleKo/leadKo/bodyKo-missing"
+      ],
       "image": {
         "url": null,
         "ownership": null,
@@ -114,12 +118,14 @@
       "status": "needs-language-fix",
       "blockers": [
         "한국어 titleKo·leadKo·bodyKo 필요",
-        "titleKo/leadKo/bodyKo-missing",
-        "권리 확인된 대표 이미지 필요"
+        "titleKo/leadKo/bodyKo-missing"
       ],
       "languageWarnings": [],
       "claimWarnings": [],
       "clinicalSafetyIssues": [],
+      "qualityIssues": [
+        "titleKo/leadKo/bodyKo-missing"
+      ],
       "image": {
         "url": null,
         "ownership": null,
@@ -156,12 +162,14 @@
       "status": "needs-language-fix",
       "blockers": [
         "한국어 titleKo·leadKo·bodyKo 필요",
-        "titleKo/leadKo/bodyKo-missing",
-        "권리 확인된 대표 이미지 필요"
+        "titleKo/leadKo/bodyKo-missing"
       ],
       "languageWarnings": [],
       "claimWarnings": [],
       "clinicalSafetyIssues": [],
+      "qualityIssues": [
+        "titleKo/leadKo/bodyKo-missing"
+      ],
       "image": {
         "url": null,
         "ownership": null,
@@ -198,12 +206,14 @@
       "status": "needs-language-fix",
       "blockers": [
         "한국어 titleKo·leadKo·bodyKo 필요",
-        "titleKo/leadKo/bodyKo-missing",
-        "권리 확인된 대표 이미지 필요"
+        "titleKo/leadKo/bodyKo-missing"
       ],
       "languageWarnings": [],
       "claimWarnings": [],
       "clinicalSafetyIssues": [],
+      "qualityIssues": [
+        "titleKo/leadKo/bodyKo-missing"
+      ],
       "image": {
         "url": null,
         "ownership": null,
@@ -235,7 +245,7 @@
     "rejected": 0
   },
   "legacyRiskAudit": {
-    "scanned": 463,
+    "scanned": 977,
     "unsafeCount": 6,
     "criticalCount": 0,
     "rows": [
@@ -291,7 +301,9 @@
         "unsafeExpressions": [
           "예방할\\s*수\\s*있다"
         ],
-        "qualityWarnings": [],
+        "qualityWarnings": [
+          "brief-too-short"
+        ],
         "disposition": "legacy-review-queue",
         "critical": false
       },
@@ -321,13 +333,15 @@
         "unsafeExpressions": [
           "권장\\s*용량"
         ],
-        "qualityWarnings": [],
+        "qualityWarnings": [
+          "brief-too-short"
+        ],
         "disposition": "legacy-review-queue",
         "critical": false
       }
     ]
   },
-  "automaticPublished": 0,
+  "automaticPublished": 146,
   "reviewerCount": 0,
-  "note": "현재 실제 수의사 감수자가 없으므로 새 index-analysis·approved·vet-reviewed·published 상태를 생성하지 않습니다."
+  "note": "실제 수의사 감수자는 없지만 출처·언어·안전 검사를 통과한 brief 뉴스는 index-news로 공개합니다. high-risk 임상 콘텐츠와 index-analysis는 계속 차단합니다."
 }

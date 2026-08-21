@@ -95,9 +95,9 @@ export function summarizeOperations({
       legacy: row.published === true,
       draft: row.published !== true,
     });
-    return { id: articleId(row), risk, status, indexable: indexSet.has(articleId(row)), reviewed: isReviewed(item, row), priority: risk === "high" ? 40 : risk === "medium" ? 25 : 10, latestReview: review || null };
+    return { id: articleId(row), risk, status, publicationStatus: item.publicationStatus || null, automatedNews: item.publicationStatus === "index-news", indexable: indexSet.has(articleId(row)), reviewed: isReviewed(item, row), priority: risk === "high" ? 40 : risk === "medium" ? 25 : 10, latestReview: review || null };
   });
-  const reviewerQueue = reviewRows.filter((row) => row.indexable && !row.reviewed && ["high", "medium"].includes(row.risk));
+  const reviewerQueue = reviewRows.filter((row) => row.indexable && !row.automatedNews && !row.reviewed && ["high", "medium"].includes(row.risk));
   const correctionRows = rowsFrom(corrections);
   const correctionCounts = countBy(correctionRows, "status");
   const feedRows = rowsFrom(sourceHealth.feeds || sourceHealth.rows);
@@ -158,7 +158,7 @@ export function summarizeOperations({
       updatedAt: seoPerformance.updatedAt || null,
     },
     gates: {
-      automaticPublished: 0,
+      automaticPublished: indexedRows.filter((row) => row.item?.publicationStatus === "index-news").length,
       canIncreaseIndex: unresolvedSourceRows.length === 0 && reviewerQueue.length === 0,
       requiresHumanAction: unresolvedSourceRows.length > 0 || reviewerQueue.length > 0 || imagePending.length > 0,
     },

@@ -49,10 +49,11 @@ export function clinicalReviewIssues(item = {}, { issueDate = "", existingIndex 
   if (item.workflowStatus && ["draft", "automated", "editor-review-required", "vet-review-required", "archived"].includes(item.workflowStatus)) issues.push("workflow-not-approved");
   // 1·2차 기존 색인 기사는 일괄 차단하지 않는다. 정책 시행일 이후의 새 기사에만
   // 검수 게이트를 적용하고, 기존 기사는 관리자 우선순위 큐에서 사람 검수를 기다린다.
+  const automatedNews = String(item.publicationStatus || "").toLowerCase() === "index-news";
   if (!existingIndex && isPolicyNew(item, issueDate)) {
     if (risk === "high" && !isVeterinaryReviewerAvailable()) issues.push("high-risk-vet-review-unavailable");
     if (risk === "high" && status !== "vet-reviewed" && !(item.vetReviewedAt && (item.vetReviewer || item.vetReviewerId))) issues.push("high-risk-not-vet-reviewed");
-    if (risk === "medium" && !["editor-reviewed", "vet-reviewed"].includes(status) && !(item.reviewedAt || item.vetReviewedAt)) issues.push("medium-risk-not-editor-reviewed");
+    if (risk === "medium" && !automatedNews && !["editor-reviewed", "vet-reviewed"].includes(status) && !(item.reviewedAt || item.vetReviewedAt)) issues.push("medium-risk-not-editor-reviewed");
   }
   if (status === "vet-reviewed" && !isVeterinaryReviewerAvailable()) issues.push("vet-reviewer-unavailable");
   return [...new Set(issues)];

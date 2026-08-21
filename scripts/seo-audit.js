@@ -160,8 +160,9 @@ function main() {
         // 주장하는 색인 대상 기사를 지키기 위한 장치라 public-brief에는 적용하지 않는다.
         // 아래 high-risk 미감수 차단은 등급과 무관하게 그대로 유지한다.
         const publication = normalizePublicationStatus(item.publicationStatus);
-        // index-low-risk도 감수자를 주장하지 않는 등급이라 감수 게이트 대상이 아니다.
-        const publicBrief = publication === "public-brief" || publication === "index-low-risk";
+        // index-low-risk·index-news도 감수자를 주장하지 않는 등급이라 감수
+        // 게이트 대상이 아니다. index-news는 짧은 출처 기반 뉴스에만 사용한다.
+        const publicBrief = ["public-brief", "index-low-risk", "index-news"].includes(publication);
         if (["approved", "published"].includes(status) && workflowIssues.length && !publicBrief) addCritical("workflow-gate-failed", { id: item.id, workflowIssues });
         if (["approved", "published"].includes(status) && item.clinicalRisk === "high" && !item.vetReviewedAt) addCritical("high-risk-not-vet-reviewed", item.id);
       }

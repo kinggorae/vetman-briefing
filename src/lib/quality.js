@@ -138,11 +138,13 @@ export function publishQualityIssues(item = {}, { duplicate = false } = {}) {
   // index-low-risk는 감수자를 두지 않기로 정한 등급이라 감수 게이트를 적용하지
   // 않는다. 대신 이 등급을 받는 조건이 low-risk + 무경고로 좁게 제한돼 있고,
   // 아래 clinicalReviewIssues가 고위험 미감수는 등급과 무관하게 계속 막는다.
-  if (isNewWorkflowItem(item) && publication !== "index-low-risk") issues.push(...workflowReviewIssues(item));
+  if (isNewWorkflowItem(item) && !["index-low-risk", "index-news"].includes(publication)) issues.push(...workflowReviewIssues(item));
   if (publication === "public-brief") issues.push(...clinicalSafetyIssues(item).map(() => "unsafe-clinical-command"));
   // 감수 없이 색인되는 등급이므로 임상 안전 표현은 public-brief보다 더 엄격히 본다
-  if (publication === "index-low-risk") {
-    if (String(item.clinicalRisk || "").toLowerCase() !== "low") issues.push("index-low-risk-requires-low");
+  if (["index-low-risk", "index-news"].includes(publication)) {
+    if (publication === "index-low-risk" && String(item.clinicalRisk || "").toLowerCase() !== "low") issues.push("index-low-risk-requires-low");
+    if (publication === "index-news" && normalizeContentTier(item) !== "brief") issues.push("index-news-requires-brief");
+    if (publication === "index-news" && !["low", "medium"].includes(String(item.clinicalRisk || "").toLowerCase())) issues.push("index-news-requires-low-or-medium");
     issues.push(...clinicalSafetyIssues(item).map(() => "unsafe-clinical-command"));
   }
   return [...new Set(issues)];
@@ -156,12 +158,18 @@ export function isProfessionallyIndexable(item = {}, { duplicate = false } = {})
   const tier = normalizeContentTier(item);
   const publicationStatus = normalizePublicationStatus(item.publicationStatus);
   if (item.visibility === "suppressed" || item.indexPolicy === "legacy-noindex" || duplicate || item.duplicateSource) return false;
-  // index-low-risk는 감수자를 주장하지 않지만 색인 대상이다(정책 C). 이 등급은
-  // clinicalRisk=low이고 경고가 하나도 없는 글에만 붙는다 — brief-publishing 참조.
-  if (publicationStatus && publicationStatus !== "index-analysis" && publicationStatus !== "index-low-risk") return false;
+  // index-low-risk와 index-news는 감수자를 주장하지 않지만 색인 대상이다.
+  // index-news는 짧은 출처 기반 뉴스만 허용하고, 임상 분석은 별도 게이트를 탄다.
+  if (publicationStatus && !["index-analysis", "index-low-risk", "index-news"].includes(publicationStatus)) return false;
   if (publicationStatus === "index-analysis" && (!item.reviewedAt || !(item.reviewedBy || item.reviewerId))) return false;
+  if (publicationStatus === "index-news" && (normalizeContentTier(item) !== "brief" || !["low", "medium"].includes(String(item.clinicalRisk || "").toLowerCase()))) return false;
   if (!item.sourceUrl && !item.finalUrl && !item.sourceUrlRaw) return false;
-  if (!(tier === "analysis" || tier === "evidence")) return false;
+  if (publicationStatus === "index-news") {
+    // index-news는 임상 해설이 아닌 출처 기반 짧은 뉴스 브리핑이다.
+    if (tier !== "brief") return false;
+  } else if (!(tier === "analysis" || tier === "evidence")) {
+    return false;
+  }
   return publishQualityIssues(item).length === 0;
 }
 

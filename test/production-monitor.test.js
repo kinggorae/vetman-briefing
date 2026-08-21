@@ -100,9 +100,10 @@ test("production monitor only counts recent indexable latest items for an empty 
   const items = [
     { publicationStatus: "index-analysis", firstPublishedAt: "2026-08-14T01:00:00Z" },
     { publicationStatus: "index-low-risk", firstPublishedAt: "2026-08-10T01:00:00Z" },
+    { publicationStatus: "index-news", firstPublishedAt: "2026-08-14T01:30:00Z" },
     { publicationStatus: "public-brief", firstPublishedAt: "2026-08-14T01:00:00Z" },
   ];
-  assert.equal(recentIndexableNewsCount(items, { now: "2026-08-14T02:00:00Z", maxAgeDays: 2 }), 1);
+  assert.equal(recentIndexableNewsCount(items, { now: "2026-08-14T02:00:00Z", maxAgeDays: 2 }), 2);
 });
 
 test("news sitemap contract validates namespace and live URL count", () => {

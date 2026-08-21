@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { isProfessionallyIndexable, publishQualityIssues } from "../src/lib/quality.js";
 import { clinicalSafetyIssues, loadEditorialSettings, organizationAuthor } from "../src/lib/editorial-policy.js";
-import { canReleaseDaily, DAILY_MINIMUM_ITEMS, DAILY_TARGET_ITEMS, evaluate, retainSeenAfterTargetMiss } from "../scripts/brief-publishing.js";
+import { canReleaseDaily, DAILY_MINIMUM_ITEMS, DAILY_TARGET_ITEMS, evaluate, isAutomatedNewsCandidate, retainSeenAfterTargetMiss } from "../scripts/brief-publishing.js";
 import { BRIEF_MIN_CHARS, DAILY_CANDIDATE_POOL, DAILY_DEEP_TARGET_ITEMS, DAILY_HOME_ITEMS, DAILY_MINIMUM_ITEMS as CONFIG_DAILY_MINIMUM_ITEMS, DAILY_RSS_ITEMS } from "../config.js";
 
 const ROOT = process.cwd();
@@ -16,6 +16,11 @@ test("수의사 감수자 없음 운영 모드는 명시적으로 fail-closed다
   assert.deepEqual(organizationAuthor(settings), { "@type": "Organization", name: "베트맨랩", url: "https://news.vetmanlab.com/about" });
   assert.equal(isProfessionallyIndexable({ publicationStatus: "public-brief", contentTier: "brief", titleKo: "충분한 제목입니다", leadKo: "충분한 설명입니다." }), false);
   assert.equal(isProfessionallyIndexable({ publicationStatus: "index-analysis", contentTier: "analysis", titleKo: "제목", leadKo: "리드", bodyKo: ["첫 문단"], sourceUrl: "https://example.com/a", radar: { clinical: "맥락" } }), false);
+  const briefText = "공식 출처에서 확인한 수의 뉴스의 핵심 사실과 배경을 정리합니다. 이 글은 진단이나 처방을 대신하지 않으며 원문과 최신 자료를 확인해야 합니다. 새로운 연구와 기관 발표의 범위를 구분해 설명하고, 확인되지 않은 주장은 덧붙이지 않습니다. ".repeat(3);
+  const news = { publicationStatus: "index-news", contentTier: "brief", clinicalRisk: "medium", workflowStatus: "published", titleKo: "공식 출처 기반 수의 뉴스 브리핑입니다", leadKo: briefText, bodyKo: [briefText], sourceUrl: "https://example.com/news", sourceStatus: "verified", duplicateStatus: "unique" };
+  assert.equal(isProfessionallyIndexable(news), true);
+  assert.equal(isProfessionallyIndexable({ ...news, clinicalRisk: "high" }), false);
+  assert.equal(isAutomatedNewsCandidate(news, { languageWarnings: [], claimWarnings: [], clinicalSafetyIssues: [], qualityIssues: [], blockers: [] }), true);
 });
 
 test("감수자 없는 public brief는 임상 명령 표현을 차단한다", () => {
@@ -126,7 +131,7 @@ test("이전 DOI 초안은 공식 feed item URL로 source 검증을 회복한다
 test("정책 보고서의 기존 치명 오류와 자동 published를 확인한다", () => {
   const report = JSON.parse(fs.readFileSync(path.join(ROOT, "reports", "no-reviewer-policy.json"), "utf8"));
   assert.equal(report.reviewerCount, 0);
-  assert.equal(report.automaticPublished, 0);
+  assert.ok(report.automaticPublished > 0);
   assert.equal(report.legacyRiskAudit.criticalCount, 0);
   assert.equal(report.candidateCounts["needs-language-fix"], 5);
 });

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="card-title card-desc">
+<title id="card-title">VetManLab 편집용 정보 카드: 버지니아대 말 의료센터 임상수의 보조사 &quot;말 목숨 구하는 건 조직화된 혼돈&quot;</title>
+<desc id="card-desc">실제 환자나 검사 사진이 아닌 기사 주제 안내용 편집 그래픽입니다.</desc>
+<rect width="1200" height="630" fill="#1f2937"/>
+<circle cx="1040" cy="102" r="170" fill="#2563eb" opacity=".42"/>
+<circle cx="1070" cy="500" r="250" fill="#2563eb" opacity=".2"/>
+<path d="M760 0h440v630H760z" fill="#dbeafe" opacity=".08"/>
+<path d="M820 126h250M820 152h170M820 178h210" stroke="#fff" stroke-opacity=".32" stroke-width="3" stroke-linecap="round"/>
+<g transform="translate(810 250)" fill="none" stroke="#2563eb" stroke-width="12" opacity=".9">
+  <rect x="0" y="0" width="92" height="92" rx="22"/>
+  <rect x="122" y="0" width="92" height="92" rx="22" opacity=".62"/>
+  <rect x="0" y="122" width="92" height="92" rx="22" opacity=".62"/>
+  <rect x="122" y="122" width="92" height="92" rx="22"/>
+</g>
+<text x="88" y="108" fill="#dbeafe" font-family="'NanumGothic', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="20" font-weight="700" letter-spacing="3">VETMANLAB · EDITORIAL SIGNAL</text>
+<text x="88" y="166" fill="#ffffff" font-family="'NanumGothic', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="22" font-weight="700">VetManLab 편집 카드 · 수의학 전문 브리핑</text>
+<text x="88" y="306" fill="#ffffff" font-family="'NanumGothic', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="42" font-weight="700">버지니아대 말 의료센터 임상수의 보조사</text><text x="88" y="358" fill="#ffffff" font-family="'NanumGothic', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="42" font-weight="700">&quot;말 목숨 구하는 건 조직화된 혼돈&quot;</text>
+<text x="88" y="558" fill="#ffffff" fill-opacity=".68" font-family="'NanumGothic', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" font-size="18">기사 ID v1_c1cf6dca9b4d2db3 · 실제 환자·검사 이미지 아님</text>
+</svg>

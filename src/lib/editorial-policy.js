@@ -13,6 +13,10 @@ export const PUBLICATION_STATUSES = new Set([
   // 주장하지 않는 점은 public-brief와 같지만 색인·사이트맵에는 포함된다.
   // medium 이상은 이 등급을 받을 수 없고 public-brief로 남아 검수를 기다린다.
   "index-low-risk",
+  // index-news: 수의사 감수 없이도 출처·언어·안전 자동 검사를 통과한 짧은
+  // 뉴스 브리핑을 검색·뉴스 사이트맵·RSS에 싣는 등급이다. 임상 판단을
+  // 제공하는 분석·처방·용량·진단 콘텐츠에는 적용하지 않는다.
+  "index-news",
   "index-analysis",
   "blocked-clinical",
 ]);
