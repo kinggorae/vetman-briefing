@@ -6626,7 +6626,7 @@
         "nature.com"
       ],
       "rssUrls": [
-        "https://www.nature.com/npjvetsci.rss"
+        "https://www.nature.com/npjvetsci.rss?error=cookies_not_supported"
       ],
       "atomUrls": [],
       "sitemapUrls": [],
@@ -6646,7 +6646,7 @@
       "lastFailureAt": null,
       "consecutiveFailures": 0,
       "healthStatus": "unknown",
-      "notes": "Springer Nature 공식 저널 RSS. 동물 건강·수의학 연구 중심",
+      "notes": "Springer Nature 공식 저널 RSS. 쿠키 없는 자동 수집 요청에서 로그인 HTML로 리디렉션되지 않도록 공식 오류 파라미터를 유지한다.",
       "evidence": [
         "data/source-publishers.json"
       ]
