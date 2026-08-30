@@ -1,46 +1,39 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-30T02:25:10.918Z",
+  "generatedAt": "2026-08-30T04:06:52.309Z",
   "baseRef": "HEAD^",
   "allowRemovals": [],
   "status": "passed",
   "previous": {
-    "count": 336,
-    "declaredCount": 336
-  },
-  "current": {
     "count": 359,
     "declaredCount": 359
   },
+  "current": {
+    "count": 375,
+    "declaredCount": 375
+  },
   "added": [
-    "v1_14f3d0b2a36740d3",
-    "v1_26bf1e3cadd0d0ea",
-    "v1_3439a1c69e6ee214",
-    "v1_4d5a585fea9f2f0d",
-    "v1_4f0a3bcb395f2d4b",
-    "v1_6269576cf035d012",
-    "v1_76c9c0cdaedb8933",
-    "v1_7b3d80b447fc45c4",
-    "v1_873a35b5e142fa39",
-    "v1_87707403cb8640ab",
-    "v1_8a3da7cae333413f",
-    "v1_95e28ecec43366c7",
-    "v1_a1d6a563bc44348a",
-    "v1_ac84e6c020675f69",
-    "v1_ba74cd04367816e6",
-    "v1_bbbd72758bc9c737",
-    "v1_c92774fb194a836b",
-    "v1_cb6c390431d79b6d",
-    "v1_d5df4cec9bed967c",
-    "v1_d793da6b46e4ec5d",
-    "v1_e259157f666086db",
-    "v1_f227b4e84a603e5a",
-    "v1_fd97bbf180315cff"
+    "v1_0dcd75cad1a12f4e",
+    "v1_194982b173848e74",
+    "v1_1d3a6032a232722d",
+    "v1_2c67bf0d248f813b",
+    "v1_397439fbd265e5cd",
+    "v1_3d27735cc710504b",
+    "v1_41327f5ed8bafb23",
+    "v1_526ca67899a0331b",
+    "v1_5bcf1f2656056b0f",
+    "v1_5f298cd7ffc845fb",
+    "v1_86fa3085a5ac6066",
+    "v1_c1636fdaa5743293",
+    "v1_d7f62288e7d9485b",
+    "v1_e465d2f6ac6a0201",
+    "v1_f9bfd129221dccdc",
+    "v1_faa0c61ed656cc66"
   ],
   "removed": [],
   "allowedRemoved": [],
   "unexpectedRemoved": [],
   "critical": [],
-  "previousCount": 336,
-  "currentCount": 359
+  "previousCount": 359,
+  "currentCount": 375
 }

@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-08-30T02:24:12.162Z",
+  "generatedAt": "2026-08-30T04:05:54.776Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 1103,
-    "articles": 1008,
-    "index": 359,
-    "noindex": 649,
-    "sitemap": 405,
-    "newsSitemap": 23,
+    "htmlPages": 1134,
+    "articles": 1039,
+    "index": 375,
+    "noindex": 664,
+    "sitemap": 421,
+    "newsSitemap": 39,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 359,
+    "indexImages": 375,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 263111,
+    "homepageBytes": 374586,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 327050
+        "bytes": 342002
       },
       {
         "file": "search/2026-05.json",
@@ -37,10 +37,10 @@
       },
       {
         "file": "search/2026-08.json",
-        "bytes": 172546
+        "bytes": 187498
       }
     ],
-    "articleBytes": 20163225,
+    "articleBytes": 20818636,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -50,11 +50,11 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 359,
-    "currentNoindex": 649,
-    "delta": 41,
+    "currentIndex": 375,
+    "currentNoindex": 664,
+    "delta": 57,
     "reasonCounts": {
-      "build-policy": 204,
+      "build-policy": 219,
       "brief-tier": 368,
       "brief-too-short": 368,
       "source-relay": 39,
@@ -439,9 +439,9 @@
           ]
         },
         {
-          "date": "2026-08-21",
-          "id": "v1_26e0ac36a76d5a97",
-          "title": "소형견 2급 내측슬개골 탈구, 경와와 인대 형태 변화 연관성 확인",
+          "date": "2026-08-30",
+          "id": "v1_d8ee2b41cc5c5361",
+          "title": "가축 및 육류에서 코리스틴 내성 대장균 발생률",
           "indexable": false,
           "tier": "evidence",
           "clinicalRisk": "medium",
@@ -452,9 +452,22 @@
           ]
         },
         {
-          "date": "2026-08-21",
-          "id": "v1_842529f2046abcf8",
-          "title": "애완동물 위한 3D 프린팅 의학 적용 사례와 가능성",
+          "date": "2026-08-30",
+          "id": "v1_44e546e8a5b52245",
+          "title": "군대 대학원 facility dog 핸들러의 경험 탐색: 정서적 노동과 역할 갈등",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-30",
+          "id": "v1_3f2c639fe37dce76",
+          "title": "개 인지기능 저하 치료, 새로운 수술법 가능할까",
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",
@@ -465,9 +478,74 @@
           ]
         },
         {
-          "date": "2026-08-21",
-          "id": "v1_a55ee81ffe7c1b28",
-          "title": "경력이 길어질수록 수의학은 더 나아진다",
+          "date": "2026-08-30",
+          "id": "v1_1d54f688e5bdef2a",
+          "title": "개 림프절 aspirate에서 리슈만편모충 PCR 신속 검출 키트 성능 평가",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-30",
+          "id": "v1_9817afab976dac7a",
+          "title": "개의 방광염 원인 Klebsiella michiganensis와 유산균 경쟁 연구",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-30",
+          "id": "v1_da646ea89e87b0aa",
+          "title": "조류인플루엔자·뉴캐슬병 이중 PCR 검사 개발",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-30",
+          "id": "v1_fcb5d92470378738",
+          "title": "노령 암컷 개에서 난소 절제술, 자궁 질환 예방 효과 확인",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-30",
+          "id": "v1_a25b387c03211dc8",
+          "title": "불의 땅 유기견 고환의 금속 축적과 정자 형성 이상 연관성",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-30",
+          "id": "v1_997d5dd7103623d4",
+          "title": "개, 가정 환경에서 혈압·스트레스 낮아…병원 측정치 정상 압 46mmHg 높아",
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",
@@ -478,22 +556,9 @@
           ]
         },
         {
-          "date": "2026-08-21",
-          "id": "v1_0d3cfccb82c552c1",
-          "title": "동물병원 혁신 아이디어 4가지: 고양이 은밀장소에서 AI 질병 예측까지",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 4,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-21",
-          "id": "v1_b4f3db36829b82b0",
-          "title": "오스트레일리아 빅토리아주, 수의사 전자처방 도입 법안 가결",
+          "date": "2026-08-30",
+          "id": "v1_ac084b97d07776b2",
+          "title": "녹색 마그네슘 나노입자, 육계 사료첨가제로서의 영양학적 적용 가능성",
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",
@@ -504,11 +569,11 @@
           ]
         },
         {
-          "date": "2026-08-21",
-          "id": "v1_95c0f4e73b58d0fd",
-          "title": "고양이 눈 검은 병변 원인 발견…철과 브로민 관련 연구",
+          "date": "2026-08-30",
+          "id": "v1_966eda7babaf37e7",
+          "title": "노령 개 인지기능장애의 수면 장애 패턴 및 실용 선별 도구",
           "indexable": false,
-          "tier": "analysis",
+          "tier": "evidence",
           "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
@@ -517,74 +582,9 @@
           ]
         },
         {
-          "date": "2026-08-21",
-          "id": "v1_bc4c29eee824528a",
-          "title": "압전 물질로 연골 재생 가능할까? UConn 기술, 동물 의학 상용화 진행",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-21",
-          "id": "v1_1442dd953e52bee8",
-          "title": "케이프타운 caracal_쥐약 노출 야생동물 생태계 오염 심층 분석",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-21",
-          "id": "v1_00592048ef82a0e9",
-          "title": "샌안토니오 10년 만에 개 광견병 확인...야생동물 rabies 급증 경고",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-21",
-          "id": "v1_fdbdc87b2068100c",
-          "title": "개의 Microbiota-Gut-Brain Axis와 행동·신경 질환 연구 동향",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-21",
-          "id": "v1_8ca62a1c73278e65",
-          "title": "AI로 변형되는 바이러스 표적 잡는다… új vakcina 설계 전략 등장",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-20",
-          "id": "v1_3dfdf24009eb4cc4",
-          "title": "개 확장성 심근증 모델에서 인간IPS 세포시트의 치료 효과 확인",
+          "date": "2026-08-30",
+          "id": "v1_91c924df9b821c3f",
+          "title": "말 생식기 궤양에서 Parapoxvirus 첫 확인 – EHV3와 유사한 병변",
           "indexable": false,
           "tier": "evidence",
           "clinicalRisk": "medium",
@@ -2445,6 +2445,13 @@
         "card": true
       },
       {
+        "file": "article/v1_0dcd75cad1a12f4e.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_0df5a0fcadc65b33.html",
         "hero": true,
         "og": true,
@@ -2487,6 +2494,13 @@
         "card": true
       },
       {
+        "file": "article/v1_194982b173848e74.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_1966685712ed4a66.html",
         "hero": true,
         "og": true,
@@ -2516,6 +2530,13 @@
       },
       {
         "file": "article/v1_1d2bcee0c0e56320.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_1d3a6032a232722d.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -2641,6 +2662,13 @@
         "card": true
       },
       {
+        "file": "article/v1_2c67bf0d248f813b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_2d0c902a6e8204d3.html",
         "hero": true,
         "og": true,
@@ -2690,6 +2718,13 @@
         "card": true
       },
       {
+        "file": "article/v1_397439fbd265e5cd.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_3c58455b5d4a9288.html",
         "hero": true,
         "og": true,
@@ -2711,7 +2746,21 @@
         "card": true
       },
       {
+        "file": "article/v1_3d27735cc710504b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_40b79346349d00df.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_41327f5ed8bafb23.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -2823,6 +2872,13 @@
         "card": true
       },
       {
+        "file": "article/v1_526ca67899a0331b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_52fe20c4f3bab995.html",
         "hero": true,
         "og": true,
@@ -2900,7 +2956,21 @@
         "card": true
       },
       {
+        "file": "article/v1_5bcf1f2656056b0f.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_5c1783822aafadb2.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_5f298cd7ffc845fb.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3132,6 +3202,13 @@
       },
       {
         "file": "article/v1_85439a4ae7c24079.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_86fa3085a5ac6066.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3502,6 +3579,13 @@
         "card": true
       },
       {
+        "file": "article/v1_c1636fdaa5743293.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_c1cf6dca9b4d2db3.html",
         "hero": true,
         "og": true,
@@ -3663,6 +3747,13 @@
         "card": true
       },
       {
+        "file": "article/v1_d7f62288e7d9485b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_d805fce1000ac67c.html",
         "hero": true,
         "og": true,
@@ -3748,6 +3839,13 @@
       },
       {
         "file": "article/v1_e37a984b45a1939e.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_e465d2f6ac6a0201.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3887,6 +3985,13 @@
         "card": true
       },
       {
+        "file": "article/v1_f9bfd129221dccdc.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_f9dcd1d369229b3f.html",
         "hero": true,
         "og": true,
@@ -3895,6 +4000,13 @@
       },
       {
         "file": "article/v1_fa01b58123f83f02.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_faa0c61ed656cc66.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3969,25 +4081,25 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 219,
-      "medium": 648,
+      "low": 224,
+      "medium": 674,
       "high": 141
     },
-    "explicitReviewFields": 551
+    "explicitReviewFields": 582
   },
   "workflow": {
-    "explicitItems": 551,
+    "explicitItems": 582,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 545
+      "published": 576
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 203,
-    "numericWarnings": 130,
+    "articlesWithExplicitMetadata": 218,
+    "numericWarnings": 132,
     "samples": [
       {
         "id": "v1_e5f8a3b913641e68",
@@ -3998,6 +4110,18 @@
       },
       {
         "id": "v1_47272ac59260dd81",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_1d54f688e5bdef2a",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_91c924df9b821c3f",
         "issues": [
           "numeric-keypoints-body-mismatch"
         ]
@@ -4616,19 +4740,6 @@
         "id": "2026-07-23_29",
         "issues": [
           "numeric-lead-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-22_1",
-        "issues": [
-          "numeric-lead-body-mismatch",
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-22_3",
-        "issues": [
-          "numeric-keypoints-body-mismatch"
         ]
       }
     ]
