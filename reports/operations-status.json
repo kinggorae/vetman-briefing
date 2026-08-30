@@ -1,12 +1,35 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-21T08:57:38.021Z",
+  "generatedAt": "2026-08-30T02:24:09.539Z",
   "publication": {
-    "totalArticles": 977,
-    "index": 336,
-    "noindex": 641,
-    "indexRate": 0.3439,
+    "totalArticles": 1008,
+    "index": 359,
+    "noindex": 649,
+    "indexRate": 0.3562,
     "indexIds": [
+      "v1_4f0a3bcb395f2d4b",
+      "v1_7b3d80b447fc45c4",
+      "v1_14f3d0b2a36740d3",
+      "v1_c92774fb194a836b",
+      "v1_a1d6a563bc44348a",
+      "v1_6269576cf035d012",
+      "v1_3439a1c69e6ee214",
+      "v1_d5df4cec9bed967c",
+      "v1_e259157f666086db",
+      "v1_95e28ecec43366c7",
+      "v1_873a35b5e142fa39",
+      "v1_ac84e6c020675f69",
+      "v1_87707403cb8640ab",
+      "v1_26bf1e3cadd0d0ea",
+      "v1_d793da6b46e4ec5d",
+      "v1_bbbd72758bc9c737",
+      "v1_cb6c390431d79b6d",
+      "v1_4d5a585fea9f2f0d",
+      "v1_76c9c0cdaedb8933",
+      "v1_fd97bbf180315cff",
+      "v1_8a3da7cae333413f",
+      "v1_ba74cd04367816e6",
+      "v1_f227b4e84a603e5a",
       "v1_9db0847fc1bb1f71",
       "v1_52fe20c4f3bab995",
       "v1_dfe6e2d2a6837c7e",
@@ -361,14 +384,14 @@
     "queue": 164,
     "byRisk": {
       "high": 141,
-      "low": 218,
-      "medium": 618
+      "low": 219,
+      "medium": 648
     },
     "byStatus": {
       "approved": 5,
       "correction-required": 1,
       "legacy-published": 457,
-      "published": 514
+      "published": 545
     },
     "reviewerRegistered": true
   },
@@ -391,12 +414,13 @@
   "feeds": {
     "total": 39,
     "byStatus": {
-      "degraded": 5,
-      "failing": 17,
-      "healthy": 14,
-      "quiet": 3
+      "degraded": 14,
+      "failing": 7,
+      "healthy": 13,
+      "quiet": 4,
+      "stale": 1
     },
-    "failing": 17
+    "failing": 7
   },
   "searchPerformance": {
     "rows": 0,
@@ -404,7 +428,7 @@
     "updatedAt": null
   },
   "gates": {
-    "automaticPublished": 146,
+    "automaticPublished": 169,
     "canIncreaseIndex": false,
     "requiresHumanAction": true
   }

@@ -1,50 +1,50 @@
 # 공식 피드 진단 보고서
 
-- 검사 시각: 2026-08-21T00:31:23.480Z
-- 매체 상태: {"healthy":13,"quiet":2,"stale":1,"degraded":8,"failing":14,"retired":0,"disabled":182}
+- 검사 시각: 2026-08-30T01:48:14.618Z
+- 매체 상태: {"healthy":13,"quiet":4,"stale":0,"degraded":14,"failing":7,"retired":0,"disabled":182}
 - 피드: 39개
 
 | 매체 | 상태 | 최신 게시 | 평균 간격(일) | canonical | ETag | Last-Modified |
 |---|---|---|---:|---:|---|---|
-| American Journal of Traditional Chinese Veterinary Medicine | quiet | 2026-08-01T21:31:00.000Z | 20.13 | 0 | W/"3fcf5ff3496bcc0042676e8377e2c73a" | - |
+| American Journal of Traditional Chinese Veterinary Medicine | quiet | 2026-08-01T21:31:00.000Z | 20.13 | 0 | W/"22aac360fdefd834baa58f08bf43312a" | - |
 | Animals | failing | - | - | - | - | - |
-| Cornell College of Veterinary Medicine News | healthy | 2026-08-20T21:01:57.000Z | 1.7 | 0 | "1787272159" | Fri, 21 Aug 2026 00:29:19 GMT |
-| Cornell Ruffian Equine Specialists | quiet | 2026-07-21T13:58:13.000Z | 119.44 | 0 | "1787272159" | Fri, 21 Aug 2026 00:29:19 GMT |
-| Dr. Andy Roark | healthy | 2026-08-20T20:33:45.000Z | 3.54 | 0 | "ad11d04701d650e77d7c9cc626d8443c" | Thu, 20 Aug 2026 20:33:46 GMT |
+| Cornell College of Veterinary Medicine News | healthy | 2026-08-27T15:10:29.000Z | 1.89 | 0 | "1788054441" | Sun, 30 Aug 2026 01:47:21 GMT |
+| Cornell Ruffian Equine Specialists | quiet | 2026-07-21T13:58:13.000Z | 119.44 | 0 | "1788054442" | Sun, 30 Aug 2026 01:47:22 GMT |
+| Dr. Andy Roark | healthy | 2026-08-26T22:29:39.000Z | 3.56 | 0 | "dea81c1ccfd497fd7a38d25c808c3436" | Fri, 28 Aug 2026 14:43:08 GMT |
 | Frontiers in Veterinary Science | healthy | - | - | 0 | - | - |
-| IVC Journal | healthy | 2026-08-20T13:00:58.000Z | 2.07 | 0 | W/"dcbd8bc55bf7ac2181ff44048b709cf3" | Thu, 20 Aug 2026 13:00:58 GMT |
-| Illinois College of Veterinary Medicine News | failing | - | - | - | - | - |
-| Journal of Research in Veterinary Medicine | healthy | 2026-07-24T08:47:02.000Z | 0 | 0 | - | - |
+| IVC Journal | healthy | 2026-08-27T13:00:19.000Z | 2.07 | 0 | W/"e8f55574e68f6684f9322520cbe48a3f" | Thu, 27 Aug 2026 13:00:19 GMT |
+| Illinois College of Veterinary Medicine News | quiet | 2026-08-20T15:03:40.000Z | 247.3 | 0 | "5e09eddb1fd89e37d0f78d5264c13538-gzip" | Sat, 29 Aug 2026 19:49:30 GMT |
+| Journal of Research in Veterinary Medicine | stale | 2026-07-24T08:47:02.000Z | 0 | 0 | - | - |
 | Journal of Research in Veterinary Medicine | degraded | - | - | 1 | - | - |
-| Journal of Veterinary Internal Medicine | healthy | 2026-08-18T00:00:00.000Z | 1.09 | 0 | "fc217d76312fdd1:0" | Tue, 18 Aug 2026 16:48:57 GMT |
-| Minnesota Veterinary & Biomedical Sciences Research | healthy | 2026-12-01T00:00:00.000Z | 44.08 | 0 | - | Mon, 17 Aug 2026 23:23:02 GMT |
-| NC State University | degraded | 2026-08-20T14:03:56.000Z | 2.61 | 0 | W/"b646d2dbccc52924e7941a1aa29269e4" | Thu, 20 Aug 2026 20:58:52 GMT |
-| ScienceDaily | healthy | 2026-08-19T11:25:45.000Z | 4.45 | 0 | - | Thu, 20 Aug 2026 11:59:24 GMT |
-| Tennessee College of Veterinary Medicine News | healthy | 2026-08-14T16:36:26.000Z | 16.66 | 0 | W/"fa0e752c14366e985b93d1e6d4611543" | Thu, 20 Aug 2026 14:56:09 GMT |
-| Texas A&M VMBS News | degraded | 2026-08-20T15:07:47.000Z | 2.56 | 0 | W/"71dad5b866c11f512b0db8bb8d026c4d" | Thu, 20 Aug 2026 15:08:09 GMT |
-| Today's Veterinary Business | degraded | 2026-08-17T17:05:43.000Z | 4.45 | 0 | "2015e0fd3cc17b525c7ce0dc4bffad8d" | Thu, 20 Aug 2026 18:11:55 GMT |
-| Today's Veterinary Nurse | stale | 2026-06-25T19:03:16.000Z | 4.56 | 0 | "64a0bdd294f2813f828337a369908fdb" | Fri, 14 Aug 2026 18:47:37 GMT |
-| Today's Veterinary Practice | degraded | 2026-08-14T19:19:20.000Z | 0 | 0 | "050709029ed23e0ee753bc690ce520da" | Wed, 19 Aug 2026 15:19:26 GMT |
-| University of Florida Veterinary News | degraded | 2026-08-20T17:12:55.000Z | 10.13 | 0 | "c141bdea759ea781222ebb543294b24d" | - |
-| University of Missouri Veterinary News | healthy | 2026-08-12T15:42:35.000Z | 5.57 | 0 | "fa29a9f0539f0250d73eaff7f5636c15" | Thu, 20 Aug 2026 18:22:34 GMT |
-| Vet Candy | degraded | 2026-08-25T18:11:26.000Z | 0.37 | 0 | W/"bd22dcac32bdd4b91c367ab68eab3cd6" | - |
-| Vet Practice Magazine | degraded | 2026-08-19T10:12:40.000Z | 0.98 | 0 | "2698e02abb27c4ce86d5462f5c11cdce" | Wed, 19 Aug 2026 10:12:44 GMT |
+| Journal of Veterinary Internal Medicine | healthy | 2026-08-27T00:00:00.000Z | 0.88 | 0 | "6e34dfa4536dd1:0" | Thu, 27 Aug 2026 16:56:45 GMT |
+| Minnesota Veterinary & Biomedical Sciences Research | healthy | 2026-12-01T00:00:00.000Z | 44.08 | 0 | - | Fri, 28 Aug 2026 16:07:46 GMT |
+| NC State University | degraded | 2026-08-25T14:26:00.000Z | 2.72 | 0 | W/"c2b689c70edb7b9c8c6d8a08f70b3ba4" | Fri, 28 Aug 2026 13:13:43 GMT |
+| ScienceDaily | healthy | 2026-08-29T12:47:55.000Z | 4.49 | 0 | - | Sat, 29 Aug 2026 13:53:38 GMT |
+| Tennessee College of Veterinary Medicine News | quiet | 2026-08-14T16:36:26.000Z | 16.66 | 0 | W/"21e4bdcc5dc43d62924222390703d234" | Fri, 28 Aug 2026 19:25:26 GMT |
+| Texas A&M VMBS News | degraded | 2026-08-27T19:02:07.000Z | 2.55 | 0 | W/"c61eb36618360ea74a4e5ce67267110c" | Fri, 28 Aug 2026 17:03:29 GMT |
+| Today's Veterinary Business | failing | - | - | - | - | - |
+| Today's Veterinary Nurse | failing | - | - | - | - | - |
+| Today's Veterinary Practice | failing | - | - | - | - | - |
+| University of Florida Veterinary News | degraded | 2026-08-24T17:56:27.000Z | 9.9 | 0 | "40e851e731f915d8ef3884a024ed89a6" | - |
+| University of Missouri Veterinary News | healthy | 2026-08-24T18:34:47.000Z | 6.12 | 0 | "3391bbc8cb2b94d81309f6b732c33727" | Fri, 28 Aug 2026 17:55:17 GMT |
+| Vet Candy | healthy | 2026-09-01T18:11:26.000Z | 0.37 | 0 | W/"742eeaeadc764456187c734ff3752e5e" | - |
+| Vet Practice Magazine | failing | - | - | - | - | - |
 | VetGirl | failing | - | - | - | - | - |
-| Veterinary Clinical Pathology | failing | - | - | - | - | - |
-| Veterinary Dermatology | failing | - | - | - | - | - |
-| Veterinary Evidence | failing | - | - | - | - | - |
-| Veterinary Practice News | healthy | 2026-08-20T13:01:55.000Z | 1 | 0 | "396cec4cd2d3cbe9d24626b5251aaf62-gzip" | Thu, 20 Aug 2026 18:31:13 GMT |
-| Veterinary Record | failing | - | - | - | - | - |
-| Veterinary Record Case Reports | failing | - | - | - | - | - |
+| Veterinary Clinical Pathology | degraded | 2026-08-28T05:04:50.000Z | 5.08 | 1 | - | Sat, 29 Aug 2026 08:22:11 GMT |
+| Veterinary Dermatology | degraded | 2026-08-29T01:09:44.000Z | 3.09 | 1 | - | Sat, 29 Aug 2026 07:24:36 GMT |
+| Veterinary Evidence | degraded | 2026-08-24T00:00:00.000Z | 18.95 | 0 | - | - |
+| Veterinary Practice News | healthy | 2026-08-28T19:34:46.000Z | 0.86 | 0 | "51e28b2d58e11fcd563452effc2d6d3f-gzip" | Fri, 28 Aug 2026 19:34:46 GMT |
+| Veterinary Record | degraded | 2026-08-18T06:08:00.000Z | 2.18 | 1 | - | Sat, 29 Aug 2026 08:25:58 GMT |
+| Veterinary Record Case Reports | degraded | 2026-08-27T17:39:15.000Z | 0.05 | 1 | - | Sat, 29 Aug 2026 08:27:45 GMT |
 | Veterinary Sciences | failing | - | - | - | - | - |
-| Veterinary and Comparative Oncology | failing | - | - | - | - | - |
-| Veterinary medicine and science | failing | - | - | - | - | - |
-| Veterinary ophthalmology | failing | - | - | - | - | - |
-| Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association | failing | - | - | - | - | - |
-| Veterinární medicína | healthy | 2026-07-30T00:00:00.000Z | 0 | 0.8 | - | - |
-| Virginia Tech Veterinary College News | healthy | 2026-08-20T08:35:00.000Z | 2.07 | 0 | - | - |
-| Washington State Veterinary News | healthy | 2026-08-17T18:44:28.000Z | 1.24 | 0 | "9654ac4a176c2063f663f141f784dd97-gzip" | Thu, 20 Aug 2026 22:26:30 GMT |
-| npj Veterinary Sciences | failing | - | - | - | - | - |
+| Veterinary and Comparative Oncology | degraded | 2026-08-28T03:23:38.000Z | 1.53 | 1 | - | Sat, 29 Aug 2026 07:43:28 GMT |
+| Veterinary medicine and science | degraded | 2026-08-29T02:44:50.000Z | 0.42 | 1 | - | Sat, 29 Aug 2026 08:27:52 GMT |
+| Veterinary ophthalmology | degraded | 2026-08-28T03:25:51.000Z | 1.52 | 1 | - | Sat, 29 Aug 2026 07:30:15 GMT |
+| Veterinary radiology & ultrasound : the official journal of the American College of Veterinary Radiology and the International Veterinary Radiology Association | degraded | 2026-08-26T14:17:10.000Z | 2.57 | 1 | - | Sat, 29 Aug 2026 08:07:29 GMT |
+| Veterinární medicína | healthy | 2026-08-23T00:00:00.000Z | 0 | 1 | - | - |
+| Virginia Tech Veterinary College News | healthy | 2026-08-25T14:22:00.000Z | 2.08 | 0 | - | - |
+| Washington State Veterinary News | healthy | 2026-08-28T14:37:37.000Z | 1.87 | 0 | "4274ef9f5754afc7b193592f98853108-gzip" | Fri, 28 Aug 2026 14:37:39 GMT |
+| npj Veterinary Sciences | degraded | 2026-08-07T00:00:00.000Z | 9.29 | 1 | "aa1ff09fc995eac1ef022a86298dfc7a" | - |
 
 ## 대체 공식 피드 후보
 
