@@ -20,7 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: daily-source-first-newsroom
-      cancel-in-progress: false
+      # 수동 복구는 예약 실행보다 최신 main을 기준으로 다시 시작해야 한다.
+      # 오래된 예약 실행이 먼저 끝나기를 기다리면, 그동안 생성한 data/site와
+      # 최신 발행 커밋을 rebase할 때 add/add 충돌로 배포가 중단될 수 있다.
+      cancel-in-progress: ${{ github.event_name == 'workflow_dispatch' }}
     # 후보별 호출 상한과 실패 체크포인트를 두고, 전체 잡도 무한정 늘어지지
     # 않도록 제한한다. 실패 시 알림 이슈가 열려 운영자가 바로 확인한다.
     # 기본 수집 95분 + 30건 미달 시 보강 수집 40분 + 빌드·배포 시간을
@@ -30,6 +33,12 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 2
+      - name: Sync latest main before processing
+        # 예약 이벤트가 큐에서 대기한 동안 main이 앞서갔을 수 있다. 새 후보를
+        # 만들기 전에 최신 발행 데이터·워크플로·스크립트를 기준으로 맞춘다.
+        run: |
+          git fetch --no-tags origin main
+          git reset --hard origin/main
       - uses: actions/setup-node@v7
         with:
           node-version: 24
