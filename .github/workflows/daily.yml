@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
+    inputs:
+      release_target:
+        description: "수동 누락 회수 시 해당 날짜 지면에 누적할 최대 발행 건수"
+        required: false
+        default: "40"
+        type: string
 
 permissions:
   contents: write
@@ -137,17 +143,25 @@ jobs:
       # index-news로, low-risk 심층 기사는 index-low-risk로, 나머지는 public-brief로 등급을 나눈다. 하루 최대 40건을
       # 목표로 하되, 품질 게이트를 통과한 후보가 30건보다 적어도 가용분은
       # 부분 발행해 조용한 결번을 막는다. 30건은 운영 경보선으로만 사용한다.
+      # 수동 복구 실행은 release_target 입력으로 이 상한을 일시적으로 높일 수 있다.
       - name: Release ready public briefs
         id: release
+        env:
+          RELEASE_TARGET: ${{ inputs.release_target || '40' }}
         run: |
-          npm run brief:release-ready -- --apply --target=40 --minimum=30
+          TARGET="${RELEASE_TARGET:-40}"
+          if ! [[ "$TARGET" =~ ^[1-9][0-9]{0,2}$ ]]; then
+            echo "::error::release_target는 1~999 사이의 정수여야 합니다: $TARGET"
+            exit 1
+          fi
+          npm run brief:release-ready -- --apply --target="$TARGET" --minimum=30
           DATE=$(TZ=Asia/Seoul date +%F)
           COUNT=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.released||0))')
           TOTAL=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
-          echo "오늘($DATE) 발행 $COUNT건 · 누적 $TOTAL/40건 (운영 경보선 30건)"
+          echo "오늘($DATE) 발행 $COUNT건 · 누적 $TOTAL/$TARGET건 (운영 경보선 30건)"
 
       # 첫 수확분의 품질 게이트 통과 후보가 30건에 못 미치는 날만
       # 추가로 120건을 수집한다. 정상적으로 30건 이상 확보된 날에는
@@ -156,23 +170,8 @@ jobs:
         id: topup
         if: success()
         timeout-minutes: 40
-        run: |
-          CURRENT=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
-          if [ "$CURRENT" -ge 30 ]; then
-            echo "count=0" >> "$GITHUB_OUTPUT"
-            echo "total=$CURRENT" >> "$GITHUB_OUTPUT"
-            echo "보강 수집 불필요: 현재 $CURRENT건"
-            exit 0
-          fi
-          echo "일일 최소 30건 미달($CURRENT건) — 보강 수집을 시작합니다."
-          npm run ingest:all -- --generate --volume --pubmed --deep-limit=8 --max=160 --per-source=10
-          npm run brief:release-ready -- --apply --target=40 --minimum=30
-          ADDED=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.released||0))')
-          TOTAL=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
-          echo "count=$ADDED" >> "$GITHUB_OUTPUT"
-          echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
-          echo "보강 발행 $ADDED건 · 누적 $TOTAL/40건"
         env:
+          RELEASE_TARGET: ${{ inputs.release_target || '40' }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'MiniMax-M2' }}
@@ -183,6 +182,27 @@ jobs:
           LLM_GENERATION_ATTEMPTS: "2"
           LLM_RADAR_ATTEMPTS: "2"
           LLM_JSON_ATTEMPTS: "2"
+        run: |
+          TARGET="${RELEASE_TARGET:-40}"
+          if ! [[ "$TARGET" =~ ^[1-9][0-9]{0,2}$ ]]; then
+            echo "::error::release_target는 1~999 사이의 정수여야 합니다: $TARGET"
+            exit 1
+          fi
+          CURRENT=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
+          if [ "$CURRENT" -ge "$TARGET" ]; then
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            echo "total=$CURRENT" >> "$GITHUB_OUTPUT"
+            echo "보강 수집 불필요: 현재 $CURRENT/$TARGET건"
+            exit 0
+          fi
+          echo "발행 목표 $TARGET건 미달($CURRENT건) — 보강 수집을 시작합니다."
+          npm run ingest:all -- --generate --volume --pubmed --deep-limit=8 --max=160 --per-source=10
+          npm run brief:release-ready -- --apply --target="$TARGET" --minimum=30
+          ADDED=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.released||0))')
+          TOTAL=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
+          echo "count=$ADDED" >> "$GITHUB_OUTPUT"
+          echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
+          echo "보강 발행 $ADDED건 · 누적 $TOTAL/$TARGET건"
 
       - name: Build and validate publication set
         run: |
@@ -260,15 +280,18 @@ jobs:
 
       - name: Report daily volume
         if: success()
+        env:
+          RELEASE_TARGET: ${{ inputs.release_target || '40' }}
         run: |
+          TARGET="${RELEASE_TARGET:-40}"
           TOTAL=$(node -e 'const fs=require("node:fs");const p="reports/brief-release.json";const d=fs.existsSync(p)?JSON.parse(fs.readFileSync(p,"utf8")):{};console.log(Number(d.existing||0)+Number(d.released||0))')
           if [ "$TOTAL" -lt 30 ]; then
             echo "::warning::일일 운영 경보선 30건 미달($TOTAL건) — 가용 후보는 발행했고 다음 실행에서 보강합니다."
           fi
-          if [ "$TOTAL" -lt 40 ]; then
-            echo "일일 최소 달성: $TOTAL/40건 — 목표까지 부족분은 다음 실행에서 보충합니다."
+          if [ "$TOTAL" -lt "$TARGET" ]; then
+            echo "발행 목표 미달: $TOTAL/$TARGET건 — 남은 후보는 다음 실행에서 보충합니다."
           else
-            echo "일일 목표 달성: $TOTAL/40건"
+            echo "발행 목표 달성: $TOTAL/$TARGET건"
           fi
 
       - name: Deploy to Cloudflare Pages
