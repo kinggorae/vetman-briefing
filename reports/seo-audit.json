@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-08-30T04:05:54.776Z",
+  "generatedAt": "2026-08-31T02:42:48.045Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 1134,
-    "articles": 1039,
-    "index": 375,
-    "noindex": 664,
-    "sitemap": 421,
-    "newsSitemap": 39,
+    "htmlPages": 1150,
+    "articles": 1053,
+    "index": 384,
+    "noindex": 669,
+    "sitemap": 430,
+    "newsSitemap": 48,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 375,
+    "indexImages": 384,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 374586,
+    "homepageBytes": 216153,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 342002
+        "bytes": 350309
       },
       {
         "file": "search/2026-05.json",
@@ -37,10 +37,10 @@
       },
       {
         "file": "search/2026-08.json",
-        "bytes": 187498
+        "bytes": 195805
       }
     ],
-    "articleBytes": 20818636,
+    "articleBytes": 21107281,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -50,11 +50,11 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 375,
-    "currentNoindex": 664,
-    "delta": 57,
+    "currentIndex": 384,
+    "currentNoindex": 669,
+    "delta": 66,
     "reasonCounts": {
-      "build-policy": 219,
+      "build-policy": 224,
       "brief-tier": 368,
       "brief-too-short": 368,
       "source-relay": 39,
@@ -72,6 +72,123 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-08-31",
+          "id": "v1_54d4558137425eb1",
+          "title": "반려견 산책 챌린지로 관절보조제 할인받는 프로그램 출시",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_71373397be1facae",
+          "title": "차에 치인 독일양 개, 무료 수의 프로그램으로 새 집 입양",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_6e7d29b96807b30e",
+          "title": "전염병 조사자, 워싱턴주립대 수의학 프로그램 복귀",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_dc05a8c6982d2db5",
+          "title": "모두를 감당하는 환상:수의사 번아웃과 균형의 현실",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_c75873b157b15625",
+          "title": "버지니아텍 수의대 Lauren Tucker, 공중보건으로 지역사회 건강 이끈다",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_017878f7e0cd84f0",
+          "title": "버지니아텍, 개 뼈암 치료 혁신적 임상 시험 진행",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_64cc24724f682b30",
+          "title": "낙농 농가와 수의사의 진드기 매개 질병 위험 인식 및 적응적 관리",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_24440bc582fe031d",
+          "title": "개,fMRI로 인간 부정 표정 구분 능력 첫 증거",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_5e1bd8f68184cf0e",
+          "title": "무료 vs 유료 NAVLE 준비, 학생들은 무엇이 필요할까",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
         {
           "date": "2026-08-30",
           "id": "v1_4f0a3bcb395f2d4b",
@@ -214,126 +331,74 @@
           "reasons": [
             "brief-tier"
           ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_ac84e6c020675f69",
-          "title": "퍼듀 개 암 연구센터, 인간 종양학 혁신 이끈다",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_87707403cb8640ab",
-          "title": "스리랑카 Jaffna 소 유방염 유병률 및 항생제 내성 연구",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_26bf1e3cadd0d0ea",
-          "title": "PetSmart Charities, 지역사회 수의학 리더 양성 펠로우십 출시",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_d793da6b46e4ec5d",
-          "title": "실험동물 복지·윤리 기술을 비교의학 실험에 통합한 교육 개입 효과",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_bbbd72758bc9c737",
-          "title": "네덜란드 9개 견종의 특발성 및 원인불명 간질 유병률 연구",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_cb6c390431d79b6d",
-          "title": "멸종위기 안지 도룡뇽 유생에서 기포병 첫 확인",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_4d5a585fea9f2f0d",
-          "title": "에콰도르 소 농장 진드기, 주요 살비제 전멸수준 저항성",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_76c9c0cdaedb8933",
-          "title": "Echinacea 다당체, 마황 닭 성장·장건강·면역력 개선 효과",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_fd97bbf180315cff",
-          "title": "토양 특성에 따른 프리온 이동 변화 연구",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
         }
       ],
       "noindex": [
+        {
+          "date": "2026-08-31",
+          "id": "v1_689fdde3248840bc",
+          "title": "조기 심실 수축 후 강화 현상의 칼슘 기전 규명",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_c2a06e56dbaf0232",
+          "title": "방글라데시 poultry 수의사 역할에 관한 질적 연구",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_27de1b5405e54c98",
+          "title": "고양이 만성콩팥병의 새로운 요분석법 개발",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_891589f79e11a080",
+          "title": "개 스트레스 행동, 맥락에 따라 의미 달라져",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-08-31",
+          "id": "v1_38b4908edc167498",
+          "title": "성체 알파카의 심각한 빈혈 증례",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 4,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
         {
           "date": "2026-08-30",
           "id": "v1_e5f8a3b913641e68",
@@ -520,71 +585,6 @@
           "date": "2026-08-30",
           "id": "v1_fcb5d92470378738",
           "title": "노령 암컷 개에서 난소 절제술, 자궁 질환 예방 효과 확인",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_a25b387c03211dc8",
-          "title": "불의 땅 유기견 고환의 금속 축적과 정자 형성 이상 연관성",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_997d5dd7103623d4",
-          "title": "개, 가정 환경에서 혈압·스트레스 낮아…병원 측정치 정상 압 46mmHg 높아",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_ac084b97d07776b2",
-          "title": "녹색 마그네슘 나노입자, 육계 사료첨가제로서의 영양학적 적용 가능성",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_966eda7babaf37e7",
-          "title": "노령 개 인지기능장애의 수면 장애 패턴 및 실용 선별 도구",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-08-30",
-          "id": "v1_91c924df9b821c3f",
-          "title": "말 생식기 궤양에서 Parapoxvirus 첫 확인 – EHV3와 유사한 병변",
           "indexable": false,
           "tier": "evidence",
           "clinicalRisk": "medium",
@@ -2354,6 +2354,13 @@
         "card": true
       },
       {
+        "file": "article/v1_017878f7e0cd84f0.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_01a846f87d522f6c.html",
         "hero": true,
         "og": true,
@@ -2579,6 +2586,13 @@
       },
       {
         "file": "article/v1_2290fb9175a039db.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_24440bc582fe031d.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -2893,6 +2907,13 @@
         "card": true
       },
       {
+        "file": "article/v1_54d4558137425eb1.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_55e735e27959121e.html",
         "hero": true,
         "og": true,
@@ -2970,6 +2991,13 @@
         "card": true
       },
       {
+        "file": "article/v1_5e1bd8f68184cf0e.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_5f298cd7ffc845fb.html",
         "hero": true,
         "og": true,
@@ -3040,6 +3068,13 @@
         "card": true
       },
       {
+        "file": "article/v1_64cc24724f682b30.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_67badcee51a08493.html",
         "hero": true,
         "og": true,
@@ -3096,6 +3131,13 @@
         "card": true
       },
       {
+        "file": "article/v1_6e7d29b96807b30e.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_6ef921f9a16b7c5c.html",
         "hero": true,
         "og": true,
@@ -3125,6 +3167,13 @@
       },
       {
         "file": "article/v1_710e69cc91d80d88.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_71373397be1facae.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3621,6 +3670,13 @@
         "card": true
       },
       {
+        "file": "article/v1_c75873b157b15625.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_c7be4f96e335f11b.html",
         "hero": true,
         "og": true,
@@ -3776,6 +3832,13 @@
       },
       {
         "file": "article/v1_db20c4523f2b88bc.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_dc05a8c6982d2db5.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4081,24 +4144,24 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 224,
-      "medium": 674,
+      "low": 228,
+      "medium": 684,
       "high": 141
     },
-    "explicitReviewFields": 582
+    "explicitReviewFields": 596
   },
   "workflow": {
-    "explicitItems": 582,
+    "explicitItems": 596,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 576
+      "published": 590
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 218,
+    "articlesWithExplicitMetadata": 224,
     "numericWarnings": 132,
     "samples": [
       {

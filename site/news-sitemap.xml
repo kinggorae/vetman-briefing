@@ -1,6 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_5e1bd8f68184cf0e</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-31T02:41:31.083Z</news:publication_date>
+      <news:title>무료 vs 유료 NAVLE 준비, 학생들은 무엇이 필요할까</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_24440bc582fe031d</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-31T02:41:31.078Z</news:publication_date>
+      <news:title>개,fMRI로 인간 부정 표정 구분 능력 첫 증거</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_64cc24724f682b30</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-31T02:21:31.552Z</news:publication_date>
+      <news:title>낙농 농가와 수의사의 진드기 매개 질병 위험 인식 및 적응적 관리</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_017878f7e0cd84f0</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-31T02:21:31.511Z</news:publication_date>
+      <news:title>버지니아텍, 개 뼈암 치료 혁신적 임상 시험 진행</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_c75873b157b15625</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-31T02:21:31.507Z</news:publication_date>
+      <news:title>버지니아텍 수의대 Lauren Tucker, 공중보건으로 지역사회 건강 이끈다</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_dc05a8c6982d2db5</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-31T02:21:31.502Z</news:publication_date>
+      <news:title>모두를 감당하는 환상:수의사 번아웃과 균형의 현실</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_6e7d29b96807b30e</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-31T02:21:31.498Z</news:publication_date>
+      <news:title>전염병 조사자, 워싱턴주립대 수의학 프로그램 복귀</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_71373397be1facae</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-31T02:21:31.494Z</news:publication_date>
+      <news:title>차에 치인 독일양 개, 무료 수의 프로그램으로 새 집 입양</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_54d4558137425eb1</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-31T02:21:31.490Z</news:publication_date>
+      <news:title>반려견 산책 챌린지로 관절보조제 할인받는 프로그램 출시</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_c1636fdaa5743293</loc>
     <news:news>
       <news:publication>
