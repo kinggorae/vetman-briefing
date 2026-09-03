@@ -1,6 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_94f07c258f5f241d</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:27:15.186Z</news:publication_date>
+      <news:title>수의대 인증 독점 소송 기각, 공급 갈등 지속될 듯</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_793dc36f6e7ba152</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:27:15.181Z</news:publication_date>
+      <news:title>뉴욕주지사, Cornell Ruffian 경주마 안전 연구 착수 발표</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_e248e7d98cf9733c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:27:15.175Z</news:publication_date>
+      <news:title>버지니아 수의대생 에제키엘 제네트, 미술과 수의학의 만남</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_2f6867c07b2c3a99</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:27:15.170Z</news:publication_date>
+      <news:title>버지니아 수의대, 1500만 달러 유산 기부로 개·고양이 임상시험 확대</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_4ef9eb393a5440f9</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:27:15.163Z</news:publication_date>
+      <news:title>단봉낙타 새끼 폐·장염 동시 발생, 사우디아라비아 타격</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_52f0de9aaf11d564</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:27:15.158Z</news:publication_date>
+      <news:title>수유 물소 사료에 올리브 부산물 첨가: 우유·요거트 조성 변화</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_aa0e1728259336a2</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:27:15.152Z</news:publication_date>
+      <news:title>반려동물 피부치료에 활용 가능한 대마 성분 CBG</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_76dcd49213669e54</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:06:59.470Z</news:publication_date>
+      <news:title>야생동물 기생충학 연구 동향: 숙주-병원체 상호작용의 진화</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_f3194e87e95f0a34</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:06:59.465Z</news:publication_date>
+      <news:title>수의사 연결, 죽은 새끼 거세말과 말 새끼 재결합</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_261425425fef3720</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:06:59.461Z</news:publication_date>
+      <news:title>말 수의사, 지속 가능한 커리어 구축에 열정</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_52b76275566e196f</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:06:59.454Z</news:publication_date>
+      <news:title>북아일랜드 리무진 송아지에서 발견된 선천성 유전성 뇌실증</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_8051c79dbaf8d0a9</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:06:59.448Z</news:publication_date>
+      <news:title>AI 기반 고양이 자세 자동 분석 시스템 개발</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_e9ba57c43f5ba79c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:06:59.442Z</news:publication_date>
+      <news:title>Ph.D. 딴izard, 수의대 1학년으로 입학... &quot;개 Osteosarcoma.histotripsy 치료&quot; 연구자 주목</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_996665fcc2e5ea9a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:06:59.435Z</news:publication_date>
+      <news:title>개·고양이 당뇨병성 신장병, 미토콘드리아막 연결 구조 역할 검토</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_7f389996ecdb6ae7</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-03T02:06:59.430Z</news:publication_date>
+      <news:title>사료 비트 부위별 사일리지 영양가와 소화율,제 효과</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_0836331d2fdafded</loc>
     <news:news>
       <news:publication>
@@ -273,28 +438,6 @@
       </news:publication>
       <news:publication_date>2026-09-02T02:07:10.403Z</news:publication_date>
       <news:title>말의 PPID와 인슐린조절장애 진단 핵심 가이드</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_5e1bd8f68184cf0e</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-08-31T02:41:31.083Z</news:publication_date>
-      <news:title>무료 vs 유료 NAVLE 준비, 학생들은 무엇이 필요할까</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_24440bc582fe031d</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-08-31T02:41:31.078Z</news:publication_date>
-      <news:title>개,fMRI로 인간 부정 표정 구분 능력 첫 증거</news:title>
     </news:news>
   </url>
 </urlset>
