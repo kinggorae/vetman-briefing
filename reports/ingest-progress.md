@@ -1,12 +1,12 @@
-# Ingest progress (2026-09-03)
+# Ingest progress (2026-09-04)
 
 - status: complete
-- started: 2026-09-03T02:06:59.838Z
-- updated: 2026-09-03T02:27:14.178Z
-- selected: 140
-- completed: 140
+- started: 2026-09-04T02:07:19.543Z
+- updated: 2026-09-04T02:29:00.524Z
+- selected: 145
+- completed: 145
 - remaining: 0
-- generated: 16
-- generation failed: 124
-- checkpoint: data/drafts/source-first-2026-09-03.json
+- generated: 15
+- generation failed: 130
+- checkpoint: data/drafts/source-first-2026-09-04.json
 
