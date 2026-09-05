@@ -1,44 +1,37 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-04T02:31:07.339Z",
+  "generatedAt": "2026-09-05T02:23:30.252Z",
   "baseRef": "HEAD^",
   "allowRemovals": [],
   "status": "passed",
   "previous": {
-    "count": 424,
-    "declaredCount": 424
-  },
-  "current": {
     "count": 445,
     "declaredCount": 445
   },
+  "current": {
+    "count": 459,
+    "declaredCount": 459
+  },
   "added": [
-    "v1_16a38df43cc79522",
-    "v1_3a210cf691638f08",
-    "v1_3f07a8bb50adf223",
-    "v1_4043706e005f5f5c",
-    "v1_5909c9ae04478a27",
-    "v1_7383eb4ec5637cd4",
-    "v1_82d8e5f0e34900dd",
-    "v1_9b0d5a2ee6151b69",
-    "v1_b780fe7e8dbb9973",
-    "v1_c29a7797f20ec853",
-    "v1_c715ff646d6f2b02",
-    "v1_cbad80d4ab4b59a0",
-    "v1_ccba85b2b6d75c9e",
-    "v1_d81db91911ba2893",
-    "v1_d85af976eefa1ab0",
-    "v1_dcc57016903d1267",
-    "v1_efa9a231bdafecbe",
-    "v1_f10a9041623c538f",
-    "v1_f237c8c1402710b6",
-    "v1_f471a8211c82f3d8",
-    "v1_fc24e5c8d774d09f"
+    "v1_2ee72e55f4a0825d",
+    "v1_3ec49aa171b350f1",
+    "v1_3f3e4c0390efd62e",
+    "v1_4c6fc0355b11d6df",
+    "v1_569dbdd104ac97bd",
+    "v1_609df8d2c8f73e46",
+    "v1_77abd6fb3e0b2a2b",
+    "v1_7c7f9b517de0d8be",
+    "v1_93f814466159731b",
+    "v1_9be1cd9d44491081",
+    "v1_9ff7c036eb91dafe",
+    "v1_c20443076aa228af",
+    "v1_e9489c0a0b8995cb",
+    "v1_faca83c49ca18297"
   ],
   "removed": [],
   "allowedRemoved": [],
   "unexpectedRemoved": [],
   "critical": [],
-  "previousCount": 424,
-  "currentCount": 445
+  "previousCount": 445,
+  "currentCount": 459
 }
