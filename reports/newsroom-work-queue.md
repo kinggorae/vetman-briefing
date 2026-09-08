@@ -1,8 +1,8 @@
 # 뉴스룸 통합 작업 큐
 
-- 생성 시각: 2026-09-07T02:12:10.479Z
-- 미처리 작업: 1250
-- 유형: correction 1 · draft-review 50 · editorial-review 916 · feed-health 9 · image-rights 87 · source-review 187
+- 생성 시각: 2026-09-08T02:17:57.476Z
+- 미처리 작업: 1267
+- 유형: correction 1 · draft-review 50 · editorial-review 933 · feed-health 9 · image-rights 87 · source-review 187
 
 우선순위가 높은 항목부터 처리합니다. 이 큐는 공개 상태를 자동 변경하지 않습니다.
 
