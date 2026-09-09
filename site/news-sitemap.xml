@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_f119a72cfcb93420</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:11:43.542Z</news:publication_date>
+      <news:title>비용 문제로 치료 계획 수정하는 미국 수의사 86%</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_7214ac4ef74a42eb</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:11:43.537Z</news:publication_date>
+      <news:title>임대주택서 애완동물 보호 강화 촉구하는 HABRI 보고서</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_c80986cd036e88bf</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:11:43.532Z</news:publication_date>
+      <news:title>동물수비학 데이터 재사용 위한 최초 국제 메타데이터 가이드라인 발표</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_aa7a48e336d88292</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:11:43.527Z</news:publication_date>
+      <news:title>미 조사, 수의사 86% 주 1회 이상 비용 문제로 치료 계획 변경</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_1fbfefe71f007ca1</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:11:43.521Z</news:publication_date>
+      <news:title>AAHA, 개 당뇨병 관리 지침 발표... 지속적 포도당 모니터 도입</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9d174c30e4490d81</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:00:30.049Z</news:publication_date>
+      <news:title>버지니아 수의대생, Health Wagon 통해 566마리 동물에 진료 제공</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_2cea4f4ad17ae588</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:00:30.044Z</news:publication_date>
+      <news:title>이탈리아 Lazio 지역 15년간 개 종양 역학 분석</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_27725fd7daf95d8b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:00:30.037Z</news:publication_date>
+      <news:title>미국 동물병원 처방약 수익 감소세 심화... 온라인 약국 확대 가속</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_6b8b9726a86f8562</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:00:30.033Z</news:publication_date>
+      <news:title>Tennessee 수의대, 경기일 동물병원 출입구 변경 안내</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_19a6e53fdf21429e</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-09T02:00:30.029Z</news:publication_date>
+      <news:title>반려동물 지향 화법, 수의사 신뢰도에 영향</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_5798ec88a828953c</loc>
     <news:news>
       <news:publication>
@@ -108,94 +218,6 @@
       </news:publication>
       <news:publication_date>2026-09-08T01:58:37.350Z</news:publication_date>
       <news:title>카자흐스탄 북부 돼지 호흡기 비오마 메타지노믹 분석</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_5759d3de92b73760</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T02:10:20.405Z</news:publication_date>
-      <news:title>승마 사고 딛고 말이 수의사 꿈 향해…대학원생 장학금 수상</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_3e6b426711bd462a</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T02:10:20.400Z</news:publication_date>
-      <news:title>참여적 역학으로 본 에티오피아 East Gojjam 가축 질병 현황</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_ec47a98202b53d9a</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T01:50:28.747Z</news:publication_date>
-      <news:title>가축 영양학의 차세대 혁신: 포스트바이오틱스에서 정밀 에피제네틱스까지</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_98b199898dbc4da3</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T01:50:28.743Z</news:publication_date>
-      <news:title>2000명 학생 교육·진로 도운수의학 교수 은퇴</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_c8574dbfa5629c0c</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T01:50:28.738Z</news:publication_date>
-      <news:title>개 건강군·TPLO 수술군·패혈증군 REG3E와 CRP 동태 비교</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_f35747db4199a3d9</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T01:50:28.733Z</news:publication_date>
-      <news:title>수의 AI 필기 도구 도입 전 확인할 5가지 핵심 질문</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_39af19c0a3e9cad7</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T01:50:28.728Z</news:publication_date>
-      <news:title>미국 수의 비용 상승으로 애완동물 경제 재편 가속화</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_97de1a33dd0d426e</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-07T01:50:28.723Z</news:publication_date>
-      <news:title>실내 고양이 사육, 예상보다 수월했다</news:title>
     </news:news>
   </url>
 </urlset>

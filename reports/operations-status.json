@@ -1,12 +1,22 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-08T02:17:57.054Z",
+  "generatedAt": "2026-09-09T02:13:37.061Z",
   "publication": {
-    "totalArticles": 1203,
-    "index": 493,
-    "noindex": 710,
-    "indexRate": 0.4098,
+    "totalArticles": 1221,
+    "index": 503,
+    "noindex": 718,
+    "indexRate": 0.412,
     "indexIds": [
+      "v1_19a6e53fdf21429e",
+      "v1_6b8b9726a86f8562",
+      "v1_27725fd7daf95d8b",
+      "v1_2cea4f4ad17ae588",
+      "v1_9d174c30e4490d81",
+      "v1_1fbfefe71f007ca1",
+      "v1_aa7a48e336d88292",
+      "v1_c80986cd036e88bf",
+      "v1_7214ac4ef74a42eb",
+      "v1_f119a72cfcb93420",
       "v1_d563031c9b73ce06",
       "v1_61a4d513a98bd134",
       "v1_ef388704ac331375",
@@ -518,14 +528,14 @@
     "queue": 164,
     "byRisk": {
       "high": 141,
-      "low": 251,
-      "medium": 811
+      "low": 255,
+      "medium": 825
     },
     "byStatus": {
       "approved": 5,
       "correction-required": 1,
       "legacy-published": 457,
-      "published": 740
+      "published": 758
     },
     "reviewerRegistered": true
   },
@@ -548,13 +558,13 @@
   "feeds": {
     "total": 39,
     "byStatus": {
-      "degraded": 4,
-      "failing": 4,
-      "healthy": 26,
+      "degraded": 5,
+      "failing": 11,
+      "healthy": 18,
       "quiet": 4,
       "stale": 1
     },
-    "failing": 4
+    "failing": 11
   },
   "searchPerformance": {
     "rows": 0,
@@ -562,7 +572,7 @@
     "updatedAt": null
   },
   "gates": {
-    "automaticPublished": 301,
+    "automaticPublished": 311,
     "canIncreaseIndex": false,
     "requiresHumanAction": true
   }
