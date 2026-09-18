@@ -1,12 +1,40 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-09T02:13:37.061Z",
+  "generatedAt": "2026-09-18T02:51:27.830Z",
   "publication": {
-    "totalArticles": 1221,
-    "index": 503,
-    "noindex": 718,
-    "indexRate": 0.412,
+    "totalArticles": 1261,
+    "index": 531,
+    "noindex": 730,
+    "indexRate": 0.4211,
     "indexIds": [
+      "v1_e68899694f34dea4",
+      "v1_7f458aa8027b8eac",
+      "v1_a17248c56f0a943c",
+      "v1_5ee3aa21765f6490",
+      "v1_b4875d139eeba2f7",
+      "v1_78da2da6d28ccda3",
+      "v1_41a8291edac1f526",
+      "v1_02738dbe74911057",
+      "v1_4af65e4aeae20181",
+      "v1_7eb9871d5067d1d0",
+      "v1_e30b9b344eded1d0",
+      "v1_a78a7f6f3588afa4",
+      "v1_75fcacb7df754554",
+      "v1_9b65097af1a708db",
+      "v1_3e1de963026370ef",
+      "v1_360df9f691a208da",
+      "v1_1d8c69278f618639",
+      "v1_3e31ba317f945dd1",
+      "v1_d7082f6c989ae603",
+      "v1_85c147ae00289695",
+      "v1_69db69fb34bec3ee",
+      "v1_438ddfdfe725523e",
+      "v1_9daea09e0783bf4c",
+      "v1_e9ce2b9ff66be918",
+      "v1_100824b1d3fa2866",
+      "v1_2722668bb74f3f9a",
+      "v1_a2523b2cbc04e2d2",
+      "v1_a950359fc3214ad4",
       "v1_19a6e53fdf21429e",
       "v1_6b8b9726a86f8562",
       "v1_27725fd7daf95d8b",
@@ -528,14 +556,14 @@
     "queue": 164,
     "byRisk": {
       "high": 141,
-      "low": 255,
-      "medium": 825
+      "low": 263,
+      "medium": 857
     },
     "byStatus": {
       "approved": 5,
       "correction-required": 1,
       "legacy-published": 457,
-      "published": 758
+      "published": 798
     },
     "reviewerRegistered": true
   },
@@ -558,13 +586,13 @@
   "feeds": {
     "total": 39,
     "byStatus": {
-      "degraded": 5,
-      "failing": 11,
-      "healthy": 18,
-      "quiet": 4,
+      "degraded": 13,
+      "failing": 3,
+      "healthy": 19,
+      "quiet": 3,
       "stale": 1
     },
-    "failing": 11
+    "failing": 3
   },
   "searchPerformance": {
     "rows": 0,
@@ -572,7 +600,7 @@
     "updatedAt": null
   },
   "gates": {
-    "automaticPublished": 311,
+    "automaticPublished": 338,
     "canIncreaseIndex": false,
     "requiresHumanAction": true
   }
