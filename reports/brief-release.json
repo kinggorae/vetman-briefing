@@ -1,33 +1,32 @@
 {
-  "date": "2026-09-18",
-  "total": 252,
-  "existing": 32,
+  "date": "2026-09-19",
+  "total": 221,
+  "existing": 21,
   "target": 40,
-  "eligible": 14,
-  "indexEligible": 11,
-  "released": 8,
+  "eligible": 7,
+  "indexEligible": 6,
+  "released": 7,
   "retryQueued": 0,
   "seenRestored": 0,
   "minimum": 30,
-  "shortfall": 0,
+  "shortfall": 12,
   "skipped": {
-    "오늘 이미 발행됨": 32,
-    "rejected": 16,
     "needs-claim-fix": 11,
-    "needs-language-fix": 178,
-    "이미 발행된 원문": 1,
-    "daily-target-cap": 6
+    "오늘 이미 발행됨": 21,
+    "rejected": 11,
+    "needs-language-fix": 170,
+    "이미 발행된 원문": 1
   },
   "ids": [
-    "v1_69db69fb34bec3ee",
-    "v1_438ddfdfe725523e",
-    "v1_9daea09e0783bf4c",
-    "v1_e9ce2b9ff66be918",
-    "v1_100824b1d3fa2866",
-    "v1_2722668bb74f3f9a",
-    "v1_a2523b2cbc04e2d2",
-    "v1_a950359fc3214ad4"
+    "v1_753efc2dfcb5a57a",
+    "v1_7899c356b96f958a",
+    "v1_4e23b29f0bccd55b",
+    "v1_1bb062a3a00fd5c5",
+    "v1_1edcadc05384b538",
+    "v1_6b5a6e8aab755dd9",
+    "v1_080baae95d620d6f"
   ],
-  "minimumReached": true,
+  "minimumReached": false,
+  "note": "일일 목표까지 12건 부족하지만 가용 후보 7건을 부분 발행했습니다.",
   "dryRun": false
 }

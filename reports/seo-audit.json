@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-09-18T02:51:30.800Z",
+  "generatedAt": "2026-09-19T02:41:05.710Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 1369,
-    "articles": 1261,
-    "index": 531,
-    "noindex": 730,
-    "sitemap": 577,
-    "newsSitemap": 28,
+    "htmlPages": 1398,
+    "articles": 1289,
+    "index": 547,
+    "noindex": 742,
+    "sitemap": 593,
+    "newsSitemap": 44,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 531,
+    "indexImages": 547,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 291251,
+    "homepageBytes": 258432,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 483996
+        "bytes": 498393
       },
       {
         "file": "search/2026-05.json",
@@ -41,10 +41,10 @@
       },
       {
         "file": "search/2026-09.json",
-        "bytes": 133751
+        "bytes": 148148
       }
     ],
-    "articleBytes": 25376092,
+    "articleBytes": 25952233,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -54,11 +54,11 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 531,
-    "currentNoindex": 730,
-    "delta": 213,
+    "currentIndex": 547,
+    "currentNoindex": 742,
+    "delta": 229,
     "reasonCounts": {
-      "build-policy": 285,
+      "build-policy": 297,
       "brief-tier": 368,
       "brief-too-short": 368,
       "source-relay": 39,
@@ -76,6 +76,214 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-09-19",
+          "id": "v1_9be3ac5fbed4d1a8",
+          "title": "뉴기니서 발견된 새 뱀, 건즈 앤 로즈 Slash 이름에 바쳐",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_cf072eee3c2ad1e7",
+          "title": "Vetology, AI 방사선 분류기 94개 업그레이드...인간 영상의학자 방식 반영",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_9d585f2b463a3355",
+          "title": "WSU 수의대생, 방치 말 66마리 돌보기 현장",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_7f48e1fe61d51535",
+          "title": "개 승모판 질환 수술 선택 가이드",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_50a7e48478d9bcc1",
+          "title": "반려동물도 사람과 동일한 항생제내성 균주 보유",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_c3ed18b0c15e1652",
+          "title": "독일 여성 수의사 직업 스트레스 및 워라밸 연구",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_f88d057c9b38354b",
+          "title": "모로코 육계 농장에서 조류 뇌염바이러스 확인",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_18bc380a8072bf58",
+          "title": "CCSER1 유전자 변이, 양 성장 형질 연관 발견",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_a3a4811ed67e27bb",
+          "title": "Ira Blader, 미생물학 아카데미 펠로우 선정",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_0f08ab89c45b5e23",
+          "title": "개 두려움이 수의사가 된 계기가 된 VMCVM 학생",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_753efc2dfcb5a57a",
+          "title": "개의 재발성 림프관 기형, 미노사이클린 경화 요법으로 535일 장기 조절",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_7899c356b96f958a",
+          "title": "앵무새 단백질 전기영동 두 방법 비교 연구",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_4e23b29f0bccd55b",
+          "title": "공간 전사체학으로 돼지 신장 미세구조와 소포자바이러스 감지",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_1bb062a3a00fd5c5",
+          "title": "산후 젖소에서 CentriVet 혈중 케톤 모니터링 시스템의 진단 및 분석 성능 평가",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_1edcadc05384b538",
+          "title": "수의학에서 뼈·관절·힘줄·인대의 병리학 기초",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_6b5a6e8aab755dd9",
+          "title": "2026년 전 세계 홍역 유행 급증",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
         {
           "date": "2026-09-18",
           "id": "v1_e68899694f34dea4",
@@ -127,215 +335,165 @@
           "reasons": [
             "brief-tier"
           ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_b4875d139eeba2f7",
-          "title": "페르시안 고양이 사상균 감염, 피부 균총과 무관",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_78da2da6d28ccda3",
-          "title": "비용 때문에 진료를 망설이는 수의사를 위한 조언",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_41a8291edac1f526",
-          "title": "IDEXX, 동물병원 AI 소프트웨어 CoVetAI 인수",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_02738dbe74911057",
-          "title": "수의사 신입, 임상 멘토링만으로는 충분하지 않다",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_4af65e4aeae20181",
-          "title": "의도적 재정 관리가 수의팀 직원 만족도를 높인다",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_7eb9871d5067d1d0",
-          "title": "반려동물 소유주, 수의사 팀과 연결되는 AI 도구 원한다",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_e30b9b344eded1d0",
-          "title": "수의학 플라이휠: 동물·수의사·수익의 삼중 균형",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_a78a7f6f3588afa4",
-          "title": "세바 동물건강, 미국 동반동물 시장 본격 공략",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_75fcacb7df754554",
-          "title": "수의학에 도입되는 생체광학 기술, 임상 적용 현황과 미래 전망",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_9b65097af1a708db",
-          "title": "워싱턴주립대수의대 포스닥, NIH 권위 펠로우십 수상",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_3e1de963026370ef",
-          "title": "개 요추천추 협착증 Meso요법·PRP·스테로이드 치료 비교 연구",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_360df9f691a208da",
-          "title": "전 세계 동물 구호한 수의사의 회고록, 출간",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_1d8c69278f618639",
-          "title": "마취 마에서 비침습·침습 혈압측정 일치도 비교 연구",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_3e31ba317f945dd1",
-          "title": "CD70 표적 CAR-NK 세포, 비바이러스적 엔지니어링 개발",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_d7082f6c989ae603",
-          "title": "버지니아 수의대，：코기 블레이즈의 매력",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_85c147ae00289695",
-          "title": "Cornell 대학교의 몰입형 재난 대응 훈련 현장",
-          "indexable": true,
-          "tier": "analysis",
-          "clinicalRisk": "low",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": []
         }
       ],
       "noindex": [
+        {
+          "date": "2026-09-19",
+          "id": "v1_de5c8bf0f754f942",
+          "title": "작은논병아리에서 수집한 회충류 미토콘드리아 게놈 최초 규명",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_90916a9dc622924d",
+          "title": "말 요선경주 도핑검사용 췌장 자극제 신속 분석법 개발",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_3421a2f9ee0aa5bd",
+          "title": "Zoetis, 혈액도말 AI에 혈액 기생충 감지 기능 추가",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_3bb60a93a41c6140",
+          "title": "말 원위 사지 연골하 골 경화증 2D-3D 측정 상관관계 연구",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_cdfe74602d56582e",
+          "title": "임상적으로 건강한 말의 후두-환추-축추 부위 방사성핵종 검사 소견",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_9c1c208bc1c8b0e6",
+          "title": "부분 탈회 치아골이식 블록, 임플란트 지지대 강화에 효과적",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_fa6a21315ae59c1e",
+          "title": "수의학에서 기계학습과 생물표지자의 현재 적용 동향",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_38ea68a64dc1dee1",
+          "title": "영국 수입 구조개 건강·행동 문제에 관한 이해관계자 인식 연구",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_32f9ebe2953c6fdc",
+          "title": "개 분변에서 평균 288.89개/그람의 마이크로플라스틱 검출",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_983ba5e3067ca381",
+          "title": "당뇨병 개 백내장 수술 시 단기작용 인슐린, 혈당 관리 결과 안 보인다",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_0eb07a3ca7648931",
+          "title": "동물동반 위기개입, 급성 외상 현장에서 비언어적 정서 지지 역할 확인",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-19",
+          "id": "v1_080baae95d620d6f",
+          "title": "개 흉부 식이 이물, CT에서 광물화 감쇄로 확인된 증례",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
         {
           "date": "2026-09-18",
           "id": "v1_d2cca77f12702805",
@@ -431,162 +589,6 @@
           "date": "2026-09-18",
           "id": "v1_36cc092f06b5f5ef",
           "title": "Cornell, 계산생물학 기반 적응면역 연구 전문가 영입",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_2ac6543e114be181",
-          "title": "개 장 악성 종양의 MRI 소견으로 림프종 감별 가능",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_7a4c100930fdc67f",
-          "title": "개 유아치 근치 잔류물: 10년간 후향적 연구",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 4,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_231f1c0be08f03b2",
-          "title": "개 치주질환 예방 위한 퀘르세틴 함유 hydrogel·필름 개발",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_69fb6a0218a414c6",
-          "title": "개의 입안에서 발견된 외상성 신경종 1례",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-09",
-          "id": "v1_a20cbebb42473cfb",
-          "title": "개 동맥관 개방증과 과개방증의 병태생리학적 상호작용 고찰",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-09",
-          "id": "v1_563eb7164269310d",
-          "title": "영국 설사 개에서 12종 개 장바이러스 발견—9종은 국내 첫 확인",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-09",
-          "id": "v1_af3468d0c1a1f2d3",
-          "title": "십자말 토이 피부에서 확인된 드문 진균 Corynascus 감염",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-09",
-          "id": "v1_fb4ec6257f8806ae",
-          "title": "추간판 변성에서 H3K27me3 리모델링 규명 및 재생 치료 가능성",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-09",
-          "id": "v1_4445d0bca6b81ee6",
-          "title": "이탈리아 개 사육자 번식 관리 실태, 프로게스테론 측정 보급에도 해석 능력 부족",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-09",
-          "id": "v1_d4b918fbb734ae97",
-          "title": "원숭이 안압 측정에서 Tonovet 강아지 모드 정확성 입증",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-09",
-          "id": "v1_2d6015baeabbc506",
-          "title": "미주리 대학교, 수의학-교육학 협동 과정으로 임상병리 수수의사 교육자 양성",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-09",
-          "id": "v1_196fff4c7b6ad6bd",
-          "title": "소화기 질환 영양관리, 보호자 소통 기술",
           "indexable": false,
           "tier": "analysis",
           "clinicalRisk": "medium",
@@ -2517,6 +2519,13 @@
         "card": true
       },
       {
+        "file": "article/v1_0f08ab89c45b5e23.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_100824b1d3fa2866.html",
         "hero": true,
         "og": true,
@@ -2566,6 +2575,13 @@
         "card": true
       },
       {
+        "file": "article/v1_18bc380a8072bf58.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_194982b173848e74.html",
         "hero": true,
         "og": true,
@@ -2608,6 +2624,13 @@
         "card": true
       },
       {
+        "file": "article/v1_1bb062a3a00fd5c5.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_1bea70b231d02f9f.html",
         "hero": true,
         "og": true,
@@ -2644,6 +2667,13 @@
       },
       {
         "file": "article/v1_1d8c69278f618639.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_1edcadc05384b538.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3161,6 +3191,13 @@
         "card": true
       },
       {
+        "file": "article/v1_4e23b29f0bccd55b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_4e359d38060c1956.html",
         "hero": true,
         "og": true,
@@ -3190,6 +3227,13 @@
       },
       {
         "file": "article/v1_506ee77f1e59c749.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_50a7e48478d9bcc1.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3511,6 +3555,13 @@
         "card": true
       },
       {
+        "file": "article/v1_6b5a6e8aab755dd9.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_6b8b9726a86f8562.html",
         "hero": true,
         "og": true,
@@ -3651,6 +3702,13 @@
         "card": true
       },
       {
+        "file": "article/v1_753efc2dfcb5a57a.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_75fcacb7df754554.html",
         "hero": true,
         "og": true,
@@ -3680,6 +3738,13 @@
       },
       {
         "file": "article/v1_77c17d799c444cbd.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_7899c356b96f958a.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3771,6 +3836,13 @@
       },
       {
         "file": "article/v1_7f458aa8027b8eac.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_7f48e1fe61d51535.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4050,7 +4122,21 @@
         "card": true
       },
       {
+        "file": "article/v1_9be3ac5fbed4d1a8.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_9d174c30e4490d81.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_9d585f2b463a3355.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4114,6 +4200,13 @@
       },
       {
         "file": "article/v1_a3087f97fcbd8faa.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_a3a4811ed67e27bb.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4414,6 +4507,13 @@
         "card": true
       },
       {
+        "file": "article/v1_c3ed18b0c15e1652.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_c4f23daf8340112a.html",
         "hero": true,
         "og": true,
@@ -4527,6 +4627,13 @@
       },
       {
         "file": "article/v1_cd2284314f670495.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_cf072eee3c2ad1e7.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -5037,6 +5144,13 @@
         "card": true
       },
       {
+        "file": "article/v1_f88d057c9b38354b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_f92d7361c58c5a15.html",
         "hero": true,
         "og": true,
@@ -5175,26 +5289,32 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 263,
-      "medium": 857,
+      "low": 266,
+      "medium": 882,
       "high": 141
     },
-    "explicitReviewFields": 804
+    "explicitReviewFields": 832
   },
   "workflow": {
-    "explicitItems": 804,
+    "explicitItems": 832,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 798
+      "published": 826
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 296,
-    "numericWarnings": 146,
+    "articlesWithExplicitMetadata": 308,
+    "numericWarnings": 147,
     "samples": [
+      {
+        "id": "v1_983ba5e3067ca381",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
       {
         "id": "v1_7d893c28be594f0b",
         "issues": [
@@ -5828,12 +5948,6 @@
         "id": "2026-07-25_1",
         "issues": [
           "numeric-lead-body-mismatch",
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "2026-07-25_7",
-        "issues": [
           "numeric-keypoints-body-mismatch"
         ]
       }

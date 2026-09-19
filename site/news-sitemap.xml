@@ -1,6 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_6b5a6e8aab755dd9</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:39:35.573Z</news:publication_date>
+      <news:title>2026년 전 세계 홍역 유행 급증</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_1edcadc05384b538</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:39:35.568Z</news:publication_date>
+      <news:title>수의학에서 뼈·관절·힘줄·인대의 병리학 기초</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_1bb062a3a00fd5c5</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:39:35.564Z</news:publication_date>
+      <news:title>산후 젖소에서 CentriVet 혈중 케톤 모니터링 시스템의 진단 및 분석 성능 평가</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_4e23b29f0bccd55b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:39:35.558Z</news:publication_date>
+      <news:title>공간 전사체학으로 돼지 신장 미세구조와 소포자바이러스 감지</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_7899c356b96f958a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:39:35.553Z</news:publication_date>
+      <news:title>앵무새 단백질 전기영동 두 방법 비교 연구</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_753efc2dfcb5a57a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:39:35.547Z</news:publication_date>
+      <news:title>개의 재발성 림프관 기형, 미노사이클린 경화 요법으로 535일 장기 조절</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_0f08ab89c45b5e23</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.648Z</news:publication_date>
+      <news:title>개 두려움이 수의사가 된 계기가 된 VMCVM 학생</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_a3a4811ed67e27bb</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.644Z</news:publication_date>
+      <news:title>Ira Blader, 미생물학 아카데미 펠로우 선정</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_18bc380a8072bf58</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.641Z</news:publication_date>
+      <news:title>CCSER1 유전자 변이, 양 성장 형질 연관 발견</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_f88d057c9b38354b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.639Z</news:publication_date>
+      <news:title>모로코 육계 농장에서 조류 뇌염바이러스 확인</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_c3ed18b0c15e1652</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.636Z</news:publication_date>
+      <news:title>독일 여성 수의사 직업 스트레스 및 워라밸 연구</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_50a7e48478d9bcc1</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.633Z</news:publication_date>
+      <news:title>반려동물도 사람과 동일한 항생제내성 균주 보유</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_7f48e1fe61d51535</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.591Z</news:publication_date>
+      <news:title>개 승모판 질환 수술 선택 가이드</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9d585f2b463a3355</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.587Z</news:publication_date>
+      <news:title>WSU 수의대생, 방치 말 66마리 돌보기 현장</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_cf072eee3c2ad1e7</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.584Z</news:publication_date>
+      <news:title>Vetology, AI 방사선 분류기 94개 업그레이드...인간 영상의학자 방식 반영</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9be3ac5fbed4d1a8</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-19T02:19:25.581Z</news:publication_date>
+      <news:title>뉴기니서 발견된 새 뱀, 건즈 앤 로즈 Slash 이름에 바쳐</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_a950359fc3214ad4</loc>
     <news:news>
       <news:publication>
