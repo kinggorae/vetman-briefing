@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-09-20T02:36:03.197Z",
+  "generatedAt": "2026-09-21T02:35:30.397Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 1418,
-    "articles": 1308,
-    "index": 561,
-    "noindex": 747,
-    "sitemap": 607,
-    "newsSitemap": 38,
+    "htmlPages": 1432,
+    "articles": 1320,
+    "index": 568,
+    "noindex": 752,
+    "sitemap": 614,
+    "newsSitemap": 27,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 561,
+    "indexImages": 568,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 222071,
+    "homepageBytes": 208454,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 511285
+        "bytes": 517685
       },
       {
         "file": "search/2026-05.json",
@@ -41,10 +41,10 @@
       },
       {
         "file": "search/2026-09.json",
-        "bytes": 161040
+        "bytes": 167440
       }
     ],
-    "articleBytes": 26341864,
+    "articleBytes": 26589717,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -54,11 +54,11 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 561,
-    "currentNoindex": 747,
-    "delta": 243,
+    "currentIndex": 568,
+    "currentNoindex": 752,
+    "delta": 250,
     "reasonCounts": {
-      "build-policy": 302,
+      "build-policy": 307,
       "brief-tier": 368,
       "brief-too-short": 368,
       "source-relay": 39,
@@ -76,6 +76,97 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-09-21",
+          "id": "v1_53a5447d92368b73",
+          "title": "WSU 연구자, 모성 대마초 노출이 태아 뇌 발달에 미치는 영향 연구",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_6ca8355db0259ff7",
+          "title": "개 건성안 질환에서 SD-OCT 기반 상태 평가",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_a3542a80d8c2d8f1",
+          "title": "버지니아텍 수의대 교수Virginia Edwards, 학생들과 함께하는 교육 현장",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_64aff9b26ff4959d",
+          "title": "NC주립대, 말수의사 양성 프로그램 첫 졸업생 배출",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_1747557c760c4527",
+          "title": "아리스타 동물병원, 20년 경력 내과 전문수의 영입",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_61f265bca3295fc4",
+          "title": "개의 신경내분비암과 다중 내분비질환: 세포학적·임상병리학적·조직학적 소견",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_ada39dcf061e22aa",
+          "title": "버지니아 수의대 졸업생, 현장 경험의 중요성 강조",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
         {
           "date": "2026-09-20",
           "id": "v1_7e451638f3e89ee5",
@@ -244,100 +335,74 @@
           "reasons": [
             "brief-tier"
           ]
-        },
-        {
-          "date": "2026-09-20",
-          "id": "v1_9b795a122a4b9732",
-          "title": "미국서 60년 만에 재출현한 살육 기생파리, 축산 업계 경고",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-19",
-          "id": "v1_9be3ac5fbed4d1a8",
-          "title": "뉴기니서 발견된 새 뱀, 건즈 앤 로즈 Slash 이름에 바쳐",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-19",
-          "id": "v1_cf072eee3c2ad1e7",
-          "title": "Vetology, AI 방사선 분류기 94개 업그레이드...인간 영상의학자 방식 반영",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-19",
-          "id": "v1_9d585f2b463a3355",
-          "title": "WSU 수의대생, 방치 말 66마리 돌보기 현장",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-19",
-          "id": "v1_7f48e1fe61d51535",
-          "title": "개 승모판 질환 수술 선택 가이드",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-19",
-          "id": "v1_50a7e48478d9bcc1",
-          "title": "반려동물도 사람과 동일한 항생제내성 균주 보유",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-19",
-          "id": "v1_c3ed18b0c15e1652",
-          "title": "독일 여성 수의사 직업 스트레스 및 워라밸 연구",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
         }
       ],
       "noindex": [
+        {
+          "date": "2026-09-21",
+          "id": "v1_d59bb0aefc5799c0",
+          "title": "원주민 지역사회 동물건강 프로그램, 수의사 교육까지 가능한 Outreach의 힘",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_27c1ea9c85cb731c",
+          "title": "고양이 소변에서 발견된 지속적 화학적 신분증 - 분지사슬지방산의 개인 식별 기능",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_0b59dd4f5c4eb2fd",
+          "title": "broiler 닭의 열 스트레스: 발생 기전과 관리 전략",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_00f112b7e79e4897",
+          "title": "영국 유업계 초유 급이 실태와 수동면역이전 현황",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "id": "v1_f47e3594ae14fff3",
+          "title": "영국 너구리 결핵백신 효과 불분명 - 소결핵 근절 정책에 미칠 영향은",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
         {
           "date": "2026-09-20",
           "id": "v1_c3b98859c77ecc36",
@@ -524,71 +589,6 @@
           "date": "2026-09-19",
           "id": "v1_983ba5e3067ca381",
           "title": "당뇨병 개 백내장 수술 시 단기작용 인슐린, 혈당 관리 결과 안 보인다",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-19",
-          "id": "v1_0eb07a3ca7648931",
-          "title": "동물동반 위기개입, 급성 외상 현장에서 비언어적 정서 지지 역할 확인",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-19",
-          "id": "v1_080baae95d620d6f",
-          "title": "개 흉부 식이 이물, CT에서 광물화 감쇄로 확인된 증례",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_d2cca77f12702805",
-          "title": "개에서 건조혈액반점을 이용한 오메가-3 지수 평가: 피부과학적 관점",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_07e8a00e4c5256c1",
-          "title": "개 두피 블록 마취법, 두개골 절개술에서 심혈관 안정성 입증",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-18",
-          "id": "v1_7d893c28be594f0b",
-          "title": "호주 개 뇌종양 발생률 30년간 분석, 지역·품종별 차이 확인",
           "indexable": false,
           "tier": "evidence",
           "clinicalRisk": "medium",
@@ -2603,6 +2603,13 @@
         "card": true
       },
       {
+        "file": "article/v1_1747557c760c4527.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_18465ea92fb3e7aa.html",
         "hero": true,
         "og": true,
@@ -3317,6 +3324,13 @@
         "card": true
       },
       {
+        "file": "article/v1_53a5447d92368b73.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_545ab656e59319fb.html",
         "hero": true,
         "og": true,
@@ -3513,6 +3527,13 @@
         "card": true
       },
       {
+        "file": "article/v1_61f265bca3295fc4.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_6269576cf035d012.html",
         "hero": true,
         "og": true,
@@ -3535,6 +3556,13 @@
       },
       {
         "file": "article/v1_6404e2a00a95fabf.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_64aff9b26ff4959d.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3605,6 +3633,13 @@
       },
       {
         "file": "article/v1_6c9cfe583727d7b4.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_6ca8355db0259ff7.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4283,6 +4318,13 @@
         "card": true
       },
       {
+        "file": "article/v1_a3542a80d8c2d8f1.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_a3a4811ed67e27bb.html",
         "hero": true,
         "og": true,
@@ -4396,6 +4438,13 @@
       },
       {
         "file": "article/v1_ac84e6c020675f69.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_ada39dcf061e22aa.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -5387,24 +5436,24 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 269,
-      "medium": 898,
+      "low": 272,
+      "medium": 907,
       "high": 141
     },
-    "explicitReviewFields": 851
+    "explicitReviewFields": 863
   },
   "workflow": {
-    "explicitItems": 851,
+    "explicitItems": 863,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 845
+      "published": 857
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 311,
+    "articlesWithExplicitMetadata": 316,
     "numericWarnings": 147,
     "samples": [
       {
