@@ -1,6 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_740dbcd4bbe213a8</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:44:29.392Z</news:publication_date>
+      <news:title>제4의 활력 징후로 부상한 동물 통증 관리</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_0dc105f6c9a6fff1</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:44:29.386Z</news:publication_date>
+      <news:title>전이성 침습성 요로암 개 환자 다중 통증 관리 사례</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_e0d17ba72859efe1</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:44:29.380Z</news:publication_date>
+      <news:title>아랍에미리트 poultryfarm서 carbapenemase 생산균 첫 확인... 원 헬스 위협 부상</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_0d56f705d3d4c939</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:44:29.373Z</news:publication_date>
+      <news:title>bison 구제, 진단 아닌 일정에 의존해 저항성 기생충 위험</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_a9c58b241427d05a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:27:38.056Z</news:publication_date>
+      <news:title>개 치료비 부족 안락사 경험→집단수 건강 분야 수의사 된다</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_73f06ba00c145bf2</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:27:38.051Z</news:publication_date>
+      <news:title>암 생존자 수의사, 애완동물 암 치료에 대한 열정</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_dac3b82b7eaad765</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:27:38.046Z</news:publication_date>
+      <news:title>버르chner-맥스웰 교수,30년 이상 기여로 명예 교수 칭호 수상</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_7de506392922e158</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:27:38.041Z</news:publication_date>
+      <news:title>의료용 거머리 번식 기질별 생존률과 번식 성과 비교</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_116bcdaa8758c943</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:27:38.036Z</news:publication_date>
+      <news:title>소 사회적 네트워크서 호의적·적대적 상호작용 정반대 구조 나타내다</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_96a1b4ce066fcdff</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:27:38.031Z</news:publication_date>
+      <news:title>개의 갑상선암으로 인한 갑상선기능저하증 1례</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_b97818dec03c3256</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:27:38.026Z</news:publication_date>
+      <news:title>5년간 고양이 항응고 쥐독 중독 사례의학적 LC-MS/MS 분석</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_e2f5f2a065d3682f</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:27:38.019Z</news:publication_date>
+      <news:title>GoodVets, 7개 주 40개 병원 WellHaven 인수로 네트워크 116개로 확대</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_82b84a12f5094c07</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25T02:27:38.012Z</news:publication_date>
+      <news:title>강아지 면역매개다발관절염과 고칼슘혈증, 허혈성 피부병 관련 사례</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_8a7615463ab1ad16</loc>
     <news:news>
       <news:publication>
@@ -163,193 +306,6 @@
       </news:publication>
       <news:publication_date>2026-09-24T02:15:29.584Z</news:publication_date>
       <news:title>말 위장관 궤양 통증, 혈액검사 감별 어려워</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_02d6bb041f3efcbd</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:46:19.425Z</news:publication_date>
-      <news:title>동물 의사소통의 신경생물학적·화학적·생리적 측면</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_34bb7a9fedb35d80</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:46:19.419Z</news:publication_date>
-      <news:title>정자 생물공학에서 대사·내분비 조절제: 종간 공통 메커니즘과 임상 적용 방향</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_17a4dbeece6b18e1</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:46:19.411Z</news:publication_date>
-      <news:title>개의 로도코쿠스 균 폐렴·종격염Rare 사례</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_26051652dadd845c</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:46:19.404Z</news:publication_date>
-      <news:title>텍사스 부부, 멕시코산 불법 동물용 의약품·살충제 밀수 판매로 징역형</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_51eb9f37e317e6ad</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:46:19.398Z</news:publication_date>
-      <news:title>조에티스 수의학 연구 우수상에 선정된 Sultana 교수</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_3adb7e1427194d9b</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:46:19.391Z</news:publication_date>
-      <news:title>미니말 몸짓 읽는 청소년, 외로움 크게 줄어들었다</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_a3e733604166207a</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:46:19.384Z</news:publication_date>
-      <news:title>말 사르코이드 종양에 세계 첫 집속초음파 치료 시도... 'Pea' 임상시험</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_6bb6b08d4aeaa752</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.299Z</news:publication_date>
-      <news:title>벌통 전체가 환자…미국 수의대 양호 교육 도입</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_ea63f80f1da06445</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.294Z</news:publication_date>
-      <news:title>혈장 메타지노믹 세포무료 DNA 시퀀싱으로 면역저하 환자에서 임상적으로 의심되지 않은 톡소플라즈마 감염 확인</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_e84ee5afad7ac25a</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.289Z</news:publication_date>
-      <news:title>아비박테rium paragallinarum 감염, 닭 호흡기 미생물총 일시적 변화 유발</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_2a571c45db7c4b03</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.283Z</news:publication_date>
-      <news:title>돼지 면역 회복력 강화 전략···아프리카돼지열병·돼지인플루엔자 예방 총정리</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_caa87849b15da2fe</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.278Z</news:publication_date>
-      <news:title>NGS 기반 PRRSV 혼합 감염 균주 감지 정확도 평가</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_cea59b53daffe7a5</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.273Z</news:publication_date>
-      <news:title>수의학 레지던트 EMR 야간 사용 실태 분석</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_256a606d4a78e767</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.268Z</news:publication_date>
-      <news:title>개의 불안정 후두과 골절, 환자맞춤 티타늄 임플란트로 수술 안정화</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_587d8bb4d53f2c23</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.263Z</news:publication_date>
-      <news:title>미국 고양이 가구 5천만 돌파, 다중묘 가구·지출 모두 증가</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_bf65611614e6fce2</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.257Z</news:publication_date>
-      <news:title>비인원원숭이 검역 관련 바이러스 병원체 및 관리 전략</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_102eb42502082a15</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-23T02:27:35.252Z</news:publication_date>
-      <news:title>Curt Coffman, 2026 미주리 대학수의대 동문상 수상</news:title>
     </news:news>
   </url>
 </urlset>
