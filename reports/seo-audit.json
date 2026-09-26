@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-09-25T02:46:57.737Z",
+  "generatedAt": "2026-09-26T02:46:29.400Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 1501,
-    "articles": 1386,
-    "index": 613,
-    "noindex": 773,
-    "sitemap": 659,
-    "newsSitemap": 28,
+    "htmlPages": 1517,
+    "articles": 1401,
+    "index": 623,
+    "noindex": 778,
+    "sitemap": 669,
+    "newsSitemap": 23,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 613,
+    "indexImages": 623,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 218941,
+    "homepageBytes": 218126,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 558772
+        "bytes": 568000
       },
       {
         "file": "search/2026-05.json",
@@ -41,10 +41,10 @@
       },
       {
         "file": "search/2026-09.json",
-        "bytes": 208527
+        "bytes": 217755
       }
     ],
-    "articleBytes": 27960833,
+    "articleBytes": 28268672,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -54,11 +54,11 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 613,
-    "currentNoindex": 773,
-    "delta": 295,
+    "currentIndex": 623,
+    "currentNoindex": 778,
+    "delta": 305,
     "reasonCounts": {
-      "build-policy": 328,
+      "build-policy": 333,
       "brief-tier": 368,
       "brief-too-short": 368,
       "source-relay": 39,
@@ -76,6 +76,136 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-09-26",
+          "id": "v1_889faf2b8f080e68",
+          "title": "개 혈관육종 연구에 310만 달러 NCI 지원…인간 희귀암 모델 개발",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_bc20ac2886c6ab8a",
+          "title": "수의사 임상결정에서 느끼는 두려움과 전문성 인정의 딜레마",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_1d25782ed89d1cd2",
+          "title": "WSU 수의팀, 구조된 66마리 말 입양 준비 도움",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_ed2376cddedc54ff",
+          "title": "헝가리 개 소유주 여가 참여도와 개 스포츠 참가 연관성 분석",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_eb75e58fc0e6e2d8",
+          "title": "개의 비대칭 양측 자각 비틀기, 자궁근종과 최초 보고",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_6450148a37c68ea6",
+          "title": "아르지닌-리신 비율, 돼지 성장엔 무관 소화율 개선",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_5dd99990d5c49215",
+          "title": "심장학 교수 Giulio Menciotti, Anne Hunter 기부교수직 수상",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_fc9d525700b0b9fa",
+          "title": "X.J. Meng, 버지니아 학술원 제2부회장 취임",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_fd982c05570cbb71",
+          "title": "경수소압 전처리, 말 정액 동결 해동 후 운동성 개선",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_9f3aba5b7ee08d4c",
+          "title": "건강한 개 응고 인자 생물학적 변이 평가",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
         {
           "date": "2026-09-25",
           "id": "v1_82b84a12f5094c07",
@@ -205,139 +335,74 @@
           "reasons": [
             "brief-tier"
           ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_e0d17ba72859efe1",
-          "title": "아랍에미리트 poultryfarm서 carbapenemase 생산균 첫 확인... 원 헬스 위협 부상",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_0dc105f6c9a6fff1",
-          "title": "전이성 침습성 요로암 개 환자 다중 통증 관리 사례",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_740dbcd4bbe213a8",
-          "title": "제4의 활력 징후로 부상한 동물 통증 관리",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_60a2f2423d4d4346",
-          "title": "말 위장관 궤양 통증, 혈액검사 감별 어려워",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_3237fd272be3903a",
-          "title": "초음파로 말 종양 치료하는 세계 최초 사례",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_9a88519d5beb0cd3",
-          "title": "영국 수의학 환자 안전 프로젝트 수상",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_5a1802ffbf327beb",
-          "title": "인도네시아 산란계 농부의 콜리스틴 금지 전후 항생제 사용 실천 비교 연구",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_6cb54ccf0d0ca796",
-          "title": "인도 낙농지역 대장균 항생제 내성 및 독성 유전자 실태",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_7cf9316823faca56",
-          "title": "가축 질병 예보와 의사결정 지원하는 AI 에이전트 연구동향",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_0fd29d7f5bbaceb0",
-          "title": "템부수바이러스 신경 침입 메커니즘…혈액-뇌 장벽 기능 장애의 역할",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
         }
       ],
       "noindex": [
+        {
+          "date": "2026-09-26",
+          "id": "v1_de98eac5d2513e1c",
+          "title": "우즈베키스탄 육식·반수생 포유류 기생충 종단적 검토",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_d5ba04a064d9b7fe",
+          "title": "에티오피아 생 고기서 대장균 O157:H7 항균제 내성률 높아",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_0246ea869eb15684",
+          "title": "에티오피아 개에서 대사충 감염률 29.5% 확인, 노령·임상증상·자유방목이 위험요인",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_9743d720a5d09c12",
+          "title": "브라질 에부 다스 아르치스 지역 visceral leishmaniasis 전파 초점의 entomological 발견",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-26",
+          "id": "v1_d85a47a107a39301",
+          "title": "수의학 분야 AI 생성 콘텐츠, 투명성과 신뢰 문제",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
         {
           "date": "2026-09-25",
           "id": "v1_012a17e102522afd",
@@ -526,71 +591,6 @@
           "title": "독일 야생고양이에서 FeLV·FPV 검출 확인",
           "indexable": false,
           "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-23",
-          "id": "v1_4198c7310d5a9432",
-          "title": "고양이 가족성 간질 모델 활용한 EEG-fMRI 진단법 개발 가능성 탐색",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-23",
-          "id": "v1_f8f8e0798d225e0f",
-          "title": "개의 갈색세포종 진단 위한 혈장 단백질 프로파일링 연구",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-23",
-          "id": "v1_af07cd08bcb0b97c",
-          "title": "COVID-19 팬데믹이 캄보디아 가금업 종사자의 조류인플루엔자 예방 실천에 미친 영향",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-23",
-          "id": "v1_609ee090c1d1fc6b",
-          "title": "장기이식 사례 분석으로 본 광견병 사망 실제 발생수 추정",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-23",
-          "id": "v1_763ef77f2ef8ba96",
-          "title": "대동물에서 소동물 외과로 — Virginia Tech 동문 수의사 Brett Casna의 여정",
-          "indexable": false,
-          "tier": "analysis",
           "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
@@ -2743,6 +2743,13 @@
         "card": true
       },
       {
+        "file": "article/v1_1d25782ed89d1cd2.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_1d2bcee0c0e56320.html",
         "hero": true,
         "og": true,
@@ -3569,6 +3576,13 @@
         "card": true
       },
       {
+        "file": "article/v1_5dd99990d5c49215.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_5e1bd8f68184cf0e.html",
         "hero": true,
         "og": true,
@@ -3682,6 +3696,13 @@
       },
       {
         "file": "article/v1_6404e2a00a95fabf.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_6450148a37c68ea6.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4192,6 +4213,13 @@
         "card": true
       },
       {
+        "file": "article/v1_889faf2b8f080e68.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_89b0caff9ca37d64.html",
         "hero": true,
         "og": true,
@@ -4487,6 +4515,13 @@
       },
       {
         "file": "article/v1_9e36e1aba7065184.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_9f3aba5b7ee08d4c.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4823,6 +4858,13 @@
       },
       {
         "file": "article/v1_bbf6a3a590df85f7.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_bc20ac2886c6ab8a.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -5424,7 +5466,21 @@
         "card": true
       },
       {
+        "file": "article/v1_eb75e58fc0e6e2d8.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_ec47a98202b53d9a.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_ed2376cddedc54ff.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -5676,6 +5732,13 @@
         "card": true
       },
       {
+        "file": "article/v1_fc9d525700b0b9fa.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_fcbd7aa64148ba95.html",
         "hero": true,
         "og": true,
@@ -5691,6 +5754,13 @@
       },
       {
         "file": "article/v1_fd97bbf180315cff.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_fd982c05570cbb71.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -5752,25 +5822,32 @@
   "clinical": {
     "riskCounts": {
       "low": 280,
-      "medium": 965,
+      "medium": 980,
       "high": 141
     },
-    "explicitReviewFields": 929
+    "explicitReviewFields": 944
   },
   "workflow": {
-    "explicitItems": 929,
+    "explicitItems": 944,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 923
+      "published": 938
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 332,
-    "numericWarnings": 151,
+    "articlesWithExplicitMetadata": 338,
+    "numericWarnings": 152,
     "samples": [
+      {
+        "id": "v1_0246ea869eb15684",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
       {
         "id": "v1_1e09b894df2de88b",
         "issues": [
@@ -6402,13 +6479,6 @@
       {
         "id": "v1_103ba30adfca986c",
         "issues": [
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "v1_9ed50c819180f566",
-        "issues": [
-          "numeric-lead-body-mismatch",
           "numeric-keypoints-body-mismatch"
         ]
       }
