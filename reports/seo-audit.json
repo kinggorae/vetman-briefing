@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-09-26T02:46:29.400Z",
+  "generatedAt": "2026-09-28T02:43:48.453Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 1517,
-    "articles": 1401,
-    "index": 623,
-    "noindex": 778,
-    "sitemap": 669,
-    "newsSitemap": 23,
+    "htmlPages": 1531,
+    "articles": 1413,
+    "index": 627,
+    "noindex": 786,
+    "sitemap": 673,
+    "newsSitemap": 6,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 623,
+    "indexImages": 627,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 218126,
+    "homepageBytes": 213991,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 568000
+        "bytes": 571381
       },
       {
         "file": "search/2026-05.json",
@@ -41,10 +41,10 @@
       },
       {
         "file": "search/2026-09.json",
-        "bytes": 217755
+        "bytes": 221136
       }
     ],
-    "articleBytes": 28268672,
+    "articleBytes": 28517013,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -54,11 +54,11 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 623,
-    "currentNoindex": 778,
-    "delta": 305,
+    "currentIndex": 627,
+    "currentNoindex": 786,
+    "delta": 309,
     "reasonCounts": {
-      "build-policy": 333,
+      "build-policy": 341,
       "brief-tier": 368,
       "brief-too-short": 368,
       "source-relay": 39,
@@ -76,6 +76,58 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-09-28",
+          "id": "v1_bb395b8ee03e8a9f",
+          "title": "북극여우에서 Stellantchasmus falcatus 감염 보고",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_24f2e26b941fd3f6",
+          "title": "버지니아텍 말의료센터 자문위원회, 두 여성에 영예로운 칭호 부여",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_6a52a0f7e1adda8a",
+          "title": "개 재발성 중이염에서 세침흡인과 CT로 콜레스테아톰 진단",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_f725f09d43277c87",
+          "title": "말의 '조용한 고통' 다루는Ana Rangel, Virginia Tech 합류",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "low",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
         {
           "date": "2026-09-26",
           "id": "v1_889faf2b8f080e68",
@@ -283,61 +335,113 @@
           "reasons": [
             "brief-tier"
           ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_dac3b82b7eaad765",
-          "title": "버르chner-맥스웰 교수,30년 이상 기여로 명예 교수 칭호 수상",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_73f06ba00c145bf2",
-          "title": "암 생존자 수의사, 애완동물 암 치료에 대한 열정",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_a9c58b241427d05a",
-          "title": "개 치료비 부족 안락사 경험→집단수 건강 분야 수의사 된다",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_0d56f705d3d4c939",
-          "title": "bison 구제, 진단 아닌 일정에 의존해 저항성 기생충 위험",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
         }
       ],
       "noindex": [
+        {
+          "date": "2026-09-28",
+          "id": "v1_97285899231a537d",
+          "title": "브라질 내륙건열매체병 발생지역 개·고양이 리슈만편모충 감염 실태",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_3fd04fa290840a62",
+          "title": "반려동물과 가축의 MSC 치료: 종·조직원 다양성과 임상 전환 과제 검토",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_da864d19d53d17b3",
+          "title": "개 보스넬라증, 간과되는 인수공통질환의 실태와 과제",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_201f53d967b609ff",
+          "title": "개의 ESKAPE 병원체 진단 공백과 식물치료 가능성 검토",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_b1950fb6dcd0cebe",
+          "title": "말의 장내 미생물이 미네랄 항상성 조절에 미치는 분자적 영향",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_436e5f5c29a03a6d",
+          "title": "군·경찰 말의 등뼈 움직임, 짐을 끄는 말과 끄지 않는 말의 차이",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_61691848d16a5c70",
+          "title": "이탈리아 남부 WNV 위험, 2개월 전 최고 기온과 연관",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-28",
+          "id": "v1_b480c24dac7fc27a",
+          "title": "RSPCA, PawPrints 어워드 수상자 축하 — 동물 복지 선도 사례 선정",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
         {
           "date": "2026-09-26",
           "id": "v1_de98eac5d2513e1c",
@@ -485,110 +589,6 @@
           "date": "2026-09-24",
           "id": "v1_ed737ccf33f6b08f",
           "title": "개 고립골림프절 CT 기준값, 종양 반응 평가에 최소 가로 직경 권장",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_d5d0a318476aa32a",
-          "title": "파고린CPV 감염 대사체 변화, 종 특이적 대사 경로 발견",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_8ac3e14a5d743f00",
-          "title": "고양이 방사선치료의 비방사선 관련 합병증: 167마리 단일기관 후향적 연구",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_5915139bf9967304",
-          "title": "미생물 단백질 사료, 강아지·고양이 선호도 유의하게 높아",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_aabd8d425c2f41bd",
-          "title": "고양이 최초 마르판 증후군 확인…비정상적 긴 다리 가진 형제 발견",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_7671a535bf0ba54a",
-          "title": "개도 인간처럼 자기조절 뇌파 보인다…충동 조절 능력 연구",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-23",
-          "id": "v1_87ec76c2ac04f794",
-          "title": "고양이 마르판 증후군 최초 발견—형제 고양이 사례 보고",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-23",
-          "id": "v1_73af3fbf418f9e89",
-          "title": "개 Hemoglobin A1c 현장검사기 분석적 타당성 평가",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 4,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-23",
-          "id": "v1_7233d610c6888b43",
-          "title": "독일 야생고양이에서 FeLV·FPV 검출 확인",
           "indexable": false,
           "tier": "evidence",
           "clinicalRisk": "medium",
@@ -2862,6 +2862,13 @@
         "card": true
       },
       {
+        "file": "article/v1_24f2e26b941fd3f6.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_256a606d4a78e767.html",
         "hero": true,
         "og": true,
@@ -3745,6 +3752,13 @@
       },
       {
         "file": "article/v1_69db69fb34bec3ee.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_6a52a0f7e1adda8a.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4843,6 +4857,13 @@
         "card": true
       },
       {
+        "file": "article/v1_bb395b8ee03e8a9f.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_bbbd72758bc9c737.html",
         "hero": true,
         "og": true,
@@ -5655,6 +5676,13 @@
         "card": true
       },
       {
+        "file": "article/v1_f725f09d43277c87.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_f7a56937ecb1cc0c.html",
         "hero": true,
         "og": true,
@@ -5821,26 +5849,45 @@
   },
   "clinical": {
     "riskCounts": {
-      "low": 280,
-      "medium": 980,
+      "low": 282,
+      "medium": 990,
       "high": 141
     },
-    "explicitReviewFields": 944
+    "explicitReviewFields": 956
   },
   "workflow": {
-    "explicitItems": 944,
+    "explicitItems": 956,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 938
+      "published": 950
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 338,
-    "numericWarnings": 152,
+    "articlesWithExplicitMetadata": 348,
+    "numericWarnings": 155,
     "samples": [
+      {
+        "id": "v1_97285899231a537d",
+        "issues": [
+          "numeric-lead-body-mismatch",
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_436e5f5c29a03a6d",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_61691848d16a5c70",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
       {
         "id": "v1_0246ea869eb15684",
         "issues": [
@@ -6461,24 +6508,6 @@
         "id": "v1_6b3c3101574c9e89",
         "issues": [
           "numeric-lead-body-mismatch",
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "v1_8d4b6dd70a1c07e5",
-        "issues": [
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "v1_cc752d4547496da4",
-        "issues": [
-          "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "v1_103ba30adfca986c",
-        "issues": [
           "numeric-keypoints-body-mismatch"
         ]
       }
