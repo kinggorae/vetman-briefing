@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-09-28T02:43:48.453Z",
+  "generatedAt": "2026-09-29T03:31:13.947Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 1531,
-    "articles": 1413,
-    "index": 627,
-    "noindex": 786,
-    "sitemap": 673,
-    "newsSitemap": 6,
+    "htmlPages": 1546,
+    "articles": 1427,
+    "index": 636,
+    "noindex": 791,
+    "sitemap": 682,
+    "newsSitemap": 13,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 627,
+    "indexImages": 636,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 213991,
+    "homepageBytes": 214135,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 571381
+        "bytes": 579321
       },
       {
         "file": "search/2026-05.json",
@@ -41,10 +41,10 @@
       },
       {
         "file": "search/2026-09.json",
-        "bytes": 221136
+        "bytes": 229076
       }
     ],
-    "articleBytes": 28517013,
+    "articleBytes": 28805815,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -54,11 +54,11 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 627,
-    "currentNoindex": 786,
-    "delta": 309,
+    "currentIndex": 636,
+    "currentNoindex": 791,
+    "delta": 318,
     "reasonCounts": {
-      "build-policy": 341,
+      "build-policy": 346,
       "brief-tier": 368,
       "brief-too-short": 368,
       "source-relay": 39,
@@ -76,6 +76,123 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-09-29",
+          "id": "v1_25308c9b991c4e8b",
+          "title": "FDA, 비임상 시험 용어 변경… 동물 실험 대안적 방법 공식 인정",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_ce0a325d84daebdd",
+          "title": "개 구강 CD8 양성 T세포 림프종의 전기화학요법 치료 사례",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_48787eb1d6399670",
+          "title": "소 혈청·혈장이 개 각막염 항생제 효과에 미치는 영향",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_5296fdde0af3a8a0",
+          "title": "호주 와규 소 sex-sorted 동결정액의 품질 개선에 케르세틴 효과 확인",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_a8851b4e4d2f1281",
+          "title": "코스타리카서 미국까지, 수의사 히메네즈의 연구와 임상 도전기",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_9c4f70ba261ecb46",
+          "title": "칠레 수의학생, 미국 교환연구 통해 글로벌 연구자 꿈 키워",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_b647c96090e9937a",
+          "title": "말 귀흰반에 대한 0.5% 트레티노인 치료 효과 연구",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_17655e3382a70b83",
+          "title": "버지니아주 최고 대학상 수상한 신경종양학 수의학자",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_661d7cd6a369cf78",
+          "title": "교수들도 실패한다… 학생들이 보는 성공의 오해",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
         {
           "date": "2026-09-28",
           "id": "v1_bb395b8ee03e8a9f",
@@ -218,126 +335,74 @@
           "reasons": [
             "brief-tier"
           ]
-        },
-        {
-          "date": "2026-09-26",
-          "id": "v1_fc9d525700b0b9fa",
-          "title": "X.J. Meng, 버지니아 학술원 제2부회장 취임",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-26",
-          "id": "v1_fd982c05570cbb71",
-          "title": "경수소압 전처리, 말 정액 동결 해동 후 운동성 개선",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-26",
-          "id": "v1_9f3aba5b7ee08d4c",
-          "title": "건강한 개 응고 인자 생물학적 변이 평가",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_82b84a12f5094c07",
-          "title": "강아지 면역매개다발관절염과 고칼슘혈증, 허혈성 피부병 관련 사례",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_e2f5f2a065d3682f",
-          "title": "GoodVets, 7개 주 40개 병원 WellHaven 인수로 네트워크 116개로 확대",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_b97818dec03c3256",
-          "title": "5년간 고양이 항응고 쥐독 중독 사례의학적 LC-MS/MS 분석",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_96a1b4ce066fcdff",
-          "title": "개의 갑상선암으로 인한 갑상선기능저하증 1례",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_116bcdaa8758c943",
-          "title": "소 사회적 네트워크서 호의적·적대적 상호작용 정반대 구조 나타내다",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_7de506392922e158",
-          "title": "의료용 거머리 번식 기질별 생존률과 번식 성과 비교",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
         }
       ],
       "noindex": [
+        {
+          "date": "2026-09-29",
+          "id": "v1_b19da98c9b49142e",
+          "title": "개 뇌전증 진단에서 간헐적 광자극의 최신 지견",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_9385a317ec7bbc28",
+          "title": "중쇄 수정이 염증 시 히알루론산의 산소 분해 보호한다",
+          "indexable": false,
+          "tier": "evidence",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_66143c9669da85f7",
+          "title": "소 피부 편평상피세포암의 T 림프구 확산 및 MHC-1·PD-L1 면역회피 기전",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_92034bc50e5b8cb2",
+          "title": "WSAVA, 개·고양이 구강 질환 새 가이드라인 발표",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-09-29",
+          "id": "v1_7c8dd8ceea6b0a9e",
+          "title": "노령 개 소양행동-인지저하-요분석 이상 연관성 연구",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
         {
           "date": "2026-09-28",
           "id": "v1_97285899231a537d",
@@ -526,71 +591,6 @@
           "title": "몽골 초원에서 배운 우유 품질 검사 실습과 구제역 대응 경험",
           "indexable": false,
           "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_a0d3f0e476d32d74",
-          "title": "조영제 강화 배뇨 요로 초음파로 이소성 요관 진단",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-25",
-          "id": "v1_4691f56162518c96",
-          "title": "탄자니아수의사의 광견병 예방접종, 300만 마리 개 예방접종 달성",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_9810b6f4799732b2",
-          "title": "이라크 동물 톡소플라즈마·네오스포라 감염율 세계 평균 상회",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_763f0e2899922931",
-          "title": "고양이 코로나바이러스 N 단백질, 숙주 방어 단백질 ZC3HAV1의 작용 역전",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-09-24",
-          "id": "v1_ed737ccf33f6b08f",
-          "title": "개 고립골림프절 CT 기준값, 종양 반응 평가에 최소 가로 직경 권장",
-          "indexable": false,
-          "tier": "evidence",
           "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
@@ -2652,6 +2652,13 @@
         "card": true
       },
       {
+        "file": "article/v1_17655e3382a70b83.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_17a4dbeece6b18e1.html",
         "hero": true,
         "og": true,
@@ -2863,6 +2870,13 @@
       },
       {
         "file": "article/v1_24f2e26b941fd3f6.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_25308c9b991c4e8b.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3282,6 +3296,13 @@
         "card": true
       },
       {
+        "file": "article/v1_48787eb1d6399670.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_494886c6f4b5b089.html",
         "hero": true,
         "og": true,
@@ -3416,6 +3437,13 @@
       },
       {
         "file": "article/v1_526ca67899a0331b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_5296fdde0af3a8a0.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3724,6 +3752,13 @@
       },
       {
         "file": "article/v1_64cc24724f682b30.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_661d7cd6a369cf78.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4500,6 +4535,13 @@
         "card": true
       },
       {
+        "file": "article/v1_9c4f70ba261ecb46.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_9d174c30e4490d81.html",
         "hero": true,
         "og": true,
@@ -4675,6 +4717,13 @@
         "card": true
       },
       {
+        "file": "article/v1_a8851b4e4d2f1281.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_a8c8d0ced9731d44.html",
         "hero": true,
         "og": true,
@@ -4816,6 +4865,13 @@
       },
       {
         "file": "article/v1_b5e97c167c1deac5.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_b647c96090e9937a.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -5096,6 +5152,13 @@
       },
       {
         "file": "article/v1_cd2284314f670495.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_ce0a325d84daebdd.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -5850,25 +5913,31 @@
   "clinical": {
     "riskCounts": {
       "low": 282,
-      "medium": 990,
+      "medium": 1004,
       "high": 141
     },
-    "explicitReviewFields": 956
+    "explicitReviewFields": 970
   },
   "workflow": {
-    "explicitItems": 956,
+    "explicitItems": 970,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 950
+      "published": 964
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 348,
-    "numericWarnings": 155,
+    "articlesWithExplicitMetadata": 351,
+    "numericWarnings": 156,
     "samples": [
+      {
+        "id": "v1_9385a317ec7bbc28",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
       {
         "id": "v1_97285899231a537d",
         "issues": [
@@ -6502,13 +6571,6 @@
         "id": "v1_a5b554217652df94",
         "issues": [
           "numeric-lead-body-mismatch"
-        ]
-      },
-      {
-        "id": "v1_6b3c3101574c9e89",
-        "issues": [
-          "numeric-lead-body-mismatch",
-          "numeric-keypoints-body-mismatch"
         ]
       }
     ]

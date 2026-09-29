@@ -1,6 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_661d7cd6a369cf78</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T03:29:13.451Z</news:publication_date>
+      <news:title>교수들도 실패한다… 학생들이 보는 성공의 오해</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_17655e3382a70b83</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T03:29:13.447Z</news:publication_date>
+      <news:title>버지니아주 최고 대학상 수상한 신경종양학 수의학자</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_b647c96090e9937a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T03:29:13.442Z</news:publication_date>
+      <news:title>말 귀흰반에 대한 0.5% 트레티노인 치료 효과 연구</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9c4f70ba261ecb46</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T03:13:29.366Z</news:publication_date>
+      <news:title>칠레 수의학생, 미국 교환연구 통해 글로벌 연구자 꿈 키워</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_a8851b4e4d2f1281</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T03:13:29.362Z</news:publication_date>
+      <news:title>코스타리카서 미국까지, 수의사 히메네즈의 연구와 임상 도전기</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_5296fdde0af3a8a0</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T03:13:29.358Z</news:publication_date>
+      <news:title>호주 와규 소 sex-sorted 동결정액의 품질 개선에 케르세틴 효과 확인</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_48787eb1d6399670</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T03:13:29.354Z</news:publication_date>
+      <news:title>소 혈청·혈장이 개 각막염 항생제 효과에 미치는 영향</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_ce0a325d84daebdd</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T03:13:29.351Z</news:publication_date>
+      <news:title>개 구강 CD8 양성 T세포 림프종의 전기화학요법 치료 사례</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_25308c9b991c4e8b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T03:13:29.347Z</news:publication_date>
+      <news:title>FDA, 비임상 시험 용어 변경… 동물 실험 대안적 방법 공식 인정</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_f725f09d43277c87</loc>
     <news:news>
       <news:publication>
@@ -42,28 +141,6 @@
       </news:publication>
       <news:publication_date>2026-09-28T02:27:52.186Z</news:publication_date>
       <news:title>북극여우에서 Stellantchasmus falcatus 감염 보고</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_9f3aba5b7ee08d4c</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-26T02:44:04.702Z</news:publication_date>
-      <news:title>건강한 개 응고 인자 생물학적 변이 평가</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_fd982c05570cbb71</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-26T02:44:04.696Z</news:publication_date>
-      <news:title>경수소압 전처리, 말 정액 동결 해동 후 운동성 개선</news:title>
     </news:news>
   </url>
 </urlset>
