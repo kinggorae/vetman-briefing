@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-29T03:31:12.040Z",
+  "generatedAt": "2026-09-30T03:21:07.851Z",
   "critical": [],
   "warnings": [],
   "deployment": {
-    "sourceCommit": "a74ad8f99ea1303281619ceb38859b3234ab93b8",
-    "latestDate": "2026-09-29",
-    "publicArticleCount": 636,
-    "searchCount": 636,
-    "newsSitemapCount": 13
+    "sourceCommit": "d2de6b2948fa6ad76f8029350b5c35eb642d8b5f",
+    "latestDate": "2026-09-30",
+    "publicArticleCount": 650,
+    "searchCount": 650,
+    "newsSitemapCount": 23
   }
 }

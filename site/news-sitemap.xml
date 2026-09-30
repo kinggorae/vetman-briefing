@@ -1,6 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_89699d3734ff3334</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T03:18:40.470Z</news:publication_date>
+      <news:title>인슈라인 약국 도전... 수의팀은 어떻게 대응해야 할까</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_bcc9aba0f8a11c94</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T03:18:40.465Z</news:publication_date>
+      <news:title>수의 방사선치료 부작용, 타과 전문가는 어떻게 생각할까</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_1025be7fac2b9f82</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T03:18:40.460Z</news:publication_date>
+      <news:title>가축 질병 조기 탐지 가능성 높이는 환경감시 연구</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_950e14572ede5dc9</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T03:18:40.454Z</news:publication_date>
+      <news:title>실험용 원숭이 질병 진단 기술의 적용과 전망</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9e1114563bc3e872</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T03:18:40.449Z</news:publication_date>
+      <news:title>테네시대 수의학 교수, 수의통증관리 분야 창립 펠로우 선정</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_83eebbf4ffe95665</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T03:18:40.444Z</news:publication_date>
+      <news:title>지역사회 주도 개 rabies 예방접종, 아동 사망률 낮출 수 있다</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_cdb1fef5ea0e0c4c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T03:18:40.439Z</news:publication_date>
+      <news:title>전부세entor OCT로 진단한 고양이 데스메막 박리</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_3123366b8ee2d899</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T02:59:00.292Z</news:publication_date>
+      <news:title>수의대와 공대 학생 맞추기…원헬스 교육 다지기</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_98cdcf418481e104</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T02:59:00.288Z</news:publication_date>
+      <news:title>필리핀 아프리카돼지열병, 3대 섬서 비동시 대유행 확인</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_7e530baaca4ad081</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T02:59:00.279Z</news:publication_date>
+      <news:title>청해티베트 고원 설사 야크에서 소바이러스성 설사바이러스와 소로타바이러스 역학 조사</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_001cb2aec185f0a9</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T02:59:00.275Z</news:publication_date>
+      <news:title>개 메타미졸 관련 헤인츠체 빈혈의 혈액학적 추적</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_13deafc2270d837d</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T02:59:00.271Z</news:publication_date>
+      <news:title>개의 전립선암 PAE 후 900일 CT·초음파 추적 사례</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_b6ab147606a791dc</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T02:59:00.266Z</news:publication_date>
+      <news:title>단봉 낙타의 복벽 손상 수 PUBLICATION RESULTS</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_c70affe3856d9bb3</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30T02:59:00.261Z</news:publication_date>
+      <news:title>중국 과학자, 새로운 진드기 매개 바이러스 발견</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_661d7cd6a369cf78</loc>
     <news:news>
       <news:publication>
@@ -97,50 +251,6 @@
       </news:publication>
       <news:publication_date>2026-09-29T03:13:29.347Z</news:publication_date>
       <news:title>FDA, 비임상 시험 용어 변경… 동물 실험 대안적 방법 공식 인정</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_f725f09d43277c87</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-28T02:42:16.568Z</news:publication_date>
-      <news:title>말의 '조용한 고통' 다루는Ana Rangel, Virginia Tech 합류</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_6a52a0f7e1adda8a</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-28T02:42:16.565Z</news:publication_date>
-      <news:title>개 재발성 중이염에서 세침흡인과 CT로 콜레스테아톰 진단</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_24f2e26b941fd3f6</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-28T02:27:52.189Z</news:publication_date>
-      <news:title>버지니아텍 말의료센터 자문위원회, 두 여성에 영예로운 칭호 부여</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_bb395b8ee03e8a9f</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-28T02:27:52.186Z</news:publication_date>
-      <news:title>북극여우에서 Stellantchasmus falcatus 감염 보고</news:title>
     </news:news>
   </url>
 </urlset>
