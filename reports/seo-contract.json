@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-30T03:21:11.353Z",
+  "generatedAt": "2026-10-01T03:20:58.470Z",
   "status": "passed",
   "counts": {
-    "sitemapUrls": 696,
-    "checkedPages": 696,
+    "sitemapUrls": 712,
+    "checkedPages": 712,
     "critical": 0,
     "warnings": 0,
     "byKind": {
-      "article": 650,
+      "article": 666,
       "collection": 25,
       "topic": 18,
       "page": 3
