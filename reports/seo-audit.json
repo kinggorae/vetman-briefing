@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-10-03T03:04:16.679Z",
+  "generatedAt": "2026-10-04T03:31:18.401Z",
   "status": "passed",
   "counts": {
-    "htmlPages": 1638,
-    "articles": 1515,
-    "index": 695,
-    "noindex": 820,
-    "sitemap": 741,
-    "newsSitemap": 37,
+    "htmlPages": 1653,
+    "articles": 1529,
+    "index": 704,
+    "noindex": 825,
+    "sitemap": 750,
+    "newsSitemap": 26,
     "rssItems": 100,
     "rssIncomplete": 0,
     "noindexInSitemap": 0,
     "knownQualityHits": 0,
     "brokenInternalLinks": 0,
-    "indexImages": 695,
+    "indexImages": 704,
     "indexImageRightsCritical": 0
   },
   "performance": {
-    "homepageBytes": 229405,
+    "homepageBytes": 212629,
     "searchSizes": [
       {
         "file": "search.json",
-        "bytes": 633331
+        "bytes": 641641
       },
       {
         "file": "search/2026-05.json",
@@ -45,10 +45,10 @@
       },
       {
         "file": "search/2026-10.json",
-        "bytes": 41295
+        "bytes": 49605
       }
     ],
-    "articleBytes": 30619236,
+    "articleBytes": 30907327,
     "searchFirstRequestBytes": 136313
   },
   "duplicate": {
@@ -58,11 +58,11 @@
   },
   "indexPolicy": {
     "previousIndex": 318,
-    "currentIndex": 695,
-    "currentNoindex": 820,
-    "delta": 377,
+    "currentIndex": 704,
+    "currentNoindex": 825,
+    "delta": 386,
     "reasonCounts": {
-      "build-policy": 375,
+      "build-policy": 380,
       "brief-tier": 368,
       "brief-too-short": 368,
       "source-relay": 39,
@@ -80,6 +80,123 @@
     },
     "samples": {
       "index": [
+        {
+          "date": "2026-10-04",
+          "id": "v1_38be053b44244007",
+          "title": "WSU 수의대, Jerry Newbrey 사전 임상 교원상 신설",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_7fd95606261797fc",
+          "title": "계곡열 확대되는데…수의사 인식도 미흡",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_4eefe777d3c13f24",
+          "title": "골든 리트리버 특발성 모낭 점액증 치료 사례",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_00b26001f4644342",
+          "title": "Sysmex XN-1000V 혈구분석기 개 비정상 WNR 산점도 증례",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_3ddea0d0304bafda",
+          "title": "버지니아-메릴랜드 수의대, 연간 수의학 박람회 개최로 학생-고용주 연결 강화",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_43bcb27f3a4e5da6",
+          "title": "소 Meibomian 선 종양, 눈꺼풀 편평세포암과 임상적 유사성 보고",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_6510c0331b9b2cd5",
+          "title": "에티오피아 우유 생산 지역 대장균 항균제 내성 패턴",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_974a2e00a57ea962",
+          "title": "버지니아-메릴랜드 수의대, NIH 자금 두 배 증가로 전국 13위",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_848638aa06431f39",
+          "title": "유럽 수의 신경학 학술대회, 2025년 브리스틀서 개최",
+          "indexable": true,
+          "tier": "brief",
+          "clinicalRisk": "medium",
+          "paragraphs": 1,
+          "qualityIssues": [],
+          "reasons": [
+            "brief-tier"
+          ]
+        },
         {
           "date": "2026-10-03",
           "id": "v1_044bcc0ac65bdbac",
@@ -222,126 +339,74 @@
           "reasons": [
             "brief-tier"
           ]
-        },
-        {
-          "date": "2026-10-03",
-          "id": "v1_720b06c365b79a6d",
-          "title": "반려동물 진료비 부담, 새로운 해결책 등장",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-10-03",
-          "id": "v1_0c5aac74e448c75e",
-          "title": "Jasper, 애완동물 위한 무료 온라인 추모 공간 출시",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "low",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-10-03",
-          "id": "v1_8c5ddba0f67ef586",
-          "title": "아르헨티나 대서양 숲 원숭이 기생충, 습도 증가와 연관",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-10-03",
-          "id": "v1_d4157fb9ae5cd461",
-          "title": "콜로라도 소업계 이해관계자 구제역 대비 생물 실천 방안 제시",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-10-03",
-          "id": "v1_5235d019819ba227",
-          "title": "14세 농마 합성종의 과시멘트증 하악 구치 외과적 발치",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-10-03",
-          "id": "v1_888e5a66dbb5efb5",
-          "title": "진저빈-셀레늄 나노입자가 골절 치유 조절한다",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-10-02",
-          "id": "v1_8f0bb9c0db07622c",
-          "title": "연구 평가 놓치면 위험해… 수의사 위한 QUIT 도구 출시",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-10-02",
-          "id": "v1_c539b57a6b6f4876",
-          "title": "한국 양돈농장 임상 증상 돼지에서 병원체 검출 및 미생물 군집 특성",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
-        },
-        {
-          "date": "2026-10-02",
-          "id": "v1_97d4e7e0bcf1beb9",
-          "title": "산란계 keel 골격 손상과 환경 자원 접근성 체계적 고찰",
-          "indexable": true,
-          "tier": "brief",
-          "clinicalRisk": "medium",
-          "paragraphs": 1,
-          "qualityIssues": [],
-          "reasons": [
-            "brief-tier"
-          ]
         }
       ],
       "noindex": [
+        {
+          "date": "2026-10-04",
+          "id": "v1_f8dffebb2956d45d",
+          "title": "전신 마취가 고양이 구강염백 Vaccination 면역 반응에 미치는 영향",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_9f41980e4d71bd3f",
+          "title": "소 폐충백신 시장 철수, 영국 축산업계 충격",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_363f0c707c7de6e5",
+          "title": "고양이 그루밍 행동 보호자 인식 조사 연구",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_53ab42da839bd102",
+          "title": "강아지 척수근성 근경련 27례 표현형 분석",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
+        {
+          "date": "2026-10-04",
+          "id": "v1_58346d9db165b224",
+          "title": "수의사들의 낙태·불임 경험과 직장 문화 개선 방안",
+          "indexable": false,
+          "tier": "analysis",
+          "clinicalRisk": "medium",
+          "paragraphs": 3,
+          "qualityIssues": [],
+          "reasons": [
+            "build-policy"
+          ]
+        },
         {
           "date": "2026-10-03",
           "id": "v1_544fa1e35c4dcb92",
@@ -530,71 +595,6 @@
           "title": "야생동물에서 발견된 초고위험 항생제 내성균, 환경 감시 체계 강화 필요",
           "indexable": false,
           "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-10-01",
-          "id": "v1_e4ef3af7c38f325b",
-          "title": "오존 노출 폐 손상 연구에 285만 달러 정부 연구비 확보",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-10-01",
-          "id": "v1_858c03f948ad2a66",
-          "title": "수의학 분야 장애 포용의 변화, 이제는 visibility를 넘어서",
-          "indexable": false,
-          "tier": "analysis",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-10-01",
-          "id": "v1_d36a723dbe98cfb6",
-          "title": "브라질 도시 개에서 기생충 감수성과 아폭라널+밀베마이신 복합제의 높은 효능 확인",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-10-01",
-          "id": "v1_d83bbbfa5629732a",
-          "title": "야생 새 둥지에서 발견된 수의용 살충제, 도시와 숲 모두에서 오염 확인",
-          "indexable": false,
-          "tier": "evidence",
-          "clinicalRisk": "medium",
-          "paragraphs": 3,
-          "qualityIssues": [],
-          "reasons": [
-            "build-policy"
-          ]
-        },
-        {
-          "date": "2026-10-01",
-          "id": "v1_150db7bc41003bba",
-          "title": "국가별 행복과 고양이 밀도·토소포자마 노출의 상관관계",
-          "indexable": false,
-          "tier": "evidence",
           "clinicalRisk": "medium",
           "paragraphs": 3,
           "qualityIssues": [],
@@ -2376,6 +2376,13 @@
         "card": true
       },
       {
+        "file": "article/v1_00b26001f4644342.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_00c6adeb980be203.html",
         "hero": true,
         "og": true,
@@ -3188,6 +3195,13 @@
         "card": true
       },
       {
+        "file": "article/v1_38be053b44244007.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_397439fbd265e5cd.html",
         "hero": true,
         "og": true,
@@ -3252,6 +3266,13 @@
       },
       {
         "file": "article/v1_3d27735cc710504b.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_3ddea0d0304bafda.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3357,6 +3378,13 @@
       },
       {
         "file": "article/v1_438ddfdfe725523e.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_43bcb27f3a4e5da6.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3483,6 +3511,13 @@
       },
       {
         "file": "article/v1_4e359d38060c1956.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_4eefe777d3c13f24.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -3889,6 +3924,13 @@
       },
       {
         "file": "article/v1_64cc24724f682b30.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_6510c0331b9b2cd5.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4350,6 +4392,13 @@
         "card": true
       },
       {
+        "file": "article/v1_7fd95606261797fc.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
         "file": "article/v1_8051c79dbaf8d0a9.html",
         "hero": true,
         "og": true,
@@ -4386,6 +4435,13 @@
       },
       {
         "file": "article/v1_83eebbf4ffe95665.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_848638aa06431f39.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -4673,6 +4729,13 @@
       },
       {
         "file": "article/v1_97407f7b28526af0.html",
+        "hero": true,
+        "og": true,
+        "external": false,
+        "card": true
+      },
+      {
+        "file": "article/v1_974a2e00a57ea962.html",
         "hero": true,
         "og": true,
         "external": false,
@@ -6330,25 +6393,37 @@
   "clinical": {
     "riskCounts": {
       "low": 297,
-      "medium": 1077,
+      "medium": 1091,
       "high": 141
     },
-    "explicitReviewFields": 1058
+    "explicitReviewFields": 1072
   },
   "workflow": {
-    "explicitItems": 1058,
+    "explicitItems": 1072,
     "statusCounts": {
       "approved": 5,
       "correction-required": 1,
-      "published": 1052
+      "published": 1066
     },
     "correctionRequired": 1,
     "highRiskIndexWaiting": 0
   },
   "evidence": {
-    "articlesWithExplicitMetadata": 378,
-    "numericWarnings": 165,
+    "articlesWithExplicitMetadata": 385,
+    "numericWarnings": 167,
     "samples": [
+      {
+        "id": "v1_f8dffebb2956d45d",
+        "issues": [
+          "numeric-keypoints-body-mismatch"
+        ]
+      },
+      {
+        "id": "v1_58346d9db165b224",
+        "issues": [
+          "numeric-lead-body-mismatch"
+        ]
+      },
       {
         "id": "v1_469d88e69519e506",
         "issues": [
@@ -6971,18 +7046,6 @@
         "issues": [
           "numeric-lead-body-mismatch",
           "numeric-keypoints-body-mismatch"
-        ]
-      },
-      {
-        "id": "v1_7f4c2e0757b3127a",
-        "issues": [
-          "numeric-lead-body-mismatch"
-        ]
-      },
-      {
-        "id": "v1_ca99a4580afd1024",
-        "issues": [
-          "numeric-lead-body-mismatch"
         ]
       }
     ]
