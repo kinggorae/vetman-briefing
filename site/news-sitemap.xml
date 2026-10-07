@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_959fcf7f698501cc</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:23:57.794Z</news:publication_date>
+      <news:title>독립 낙농 자문회사 설립 발표</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_b102631f6a94cb87</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:23:57.789Z</news:publication_date>
+      <news:title>임상시험으로 희망을 찾는 애완동물들, Virginia Tech 수의학의 새로운 도전</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9de36decd5f62270</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:23:57.784Z</news:publication_date>
+      <news:title>버지니아 주립대 수의 안과 기술자, 두려운 동물 신뢰 얻기가 보람</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_85e484fc4ee38115</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:23:57.779Z</news:publication_date>
+      <news:title>conventional 정상이지만 field 불임인 피에몬테종 소 사례</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_ffb83ae5c8d5835b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:23:57.774Z</news:publication_date>
+      <news:title>영국·아일랜드 수의원에서 개·고양이 물림 사고 2,300건 분석</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_1ff27eb362237d0d</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:10:11.129Z</news:publication_date>
+      <news:title>한국 수의사들, 미국 전문의에게 관절 치환술 직접 배워</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_6db3233113070fde</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:10:11.126Z</news:publication_date>
+      <news:title>소가 번식 촉진 기술 겨루는 수의대생들</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_7db8d41da161f27a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:10:11.122Z</news:publication_date>
+      <news:title>물 Buffalo 유즙 EVs, 수유 단계별 대식세포 활성화 효과 차이 확인</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9f2d982caa788a6e</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:10:11.117Z</news:publication_date>
+      <news:title>개 간세포암 다각적 치료 및 AFP 모니터링 사례 보고</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_7f116540347f1f4a</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:10:11.113Z</news:publication_date>
+      <news:title>터키 남동부 야생동물 재활 센터 외상성 마이아시스 분석</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_79d3d9c4a739850c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:10:11.107Z</news:publication_date>
+      <news:title>칠레 돼지 신경질환서 다제내성 돼지연쇄구균 최초 확인</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_8917470724f0b405</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07T03:10:11.103Z</news:publication_date>
+      <news:title>몬타나 대학교 30년간 설치류 추적, 동물기반 감염병 대비</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_40048375d6915b27</loc>
     <news:news>
       <news:publication>

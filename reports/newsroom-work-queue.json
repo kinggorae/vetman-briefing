@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-06T04:01:20.573Z",
+  "generatedAt": "2026-10-07T03:26:41.059Z",
   "noindex": true,
-  "count": 1610,
-  "open": 1610,
+  "count": 1626,
+  "open": 1626,
   "next": [
     {
       "status": "open",
@@ -4207,6 +4207,27 @@
       "indexable": true,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_9f2d982caa788a6e",
+        "npm run review:request-vet -- v1_9f2d982caa788a6e"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_9f2d982caa788a6e",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_9f2d982caa788a6e",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_9f2d982caa788a6e",
+      "title": "개 간세포암 다각적 치료 및 AFP 모니터링 사례 보고",
+      "risk": "medium",
+      "date": "2026-10-07",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_a5a00799f4da8c07",
         "npm run review:request-vet -- v1_a5a00799f4da8c07"
       ],
@@ -7680,6 +7701,27 @@
       "indexable": true,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_8917470724f0b405",
+        "npm run review:request-vet -- v1_8917470724f0b405"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_8917470724f0b405",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_8917470724f0b405",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_8917470724f0b405",
+      "title": "몬타나 대학교 30년간 설치류 추적, 동물기반 감염병 대비",
+      "risk": "medium",
+      "date": "2026-10-07",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_4ddbe75b581f6b93",
         "npm run review:request-vet -- v1_4ddbe75b581f6b93"
       ],
@@ -7695,6 +7737,27 @@
       "date": "2026-07-26",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_7db8d41da161f27a",
+        "npm run review:request-vet -- v1_7db8d41da161f27a"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_7db8d41da161f27a",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_7db8d41da161f27a",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_7db8d41da161f27a",
+      "title": "물 Buffalo 유즙 EVs, 수유 단계별 대식세포 활성화 효과 차이 확인",
+      "risk": "medium",
+      "date": "2026-10-07",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
     {
       "status": "open",
@@ -10805,6 +10868,27 @@
       "indexable": true,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_ffb83ae5c8d5835b",
+        "npm run review:request-vet -- v1_ffb83ae5c8d5835b"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_ffb83ae5c8d5835b",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_ffb83ae5c8d5835b",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_ffb83ae5c8d5835b",
+      "title": "영국·아일랜드 수의원에서 개·고양이 물림 사고 2,300건 분석",
+      "risk": "medium",
+      "date": "2026-10-07",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_b6b08f3d65dd3c3c",
         "npm run review:request-vet -- v1_b6b08f3d65dd3c3c"
       ],
@@ -11177,6 +11261,27 @@
       "title": "일본 실험용 Cynomolgus 원숭이에서 Corynebacterium ulcerans 유병률 분석",
       "risk": "medium",
       "date": "2026-09-06",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_b102631f6a94cb87",
+        "npm run review:request-vet -- v1_b102631f6a94cb87"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_b102631f6a94cb87",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_b102631f6a94cb87",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_b102631f6a94cb87",
+      "title": "임상시험으로 희망을 찾는 애완동물들, Virginia Tech 수의학의 새로운 도전",
+      "risk": "medium",
+      "date": "2026-10-07",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
@@ -12048,6 +12153,27 @@
       "indexable": true,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_79d3d9c4a739850c",
+        "npm run review:request-vet -- v1_79d3d9c4a739850c"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_79d3d9c4a739850c",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_79d3d9c4a739850c",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_79d3d9c4a739850c",
+      "title": "칠레 돼지 신경질환서 다제내성 돼지연쇄구균 최초 확인",
+      "risk": "medium",
+      "date": "2026-10-07",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_9c4f70ba261ecb46",
         "npm run review:request-vet -- v1_9c4f70ba261ecb46"
       ],
@@ -12355,6 +12481,27 @@
       "title": "태평양 북서부 한탄바이러스, 설치류 30% 감염 확인",
       "risk": "medium",
       "date": "2026-08-16",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_7f116540347f1f4a",
+        "npm run review:request-vet -- v1_7f116540347f1f4a"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_7f116540347f1f4a",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_7f116540347f1f4a",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_7f116540347f1f4a",
+      "title": "터키 남동부 야생동물 재활 센터 외상성 마이아시스 분석",
+      "risk": "medium",
+      "date": "2026-10-07",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
@@ -12754,6 +12901,27 @@
       "title": "한국 방사성 요오드 치료 고갑상선종 고양이 152마리 임상적 특징 분석",
       "risk": "medium",
       "date": "2026-10-02",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_1ff27eb362237d0d",
+        "npm run review:request-vet -- v1_1ff27eb362237d0d"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_1ff27eb362237d0d",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_1ff27eb362237d0d",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_1ff27eb362237d0d",
+      "title": "한국 수의사들, 미국 전문의에게 관절 치환술 직접 배워",
+      "risk": "medium",
+      "date": "2026-10-07",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
@@ -13237,6 +13405,27 @@
       "title": "CD70 표적 CAR-NK 세포, 비바이러스적 엔지니어링 개발",
       "risk": "medium",
       "date": "2026-09-18",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_85e484fc4ee38115",
+        "npm run review:request-vet -- v1_85e484fc4ee38115"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_85e484fc4ee38115",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_85e484fc4ee38115",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_85e484fc4ee38115",
+      "title": "conventional 정상이지만 field 불임인 피에몬테종 소 사례",
+      "risk": "medium",
+      "date": "2026-10-07",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
@@ -14804,6 +14993,31 @@
       "title": "개 뇌 MRI에서 심층 학습 재구성법과 기존 재구성법 비교",
       "risk": "medium",
       "date": "2026-10-03",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_3cb5844181fa856f",
+        "npm run review:request-vet -- v1_3cb5844181fa856f"
+      ],
+      "evidence": [
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_3cb5844181fa856f",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_3cb5844181fa856f",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_3cb5844181fa856f",
+      "title": "개 뇌도 자음 선호 보인다…-speech 노출만으로 뇌 기능 변화",
+      "risk": "medium",
+      "date": "2026-10-07",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
@@ -19887,6 +20101,32 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_65e6f54cc736e7c9",
+        "npm run review:request-vet -- v1_65e6f54cc736e7c9"
+      ],
+      "evidence": [
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed",
+        "numeric-keypoints-body-mismatch"
+      ],
+      "id": "editorial:v1_65e6f54cc736e7c9",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_65e6f54cc736e7c9",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_65e6f54cc736e7c9",
+      "title": "말 천식과 환경 영향 연구... 수의대생 설문조사 진행",
+      "risk": "medium",
+      "date": "2026-10-07",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요 · numeric-keypoints-body-mismatch"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_94e3cfff7acbf559",
         "npm run review:request-vet -- v1_94e3cfff7acbf559"
       ],
@@ -24135,6 +24375,32 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_217270eb421a4b59",
+        "npm run review:request-vet -- v1_217270eb421a4b59"
+      ],
+      "evidence": [
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed",
+        "numeric-keypoints-body-mismatch"
+      ],
+      "id": "editorial:v1_217270eb421a4b59",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_217270eb421a4b59",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_217270eb421a4b59",
+      "title": "위스콘신서 소에도 유입된'EHD'… 사슴 1,600마리 이상 감염",
+      "risk": "medium",
+      "date": "2026-10-07",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요 · numeric-keypoints-body-mismatch"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_8c4e62670827cfb6",
         "npm run review:request-vet -- v1_8c4e62670827cfb6"
       ],
@@ -25172,6 +25438,31 @@
       "title": "카페인, 침입개미 학습 능력 끌어올려 해충 조절 가능성 열려",
       "risk": "medium",
       "date": "2026-07-31",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_97d270676728297f",
+        "npm run review:request-vet -- v1_97d270676728297f"
+      ],
+      "evidence": [
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_97d270676728297f",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_97d270676728297f",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_97d270676728297f",
+      "title": "캘리포니아 유바시티, 어린이와 접촉한 박쥐에서 광견병 확인",
+      "risk": "medium",
+      "date": "2026-10-07",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
@@ -27727,6 +28018,26 @@
       "indexable": true,
       "requiredRole": "editor",
       "commands": [
+        "npm run review:show -- v1_959fcf7f698501cc"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_959fcf7f698501cc",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 85,
+      "articleId": "v1_959fcf7f698501cc",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_959fcf7f698501cc",
+      "title": "독립 낙농 자문회사 설립 발표",
+      "risk": "low",
+      "date": "2026-10-07",
+      "blocker": "review-required",
+      "reason": "본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "editor",
+      "commands": [
         "npm run review:show -- v1_569dbdd104ac97bd"
       ],
       "evidence": [],
@@ -28394,6 +28705,26 @@
       "indexable": true,
       "requiredRole": "editor",
       "commands": [
+        "npm run review:show -- v1_9de36decd5f62270"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_9de36decd5f62270",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 85,
+      "articleId": "v1_9de36decd5f62270",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_9de36decd5f62270",
+      "title": "버지니아 주립대 수의 안과 기술자, 두려운 동물 신뢰 얻기가 보람",
+      "risk": "low",
+      "date": "2026-10-07",
+      "blocker": "review-required",
+      "reason": "본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "editor",
+      "commands": [
         "npm run review:show -- v1_24f2e26b941fd3f6"
       ],
       "evidence": [],
@@ -28526,6 +28857,26 @@
       "title": "세바 동물건강, 미국 동반동물 시장 본격 공략",
       "risk": "low",
       "date": "2026-09-18",
+      "blocker": "review-required",
+      "reason": "본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "editor",
+      "commands": [
+        "npm run review:show -- v1_6db3233113070fde"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_6db3233113070fde",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 85,
+      "articleId": "v1_6db3233113070fde",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_6db3233113070fde",
+      "title": "소가 번식 촉진 기술 겨루는 수의대생들",
+      "risk": "low",
+      "date": "2026-10-07",
       "blocker": "review-required",
       "reason": "본문 해시 변경 후 재검수 필요"
     },
@@ -37520,15 +37871,15 @@
     "byType": {
       "correction": 1,
       "draft-review": 50,
-      "editorial-review": 1275,
+      "editorial-review": 1291,
       "feed-health": 10,
       "image-rights": 87,
       "source-review": 187
     },
     "byPriority": {
       "critical": 1,
-      "high": 1154,
-      "normal": 455
+      "high": 1167,
+      "normal": 458
     }
   },
   "note": "인증 관리자 전용 작업 큐. 작업 카드는 승인·발행을 자동 실행하지 않으며 기존 검수 CLI의 다음 명령만 안내합니다."
