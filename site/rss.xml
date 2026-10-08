@@ -6,6 +6,86 @@
   <language>ko</language>
   <atom:link href="https://news.vetmanlab.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>AI 모델, 송아지 수부 관절염 방사선 판독에서 전문가 대비 정확도 평가</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-08#v1_56e9c796d1eeeee4</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-08#v1_56e9c796d1eeeee4</guid>
+    <pubDate>Thu, 08 Oct 2026 03:29:32 GMT</pubDate>
+    <category>brief</category>
+    <description>이 연구는 송아지의 화농성 수부 관절염 방사선 사진에서 다중 양식 대규모 언어 모델(MLLM)과 초보 판독자, 전문가 간의 판독 일치도를 평가했다. 53마리 송아지의 방사선 사진을 GPT-4V, GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro 등 4개의 MLLM과 2명의 초보 판독자, 전문가가 평가했다. 그 결과 GPT-4o가 전문가와 가장 높은 일치도(K=0.</description>
+    <content:encoded><![CDATA[<p>이 연구는 송아지의 화농성 수부 관절염 방사선 사진에서 다중 양식 대규모 언어 모델(MLLM)과 초보 판독자, 전문가 간의 판독 일치도를 평가했다. 53마리 송아지의 방사선 사진을 GPT-4V, GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro 등 4개의 MLLM과 2명의 초보 판독자, 전문가가 평가했다. 그 결과 GPT-4o가 전문가와 가장 높은 일치도(K=0.</p><p>이 연구는 송아지의 화농성 수부 관절염 방사선 사진에서 다중 양식 대규모 언어 모델(MLLM)과 초보 판독자, 전문가 간의 판독 일치도를 평가했다. 53마리 송아지의 방사선 사진을 GPT-4V, GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro 등 4개의 MLLM과 2명의 초보 판독자, 전문가가 평가했다. 그 결과 GPT-4o가 전문가와 가장 높은 일치도(K=0.62)를 보였고, Gemini 1.5 Pro(K=0.58), GPT-4V(K=0.54), Claude 3.5 Sonnet(K=0.53) 순이었다. 초보 판독자는 각각 K=0.53과 0.49의 중간 수준 일치도를 보였다. 일부 AI 모델이 초보 판독자만큼이나 우수하지만 여전히 전문가에는 미치지 못하며, 수의학 방사선 판독에서 AI 도구의 가능성과 한계를 보여주는 결과다.</p>]]></content:encoded>
+    <source url="https://onlinelibrary.wiley.com/doi/10.1111/vru.70252?af=R">Veterinary radiology &amp; ultrasound</source>
+  </item>
+  <item>
+    <title>남아프리카 Nguni·Boran 소 번식 성과에 미치는 품종·사육·방목 요인</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-08#v1_a96d3276d9b99be3</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-08#v1_a96d3276d9b99be3</guid>
+    <pubDate>Thu, 08 Oct 2026 03:29:32 GMT</pubDate>
+    <category>brief</category>
+    <description>남아프리카 동케이프주 공용 초원에서 사육되는 Nguni와 Boran 소 80두를 대상으로 품종, 사육 구조(단일 품종/혼합 품종), 방목 시스템(소 단독/혼합 종) 등의 요인이 번식 성과에 미치는 영향을 12개월간 조사하였다. 분석 결과, 세 가지 요인이 모두 번식 성과와 유의한 연관성을 보였다(p&lt;0.05). Nguni 소가 Boran 소보다 임신률 91.3%, 수정률 86.</description>
+    <content:encoded><![CDATA[<p>남아프리카 동케이프주 공용 초원에서 사육되는 Nguni와 Boran 소 80두를 대상으로 품종, 사육 구조(단일 품종/혼합 품종), 방목 시스템(소 단독/혼합 종) 등의 요인이 번식 성과에 미치는 영향을 12개월간 조사하였다. 분석 결과, 세 가지 요인이 모두 번식 성과와 유의한 연관성을 보였다(p&lt;0.05). Nguni 소가 Boran 소보다 임신률 91.3%, 수정률 86.</p><p>남아프리카 동케이프주 공용 초원에서 사육되는 Nguni와 Boran 소 80두를 대상으로 품종, 사육 구조(단일 품종/혼합 품종), 방목 시스템(소 단독/혼합 종) 등의 요인이 번식 성과에 미치는 영향을 12개월간 조사하였다. 분석 결과, 세 가지 요인이 모두 번식 성과와 유의한 연관성을 보였다(p&lt;0.05). Nguni 소가 Boran 소보다 임신률 91.3%, 수정률 86.5%, 분만율 88.9%, 자축 생존율 96.2%로 전반적으로 더 높은 번식 성과를 나타냈다. 이종 혼합 사육과 소-양 혼합 방목은 번식 효율성, 체조건 및 송아지 성장 성과를 개선하였다. 이러한 결과는 토착 적응 품종과 개선된 방목 관리의 통합이 아프리카 Saharan 이남 지역 공용 축산 시스템의 생산성과 지속 가능성을 향상시킬 수 있음을 시사한다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1940048/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
+    <title>볼리비아, 농업 부문 AMR 대응 거버넌스 강화 사례</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-08#v1_beb657b8c7bac8e7</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-08#v1_beb657b8c7bac8e7</guid>
+    <pubDate>Thu, 08 Oct 2026 03:29:32 GMT</pubDate>
+    <category>brief</category>
+    <description>세계보건기구는 항생제 내성(AMR)을 인간 건강의 주요 위협으로 규정하고 있으며, 2019년 전 세계적으로 약 127만 명이 직접 사망하고 495만 명이 관련 사망을 경험한 것으로 추정됩니다. One Health 접근법의 효과적인 구현은 다부문 간 협력을 요구하지만, 볼리비아에서는 다부문 위원회와 국가 행동계획 수립 시도가 아직 통합되지 못했습니다.</description>
+    <content:encoded><![CDATA[<p>세계보건기구는 항생제 내성(AMR)을 인간 건강의 주요 위협으로 규정하고 있으며, 2019년 전 세계적으로 약 127만 명이 직접 사망하고 495만 명이 관련 사망을 경험한 것으로 추정됩니다. One Health 접근법의 효과적인 구현은 다부문 간 협력을 요구하지만, 볼리비아에서는 다부문 위원회와 국가 행동계획 수립 시도가 아직 통합되지 못했습니다.</p><p>세계보건기구는 항생제 내성(AMR)을 인간 건강의 주요 위협으로 규정하고 있으며, 2019년 전 세계적으로 약 127만 명이 직접 사망하고 495만 명이 관련 사망을 경험한 것으로 추정됩니다. One Health 접근법의 효과적인 구현은 다부문 간 협력을 요구하지만, 볼리비아에서는 다부문 위원회와 국가 행동계획 수립 시도가 아직 통합되지 못했습니다. 이러한 상황에서 농업보건식량안전국(SENASAG)은 AMR 방지 위원회(CC-RAM)를 구현하여 부문 간 조정 강화와 이해관계자들의 정렬을 가능케 했습니다. 볼리비아 사례는 농업 거버넌스가 해당 부문 내 AMR 대응 노력을 강화하는 데 기여할 수 있으며, One Health 하의 다부문 거버넌스의 효과적이고 지속 가능한 운영 조건을 마련할 수 있음을 시사합니다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1909859/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
+    <title>카자흐스탄 소·양 테일레리아감염 전국현황</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-08#v1_195465cd27cbe348</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-08#v1_195465cd27cbe348</guid>
+    <pubDate>Thu, 08 Oct 2026 03:29:32 GMT</pubDate>
+    <category>brief</category>
+    <description>카자흐스탄의 소 6,224마리와 양 1,467마리를 대상으로 전국 규모의 Theileria spp. 감시 연구가 수행되었다. 소의 34.4%에서 Theleria 속이 검출되었으며, T. annulata(27.1%), T. orientalis(15.1%), T. sinensis(0.5%)가 확인되었다. 양에서는 11.5%에서 T. ovis(5.5%), Theileria sp.</description>
+    <content:encoded><![CDATA[<p>카자흐스탄의 소 6,224마리와 양 1,467마리를 대상으로 전국 규모의 Theileria spp. 감시 연구가 수행되었다. 소의 34.4%에서 Theleria 속이 검출되었으며, T. annulata(27.1%), T. orientalis(15.1%), T. sinensis(0.5%)가 확인되었다. 양에서는 11.5%에서 T. ovis(5.5%), Theileria sp.</p><p>카자흐스탄의 소 6,224마리와 양 1,467마리를 대상으로 전국 규모의 Theileria spp. 감시 연구가 수행되었다. 소의 34.4%에서 Theleria 속이 검출되었으며, T. annulata(27.1%), T. orientalis(15.1%), T. sinensis(0.5%)가 확인되었다. 양에서는 11.5%에서 T. ovis(5.5%), Theileria sp. genotype OT3(4.4%), T. annulata(2.6%)가 검출되었다. 특히 카자흐스탄에서 처음으로 T. orientalis 유전자형 2(Ikeda), T. sinensis, Theileria sp. genotype OT3이 발견되어 중앙아시아에서의 테일레리아 확산 양상과 병원체 유전적 다양성에 대한 중요한 기초 자료를 제공한다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1987322/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
+    <title>말 생후 뇌유래 세포 첫 확립 및 유도다능성 세포 재프로그래밍 도전</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-08#v1_d35bca6d4f8a5859</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-08#v1_d35bca6d4f8a5859</guid>
+    <pubDate>Thu, 08 Oct 2026 03:29:32 GMT</pubDate>
+    <category>brief</category>
+    <description>이 연구는 이탈리아 파도바대학교에서 말이 생후 뇌에서 유래한 세포(EpBCs)를 해마에서 처음 분리·배양하고, SV40 대형 T 항원을 통해 불멸화된 세포주(EiBCs)를 수립했다. 연구진은 Sendai바이러스, 에피솜 벡터, 합성 mRNA 등 세 가지 비통합 접근법을 이용해 유도다능성 줄기세포(iPSC)로 재프로그래밍을 시도했으나, 테스트 조건에서는 iPSC 유사 집락이 탐지되지 않았다.</description>
+    <content:encoded><![CDATA[<p>이 연구는 이탈리아 파도바대학교에서 말이 생후 뇌에서 유래한 세포(EpBCs)를 해마에서 처음 분리·배양하고, SV40 대형 T 항원을 통해 불멸화된 세포주(EiBCs)를 수립했다. 연구진은 Sendai바이러스, 에피솜 벡터, 합성 mRNA 등 세 가지 비통합 접근법을 이용해 유도다능성 줄기세포(iPSC)로 재프로그래밍을 시도했으나, 테스트 조건에서는 iPSC 유사 집락이 탐지되지 않았다.</p><p>이 연구는 이탈리아 파도바대학교에서 말이 생후 뇌에서 유래한 세포(EpBCs)를 해마에서 처음 분리·배양하고, SV40 대형 T 항원을 통해 불멸화된 세포주(EiBCs)를 수립했다. 연구진은 Sendai바이러스, 에피솜 벡터, 합성 mRNA 등 세 가지 비통합 접근법을 이용해 유도다능성 줄기세포(iPSC)로 재프로그래밍을 시도했으나, 테스트 조건에서는 iPSC 유사 집락이 탐지되지 않았다. 이는 종 특이적·세포 내재적·기증자 특이적 요인, 배양 조건, 인자 호환성 및 전달 효율의 복합적 영향으로 인한 것으로 판단된다. 이 연구는 말이 신경질환 연구 모델로 활용될 수 있는 기초 플랫폼을 확립했으며, 향후 말 뇌오가노이드 개발과 One Health 관점의 비교 신경과학 연구에 기여할 것으로 기대된다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1931938/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
+    <title>개의 피하 및 근육내 혈관육종 저분할 방사선 치료 성과 분석</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-08#v1_c461269322e6fcbe</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-08#v1_c461269322e6fcbe</guid>
+    <pubDate>Thu, 08 Oct 2026 03:29:32 GMT</pubDate>
+    <category>brief</category>
+    <description>워싱턴주립대학교 수의과대학 연구팀이 개의 피하 및 근육내 혈관육종 53마리를 대상으로 저분할 방사선 치료와 화학요법 병용 치료의 성과를 후향적으로 분석했다. 전체 89%가 독소루비신 기반 화학요법을 병용 받았으며, 방사선 치료 반응률은 93%(완전 관해 37%, 부분 관해 56%)로 나타났다.</description>
+    <content:encoded><![CDATA[<p>워싱턴주립대학교 수의과대학 연구팀이 개의 피하 및 근육내 혈관육종 53마리를 대상으로 저분할 방사선 치료와 화학요법 병용 치료의 성과를 후향적으로 분석했다. 전체 89%가 독소루비신 기반 화학요법을 병용 받았으며, 방사선 치료 반응률은 93%(완전 관해 37%, 부분 관해 56%)로 나타났다.</p><p>워싱턴주립대학교 수의과대학 연구팀이 개의 피하 및 근육내 혈관육종 53마리를 대상으로 저분할 방사선 치료와 화학요법 병용 치료의 성과를 후향적으로 분석했다. 전체 89%가 독소루비신 기반 화학요법을 병용 받았으며, 방사선 치료 반응률은 93%(완전 관해 37%, 부분 관해 56%)로 나타났다. 전체 중앙 생존 기간은 306일이었으며, 방사선 치료 전 수술을 받은 개는 중앙 생존 기간이 2,059일으로 비수술군 287일에 비해 유의하게 길었다(p=0.007). 다변량 분석에서 전이는 국소 진행 및 재발 위험을 약 15배 증가시키는 것으로 확인되었으나, 수술은 위험을 낮추는 경향을 보였다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1925779/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
+    <title>퇴역 거세말 King's 치과 수술으로 부비동염 호흡 증상 완화</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-08#v1_34d49249b455ff32</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-08#v1_34d49249b455ff32</guid>
+    <pubDate>Thu, 08 Oct 2026 03:29:32 GMT</pubDate>
+    <category>brief</category>
+    <description>버지니아 폴리텍nic 대학 수의과대학|Marion duPont Scott equine 의료센터는 15세 벨기에 거세말 King의 왼쪽 코에서 악취 나는 고름 분비물을 치료하기 위해 CT 스캔을 실시하였다. 검진 결과 왼쪽 어금니 뿌리 주변의 감염이 부비동까지 진행된 것이 확인되었으며, Elsa Ludwig 임상조교수가 외과적 치료를 진행하였다.</description>
+    <content:encoded><![CDATA[<p>버지니아 폴리텍nic 대학 수의과대학|Marion duPont Scott equine 의료센터는 15세 벨기에 거세말 King의 왼쪽 코에서 악취 나는 고름 분비물을 치료하기 위해 CT 스캔을 실시하였다. 검진 결과 왼쪽 어금니 뿌리 주변의 감염이 부비동까지 진행된 것이 확인되었으며, Elsa Ludwig 임상조교수가 외과적 치료를 진행하였다.</p><p>버지니아 폴리텍nic 대학 수의과대학|Marion duPont Scott equine 의료센터는 15세 벨기에 거세말 King의 왼쪽 코에서 악취 나는 고름 분비물을 치료하기 위해 CT 스캔을 실시하였다. 검진 결과 왼쪽 어금니 뿌리 주변의 감염이 부비동까지 진행된 것이 확인되었으며, Elsa Ludwig 임상조교수가 외과적 치료를 진행하였다. King은 과거 번식용 수말이었으며 2019년 조급 Giants Draft Horse Rescue에 입소하여 파트너 Ada와 함께 퇴역 생활을 즐기고 있다. 말의 치과 질환은 부비동염을 유발하기 쉽고 치료 후 호흡기와 전반적인 안녕감이 크게 개선되는 것으로 나타났다.</p>]]></content:encoded>
+    <source url="https://news.vt.edu/articles/2025/11/vetmed-emc-success-story-king.html">Virginia Tech Veterinary College News</source>
+  </item>
+  <item>
+    <title>저에너지 사료에 리소레시틴 보충한 육계 성장·대사 효과</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-08#v1_687e7ed4d9bee2c7</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-08#v1_687e7ed4d9bee2c7</guid>
+    <pubDate>Thu, 08 Oct 2026 03:44:05 GMT</pubDate>
+    <category>brief</category>
+    <description>Kuwait Institute for Scientific Research와 이집트 여러 대학 연구팀이 저에너지 사료를 급이한 육계에 리소레시틴을 보충한 효과를 연구했다. 저에너지 사료는 사료비를 절감할 수 있지만, 어린 육계의 지방 소화 능력 부족으로 성장 저하가 발생한다. 리소레시틴은 유화 작용을 통해 지방 소화와 에너지 이용을 높여 성장 성능을 회복시킬 수 있는 것으로 나타났다.</description>
+    <content:encoded><![CDATA[<p>Kuwait Institute for Scientific Research와 이집트 여러 대학 연구팀이 저에너지 사료를 급이한 육계에 리소레시틴을 보충한 효과를 연구했다. 저에너지 사료는 사료비를 절감할 수 있지만, 어린 육계의 지방 소화 능력 부족으로 성장 저하가 발생한다. 리소레시틴은 유화 작용을 통해 지방 소화와 에너지 이용을 높여 성장 성능을 회복시킬 수 있는 것으로 나타났다.</p><p>Kuwait Institute for Scientific Research와 이집트 여러 대학 연구팀이 저에너지 사료를 급이한 육계에 리소레시틴을 보충한 효과를 연구했다. 저에너지 사료는 사료비를 절감할 수 있지만, 어린 육계의 지방 소화 능력 부족으로 성장 저하가 발생한다. 리소레시틴은 유화 작용을 통해 지방 소화와 에너지 이용을 높여 성장 성능을 회복시킬 수 있는 것으로 나타났다. 320마리 Ross 308 계를 4개 처리구(대조군, 저에너지군, 저에너지+리소레시틴 125mg/kg, 저에너지+리소레시ptin 250mg/kg)로 나눠 성장 성능, 지질 대사 유전자 발현, 장 Microbiota, 항산화 상태, 면역 반응, 장 형태를 평가했다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1921649/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
     <title>몬타나 대학교 30년간 설치류 추적, 동물기반 감염병 대비</title>
     <link>https://news.vetmanlab.com/issues/2026-10-07#v1_8917470724f0b405</link>
     <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-07#v1_8917470724f0b405</guid>
@@ -924,85 +1004,5 @@
     <description>개에서 발생한 드문 구강 상피성 T세포 림프종(ETCL) 환자를 bleomycin 기반 전기화학요법(BLM-ECT)으로 치료한 사례를 보고한다. 13세 수 Beagle에서 초기 치료제가 효과 없었으나, BLM-ECT 2회 시술 후 구강 병변이 현저히 감소하고 354일까지 현지 질병 조절이 유지되었다.</description>
     <content:encoded><![CDATA[<p>개에서 발생한 드문 구강 상피성 T세포 림프종(ETCL) 환자를 bleomycin 기반 전기화학요법(BLM-ECT)으로 치료한 사례를 보고한다. 13세 수 Beagle에서 초기 치료제가 효과 없었으나, BLM-ECT 2회 시술 후 구강 병변이 현저히 감소하고 354일까지 현지 질병 조절이 유지되었다.</p><p>개에서 발생한 드문 구강 상피성 T세포 림프종(ETCL) 환자를 bleomycin 기반 전기화학요법(BLM-ECT)으로 치료한 사례를 보고한다. 13세 수 Beagle에서 초기 치료제가 효과 없었으나, BLM-ECT 2회 시술 후 구강 병변이 현저히 감소하고 354일까지 현지 질병 조절이 유지되었다. 좌하악 림프절 비대가 관찰되었으나 조직검사상 광범위한 괴사가 있어 종양 침범 여부를 확정할 수 없었고, 555일째 재발 소견에 세 번째 BLM-ECT를 실시하였다. 이 사례는 개의 구강 ETCL에서 BLM-ECT가 지속적이고 효과적인 현지 조절을 제공할 수 있음을 시사한다.</p>]]></content:encoded>
     <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1942467/full">Frontiers in Veterinary Science</source>
-  </item>
-  <item>
-    <title>소 혈청·혈장이 개 각막염 항생제 효과에 미치는 영향</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-29#v1_48787eb1d6399670</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-29#v1_48787eb1d6399670</guid>
-    <pubDate>Tue, 29 Sep 2026 03:13:29 GMT</pubDate>
-    <category>brief</category>
-    <description>Iowa State University 연구팀은 개의 감염성 각막염에서 분리한 Staphylococcus pseudintermedius, Streptococcus canis, Pseudomonas aeruginosa 등 30개 균주를 대상으로 17종 안과 항생제의 최소 억제 농도를 소 혈청·혈장 유무에 따라 비교했다.</description>
-    <content:encoded><![CDATA[<p>Iowa State University 연구팀은 개의 감염성 각막염에서 분리한 Staphylococcus pseudintermedius, Streptococcus canis, Pseudomonas aeruginosa 등 30개 균주를 대상으로 17종 안과 항생제의 최소 억제 농도를 소 혈청·혈장 유무에 따라 비교했다.</p><p>Iowa State University 연구팀은 개의 감염성 각막염에서 분리한 Staphylococcus pseudintermedius, Streptococcus canis, Pseudomonas aeruginosa 등 30개 균주를 대상으로 17종 안과 항생제의 최소 억제 농도를 소 혈청·혈장 유무에 따라 비교했다. 혈청과 혈장에 포함된 albumin과 alpha-2 macroglobulin이 항생제-단백질 결합을 통해 항생제 효과를 변화시킬 수 있었으며, 일부 균주에서 소 혈청·혈장이 직접적인 항균 효과를 나타냈다. 신선·동결 샘플 간에는 차이가 없었으며, 이 발견은 개 각막염 치료에서 혈청·혈장 병용 치료의 효과를 재평가해야 함을 시사한다.</p>]]></content:encoded>
-    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1880844/full">Frontiers in Veterinary Science</source>
-  </item>
-  <item>
-    <title>호주 와규 소 sex-sorted 동결정액의 품질 개선에 케르세틴 효과 확인</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-29#v1_5296fdde0af3a8a0</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-29#v1_5296fdde0af3a8a0</guid>
-    <pubDate>Tue, 29 Sep 2026 03:13:29 GMT</pubDate>
-    <category>brief</category>
-    <description>중국 Guizhou Academy of Agricultural Sciences 연구팀은 호주 와규 sex-sorted 동결정액에 농도(0~200 μM)의 케르세틴을 처리하여 해동 후 정자 품질을 평가하였다.</description>
-    <content:encoded><![CDATA[<p>중국 Guizhou Academy of Agricultural Sciences 연구팀은 호주 와규 sex-sorted 동결정액에 농도(0~200 μM)의 케르세틴을 처리하여 해동 후 정자 품질을 평가하였다.</p><p>중국 Guizhou Academy of Agricultural Sciences 연구팀은 호주 와규 sex-sorted 동결정액에 농도(0~200 μM)의 케르세틴을 처리하여 해동 후 정자 품질을 평가하였다. 연구 결과, 50 μM 케르세etin 처리군에서 정자 생존율, 운동성, 직선 속도(VSL), 곡선 속도(VCL), 평균 경로 속도(VAP)가 유의하게 개선되었고, 활성 산소(ROS) 수치는 감소하며 항산화 효소(SOD, CAT, GSH-Px) 활성이 증가하였다. 그러나 150 μM 이상의 고농도 처리군에서는 오히려 정자 운동성과 기능이 저하되었다. 대사체 분석 결과 처리군과 대조군 간 526개 대사체 차이가 확인되었으며, 주로 인지질 대사와 아라키돈산 대사 등 지질 관련 경로가 관여하였다. 이 연구는 적절한 케르세etin 농도가 호주 와규의 sex-sorted 동결정액 해동 후 품질을 개선할 수 있음을 제시한다.</p>]]></content:encoded>
-    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1951637/full">Frontiers in Veterinary Science</source>
-  </item>
-  <item>
-    <title>코스타리카서 미국까지, 수의사 히메네즈의 연구와 임상 도전기</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-29#v1_a8851b4e4d2f1281</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-29#v1_a8851b4e4d2f1281</guid>
-    <pubDate>Tue, 29 Sep 2026 03:13:29 GMT</pubDate>
-    <category>brief</category>
-    <description>에스티반 히메네즈는 코스타리카의수의학 교육을 수료 후 2년간수의사로 일하며 임상 경력을 쌓았습니다. 이후 Penn State University에서 석사 과정을 거쳐 출산기 소를 연구했고, Iowa State University에서 임상 인턴십을 수행했습니다. 현재 버지니아테크 수의학 단과대학에서 생산 관리 수의 Resident로 활동하면서 BVMS 프로그램에서 Ph.D.</description>
-    <content:encoded><![CDATA[<p>에스티반 히메네즈는 코스타리카의수의학 교육을 수료 후 2년간수의사로 일하며 임상 경력을 쌓았습니다. 이후 Penn State University에서 석사 과정을 거쳐 출산기 소를 연구했고, Iowa State University에서 임상 인턴십을 수행했습니다. 현재 버지니아테크 수의학 단과대학에서 생산 관리 수의 Resident로 활동하면서 BVMS 프로그램에서 Ph.D.</p><p>에스티반 히메네즈는 코스타리카의수의학 교육을 수료 후 2년간수의사로 일하며 임상 경력을 쌓았습니다. 이후 Penn State University에서 석사 과정을 거쳐 출산기 소를 연구했고, Iowa State University에서 임상 인턴십을 수행했습니다. 현재 버지니아테크 수의학 단과대학에서 생산 관리 수의 Resident로 활동하면서 BVMS 프로그램에서 Ph.D. 과정을 병행하고 있으며, 임상과 연구를 결합한 훈련을 받고 있습니다. 부모님이 모두수의사인 그는 어린 시절부터 동물 건강에 대한 노출과 헌신적인 모습을 보며 수의학에 대한 열정을 키웠습니다.</p>]]></content:encoded>
-    <source url="https://news.vt.edu/articles/2025/09/vetmed-resident-spotlight-jimenez.html">Virginia Tech Veterinary College News</source>
-  </item>
-  <item>
-    <title>칠레 수의학생, 미국 교환연구 통해 글로벌 연구자 꿈 키워</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-29#v1_9c4f70ba261ecb46</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-29#v1_9c4f70ba261ecb46</guid>
-    <pubDate>Tue, 29 Sep 2026 03:13:29 GMT</pubDate>
-    <category>brief</category>
-    <description>칠레 남부 발디비아 출신 Universidad Austral de Chile 수의학전문대학생 Maria Francisca Valdés와 Stefanie Guevara가 미국 버지니아텍 수의과 대학 연구실에서 3개월간 동물건강 향상을 위한 연구를 진행했다.</description>
-    <content:encoded><![CDATA[<p>칠레 남부 발디비아 출신 Universidad Austral de Chile 수의학전문대학생 Maria Francisca Valdés와 Stefanie Guevara가 미국 버지니아텍 수의과 대학 연구실에서 3개월간 동물건강 향상을 위한 연구를 진행했다.</p><p>칠레 남부 발디비아 출신 Universidad Austral de Chile 수의학전문대학생 Maria Francisca Valdés와 Stefanie Guevara가 미국 버지니아텍 수의과 대학 연구실에서 3개월간 동물건강 향상을 위한 연구를 진행했다. 이 프로그램은 1996년 협력 관계 시작 이후 양 기관 간의 학술 유대 강화에 기여하며, 현재 약 10명의 칠레 교수가 버지니아테크에서 석사·박사학위를 받고 귀국한 바 있다. Francisco Carvallo 임상부가학교수는 이 프로그램이 칠레 학생들에게 첨단 수의 연구 기법을 경험하게 하고, 글로벌 수의 연구자 양성에 크게 기여한다고 강조했다.</p>]]></content:encoded>
-    <source url="https://news.vt.edu/articles/2025/04/vetmed-chilean-students.html">Virginia Tech Veterinary College News</source>
-  </item>
-  <item>
-    <title>말 귀흰반에 대한 0.5% 트레티노인 치료 효과 연구</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-29#v1_b647c96090e9937a</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-29#v1_b647c96090e9937a</guid>
-    <pubDate>Tue, 29 Sep 2026 03:29:13 GMT</pubDate>
-    <category>brief</category>
-    <description>본 연구는 말이 귀에 발생하는 흰 반점인 귀흰반(aural plaques)에 대한 0.5% 농도의 트레티노인(레티노산) 도포 치료의 효과성을 평가하였다. 귀흰반은 말에서 흔히 관찰되는 피부 질환으로, 미용적 문제와 함께 가려움증을 유발할 수 있다. 트레티노인은 비타민 A 유도제로서 피부 세포의 분화와 증식을 조절하여 병변 개선에 도움을 줄 것으로 기대되었다.</description>
-    <content:encoded><![CDATA[<p>본 연구는 말이 귀에 발생하는 흰 반점인 귀흰반(aural plaques)에 대한 0.5% 농도의 트레티노인(레티노산) 도포 치료의 효과성을 평가하였다. 귀흰반은 말에서 흔히 관찰되는 피부 질환으로, 미용적 문제와 함께 가려움증을 유발할 수 있다. 트레티노인은 비타민 A 유도제로서 피부 세포의 분화와 증식을 조절하여 병변 개선에 도움을 줄 것으로 기대되었다.</p><p>본 연구는 말이 귀에 발생하는 흰 반점인 귀흰반(aural plaques)에 대한 0.5% 농도의 트레티노인(레티노산) 도포 치료의 효과성을 평가하였다. 귀흰반은 말에서 흔히 관찰되는 피부 질환으로, 미용적 문제와 함께 가려움증을 유발할 수 있다. 트레티노인은 비타민 A 유도제로서 피부 세포의 분화와 증식을 조절하여 병변 개선에 도움을 줄 것으로 기대되었다. 임상 시험 결과를 통해 치료 전후의 병변 변화를 비교 분석하였으며, 트레티노인 도포가 귀흰반의 크기, 두께, 임상 증상에 미치는 영향을 보고한다. 본 연구는 말 피부 질환 치료에서 트레티노인의 임상적 활용 가능성을 제시하는 중요한 자료이다.</p>]]></content:encoded>
-    <source url="https://onlinelibrary.wiley.com/doi/10.1111/vde.70090?af=R">Veterinary Dermatology</source>
-  </item>
-  <item>
-    <title>버지니아주 최고 대학상 수상한 신경종양학 수의학자</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-29#v1_17655e3382a70b83</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-29#v1_17655e3382a70b83</guid>
-    <pubDate>Tue, 29 Sep 2026 03:29:13 GMT</pubDate>
-    <category>brief</category>
-    <description>버지니아텍 수의과대학의 존 로스마이슬 교수가 2025년 버지니아주 Outstanding Faculty상을 수상했다. 이 상은 1987년 이후 버지니아 대학 교원의 최고 영예로, 주립 및 사립 대학의 가장 우수한 교원을 대상으로 수여된다. 로스마이슬 교수는 개와 인간의 뇌암 치료 개발을 연구하는 비교 신경종양학 분야의 국제적 권위자다.</description>
-    <content:encoded><![CDATA[<p>버지니아텍 수의과대학의 존 로스마이슬 교수가 2025년 버지니아주 Outstanding Faculty상을 수상했다. 이 상은 1987년 이후 버지니아 대학 교원의 최고 영예로, 주립 및 사립 대학의 가장 우수한 교원을 대상으로 수여된다. 로스마이슬 교수는 개와 인간의 뇌암 치료 개발을 연구하는 비교 신경종양학 분야의 국제적 권위자다.</p><p>버지니아텍 수의과대학의 존 로스마이슬 교수가 2025년 버지니아주 Outstanding Faculty상을 수상했다. 이 상은 1987년 이후 버지니아 대학 교원의 최고 영예로, 주립 및 사립 대학의 가장 우수한 교원을 대상으로 수여된다. 로스마이슬 교수는 개와 인간의 뇌암 치료 개발을 연구하는 비교 신경종양학 분야의 국제적 권위자다. 그의 연구는 개와 인간의 뇌암에서 공통 분자 경로를 규명하고 치료 표적을 개발하는 데 초점을 맞추고 있으며, 특히 뇌수술을 보다 효과적이면서도 최소화하기 위한 연구를 진행하고 있다. 그는 가족의 암 경험이 더 나은 암 치료 개발에 대한 동기가 된다고 밝혔다.</p>]]></content:encoded>
-    <source url="https://news.vt.edu/articles/2025/01/vetmed-rossmeisl-faculty-honor.html">Virginia Tech Veterinary College News</source>
-  </item>
-  <item>
-    <title>교수들도 실패한다… 학생들이 보는 성공의 오해</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-29#v1_661d7cd6a369cf78</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-29#v1_661d7cd6a369cf78</guid>
-    <pubDate>Tue, 29 Sep 2026 03:29:13 GMT</pubDate>
-    <category>brief</category>
-    <description>Virginia Tech수의학대학의 Clay Caswell 교수가 학생들의 가장 큰 오해에 대해 밝혔다. 학생들은 교수들이 끊임없이 상승하는 경력을 가지고 있다고 생각하기 쉽지만, 실제로는 거절과 실패의 역사가 포함되어 있다. Caswell 교수는 연구실에서 훈련생들이 과학에 빠져드는 모습을 보며 직접적인 연구보다 더 큰 보람을 느낀다고 말했다.</description>
-    <content:encoded><![CDATA[<p>Virginia Tech수의학대학의 Clay Caswell 교수가 학생들의 가장 큰 오해에 대해 밝혔다. 학생들은 교수들이 끊임없이 상승하는 경력을 가지고 있다고 생각하기 쉽지만, 실제로는 거절과 실패의 역사가 포함되어 있다. Caswell 교수는 연구실에서 훈련생들이 과학에 빠져드는 모습을 보며 직접적인 연구보다 더 큰 보람을 느낀다고 말했다.</p><p>Virginia Tech수의학대학의 Clay Caswell 교수가 학생들의 가장 큰 오해에 대해 밝혔다. 학생들은 교수들이 끊임없이 상승하는 경력을 가지고 있다고 생각하기 쉽지만, 실제로는 거절과 실패의 역사가 포함되어 있다. Caswell 교수는 연구실에서 훈련생들이 과학에 빠져드는 모습을 보며 직접적인 연구보다 더 큰 보람을 느낀다고 말했다. 그는 미래 과학에 대한 희망으로, 매번 훈련생들과 대화할 때마다 그들의 잠재력에 놀라움을 금치 못한다고 밝혔다. Caswell 교수의 가족에는 개 2마리(Angus, Oreo), 고양이 1마리(Ginger), 그리고들이 함께한다.</p>]]></content:encoded>
-    <source url="https://news.vt.edu/articles/2025/02/vetmed-faculty-spotlight-caswell.html">Virginia Tech Veterinary College News</source>
-  </item>
-  <item>
-    <title>북극여우에서 Stellantchasmus falcatus 감염 보고</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-28#v1_bb395b8ee03e8a9f</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-28#v1_bb395b8ee03e8a9f</guid>
-    <pubDate>Mon, 28 Sep 2026 02:27:52 GMT</pubDate>
-    <category>brief</category>
-    <description>북극여우( Vulpes lagopus)에서 neorickettsial organisms에 속하는 Stellantchasmus falcatus 에이전트 감염이 확인되었다. 이 병원은 Veterinary Clinical Pathology에 조기 공개되었으며, 극지방 서식지에서 야생동물 질병 모니터링의 중요성을 보여주는 사례이다.</description>
-    <content:encoded><![CDATA[<p>북극여우( Vulpes lagopus)에서 neorickettsial organisms에 속하는 Stellantchasmus falcatus 에이전트 감염이 확인되었다. 이 병원은 Veterinary Clinical Pathology에 조기 공개되었으며, 극지방 서식지에서 야생동물 질병 모니터링의 중요성을 보여주는 사례이다.</p><p>북극여우( Vulpes lagopus)에서 neorickettsial organisms에 속하는 Stellantchasmus falcatus 에이전트 감염이 확인되었다. 이 병원은 Veterinary Clinical Pathology에 조기 공개되었으며, 극지방 서식지에서 야생동물 질병 모니터링의 중요성을 보여주는 사례이다. Stellantchasmus falcatus는 전통적으로 어류 기생충으로 알려졌으나, 북극여우에서 확인되어 숙주 범위와 동물학적 의의에 대한 추가 연구가 필요하다. 이는 임상 병리학적으로 야생동물 건강 평가에서 기생충 감시 체계의 필요성을 강조한다.</p>]]></content:encoded>
-    <source url="https://onlinelibrary.wiley.com/doi/10.1111/vcp.70109?af=R">Veterinary Clinical Pathology</source>
   </item>
 </channel></rss>

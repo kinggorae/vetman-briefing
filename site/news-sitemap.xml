@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_687e7ed4d9bee2c7</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T03:44:05.621Z</news:publication_date>
+      <news:title>저에너지 사료에 리소레시틴 보충한 육계 성장·대사 효과</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_34d49249b455ff32</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T03:29:32.130Z</news:publication_date>
+      <news:title>퇴역 거세말 King's 치과 수술으로 부비동염 호흡 증상 완화</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_c461269322e6fcbe</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T03:29:32.128Z</news:publication_date>
+      <news:title>개의 피하 및 근육내 혈관육종 저분할 방사선 치료 성과 분석</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_d35bca6d4f8a5859</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T03:29:32.125Z</news:publication_date>
+      <news:title>말 생후 뇌유래 세포 첫 확립 및 유도다능성 세포 재프로그래밍 도전</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_195465cd27cbe348</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T03:29:32.123Z</news:publication_date>
+      <news:title>카자흐스탄 소·양 테일레리아감염 전국현황</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_beb657b8c7bac8e7</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T03:29:32.120Z</news:publication_date>
+      <news:title>볼리비아, 농업 부문 AMR 대응 거버넌스 강화 사례</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_a96d3276d9b99be3</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T03:29:32.118Z</news:publication_date>
+      <news:title>남아프리카 Nguni·Boran 소 번식 성과에 미치는 품종·사육·방목 요인</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_56e9c796d1eeeee4</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-08T03:29:32.115Z</news:publication_date>
+      <news:title>AI 모델, 송아지 수부 관절염 방사선 판독에서 전문가 대비 정확도 평가</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_959fcf7f698501cc</loc>
     <news:news>
       <news:publication>
