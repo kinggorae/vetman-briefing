@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-08T03:45:48.840Z",
+  "generatedAt": "2026-10-09T03:57:46.038Z",
   "noindex": true,
-  "count": 1641,
-  "open": 1641,
+  "count": 1655,
+  "open": 1655,
   "next": [
     {
       "status": "open",
@@ -4543,6 +4543,27 @@
       "indexable": true,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_6dfe1c842ad2d722",
+        "npm run review:request-vet -- v1_6dfe1c842ad2d722"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_6dfe1c842ad2d722",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_6dfe1c842ad2d722",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_6dfe1c842ad2d722",
+      "title": "개 심각 만성신장병에 대한 동종 지방유래 줄기세포 치료 가능성 보고",
+      "risk": "medium",
+      "date": "2026-10-09",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_3e3b49b44cc1eb6c",
         "npm run review:request-vet -- v1_3e3b49b44cc1eb6c"
       ],
@@ -5261,6 +5282,27 @@
       "date": "2026-07-23",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_484c530568bfd476",
+        "npm run review:request-vet -- v1_484c530568bfd476"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_484c530568bfd476",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_484c530568bfd476",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_484c530568bfd476",
+      "title": "개와 고양이 표면 지방종양양 이형성 최초 보고",
+      "risk": "medium",
+      "date": "2026-10-09",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
     {
       "status": "open",
@@ -6719,6 +6761,27 @@
       "title": "네덜란드 9개 견종의 특발성 및 원인불명 간질 유병률 연구",
       "risk": "medium",
       "date": "2026-08-30",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_3fc9144088ec329d",
+        "npm run review:request-vet -- v1_3fc9144088ec329d"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_3fc9144088ec329d",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_3fc9144088ec329d",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_3fc9144088ec329d",
+      "title": "네덜란드 조류수의, 앵무새 순화 5단계 프로토콜 미국서 시연",
+      "risk": "medium",
+      "date": "2026-10-09",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
@@ -9701,6 +9764,27 @@
       "indexable": true,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_2386e41fc458323e",
+        "npm run review:request-vet -- v1_2386e41fc458323e"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_2386e41fc458323e",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_2386e41fc458323e",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_2386e41fc458323e",
+      "title": "수의대 졸업자의 다양한 Career 길, 14%만 비전통적 경로 선택",
+      "risk": "medium",
+      "date": "2026-10-09",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- 2026-07-20_22",
         "npm run review:request-vet -- 2026-07-20_22"
       ],
@@ -9931,6 +10015,27 @@
       "date": "2026-06-29",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_c771cfcf99eb20a4",
+        "npm run review:request-vet -- v1_c771cfcf99eb20a4"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_c771cfcf99eb20a4",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_c771cfcf99eb20a4",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_c771cfcf99eb20a4",
+      "title": "수의사 career 만족, 동일 영역에서 만족과 고통 동시에 경험",
+      "risk": "medium",
+      "date": "2026-10-09",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
     {
       "status": "open",
@@ -11752,6 +11857,27 @@
       "indexable": true,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_cdf0a2bade117ec8",
+        "npm run review:request-vet -- v1_cdf0a2bade117ec8"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_cdf0a2bade117ec8",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_cdf0a2bade117ec8",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_cdf0a2bade117ec8",
+      "title": "조류인플루엔자 발생 보고 지연 예측 모델 성능 평가",
+      "risk": "medium",
+      "date": "2026-10-09",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_e259157f666086db",
         "npm run review:request-vet -- v1_e259157f666086db"
       ],
@@ -12481,6 +12607,27 @@
       "title": "콜로라도 소업계 이해관계자 구제역 대비 생물 실천 방안 제시",
       "risk": "medium",
       "date": "2026-10-03",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_a561181686bc7c2e",
+        "npm run review:request-vet -- v1_a561181686bc7c2e"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_a561181686bc7c2e",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_a561181686bc7c2e",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_a561181686bc7c2e",
+      "title": "퀘르세틴·글루코라파닌 복합 급이, 양 성장 및 항산화력 향상 확인",
+      "risk": "medium",
+      "date": "2026-10-09",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
@@ -13846,6 +13993,27 @@
       "title": "NC State 교수, 돼지 복지 기여로 AVMA 수상",
       "risk": "medium",
       "date": "2026-08-21",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": true,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_732f72a8247bfaa0",
+        "npm run review:request-vet -- v1_732f72a8247bfaa0"
+      ],
+      "evidence": [],
+      "id": "editorial:v1_732f72a8247bfaa0",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_732f72a8247bfaa0",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_732f72a8247bfaa0",
+      "title": "NC State 대동물 외과 의사들, 수의외과학회 최고 영예 수상",
+      "risk": "medium",
+      "date": "2026-10-09",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 검수자 확인 없음 · 본문 해시 변경 후 재검수 필요"
     },
@@ -15730,6 +15898,33 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_c928b0262941147e",
+        "npm run review:request-vet -- v1_c928b0262941147e"
+      ],
+      "evidence": [
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed",
+        "numeric-lead-body-mismatch",
+        "numeric-keypoints-body-mismatch"
+      ],
+      "id": "editorial:v1_c928b0262941147e",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_c928b0262941147e",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_c928b0262941147e",
+      "title": "개 아크릴아마이드 중독, 소비자용 수분 응축 제품과의 연관성 보고",
+      "risk": "medium",
+      "date": "2026-10-09",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요 · numeric-lead-body-mismatch · numeric-keypoints-body-mismatch"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_aca69391231274bd",
         "npm run review:request-vet -- v1_aca69391231274bd"
       ],
@@ -16239,6 +16434,31 @@
       "date": "2026-08-15",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요 · numeric-keypoints-body-mismatch"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_aab9561d5551e256",
+        "npm run review:request-vet -- v1_aab9561d5551e256"
+      ],
+      "evidence": [
+        "medium-risk-not-editor-reviewed",
+        "vet-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_aab9561d5551e256",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_aab9561d5551e256",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_aab9561d5551e256",
+      "title": "개 종양에서 유전자 지도로 돌연변이 검출, liquid biopsy 임상 적용 가능성과 한계",
+      "risk": "medium",
+      "date": "2026-10-09",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
     {
       "status": "open",
@@ -19744,6 +19964,31 @@
       "indexable": false,
       "requiredRole": "vet",
       "commands": [
+        "npm run review:show -- v1_edda74c14bd1c6e9",
+        "npm run review:request-vet -- v1_edda74c14bd1c6e9"
+      ],
+      "evidence": [
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_edda74c14bd1c6e9",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_edda74c14bd1c6e9",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_edda74c14bd1c6e9",
+      "title": "도베르만 핀셔, 유전적 근친교배 심각-신경 발달 유전자서 선택 서명 확인",
+      "risk": "medium",
+      "date": "2026-10-09",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
         "npm run review:show -- v1_af399dbfe829606e",
         "npm run review:request-vet -- v1_af399dbfe829606e"
       ],
@@ -22550,6 +22795,31 @@
     {
       "status": "open",
       "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_c73baf323e52ed42",
+        "npm run review:request-vet -- v1_c73baf323e52ed42"
+      ],
+      "evidence": [
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_c73baf323e52ed42",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_c73baf323e52ed42",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_c73baf323e52ed42",
+      "title": "수의 인력 유지에 교육이 기여할 수 있을까",
+      "risk": "medium",
+      "date": "2026-10-09",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
       "requiredRole": "editor",
       "commands": [
         "npm run review:show -- v1_5ef792dba5c1c590",
@@ -22565,6 +22835,31 @@
       "title": "수의 임상 인력 채용·유지 전략",
       "risk": "medium",
       "date": "2026-07-29",
+      "blocker": "review-required",
+      "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "vet",
+      "commands": [
+        "npm run review:show -- v1_ad3165e2bf678a9c",
+        "npm run review:request-vet -- v1_ad3165e2bf678a9c"
+      ],
+      "evidence": [
+        "medium-risk-not-editor-reviewed",
+        "editor-review-missing",
+        "medium-risk-not-editor-reviewed"
+      ],
+      "id": "editorial:v1_ad3165e2bf678a9c",
+      "type": "editorial-review",
+      "label": "임상·편집 감수",
+      "priority": 95,
+      "articleId": "v1_ad3165e2bf678a9c",
+      "articleUrl": "https://news.vetmanlab.com/article/v1_ad3165e2bf678a9c",
+      "title": "수의 전용 구강관리 제품 'Plaqtiv+' 출시",
+      "risk": "medium",
+      "date": "2026-10-09",
       "blocker": "review-required",
       "reason": "medium 임상 위험 · 본문 해시 변경 후 재검수 필요"
     },
@@ -27713,28 +28008,6 @@
       "reason": "failing · HTTP 403",
       "sourceLabel": "Animals",
       "sourceUrl": "https://www.mdpi.com/rss/journal/animals"
-    },
-    {
-      "status": "open",
-      "indexable": false,
-      "requiredRole": "editor",
-      "commands": [
-        "npm run sources:diagnose",
-        "npm run sources:repair:validate"
-      ],
-      "evidence": [
-        "HTTP 미확인",
-        "MIME 미확인"
-      ],
-      "id": "feed:src-vet-practice-magazine",
-      "type": "feed-health",
-      "label": "공식 피드 복구",
-      "priority": 90,
-      "title": "Vet Practice Magazine",
-      "blocker": "feed-health",
-      "reason": "failing · RSS/Atom/XML 형식이 아닙니다",
-      "sourceLabel": "Vet Practice Magazine",
-      "sourceUrl": "https://vetpracticemag.com.au/feed/"
     },
     {
       "status": "open",
@@ -36710,6 +36983,28 @@
       ],
       "evidence": [
         "HTTP 200",
+        "application/rss+xml; charset=UTF-8"
+      ],
+      "id": "feed:src-today-s-veterinary-nurse",
+      "type": "feed-health",
+      "label": "공식 피드 복구",
+      "priority": 65,
+      "title": "Today's Veterinary Nurse",
+      "blocker": "feed-health",
+      "reason": "stale · 최근 피드 상태 확인 필요",
+      "sourceLabel": "Today's Veterinary Nurse",
+      "sourceUrl": "https://todaysveterinarynurse.com/feed/"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "editor",
+      "commands": [
+        "npm run sources:diagnose",
+        "npm run sources:repair:validate"
+      ],
+      "evidence": [
+        "HTTP 200",
         "xml"
       ],
       "id": "feed:src-journal-of-research-in-veterinary-medicine",
@@ -36754,7 +37049,7 @@
       ],
       "evidence": [
         "HTTP 200",
-        "application/rss+xml; charset=UTF-8"
+        "text/xml;charset=UTF-8"
       ],
       "id": "feed:src-texas-a-m-vmbs-news",
       "type": "feed-health",
@@ -36787,6 +37082,28 @@
       "reason": "degraded · 최근 피드 상태 확인 필요",
       "sourceLabel": "University of Florida Veterinary News",
       "sourceUrl": "https://www.vetmed.ufl.edu/feed/"
+    },
+    {
+      "status": "open",
+      "indexable": false,
+      "requiredRole": "editor",
+      "commands": [
+        "npm run sources:diagnose",
+        "npm run sources:repair:validate"
+      ],
+      "evidence": [
+        "HTTP 200",
+        "application/rss+xml; charset=UTF-8"
+      ],
+      "id": "feed:src-vet-practice-magazine",
+      "type": "feed-health",
+      "label": "공식 피드 복구",
+      "priority": 55,
+      "title": "Vet Practice Magazine",
+      "blocker": "feed-health",
+      "reason": "degraded · 최근 피드 상태 확인 필요",
+      "sourceLabel": "Vet Practice Magazine",
+      "sourceUrl": "https://vetpracticemag.com.au/feed/"
     },
     {
       "status": "open",
@@ -38218,15 +38535,15 @@
     "byType": {
       "correction": 1,
       "draft-review": 50,
-      "editorial-review": 1307,
-      "feed-health": 9,
+      "editorial-review": 1320,
+      "feed-health": 10,
       "image-rights": 87,
       "source-review": 187
     },
     "byPriority": {
       "critical": 1,
-      "high": 1181,
-      "normal": 459
+      "high": 1193,
+      "normal": 461
     }
   },
   "note": "인증 관리자 전용 작업 큐. 작업 카드는 승인·발행을 자동 실행하지 않으며 기존 검수 CLI의 다음 명령만 안내합니다."

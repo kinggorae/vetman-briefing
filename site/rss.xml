@@ -6,6 +6,86 @@
   <language>ko</language>
   <atom:link href="https://news.vetmanlab.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>NC State 대동물 외과 의사들, 수의외과학회 최고 영예 수상</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-09#v1_732f72a8247bfaa0</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-09#v1_732f72a8247bfaa0</guid>
+    <pubDate>Fri, 09 Oct 2026 03:39:15 GMT</pubDate>
+    <category>brief</category>
+    <description>미국수의외과학회(ACVS)가 Anthony Blikslager 박사에게 2026년 창립자상 Career Achievement상을, Jan Hawkins 박사에게는 Distinguished Service상을 수여했다. 두 사람은 약 40년 전 NC State 대학수의과대학에서 만나 같은 분야에서 함께 성장해왔다.</description>
+    <content:encoded><![CDATA[<p>미국수의외과학회(ACVS)가 Anthony Blikslager 박사에게 2026년 창립자상 Career Achievement상을, Jan Hawkins 박사에게는 Distinguished Service상을 수여했다. 두 사람은 약 40년 전 NC State 대학수의과대학에서 만나 같은 분야에서 함께 성장해왔다.</p><p>미국수의외과학회(ACVS)가 Anthony Blikslager 박사에게 2026년 창립자상 Career Achievement상을, Jan Hawkins 박사에게는 Distinguished Service상을 수여했다. 두 사람은 약 40년 전 NC State 대학수의과대학에서 만나 같은 분야에서 함께 성장해왔다. Blikslager가 대동물 외과 레지던트였을 때, Hawkins는 4학년 임상실습생으로 밤낮없이 수술실에 나타나 공부하며 열정을 보였다. 현재 Blikslager는 NC State 수의병원 원장, Hawkins는 임상과 학과장으로 재임하며 업계 최고 영예를 함께 수상하게 되었다.</p>]]></content:encoded>
+    <source url="https://cvm.ncsu.edu/news/from-large-animal-surgeons-at-nc-state-to-the-top-of-their-profession">NC State University</source>
+  </item>
+  <item>
+    <title>수의사 career 만족, 동일 영역에서 만족과 고통 동시에 경험</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-09#v1_c771cfcf99eb20a4</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-09#v1_c771cfcf99eb20a4</guid>
+    <pubDate>Fri, 09 Oct 2026 03:39:15 GMT</pubDate>
+    <category>brief</category>
+    <description>캐나다 Guelph 대학 연구팀이수의사 career 만족에 대한 질적 연구를 실시했다. 과거 연구는 만족과 스트레스를 별개의 요인으로 분석했지만, 이번 연구에서수의들은 동일한 업무 영역이 맥락에 따라 만족 혹은 스트레스로 경험될 수 있다고 보고했다.</description>
+    <content:encoded><![CDATA[<p>캐나다 Guelph 대학 연구팀이수의사 career 만족에 대한 질적 연구를 실시했다. 과거 연구는 만족과 스트레스를 별개의 요인으로 분석했지만, 이번 연구에서수의들은 동일한 업무 영역이 맥락에 따라 만족 혹은 스트레스로 경험될 수 있다고 보고했다.</p><p>캐나다 Guelph 대학 연구팀이수의사 career 만족에 대한 질적 연구를 실시했다. 과거 연구는 만족과 스트레스를 별개의 요인으로 분석했지만, 이번 연구에서수의들은 동일한 업무 영역이 맥락에 따라 만족 혹은 스트레스로 경험될 수 있다고 보고했다. 지원적인 팀 관계, 전문적 자율성, 가치 일치, 치료 계획 유연성이 만족으로 이어지는 반면, 판단, 조직적 제약, 전문적 보복 두려기가 고통을 유발했다. 스펙트럼 오브 케어(SpOC) 접근이patients, 고객, 동료, 고용주, 자신을 위한 의무를 조화하고 윤리적 긴장을 줄이는 데 도움이 되지만, 두려움과 잠재적 교육과정이 유연한 케어 채택을 가로막는 장벽으로 작용한다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1958614/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
+    <title>조류인플루엔자 발생 보고 지연 예측 모델 성능 평가</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-09#v1_cdf0a2bade117ec8</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-09#v1_cdf0a2bade117ec8</guid>
+    <pubDate>Fri, 09 Oct 2026 03:39:15 GMT</pubDate>
+    <category>brief</category>
+    <description>이 연구는 세계동물보건기구의 고병원성 조류인플루엔자(46,860건) 및 아프리카돼지열병(72,690건) 발생 데이터를 분석해 보고 지연이 있는 발생 건수 예측에서 모델 복잡성이 예측 품질을 높이는지 평가했다. 주간 마감 시 최종 발생량의 7.6%만 확인 가능했으며, 복잡한 지연 인식Temporal Network은 계층적 베이지안 모델보다 6.9% 오히려 나쁜 성과를 보였다.</description>
+    <content:encoded><![CDATA[<p>이 연구는 세계동물보건기구의 고병원성 조류인플루엔자(46,860건) 및 아프리카돼지열병(72,690건) 발생 데이터를 분석해 보고 지연이 있는 발생 건수 예측에서 모델 복잡성이 예측 품질을 높이는지 평가했다. 주간 마감 시 최종 발생량의 7.6%만 확인 가능했으며, 복잡한 지연 인식Temporal Network은 계층적 베이지안 모델보다 6.9% 오히려 나쁜 성과를 보였다.</p><p>이 연구는 세계동물보건기구의 고병원성 조류인플루엔자(46,860건) 및 아프리카돼지열병(72,690건) 발생 데이터를 분석해 보고 지연이 있는 발생 건수 예측에서 모델 복잡성이 예측 품질을 높이는지 평가했다. 주간 마감 시 최종 발생량의 7.6%만 확인 가능했으며, 복잡한 지연 인식Temporal Network은 계층적 베이지안 모델보다 6.9% 오히려 나쁜 성과를 보였다. 그러나 그래디언트 부스팅 분위수 회귀는 전체적으로 18.5% 예측 오차를 줄였으며, 보고량이 많은 국가에서는 26% 개선된 반면 보고 이력이 적은 지역에서는 6.3% 오히려 악화되는 것으로 나타났다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1958869/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
+    <title>퀘르세틴·글루코라파닌 복합 급이, 양 성장 및 항산화력 향상 확인</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-09#v1_a561181686bc7c2e</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-09#v1_a561181686bc7c2e</guid>
+    <pubDate>Fri, 09 Oct 2026 03:39:15 GMT</pubDate>
+    <category>brief</category>
+    <description>중국 허난 농업대학교 연구팀이 퀘르세etin(QUE)과 글루코라파닌(GRA)을 단독 또는 복합으로 급이했을 때 육양양의 성장 수행력, 혈청 항산화 능력, 간 기능 지표, 그리고 rumen Microbiota에 미치는 영향을 조사했다.</description>
+    <content:encoded><![CDATA[<p>중국 허난 농업대학교 연구팀이 퀘르세etin(QUE)과 글루코라파닌(GRA)을 단독 또는 복합으로 급이했을 때 육양양의 성장 수행력, 혈청 항산화 능력, 간 기능 지표, 그리고 rumen Microbiota에 미치는 영향을 조사했다.</p><p>중국 허난 농업대학교 연구팀이 퀘르세etin(QUE)과 글루코라파닌(GRA)을 단독 또는 복합으로 급이했을 때 육양양의 성장 수행력, 혈청 항산화 능력, 간 기능 지표, 그리고 rumen Microbiota에 미치는 영향을 조사했다. 3~4개월령 육양양 60마리를 4개 그룹으로 나누어 35일간한 결과, QUE와 GRA 복합 급이군에서 평균 일일 사료 섭취량(ADFI)에 유의한 상호작용 효과가 나타났다. 혈청 항산화 지표인 GSH-Px과 간기능 지표인 ALT에서도 상호작용 효과가 확인되었으며, rumen 내 Succiniclasticum과 Ruminococcus 세균 속의 상대적 풍부도도 유의하게 변화했다. 연구 결과는 QUE와 GRA 복합 급이가 양의 항산화를 개선하고 간 기능에 잠재적 이로운 영향을 미치며, rumen Microbiota를 조절할 수 있음을 시사한다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1976936/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
+    <title>수의대 졸업자의 다양한 Career 길, 14%만 비전통적 경로 선택</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-09#v1_2386e41fc458323e</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-09#v1_2386e41fc458323e</guid>
+    <pubDate>Fri, 09 Oct 2026 03:39:15 GMT</pubDate>
+    <category>brief</category>
+    <description>매년 미국 수의학 대학에서 약 3,200명의 졸업자가 배출되며, 약 100,000명의 현직 수의사들과 함께 동물과 인간, 환경의 건강을 개선하는 데 기여하게 된다. 이들 중 14% 미만만이 사설 임상의학이라는 가장 흔한 길을 벗어나 학계, 정부, 산업계 등 비전통적 경로를 선택한다.</description>
+    <content:encoded><![CDATA[<p>매년 미국 수의학 대학에서 약 3,200명의 졸업자가 배출되며, 약 100,000명의 현직 수의사들과 함께 동물과 인간, 환경의 건강을 개선하는 데 기여하게 된다. 이들 중 14% 미만만이 사설 임상의학이라는 가장 흔한 길을 벗어나 학계, 정부, 산업계 등 비전통적 경로를 선택한다.</p><p>매년 미국 수의학 대학에서 약 3,200명의 졸업자가 배출되며, 약 100,000명의 현직 수의사들과 함께 동물과 인간, 환경의 건강을 개선하는 데 기여하게 된다. 이들 중 14% 미만만이 사설 임상의학이라는 가장 흔한 길을 벗어나 학계, 정부, 산업계 등 비전통적 경로를 선택한다. 비전통적 경로에는 야생동물 의학, 동물원 의학, 보전 의학, One Health 분야 등이 포함되며, 이들 역할이 중요함에도 불구하고 종종 간과되고 있다. Virginia Tech 수의대 Class of 2025 학생들은 각자의 관심사에 맞춰 Zoo medicine, conservation, policy, education 분야 등을 목표로 하고 있다.</p>]]></content:encoded>
+    <source url="https://news.vt.edu/articles/2025/01/vetmed-alternative-career-paths.html">Virginia Tech Veterinary College News</source>
+  </item>
+  <item>
+    <title>네덜란드 조류수의, 앵무새 순화 5단계 프로토콜 미국서 시연</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-09#v1_3fc9144088ec329d</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-09#v1_3fc9144088ec329d</guid>
+    <pubDate>Fri, 09 Oct 2026 03:39:15 GMT</pubDate>
+    <category>brief</category>
+    <description>버지니아-메릴랜드 대학 수의학원에서 열린 조류 인지 및 행동 심포지엄에서 네덜란드의 조류수의 Jan Hooimeijer가 기존의 도구나 간식 없이 앵무새와 상호 신뢰를 구축하는 접근법을 시연했습니다. 그는 30년 전부터 조류 행동을 연구해 온 전문가로, 정상·원하는·원하지 않는·강제 행동을 정의하고 에톨로기스트 니코 티넬베르겐의 이론을 바탕으로 5단계 프로토콜을 개발했습니다.</description>
+    <content:encoded><![CDATA[<p>버지니아-메릴랜드 대학 수의학원에서 열린 조류 인지 및 행동 심포지엄에서 네덜란드의 조류수의 Jan Hooimeijer가 기존의 도구나 간식 없이 앵무새와 상호 신뢰를 구축하는 접근법을 시연했습니다. 그는 30년 전부터 조류 행동을 연구해 온 전문가로, 정상·원하는·원하지 않는·강제 행동을 정의하고 에톨로기스트 니코 티넬베르겐의 이론을 바탕으로 5단계 프로토콜을 개발했습니다.</p><p>버지니아-메릴랜드 대학 수의학원에서 열린 조류 인지 및 행동 심포지엄에서 네덜란드의 조류수의 Jan Hooimeijer가 기존의 도구나 간식 없이 앵무새와 상호 신뢰를 구축하는 접근법을 시연했습니다. 그는 30년 전부터 조류 행동을 연구해 온 전문가로, 정상·원하는·원하지 않는·강제 행동을 정의하고 에톨로기스트 니코 티넬베르겐의 이론을 바탕으로 5단계 프로토콜을 개발했습니다. 스트레스가 심했던 앵무새들이 그의 방법론을 통해 단 몇 분 만에 협력적으로 변한 것은 이 접근법의 효과를 실증적으로 보여줍니다. 현재 수의사의 단 3~5%만 이국 동물을 전문으로 하는 상황에서, companion bird의 행동 문제를 다루는 이러한 교육 기회가 주목받고 있습니다.</p>]]></content:encoded>
+    <source url="https://news.vt.edu/articles/2025/06/vetmed-avian-symposium.html">Virginia Tech Veterinary College News</source>
+  </item>
+  <item>
+    <title>개와 고양이 표면 지방종양양 이형성 최초 보고</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-09#v1_484c530568bfd476</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-09#v1_484c530568bfd476</guid>
+    <pubDate>Fri, 09 Oct 2026 03:56:04 GMT</pubDate>
+    <category>brief</category>
+    <description>인간에서 발생하는 희귀한 피부 이식성 종양 Nevus lipomatosus cutaneous superficialis(NLCS)와 형태학적으로 유사한 새로운 질환이 개와 고양이에서 처음 확인되었다. 1년 6개월 동안 5마리의 개와 1마리의 고양이에서 진피 내에 성숙한 지방세포가 응집된 6건의 사례가 보고되었으며, 모두 피하지방조직과의 연결 없이 진피에만 병변이 나타났다.</description>
+    <content:encoded><![CDATA[<p>인간에서 발생하는 희귀한 피부 이식성 종양 Nevus lipomatosus cutaneous superficialis(NLCS)와 형태학적으로 유사한 새로운 질환이 개와 고양이에서 처음 확인되었다. 1년 6개월 동안 5마리의 개와 1마리의 고양이에서 진피 내에 성숙한 지방세포가 응집된 6건의 사례가 보고되었으며, 모두 피하지방조직과의 연결 없이 진피에만 병변이 나타났다.</p><p>인간에서 발생하는 희귀한 피부 이식성 종양 Nevus lipomatosus cutaneous superficialis(NLCS)와 형태학적으로 유사한 새로운 질환이 개와 고양이에서 처음 확인되었다. 1년 6개월 동안 5마리의 개와 1마리의 고양이에서 진피 내에 성숙한 지방세포가 응집된 6건의 사례가 보고되었으며, 모두 피하지방조직과의 연결 없이 진피에만 병변이 나타났다. 인간의 NLCS와 형태적 유사성에 따라 'NLCS 유사 병변'으로 명명할 수 있으나, 동물 의학에서 'Nevus' 용어의 혼란을 피하기 위해 '표면 지방종양양 이형성'이라는 새로운 용어를 제안하였다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1891605/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
+    <title>개 심각 만성신장병에 대한 동종 지방유래 줄기세포 치료 가능성 보고</title>
+    <link>https://news.vetmanlab.com/issues/2026-10-09#v1_6dfe1c842ad2d722</link>
+    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-09#v1_6dfe1c842ad2d722</guid>
+    <pubDate>Fri, 09 Oct 2026 03:56:04 GMT</pubDate>
+    <category>brief</category>
+    <description>본 사례는 개에서 심한 만성신장병(CKD) 치료를 위해 동종 지방유래 중간엽 줄기세포(AD-MSCs)를 사용한 결과를 보고한다. 9세 포메라니안은 급성신장장으로 인한 만성신장병 진단받았으며, 기존 치료가 실패한 후 건강한 공여견에서 채취한 AD-MSCs를 2주 간격으로 총 4회 정맥 주사했다.</description>
+    <content:encoded><![CDATA[<p>본 사례는 개에서 심한 만성신장병(CKD) 치료를 위해 동종 지방유래 중간엽 줄기세포(AD-MSCs)를 사용한 결과를 보고한다. 9세 포메라니안은 급성신장장으로 인한 만성신장병 진단받았으며, 기존 치료가 실패한 후 건강한 공여견에서 채취한 AD-MSCs를 2주 간격으로 총 4회 정맥 주사했다.</p><p>본 사례는 개에서 심한 만성신장병(CKD) 치료를 위해 동종 지방유래 중간엽 줄기세포(AD-MSCs)를 사용한 결과를 보고한다. 9세 포메라니안은 급성신장장으로 인한 만성신장병 진단받았으며, 기존 치료가 실패한 후 건강한 공여견에서 채취한 AD-MSCs를 2주 간격으로 총 4회 정맥 주사했다. 치료 결과 혈청 크레아티닌과 인이 감소하고 질소혈증 지표인 BUN이 감소 추세를 보였으며, 체중, 체력점수, 식욕, 정신상태가 호전되었고 부작용은 관찰되지 않았다. 이 결과는 개 심한 만성신장병에 대한 동종 AD-MSCs 치료의 가능성과 단기 안전성을 제시하며, 향후 세포 기반 치료 연구에 참고가 될 수 있다.</p>]]></content:encoded>
+    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1977920/full">Frontiers in Veterinary Science</source>
+  </item>
+  <item>
     <title>AI 모델, 송아지 수부 관절염 방사선 판독에서 전문가 대비 정확도 평가</title>
     <link>https://news.vetmanlab.com/issues/2026-10-08#v1_56e9c796d1eeeee4</link>
     <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-10-08#v1_56e9c796d1eeeee4</guid>
@@ -924,85 +1004,5 @@
     <description>본 연구는 전부세entor OCT를 통해 전riba membran detachment를 진단한 고양이 사례를 보고한다. 이 고양이는 전riba membran detachment으로 의심되는 섬유소성 눈염을 않고 있었으며, 전riba membran detachment 검사를 통해 정확하게 진단되었다.</description>
     <content:encoded><![CDATA[<p>본 연구는 전부세entor OCT를 통해 전riba membran detachment를 진단한 고양이 사례를 보고한다. 이 고양이는 전riba membran detachment으로 의심되는 섬유소성 눈염을 않고 있었으며, 전riba membran detachment 검사를 통해 정확하게 진단되었다.</p><p>본 연구는 전부세entor OCT를 통해 전riba membran detachment를 진단한 고양이 사례를 보고한다. 이 고양이는 전riba membran detachment으로 의심되는 섬유소성 눈염을 않고 있었으며, 전riba membran detachment 검사를 통해 정확하게 진단되었다. 전riba membran detachment은 일반적으로 외상이나 수술 후에 발생하는 것으로 알려져 있으나, 본 사례에서는 전riba membran detachment과 연관된 눈염에서 발견되었다. 전riba membran detachment는 안구 손상의 주요 원인이 될 수 있어 조기 발견과 치료가 중요하다. 전riba membran detachment는 비침습적이고 정확한 안구 검사 방법으로, 수의학에서 유용한 진단 도구로 활용될 수 있다.</p>]]></content:encoded>
     <source url="https://onlinelibrary.wiley.com/doi/10.1111/vop.70276?af=R">Veterinary ophthalmology</source>
-  </item>
-  <item>
-    <title>지역사회 주도 개 rabies 예방접종, 아동 사망률 낮출 수 있다</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-30#v1_83eebbf4ffe95665</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-30#v1_83eebbf4ffe95665</guid>
-    <pubDate>Wed, 30 Sep 2026 03:18:40 GMT</pubDate>
-    <category>brief</category>
-    <description>Washington State University 연구팀이 탄자니아 농촌에서 3년간 수행한 연구에서 지역사회 주도 개 rabies 예방접종 프로그램이 기존 외부 Vaccination 팀 방식보다 더 많은 개를 지속적으로 보호할 수 있음을 확인했다. rabies는 매년 약 160,000명이 사망하며, 그 중 99% 이상은 감염된 가정용 개의 물림으로 인해 발생하고 대부분 아동이다.</description>
-    <content:encoded><![CDATA[<p>Washington State University 연구팀이 탄자니아 농촌에서 3년간 수행한 연구에서 지역사회 주도 개 rabies 예방접종 프로그램이 기존 외부 Vaccination 팀 방식보다 더 많은 개를 지속적으로 보호할 수 있음을 확인했다. rabies는 매년 약 160,000명이 사망하며, 그 중 99% 이상은 감염된 가정용 개의 물림으로 인해 발생하고 대부분 아동이다.</p><p>Washington State University 연구팀이 탄자니아 농촌에서 3년간 수행한 연구에서 지역사회 주도 개 rabies 예방접종 프로그램이 기존 외부 Vaccination 팀 방식보다 더 많은 개를 지속적으로 보호할 수 있음을 확인했다. rabies는 매년 약 160,000명이 사망하며, 그 중 99% 이상은 감염된 가정용 개의 물림으로 인해 발생하고 대부분 아동이다. 연구에 따르면 새로운 접근법은 연중 일관된 Vaccine 커버리지를 유지하여 전염 예방에 필요한 수준 이하로 보호가 떨어지는 위험을 줄인다. Felix Lankester 교수는 지역사회 참여가 질병 관리 목표 달성에 매우 효과적이며, 이를 통해 인간 rabies 근절이 가능하다고 강조했다.</p>]]></content:encoded>
-    <source url="https://www.myvetcandy.com/news/2026/9/29/wsu-study-finds-community-led-dog-vaccination-could-save-childrens-lives">Vet Candy</source>
-  </item>
-  <item>
-    <title>테네시대 수의학 교수, 수의통증관리 분야 창립 펠로우 선정</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-30#v1_9e1114563bc3e872</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-30#v1_9e1114563bc3e872</guid>
-    <pubDate>Wed, 30 Sep 2026 03:18:40 GMT</pubDate>
-    <category>brief</category>
-    <description>미국수의마취통증학위원회(ACVAA)가 테네시대학 수의과대학의 Dr. Reza Seddighi 교수를 통증 관리 분야의 창립 펠로우로 선정했다. 이 직함은 통증 관리 분야의 전문성과 증거 기반 치료에 대한 그의 헌신을 인정하는 것이다.</description>
-    <content:encoded><![CDATA[<p>미국수의마취통증학위원회(ACVAA)가 테네시대학 수의과대학의 Dr. Reza Seddighi 교수를 통증 관리 분야의 창립 펠로우로 선정했다. 이 직함은 통증 관리 분야의 전문성과 증거 기반 치료에 대한 그의 헌신을 인정하는 것이다.</p><p>미국수의마취통증학위원회(ACVAA)가 테네시대학 수의과대학의 Dr. Reza Seddighi 교수를 통증 관리 분야의 창립 펠로우로 선정했다. 이 직함은 통증 관리 분야의 전문성과 증거 기반 치료에 대한 그의 헌신을 인정하는 것이다. 통증 관리는 수술, 외상, 종양, 만성질환 동물에게 필수적이지만, 현재 수의학 레지던트 프로그램별로 통증 관리 교육 수준에 차이가 있는 상황에서, 이 프로그램은 고급 임상 전문성을 갖춘 수의 Specialists에게 엄격한 자격 인증 경로를 제공한다. Dr. Seddighi는 동물들은 통증의 위치와 정도를 말할 수 없으므로 수의사가 통증을 인식하고 증거 기반 치료를 실천할 책임이 있다고 강조했다.</p>]]></content:encoded>
-    <source url="https://vetmed.tennessee.edu/veterinary-faculty-member-named-founding-fellow-in-veterinary-pain-management">Tennessee College of Veterinary Medicine…</source>
-  </item>
-  <item>
-    <title>실험용 원숭이 질병 진단 기술의 적용과 전망</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-30#v1_950e14572ede5dc9</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-30#v1_950e14572ede5dc9</guid>
-    <pubDate>Wed, 30 Sep 2026 03:18:40 GMT</pubDate>
-    <category>brief</category>
-    <description>실험용 원숭이는 인간과 유전적으로 가장 가까운 비인간 영장류로서 생명과학 연구와 신약 개발에 필수적이다. 그러나 B바이러스와 결핵균 등 감염병이 동물 복지와 연구 데이터 신뢰성을 위협하며, 질병의 다양성과 복잡성은 진단 역량에 엄격한 요구를 부과한다.</description>
-    <content:encoded><![CDATA[<p>실험용 원숭이는 인간과 유전적으로 가장 가까운 비인간 영장류로서 생명과학 연구와 신약 개발에 필수적이다. 그러나 B바이러스와 결핵균 등 감염병이 동물 복지와 연구 데이터 신뢰성을 위협하며, 질병의 다양성과 복잡성은 진단 역량에 엄격한 요구를 부과한다.</p><p>실험용 원숭이는 인간과 유전적으로 가장 가까운 비인간 영장류로서 생명과학 연구와 신약 개발에 필수적이다. 그러나 B바이러스와 결핵균 등 감염병이 동물 복지와 연구 데이터 신뢰성을 위협하며, 질병의 다양성과 복잡성은 진단 역량에 엄격한 요구를 부과한다. 이 리뷰는 분자(qPCR, CRISPR), 면역학(ELISA, IFA), 영상 진단 등 주요 수의 진단 기술을 분석하여 각 기법의 강점과 한계를 비교한다. qPCR은 B바이러스 감지에서 100% 민감도와 특이도를 보였으며, 디지털 PCR은 원숭이두창바이러스 45 copies/ml 수준의 극민감도 감지를 달성했다.</p>]]></content:encoded>
-    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1911594/full">Frontiers in Veterinary Science</source>
-  </item>
-  <item>
-    <title>가축 질병 조기 탐지 가능성 높이는 환경감시 연구</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-30#v1_1025be7fac2b9f82</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-30#v1_1025be7fac2b9f82</guid>
-    <pubDate>Wed, 30 Sep 2026 03:18:40 GMT</pubDate>
-    <category>brief</category>
-    <description>가축 전염병은 전 세계 식량안보와 공중보건에 심각한 위협이 되고 있으며, 기존 진단법의 한계를 보완하기 위해 환경감시(Environmental Surveillance)가 주목받고 있다. 물, 흙, 공기, 분비물 등 환경 표본에서 직접 병원체를 검출하는 이 방법은 15가지 가축 질병에 대해 분석되었으며, 매트릭스 선택에 따라 검출 민감도가 크게 달라지는 것으로 나타났다.</description>
-    <content:encoded><![CDATA[<p>가축 전염병은 전 세계 식량안보와 공중보건에 심각한 위협이 되고 있으며, 기존 진단법의 한계를 보완하기 위해 환경감시(Environmental Surveillance)가 주목받고 있다. 물, 흙, 공기, 분비물 등 환경 표본에서 직접 병원체를 검출하는 이 방법은 15가지 가축 질병에 대해 분석되었으며, 매트릭스 선택에 따라 검출 민감도가 크게 달라지는 것으로 나타났다.</p><p>가축 전염병은 전 세계 식량안보와 공중보건에 심각한 위협이 되고 있으며, 기존 진단법의 한계를 보완하기 위해 환경감시(Environmental Surveillance)가 주목받고 있다. 물, 흙, 공기, 분비물 등 환경 표본에서 직접 병원체를 검출하는 이 방법은 15가지 가축 질병에 대해 분석되었으며, 매트릭스 선택에 따라 검출 민감도가 크게 달라지는 것으로 나타났다. 표면수와 습지 퇴적물은 조류 인플루엔자바이러스 분리에 효과적이고, 분변과 슬러리는 결핵균(MAP) 검출에서 개별 동물 샘플링보다 우수한 결과를 보였다. 분자진단 기법(qRT-PCR, ddPCR)은 민감도와 속도에서 전통 배양법을 앞서지만, 생존력 확인 검사는 아직 부족한 실정이다. 일본뇌염바이러스의 폐수 감시와 Antimicrobial Resistance 유전자 분석 등 폐수 기반 역학이 동물 보건 분야로 확대되고 있어 새로운 질병 관리 전략으로 기대된다.</p>]]></content:encoded>
-    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1965480/full">Frontiers in Veterinary Science</source>
-  </item>
-  <item>
-    <title>수의 방사선치료 부작용, 타과 전문가는 어떻게 생각할까</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-30#v1_bcc9aba0f8a11c94</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-30#v1_bcc9aba0f8a11c94</guid>
-    <pubDate>Wed, 30 Sep 2026 03:18:40 GMT</pubDate>
-    <category>brief</category>
-    <description>수의 방사선치료 부작용에 대한 타과 전문수의 인식을 조사한 연구 결과가 발표되었다. 방사선 종양학, This study reveals the critical importance of interdisciplinary communication in veterinary oncology.</description>
-    <content:encoded><![CDATA[<p>수의 방사선치료 부작용에 대한 타과 전문수의 인식을 조사한 연구 결과가 발표되었다. 방사선 종양학, This study reveals the critical importance of interdisciplinary communication in veterinary oncology.</p><p>수의 방사선치료 부작용에 대한 타과 전문수의 인식을 조사한 연구 결과가 발표되었다. 방사선 종양학, This study reveals the critical importance of interdisciplinary communication in veterinary oncology. The research highlights how different specialist perspectives can improve patient care and treatment outcomes, emphasizing the need for collaborative approaches in managing radiation therapy complications.</p>]]></content:encoded>
-    <source url="https://onlinelibrary.wiley.com/doi/10.1111/vco.70114?af=R">Veterinary and Comparative Oncology</source>
-  </item>
-  <item>
-    <title>인슈라인 약국 도전... 수의팀은 어떻게 대응해야 할까</title>
-    <link>https://news.vetmanlab.com/article/v1_89699d3734ff3334</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/article/v1_89699d3734ff3334</guid>
-    <pubDate>Wed, 30 Sep 2026 03:18:40 GMT</pubDate>
-    <category>병원 경영</category>
-    <description>전문 매니저 Stephanie Goss와 Dr. Andy Roark이 인간 약국이 동물약품을 저렴하게 팔기 시작하면서 동물병원 팀이 직면한 도전에 대해 논의했습니다. 이 변화가 진료실 문화와 팀 모랄에 어떤 영향을 미치는지, 리더들은 어떻게 대응해야 하는지 살펴봅니다.</description>
-    <content:encoded><![CDATA[<p>전문 매니저 Stephanie Goss와 Dr. Andy Roark이 인간 약국이 동물약품을 저렴하게 팔기 시작하면서 동물병원 팀이 직면한 도전에 대해 논의했습니다. 이 변화가 진료실 문화와 팀 모랄에 어떤 영향을 미치는지, 리더들은 어떻게 대응해야 하는지 살펴봅니다.</p><p>미국과 캐나다 동물병원 현장에서 인간 약국이 동물용 의약품을 저렴한 가격에 판매하기 시작하면서 많은 진료팀이 혼란에 빠지고 있습니다. Stephanie Goss는 20년 이상의 병원 운영 경험을 가진 전문가로, 이 변화가 단순한 가격 경쟁이 아닌 진료 전달 체계 전체에 대한 도전이라고 설명합니다. 특히 프론트 데스크 직원들은 고객으로부터 가격 비교에 관한 질문에 직면하면서 수치심과 패닉을 느끼는 경우가 많습니다.</p><p>이 상황에서 Andy Roark과 Stephanie Goss는 두 가지 핵심 접근법을 제안합니다. 첫째, 직원들이 임의의 판매 스크립트 대신 자신감 있고 진정성 있는 답변을 제공할 수 있도록 교육해야 합니다. 둘째, 이 문제를 '프론트 데스크 문제'가 아닌 '리더십 도전'으로 재정의하여 조직 전체가 함께 대응해야 합니다. 특히 가격 압박에 노출된 직원들이 비난받거나 수치심을 느끼지 않도록 보호하는 것이 중요합니다.</p><p>한국 동물병원 관점에서 이 논의는 매우 시의적절합니다. 국내에서도 대형 마트와 온라인 플랫폼에서 동물용 사료와 보건용품이 저렴하게 판매되었고, 향후 동물 전문 약국의 확대가 예상됩니다. 한국 병원 관리자들은 이 변화를 선제적으로 리더십 과제로 인식하고, 팀원들이 가격 질문에 당당하게 대응할 수 있는 교육과 문화를 구축해야 합니다. 또한 진정성 있는 가치 전달과 클라이언트와의 신뢰 관계 강화가 경쟁력을 유지하는 핵심이 될 것입니다.</p>]]></content:encoded>
-    <source url="https://drandyroark.com/talking-to-the-team-about-pharmacies">Dr. Andy Roark</source>
-  </item>
-  <item>
-    <title>FDA, 비임상 시험 용어 변경… 동물 실험 대안적 방법 공식 인정</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-29#v1_25308c9b991c4e8b</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-29#v1_25308c9b991c4e8b</guid>
-    <pubDate>Tue, 29 Sep 2026 03:13:29 GMT</pubDate>
-    <category>brief</category>
-    <description>미국 식품의약국(FDA)이 의약품 및 생물학적 제품 규정에서 'animal tests(동물 실험)'를 'nonclinical tests(비임상 시험)' 용어로 변경하는 직접 최종 규칙을 발표했습니다.</description>
-    <content:encoded><![CDATA[<p>미국 식품의약국(FDA)이 의약품 및 생물학적 제품 규정에서 'animal tests(동물 실험)'를 'nonclinical tests(비임상 시험)' 용어로 변경하는 직접 최종 규칙을 발표했습니다.</p><p>미국 식품의약국(FDA)이 의약품 및 생물학적 제품 규정에서 'animal tests(동물 실험)'를 'nonclinical tests(비임상 시험)' 용어로 변경하는 직접 최종 규칙을 발표했습니다. 이는 2022년 Food and Drug Omnibus Reform Act에 따라 대안적 방법인 생체외(in vitro) 시스템이나 전산 모델 등이 임상시험 안전성 증거를 생성할 수 있음을 공식 인정한 것입니다. 동물 실험을 폐지하거나 증거 기준을 변경하는 것은 아니지만, 동물 실험이 안전성 데이터를 생성하는 유일한 통로라는 기존 표현을 제거했습니다. FDA는 엄격하고 현대적인 과학을 지향한다고 밝혔으며, 공개 의견 수렴 후 2027년 2월 시행될 예정입니다.</p>]]></content:encoded>
-    <source url="https://todaysveterinarybusiness.com/fda-formalizes-support-for-non-animal-testing">Today's Veterinary Business</source>
-  </item>
-  <item>
-    <title>개 구강 CD8 양성 T세포 림프종의 전기화학요법 치료 사례</title>
-    <link>https://news.vetmanlab.com/issues/2026-09-29#v1_ce0a325d84daebdd</link>
-    <guid isPermaLink="true">https://news.vetmanlab.com/issues/2026-09-29#v1_ce0a325d84daebdd</guid>
-    <pubDate>Tue, 29 Sep 2026 03:13:29 GMT</pubDate>
-    <category>brief</category>
-    <description>개에서 발생한 드문 구강 상피성 T세포 림프종(ETCL) 환자를 bleomycin 기반 전기화학요법(BLM-ECT)으로 치료한 사례를 보고한다. 13세 수 Beagle에서 초기 치료제가 효과 없었으나, BLM-ECT 2회 시술 후 구강 병변이 현저히 감소하고 354일까지 현지 질병 조절이 유지되었다.</description>
-    <content:encoded><![CDATA[<p>개에서 발생한 드문 구강 상피성 T세포 림프종(ETCL) 환자를 bleomycin 기반 전기화학요법(BLM-ECT)으로 치료한 사례를 보고한다. 13세 수 Beagle에서 초기 치료제가 효과 없었으나, BLM-ECT 2회 시술 후 구강 병변이 현저히 감소하고 354일까지 현지 질병 조절이 유지되었다.</p><p>개에서 발생한 드문 구강 상피성 T세포 림프종(ETCL) 환자를 bleomycin 기반 전기화학요법(BLM-ECT)으로 치료한 사례를 보고한다. 13세 수 Beagle에서 초기 치료제가 효과 없었으나, BLM-ECT 2회 시술 후 구강 병변이 현저히 감소하고 354일까지 현지 질병 조절이 유지되었다. 좌하악 림프절 비대가 관찰되었으나 조직검사상 광범위한 괴사가 있어 종양 침범 여부를 확정할 수 없었고, 555일째 재발 소견에 세 번째 BLM-ECT를 실시하였다. 이 사례는 개의 구강 ETCL에서 BLM-ECT가 지속적이고 효과적인 현지 조절을 제공할 수 있음을 시사한다.</p>]]></content:encoded>
-    <source url="https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1942467/full">Frontiers in Veterinary Science</source>
   </item>
 </channel></rss>
