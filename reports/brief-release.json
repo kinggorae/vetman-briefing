@@ -1,27 +1,32 @@
 {
-  "date": "2026-10-10",
-  "total": 135,
-  "existing": 13,
+  "date": "2026-10-11",
+  "total": 141,
+  "existing": 9,
   "target": 40,
-  "eligible": 2,
-  "indexEligible": 1,
-  "released": 2,
+  "eligible": 7,
+  "indexEligible": 3,
+  "released": 7,
   "retryQueued": 0,
   "seenRestored": 0,
   "minimum": 30,
-  "shortfall": 25,
+  "shortfall": 24,
   "skipped": {
-    "rejected": 13,
-    "오늘 이미 발행됨": 13,
-    "needs-claim-fix": 8,
-    "needs-language-fix": 98,
+    "needs-language-fix": 108,
+    "rejected": 9,
+    "오늘 이미 발행됨": 9,
+    "needs-claim-fix": 7,
     "이미 발행된 원문": 1
   },
   "ids": [
-    "v1_2738bdf6ad409df0",
-    "v1_cc9e036e4a16bcd9"
+    "v1_4b5a52aa6fcfae22",
+    "v1_b152edf4a2fd8c6d",
+    "v1_737cbf5a389ab745",
+    "v1_6bf00bd49e3cb1c8",
+    "v1_bbe422583f7c058f",
+    "v1_90d1169d0690cffc",
+    "v1_5b053443c69532f2"
   ],
   "minimumReached": false,
-  "note": "일일 목표까지 25건 부족하지만 가용 후보 2건을 부분 발행했습니다.",
+  "note": "일일 목표까지 24건 부족하지만 가용 후보 7건을 부분 발행했습니다.",
   "dryRun": false
 }

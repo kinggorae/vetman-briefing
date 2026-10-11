@@ -1,33 +1,31 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-10T03:46:16.182Z",
+  "generatedAt": "2026-10-11T03:11:38.924Z",
   "baseRef": "HEAD^",
   "allowRemovals": [],
   "status": "passed",
   "previous": {
-    "count": 742,
-    "declaredCount": 742
-  },
-  "current": {
     "count": 752,
     "declaredCount": 752
   },
+  "current": {
+    "count": 760,
+    "declaredCount": 760
+  },
   "added": [
-    "v1_1aba36fcf575471e",
-    "v1_2738bdf6ad409df0",
-    "v1_51ae50ea4086e83f",
-    "v1_557741c95e52ab5e",
-    "v1_68ff120ca2b5f7cc",
-    "v1_9b21eb91aef52490",
-    "v1_a5074fdbc84c4c01",
-    "v1_d36c6b8a843154dc",
-    "v1_d9fa36af60b9d1fd",
-    "v1_e6869227a243e0f6"
+    "v1_1f06d977ef861d55",
+    "v1_45e4b42b6291f3c4",
+    "v1_4b5a52aa6fcfae22",
+    "v1_737cbf5a389ab745",
+    "v1_7c8a48e702b8009b",
+    "v1_8b356319955d1a52",
+    "v1_b152edf4a2fd8c6d",
+    "v1_d52ab1f4c58c07c1"
   ],
   "removed": [],
   "allowedRemoved": [],
   "unexpectedRemoved": [],
   "critical": [],
-  "previousCount": 742,
-  "currentCount": 752
+  "previousCount": 752,
+  "currentCount": 760
 }

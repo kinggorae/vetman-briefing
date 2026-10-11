@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "date": "2026-10-10",
-  "startedAt": "2026-10-10T03:23:19.440Z",
-  "updatedAt": "2026-10-10T03:43:44.981Z",
+  "date": "2026-10-11",
+  "startedAt": "2026-10-11T02:49:23.383Z",
+  "updatedAt": "2026-10-11T03:07:45.316Z",
   "status": "complete",
   "selected": 89,
   "completed": 89,
-  "generated": 12,
-  "generationFailed": 77,
+  "generated": 15,
+  "generationFailed": 74,
   "remaining": 0,
-  "checkpointFile": "data/drafts/source-first-2026-10-10.json",
+  "checkpointFile": "data/drafts/source-first-2026-10-11.json",
   "error": null
 }
