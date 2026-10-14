@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_fb607fcbb9718835</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-14T03:07:07.607Z</news:publication_date>
+      <news:title>클로스트리디아균 의한 큰레아의 괴사성 피부염 사망 사례</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9c472d78307d4891</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-14T02:47:41.356Z</news:publication_date>
+      <news:title>개 귀염모균 미코나졸 감수성 계통발생 및 구조분석</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_a77c7a863d2b1034</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-14T02:47:41.351Z</news:publication_date>
+      <news:title>뽕나무 잎, 양과 염소 사료 활용 가능성 검토</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_1571080f87ed5c96</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-14T02:47:41.347Z</news:publication_date>
+      <news:title>개 흉부ESP 블록, 가로 접근법이 종단보다 정확한 위치 확보</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9aca016ae75d8473</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-14T02:47:41.343Z</news:publication_date>
+      <news:title>SAT1 구제역 세계적 재확산…레소토·키프로스·그리스서 증가</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_ec3a123b0a7f2bc4</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-14T02:47:41.339Z</news:publication_date>
+      <news:title>영국 스프링어와 코커 스패니얼의 특발성 간질 표현형 비교</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_f459223942e31785</loc>
     <news:news>
       <news:publication>
