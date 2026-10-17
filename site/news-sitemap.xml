@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_3676fda1c6395fd8</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:28:59.534Z</news:publication_date>
+      <news:title>개 요추체 수송 단백질을 요자외소포체에서 LC-MS/MS로 검출</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_91d6b0c64b83bb1f</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:28:59.531Z</news:publication_date>
+      <news:title>개의 Anal SAC 종양 PET/CT 첫 보고 SUVmax 수치 보고</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_6e0120b9e816c418</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:28:59.528Z</news:publication_date>
+      <news:title>말 의료에서 유세포분석 활용 최신 동향</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_edb573578ebf3574</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:28:59.525Z</news:publication_date>
+      <news:title>Antech Accuplex, 에를리키아 검사서 민감도 더 높았다</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_f28249f826914505</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:10:38.391Z</news:publication_date>
+      <news:title>수의 마취 합병증 5가지 관리 포인트</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_21ba23330388a8d2</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:10:38.388Z</news:publication_date>
+      <news:title>이미다클로프리드 노출 일본메추라기 성 행동 장애 및 질병 행동</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_af3ddd4e33f329cb</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:10:38.385Z</news:publication_date>
+      <news:title>인도 14개 동물 질병 유병률 추정을 위한 메타분석 기반 표본 계획</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_ce00ac35ec05f037</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:10:38.382Z</news:publication_date>
+      <news:title>동물 암 레지스트리 품질 평가 프레임워크 개발</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_bb5c46cbe0ca2121</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:10:38.379Z</news:publication_date>
+      <news:title>버지니아 공중보건 학생들, 주 보건부 인턴십으로 현장 경험 쌓아</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_e8e1c45ec6e2b09c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17T02:10:38.376Z</news:publication_date>
+      <news:title>Tennessee 수의대 Girish Neelakanta 교수, NIH 연구Grant 심사 분과 선정</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_0fc104016ed2d0b0</loc>
     <news:news>
       <news:publication>
@@ -218,17 +328,6 @@
       </news:publication>
       <news:publication_date>2026-10-15T02:33:00.788Z</news:publication_date>
       <news:title>수의학 교육에서 디지털 게임 기반 학습의 현황과 과제</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_fb607fcbb9718835</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-14T03:07:07.607Z</news:publication_date>
-      <news:title>클로스트리디아균 의한 큰레아의 괴사성 피부염 사망 사례</news:title>
     </news:news>
   </url>
 </urlset>
