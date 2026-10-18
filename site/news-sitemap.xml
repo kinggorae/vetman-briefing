@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://news.vetmanlab.com/article/v1_676c3b92038198c2</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-18T02:23:16.946Z</news:publication_date>
+      <news:title>말이 수막양 관련 백신 주사 경로별 면역반응 비교</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_05de003ecacfb170</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-18T02:05:13.173Z</news:publication_date>
+      <news:title>버지니아 대형동물수의사 인력 공백 메우기 위한 신규 직위 등장</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_9b68fa4f19e285df</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-18T02:05:13.170Z</news:publication_date>
+      <news:title>주외 학생 위한 수의학 장학금, 농촌 동물 의학 꿈 지원</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_eb78050ef43fe0c4</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-18T02:05:13.167Z</news:publication_date>
+      <news:title>개 경추 골절의 3D 인쇄 맞춤형 드릴 가이드 치료 성과</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://news.vetmanlab.com/article/v1_8adcd0639837809c</loc>
+    <news:news>
+      <news:publication>
+        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
+        <news:language>ko</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-18T02:05:13.163Z</news:publication_date>
+      <news:title>전 세계 매개충 매개 질환 위협 확대... WOAH, 수의사들의 주의 호소</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://news.vetmanlab.com/article/v1_3676fda1c6395fd8</loc>
     <news:news>
       <news:publication>
@@ -130,204 +185,6 @@
       </news:publication>
       <news:publication_date>2026-10-16T02:46:49.457Z</news:publication_date>
       <news:title>미국 Midwest 조류인플루엔자 재유행... turkey·duck 5만여마리 감염</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_e44545fef0c4ad84</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.888Z</news:publication_date>
-      <news:title>버지니아 수의 의료팀, 말 심장 건강 전문 검사 장비 도입</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_9776d13d675920c6</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.882Z</news:publication_date>
-      <news:title>환경 전문가에서 중소축 수의사로, 10년 만에 찾은 길</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_e242ebec2edc558e</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.877Z</news:publication_date>
-      <news:title>파킨슨 치매 유발 희귀 변이 발견… NIH 3천만달러 연구 지원</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_d16a9c13b1fd55f2</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.873Z</news:publication_date>
-      <news:title>낙타분유, 대장균 감염 육계 적혈구 면역 유전자 발현 개선</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_ff30683150fe5a65</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.869Z</news:publication_date>
-      <news:title>페루 칠면조 농장에서 다제내성 장내세균 확산</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_e0b89dd08f9dbf6c</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.865Z</news:publication_date>
-      <news:title>스페인 ASF 발생 후 수의사 불안·불면증 실태</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_f85eda55c4daf128</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.860Z</news:publication_date>
-      <news:title>사하라 이남 아프리카 소·양·염소 위장관 기생충 유병률, 첫 전대륙적 메타분석</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_30576b2ef3c40022</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.856Z</news:publication_date>
-      <news:title>개 치주 및 치근분지부 결손 위한 돼지유래 젤라틴 폼 치료 효과 임상 평가</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_78c78be98867144d</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.853Z</news:publication_date>
-      <news:title>수의티켓 전문 저널, 12년 만에 새 이름 발표</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_ecc544ed906f3160</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-16T02:23:44.849Z</news:publication_date>
-      <news:title>미국 대학 수의대, 35년 전통에 졸업 수의사와 어머니 참여</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_cf98b1197012da6e</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-15T02:52:26.925Z</news:publication_date>
-      <news:title>고양이 위위중복증 CT·초음파 소견 보고</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_b45e0512d5fd0ea3</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-15T02:52:26.920Z</news:publication_date>
-      <news:title>구기자, 카드뮴 유발 오리 신장 손상 완화 효과 확인</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_fbd5fceda93e96cd</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-15T02:52:26.916Z</news:publication_date>
-      <news:title>프랑스령 가이아나 군조 집단에서 알파헤르페스바이러스 발견</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_09bc366cb3bded40</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-15T02:52:26.911Z</news:publication_date>
-      <news:title>미성숙 개구리 성별 판별을 위한 비침습 영상법 비교 연구</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_4a42cc9a22d77468</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-15T02:33:00.802Z</news:publication_date>
-      <news:title>수입 말 대장증 수술·회복,_EVENTING 대회서 정상 활약</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_357ead7fe6843c15</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-15T02:33:00.798Z</news:publication_date>
-      <news:title>일시적 혈액량 과부하가 건강한 마취 고양이 내피 글리코칼릭스에 미치는 영향</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_6164e835e0ba1e4b</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-15T02:33:00.792Z</news:publication_date>
-      <news:title>모리린다 잎분말과 자일라나제 복합급이가 브로일러 성장·혈액 지표 개선</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://news.vetmanlab.com/article/v1_93c83cdcd90a33e3</loc>
-    <news:news>
-      <news:publication>
-        <news:name>베트맨랩 VetManLab 해외 브리핑</news:name>
-        <news:language>ko</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-15T02:33:00.788Z</news:publication_date>
-      <news:title>수의학 교육에서 디지털 게임 기반 학습의 현황과 과제</news:title>
     </news:news>
   </url>
 </urlset>
