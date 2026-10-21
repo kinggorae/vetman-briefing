@@ -1,33 +1,35 @@
 # Source-first 수집 보고서
 
-- 실행 시각: 2026-10-20T03:18:42.567Z
+- 실행 시각: 2026-10-21T03:13:52.103Z
 - 모드: write-draft
 - 소스/피드: 51/40
-- 수집 항목: 1685
-- 고유 후보: 1086
-- exact duplicate: 552
-- 기존 기사 업데이트 후보: 47
-- 관련성 제외: 202
-- 기수집(seen) 제외: 625
-- 신규 가용 후보: 263
-- draft 후보: 78
-- 생성 완료: 11
-- 생성 실패 경고: 67
-- canonical 확인 시도: 27
-- 공식 canonical 확보: 73
-- unresolved source: 5
+- 수집 항목: 1708
+- 고유 후보: 1088
+- exact duplicate: 572
+- 기존 기사 업데이트 후보: 48
+- 관련성 제외: 204
+- 기수집(seen) 제외: 624
+- 신규 가용 후보: 264
+- draft 후보: 86
+- 생성 완료: 12
+- 생성 실패 경고: 74
+- canonical 확인 시도: 37
+- 공식 canonical 확보: 80
+- unresolved source: 6
 - relay sourceUrl: 0
 
 ## draft 후보
 
-- v1_b4f9b985a7d83e48 · src-veterinary-medicine-and-science · verified · unique · Probiotics as a Strategy for Mitigating Viral Infections in Poultry: Immunomodulatory Mechanisms and Therapeutic Potential
-- v1_0bcedc4fce96d961 · src-veterinary-record-case-reports · verified · unique · Bilateral orchitis in a domestic rabbit (Oryctolagus cuniculus)
-- v1_f682592d57aec3e7 · src-veterinary-record-case-reports · verified · unique · Suspected cutaneous epithelioid haemangiosarcoma in an African pygmy hedgehog (Atelerix albiventris)
-- v1_15ff0d52516de606 · src-veterinary-dermatology · verified · unique · Clinical Characteristics of Hair Cycle Arrest in Toy Poodles: A Retrospective Comparison With Pomeranians
-- v1_e021b6719ed565cc · src-veterinary-clinical-pathology · verified · unique · What Is Your Diagnosis? Superficial Cervical Lymph Node Cytology
-- v1_b3e409d8aa6caaa5 · src-veterinary-radiology-ultrasound-the-official-journal-of- · verified · unique · Radiographic Comparison of Pulmonary Lobar Vasculature Dimensions in Medically Managed and Drug‐Naive Dogs With Left Heart Failure Secondary to Myxomatous Mitral Valve Disease
-- v1_2d4d75c693a3cae0 · src-vet-candy · verified · unique · One in Five Giardia-Positive Cats Carries a Potentially Zoonotic Strain, Massive New Study Finds
-- v1_6387820cab079145 · src-texas-a-m-vmbs-news · verified · unique · Finding Purpose In Pediatrics
+- v1_1793c2927a55c2bb · src-washington-state-veterinary-news · verified · unique · WSU alum named director of Montana Veterinary Medicine Program
+- v1_afcd13df74af658e · src-vet-candy · verified · unique · Michigan Puts $1.4 Million Behind a Plan to Bring More Veterinarians to Rural Communities
+- v1_a8dcdba3d456522e · src-washington-state-veterinary-news · unresolved · unique · WSU professor Felix Lankester elected to National Academy of Medicine
+- v1_7a9d85e208f841d6 · src-washington-state-veterinary-news · verified · unique · 2026 Quarter Century Club inductees
+- v1_47395733f241454a · src-vet-candy · verified · unique · Bird Flu Hits U.S. Mink Farm for First Time, Raising New Fears About the Next Pandemic
+- v1_ea5a7af931780f9d · src-vet-candy · verified · unique · The Healing Power of Horses: New Research Shows Equine Therapy Helps Autistic Children Feel Calmer and More Engaged
+- v1_eecb95aafb290e27 · src-veterinary-practice-news · verified · unique · One vet&#039;s approach to efficient AI use
+- v1_ddb42009dbc3e0ed · src-university-of-missouri-veterinary-news · verified · unique · From dream to discovery
+- v1_3cd031ad7959b90e · src-vet-candy · verified · unique · Hundreds of Denver Pets Receive Free Veterinary Care as Rising Costs of Living Put Pressure on Families
+- v1_86efe20efc9c851c · src-vet-candy · verified · unique · A Newborn Foal That Wouldn't Nurse Led a UC Davis Veterinarian to a Discovery That Could Change How We Understand Birth
 - v1_ef40d8687ffb47cd · src-veterinary-record · verified · unique · Mental health experiences and self‐compassion among veterinary professionals
 - v1_515e250fad948640 · src-veterinary-record · verified · unique · Understanding current practices for on‐farm management of vaginal prolapse in ewes
 - v1_64e113305c2861fc · src-veterinary-record · verified · unique · Global pet dental guidelines updated
@@ -38,18 +40,21 @@
 - v1_15eaa2b56cc0d40e · src-veterinary-record · verified · unique · From clinic to coastline
 - v1_19bf19b00d7c93b1 · src-veterinary-record · verified · unique · Ultramarathon fundraiser for charities
 - v1_e0ecbb116f39bd2a · src-veterinary-record · verified · unique · WSAVA animal welfare award winners
-- v1_823e18efdbdb2189 · src-veterinary-practice-news · verified · unique · Study links hydrogel products to acrylamide toxicosis in dogs
-- v1_743ca5faeef9b80d · src-veterinary-practice-news · verified · unique · Human-animal bond, benefits of pet ownership highlighted in new survey
 - v1_14f0c4f4a7de9554 · src-veterinary-record-case-reports · verified · unique · Ultrasonographic, endocrinological, histological and cytogenetic features of true hermaphroditism in a Beetal goat
 - v1_0c14c54487614855 · src-washington-state-veterinary-news · unresolved · unique · Rescued dog finds support through network of Cougar veterinarians
 - v1_b47a2c63ec1ce5d8 · src-veterinary-record-case-reports · verified · unique · Diagnosis and surgical treatment of cutaneous neurofibroma in a goldfish (Carassius auratus)
+- v1_601fa11320811b5b · src-frontiers-in-veterinary-science · verified · unique · Functional peptide therapeutics for veterinary osteoarthritis: mechanisms, delivery systems, and translational priorities
+- v1_6f956cadf5d58ae1 · src-frontiers-in-veterinary-science · verified · unique · Development of a sandwich ELISA for recombinant feline GM-CSF and determination of its serum half-life
+- v1_565450dc8e8002bc · src-frontiers-in-veterinary-science · verified · unique · Effects of violet light exposure on aging dogs: a pilot study
 - v1_f0cbaf315b844321 · src-today-s-veterinary-business · verified · unique · Vetsource Data: Senior Pet Boom is Unlikely
+- v1_dc4865df40363c16 · src-frontiers-in-veterinary-science · verified · unique · Partners or tools? Ethical framings shape welfare research on dogs and horses in animal-assisted services
 - v1_e7c9758e62d4adf6 · src-veterinary-practice-news · unresolved · unique · Easy as One, Two, Pee: Solving Feline Housesoiling
+- v1_76dfa1ba339a3450 · src-frontiers-in-veterinary-science · verified · unique · Highly pathogenic avian influenza virus H5N1 infection in stranded porpoises and dolphins in Chile
+- v1_a0c900020b031f46 · src-frontiers-in-veterinary-science · verified · unique · Rethinking avian influenza control: a systems-oriented One Health perspective for family poultry
 - v1_972d364558cd8d6a · src-veterinary-record-case-reports · verified · unique · Submandibular odontogenic choristoma in a Boer goat
 - v1_6f4b90a1d6a9b0ad · src-veterinary-radiology-ultrasound-the-official-journal-of- · verified · unique · Low‐Field Magnetic Resonance Imaging Features of Axial Proximal Sesamoid Osteomyelitis and Intersesamoidean Ligament Rupture in a Horse
-- v1_2aeed877f1b9364c · src-veterinary-record-case-reports · verified · unique · Serial growth plate monitoring in a 3‐month‐old Labrador retriever receiving vinblastine chemotherapy
 - v1_7db36899bbb0a6f2 · src-nc-state-university · verified · unique · From a Local Animal Hospital, Kristen Folk Reports
-- v1_1ee4026889f67744 · src-vet-candy · verified · unique · Who Gets to Preg Check? Wyoming Committee Votes Down Lay Pregnancy Testing Bill
+- v1_2aeed877f1b9364c · src-veterinary-record-case-reports · verified · unique · Serial growth plate monitoring in a 3‐month‐old Labrador retriever receiving vinblastine chemotherapy
 - v1_76d217e757fb8b77 · src-veterinary-and-comparative-oncology · verified · unique · Clinical Behaviour and Outcome of Pelvic Osteosarcoma in Dogs: A Retrospective Multicentre Analysis of 74 Cases (2007–2025)
 - v1_f7c416f2ae3203ab · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Metagenomic sequencing detects viruses and bacteria in a cross-sectional clinical cohort of undifferentiated febrile illness in Nigeria
 - v1_cd841123a70e3d0a · src-veterinary-clinical-pathology · verified · unique · What Is Your Diagnosis? Pulmonary Mass in a Cat
@@ -58,11 +63,9 @@
 - v1_f885b7096386ef10 · src-veterinary-clinical-pathology · verified · unique · Analytical Validation of an Automated Point‐of‐Care Immunoassay for the Measurement of Canine Pancreatic Lipase Immunoreactivity Concentration (Vcheck cPL 2.0)
 - v1_c3e996a0802976ad · src-veterinary-clinical-pathology · verified · unique · Regression Using 20 Samples to Harmonize a Point‐of‐Care Analyzer With a Commercial Laboratory Analyzer for Feline Plasma Biochemistry Testing
 - v1_2cbe13d5351daff8 · src-veterinary-clinical-pathology · verified · unique · The Effect of Lipemia on Insulin and Adiponectin Measurement in Equine Blood Samples
-- v1_14a1e7f3b2150024 · src-veterinary-practice-news · verified · unique · Resolve GI upsets and manage stress
 - v1_a0829875521aeb93 · src-npj-veterinary-sciences · verified · unique · Perceived risk and vaccine confidence as drivers for vaccination of calves against bovine respiratory disease: a configurational approach
+- v1_14a1e7f3b2150024 · src-veterinary-practice-news · verified · unique · Resolve GI upsets and manage stress
 - v1_d455ec77288bb6a9 · src-veterinary-practice-news · verified · unique · Healthy stool in as little as 24 hours
-- v1_5f2447b837b6e372 · src-veterinary-practice-news · verified · unique · Fast Itch Relief for Canine Patients
-- v1_a3df60a85eee4588 · src-vet-candy · verified · unique · Dechra Brings Laverdia® (verdinexor tablets), the First and Only FDA-Approved Oral Treatment for Dogs Diagnosed with Lymphoma
 - v1_358c05b54fe05f20 · src-virginia-tech-veterinary-college-news · verified · unique · Beloved pet cat in clinical remission from cancer with new radiation application, Petco Love support
 - v1_d3840637a0ee771f · src-veterinary-dermatology · verified · unique · Canine Sarcoidosis Treated Successfully With Oclacitinib: A Case Report
 - v1_3336f1f1cc6a82f6 · src-veterinary-dermatology · verified · unique · Clinical, Histopathological and Epidemiological Features of Dorsal Melanotrichia of Poodles and Poodle Crosses
@@ -73,10 +76,14 @@
 - v1_0d7961188e33cd83 · src-veterinary-dermatology · verified · unique · Treatment Choices for Acute Canine Otitis Externa in Sweden, Finland and Norway: A Comparative Study With a Focus on Antibiotic Use
 - v1_fb9371c4245f5172 · src-veterinary-dermatology · verified · unique · Therapeutic Outcomes and Owner Assessment in Canine Sebaceous Adenitis Across Breeds: A Multicentre Retrospective Analysis and Owner Survey
 - v1_986d8c78aa3a856f · src-veterinary-dermatology · verified · unique · Screening Equine Skin and Mucous Membranes for Carriage of Coagulase‐Positive Staphylococci
+- v1_90ef67c01f095da6 · src-veterinary-dermatology · verified · unique · Fibroepithelial Polyps of the Ear Canal in Dogs: A Retrospective Analysis of 17 Cases
 - v1_29a6dc41f1d90d34 · src-veterinary-record-case-reports · verified · unique · Total duplication of the femur and polydactyly in the same limb of a Korean native calf
 - v1_d9023f81922fb5a8 · src-veterinary-record-case-reports · verified · unique · Computed tomographic characterisation and surgical management of a caudal mediastinal paraoesophageal abscess with associated pneumonia in a dog
 - v1_7233e89912a9ad17 · src-veterinary-record-case-reports · verified · unique · Long‐term survival following surgical resection of pleomorphic rhabdomyosarcoma of the urinary bladder in a dog
 - v1_6b9c5c9db329a037 · src-veterinary-record-case-reports · verified · unique · Necrotic adrenal myelolipoma in a geriatric dog
+- v1_8339869d42721cd2 · src-veterinary-record-case-reports · verified · unique · Suspected hyperthyroidism‐associated myoclonus in a cat
+- v1_b4ae16f3a6459602 · src-veterinary-record-case-reports · verified · unique · Acute kidney injury in a dog after ingestion of homemade modelling dough containing cream of tartar (potassium bitartrate)
+- v1_a3df60a85eee4588 · src-vet-candy · verified · unique · Dechra Brings Laverdia® (verdinexor tablets), the First and Only FDA-Approved Oral Treatment for Dogs Diagnosed with Lymphoma
 - v1_cf732359bd341614 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Pet Spotlight: Kasey
 - v1_fc179ea23b009067 · src-veterinary-and-comparative-oncology · verified · unique · Comparative Phenotypic and Molecular Characterisation of Feline Oral Squamous Cell Carcinoma Cell Lines Reveals Marked Biological Heterogeneity
 - v1_1174b7338b66eda6 · src-veterinary-and-comparative-oncology · verified · unique · Toxicity of Cytarabine Intravenous Constant Rate Infusion in Cats With Lymphoma
@@ -88,13 +95,14 @@
 - v1_a892ca0decf62aab · src-veterinary-clinical-pathology · verified · unique · Stability of Complete Blood Count Parameters in Rats and Rabbits: Impact of Blood Sampling Volume and Storage Time on Analytical Reliability
 - v1_d171c7012ea3763c · src-veterinary-clinical-pathology · verified · unique · What Is Your Diagnosis? Flank Mass from a Gelding
 - v1_11eff5a2d762df52 · src-veterinary-clinical-pathology · verified · unique · What Is Your Diagnosis? Cervical Mass in a Timber Rattlesnake
+- v1_4b12a4ef747f74fd · src-veterinary-clinical-pathology · verified · unique · Life‐Stage–Specific Hematological Profiles in Yellow Mealworm Beetles (Tenebrio molitor): Reference Intervals and Hemocyte Characterization
 - v1_0953e234ff0d77bd · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Pet Spotlight: Willie
 - v1_615540093fb5af2d · src-virginia-tech-veterinary-college-news · verified · unique · ‘Wild child’ dog recovers from poisoning with help from the Veterinary Teaching Hospital
-- v1_62645e8a8f928677 · src-virginia-tech-veterinary-college-news · verified · unique · A new perspective on parasites — Gustavo Baptista joins veterinary college research team
 - v1_4c11362e964fb022 · src-today-s-veterinary-nurse · verified · unique · How to Place Nasogastric and Nasoesophageal Feeding Tubes
 - v1_731df36a9942a44b · src-virginia-tech-veterinary-college-news · verified · unique · How Virginia Tech became the voice of veterinary data
 - v1_e406a9f1a93073f0 · src-virginia-tech-veterinary-college-news · verified · unique · VMCVM Staff Spotlight: Alexandra Fox
 - v1_76e7b006a522ff1e · src-virginia-tech-veterinary-college-news · verified · unique · That itches! A guide to canine hot spots
-- v1_8a10882bd6a7c021 · src-virginia-tech-veterinary-college-news · verified · unique · Hands-on learning at annual Puppy Palooza provides a vital experience for veterinary students
-- v1_d079afd1eb88c254 · src-virginia-tech-veterinary-college-news · verified · unique · Alumni give to expand veterinary hospital where daughter is studying
+- v1_13ab70e87a1190f4 · src-virginia-tech-veterinary-college-news · verified · unique · Breaking the parasite&#39;s code
+- v1_13e550bbd4c780ea · src-virginia-tech-veterinary-college-news · verified · unique · Lawyer turned state veterinarian brings crisis leadership to Virginia Tech
+- v1_3988a6eda42b8b64 · src-virginia-tech-veterinary-college-news · verified · unique · Equine medical center&#39;s indoor arena helps clinician diagnose lameness in competitive horse
 - v1_be0ca5eeb3e4454b · src-minnesota-veterinary-biomedical-sciences-research · unresolved · unique · Note from Editor
